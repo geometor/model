@@ -1,6 +1,8 @@
 geometor.model
 ==============
 
+greetings
+
 :term:`test`
 
 .. include:: intro.rst
