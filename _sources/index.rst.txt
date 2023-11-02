@@ -1,7 +1,6 @@
 geometor.model
 ==============
 
-greetings
 
 :term:`test`
 
