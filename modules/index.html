@@ -80,7 +80,35 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../mission/">mission</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/">usage</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">geometor.model</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">geometor.model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#geometor.model.model.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.circles"><code class="docutils literal notranslate"><span class="pre">Model.circles</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.construct_circle"><code class="docutils literal notranslate"><span class="pre">Model.construct_circle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.construct_circle_by_labels"><code class="docutils literal notranslate"><span class="pre">Model.construct_circle_by_labels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.construct_line"><code class="docutils literal notranslate"><span class="pre">Model.construct_line()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.construct_line_by_labels"><code class="docutils literal notranslate"><span class="pre">Model.construct_line_by_labels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.get_ancestors"><code class="docutils literal notranslate"><span class="pre">Model.get_ancestors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.get_ancestors_labels"><code class="docutils literal notranslate"><span class="pre">Model.get_ancestors_labels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.get_element_by_label"><code class="docutils literal notranslate"><span class="pre">Model.get_element_by_label()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.limits"><code class="docutils literal notranslate"><span class="pre">Model.limits()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.lines"><code class="docutils literal notranslate"><span class="pre">Model.lines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.load"><code class="docutils literal notranslate"><span class="pre">Model.load()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.name"><code class="docutils literal notranslate"><span class="pre">Model.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.point_label_generator"><code class="docutils literal notranslate"><span class="pre">Model.point_label_generator()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.points"><code class="docutils literal notranslate"><span class="pre">Model.points</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.remove_by_label"><code class="docutils literal notranslate"><span class="pre">Model.remove_by_label()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.save"><code class="docutils literal notranslate"><span class="pre">Model.save()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.set_point"><code class="docutils literal notranslate"><span class="pre">Model.set_point()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.set_polygon"><code class="docutils literal notranslate"><span class="pre">Model.set_polygon()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.set_polygon_by_labels"><code class="docutils literal notranslate"><span class="pre">Model.set_polygon_by_labels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.set_segment"><code class="docutils literal notranslate"><span class="pre">Model.set_segment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.set_wedge"><code class="docutils literal notranslate"><span class="pre">Model.set_wedge()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.set_wedge_by_labels"><code class="docutils literal notranslate"><span class="pre">Model.set_wedge_by_labels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometor.model.model.Model.structs"><code class="docutils literal notranslate"><span class="pre">Model.structs</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/">demos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs/">references</a></li>
 <li class="toctree-l1"><a class="reference external" href="/log#https://">log</a></li>
@@ -116,6 +144,389 @@
            <div itemprop="articleBody">
               <section id="geometor-model">
 <h1>geometor.model<a class="headerlink" href="#geometor-model" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="geometor.model.model.Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geometor.model.model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.model.Model" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+<p>A collection of geometric elements, including points, lines, circles, and
+polygons, represented using the <cite>sympy.geometry</cite> library.</p>
+<p>When lines and circles are added to the model, intersection points of the
+new element with the preceding elements are identify and added.</p>
+<p>When new elements or points are added to the model, we check for existing
+duplicates.</p>
+<dl>
+<dt>parameters:</dt><dd><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">name</span></code><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>establish name for the model instance</p>
+</dd>
+</dl>
+</dd>
+<dt>attributes:</dt><dd><dl>
+<dt><a class="reference internal" href="#geometor.model.model.Model.name" title="geometor.model.model.Model.name"><code class="xref py py-attr docutils literal notranslate"><span class="pre">name</span></code></a><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>name of the model</p>
+</dd>
+<dt><a class="reference internal" href="#geometor.model.model.Model.points" title="geometor.model.model.Model.points"><code class="xref py py-attr docutils literal notranslate"><span class="pre">points</span></code></a><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></span></dt><dd><p>returns list of points in the Model</p>
+</dd>
+<dt><a class="reference internal" href="#geometor.model.model.Model.lines" title="geometor.model.model.Model.lines"><code class="xref py py-attr docutils literal notranslate"><span class="pre">lines</span></code></a><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></span></dt><dd><p>returns list of lines in the Model</p>
+</dd>
+<dt><a class="reference internal" href="#geometor.model.model.Model.circles" title="geometor.model.model.Model.circles"><code class="xref py py-attr docutils literal notranslate"><span class="pre">circles</span></code></a><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></span></dt><dd><p>returns list of circles in the Model</p>
+</dd>
+<dt><a class="reference internal" href="#geometor.model.model.Model.structs" title="geometor.model.model.Model.structs"><code class="xref py py-attr docutils literal notranslate"><span class="pre">structs</span></code></a><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></span></dt><dd><p>returns list of structs (lines and circles) in the Model</p>
+</dd>
+</dl>
+</dd>
+<dt>methods:</dt><dd><dl>
+<dt><a class="reference internal" href="#geometor.model.model.Model.set_point" title="geometor.model.model.Model.set_point"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_point()</span></code></a><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></span></dt><dd><ul class="simple">
+<li><p>set point from x, y expressions</p></li>
+<li><p>add to model if unique</p></li>
+<li><p>coordinate metadata</p></li>
+</ul>
+</dd>
+<dt><a class="reference internal" href="#geometor.model.model.Model.construct_line" title="geometor.model.model.Model.construct_line"><code class="xref py py-meth docutils literal notranslate"><span class="pre">construct_line()</span></code></a><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Line</span></code></span></dt><dd><ul class="simple">
+<li><p>construct line from two points</p></li>
+<li><p>add to model if unique</p></li>
+<li><p>coordinate meta data</p></li>
+<li><p>find intersections with other structs</p></li>
+</ul>
+</dd>
+<dt><a class="reference internal" href="#geometor.model.model.Model.construct_circle" title="geometor.model.model.Model.construct_circle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">construct_circle()</span></code></a><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circle</span></code></span></dt><dd><ul class="simple">
+<li><p>construct line from two points</p></li>
+<li><p>add to model if unique</p></li>
+<li><p>coordinate meta data</p></li>
+<li><p>find intersections with other structs</p></li>
+</ul>
+</dd>
+<dt><a class="reference internal" href="#geometor.model.model.Model.set_segment" title="geometor.model.model.Model.set_segment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_segment()</span></code></a><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></span></dt><dd><ul class="simple">
+<li><p>set segment from two points</p></li>
+<li><p>coordinate meta data</p></li>
+</ul>
+</dd>
+<dt><a class="reference internal" href="#geometor.model.model.Model.set_polygon" title="geometor.model.model.Model.set_polygon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_polygon()</span></code></a><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Polygon</span></code></span></dt><dd><ul class="simple">
+<li><p>set polygon from list of points</p></li>
+<li><p>coordinate meta data</p></li>
+</ul>
+</dd>
+<dt><a class="reference internal" href="#geometor.model.model.Model.limits" title="geometor.model.model.Model.limits"><code class="xref py py-meth docutils literal notranslate"><span class="pre">limits()</span></code></a><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></span></dt><dd><p>returns the x, y limits of the points and circle boundaries in the model</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>add <cite>get_bounds_polygon</cite> method to Model</p>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="geometor.model.model.Model.circles">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">circles</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#geometor.model.model.Model.circles" title="Link to this definition"></a></dt>
+<dd><p>returns circle elements from model as list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.model.Model.construct_circle">
+<span class="sig-name descname"><span class="pre">construct_circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Circle</span></span></span><a class="headerlink" href="#geometor.model.model.Model.construct_circle" title="Link to this definition"></a></dt>
+<dd><p>Constructs a Circle from two points and adds it to the model.</p>
+<dl>
+<dt>operations:</dt><dd><ul class="simple">
+<li><p>create an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.ellipse.Circle`as</span> <span class="pre">``circle`</span></code></p></li>
+<li><p>create a <code class="docutils literal notranslate"><span class="pre">details</span></code> object from <code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></p></li>
+<li><dl class="simple">
+<dt>add parents to details</dt><dd><p>initial parents are the two starting points</p>
+</dd>
+</dl>
+</li>
+<li><p>check for duplicates in in the <code class="docutils literal notranslate"><span class="pre">model</span></code></p></li>
+<li><p>find intersection points for new element with all precedng elements</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">circle</span></code> to the model.</p></li>
+</ul>
+</dd>
+<dt>parameters:</dt><dd><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">pt_center</span></code><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code></span></dt><dd><p>A SymPy Point representing the circle center.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pt_radius</span></code><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code></span></dt><dd><p>A SymPy Point marking the length of the radius.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">classes</span></code><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code> <em>optional</em> </span></dt><dd><p>A list of string names for classes defining a set of styles. Defaults to None.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">label</span></code><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> <em>optional</em> </span></dt><dd><p>A text label for use in plotting and reporting. Defaults to an empty string.</p>
+</dd>
+</dl>
+</dd>
+<dt>returns:</dt><dd><dl class="simple">
+<dt><code class="xref py py-class docutils literal notranslate"><span class="pre">Circle</span></code>: </dt><dd><p>The constructed circle.</p>
+</dd>
+</dl>
+</dd>
+<dt>example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geometor.elements</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;demo&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="go">&lt;spg.Circle object ...&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt>notes:</dt><dd><p>SymPy defines a circle as a center point and a radius length, so the radius length is calculated for the spg.Circle.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.model.Model.construct_circle_by_labels">
+<span class="sig-name descname"><span class="pre">construct_circle_by_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_1_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Line</span></span></span><a class="headerlink" href="#geometor.model.model.Model.construct_circle_by_labels" title="Link to this definition"></a></dt>
+<dd><p>find points by label and use them with <a class="reference internal" href="#geometor.model.model.Model.construct_line" title="geometor.model.model.Model.construct_line"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.construct_line()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.model.Model.construct_line">
+<span class="sig-name descname"><span class="pre">construct_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Line</span></span></span><a class="headerlink" href="#geometor.model.model.Model.construct_line" title="Link to this definition"></a></dt>
+<dd><p>Constructs a <code class="xref py py-class docutils literal notranslate"><span class="pre">Line</span></code> from two points and adds it to the <a class="reference internal" href="#geometor.model.model.Model" title="geometor.model.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<dl>
+<dt>parameters:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pt_1</span></code> (<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code>): A SymPy Point marking the first point of the line</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pt_2</span></code> (<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code>): A SymPy Point marking the second point of the line</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">classes</span></code> (list): Additional classes (optional)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code> (str): Label for the line (optional)</p></li>
+</ul>
+</dd>
+<dt>returns:</dt><dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.line.Line</span></code>: The constructed line</p>
+</dd>
+<dt>example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geometor.elements</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;demo&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">construct_line</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="go">&lt;spg.Line object ...&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt>operations:</dt><dd><ul class="simple">
+<li><p>create an instance of <code class="docutils literal notranslate"><span class="pre">spg.Line</span></code></p></li>
+<li><p>create a <code class="docutils literal notranslate"><span class="pre">details</span></code> object from <code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></p></li>
+<li><p>add parents to details</p></li>
+<li><p>check for duplicates in elements.</p></li>
+<li><p>find intersection points for new element with all precedng elements</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">line</span></code> to the model.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.model.Model.construct_line_by_labels">
+<span class="sig-name descname"><span class="pre">construct_line_by_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_1_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Line</span></span></span><a class="headerlink" href="#geometor.model.model.Model.construct_line_by_labels" title="Link to this definition"></a></dt>
+<dd><p>find points by label and use them with <a class="reference internal" href="#geometor.model.model.Model.construct_line" title="geometor.model.model.Model.construct_line"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.construct_line()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.model.Model.get_ancestors">
+<span class="sig-name descname"><span class="pre">get_ancestors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.model.Model.get_ancestors" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the ancestors for the given element.</p>
+<p>The method recursively traverses the parent elements of the given element
+and constructs a nested dictionary representing the ancestor tree.</p>
+<dl class="simple">
+<dt>parameters:</dt><dd><dl class="simple">
+<dt>element<span class="classifier">sympy.geometry object</span></dt><dd><p>The element for which the ancestors are to be retrieved.</p>
+</dd>
+</dl>
+</dd>
+<dt>returns:</dt><dd><p>dict : A nested dictionary representing the ancestors.</p>
+</dd>
+<dt>example:</dt><dd><p>If element A has parents B and C, and B has parent D, the method returns:
+{A: {B: {D: {}}, C: {}}}</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.model.Model.get_ancestors_labels">
+<span class="sig-name descname"><span class="pre">get_ancestors_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.model.Model.get_ancestors_labels" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the labels of the ancestors for the given element.</p>
+<p>The method recursively traverses the parent elements of the given element
+and constructs a nested dictionary with labels representing the ancestor tree.</p>
+<dl class="simple">
+<dt>parameters:</dt><dd><dl class="simple">
+<dt>element<span class="classifier">sympy.geometry object</span></dt><dd><p>The element for which the ancestors’ labels are to be retrieved.</p>
+</dd>
+</dl>
+</dd>
+<dt>returns:</dt><dd><p>dict : A nested dictionary representing the labels of the ancestors.</p>
+</dd>
+<dt>example:</dt><dd><p>If element A has parents B and C, and B has parent D, the method returns:
+{‘A’: {‘B’: {‘D’: {}}, ‘C’: {}}}</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.model.Model.get_element_by_label">
+<span class="sig-name descname"><span class="pre">get_element_by_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.model.Model.get_element_by_label" title="Link to this definition"></a></dt>
+<dd><p>Finds and returns the element with the given label.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>label (str): The label of the desired element.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p>Element or None: The element with the matching label, or None if no match is found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.model.Model.limits">
+<span class="sig-name descname"><span class="pre">limits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.model.Model.limits" title="Link to this definition"></a></dt>
+<dd><p>Find x, y limits from points and circles of the model</p>
+<dl class="simple">
+<dt>Returns a list of x, y limits:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">[[x_min,</span> <span class="pre">x_max],</span> <span class="pre">[y_min,</span> <span class="pre">y_max]]</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geometor.model.model.Model.lines">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lines</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#geometor.model.model.Model.lines" title="Link to this definition"></a></dt>
+<dd><p>returns line elements from model as list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.model.Model.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.model.Model.load" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geometor.model.model.Model.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#geometor.model.model.Model.name" title="Link to this definition"></a></dt>
+<dd><p>The name of the model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.model.Model.point_label_generator">
+<span class="sig-name descname"><span class="pre">point_label_generator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.model.Model.point_label_generator" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geometor.model.model.Model.points">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">points</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#geometor.model.model.Model.points" title="Link to this definition"></a></dt>
+<dd><p>returns point elements from model as list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.model.Model.remove_by_label">
+<span class="sig-name descname"><span class="pre">remove_by_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.model.Model.remove_by_label" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.model.Model.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.model.Model.save" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.model.Model.set_point">
+<span class="sig-name descname"><span class="pre">set_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parents</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Point</span></span></span><a class="headerlink" href="#geometor.model.model.Model.set_point" title="Link to this definition"></a></dt>
+<dd><p>Adds a point to the model, finds duplicates, cleans values, and sets parents and classes.</p>
+<dl>
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x_val</span></code> (<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.expr.Expr</span></code>): The x-value of the point.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y_val</span></code> (<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.expr.Expr</span></code>): The y-value of the point.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">parents</span></code> (list, optional): A list of parent elements or references. Defaults to None.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">classes</span></code> (list, optional): A list of string names for classes defining a set of styles. Defaults to None.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code> (str, optional): A text label for use in plotting and reporting. Defaults to an empty string.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code>: The set point.</p>
+</dd>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geometor.model</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;demo&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
+<span class="go">&lt;spg.Point object ...&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt>Notes:</dt><dd><p>The function simplifies the x and y values before adding, and it updates the attributes if the point is already in the model.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.model.Model.set_polygon">
+<span class="sig-name descname"><span class="pre">set_polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">poly_pts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Polygon</span></span></span><a class="headerlink" href="#geometor.model.model.Model.set_polygon" title="Link to this definition"></a></dt>
+<dd><p>set polygon (list of 3 or more points)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.model.Model.set_polygon_by_labels">
+<span class="sig-name descname"><span class="pre">set_polygon_by_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">poly_pts_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Line</span></span></span><a class="headerlink" href="#geometor.model.model.Model.set_polygon_by_labels" title="Link to this definition"></a></dt>
+<dd><p>find points by label and use them with <a class="reference internal" href="#geometor.model.model.Model.construct_line" title="geometor.model.model.Model.construct_line"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.construct_line()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.model.Model.set_segment">
+<span class="sig-name descname"><span class="pre">set_segment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Segment</span></span></span><a class="headerlink" href="#geometor.model.model.Model.set_segment" title="Link to this definition"></a></dt>
+<dd><p>set segment (list of points) for demonstration in the model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.model.Model.set_wedge">
+<span class="sig-name descname"><span class="pre">set_wedge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_sweep_start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_sweep_end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clockwise'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Wedge</span></span></span><a class="headerlink" href="#geometor.model.model.Model.set_wedge" title="Link to this definition"></a></dt>
+<dd><p>sets a Wedge from 3 points and adds it to the model.</p>
+<dl>
+<dt>operations:</dt><dd><ul class="simple">
+<li><p>create an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">geometor.model.Wedge</span></code></p></li>
+<li><p>create a <code class="docutils literal notranslate"><span class="pre">details</span></code> object from <code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></p></li>
+<li><dl class="simple">
+<dt>add parents to details</dt><dd><p>initial parents are the two starting points</p>
+</dd>
+</dl>
+</li>
+<li><p>check for duplicates in in the <code class="docutils literal notranslate"><span class="pre">model</span></code></p></li>
+<li><p>find intersection points for new element with all precedng elements</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">circle</span></code> to the model.</p></li>
+</ul>
+</dd>
+<dt>parameters:</dt><dd><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">pt_center</span></code><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code></span></dt><dd><p>A SymPy Point representing the circle center.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pt_radius</span></code><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code></span></dt><dd><p>A SymPy Point marking the length of the radius.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pt_end</span></code><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code></span></dt><dd><p>A SymPy Point marking the sweep of the wedge</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">classes</span></code><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code> <em>optional</em></span></dt><dd><p>A list of string names for classes defining a set of styles. Defaults to None.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">label</span></code><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> <em>optional</em></span></dt><dd><p>A text label for use in plotting and reporting. Defaults to an empty string.</p>
+</dd>
+</dl>
+</dd>
+<dt>returns:</dt><dd><dl class="simple">
+<dt><code class="xref py py-class docutils literal notranslate"><span class="pre">Wedge</span></code></dt><dd><p>The portion of a circle</p>
+</dd>
+</dl>
+</dd>
+<dt>example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geometor.elements</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;demo&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">_set_wedge_by_labels</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">)</span>
+<span class="go">&lt;Wedge object ...&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt>notes:</dt><dd><p>SymPy defines a circle as a center point and a radius length, so the radius length is calculated for the spg.Circle.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.model.Model.set_wedge_by_labels">
+<span class="sig-name descname"><span class="pre">set_wedge_by_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_1_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Wedge</span></span></span><a class="headerlink" href="#geometor.model.model.Model.set_wedge_by_labels" title="Link to this definition"></a></dt>
+<dd><p>find points by label and use them with <a class="reference internal" href="#geometor.model.model.Model.construct_line" title="geometor.model.model.Model.construct_line"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.construct_line()</span></code></a></p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geometor.model.model.Model.structs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">structs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#geometor.model.model.Model.structs" title="Link to this definition"></a></dt>
+<dd><p>returns struct elements (line or circle) from model as list</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 <div class="section">
