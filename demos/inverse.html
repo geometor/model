@@ -1,0 +1,105 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SVG Steps</title>
+        <style>
+html {
+    background: black;
+}
+.steps {
+    width: 100%;
+    height: 100vh; /* Takes full viewport height */
+    position: relative;
+}
+
+.steps > object {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Initially hide all SVGs */
+    transition: opacity 0.05s ease; /* Transition effect */
+}
+    </style>
+    </head>
+    <body>
+    
+        <div class="steps">
+        <object type="image/svg+xml" data="./inverse/step/00000-point-given.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00001-point-given.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00002-point-given_red.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00003-point-given.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00004-line.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00005-circle.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00006-point.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00007-line.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00008-point.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00009-line.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00010-point.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00011-circle-green.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00012-point.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00013-point.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00014-point.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00015-point.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00016-point.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00017-point.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00018-line.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00019-point-red.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/00020-point.svg"></object>
+    <object type="image/svg+xml" data="./inverse/step/summary.svg"></object>
+
+        </div>
+        <script>
+            const svgs = document.querySelectorAll('.steps > object');
+            let current = 0;
+
+            function showSVG(index) {
+                svgs.forEach((svg, i) => {
+                    if (i === index) {
+                        svg.style.opacity = 1; // Show current SVG
+                    } else {
+                        svg.style.opacity = 0; // Hide other SVGs
+                    }   
+                });
+            }
+
+            function nextSVG() {
+                console.log('next');
+                current = (current + 1) % svgs.length;
+                showSVG(current);
+            }
+
+            function previousSVG() {
+                console.log('prev');
+                current = (current - 1 + svgs.length) % svgs.length;
+                showSVG(current);
+            }
+
+            showSVG(current);
+
+            document.addEventListener('keydown', function(event) {
+                switch (event.key) {
+                    case 'j':
+                        nextSVG();
+                        break;
+                    case 'k':
+                        previousSVG();
+                        break;
+                    case 'g':
+                        current = 0;
+                        showSVG(current);
+                        break;
+                    case 'G':
+                        current = svgs.length - 1;
+                        showSVG(current);
+                        break;
+                }
+            });
+
+        </script>
+        </body>
+        </html>
+    

@@ -1,0 +1,73 @@
+{
+    "Point2D(0, 0)": {
+        "label": "A",
+        "classes": {
+            "given": ""
+        },
+        "parents": "{Line2D(Point2D(0, 0), Point2D(1, 0)): '', Circle(Point2D(1, 0), 1): ''}"
+    },
+    "Point2D(1, 0)": {
+        "label": "B",
+        "classes": {
+            "given": ""
+        },
+        "parents": "{Line2D(Point2D(0, 0), Point2D(1, 0)): '', Circle(Point2D(0, 0), 1): ''}"
+    },
+    "Line2D(Point2D(0, 0), Point2D(1, 0))": {
+        "label": "[ A B ]",
+        "classes": {},
+        "parents": "{Point2D(0, 0): '', Point2D(1, 0): '', Point2D(-1, 0): '', Point2D(2, 0): '', Point2D(1/2, 0): ''}"
+    },
+    "Circle(Point2D(0, 0), 1)": {
+        "label": "( A B )",
+        "classes": {},
+        "parents": "{Point2D(0, 0): '', Point2D(1, 0): '', Point2D(-1, 0): '', Point2D(1/2, -sqrt(3)/2): '', Point2D(1/2, sqrt(3)/2): ''}",
+        "pt_radius": "Point2D(1, 0)"
+    },
+    "Point2D(-1, 0)": {
+        "label": "C",
+        "classes": {},
+        "parents": "{Line2D(Point2D(0, 0), Point2D(1, 0)): '', Circle(Point2D(0, 0), 1): ''}"
+    },
+    "Circle(Point2D(1, 0), 1)": {
+        "label": "( B A )",
+        "classes": {},
+        "parents": "{Point2D(1, 0): '', Point2D(0, 0): '', Point2D(2, 0): '', Point2D(1/2, -sqrt(3)/2): '', Point2D(1/2, sqrt(3)/2): ''}",
+        "pt_radius": "Point2D(0, 0)"
+    },
+    "Point2D(2, 0)": {
+        "label": "D",
+        "classes": {},
+        "parents": "{Line2D(Point2D(0, 0), Point2D(1, 0)): '', Circle(Point2D(1, 0), 1): ''}"
+    },
+    "Point2D(1/2, -sqrt(3)/2)": {
+        "label": "E",
+        "classes": {},
+        "parents": "{Circle(Point2D(0, 0), 1): '', Circle(Point2D(1, 0), 1): '', Line2D(Point2D(1/2, -sqrt(3)/2), Point2D(1/2, sqrt(3)/2)): ''}"
+    },
+    "Point2D(1/2, sqrt(3)/2)": {
+        "label": "F",
+        "classes": {},
+        "parents": "{Circle(Point2D(0, 0), 1): '', Circle(Point2D(1, 0), 1): '', Line2D(Point2D(1/2, -sqrt(3)/2), Point2D(1/2, sqrt(3)/2)): ''}"
+    },
+    "Triangle(Point2D(0, 0), Point2D(1, 0), Point2D(1/2, -sqrt(3)/2))": {
+        "label": "< A B E >",
+        "classes": {},
+        "parents": "{Point2D(0, 0): '', Point2D(1, 0): '', Point2D(1/2, -sqrt(3)/2): ''}"
+    },
+    "Triangle(Point2D(0, 0), Point2D(1, 0), Point2D(1/2, sqrt(3)/2))": {
+        "label": "< A B F >",
+        "classes": {},
+        "parents": "{Point2D(0, 0): '', Point2D(1, 0): '', Point2D(1/2, sqrt(3)/2): ''}"
+    },
+    "Line2D(Point2D(1/2, -sqrt(3)/2), Point2D(1/2, sqrt(3)/2))": {
+        "label": "[ E F ]",
+        "classes": {},
+        "parents": "{Point2D(1/2, -sqrt(3)/2): '', Point2D(1/2, sqrt(3)/2): '', Point2D(1/2, 0): ''}"
+    },
+    "Point2D(1/2, 0)": {
+        "label": "G",
+        "classes": {},
+        "parents": "{Line2D(Point2D(0, 0), Point2D(1, 0)): '', Line2D(Point2D(1/2, -sqrt(3)/2), Point2D(1/2, sqrt(3)/2)): ''}"
+    }
+}
