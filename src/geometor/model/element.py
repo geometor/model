@@ -1,7 +1,7 @@
 """
 helper functions for Model class
 """
-from .common import *
+from geometor.model.common import *
 
 
 class Element:
@@ -38,7 +38,11 @@ class Element:
     """
 
     def __init__(
-        self, sympy_obj, parents: list = None, classes: list = None, label: str = ""
+        self,
+        sympy_obj,
+        parents: list | None = None,
+        classes: list[str] | None = None,
+        label: str = "",
     ):
         """
         Initializes an Element of the model.
@@ -61,12 +65,21 @@ class Element:
 
 
 class CircleElement(Element):
-    def __init__(self, sympy_obj, parents, classes, label, pt_radius):
+    def __init__(
+        self,
+        sympy_obj: spg.Circle,
+        pt_radius: spg.Point,
+        parents: list | None = None,
+        classes: list[str] | None = None,
+        label: str = "",
+    ):
         super().__init__(sympy_obj, parents, classes, label)
         self.pt_radius = pt_radius
 
 
-def check_existence(self, struct, existing_structs):
+def check_existence(
+    self, struct: spg.Line | spg.Circle, existing_structs: list[spg.Line | spg.Circle]
+) -> tuple[bool, spg.Line | spg.Circle]:
     """Check if a geometric structure exists in the model."""
     # Check by reference
     if struct in existing_structs:
@@ -81,7 +94,7 @@ def check_existence(self, struct, existing_structs):
     return False, None
 
 
-def find_all_intersections(self, struct):
+def find_all_intersections(self, struct: spg.Line | spg.Circle) -> None:
     """find all intersections in the model for the given struct"""
     test_structs = [(el, struct) for el in self.structs if not el.equals(struct)]
 
@@ -96,7 +109,7 @@ def find_all_intersections(self, struct):
             self[struct].parents[pt_new] = ""
 
 
-def find_intersection(test_tuple):
+def find_intersection(test_tuple: tuple) -> tuple:
     """find intersection for two structs"""
     prev, struct = test_tuple
     result = struct.intersection(prev)
@@ -104,7 +117,7 @@ def find_intersection(test_tuple):
     return prev, struct, result
 
 
-def _get_ancestors_labels(self, element):
+def _get_ancestors_labels(self, element) -> dict[str, dict]:
     """
     Retrieves the labels of the ancestors for the given element.
 
@@ -135,9 +148,7 @@ def _get_ancestors_labels(self, element):
         parents = list(self[element].parents.keys())[:2]
 
     for parent in parents:
-        ancestors[self[element].label].update(self.get_ancestors_labels(
-            parent
-        ))
+        ancestors[self[element].label].update(self.get_ancestors_labels(parent))
 
     return ancestors
 

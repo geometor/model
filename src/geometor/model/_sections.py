@@ -1,17 +1,18 @@
 """
 section functions for Model class
 """
+#  from __future__ import annotations
 
-from .common import *
+from geometor.model.common import *
 
-from .element import (
+from geometor.model.element import (
     Element,
     CircleElement,
     find_all_intersections,
     check_existence,
 )
 
-from geometor.model import Model
+#  from geometor.model import Model
 
 phi = sp.Rational(1, 2) + (sp.sqrt(5) / 2)
 
@@ -26,7 +27,7 @@ class Section:
             spg.Segment(points[1], points[2]),
         ]
 
-    def get_labels(self, model: Model):
+    def get_labels(self, model):
         return [model[pt].label for pt in self.points]
 
     @property

@@ -2,11 +2,11 @@
 helper functions for Model class
 """
 
-from .common import *
-from .utils import *
+from geometor.model.common import *
+from geometor.model.utils import *
 
-from .element import Element
-from .reports import get_colored_label
+from geometor.model.element import Element
+from geometor.model.reports import get_colored_label
 
 
 def _set_point(

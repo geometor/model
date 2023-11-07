@@ -3,7 +3,8 @@ from collections import defaultdict
 
 from geometor.model import *
 from geometor.model.utils import *
-from geometor.render import *
+#  from geometor.render import *
+from geometor.model._sections import *
 
 
 class Chain:

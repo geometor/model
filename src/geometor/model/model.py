@@ -3,30 +3,43 @@ This module provides the `Model` class, which is used to represent a geometric m
 in 2D space. The `Model` class is based on the `list` data structure, and can contain
 points, lines, circles, polygons, and segments.
 """
+from collections.abc import Iterator
 
-from .common import *
+from geometor.model.common import *
+from geometor.model.utils import *
 
-from .utils import *
-
-from .element import (
+from geometor.model.element import (
     Element,
     _get_ancestors,
     _get_ancestors_labels,
     _get_element_by_label,
 )
-from ._points import _set_point
-from ._lines import _construct_line, _construct_line_by_labels
-from ._circles import (
+from geometor.model._points import _set_point
+from geometor.model._lines import _construct_line, _construct_line_by_labels
+from geometor.model._circles import (
     _construct_circle,
     _construct_circle_by_labels,
 )
-from ._polygons import _set_polygon, _set_polygon_by_labels
-from ._segments import _set_segment
-from ._wedges import Wedge, _set_wedge, _set_wedge_by_labels
+from geometor.model._polygons import _set_polygon, _set_polygon_by_labels
+from geometor.model._segments import _set_segment
+from geometor.model._wedges import Wedge, _set_wedge, _set_wedge_by_labels
 
-from ._serialize import _save_to_json, _load_from_json
+from geometor.model._sections import *
+from geometor.model._chains import *
 
-#  from .reports import *
+
+from geometor.model._serialize import _save_to_json, _load_from_json
+
+GeometryObject = (
+    spg.Point
+    | spg.Line
+    | spg.Circle
+    | spg.Segment
+    | spg.Polygon
+    | Wedge
+    #  | Section
+    #  | Chain
+)
 
 
 class Model(dict):
@@ -98,8 +111,7 @@ class Model(dict):
     def name(self, value) -> None:
         self._name = value
 
-    # Override set_item to enforce Element type for values
-    def __setitem__(self, key, value: Element):
+    def __setitem__(self, key: GeometryObject, value: Element):
         """
         control types for keys and values
         parameters:
@@ -108,8 +120,10 @@ class Model(dict):
             ``value`` : :class:`Element`
                 side car object with info about the geometric object
         """
+        if not isinstance(key, GeometryObject):
+            raise TypeError(f"{key=} must be an instance of Element class")
         if not isinstance(value, Element):
-            raise TypeError("value must be an instance of Element class")
+            raise TypeError(f"{ value= } must be an instance of Element class")
         super().__setitem__(key, value)
 
     set_point = _set_point
@@ -162,13 +176,14 @@ class Model(dict):
         return [el for el in self if isinstance(el, spg.Line)]
 
     @property
-    def circles(self) -> list:
+    def circles(self) -> list[spg.Circle]:
         """
         returns circle elements from model as list
         """
         return [el for el in self if isinstance(el, spg.Circle)]
 
-    def limits(self) -> list[list[float, float], list[float, float]]:
+    #  def limits(self) -> list[list[float, float], list[float, float]]:
+    def limits(self) -> list[tuple[float]]:
         """
         Find x, y limits from points and circles of the model
 
@@ -207,7 +222,7 @@ class Model(dict):
     save = _save_to_json
     load = _load_from_json
 
-    def point_label_generator(self):
+    def point_label_generator(self) -> Iterator[str]:
         letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         repeat = 1
 
