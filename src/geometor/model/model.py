@@ -155,7 +155,7 @@ class Model(dict):
         ]
 
     @property
-    def lines(self) -> list:
+    def lines(self) -> list[spg.Line]:
         """
         returns line elements from model as list
         """
