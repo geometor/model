@@ -219,7 +219,7 @@ duplicates.</p>
 </div>
 <dl class="py property">
 <dt class="sig sig-object py" id="geometor.model.model.Model.circles">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">circles</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#geometor.model.model.Model.circles" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">circles</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Circle</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#geometor.model.model.Model.circles" title="Link to this definition"></a></dt>
 <dd><p>returns circle elements from model as list</p>
 </dd></dl>
 
@@ -340,7 +340,7 @@ and constructs a nested dictionary representing the ancestor tree.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.model.Model.get_ancestors_labels">
-<span class="sig-name descname"><span class="pre">get_ancestors_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.model.Model.get_ancestors_labels" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_ancestors_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.model.Model.get_ancestors_labels" title="Link to this definition"></a></dt>
 <dd><p>Retrieves the labels of the ancestors for the given element.</p>
 <p>The method recursively traverses the parent elements of the given element
 and constructs a nested dictionary with labels representing the ancestor tree.</p>
@@ -374,7 +374,7 @@ and constructs a nested dictionary with labels representing the ancestor tree.</
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.model.Model.limits">
-<span class="sig-name descname"><span class="pre">limits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.model.Model.limits" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">limits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.model.Model.limits" title="Link to this definition"></a></dt>
 <dd><p>Find x, y limits from points and circles of the model</p>
 <dl class="simple">
 <dt>Returns a list of x, y limits:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">[[x_min,</span> <span class="pre">x_max],</span> <span class="pre">[y_min,</span> <span class="pre">y_max]]</span></code></p>
@@ -401,7 +401,7 @@ and constructs a nested dictionary with labels representing the ancestor tree.</
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.model.Model.point_label_generator">
-<span class="sig-name descname"><span class="pre">point_label_generator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.model.Model.point_label_generator" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">point_label_generator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.model.Model.point_label_generator" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
