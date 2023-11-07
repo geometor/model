@@ -84,22 +84,30 @@ class Model(dict):
 
     """
 
-    def __init__(self, name=""):
+    def __init__(self, name: str = ""):
         super().__init__()
         self._name = name
         self.label_gen = self.point_label_generator()
 
     @property
-    def name(self):
+    def name(self) -> str:
         """The name of the model"""
         return self._name
 
     @name.setter
-    def name(self, value):
+    def name(self, value) -> None:
         self._name = value
 
     # Override set_item to enforce Element type for values
-    def __setitem__(self, key, value):
+    def __setitem__(self, key, value: Element):
+        """
+        control types for keys and values
+        parameters:
+            ``key`` : :class:`spg.entity` or custom objects like Wedge
+                the geometric element object
+            ``value`` : :class:`Element`
+                side car object with info about the geometric object
+        """
         if not isinstance(value, Element):
             raise TypeError("value must be an instance of Element class")
         super().__setitem__(key, value)
@@ -121,19 +129,19 @@ class Model(dict):
     set_wedge = _set_wedge
     set_wedge_by_labels = _set_wedge_by_labels
 
-    def remove_by_label(self, label: str):
+    def remove_by_label(self, label: str) -> None:
         el = self.get_element_by_label(label)
         del self[el]
 
     @property
-    def points(self) -> list:
+    def points(self) -> list[spg.Point]:
         """
         returns point elements from model as list
         """
         return [el for el in self if isinstance(el, spg.Point)]
 
     @property
-    def structs(self) -> list:
+    def structs(self) -> list[spg.Line | spg.Circle]:
         """
         returns struct elements (line or circle) from model as list
         """
