@@ -17,4 +17,4 @@ jobs:
       uses: photon-platform/action-deploy-sphinx-gh-pages@v12
       with:
         modules_repo_urls: 'https://github.com/geometor/model.git,https://github.com/geometor/render.git'
-        # python_version: '3.x'  # Optional, default is '3.x'
+        python_version: '3.10'  # Optional, default is '3.x'
