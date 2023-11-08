@@ -1,7 +1,7 @@
 """
 constructs the classic 'vesica pisces'
 """
-from geometor.elements import *
+from geometor.model import *
 
 def run():
     model = Model('heptadecagon')
