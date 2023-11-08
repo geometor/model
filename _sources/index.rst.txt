@@ -29,11 +29,10 @@ contents:
    todos.rst
    glossary.rst
 
-   :ref:`genindex`
 
 
-Indices and tables
-==================
+indices
+=======
 
 * :ref:`genindex`
 * :ref:`modindex`
