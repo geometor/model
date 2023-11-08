@@ -10,10 +10,12 @@ from geometor.model.utils import *
 
 from geometor.model.element import (
     Element,
+    CircleElement,
     _get_ancestors,
     _get_ancestors_labels,
     _get_element_by_label,
 )
+
 from geometor.model._points import _set_point
 from geometor.model._lines import _construct_line, _construct_line_by_labels
 from geometor.model._circles import (
@@ -21,12 +23,11 @@ from geometor.model._circles import (
     _construct_circle_by_labels,
 )
 from geometor.model._polygons import _set_polygon, _set_polygon_by_labels
-from geometor.model._segments import _set_segment
-from geometor.model._wedges import Wedge, _set_wedge, _set_wedge_by_labels
+from geometor.model._segments import _set_segment, _set_segment_by_labels
 
-from geometor.model._sections import *
-from geometor.model._chains import *
-
+from geometor.model.wedges import Wedge, _set_wedge, _set_wedge_by_labels
+from geometor.model.sections import *
+from geometor.model.chains import *
 
 from geometor.model._serialize import _save_to_json, _load_from_json
 
@@ -53,45 +54,45 @@ class Model(dict):
     When new elements or points are added to the model, we check for existing
     duplicates.
 
-    parameters:
-        ``name`` : :class:`str`
-            establish name for the model instance
+    parameters
+    ----------
+    - ``name`` : :class:`str`
+        establish name for the model instance
 
-    attributes:
-        :attr:`name` : :class:`str`
-            name of the model
-        :attr:`points` : :class:`list`
-            returns list of points in the Model
-        :attr:`lines` : :class:`list`
-            returns list of lines in the Model
-        :attr:`circles` : :class:`list`
-            returns list of circles in the Model
-        :attr:`structs` : :class:`list`
-            returns list of structs (lines and circles) in the Model
+    attributes
+    ----------
+    - :attr:`name` -> :class:`str` *name of the model*
+    - :attr:`points` -> :class:`list` [:class:`Point <sympy.geometry.point.Point>`]
+    - :attr:`lines` -> :class:`list` [:class:`Line <sympy.geometry.point.Line>`]
+    - :attr:`circles` -> :class:`list` [:class:`Circle <sympy.geometry.point.Circle>`]
+    - :attr:`structs` -> :class:`list` [Struct]
+        returns list of structs (lines and circles) in the Model
 
-    methods:
-        :meth:`set_point` : :class:`Point <sympy.geometry.point.Point>`
-            - set point from x, y expressions
-            - add to model if unique
-            - coordinate metadata
-        :meth:`construct_line` : :class:`Line <sympy.geometry.line.Line>`
-            - construct line from two points
-            - add to model if unique
-            - coordinate meta data
-            - find intersections with other structs
-        :meth:`construct_circle` : :class:`Circle <sympy.geometry.ellipse.Circle>`
-            - construct line from two points
-            - add to model if unique
-            - coordinate meta data
-            - find intersections with other structs
-        :meth:`set_segment` : :class:`Segment <sympy.geometry.line.Segment>`
-            - set segment from two points
-            - coordinate meta data
-        :meth:`set_polygon` : :class:`Polygon <sympy.geometry.polygon.Polygon>`
-            - set polygon from list of points
-            - coordinate meta data
-        :meth:`limits` : :class:`list`
-            returns the x, y limits of the points and circle boundaries in the model
+    methods
+    -------
+    - :meth:`set_point` -> :class:`Point <sympy.geometry.point.Point>`
+    - :meth:`construct_line` -> :class:`Line <sympy.geometry.line.Line>`
+    - :meth:`construct_line_by_labels` -> :class:`Line <sympy.geometry.line.Line>`
+    - :meth:`construct_circle` -> :class:`Circle <sympy.geometry.ellipse.Circle>`
+    - :meth:`construct_circle_by_labels` -> :class:`Circle <sympy.geometry.ellipse.Circle>`
+    - :meth:`set_segment` -> :class:`Segment <sympy.geometry.line.Segment>`
+    - :meth:`set_segment_by_labels` -> :class:`Segment <sympy.geometry.line.Segment>`
+    - :meth:`set_polygon` -> :class:`Polygon <sympy.geometry.polygon.Polygon>`
+    - :meth:`set_polygon_by_labels` -> :class:`Polygon <sympy.geometry.polygon.Polygon>`
+    - :meth:`set_wedge` -> :class:`Wedge`
+
+    - :meth:`limits` -> :class:`list`
+        returns the x, y limits of the points and circle boundaries in the model
+
+    - :meth:`get_ancestors` ->
+    - :meth:`get_ancestors_labels` ->
+
+    - :meth:`get_element_by_label` ->
+
+    - :meth:`save` ->
+    - :meth:`load` ->
+
+    - :meth:`point_label_generator` -> Iterator[str]
 
     .. todo:: add `get_bounds_polygon` method to Model
 
@@ -135,7 +136,7 @@ class Model(dict):
     construct_circle_by_labels = _construct_circle_by_labels
 
     set_segment = _set_segment
-    # TODO: set_segment_by_labels
+    set_segment_by_labels = _set_segment_by_labels
 
     set_polygon = _set_polygon
     set_polygon_by_labels = _set_polygon_by_labels
@@ -182,13 +183,12 @@ class Model(dict):
         """
         return [el for el in self if isinstance(el, spg.Circle)]
 
-    #  def limits(self) -> list[list[float, float], list[float, float]]:
     def limits(self) -> tuple[tuple[float, float], tuple[float, float]]:
         """
         Find x, y limits from points and circles of the model
 
         Returns a list of x, y limits:
-            ``[[x_min, x_max], [y_min, y_max]]``
+            ``((x_min, x_max), (y_min, y_max))``
         """
 
         x_vals = []

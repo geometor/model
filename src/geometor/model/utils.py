@@ -2,7 +2,7 @@
 import logging
 import os as os
 
-from .common import *
+from geometor.model.common import *
 
 #  from geometor.model import *
 

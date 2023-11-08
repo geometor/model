@@ -1,3 +1,8 @@
+"""
+common imports for all modules
+
+NOTE: do not put local references in here
+"""
 import sympy as sp
 import sympy.plotting as spp
 import sympy.geometry as spg
@@ -20,4 +25,3 @@ console = Console()
 from itertools import permutations, combinations
 from multiprocessing import Pool, cpu_count
 
-from geometor.model.utils import *

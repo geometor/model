@@ -18,26 +18,34 @@ def _set_point(
     label: str = "",
 ) -> spg.Point:
     """
-    Adds a point to the model, finds duplicates, cleans values, and sets parents and classes.
+    Adds a point to the model, finds duplicates, cleans values, and sets
+    parents and classes.
 
-    Parameters:
-        - ``x_val`` (:class:`sympy.core.expr.Expr`): The x-value of the point.
-        - ``y_val`` (:class:`sympy.core.expr.Expr`): The y-value of the point.
-        - ``parents`` (list, optional): A list of parent elements or references. Defaults to None.
-        - ``classes`` (list, optional): A list of string names for classes defining a set of styles. Defaults to None.
-        - ``label`` (str, optional): A text label for use in plotting and reporting. Defaults to an empty string.
+    parameters
+    ----------
+    - ``x_val`` : :class:`sympy.core.expr.Expr`: The x-value of the point.
+    - ``y_val`` : :class:`sympy.core.expr.Expr`: The y-value of the point.
+    - ``parents`` : list, optional: A list of parent elements or references.
+      Defaults to None.
+    - ``classes`` list, optional: A list of string names for classes defining
+      a set of styles. Defaults to None.
+    - ``label`` str, optional: A text label for use in plotting and
+      reporting. Defaults to an empty string.
 
-    Returns:
-        :class:`sympy.geometry.point.Point`: The set point.
+    returns
+    -------
+    - :class:`sympy.geometry.point.Point`: The set point.
 
-    Example:
-        >>> from geometor.model import *
-        >>> model = Model("demo")
-        >>> model.set_point(0, 0, classes=["given"])
-        <spg.Point object ...>
+    example
+    -------
+    >>> from geometor.model import *
+    >>> model = Model("demo")
+    >>> model.set_point(0, 0, classes=["given"])
+    <spg.Point object ...>
 
-    Notes:
-        The function simplifies the x and y values before adding, and it updates the attributes if the point is already in the model.
+    notes
+    -----
+    The function simplifies the x and y values before adding, and it updates the attributes if the point is already in the model.
     """
 
     if classes is None:

@@ -4,7 +4,7 @@ from collections import defaultdict
 from geometor.model import *
 from geometor.model.utils import *
 #  from geometor.render import *
-from geometor.model._sections import *
+from geometor.model.sections import *
 
 
 class Chain:
@@ -25,9 +25,10 @@ class Chain:
         """
         Initializes a Chain object with a list of connected sections.
 
-        Parameters:
-            ``sections`` : :class:`list[Section]`
-                A list of Section objects representing a chain of connected golden sections.
+        parameters
+        ----------
+        - ``sections`` : :class:`list[Section]`
+            A list of Section objects representing a chain of connected golden sections.
         """
         self.sections = sections
         self.segments = self.extract_segments()
@@ -37,9 +38,10 @@ class Chain:
         """
         Extracts unique segments from the chain.
 
-        Returns:
-            :class:`list[spg.Segment]`
-                A list containing the unique segments in the chain.
+        returns
+        -------
+        - :class:`list[spg.Segment]`
+            A list containing the unique segments in the chain.
         """
         segments = []
         for section in self.sections:
@@ -52,9 +54,10 @@ class Chain:
         """
         Extracts unique points from the chain while maintaining order.
 
-        Returns:
-            :class:`list[spg.Point]`
-                A list containing the ordered unique points from the chain.
+        returns
+        -------
+        - :class:`list[spg.Point]`
+            A list containing the ordered unique points from the chain.
         """
         points = {}
         for section in self.sections:
@@ -67,9 +70,10 @@ class Chain:
         """
         Extract the symbolic lengths of the segments in the chain.
 
-        Returns:
-            :class:`list[sp.Expr]`
-                A list containing the symbolic lengths of each segment in the chain.
+        returns
+        -------
+        - :class:`list[sp.Expr]`
+            A list containing the symbolic lengths of each segment in the chain.
         """
         return [clean_expr(segment.length) for segment in self.segments]
 
@@ -78,10 +82,11 @@ class Chain:
         """
         Calculate and extract the numerical lengths of the segments in the chain.
 
-        Returns:
-            :class:`list[float]`
-                A list containing the evaluated numerical lengths of each
-                segment in the chain.
+        returns
+        -------
+        - :class:`list[float]`
+            A list containing the evaluated numerical lengths of each
+            segment in the chain.
         """
         return [float(segment.length.evalf()) for segment in self.segments]
 
@@ -91,11 +96,12 @@ class Chain:
         Determine the flow of the segments in the chain by comparing the lengths
         of consecutive segments.
 
-        Returns:
-            :class:`list[str]`
-                A list of symbols representing the flow of segment lengths. '>'
-                indicates that the previous segment is longer, '<' indicates
-                that the next segment is longer.
+        returns
+        -------
+        - :class:`list[str]`
+            A list of symbols representing the flow of segment lengths. '>'
+            indicates that the previous segment is longer, '<' indicates
+            that the next segment is longer.
         """
         flow_symbols = []
         lengths = self.numerical_lengths  # Using numerical lengths for comparison
@@ -128,10 +134,11 @@ class Chain:
         Creates and returns Fibonacci-style labels for each segment based on
         their lengths.
 
-        Returns:
-            :class:`list[str]`
-                A list of strings where each string is a Fibonacci-style 
-                label corresponding to a segment.
+        returns
+        -------
+        - :class:`list[str]`
+            A list of strings where each string is a Fibonacci-style 
+            label corresponding to a segment.
         """
 
         # Step 1: Define Symbols

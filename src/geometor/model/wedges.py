@@ -99,32 +99,31 @@ def _set_wedge(
     """
     sets a Wedge from 3 points and adds it to the model.
 
-    operations:
-        - create an instance of :class:`geometor.model.Wedge`
-        - create a ``details`` object from :class:`Element`
-        - add parents to details
-            initial parents are the two starting points
-        - check for duplicates in in the ``model``
-        - find intersection points for new element with all precedng elements
-        - Add ``circle`` to the model.
+    operations
+    ----------
+    - create an instance of :class:`geometor.model.Wedge`
+    - create a ``details`` object from :class:`Element`
+    - add parents to details
+        initial parents are the two starting points
+    - check for duplicates in in the ``model``
+    - find intersection points for new element with all precedng elements
+    - Add ``circle`` to the model.
 
-    parameters:
-        ``pt_center`` : :class:`sympy.geometry.point.Point`
-            A SymPy Point representing the circle center.
-        ``pt_radius`` : :class:`sympy.geometry.point.Point`
-            A SymPy Point marking the length of the radius.
-        ``pt_end`` : :class:`sympy.geometry.point.Point`
-            A SymPy Point marking the sweep of the wedge
-        ``classes`` : :class:`list` *optional*
-            A list of string names for classes defining a set of styles. Defaults to None.
-        ``label`` : :class:`str` *optional*
-            A text label for use in plotting and reporting. Defaults to an empty string.
+    parameters
+    ----------
+    - ``pt_center`` : :class:`sympy.geometry.point.Point` : point for circle center
+    - ``pt_radius`` : :class:`sympy.geometry.point.Point` : point to mark radius
+    - ``pt_end`` : :class:`sympy.geometry.point.Point` : A SymPy Point marking the sweep of the wedge
+    - ``classes`` : :class:`list` *optional* : A list of string names for classes defining a set of styles. Defaults to None.
+    - ``label`` : :class:`str` *optional* : A text label for use in plotting and reporting. Defaults to an empty string.
 
-    returns:
-        :class:`Wedge`
-            The portion of a circle
+    returns
+    -------
+    - :class:`Wedge`
+        The portion of a circle
 
-    example:
+    example
+    -------
         >>> from geometor.elements import *
         >>> model = Model("demo")
         >>> A = model.set_point(0, 0, classes=["given"], label="A")
@@ -134,8 +133,9 @@ def _set_wedge(
         >>> model._set_wedge_by_labels('A', 'B', 'C')
         <Wedge object ...>
 
-    notes:
-        SymPy defines a circle as a center point and a radius length, so the radius length is calculated for the spg.Circle.
+    notes
+    -----
+    SymPy defines a circle as a center point and a radius length, so the radius length is calculated for the spg.Circle.
 
     """
 
@@ -164,7 +164,6 @@ def _set_wedge(
         label=label,
         pt_radius=pt_radius,
     )
-    #  details.pt_radius = pt_radius
 
     model[struct] = details
     console.print(f"[orchid1]{details.label}[/orchid1]")

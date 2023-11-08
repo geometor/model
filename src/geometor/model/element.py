@@ -1,43 +1,39 @@
 """
-helper functions for Model class
+Element type
+ElementDetails class
+intersection functions
 """
 from geometor.model.common import *
 
+Struct = (spg.Line | spg.Circle)
 
 class Element:
-    """a container for special attributes of an element of a model that are
+    """
+    a container for special attributes of an element of a model that are
     not supported by the SymPy elements
-
-    :param sympy_obj: The sympy object representing the geometric entity.
-    :param list(object) parents: A list of parent elements (default is None).
-    :param list(str) classes: A list of class labels (default is None).
-    :param str label: - A string label for the element - if label is none, a label is generated - is used as a reference in reports and plots
-    
-    :attr label: name used in presentation and reports
-    :type label: :class:`python:str`
-
-
-    attributes
-    ----------
-    label : :class:`python:str`
-        name used in presentation and reports
-    classes : dict
-        dict with strings for class name
-    parents : dict
-        dict with keys as parent sympy objects
 
     parameters
     ----------
-    ``sympy_obj`` :
+    - ``sympy_obj`` :
         The sympy object representing the geometric entity.
-    ``parents`` : list(objects)
+    - ``parents`` : list[objects]
         A list of parent elements (default is None).
-    ``classes`` : list(str)
+    - ``classes`` : list[str]
         A list of class labels (default is None).
-    ``label`` : str
+    - ``label`` : str
         - A string label for the element
         - if label is none, a label is generated
         - is used as a reference in reports and plots
+
+    attributes
+    ----------
+    - ``label`` : :class:`python:str`
+        name used in presentation and reports
+    - ``classes`` : dict
+        dict with strings for class name
+    - ``parents`` : dict
+        dict with keys as parent sympy objects
+
 
     """
 
@@ -69,6 +65,33 @@ class Element:
 
 
 class CircleElement(Element):
+    '''
+    same as :class:`Element` but adds a ``pt_radius``
+
+    parameters
+    ----------
+    - ``sympy_obj`` :
+        The sympy object representing the geometric entity.
+    - ``pt_radius`` : spg.Point
+        A list of parent elements (default is None).
+    - ``parents`` : list[objects]
+        A list of parent elements (default is None).
+    - ``classes`` : list[str]
+        A list of class labels (default is None).
+    - ``label`` : str
+        - A string label for the element
+        - if label is none, a label is generated
+        - is used as a reference in reports and plots
+
+    attributes
+    ----------
+    - ``label`` : :class:`python:str`
+        name used in presentation and reports
+    - ``classes`` : dict
+        dict with strings for class name
+    - ``parents`` : dict
+        dict with keys as parent sympy objects
+    '''
     def __init__(
         self,
         sympy_obj: spg.Circle,
@@ -82,12 +105,10 @@ class CircleElement(Element):
 
 
 def check_existence(
-    self, struct: spg.Line | spg.Circle, existing_structs: list[spg.Line | spg.Circle]
-) -> tuple[bool, spg.Line | spg.Circle]:
+    self, struct: Struct, existing_structs: list[Struct]
+) -> tuple[bool, Struct]:
     """Check if a geometric structure exists in the model.
     
-    :returns result:
-    :rtype: tuple[bool, spg.Line | spg.Circle]
 
     """
     # Check by reference
@@ -103,7 +124,7 @@ def check_existence(
     return False, None
 
 
-def find_all_intersections(self, struct: spg.Line | spg.Circle) -> None:
+def find_all_intersections(self, struct: Struct) -> None:
     """find all intersections in the model for the given struct"""
     test_structs = [(el, struct) for el in self.structs if not el.equals(struct)]
 
@@ -133,16 +154,18 @@ def _get_ancestors_labels(self, element) -> dict[str, dict]:
     The method recursively traverses the parent elements of the given element
     and constructs a nested dictionary with labels representing the ancestor tree.
 
-    parameters:
-        element : sympy.geometry object
-            The element for which the ancestors' labels are to be retrieved.
+    parameters
+    ----------
+    - element : sympy.geometry object
+        The element for which the ancestors' labels are to be retrieved.
 
-    returns:
-        dict : A nested dictionary representing the labels of the ancestors.
+    returns
+    - dict : A nested dictionary representing the labels of the ancestors.
 
-    example:
-        If element A has parents B and C, and B has parent D, the method returns:
-        {'A': {'B': {'D': {}}, 'C': {}}}
+    example
+    -------
+    If element A has parents B and C, and B has parent D, the method returns:
+    {'A': {'B': {'D': {}}, 'C': {}}}
     """
 
     ancestors = {self[element].label: {}}
@@ -169,16 +192,19 @@ def _get_ancestors(self, element):
     The method recursively traverses the parent elements of the given element
     and constructs a nested dictionary representing the ancestor tree.
 
-    parameters:
-        element : sympy.geometry object
-            The element for which the ancestors are to be retrieved.
+    parameters
+    ----------
+    - element : sympy.geometry object
+        The element for which the ancestors are to be retrieved.
 
-    returns:
-        dict : A nested dictionary representing the ancestors.
+    returns
+    -------
+    - dict : A nested dictionary representing the ancestors.
 
-    example:
-        If element A has parents B and C, and B has parent D, the method returns:
-        {A: {B: {D: {}}, C: {}}}
+    example
+    -------
+    If element A has parents B and C, and B has parent D, the method returns:
+    {A: {B: {D: {}}, C: {}}}
     """
     ancestors = {element: {}}
 
@@ -200,11 +226,13 @@ def _get_ancestors(self, element):
 def _get_element_by_label(self, label: str):
     """Finds and returns the element with the given label.
 
-    Parameters:
-        - label (str): The label of the desired element.
+    parameters
+    ----------
+    - ``label`` : :class:`str`: The label of the desired element.
 
-    Returns:
-        Element or None: The element with the matching label, or None if no match is found.
+    returns
+    -------
+    Element or None: The element with the matching label, or None if no match is found.
     """
     for element_key, element in self.items():
         if hasattr(element, "label") and element.label == label:

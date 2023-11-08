@@ -4,11 +4,9 @@ helper functions for Model class
 
 from geometor.model.common import *
 
-from geometor.model.element import (
-    Element,
-    find_all_intersections,
-    check_existence,
-)
+from geometor.model.element import *
+
+#  from geometor.model.model import Model
 
 
 def _construct_line_by_labels(
@@ -24,41 +22,50 @@ def _construct_line_by_labels(
 
 
 def _construct_line(
-        model, pt_1: spg.Point, pt_2: spg.Point, classes: list = None, label: str = ""
+    model, pt_1: spg.Point, pt_2: spg.Point, classes: list = None, label: str = ""
 ) -> spg.Line:
     """
-    Constructs a :class:`Line <sympy.geometry.line.Line>` from two points and adds it to the :class:`Model <geometor.model.model.Model>`
+    Constructs a :class:`Line <sympy.geometry.line.Line>` from two points and
+    adds it to the :class:`Model <geometor.model.model.Model>`
 
-    parameters:
-        - ``pt_1`` (:class:`sympy.geometry.point.Point`): A SymPy Point marking the first point of the line
-        - ``pt_2`` (:class:`sympy.geometry.point.Point`): A SymPy Point marking the second point of the line
-        - ``classes`` (list): Additional classes (optional)
-        - ``label`` (str): Label for the line (optional)
+    parameters
+    ----------
+    - ``pt_1`` : :class:`sympy.geometry.point.Point` *A SymPy Point marking the
+      first point of the line*
+    - ``pt_2`` : :class:`sympy.geometry.point.Point`: A SymPy Point marking the
+      second point of the line
+    - ``classes``  : list: Additional classes (optional)
+    - ``label``  : str: Label for the line (optional)
 
-    returns:
-        :class:`sympy.geometry.line.Line`: The constructed line
+    returns
+    -------
+    - :class:`sympy.geometry.line.Line`: The constructed line
 
-    example:
-        >>> from geometor.elements import *
-        >>> model = Model("demo")
-        >>> A = model.set_point(0, 0, classes=["given"], label="A")
-        >>> B = model.set_point(1, 0, classes=["given"], label="B")
-        >>> model.construct_line(A, B)
-        <spg.Line object ...>
+    example
+    -------
+    >>> from geometor.elements import *
+    >>> model = Model("demo")
+    >>> A = model.set_point(0, 0, classes=["given"], label="A")
+    >>> B = model.set_point(1, 0, classes=["given"], label="B")
+    >>> model.construct_line(A, B)
+    <spg.Line object ...>
 
-    operations:
-        - create an instance of ``spg.Line``
-        - create a ``details`` object from :class:`Element`
-        - add parents to details
-        - check for duplicates in elements.
-        - find intersection points for new element with all precedng elements
-        - Add ``line`` to the model.
+    operations
+    ----------
+    - create an instance of ``spg.Line``
+    - create a ``details`` object from :class:`Element`
+    - add parents to details
+    - check for duplicates in elements.
+    - find intersection points for new element with all precedng elements
+    - Add ``line`` to the model.
     """
     if classes is None:
         classes = []
 
     if not isinstance(pt_1, spg.Point) or not isinstance(pt_2, spg.Point):
-        raise TypeError("Both pt_1 and pt_2 must be instances of sympy.geometry.point.Point")
+        raise TypeError(
+            "Both pt_1 and pt_2 must be instances of sympy.geometry.point.Point"
+        )
 
     struct = spg.Line(pt_1, pt_2)
 
@@ -84,4 +91,3 @@ def _construct_line(
         find_all_intersections(model, struct)
 
         return struct
-

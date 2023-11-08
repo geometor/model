@@ -5,7 +5,7 @@ these types of operations need to be integrated into the euclid model
 """
 
 
-from .common import *
+from geometor.model.common import *
 from geometor.model import *
 
 

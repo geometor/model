@@ -34,39 +34,40 @@ def _construct_circle(
     """
     Constructs a Circle from two points and adds it to the model.
 
-    operations:
-        - create an instance of :class:`sympy.geometry.ellipse.Circle`as ``circle``
-        - create a ``details`` object from :class:`Element`
-        - add parents to details
-            initial parents are the two starting points
-        - check for duplicates in in the ``model``
-        - find intersection points for new element with all precedng elements
-        - Add ``circle`` to the model.
+    operations
+    ----------
+    - create an instance of :class:`sympy.geometry.ellipse.Circle`as ``circle``
+    - create a ``details`` object from :class:`Element`
+    - add parents to details
+        initial parents are the two starting points
+    - check for duplicates in in the ``model``
+    - find intersection points for new element with all precedng elements
+    - Add ``circle`` to the model.
 
-    parameters:
-        ``pt_center`` : :class:`sympy.geometry.point.Point`
-            A SymPy Point representing the circle center.
-        ``pt_radius`` : :class:`sympy.geometry.point.Point`
-            A SymPy Point marking the length of the radius.
-        ``classes`` : :class:`list` *optional* 
-            A list of string names for classes defining a set of styles. Defaults to None.
-        ``label`` : :class:`str` *optional* 
-            A text label for use in plotting and reporting. Defaults to an empty string.
+    parameters
+    ----------
+    - ``pt_center`` : :class:`sympy.geometry.point.Point` A SymPy Point representing the circle center.
+    - ``pt_radius`` : :class:`sympy.geometry.point.Point` A SymPy Point marking the length of the radius.
+    - ``classes`` : :class:`list` *optional* A list of string names for classes defining a set of styles. Defaults to None.
+    - ``label`` : :class:`str` *optional* A text label for use in plotting and reporting. Defaults to an empty string.
 
-    returns:
-        :class:`Circle <sympy.geometry.ellipse.Circle>`: 
-            The constructed circle.
+    returns
+    -------
+    - :class:`Circle <sympy.geometry.ellipse.Circle>`:
+        The constructed circle.
 
-    example:
-        >>> from geometor.elements import *
-        >>> model = Model("demo")
-        >>> A = model.set_point(0, 0, classes=["given"], label="A")
-        >>> B = model.set_point(1, 0, classes=["given"], label="B")
-        >>> model.construct_circle(A, B)
-        <spg.Circle object ...>
+    example
+    -------
+    >>> from geometor.elements import *
+    >>> model = Model("demo")
+    >>> A = model.set_point(0, 0, classes=["given"], label="A")
+    >>> B = model.set_point(1, 0, classes=["given"], label="B")
+    >>> model.construct_circle(A, B)
+    <spg.Circle object ...>
 
-    notes:
-        SymPy defines a circle as a center point and a radius length, so the radius length is calculated for the spg.Circle.
+    notes
+    -----
+    SymPy defines a circle as a center point and a radius length, so the radius length is calculated for the spg.Circle.
 
     """
 
@@ -74,9 +75,11 @@ def _construct_circle(
         classes = {}
     # find radius length for sympy.Circle
     radius_len = pt_center.distance(pt_radius)
-    
+
     if not isinstance(pt_center, spg.Point) or not isinstance(pt_radius, spg.Point):
-        raise TypeError("Both pt_center and pt_radius must be instances of sympy.geometry.point.Point")
+        raise TypeError(
+            "Both pt_center and pt_radius must be instances of sympy.geometry.point.Point"
+        )
 
     struct = spg.Circle(pt_center, radius_len)
 
@@ -86,7 +89,11 @@ def _construct_circle(
         label = f"( {pt_1_label} {pt_2_label} )"
 
     details = CircleElement(
-        struct, parents=[pt_center, pt_radius], classes=classes, label=label, pt_radius=pt_radius
+        struct,
+        parents=[pt_center, pt_radius],
+        classes=classes,
+        label=label,
+        pt_radius=pt_radius,
     )
     #  details.pt_radius = pt_radius
 
