@@ -2,8 +2,8 @@
 helper functions for polygons
 """
 
-from .common import *
-from .element import Element
+from geometor.model.common import *
+from geometor.model.element import Element
 
 
 def _set_polygon_by_labels(

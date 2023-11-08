@@ -2,8 +2,8 @@
 segemnt helper functions for sequencer
 """
 
-from .common import *
-from .element import Element
+from geometor.model.common import *
+from geometor.model.element import Element
 
 def _set_segment(model, pt_1, pt_2, classes=[], label="") -> spg.Segment:
     """
@@ -14,5 +14,5 @@ def _set_segment(model, pt_1, pt_2, classes=[], label="") -> spg.Segment:
 
     model[segment] = details
 
-    print(f"{details.label}")
+    #  print(f"{details.label}")
     return segment

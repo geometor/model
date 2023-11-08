@@ -2,9 +2,9 @@
 circle functions for Model class
 """
 
-from .common import *
+from geometor.model.common import *
 
-from .element import (
+from geometor.model.element import (
     Element,
     CircleElement,
     find_all_intersections,

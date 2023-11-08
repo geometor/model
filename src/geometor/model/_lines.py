@@ -2,9 +2,9 @@
 helper functions for Model class
 """
 
-from .common import *
+from geometor.model.common import *
 
-from .element import (
+from geometor.model.element import (
     Element,
     find_all_intersections,
     check_existence,

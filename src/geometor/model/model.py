@@ -37,8 +37,8 @@ GeometryObject = (
     | spg.Segment
     | spg.Polygon
     | Wedge
-    #  | Section
-    #  | Chain
+    | Section
+    | Chain
 )
 
 
@@ -183,7 +183,7 @@ class Model(dict):
         return [el for el in self if isinstance(el, spg.Circle)]
 
     #  def limits(self) -> list[list[float, float], list[float, float]]:
-    def limits(self) -> list[tuple[float]]:
+    def limits(self) -> tuple[tuple[float, float], tuple[float, float]]:
         """
         Find x, y limits from points and circles of the model
 
