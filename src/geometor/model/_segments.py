@@ -14,9 +14,9 @@ def _set_segment_by_labels(
 
     pt_1 = model.get_element_by_label(pt_1_label)
     pt_2 = model.get_element_by_label(pt_2_label)
-    model.set_segment(pt_1, pt_2, classes, label)
+    return model.set_segment(pt_1, pt_2, classes, label)
 
-def _set_segment(model, pt_1, pt_2, classes=[], label="") -> spg.Segment:
+def _set_segment(model, pt_1: spg.Point, pt_2: spg.Point, classes=[], label="") -> spg.Segment:
     """
     set segment (list of points) for demonstration in the model
     """
@@ -25,5 +25,4 @@ def _set_segment(model, pt_1, pt_2, classes=[], label="") -> spg.Segment:
 
     model[segment] = details
 
-    #  print(f"{details.label}")
     return segment

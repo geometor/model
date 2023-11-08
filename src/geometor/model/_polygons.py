@@ -7,7 +7,7 @@ from geometor.model.element import Element
 
 
 def _set_polygon_by_labels(
-        model, poly_pts_labels: list, classes: list = None, label: str = ""
+        model, poly_pts_labels: list[str], classes: list = None, label: str = ""
 ) -> spg.Line:
     """
     find points by label and use them with :meth:`Model.construct_line`
@@ -17,10 +17,10 @@ def _set_polygon_by_labels(
     for poly_label in poly_pts_labels:
         poly_pts.append(model.get_element_by_label(poly_label))
 
-    model.set_polygon(poly_pts, classes)
+    return model.set_polygon(poly_pts, classes)
 
 
-def _set_polygon(model, poly_pts, classes=[], label="") -> spg.Polygon:
+def _set_polygon(model, poly_pts: list[spg.Point], classes=[], label="") -> spg.Polygon:
     """
     set polygon (list of 3 or more points)
     """

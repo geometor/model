@@ -14,7 +14,12 @@ from geometor.model.element import (
 
 class Wedge:
     def __init__(
-        self, pt_center, pt_radius, pt_sweep_start, pt_sweep_end, direction="clockwise"
+        self,
+        pt_center: spg.Point,
+        pt_radius: spg.Point,
+        pt_sweep_start: spg.Point,
+        pt_sweep_end: spg.Point,
+        direction: str = "clockwise",
     ):
         #  super().__init__(*args)
         self._circle = spg.Circle(pt_center, pt_center.distance(pt_radius))
@@ -31,7 +36,7 @@ class Wedge:
 
         self.points = [pt_center, pt_radius, pt_sweep_start, pt_sweep_end]
 
-    def _find_arc_endpoints(self):
+    def _find_arc_endpoints(self) -> tuple[spg.Point, spg.Point]:
         intersections_start = self.circle.intersection(self.start_ray)
         intersections_sweep = self.circle.intersection(self.sweep_ray)
 
@@ -42,48 +47,48 @@ class Wedge:
             raise ValueError("Rays do not intersect the circle.")
 
     @property
-    def circle(self):
+    def circle(self) -> spg.Circle:
         return self._circle
 
     @property
-    def radians(self):
+    def radians(self) -> sp.Expr:
         angle = self.start_ray.angle_between(self.sweep_ray)
         return angle if self.direction == "clockwise" else 2 * sp.pi - angle
 
     @property
-    def degrees(self):
+    def degrees(self) -> sp.Expr:
         return sp.deg(self.radians)
 
     @property
-    def ratio(self):
+    def ratio(self) -> sp.Expr:
         return self.radians / (2 * sp.pi)
 
     @property
-    def area(self):
+    def area(self) -> sp.Expr:
         # Using the ratio of the angle to the full circle to find the area
         return self.circle.area * self.ratio
 
     @property
-    def arc_length(self):
+    def arc_length(self) -> sp.Expr:
         # Using the ratio of the angle to the full circle to find the arc length
         return self.circle.circumference * self.ratio
 
     @property
-    def perimeter(self):
+    def perimeter(self) -> sp.Expr:
         # Including the two radii to form the full boundary of the wedge
         return self.arc_length + 2 * self.circle.radius
 
 
-def _set_wedge_by_labels(
-    model, pt_1_label: str, pt_2_label: str, classes: list = None, label: str = ""
-) -> Wedge:
-    """
-    find points by label and use them with :meth:`Model.construct_line`
-    """
+#  def _set_wedge_by_labels(
+    #  model, pt_1_label: str, pt_2_label: str, classes: list = None, label: str = ""
+#  ) -> Wedge:
+    #  """
+    #  find points by label and use them with :meth:`Model.construct_line`
+    #  """
 
-    pt_1 = model.get_element_by_label(pt_1_label)
-    pt_2 = model.get_element_by_label(pt_2_label)
-    model.construct_circle(pt_1, pt_2, classes, label)
+    #  pt_1 = model.get_element_by_label(pt_1_label)
+    #  pt_2 = model.get_element_by_label(pt_2_label)
+    #  model.construct_circle(pt_1, pt_2, classes, label)
 
 
 def _set_wedge(
@@ -100,7 +105,7 @@ def _set_wedge(
     sets a Wedge from 3 points and adds it to the model.
 
     operations
-    ----------
+    ~~~~~~~~~~
     - create an instance of :class:`geometor.model.Wedge`
     - create a ``details`` object from :class:`Element`
     - add parents to details

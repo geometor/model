@@ -25,7 +25,7 @@ from geometor.model._circles import (
 from geometor.model._polygons import _set_polygon, _set_polygon_by_labels
 from geometor.model._segments import _set_segment, _set_segment_by_labels
 
-from geometor.model.wedges import Wedge, _set_wedge, _set_wedge_by_labels
+from geometor.model.wedges import Wedge, _set_wedge # _set_wedge_by_labels
 from geometor.model.sections import *
 from geometor.model.chains import *
 
@@ -142,7 +142,7 @@ class Model(dict):
     set_polygon_by_labels = _set_polygon_by_labels
 
     set_wedge = _set_wedge
-    set_wedge_by_labels = _set_wedge_by_labels
+    #  set_wedge_by_labels = _set_wedge_by_labels
 
     def remove_by_label(self, label: str) -> None:
         el = self.get_element_by_label(label)

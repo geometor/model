@@ -18,7 +18,7 @@ def _construct_line_by_labels(
 
     pt_1 = model.get_element_by_label(pt_1_label)
     pt_2 = model.get_element_by_label(pt_2_label)
-    model.construct_line(pt_1, pt_2, classes, label)
+    return model.construct_line(pt_1, pt_2, classes, label)
 
 
 def _construct_line(
