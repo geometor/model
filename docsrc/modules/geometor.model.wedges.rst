@@ -1,9 +1,8 @@
-model
------
+wedges
+======
 
-.. automodule:: geometor.model.model
+.. automodule:: geometor.model.wedges
    :members:
    :undoc-members:
    :show-inheritance:
-
 

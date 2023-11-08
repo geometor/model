@@ -13,6 +13,9 @@ geometor.model
 
    geometor.model.model
    geometor.model.element
+   geometor.model.wedges
+   geometor.model.sections
+   geometor.model.chains
    geometor.model.helpers
    geometor.model.reports
    geometor.model.utils
