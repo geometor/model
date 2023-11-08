@@ -131,11 +131,68 @@
            <div itemprop="articleBody">
               <section id="module-geometor.model.element">
 <span id="element"></span><h1>element<a class="headerlink" href="#module-geometor.model.element" title="Link to this heading"></a></h1>
-<p>helper functions for Model class</p>
+<p>Element type
+ElementDetails class
+intersection functions</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="geometor.model.element.CircleElement">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geometor.model.element.</span></span><span class="sig-name descname"><span class="pre">CircleElement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sympy_obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Circle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parents</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.element.CircleElement" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#geometor.model.element.Element" title="geometor.model.element.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
+<p>same as <a class="reference internal" href="#geometor.model.element.Element" title="geometor.model.element.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> but adds a <code class="docutils literal notranslate"><span class="pre">pt_radius</span></code></p>
+<section id="parameters">
+<h2>parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">sympy_obj</span></code> :</dt><dd><p>The sympy object representing the geometric entity.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">pt_radius</span></code><span class="classifier">spg.Point</span></dt><dd><p>A list of parent elements (default is None).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">parents</span></code><span class="classifier">list[objects]</span></dt><dd><p>A list of parent elements (default is None).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">classes</span></code><span class="classifier">list[str]</span></dt><dd><p>A list of class labels (default is None).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">label</span></code><span class="classifier">str</span></dt><dd><ul>
+<li><p>A string label for the element</p></li>
+<li><p>if label is none, a label is generated</p></li>
+<li><p>is used as a reference in reports and plots</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="attributes">
+<h2>attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
+<ul>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">label</span></code><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">python:str</span></code></span></dt><dd><p>name used in presentation and reports</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">classes</span></code><span class="classifier">dict</span></dt><dd><p>dict with strings for class name</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">parents</span></code><span class="classifier">dict</span></dt><dd><p>dict with keys as parent sympy objects</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
 </dd></dl>
 
 <dl class="py class">
@@ -144,49 +201,54 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>a container for special attributes of an element of a model that are
 not supported by the SymPy elements</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>sympy_obj</strong> – The sympy object representing the geometric entity.</p></li>
-<li><p><strong>parents</strong> (<em>list</em><em>(</em><em>object</em><em>)</em>) – A list of parent elements (default is None).</p></li>
-<li><p><strong>classes</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – A list of class labels (default is None).</p></li>
-<li><p><strong>label</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">python:str</span></code>) – <ul>
-<li><p>A string label for the element - if label is none, a label is generated - is used as a reference in reports and plots</p></li>
-</ul>
-</p></li>
-</ul>
-</dd>
-<dt class="field-even">Attr label<span class="colon">:</span></dt>
-<dd class="field-even"><p>name used in presentation and reports</p>
-</dd>
-</dl>
-<section id="attributes">
-<h2>attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
-<dl>
-<dt>label<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">python:str</span></code></span></dt><dd><p>name used in presentation and reports</p>
-</dd>
-<dt>classes<span class="classifier">dict</span></dt><dd><p>dict with strings for class name</p>
-</dd>
-<dt>parents<span class="classifier">dict</span></dt><dd><p>dict with keys as parent sympy objects</p>
-</dd>
-</dl>
-</section>
-<section id="parameters">
-<h2>parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
-<dl class="simple">
+<section id="id1">
+<h2>parameters<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">sympy_obj</span></code> :</dt><dd><p>The sympy object representing the geometric entity.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">parents</span></code><span class="classifier">list(objects)</span></dt><dd><p>A list of parent elements (default is None).</p>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">parents</span></code><span class="classifier">list[objects]</span></dt><dd><p>A list of parent elements (default is None).</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">classes</span></code><span class="classifier">list(str)</span></dt><dd><p>A list of class labels (default is None).</p>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">classes</span></code><span class="classifier">list[str]</span></dt><dd><p>A list of class labels (default is None).</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">label</span></code><span class="classifier">str</span></dt><dd><ul class="simple">
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">label</span></code><span class="classifier">str</span></dt><dd><ul>
 <li><p>A string label for the element</p></li>
 <li><p>if label is none, a label is generated</p></li>
 <li><p>is used as a reference in reports and plots</p></li>
 </ul>
 </dd>
 </dl>
+</li>
+</ul>
+</section>
+<section id="id2">
+<h2>attributes<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<ul>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">label</span></code><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">python:str</span></code></span></dt><dd><p>name used in presentation and reports</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">classes</span></code><span class="classifier">dict</span></dt><dd><p>dict with strings for class name</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">parents</span></code><span class="classifier">dict</span></dt><dd><p>dict with keys as parent sympy objects</p>
+</dd>
+</dl>
+</li>
+</ul>
 </section>
 </dd></dl>
 
@@ -194,13 +256,6 @@ not supported by the SymPy elements</p>
 <dt class="sig sig-object py" id="geometor.model.element.check_existence">
 <span class="sig-prename descclassname"><span class="pre">geometor.model.element.</span></span><span class="sig-name descname"><span class="pre">check_existence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">struct</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Line</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Circle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing_structs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Line</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Circle</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Line</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Circle</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.element.check_existence" title="Link to this definition"></a></dt>
 <dd><p>Check if a geometric structure exists in the model.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns result<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>tuple[bool, spg.Line | spg.Circle]</p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py function">
