@@ -150,11 +150,14 @@ not supported by the SymPy elements</p>
 <li><p><strong>sympy_obj</strong> – The sympy object representing the geometric entity.</p></li>
 <li><p><strong>parents</strong> (<em>list</em><em>(</em><em>object</em><em>)</em>) – A list of parent elements (default is None).</p></li>
 <li><p><strong>classes</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – A list of class labels (default is None).</p></li>
-<li><p><strong>label</strong> (<em>str</em>) – <ul>
+<li><p><strong>label</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">python:str</span></code>) – <ul>
 <li><p>A string label for the element - if label is none, a label is generated - is used as a reference in reports and plots</p></li>
 </ul>
 </p></li>
 </ul>
+</dd>
+<dt class="field-even">Attr label<span class="colon">:</span></dt>
+<dd class="field-even"><p>name used in presentation and reports</p>
 </dd>
 </dl>
 <section id="attributes">
@@ -191,6 +194,13 @@ not supported by the SymPy elements</p>
 <dt class="sig sig-object py" id="geometor.model.element.check_existence">
 <span class="sig-prename descclassname"><span class="pre">geometor.model.element.</span></span><span class="sig-name descname"><span class="pre">check_existence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">struct</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Line</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Circle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing_structs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Line</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Circle</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Line</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Circle</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.element.check_existence" title="Link to this definition"></a></dt>
 <dd><p>Check if a geometric structure exists in the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns result<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[bool, spg.Line | spg.Circle]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
