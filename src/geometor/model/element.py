@@ -12,6 +12,10 @@ class Element:
     :param list(object) parents: A list of parent elements (default is None).
     :param list(str) classes: A list of class labels (default is None).
     :param str label: - A string label for the element - if label is none, a label is generated - is used as a reference in reports and plots
+    
+    :attr label: name used in presentation and reports
+    :type label: :class:`python:str`
+
 
     attributes
     ----------
@@ -80,7 +84,12 @@ class CircleElement(Element):
 def check_existence(
     self, struct: spg.Line | spg.Circle, existing_structs: list[spg.Line | spg.Circle]
 ) -> tuple[bool, spg.Line | spg.Circle]:
-    """Check if a geometric structure exists in the model."""
+    """Check if a geometric structure exists in the model.
+    
+    :returns result:
+    :rtype: tuple[bool, spg.Line | spg.Circle]
+
+    """
     # Check by reference
     if struct in existing_structs:
         return True, struct
