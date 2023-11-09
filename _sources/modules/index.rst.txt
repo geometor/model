@@ -9,9 +9,8 @@ geometor.model
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-   geometor.model.model
    geometor.model.element
    geometor.model.wedges
    geometor.model.sections
