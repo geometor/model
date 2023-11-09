@@ -4,3 +4,4 @@ demos
 .. toctree::
 
    demo
+   vesica
