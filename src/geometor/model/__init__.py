@@ -176,7 +176,7 @@ class Model(dict):
         return [el for el in self if isinstance(el, spg.Point)]
 
     @property
-    def structs(self) -> list[spg.Line | spg.Circle]:
+    def structs(self) -> list[Struct]:
         """
         returns struct elements (line or circle) from model as list
         """
