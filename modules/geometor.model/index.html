@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>geometor.model.chains &#8212; GEOMETOR • model</title>
+    <title>geometor.model &#8212; GEOMETOR • model</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=f2e8749c" />
     <link rel="stylesheet" type="text/css" href="../../_static/photonsphinx.css?v=4f8f6965" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
@@ -13,11 +13,11 @@
     <script src="../../_static/documentation_options.js?v=187304be"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <link rel="canonical" href="https://geometor.github.io/model/modules/geometor.model.chains.html" />
+    <link rel="canonical" href="https://geometor.github.io/model/modules/geometor.model.html" />
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="geometor.model.helpers" href="../geometor.model.helpers/" />
-    <link rel="prev" title="geometor.model.sections" href="../geometor.model.sections/" /> 
+    <link rel="next" title="geometor.model.element" href="../geometor.model.element/" />
+    <link rel="prev" title="modules" href="../" /> 
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -65,8 +65,15 @@
           
 
           <div class="body" role="main">
-             <section id="module-geometor.model.chains">
-<span id="geometor-model-chains"></span><h1>geometor.model.chains<a class="headerlink" href="#module-geometor.model.chains" title="Link to this heading">¶</a></h1>
+             <section id="module-geometor.model">
+<span id="geometor-model"></span><h1>geometor.model<a class="headerlink" href="#module-geometor.model" title="Link to this heading">¶</a></h1>
+<p>The Model module provides a set of tools for constructing geometric models.
+It relies heavily on sympy for providing the algebraic infrastructure
+the functions here are for creating the abstract model, not the rendering
+see the Render module for plotting with matplotlib</p>
+<p>This module provides the <cite>Model</cite> class, which is used to represent a geometric model
+in 2D space. The <cite>Model</cite> class is based on the <cite>list</cite> data structure, and can contain
+points, lines, circles, polygons, and segments.</p>
 </section>
 
 <div class="section">
@@ -108,11 +115,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../mission/">mission</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/">usage</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../">modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../geometor.model/">geometor.model</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">geometor.model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../geometor.model.element/">geometor.model.element</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../geometor.model.wedges/">geometor.model.wedges</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../geometor.model.sections/">geometor.model.sections</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">geometor.model.chains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometor.model.chains/">geometor.model.chains</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../geometor.model.helpers/">geometor.model.helpers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../geometor.model.reports/">geometor.model.reports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../geometor.model.utils/">geometor.model.utils</a></li>
@@ -148,7 +155,7 @@
       &amp; <a href="https://github.com/photon-platform/photon-sphinx-theme">PHOTON Sphinx 0.0.1</a>
       
       |
-      <a href="../../_sources/modules/geometor.model.chains.rst.txt"
+      <a href="../../_sources/modules/geometor.model.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

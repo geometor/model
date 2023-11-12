@@ -1,8 +1,5 @@
-reports
--------
+﻿geometor.model.reports
+======================
 
 .. automodule:: geometor.model.reports
-   :members:
-   :undoc-members:
-   :show-inheritance:
 

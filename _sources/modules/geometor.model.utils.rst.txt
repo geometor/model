@@ -1,8 +1,7 @@
-utils
-=====
+﻿geometor.model.utils
+====================
 
 .. automodule:: geometor.model.utils
-   :members:
-   :undoc-members:
-   :show-inheritance:
+
+
 
