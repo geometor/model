@@ -1,7 +1,6 @@
 GEOMETOR • model
 ================
 
-
 .. include:: intro.rst
 
 recent logs:
@@ -30,7 +29,7 @@ contents:
 
 
 indices
-=======
+-------
 
 * :ref:`genindex`
 * :ref:`modindex`
