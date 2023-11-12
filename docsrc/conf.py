@@ -33,5 +33,3 @@ html_context = {
     "conf_py_path": "/docsrc/", # Path in the checkout to the docs root
 }
 
-#  html_css_files = [ "https://geometor.github.io/model/_static/css/rtd-dark.css" ]
-
