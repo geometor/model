@@ -1,8 +1,6 @@
-geometor.model
-==============
+GEOMETOR • model
+================
 
-
-:term:`test`
 
 .. include:: intro.rst
 
