@@ -25,8 +25,6 @@ blog_authors = {
     "phi": ("phi ARCHITECT", None),
 }
 
-html_css_files = [ "css/rtd-dark.css" ]
-
 html_context = {
     "display_github": True, # Integrate GitHub
     "github_user": org, # Username
