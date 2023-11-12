@@ -1,7 +1,7 @@
 from ablog.conf import *
 
 org = "geometor"
-org_name = "geometor"
+org_name = "GEOMETOR"
 
 repo = "model"
 repo_name = "model"
@@ -25,21 +25,8 @@ blog_authors = {
     "phi": ("phi ARCHITECT", None),
 }
 
-extensions.append('sphinx_rtd_theme')
-
-html_theme = 'sphinx_rtd_theme'
-
 html_css_files = [ "css/rtd-dark.css" ]
 
-html_theme_options = {
-    #  'logo': 'logo.png',
-    #  'logo_name': True,
-    #  'github_user': org,
-    #  'github_repo': repo,
-    #  'github_button': True,
-    'navigation_depth': -1,
-    'prev_next_buttons_location': 'both',
-}
 html_context = {
     "display_github": True, # Integrate GitHub
     "github_user": org, # Username
@@ -47,3 +34,4 @@ html_context = {
     "github_version": "main", # Version
     "conf_py_path": "/docsrc/", # Path in the checkout to the docs root
 }
+

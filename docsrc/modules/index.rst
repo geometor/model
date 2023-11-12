@@ -1,16 +1,14 @@
+modules
+=======
 
-geometor.model
-==============
+:doc:`geometor.model` is the primary module of the **GEOMETOR** initiative.
 
-.. automodule:: geometor.model
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
+It represents the foundation of our geometric exploration.
 
 .. toctree::
    :maxdepth: 1
 
+   geometor.model
    geometor.model.element
    geometor.model.wedges
    geometor.model.sections
