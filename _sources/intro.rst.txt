@@ -1,3 +1,5 @@
+.. model
+
 ``geometor.model`` is the foundational library for the `GEOMETOR`_ initiative.
 
 .. image:: _static/splash.png
