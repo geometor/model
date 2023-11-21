@@ -1,34 +1,36 @@
 GEOMETOR • model
 ================
 
-test3
+.. image:: _static/splash.png
 
-.. include:: intro.rst
+.. include:: overview/intro.rst
 
-recent logs:
-------------
+recent logs
+-----------
 
 .. postlist:: 5
    :excerpts:
 
-
-contents:
----------
 
 .. toctree::
    :hidden:
    :maxdepth: 2
 
    mission/index.rst
+   overview/index.rst
    usage/index.rst
    modules/index.rst
    demos/index.rst
+   logs/index.rst
    refs/index.rst
-   log </log#https://>
    todos.rst
+   changelog.rst
    glossary.rst
+   contribute.rst
+   discuss.rst
+   about.rst
 
-
+.. log </log#https://>
 
 indices
 -------

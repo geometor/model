@@ -4,12 +4,12 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>&lt;no title&gt; &mdash; GEOMETOR • model</title>
+  <title>logs &mdash; GEOMETOR • model</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
       <link rel="stylesheet" href="../https://geometor.github.io/model/_static/css/rtd-dark.css" type="text/css" />
-    <link rel="canonical" href="https://geometor.github.io/model/intro.html" />
+    <link rel="canonical" href="https://geometor.github.io/model/logs/index.html" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -20,8 +20,11 @@
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about/" />
     <link rel="index" title="Index" href="../genindex/" />
-    <link rel="search" title="Search" href="../search/" />   
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="references" href="../refs/" />
+    <link rel="prev" title="vesica" href="../demos/vesica/" />   
 <link
   rel="alternate"
   type="application/atom+xml"
@@ -76,15 +79,19 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../mission/">mission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/">overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/">usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/">modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/">demos</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">logs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs/">references</a></li>
-<li class="toctree-l1"><a class="reference external" href="/log#https://">log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../todos/">todos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary/">glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/">contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discuss/">discuss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/">about</a></li>
 </ul>
 
         </div>
@@ -101,58 +108,33 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="breadcrumb-item active">logs</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/geometor/model/blob/main/docsrc/intro.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/geometor/model/blob/main/docsrc/logs/index.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
-  </ul>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../demos/vesica/" class="btn btn-neutral float-left" title="vesica" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../refs/" class="btn btn-neutral float-right" title="references" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-              <p><code class="docutils literal notranslate"><span class="pre">geometor.model</span></code> is the foundational library for the <a class="reference external" href="https://geometor.com">GEOMETOR</a> initiative.</p>
-<img alt="../_images/splash.png" src="../_images/splash.png" />
-<p>At the core of the module is the <code class="docutils literal notranslate"><span class="pre">Model</span></code> class which establishes the field
-and methods of operation for creating the geometric constructions while maintaining integrity.</p>
-<p>The <strong>field</strong> might be easy to consider as a Cartesian grid. But in reality, it
-is an ordered set of information and operations. Points are the information.
-Lines and circles are the operations.</p>
-<p>In our system, all geometric elements of the <code class="docutils literal notranslate"><span class="pre">Model</span></code> are defined as <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/index.html">Sympy Geometry</a>
-objects. This means a <code class="docutils literal notranslate"><span class="pre">Point</span></code> can be defined as a pair of any algebraic
-<a class="reference external" href="https://docs.sympy.org/latest/tutorials/intro-tutorial/basic_operations.html">Sympy Expressions</a> that can be evaluated into a floating point value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">Line</span></code> and <code class="docutils literal notranslate"><span class="pre">Circle</span></code> are each defined by two points. So each construction
-must begin with at least two given points at the start. As lines and circles
-are added, intersection points are discovered with previous lines and circles
-and added to the model, so they may be used with new lines and circles.</p>
-<p>There are three main operations of the <code class="docutils literal notranslate"><span class="pre">Model</span></code>:</p>
-<ul class="simple">
-<li><p>set_point</p></li>
-<li><p>construct_line</p></li>
-<li><p>construct_circle</p></li>
-</ul>
-<p>The major responsibilities of the <code class="docutils literal notranslate"><span class="pre">Model</span></code>:</p>
-<ul>
-<li><p><strong>deduplicate</strong></p>
-<p>when elements are added to the model, we check to see if they already exist. This is particularly important for intersection points that often coincide with exisitng points.</p>
-</li>
-<li><p><strong>clean values</strong></p></li>
-<li><p>discover <strong>intersections</strong></p></li>
-<li><p><strong>save</strong> to and load from json</p></li>
-<li><p>maintain a set of <strong>related</strong> info for each element:</p>
-<ul class="simple">
-<li><p>ancestral relationships</p></li>
-<li><p>establish labels for elements</p></li>
-<li><p>classes for styles</p></li>
-</ul>
+              <section id="logs">
+<h1>logs<a class="headerlink" href="#logs" title="Link to this heading"></a></h1>
+<ul class="postlist-style-none postlist">
+<li class="ablog-post"><p class="ablog-post-title">23.324 - <a class="reference internal" href="../log/23.324-124954/">First Log - Lots of changes</a></p>
+<p class="ablog-post-excerpt">This log entry marks the commencement of the Geometor.model project. After
+extensive changes in recent months, the project’s concepts, though not new, are
+entering a phase of significant development. The primary focus has been on
+refining the Geometor code, transitioning from the original Geometor Explorer,
+which encompassed a broad range of functions, to a more segmented approach.
+This segmentation allows for a clearer division of the project’s key
+components: modeling, rendering, and analyzing complex geometric constructions.</p>
+<p class="ablog-post-expand"><a class="reference internal" href="../log/23.324-124954/"><em>more</em></a></p>
 </li>
 </ul>
-<p>All of the plotting functionality has moved to <strong>GEOMETOR</strong> <a class="reference external" href="https://github.com/geometor/render">render</a>. However, there are several report functions in the this module:</p>
-<ul class="simple">
-<li><p>report_summary</p></li>
-<li><p>report_group_by_type</p></li>
-<li><p>report_sequence</p></li>
-</ul>
-<img alt="../_images/screenshot.png" src="../_images/screenshot.png" />
+</section>
 
 <div class="section">
    
@@ -160,7 +142,10 @@ and added to the model, so they may be used with new lines and circles.</p>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../demos/vesica/" class="btn btn-neutral float-left" title="vesica" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../refs/" class="btn btn-neutral float-right" title="references" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

@@ -20,10 +20,11 @@
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about/" />
     <link rel="index" title="Index" href="../genindex/" />
     <link rel="search" title="Search" href="../search/" />
     <link rel="next" title="modules" href="../modules/" />
-    <link rel="prev" title="mission" href="../mission/" />   
+    <link rel="prev" title="overview" href="../overview/" />   
 <link
   rel="alternate"
   type="application/atom+xml"
@@ -80,13 +81,20 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../mission/">mission</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/">overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">installation</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/">modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/">demos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../logs/">logs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs/">references</a></li>
-<li class="toctree-l1"><a class="reference external" href="/log#https://">log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../todos/">todos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary/">glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/">contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discuss/">discuss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/">about</a></li>
 </ul>
 
         </div>
@@ -108,7 +116,7 @@
               <a href="https://github.com/geometor/model/blob/main/docsrc/usage/index.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
-        <a href="../mission/" class="btn btn-neutral float-left" title="mission" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../overview/" class="btn btn-neutral float-left" title="overview" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../modules/" class="btn btn-neutral float-right" title="modules" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
   </div>
   <hr/>
@@ -117,33 +125,19 @@
            <div itemprop="articleBody">
               <section id="usage">
 <h1>usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h1>
-<p>In this simple example, we create the classic <em>vesica pisces</em></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geometor.model</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;vesica&quot;</span><span class="p">)</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
-<span class="n">B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">construct_line</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
-
-<span class="n">E</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_element_by_label</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">)</span>
-<span class="n">F</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_element_by_label</span><span class="p">(</span><span class="s2">&quot;F&quot;</span><span class="p">)</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">set_polygon</span><span class="p">([</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">E</span><span class="p">])</span>
-<span class="n">model</span><span class="o">.</span><span class="n">set_polygon</span><span class="p">([</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">F</span><span class="p">])</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">construct_line</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">F</span><span class="p">)</span>
-
-<span class="n">report_summary</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-<span class="n">report_group_by_type</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-<span class="n">report_sequence</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;vesica.json&quot;</span><span class="p">)</span>
+<section id="installation">
+<h2>installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>You can install <code class="docutils literal notranslate"><span class="pre">geometor.model</span></code> using pip:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>geometor-model
 </pre></div>
 </div>
+<p>or clone this repo and install it directly.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/geometor/model
+<span class="nb">cd</span><span class="w"> </span>model
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
 </section>
 
 <div class="section">
@@ -153,7 +147,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../mission/" class="btn btn-neutral float-left" title="mission" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../overview/" class="btn btn-neutral float-left" title="overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../modules/" class="btn btn-neutral float-right" title="modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

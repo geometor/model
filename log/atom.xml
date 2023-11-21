@@ -2,8 +2,32 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://geometor.github.io/model</id>
   <title>GEOMETOR • model</title>
-  <updated>2023-11-21T13:55:40.581893+00:00</updated>
+  <updated>2023-11-21T13:56:29.869438+00:00</updated>
   <link href="https://geometor.github.io/model"/>
   <link href="https://geometor.github.io/model/log/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="unknown.dev">ABlog</generator>
+  <entry>
+    <id>https://geometor.github.io/model/log/23.324-124954/</id>
+    <title>First Log - Lots of changes</title>
+    <updated>2023-11-20T12:49:54+00:00</updated>
+    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+&lt;p&gt;This log entry marks the commencement of the Geometor.model project. After
+extensive changes in recent months, the project’s concepts, though not new, are
+entering a phase of significant development. The primary focus has been on
+refining the Geometor code, transitioning from the original Geometor Explorer,
+which encompassed a broad range of functions, to a more segmented approach.
+This segmentation allows for a clearer division of the project’s key
+components: modeling, rendering, and analyzing complex geometric constructions.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+    <link href="https://geometor.github.io/model/log/23.324-124954/" rel="alternate"/>
+    <summary>This log entry marks the commencement of the Geometor.model project. After
+extensive changes in recent months, the project’s concepts, though not new, are
+entering a phase of significant development. The primary focus has been on
+refining the Geometor code, transitioning from the original Geometor Explorer,
+which encompassed a broad range of functions, to a more segmented approach.
+This segmentation allows for a clearer division of the project’s key
+components: modeling, rendering, and analyzing complex geometric constructions.</summary>
+    <published>2023-11-20T12:49:54+00:00</published>
+  </entry>
 </feed>
