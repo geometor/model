@@ -158,4 +158,4 @@ license
 .. _`Sympy Geometry`: https://docs.sympy.org/latest/modules/geometry/index.html
 .. _`Sympy`: https://docs.sympy.org
 .. _GEOMETOR: https://geometor.com
-.. _`Project's Website`: https://geometor.github.io/model
+   .. _`Project's Website`: https://geometor.github.io/model
