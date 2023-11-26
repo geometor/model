@@ -2,6 +2,7 @@
 
 ```py
 """
+
 The Model module provides a set of tools for constructing geometric models.
 It relies heavily on sympy for providing the algebraic infrastructure
 the functions here are for creating the abstract model, not the rendering

@@ -4,10 +4,10 @@
 # GEOMETOR • model
 
 
+![_images/splash.png](_images/splash.png)
 `geometor.model` is the foundational library for the [GEOMETOR](https://geometor.com) initiative.
 
 
-![_images/splash.png](_images/splash.png)
 At the core of the module is the `Model` class which establishes the field
 and methods of operation for creating the geometric constructions while maintaining integrity.
 
@@ -67,11 +67,16 @@ All of the plotting functionality has moved to **GEOMETOR** [render](https://git
 ## recent logs
 
 
+* 23.324 - [First Log - Lots of changes](index.html#document-log/23.324-124954/index)
 
 
-
-
-## contents
+This log entry marks the commencement of the Geometor.model project. After
+extensive changes in recent months, the project’s concepts, though not new, are
+entering a phase of significant development. The primary focus has been on
+refining the Geometor code, transitioning from the original Geometor Explorer,
+which encompassed a broad range of functions, to a more segmented approach.
+This segmentation allows for a clearer division of the project’s key
+components: modeling, rendering, and analyzing complex geometric constructions.
 
 
 
@@ -79,56 +84,124 @@ All of the plotting functionality has moved to **GEOMETOR** [render](https://git
 ### mission
 
 
-The mission of this `geometor.model` project is to establish a rigorous
-system for defining classical geometric constructions of points, lines and
-circles. But in our case, we are not using straight edge and compass. We are
-creating the geometric elements as expressions in symbolic algebra thanks to
-the power of the [`Sympy`\_](#id1) library.
+Revolutionize classical geometry exploration and mastery by blending symbolic algebra with geometric accuracy in a sophisticated Python library.
+
+
+* Create a groundbreaking Python library that transforms classical geometric construction exploration through the integration of symbolic algebra.
+* Enable a deep, intuitive grasp of geometric principles, tailored for both educational and advanced research pursuits.
+* Cultivate a collaborative environment, fostering ongoing innovation and advancement in geometric modeling.
 
 
 
 #### goals
 
 
+* 23.324 - [First Log - Lots of changes](index.html#document-log/23.324-124954/index)
+
+
+This log entry marks the commencement of the Geometor.model project. After
+extensive changes in recent months, the project’s concepts, though not new, are
+entering a phase of significant development. The primary focus has been on
+refining the Geometor code, transitioning from the original Geometor Explorer,
+which encompassed a broad range of functions, to a more segmented approach.
+This segmentation allows for a clearer division of the project’s key
+components: modeling, rendering, and analyzing complex geometric constructions.
 
 
 
+
+
+### overview
+
+
+`geometor.model` is the foundational library for the [GEOMETOR](https://geometor.com) initiative.
+
+
+At the core of the module is the `Model` class which establishes the field
+and methods of operation for creating the geometric constructions while maintaining integrity.
+
+
+The **field** might be easy to consider as a Cartesian grid. But in reality, it
+is an ordered set of information and operations. Points are the information.
+Lines and circles are the operations.
+
+
+In our system, all geometric elements of the `Model` are defined as [Sympy Geometry](https://docs.sympy.org/latest/modules/geometry/index.html)
+objects. This means a `Point` can be defined as a pair of any algebraic
+[Sympy Expressions](https://docs.sympy.org/latest/tutorials/intro-tutorial/basic_operations.html) that can be evaluated into a floating point value.
+
+
+`Line` and `Circle` are each defined by two points. So each construction
+must begin with at least two given points at the start. As lines and circles
+are added, intersection points are discovered with previous lines and circles
+and added to the model, so they may be used with new lines and circles.
+
+
+There are three main operations of the `Model`:
+
+
+* set\_point
+* construct\_line
+* construct\_circle
+
+
+The major responsibilities of the `Model`:
+
+
+* **deduplicate**
+
+
+when elements are added to the model, we check to see if they already exist. This is particularly important for intersection points that often coincide with exisitng points.
+* **clean values**
+* discover **intersections**
+* **save** to and load from json
+* maintain a set of **related** info for each element:
+
+
+	+ ancestral relationships
+	+ establish labels for elements
+	+ classes for styles
+
+
+All of the plotting functionality has moved to **GEOMETOR** [render](https://github.com/geometor/render). However, there are several report functions in the this module:
+
+
+* report\_summary
+* report\_group\_by\_type
+* report\_sequence
+
+
+![_images/screenshot.png](_images/screenshot.png)
 
 
 ### usage
 
 
-In this simple example, we create the classic *vesica pisces*
+
+#### installation
+
+
+You can install `geometor.model` using pip:
 
 
 
 ```
-from geometor.model import \*
-
-model = Model("vesica")
-A = model.set\_point(0, 0, classes=["given"])
-B = model.set\_point(1, 0, classes=["given"])
-
-model.construct\_line(A, B)
-
-model.construct\_circle(A, B)
-model.construct\_circle(B, A)
-
-E = model.get\_element\_by\_label("E")
-F = model.get\_element\_by\_label("F")
-
-model.set\_polygon([A, B, E])
-model.set\_polygon([A, B, F])
-
-model.construct\_line(E, F)
-
-report\_summary(model)
-report\_group\_by\_type(model)
-report\_sequence(model)
-
-model.save("vesica.json")
+pip install geometor-model
 
 ```
+
+
+or clone this repo and install it directly.
+
+
+
+```
+git clone https://github.com/geometor/model
+cd model
+pip install -e .
+
+```
+
 
 
 
@@ -136,10 +209,49 @@ model.save("vesica.json")
 ### modules
 
 
-[geometor.model](index.html#document-modules/geometor.model) is the primary module of the **GEOMETOR** initiative.
+* [geometor.model](index.html#document-modules/geometor.model)
 
 
-It represents the foundation of our geometric exploration.
+encompasses several submodules, each tailored to specific aspects of
+geometric modeling and analysis:
+
+
+Each submodule in `geometor.model` plays a pivotal role, collectively
+contributing to a comprehensive and versatile toolkit for exploring and
+mastering the intricacies of geometry.
+* [geometor.model.element](index.html#document-modules/geometor.model.element)
+
+
+Central to the project, this submodule provides foundational elements for
+geometric constructions, like points, lines, and circles, and manages their
+properties and relationships.
+* [geometor.model.wedges](index.html#document-modules/geometor.model.wedges)
+
+
+Specializing in wedge-shaped geometric figures, this submodule offers tools
+for constructing and analyzing wedges within geometric models.
+* [geometor.model.sections](index.html#document-modules/geometor.model.sections)
+
+
+This submodule is dedicated to handling specific sections of geometric
+constructions, enabling detailed analysis and manipulation of these segments.
+* [geometor.model.chains](index.html#document-modules/geometor.model.chains)
+
+
+Focused on the creation and analysis of connected sequences of geometric
+elements, this submodule allows the exploration of patterns and relationships
+within geometric chains.
+* [geometor.model.helpers](index.html#document-modules/geometor.model.helpers)
+
+
+A utility submodule, providing additional functions and tools that support
+and streamline various operations within the main modeling tasks.
+* [geometor.model.reports](index.html#document-modules/geometor.model.reports)
+
+
+This submodule is instrumental in generating informative reports and
+summaries of the geometric models, facilitating a clear understanding and
+presentation of the constructions.
 
 
 
@@ -1212,6 +1324,26 @@ if \_\_name\_\_ == "\_\_main\_\_":
 
 
 
+### logs
+
+
+* 23.324 - [First Log - Lots of changes](index.html#document-log/23.324-124954/index)
+
+
+This log entry marks the commencement of the Geometor.model project. After
+extensive changes in recent months, the project’s concepts, though not new, are
+entering a phase of significant development. The primary focus has been on
+refining the Geometor code, transitioning from the original Geometor Explorer,
+which encompassed a broad range of functions, to a more segmented approach.
+This segmentation allows for a clearer division of the project’s key
+components: modeling, rendering, and analyzing complex geometric constructions.
+
+
+[*more*](index.html#document-log/23.324-124954/index)
+
+
+
+
 ### references
 
 
@@ -1279,6 +1411,21 @@ add get\_bounds\_polygon method to Model
 testa test item
 
 
+
+
+
+
+### contribute
+
+
+
+
+### discuss
+
+
+
+
+### about
 
 
 

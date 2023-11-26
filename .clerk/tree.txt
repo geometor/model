@@ -19,17 +19,25 @@
 │   ├── vesica.py
 │   └── wedge.py
 ├── docsrc
+│   ├── about.rst
 │   ├── changelog.rst
 │   ├── conf.py
+│   ├── contribute.rst
 │   ├── demos
 │   │   ├── demo.rst
 │   │   ├── index.rst
 │   │   └── vesica.rst
+│   ├── discuss.rst
 │   ├── glossary.rst
 │   ├── index.rst
-│   ├── intro.rst
-│   ├── mission
+│   ├── log
+│   │   └── 23.324-124954
+│   │       └── index.rst
+│   ├── logs
 │   │   └── index.rst
+│   ├── mission
+│   │   ├── index.rst
+│   │   └── statement.rst
 │   ├── modules
 │   │   ├── geometor.model.chains.rst
 │   │   ├── geometor.model.element.rst
@@ -40,6 +48,9 @@
 │   │   ├── geometor.model.utils.rst
 │   │   ├── geometor.model.wedges.rst
 │   │   └── index.rst
+│   ├── overview
+│   │   ├── index.rst
+│   │   └── intro.rst
 │   ├── __pycache__
 │   ├── refs
 │   │   ├── index.rst
@@ -48,38 +59,39 @@
 │   │   └── textualize.rst
 │   ├── _static
 │   │   ├── css
-│   │   │   └── custom.css
+│   │   │   ├── custom.css
+│   │   │   └── rtd-dark.css
 │   │   ├── logo.png
 │   │   ├── screenshot.png
 │   │   └── splash.png
 │   ├── todos.rst
 │   └── usage
-│       └── index.rst
+│       ├── index.rst
+│       └── installation.rst
 ├── LICENSE
 ├── pyproject.toml
 ├── README.rst
 ├── screenshot.png
-├── src
-│   └── geometor
-│       └── model
-│           ├── app.py
-│           ├── chains.py
-│           ├── _circles.py
-│           ├── common.py
-│           ├── element.py
-│           ├── helpers.py
-│           ├── __init__.py
-│           ├── _lines.py
-│           ├── __main__.py
-│           ├── _points.py
-│           ├── _polygons.py
-│           ├── __pycache__
-│           ├── reports.py
-│           ├── sections.py
-│           ├── _segments.py
-│           ├── _serialize.py
-│           ├── utils.py
-│           └── wedges.py
-└── tree.txt
+└── src
+    └── geometor
+        └── model
+            ├── app.py
+            ├── chains.py
+            ├── _circles.py
+            ├── common.py
+            ├── element.py
+            ├── helpers.py
+            ├── __init__.py
+            ├── _lines.py
+            ├── __main__.py
+            ├── _points.py
+            ├── _polygons.py
+            ├── __pycache__
+            ├── reports.py
+            ├── sections.py
+            ├── _segments.py
+            ├── _serialize.py
+            ├── utils.py
+            └── wedges.py
 
-14 directories, 68 files
+18 directories, 76 files
