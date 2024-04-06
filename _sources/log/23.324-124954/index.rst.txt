@@ -14,12 +14,16 @@ which encompassed a broad range of functions, to a more segmented approach.
 This segmentation allows for a clearer division of the project's key
 components: modeling, rendering, and analyzing complex geometric constructions.
 
+.. revealjs-section::
+
 The modeling aspect is tasked with creating complex geometric models, drawing
 inspiration from Euclidean techniques but executed algebraically. Following
 this, the rendering component brings these algebraic models to life,
 visualizing them onscreen. Analysis is the next step, with a current emphasis
 on exploring the golden ratio. Each of these segments will be represented
 through dedicated websites.
+
+.. revealjs-section::
 
 Regular updates will be communicated via logs like this, aiming to share the
 exciting developments within the project. The project's interests span

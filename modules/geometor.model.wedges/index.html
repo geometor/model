@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>geometor.model.wedges &mdash; GEOMETOR • model</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
-      <link rel="stylesheet" href="../../https://geometor.github.io/model/_static/css/rtd-dark.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=f2e8749c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
+      <link rel="stylesheet" type="text/css" href="https://geometor.github.io/model/_static/css/rtd-dark.css" />
+
+  
     <link rel="canonical" href="https://geometor.github.io/model/modules/geometor.model.wedges.html" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
@@ -149,41 +151,41 @@
 <p>wedge functions for Model class</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="geometor.model.wedges.Wedge">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geometor.model.wedges.</span></span><span class="sig-name descname"><span class="pre">Wedge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.12)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.12)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_sweep_start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.12)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_sweep_end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.12)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'clockwise'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/geometor/model/wedges/#Wedge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geometor.model.wedges.Wedge" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geometor.model.wedges.</span></span><span class="sig-name descname"><span class="pre">Wedge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.12.1rc1)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.12.1rc1)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_sweep_start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.12.1rc1)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_sweep_end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.12.1rc1)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'clockwise'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/geometor/model/wedges/#Wedge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geometor.model.wedges.Wedge" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.9/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py property">
 <dt class="sig sig-object py" id="geometor.model.wedges.Wedge.circle">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">circle</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/ellipses.html#sympy.geometry.ellipse.Circle" title="(in SymPy v1.12)"><span class="pre">Circle</span></a></em><a class="headerlink" href="#geometor.model.wedges.Wedge.circle" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">circle</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/ellipses.html#sympy.geometry.ellipse.Circle" title="(in SymPy v1.12.1rc1)"><span class="pre">Circle</span></a></em><a class="headerlink" href="#geometor.model.wedges.Wedge.circle" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="geometor.model.wedges.Wedge.radians">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">radians</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.12)"><span class="pre">Expr</span></a></em><a class="headerlink" href="#geometor.model.wedges.Wedge.radians" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">radians</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.12.1rc1)"><span class="pre">Expr</span></a></em><a class="headerlink" href="#geometor.model.wedges.Wedge.radians" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="geometor.model.wedges.Wedge.degrees">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">degrees</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.12)"><span class="pre">Expr</span></a></em><a class="headerlink" href="#geometor.model.wedges.Wedge.degrees" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">degrees</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.12.1rc1)"><span class="pre">Expr</span></a></em><a class="headerlink" href="#geometor.model.wedges.Wedge.degrees" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="geometor.model.wedges.Wedge.ratio">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ratio</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.12)"><span class="pre">Expr</span></a></em><a class="headerlink" href="#geometor.model.wedges.Wedge.ratio" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ratio</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.12.1rc1)"><span class="pre">Expr</span></a></em><a class="headerlink" href="#geometor.model.wedges.Wedge.ratio" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="geometor.model.wedges.Wedge.area">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">area</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.12)"><span class="pre">Expr</span></a></em><a class="headerlink" href="#geometor.model.wedges.Wedge.area" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">area</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.12.1rc1)"><span class="pre">Expr</span></a></em><a class="headerlink" href="#geometor.model.wedges.Wedge.area" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="geometor.model.wedges.Wedge.arc_length">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">arc_length</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.12)"><span class="pre">Expr</span></a></em><a class="headerlink" href="#geometor.model.wedges.Wedge.arc_length" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">arc_length</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.12.1rc1)"><span class="pre">Expr</span></a></em><a class="headerlink" href="#geometor.model.wedges.Wedge.arc_length" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="geometor.model.wedges.Wedge.perimeter">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">perimeter</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.12)"><span class="pre">Expr</span></a></em><a class="headerlink" href="#geometor.model.wedges.Wedge.perimeter" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">perimeter</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.12.1rc1)"><span class="pre">Expr</span></a></em><a class="headerlink" href="#geometor.model.wedges.Wedge.perimeter" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -204,7 +206,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, GEOMETOR.</p>
+    <p>&#169; Copyright 2024, GEOMETOR.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

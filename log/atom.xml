@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://geometor.github.io/model</id>
   <title>GEOMETOR • model</title>
-  <updated>2023-11-26T22:43:48.431984+00:00</updated>
+  <updated>2024-04-06T22:26:27.681359+00:00</updated>
   <link href="https://geometor.github.io/model"/>
   <link href="https://geometor.github.io/model/log/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="unknown.dev">ABlog</generator>
@@ -20,7 +20,7 @@ This segmentation allows for a clearer division of the project’s key
 components: modeling, rendering, and analyzing complex geometric constructions.&lt;/p&gt;
 &lt;/div&gt;
 </content>
-    <link href="https://geometor.github.io/model/log/23.324-124954/" rel="alternate"/>
+    <link href="https://geometor.github.io/model/log/23.324-124954/"/>
     <summary>This log entry marks the commencement of the Geometor.model project. After
 extensive changes in recent months, the project’s concepts, though not new, are
 entering a phase of significant development. The primary focus has been on
