@@ -1,0 +1,2 @@
+./src/geometor/model/sections.py -> Class Section: Add a class-level docstring.
+./src/geometor/model/wedges.py -> Class Wedge: Add a class-level docstring.
