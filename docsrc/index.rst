@@ -1,11 +1,9 @@
-GEOMETOR • model
-================
+model
+=====
 
 .. image:: _static/splash.png
 
-.. include:: overview/intro.rst
-
-
+.. include:: intro.rst
 
 recent logs
 -----------
@@ -14,25 +12,23 @@ recent logs
    :excerpts:
 
 
+
 .. toctree::
    :hidden:
    :maxdepth: 2
 
    mission/index.rst
-   overview/index.rst
    usage/index.rst
-   modules/index.rst
    demos/index.rst
-   logs/index.rst
+   modules/index.rst
+   logs.rst
    refs/index.rst
+   glossary.rst
+   connect.rst
    todos.rst
    changelog.rst
-   glossary.rst
-   contribute.rst
-   discuss.rst
    about.rst
 
-.. log </log#https://>
 
 indices
 -------
