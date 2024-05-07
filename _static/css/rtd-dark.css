@@ -8,6 +8,8 @@
  *
  * Modified by Aloïs Dreyfus: 20200527-1037
  * Modified by Erik Kalkoken: 20220615
+ *
+ * test
  */
 
 @media (prefers-color-scheme: dark) {
@@ -92,7 +94,7 @@
   /* Name.Variable */
 
   body {
-    text-align: justify;
+    /* text-align: justify; */
   }
 
   .rst-content .section .admonition ul {

@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://geometor.github.io/model</id>
-  <title>GEOMETOR • model</title>
-  <updated>2024-04-06T22:26:27.681359+00:00</updated>
+  <title>geometor • model</title>
+  <updated>2024-05-07T01:56:47.392824+00:00</updated>
   <link href="https://geometor.github.io/model"/>
   <link href="https://geometor.github.io/model/log/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="unknown.dev">ABlog</generator>
