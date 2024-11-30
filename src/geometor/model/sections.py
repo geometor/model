@@ -4,6 +4,7 @@ section functions for Model class
 #  from __future__ import annotations
 
 from geometor.model.common import *
+from geometor.model.utils import *
 
 from geometor.model.element import (
     Element,
@@ -26,6 +27,7 @@ class Section:
             spg.Segment(points[0], points[1]),
             spg.Segment(points[1], points[2]),
         ]
+        self.clean_expr = clean_expr
 
     def get_labels(self, model) -> list[str]:
         """
@@ -39,11 +41,11 @@ class Section:
         returns the ratio of the symbolic lengths of each segment
         """
         l1, l2 = self.lengths
-        return clean_expr(l1 / l2)
+        return self.clean_expr(l1 / l2)
 
     @property
     def lengths(self) -> list[sp.Expr]:
-        return [clean_expr(seg.length) for seg in self.segments]
+        return [self.clean_expr(seg.length) for seg in self.segments]
 
     @property
     def floats(self) -> list[float]:
