@@ -4,13 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>geometor.model.utils &mdash; geometor • model</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=f2e8749c" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=ea5fcf70" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/css/rtd-dark.css?v=fcc142e6" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
 
   
-    <link rel="canonical" href="https://geometor.github.io/model/_modules/geometor/model/utils.html" />
+    <link rel="canonical" href="https://geometor.github.io/model/_modules/geometor/model/utils/" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -18,7 +17,7 @@
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../../../_static/documentation_options.js?v=187304be"></script>
-        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
         <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../../../../about/" />
@@ -118,17 +117,17 @@
            <div itemprop="articleBody">
               <h1>Source code for geometor.model.utils</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;utils&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">import</span> <span class="nn">os</span> <span class="k">as</span> <span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="kn">from</span> <span class="nn">geometor.model.common</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.common</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
 <span class="c1">#  from geometor.model import *</span>
 
 
 <div class="viewcode-block" id="clean_expr">
 <a class="viewcode-back" href="../../../../modules/geometor.model.utils/#geometor.model.utils.clean_expr">[docs]</a>
-<span class="k">def</span> <span class="nf">clean_expr</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">clean_expr</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    simplify and denest SymPy expressions</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -139,7 +138,7 @@
 
 <div class="viewcode-block" id="spread">
 <a class="viewcode-back" href="../../../../modules/geometor.model.utils/#geometor.model.utils.spread">[docs]</a>
-<span class="k">def</span> <span class="nf">spread</span><span class="p">(</span><span class="n">l1</span><span class="p">:</span> <span class="n">spg</span><span class="o">.</span><span class="n">Line</span><span class="p">,</span> <span class="n">l2</span><span class="p">:</span> <span class="n">spg</span><span class="o">.</span><span class="n">Line</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">spread</span><span class="p">(</span><span class="n">l1</span><span class="p">:</span> <span class="n">spg</span><span class="o">.</span><span class="n">Line</span><span class="p">,</span> <span class="n">l2</span><span class="p">:</span> <span class="n">spg</span><span class="o">.</span><span class="n">Line</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;calculate the spread of two lines&quot;&quot;&quot;</span>
     <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">a3</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="n">coefficients</span>
     <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span> <span class="o">=</span> <span class="n">l2</span><span class="o">.</span><span class="n">coefficients</span>
@@ -151,7 +150,7 @@
 
 <div class="viewcode-block" id="compare_points">
 <a class="viewcode-back" href="../../../../modules/geometor.model.utils/#geometor.model.utils.compare_points">[docs]</a>
-<span class="k">def</span> <span class="nf">compare_points</span><span class="p">(</span><span class="n">pt1</span><span class="p">,</span> <span class="n">pt2</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compare_points</span><span class="p">(</span><span class="n">pt1</span><span class="p">,</span> <span class="n">pt2</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">pt1</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">evalf</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">pt2</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">evalf</span><span class="p">():</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">elif</span> <span class="n">pt1</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">evalf</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">pt2</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">evalf</span><span class="p">():</span>
@@ -168,7 +167,7 @@
 
 <div class="viewcode-block" id="point_value">
 <a class="viewcode-back" href="../../../../modules/geometor.model.utils/#geometor.model.utils.point_value">[docs]</a>
-<span class="k">def</span> <span class="nf">point_value</span><span class="p">(</span><span class="n">pt</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">point_value</span><span class="p">(</span><span class="n">pt</span><span class="p">):</span>
     <span class="c1">#  return pt.x.evalf()</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">evalf</span><span class="p">(),</span> <span class="n">pt</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">evalf</span><span class="p">())</span></div>
 
@@ -176,7 +175,7 @@
 
 <div class="viewcode-block" id="sort_points">
 <a class="viewcode-back" href="../../../../modules/geometor.model.utils/#geometor.model.utils.sort_points">[docs]</a>
-<span class="k">def</span> <span class="nf">sort_points</span><span class="p">(</span><span class="n">pts</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sort_points</span><span class="p">(</span><span class="n">pts</span><span class="p">):</span>
     <span class="c1">#  return sorted(list(pts), key=point_value)</span>
     <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">point_value</span><span class="p">)</span></div>
 
@@ -184,7 +183,7 @@
 
 <div class="viewcode-block" id="log_init">
 <a class="viewcode-back" href="../../../../modules/geometor.model.utils/#geometor.model.utils.log_init">[docs]</a>
-<span class="k">def</span> <span class="nf">log_init</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">log_init</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="n">sessions</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/Sessions&quot;</span>
     <span class="n">out</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sessions</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">/&quot;</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -202,20 +201,20 @@
 
 <div class="viewcode-block" id="print_log">
 <a class="viewcode-back" href="../../../../modules/geometor.model.utils/#geometor.model.utils.print_log">[docs]</a>
-<span class="k">def</span> <span class="nf">print_log</span><span class="p">(</span><span class="n">txt</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">print_log</span><span class="p">(</span><span class="n">txt</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span></div>
 
 
 
 <span class="c1"># time *********************</span>
-<span class="kn">import</span> <span class="nn">datetime</span>
-<span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">default_timer</span> <span class="k">as</span> <span class="n">timer</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">timeit</span><span class="w"> </span><span class="kn">import</span> <span class="n">default_timer</span> <span class="k">as</span> <span class="n">timer</span>
 
 
 <div class="viewcode-block" id="elapsed">
 <a class="viewcode-back" href="../../../../modules/geometor.model.utils/#geometor.model.utils.elapsed">[docs]</a>
-<span class="k">def</span> <span class="nf">elapsed</span><span class="p">(</span><span class="n">start_time</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">elapsed</span><span class="p">(</span><span class="n">start_time</span><span class="p">):</span>
     <span class="n">secs</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
     <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">secs</span><span class="p">))</span></div>
 
@@ -231,7 +230,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, geometor.</p>
+    <p>&#169; Copyright 2025, geometor.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

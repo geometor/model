@@ -4,13 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>geometor.model.reports &mdash; geometor • model</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=f2e8749c" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=ea5fcf70" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/css/rtd-dark.css?v=fcc142e6" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
 
   
-    <link rel="canonical" href="https://geometor.github.io/model/_modules/geometor/model/reports.html" />
+    <link rel="canonical" href="https://geometor.github.io/model/_modules/geometor/model/reports/" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -18,7 +17,7 @@
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../../../_static/documentation_options.js?v=187304be"></script>
-        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
         <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../../../../about/" />
@@ -122,15 +121,15 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1">#  from geometor.elements.model.common import *</span>
 
-<span class="kn">from</span> <span class="nn">rich.console</span> <span class="kn">import</span> <span class="n">Console</span>
-<span class="kn">from</span> <span class="nn">rich.table</span> <span class="kn">import</span> <span class="n">Table</span>
-<span class="kn">from</span> <span class="nn">rich.text</span> <span class="kn">import</span> <span class="n">Text</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich.console</span><span class="w"> </span><span class="kn">import</span> <span class="n">Console</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">Text</span>
 
-<span class="kn">from</span> <span class="nn">.common</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.common</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="kn">from</span> <span class="nn">.element</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.element</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">Element</span><span class="p">,</span>
     <span class="n">_get_ancestors</span><span class="p">,</span>
     <span class="n">_get_ancestors_labels</span><span class="p">,</span>
@@ -140,7 +139,7 @@
 
 <div class="viewcode-block" id="generate_dot">
 <a class="viewcode-back" href="../../../../modules/geometor.model.reports/#geometor.model.reports.generate_dot">[docs]</a>
-<span class="k">def</span> <span class="nf">generate_dot</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dot_string</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">defined_nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_dot</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dot_string</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">defined_nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">parent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">dot_string</span> <span class="o">+=</span> <span class="s2">&quot;digraph {</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="n">defined_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>  <span class="c1"># Keep track of defined nodes</span>
@@ -177,7 +176,7 @@
 
 <div class="viewcode-block" id="report_summary">
 <a class="viewcode-back" href="../../../../modules/geometor.model.reports/#geometor.model.reports.report_summary">[docs]</a>
-<span class="k">def</span> <span class="nf">report_summary</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">report_summary</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
     <span class="n">console</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span>
 
     <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">MODEL summary: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -197,7 +196,7 @@
 
 <div class="viewcode-block" id="report_group_by_type">
 <a class="viewcode-back" href="../../../../modules/geometor.model.reports/#geometor.model.reports.report_group_by_type">[docs]</a>
-<span class="k">def</span> <span class="nf">report_group_by_type</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">report_group_by_type</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
     <span class="n">console</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span>
 
     <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">MODEL report: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -295,7 +294,7 @@
 
 <div class="viewcode-block" id="get_colored_label">
 <a class="viewcode-back" href="../../../../modules/geometor.model.reports/#geometor.model.reports.get_colored_label">[docs]</a>
-<span class="k">def</span> <span class="nf">get_colored_label</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_colored_label</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the colored label for a geometric element.&quot;&quot;&quot;</span>
     <span class="n">label_color</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">):</span>
@@ -315,7 +314,7 @@
 
 <div class="viewcode-block" id="report_sequence">
 <a class="viewcode-back" href="../../../../modules/geometor.model.reports/#geometor.model.reports.report_sequence">[docs]</a>
-<span class="k">def</span> <span class="nf">report_sequence</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">report_sequence</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a sequential report of the model using rich Console layouts.&quot;&quot;&quot;</span>
     <span class="n">console</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span>
 
@@ -392,7 +391,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, geometor.</p>
+    <p>&#169; Copyright 2025, geometor.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

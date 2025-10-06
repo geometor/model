@@ -4,13 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>geometor.model &mdash; geometor • model</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=f2e8749c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea5fcf70" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/rtd-dark.css?v=fcc142e6" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
 
   
-    <link rel="canonical" href="https://geometor.github.io/model/_modules/geometor/model.html" />
+    <link rel="canonical" href="https://geometor.github.io/model/_modules/geometor/model/" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -18,7 +17,7 @@
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../../_static/documentation_options.js?v=187304be"></script>
-        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/doctools.js?v=9bcbadda"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../../../about/" />
@@ -133,21 +132,21 @@
 <span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;0.0.1&quot;</span>
 <span class="n">__licence__</span> <span class="o">=</span> <span class="s2">&quot;MIT&quot;</span>
 
-<span class="kn">from</span> <span class="nn">geometor.model.common</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.common</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="kn">from</span> <span class="nn">geometor.model.element</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.element</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="c1">#  from geometor.model.model import Model</span>
-<span class="kn">from</span> <span class="nn">geometor.model.wedges</span> <span class="kn">import</span> <span class="n">Wedge</span>
-<span class="kn">from</span> <span class="nn">geometor.model.sections</span> <span class="kn">import</span> <span class="n">Section</span>
-<span class="kn">from</span> <span class="nn">geometor.model.chains</span> <span class="kn">import</span> <span class="n">Chain</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.wedges</span><span class="w"> </span><span class="kn">import</span> <span class="n">Wedge</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.sections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Section</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.chains</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chain</span>
 
-<span class="kn">from</span> <span class="nn">geometor.model.reports</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.reports</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterator</span>
 
-<span class="kn">from</span> <span class="nn">geometor.model.utils</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="kn">from</span> <span class="nn">geometor.model.element</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.element</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">Element</span><span class="p">,</span>
     <span class="n">CircleElement</span><span class="p">,</span>
     <span class="n">_get_ancestors</span><span class="p">,</span>
@@ -155,20 +154,20 @@
     <span class="n">_get_element_by_label</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">geometor.model._points</span> <span class="kn">import</span> <span class="n">_set_point</span>
-<span class="kn">from</span> <span class="nn">geometor.model._lines</span> <span class="kn">import</span> <span class="n">_construct_line</span><span class="p">,</span> <span class="n">_construct_line_by_labels</span>
-<span class="kn">from</span> <span class="nn">geometor.model._circles</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._points</span><span class="w"> </span><span class="kn">import</span> <span class="n">_set_point</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._lines</span><span class="w"> </span><span class="kn">import</span> <span class="n">_construct_line</span><span class="p">,</span> <span class="n">_construct_line_by_labels</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._circles</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">_construct_circle</span><span class="p">,</span>
     <span class="n">_construct_circle_by_labels</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">geometor.model._polygons</span> <span class="kn">import</span> <span class="n">_set_polygon</span><span class="p">,</span> <span class="n">_set_polygon_by_labels</span>
-<span class="kn">from</span> <span class="nn">geometor.model._segments</span> <span class="kn">import</span> <span class="n">_set_segment</span><span class="p">,</span> <span class="n">_set_segment_by_labels</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._polygons</span><span class="w"> </span><span class="kn">import</span> <span class="n">_set_polygon</span><span class="p">,</span> <span class="n">_set_polygon_by_labels</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._segments</span><span class="w"> </span><span class="kn">import</span> <span class="n">_set_segment</span><span class="p">,</span> <span class="n">_set_segment_by_labels</span>
 
-<span class="kn">from</span> <span class="nn">geometor.model.wedges</span> <span class="kn">import</span> <span class="n">Wedge</span><span class="p">,</span> <span class="n">_set_wedge</span> <span class="c1"># _set_wedge_by_labels</span>
-<span class="kn">from</span> <span class="nn">geometor.model.sections</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">geometor.model.chains</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.wedges</span><span class="w"> </span><span class="kn">import</span> <span class="n">Wedge</span><span class="p">,</span> <span class="n">_set_wedge</span> <span class="c1"># _set_wedge_by_labels</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.sections</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.chains</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="kn">from</span> <span class="nn">geometor.model._serialize</span> <span class="kn">import</span> <span class="n">_save_to_json</span><span class="p">,</span> <span class="n">_load_from_json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._serialize</span><span class="w"> </span><span class="kn">import</span> <span class="n">_save_to_json</span><span class="p">,</span> <span class="n">_load_from_json</span>
 
 <span class="n">GeometryObject</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">spg</span><span class="o">.</span><span class="n">Point</span>
@@ -184,7 +183,7 @@
 
 <div class="viewcode-block" id="Model">
 <a class="viewcode-back" href="../../../modules/geometor.model/#geometor.model.Model">[docs]</a>
-<span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Model</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A collection of geometric elements, including points, lines, circles, and</span>
 <span class="sd">    polygons, represented using the `sympy.geometry` library.</span>
@@ -239,21 +238,21 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">label_gen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">point_label_generator</span><span class="p">()</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The name of the model&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
 
     <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">value</span>
 
-    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">GeometryObject</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Element</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">GeometryObject</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Element</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        control types for keys and values</span>
 <span class="sd">        parameters:</span>
@@ -287,20 +286,20 @@
 
 <div class="viewcode-block" id="Model.remove_by_label">
 <a class="viewcode-back" href="../../../modules/geometor.model/#geometor.model.Model.remove_by_label">[docs]</a>
-    <span class="k">def</span> <span class="nf">remove_by_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">remove_by_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">el</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_element_by_label</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
         <span class="k">del</span> <span class="bp">self</span><span class="p">[</span><span class="n">el</span><span class="p">]</span></div>
 
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">points</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">points</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        returns point elements from model as list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">el</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">)]</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">structs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Struct</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">structs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Struct</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        returns struct elements (line or circle) from model as list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -314,14 +313,14 @@
         <span class="p">]</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">lines</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Line</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">lines</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Line</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        returns line elements from model as list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">el</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">spg</span><span class="o">.</span><span class="n">Line</span><span class="p">)]</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">circles</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Circle</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">circles</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Circle</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        returns circle elements from model as list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -329,7 +328,7 @@
 
 <div class="viewcode-block" id="Model.limits">
 <a class="viewcode-back" href="../../../modules/geometor.model/#geometor.model.Model.limits">[docs]</a>
-    <span class="k">def</span> <span class="nf">limits</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">limits</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Find x, y limits from points and circles of the model</span>
 
@@ -369,9 +368,92 @@
     <span class="n">save</span> <span class="o">=</span> <span class="n">_save_to_json</span>
     <span class="n">load</span> <span class="o">=</span> <span class="n">_load_from_json</span>
 
+<div class="viewcode-block" id="Model.to_dict">
+<a class="viewcode-back" href="../../../modules/geometor.model/#geometor.model.Model.to_dict">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">model_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s1">&#39;points&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;lines&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;circles&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;polygons&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;segments&#39;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="p">}</span>
+
+        <span class="c1"># A map to hold sympy points and their labels</span>
+        <span class="n">point_map</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># First pass: collect all points and map them to their labels</span>
+        <span class="k">for</span> <span class="n">el</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">):</span>
+                <span class="n">point_dict</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
+                    <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">evalf</span><span class="p">()),</span>
+                    <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">evalf</span><span class="p">()),</span>
+                    <span class="s1">&#39;classes&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">classes</span><span class="p">,</span>
+                <span class="p">}</span>
+                <span class="n">model_dict</span><span class="p">[</span><span class="s1">&#39;points&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">point_dict</span><span class="p">)</span>
+                <span class="n">point_map</span><span class="p">[</span><span class="n">el</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">label</span>
+
+        <span class="c1"># Second pass: collect other elements and use the point map for references</span>
+        <span class="k">for</span> <span class="n">el</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">spg</span><span class="o">.</span><span class="n">Line</span><span class="p">):</span>
+                <span class="c1"># In sympy, a line is defined by two points.</span>
+                <span class="c1"># We assume these points are already in our point_map.</span>
+                <span class="n">pt1_label</span> <span class="o">=</span> <span class="n">point_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">p1</span><span class="p">)</span>
+                <span class="n">pt2_label</span> <span class="o">=</span> <span class="n">point_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">p2</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">pt1_label</span> <span class="ow">and</span> <span class="n">pt2_label</span><span class="p">:</span>
+                    <span class="n">model_dict</span><span class="p">[</span><span class="s1">&#39;lines&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
+                        <span class="s1">&#39;pt1&#39;</span><span class="p">:</span> <span class="n">pt1_label</span><span class="p">,</span>
+                        <span class="s1">&#39;pt2&#39;</span><span class="p">:</span> <span class="n">pt2_label</span><span class="p">,</span>
+                        <span class="s1">&#39;classes&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">classes</span><span class="p">,</span>
+                    <span class="p">})</span>
+
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">spg</span><span class="o">.</span><span class="n">Circle</span><span class="p">):</span>
+                <span class="n">center_label</span> <span class="o">=</span> <span class="n">point_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">center</span><span class="p">)</span>
+                <span class="c1"># Radius can be a number or defined by another point.</span>
+                <span class="c1"># The old JS code used a radius point. We&#39;ll assume the CircleElement has it.</span>
+                <span class="n">radius_pt_label</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;pt_radius&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">data</span><span class="o">.</span><span class="n">pt_radius</span> <span class="ow">in</span> <span class="n">point_map</span><span class="p">:</span>
+                    <span class="n">radius_pt_label</span> <span class="o">=</span> <span class="n">point_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">pt_radius</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">center_label</span><span class="p">:</span>
+                    <span class="n">model_dict</span><span class="p">[</span><span class="s1">&#39;circles&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
+                        <span class="s1">&#39;center&#39;</span><span class="p">:</span> <span class="n">center_label</span><span class="p">,</span>
+                        <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">radius</span><span class="o">.</span><span class="n">evalf</span><span class="p">()),</span>
+                        <span class="s1">&#39;radius_pt&#39;</span><span class="p">:</span> <span class="n">radius_pt_label</span><span class="p">,</span>
+                        <span class="s1">&#39;classes&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">classes</span><span class="p">,</span>
+                    <span class="p">})</span>
+            
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">spg</span><span class="o">.</span><span class="n">Polygon</span><span class="p">):</span>
+                <span class="n">point_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">point_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">el</span><span class="o">.</span><span class="n">vertices</span><span class="p">]</span>
+                <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">point_labels</span><span class="p">):</span>
+                    <span class="n">model_dict</span><span class="p">[</span><span class="s1">&#39;polygons&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
+                        <span class="s1">&#39;points&#39;</span><span class="p">:</span> <span class="n">point_labels</span><span class="p">,</span>
+                        <span class="s1">&#39;classes&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">classes</span><span class="p">,</span>
+                    <span class="p">})</span>
+
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">spg</span><span class="o">.</span><span class="n">Segment</span><span class="p">):</span>
+                <span class="n">pt1_label</span> <span class="o">=</span> <span class="n">point_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">p1</span><span class="p">)</span>
+                <span class="n">pt2_label</span> <span class="o">=</span> <span class="n">point_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">p2</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">pt1_label</span> <span class="ow">and</span> <span class="n">pt2_label</span><span class="p">:</span>
+                    <span class="n">model_dict</span><span class="p">[</span><span class="s1">&#39;segments&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
+                        <span class="s1">&#39;pt1&#39;</span><span class="p">:</span> <span class="n">pt1_label</span><span class="p">,</span>
+                        <span class="s1">&#39;pt2&#39;</span><span class="p">:</span> <span class="n">pt2_label</span><span class="p">,</span>
+                        <span class="s1">&#39;classes&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">classes</span><span class="p">,</span>
+                    <span class="p">})</span>
+
+        <span class="k">return</span> <span class="n">model_dict</span></div>
+
+
+
 <div class="viewcode-block" id="Model.point_label_generator">
 <a class="viewcode-back" href="../../../modules/geometor.model/#geometor.model.Model.point_label_generator">[docs]</a>
-    <span class="k">def</span> <span class="nf">point_label_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">point_label_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
         <span class="n">letters</span> <span class="o">=</span> <span class="s2">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span>
         <span class="n">repeat</span> <span class="o">=</span> <span class="mi">1</span>
 
@@ -387,7 +469,7 @@
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">geometor.model.reports</span> <span class="kn">import</span> <span class="o">*</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.reports</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
     <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;demo&quot;</span><span class="p">)</span>
     <span class="n">A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
@@ -415,7 +497,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, geometor.</p>
+    <p>&#169; Copyright 2025, geometor.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
