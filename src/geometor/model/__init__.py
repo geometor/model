@@ -243,6 +243,86 @@ class Model(dict):
     save = _save_to_json
     load = _load_from_json
 
+    def to_dict(self):
+        model_dict = {
+            'name': self.name,
+            'points': [],
+            'lines': [],
+            'circles': [],
+            'polygons': [],
+            'segments': [],
+        }
+
+        # A map to hold sympy points and their labels
+        point_map = {}
+
+        # First pass: collect all points and map them to their labels
+        for el, data in self.items():
+            if isinstance(el, spg.Point):
+                point_dict = {
+                    'label': data.label,
+                    'x': float(el.x.evalf()),
+                    'y': float(el.y.evalf()),
+                    'classes': data.classes,
+                }
+                model_dict['points'].append(point_dict)
+                point_map[el] = data.label
+
+        # Second pass: collect other elements and use the point map for references
+        for el, data in self.items():
+            if isinstance(el, spg.Line):
+                # In sympy, a line is defined by two points.
+                # We assume these points are already in our point_map.
+                pt1_label = point_map.get(el.p1)
+                pt2_label = point_map.get(el.p2)
+                if pt1_label and pt2_label:
+                    model_dict['lines'].append({
+                        'label': data.label,
+                        'pt1': pt1_label,
+                        'pt2': pt2_label,
+                        'classes': data.classes,
+                    })
+
+            elif isinstance(el, spg.Circle):
+                center_label = point_map.get(el.center)
+                # Radius can be a number or defined by another point.
+                # The old JS code used a radius point. We'll assume the CircleElement has it.
+                radius_pt_label = None
+                if hasattr(data, 'pt_radius') and data.pt_radius in point_map:
+                    radius_pt_label = point_map.get(data.pt_radius)
+
+                if center_label:
+                    model_dict['circles'].append({
+                        'label': data.label,
+                        'center': center_label,
+                        'radius': float(el.radius.evalf()),
+                        'radius_pt': radius_pt_label,
+                        'classes': data.classes,
+                    })
+            
+            elif isinstance(el, spg.Polygon):
+                point_labels = [point_map.get(p) for p in el.vertices]
+                if all(point_labels):
+                    model_dict['polygons'].append({
+                        'label': data.label,
+                        'points': point_labels,
+                        'classes': data.classes,
+                    })
+
+            elif isinstance(el, spg.Segment):
+                pt1_label = point_map.get(el.p1)
+                pt2_label = point_map.get(el.p2)
+                if pt1_label and pt2_label:
+                    model_dict['segments'].append({
+                        'label': data.label,
+                        'pt1': pt1_label,
+                        'pt2': pt2_label,
+                        'classes': data.classes,
+                    })
+
+        return model_dict
+
+
     def point_label_generator(self) -> Iterator[str]:
         letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         repeat = 1
