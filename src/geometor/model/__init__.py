@@ -51,6 +51,8 @@ from geometor.model.sections import *
 from geometor.model.chains import *
 
 from geometor.model._serialize import _save_to_json, _load_from_json
+from geometor.model._browser import to_browser_dict
+from geometor.model._delete import delete_element
 
 GeometryObject = (
     spg.Point
@@ -165,6 +167,8 @@ class Model(dict):
     set_wedge = _set_wedge
     #  set_wedge_by_labels = _set_wedge_by_labels
 
+    delete_element = delete_element
+
     def remove_by_label(self, label: str) -> None:
         el = self.get_element_by_label(label)
         del self[el]
@@ -242,6 +246,8 @@ class Model(dict):
 
     save = _save_to_json
     load = _load_from_json
+
+    to_browser_dict = to_browser_dict
 
     def to_dict(self):
         model_dict = {
