@@ -109,6 +109,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.set_polygon"><code class="docutils literal notranslate"><span class="pre">Model.set_polygon()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.set_polygon_by_labels"><code class="docutils literal notranslate"><span class="pre">Model.set_polygon_by_labels()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.set_wedge"><code class="docutils literal notranslate"><span class="pre">Model.set_wedge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.delete_element"><code class="docutils literal notranslate"><span class="pre">Model.delete_element()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.remove_by_label"><code class="docutils literal notranslate"><span class="pre">Model.remove_by_label()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.points"><code class="docutils literal notranslate"><span class="pre">Model.points</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.structs"><code class="docutils literal notranslate"><span class="pre">Model.structs</span></code></a></li>
@@ -120,6 +121,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.get_element_by_label"><code class="docutils literal notranslate"><span class="pre">Model.get_element_by_label()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.save"><code class="docutils literal notranslate"><span class="pre">Model.save()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.load"><code class="docutils literal notranslate"><span class="pre">Model.load()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.to_browser_dict"><code class="docutils literal notranslate"><span class="pre">Model.to_browser_dict()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.to_dict"><code class="docutils literal notranslate"><span class="pre">Model.to_dict()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.point_label_generator"><code class="docutils literal notranslate"><span class="pre">Model.point_label_generator()</span></code></a></li>
 </ul>
@@ -484,6 +486,21 @@ second point of the line</p></li>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.Model.delete_element">
+<span class="sig-name descname"><span class="pre">delete_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element_or_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.Model.delete_element" title="Link to this definition"></a></dt>
+<dd><p>Deletes an element and performs a cascading delete of all its dependents.</p>
+<p>This method removes the specified element and any other elements that were
+constructed from it, directly or indirectly.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>element_or_label (spg.GeometryEntity or str): The element object or its</dt><dd><p>label to be deleted.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.Model.remove_by_label">
 <span class="sig-name descname"><span class="pre">remove_by_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.9/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../_modules/geometor/model/#Model.remove_by_label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geometor.model.Model.remove_by_label" title="Link to this definition"></a></dt>
 <dd></dd></dl>
@@ -595,12 +612,49 @@ and constructs a nested dictionary with labels representing the ancestor tree.</
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.Model.save">
 <span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.Model.save" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Saves the model to a JSON file in a structured and secure format.</p>
+<p>This method serializes the model into a JSON file with two main sections:
+“sympy_objects” and “elements”.</p>
+<ul class="simple">
+<li><p>“sympy_objects”: A list of all geometric objects in the model, serialized
+to strings using <cite>sympy.srepr</cite>. This provides a safe and unambiguous
+representation of the objects.</p></li>
+<li><p>“elements”: A list of dictionaries, each containing the metadata for an
+element (label, classes, parents). The parents are represented by their
+indices in the “sympy_objects” list, creating a relational mapping that
+can be safely reconstructed.</p></li>
+</ul>
+<p>This approach avoids the use of <cite>eval</cite> and ensures that the model can be
+saved and loaded without loss of information.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.Model.load">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.Model.load" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.Model.load" title="Link to this definition"></a></dt>
+<dd><p>Loads a model from a JSON file that was saved with <cite>_save_to_json</cite>.</p>
+<p>This method reads a JSON file, parses the “sympy_objects” back into SymPy
+objects using <cite>sympy.parsing.sympy_parser.parse_expr</cite>, and then
+reconstructs the model by linking the elements to their parents using the
+stored indices.</p>
+<p>This approach is secure as it avoids the use of <cite>eval</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.Model.to_browser_dict">
+<span class="sig-name descname"><span class="pre">to_browser_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.Model.to_browser_dict" title="Link to this definition"></a></dt>
+<dd><p>Serializes the model to a dictionary format suitable for a browser-based
+application, preserving the order of creation.</p>
+<p>This method creates a dictionary containing the model’s name and a single
+list of ‘elements’. Each item in the list represents a geometric element
+in the order it was added to the model. This format is easy for a web
+client to parse and render sequentially.</p>
+<p>Each element dictionary includes:
+- A ‘type’ field (e.g., ‘point’, ‘line’).
+- Data relevant to the element type, including floating-point values for</p>
+<blockquote>
+<div><p>rendering and LaTeX expressions for display.</p>
+</div></blockquote>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.Model.to_dict">
