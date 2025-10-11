@@ -1,5 +1,5 @@
 """
-segemnt helper functions for sequencer
+segment helper functions for sequencer
 """
 
 from geometor.model.common import *

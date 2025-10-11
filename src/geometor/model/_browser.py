@@ -74,6 +74,7 @@ def to_browser_dict(self):
                 'type': 'segment',
                 'pt1': self[el.p1].label,
                 'pt2': self[el.p2].label,
+                'points': [self[p].label for p in [el.p1, el.p2]],
                 'length': float(el.length.evalf()),
                 'latex_length': sp.latex(el.length),
             })

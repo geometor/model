@@ -84,3 +84,36 @@ class Section:
         max_length_index = self.lengths.index(self.max_length())
         return self.segments[max_length_index]
 
+def _set_section_by_labels(
+        model, points_labels: list[str], classes: list = None, label: str = ""
+) -> Section:
+    """
+    find points by label and use them with :meth:`Model.set_section`
+    """
+    points = []
+
+    for point_label in points_labels:
+        points.append(model.get_element_by_label(poly_label))
+
+    return model.set_section(points, classes, label)
+
+
+def _set_section(model, points: list[spg.Point], classes=[], label="") -> Section:
+    """
+    set section (list of 3 points on a line)
+    """
+
+    # TODO: check points and minimum count of 3
+    section = Section(points)
+
+    if not label:
+        points_labels = [str(model[pt].label or pt) for pt in points]
+        points_labels = " ".join(points_labels)
+        label = f"/ {points_labels} /"
+
+    details = Element(section, parents=points, classes=classes, label=label)
+
+    model[section] = details
+
+    print(f"{details.label}")
+    return section
