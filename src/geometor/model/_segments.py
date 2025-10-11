@@ -21,6 +21,10 @@ def _set_segment(model, pt_1: spg.Point, pt_2: spg.Point, classes=[], label="") 
     set segment (list of points) for demonstration in the model
     """
     segment = spg.Segment(pt_1, pt_2)
+    if not label:
+        segment_points_labels = [str(model[pt].label or pt) for pt in [pt_1, pt_2]]
+        segment_points_labels = " ".join(segment_points_labels)
+        label = f"- {segment_points_labels} -"
     details = Element(segment, parents=[pt_1, pt_2], classes=classes, label=label)
 
     model[segment] = details
