@@ -168,7 +168,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.sections</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.chains</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._serialize</span><span class="w"> </span><span class="kn">import</span> <span class="n">_save_to_json</span><span class="p">,</span> <span class="n">_load_from_json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._serialize</span><span class="w"> </span><span class="kn">import</span> <span class="n">save_model</span><span class="p">,</span> <span class="n">load_model</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._browser</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_browser_dict</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._delete</span><span class="w"> </span><span class="kn">import</span> <span class="n">delete_element</span>
 
@@ -372,9 +372,6 @@
     <span class="n">get_ancestors_labels</span> <span class="o">=</span> <span class="n">_get_ancestors_labels</span>
 
     <span class="n">get_element_by_label</span> <span class="o">=</span> <span class="n">_get_element_by_label</span>
-
-    <span class="n">save</span> <span class="o">=</span> <span class="n">_save_to_json</span>
-    <span class="n">load</span> <span class="o">=</span> <span class="n">_load_from_json</span>
 
     <span class="n">to_browser_dict</span> <span class="o">=</span> <span class="n">to_browser_dict</span>
 

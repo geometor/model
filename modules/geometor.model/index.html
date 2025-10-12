@@ -121,8 +121,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.get_ancestors"><code class="docutils literal notranslate"><span class="pre">Model.get_ancestors()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.get_ancestors_labels"><code class="docutils literal notranslate"><span class="pre">Model.get_ancestors_labels()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.get_element_by_label"><code class="docutils literal notranslate"><span class="pre">Model.get_element_by_label()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.save"><code class="docutils literal notranslate"><span class="pre">Model.save()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.load"><code class="docutils literal notranslate"><span class="pre">Model.load()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.to_browser_dict"><code class="docutils literal notranslate"><span class="pre">Model.to_browser_dict()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.to_dict"><code class="docutils literal notranslate"><span class="pre">Model.to_dict()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.point_label_generator"><code class="docutils literal notranslate"><span class="pre">Model.point_label_generator()</span></code></a></li>
@@ -239,8 +237,8 @@ duplicates.</p>
 <li><p><a class="reference internal" href="#geometor.model.Model.get_ancestors" title="geometor.model.Model.get_ancestors"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_ancestors()</span></code></a> -&gt;</p></li>
 <li><p><a class="reference internal" href="#geometor.model.Model.get_ancestors_labels" title="geometor.model.Model.get_ancestors_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_ancestors_labels()</span></code></a> -&gt;</p></li>
 <li><p><a class="reference internal" href="#geometor.model.Model.get_element_by_label" title="geometor.model.Model.get_element_by_label"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_element_by_label()</span></code></a> -&gt;</p></li>
-<li><p><a class="reference internal" href="#geometor.model.Model.save" title="geometor.model.Model.save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save()</span></code></a> -&gt;</p></li>
-<li><p><a class="reference internal" href="#geometor.model.Model.load" title="geometor.model.Model.load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load()</span></code></a> -&gt;</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">save()</span></code> -&gt;</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">load()</span></code> -&gt;</p></li>
 <li><p><a class="reference internal" href="#geometor.model.Model.point_label_generator" title="geometor.model.Model.point_label_generator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">point_label_generator()</span></code></a> -&gt; Iterator[str]</p></li>
 </ul>
 <div class="admonition-todo admonition" id="id1">
@@ -621,36 +619,6 @@ and constructs a nested dictionary with labels representing the ancestor tree.</
 <h3>returns<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
 <p>Element or None: The element with the matching label, or None if no match is found.</p>
 </section>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="geometor.model.Model.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.Model.save" title="Link to this definition"></a></dt>
-<dd><p>Saves the model to a JSON file in a structured and secure format.</p>
-<p>This method serializes the model into a JSON file with two main sections:
-“sympy_objects” and “elements”.</p>
-<ul class="simple">
-<li><p>“sympy_objects”: A list of all geometric objects in the model, serialized
-to strings using <cite>sympy.srepr</cite>. This provides a safe and unambiguous
-representation of the objects.</p></li>
-<li><p>“elements”: A list of dictionaries, each containing the metadata for an
-element (label, classes, parents). The parents are represented by their
-indices in the “sympy_objects” list, creating a relational mapping that
-can be safely reconstructed.</p></li>
-</ul>
-<p>This approach avoids the use of <cite>eval</cite> and ensures that the model can be
-saved and loaded without loss of information.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="geometor.model.Model.load">
-<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.Model.load" title="Link to this definition"></a></dt>
-<dd><p>Loads a model from a JSON file that was saved with <cite>_save_to_json</cite>.</p>
-<p>This method reads a JSON file, parses the “sympy_objects” back into SymPy
-objects using <cite>sympy.parsing.sympy_parser.parse_expr</cite>, and then
-reconstructs the model by linking the elements to their parents using the
-stored indices.</p>
-<p>This approach is secure as it avoids the use of <cite>eval</cite>.</p>
 </dd></dl>
 
 <dl class="py method">
