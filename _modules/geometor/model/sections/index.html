@@ -164,6 +164,8 @@
 <span class="sd">        returns the ratio of the symbolic lengths of each segment</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lengths</span>
+        <span class="k">if</span> <span class="n">l1</span><span class="o">.</span><span class="n">evalf</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">l2</span><span class="o">.</span><span class="n">evalf</span><span class="p">():</span>
+            <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span><span class="p">,</span> <span class="n">l1</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">clean_expr</span><span class="p">(</span><span class="n">l1</span> <span class="o">/</span> <span class="n">l2</span><span class="p">)</span>
 
     <span class="nd">@property</span>
@@ -176,10 +178,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_golden</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="n">phi_ratio_check</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ratio</span> <span class="o">/</span> <span class="n">phi</span><span class="p">)</span><span class="o">.</span><span class="n">evalf</span><span class="p">()</span>
-        <span class="n">inv_phi_ratio_check</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ratio</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">phi</span><span class="p">))</span><span class="o">.</span><span class="n">evalf</span><span class="p">()</span>
-
-        <span class="k">return</span> <span class="n">phi_ratio_check</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">inv_phi_ratio_check</span> <span class="o">==</span> <span class="mi">1</span>
+        <span class="c1"># Use symbolic simplification to check for equality, avoiding float precision issues.</span>
+        <span class="c1"># We simplify the difference between the ratio and phi (and 1/phi).</span>
+        <span class="c1"># If the result is 0, they are symbolically equal.</span>
+        <span class="n">is_phi</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ratio</span> <span class="o">-</span> <span class="n">phi</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="n">is_inv_phi</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ratio</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">phi</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="n">is_phi</span> <span class="ow">or</span> <span class="n">is_inv_phi</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">min_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
