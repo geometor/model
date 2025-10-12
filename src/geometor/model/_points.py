@@ -81,6 +81,7 @@ def _set_point(
 
     details = Element(pt, parents, classes, label)
     self[pt] = details
+    self._publish_event("point_added", pt)
     
     text_label = get_colored_label(pt, label)
     console.print(f"[gold3]{text_label}[/gold3] = {{ {str(pt.x)}, {str(pt.y)} }}")

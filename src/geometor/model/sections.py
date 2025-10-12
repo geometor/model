@@ -41,6 +41,8 @@ class Section:
         returns the ratio of the symbolic lengths of each segment
         """
         l1, l2 = self.lengths
+        if l1.evalf() < l2.evalf():
+            l1, l2 = l2, l1
         return self.clean_expr(l1 / l2)
 
     @property
@@ -53,10 +55,12 @@ class Section:
 
     @property
     def is_golden(self) -> bool:
-        phi_ratio_check = (self.ratio / phi).evalf()
-        inv_phi_ratio_check = (self.ratio / (1 / phi)).evalf()
-
-        return phi_ratio_check == 1 or inv_phi_ratio_check == 1
+        # Use symbolic simplification to check for equality, avoiding float precision issues.
+        # We simplify the difference between the ratio and phi (and 1/phi).
+        # If the result is 0, they are symbolically equal.
+        is_phi = sp.simplify(self.ratio - phi) == 0
+        is_inv_phi = sp.simplify(self.ratio - (1 / phi)) == 0
+        return is_phi or is_inv_phi
 
     @property
     def min_length(self) -> sp.Expr:
