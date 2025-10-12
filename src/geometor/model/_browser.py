@@ -54,58 +54,76 @@ def to_browser_dict(self):
             })
 
         elif isinstance(el, spg.Circle):
+            radius_val = el.radius.evalf()
             element_dict.update({
                 'type': 'circle',
                 'center': self[el.center].label,
                 'radius_pt': self[data.pt_radius].label,
-                'radius': float(el.radius.evalf()),
+                'radius': float(radius_val),
+                'decimal_radius': f'{radius_val:.4f}',
                 'latex_radius': sp.latex(el.radius),
                 'equation': str(el.equation()),
                 'latex_equation': sp.latex(el.equation()),
             })
 
         elif isinstance(el, spg.Polygon):
+            lengths_val = [l.evalf() for l in data.side_lengths]
+            angles_val = {p: a.evalf() for p, a in data.angles.items()}
+            area_val = data.area.evalf()
             element_dict.update({
                 'type': 'polygon',
                 'points': [self[p].label for p in el.vertices],
-                'lengths': [float(l.evalf()) for l in data.side_lengths],
+                'lengths': [float(l) for l in lengths_val],
+                'decimal_lengths': [f'{l:.4f}' for l in lengths_val],
                 'latex_lengths': [sp.latex(clean_expr(l)) for l in data.side_lengths],
-                'angles': {self[p].label: float(a.evalf()) for p, a in data.angles.items()},
+                'angles': {self[p].label: float(a) for p, a in angles_val.items()},
+                'degree_angles': {self[p].label: f'{a * 180 / sp.pi:.3f}°' for p, a in angles_val.items()},
                 'latex_angles': {self[p].label: sp.latex(clean_expr(a)) for p, a in data.angles.items()},
-                'area': float(data.area.evalf()),
+                'area': float(area_val),
+                'decimal_area': f'{area_val:.4f}',
                 'latex_area': sp.latex(clean_expr(data.area)),
             })
 
         elif isinstance(el, spg.Segment):
+            length_val = el.length.evalf()
             element_dict.update({
                 'type': 'segment',
                 'pt1': self[el.p1].label,
                 'pt2': self[el.p2].label,
                 'points': [self[p].label for p in [el.p1, el.p2]],
-                'length': float(el.length.evalf()),
+                'length': float(length_val),
+                'decimal_length': f'{length_val:.4f}',
                 'latex_length': sp.latex(el.length),
             })
             
         elif isinstance(el, Wedge):
+            radius_val = el.circle.radius.evalf()
+            radians_val = el.radians.evalf()
             element_dict.update({
                 'type': 'wedge',
                 'center': self[el.pt_center].label,
                 'radius_pt': self[el.pt_radius].label,
                 'start_ray_pt': self[el.start_ray.p2].label,
                 'end_ray_pt': self[el.sweep_ray.p2].label,
-                'radius': float(el.circle.radius.evalf()),
+                'radius': float(radius_val),
+                'decimal_radius': f'{radius_val:.4f}',
                 'latex_radius': sp.latex(el.circle.radius),
-                'radians': float(el.radians.evalf()),
+                'radians': float(radians_val),
+                'degrees': f'{radians_val * 180 / sp.pi:.3f}°',
                 'latex_radians': sp.latex(el.radians),
             })
 
         elif isinstance(el, Section):
+            lengths_val = [l.evalf() for l in el.lengths]
+            ratio_val = el.ratio.evalf()
             element_dict.update({
                 'type': 'section',
                 'points': [self[p].label for p in el.points],
-                'lengths': [float(l.evalf()) for l in el.lengths],
+                'lengths': [float(l) for l in lengths_val],
+                'decimal_lengths': [f'{l:.4f}' for l in lengths_val],
                 'latex_lengths': [sp.latex(l) for l in el.lengths],
-                'ratio': float(el.ratio.evalf()),
+                'ratio': float(ratio_val),
+                'decimal_ratio': f'{ratio_val:.4f}',
                 'latex_ratio': sp.latex(el.ratio),
                 'is_golden': el.is_golden,
             })
