@@ -58,6 +58,10 @@ def load_model(file_path):
         # This is a bit of a trick. We need to effectively "put back" the saved
         # next_label into the generator sequence.
         from itertools import chain
+        # First, advance the generator to the correct position.
+        for label in model.label_gen:
+            if label == next_label:
+                break
         model.label_gen = chain([next_label], model.label_gen)
     
     sympy_objects = [parse_expr(s) for s in serializable_model['sympy_objects']]
