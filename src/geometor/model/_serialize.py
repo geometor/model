@@ -1,33 +1,19 @@
 import json
 from sympy.parsing.sympy_parser import parse_expr
+import sympy as sp
 from .common import *
 from .element import Element, CircleElement
 
-def _save_to_json(self, file_path):
+def save_model(model, file_path):
     """
-    Saves the model to a JSON file in a structured and secure format.
-
-    This method serializes the model into a JSON file with two main sections:
-    "sympy_objects" and "elements".
-
-    - "sympy_objects": A list of all geometric objects in the model, serialized
-      to strings using `sympy.srepr`. This provides a safe and unambiguous
-      representation of the objects.
-
-    - "elements": A list of dictionaries, each containing the metadata for an
-      element (label, classes, parents). The parents are represented by their
-      indices in the "sympy_objects" list, creating a relational mapping that
-      can be safely reconstructed.
-
-    This approach avoids the use of `eval` and ensures that the model can be
-    saved and loaded without loss of information.
+    Saves a Model object to a JSON file.
     """
-    sympy_objects = list(self.keys())
+    sympy_objects = list(model.keys())
     obj_to_index = {obj: i for i, obj in enumerate(sympy_objects)}
 
     serializable_elements = []
     for obj in sympy_objects:
-        element = self[obj]
+        element = model[obj]
         element_data = {
             'label': element.label,
             'classes': list(element.classes.keys()),
@@ -37,8 +23,15 @@ def _save_to_json(self, file_path):
             element_data['pt_radius'] = obj_to_index[element.pt_radius]
         serializable_elements.append(element_data)
 
+    # Capture the next label from the generator
+    # This is a bit of a hack; we generate the next label and then have to prepend it
+    # to the generator sequence when we load. A better way might be to store the
+    # generator's state, but that's more complex.
+    next_label = next(model.label_gen)
+
     serializable_model = {
-        'name': self.name,
+        'name': model.name,
+        'next_label': next_label,
         'sympy_objects': [sp.srepr(obj) for obj in sympy_objects],
         'elements': serializable_elements,
     }
@@ -46,21 +39,26 @@ def _save_to_json(self, file_path):
     with open(file_path, 'w') as file:
         json.dump(serializable_model, file, indent=4)
 
-def _load_from_json(self, file_path):
-    """
-    Loads a model from a JSON file that was saved with `_save_to_json`.
 
-    This method reads a JSON file, parses the "sympy_objects" back into SymPy
-    objects using `sympy.parsing.sympy_parser.parse_expr`, and then
-    reconstructs the model by linking the elements to their parents using the
-    stored indices.
-
-    This approach is secure as it avoids the use of `eval`.
+def load_model(file_path):
     """
+    Loads a model from a JSON file and returns a new Model instance.
+    """
+    # Import Model here to avoid circular dependency
+    from geometor.model import Model
+
     with open(file_path, 'r') as file:
         serializable_model = json.load(file)
 
-    self.name = serializable_model.get('name', '')
+    model = Model(serializable_model.get('name', ''))
+    
+    # Restore the label generator state
+    next_label = serializable_model.get('next_label')
+    if next_label:
+        # This is a bit of a trick. We need to effectively "put back" the saved
+        # next_label into the generator sequence.
+        from itertools import chain
+        model.label_gen = chain([next_label], model.label_gen)
     
     sympy_objects = [parse_expr(s) for s in serializable_model['sympy_objects']]
 
@@ -84,6 +82,6 @@ def _load_from_json(self, file_path):
                 classes=element_data['classes'],
                 parents=parents
             )
-        self[sympy_obj] = element
+        model[sympy_obj] = element
     
-    return self
+    return model

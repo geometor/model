@@ -51,7 +51,7 @@ from geometor.model.wedges import Wedge, _set_wedge # _set_wedge_by_labels
 from geometor.model.sections import *
 from geometor.model.chains import *
 
-from geometor.model._serialize import _save_to_json, _load_from_json
+from geometor.model._serialize import save_model, load_model
 from geometor.model._browser import to_browser_dict
 from geometor.model._delete import delete_element
 
@@ -247,9 +247,6 @@ class Model(dict):
     get_ancestors_labels = _get_ancestors_labels
 
     get_element_by_label = _get_element_by_label
-
-    save = _save_to_json
-    load = _load_from_json
 
     to_browser_dict = to_browser_dict
 

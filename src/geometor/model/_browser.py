@@ -5,6 +5,7 @@ from .common import *
 from .sections import Section
 from .chains import Chain
 from .wedges import Wedge
+from .utils import clean_expr
 
 def to_browser_dict(self):
     """
@@ -67,6 +68,12 @@ def to_browser_dict(self):
             element_dict.update({
                 'type': 'polygon',
                 'points': [self[p].label for p in el.vertices],
+                'lengths': [float(l.evalf()) for l in data.side_lengths],
+                'latex_lengths': [sp.latex(clean_expr(l)) for l in data.side_lengths],
+                'angles': {self[p].label: float(a.evalf()) for p, a in data.angles.items()},
+                'latex_angles': {self[p].label: sp.latex(clean_expr(a)) for p, a in data.angles.items()},
+                'area': float(data.area.evalf()),
+                'latex_area': sp.latex(clean_expr(data.area)),
             })
 
         elif isinstance(el, spg.Segment):
