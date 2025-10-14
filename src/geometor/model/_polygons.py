@@ -34,9 +34,6 @@ def _set_polygon(model, poly_pts: list[spg.Point], classes=[], label="") -> spg.
         label = f"< {poly_pts_labels} >"
 
     details = Element(poly, parents=poly_pts, classes=classes, label=label)
-    details.side_lengths = [s.length for s in poly.sides]
-    details.angles = poly.angles
-    details.area = poly.area
 
     model[poly] = details
 

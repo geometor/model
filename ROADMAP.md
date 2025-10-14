@@ -32,3 +32,7 @@ The following is a list of features and improvements planned for the GEOMETOR Mo
     -   Implement a pub/sub event system for broadcasting model events, such as `point_added`, `line_added`, etc.
     -   Integrate the event system with the `explorer` UI to provide real-time updates and feedback.
     -   Use the event system to trigger analysis and validation of the model as it is being constructed.
+
+### 5. Known Issues
+
+-   **`divine` analysis on loaded models:** When a model is loaded from a file, adding new intersection points does not trigger a `divine` analysis. This works as expected for new constructions.

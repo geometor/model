@@ -52,7 +52,7 @@ from geometor.model.sections import *
 from geometor.model.chains import *
 
 from geometor.model._serialize import save_model, load_model
-from geometor.model._delete import delete_element
+from geometor.model._delete import delete_element, get_dependents
 
 GeometryObject = (
     spg.Point
@@ -183,6 +183,7 @@ class Model(dict):
     #  set_wedge_by_labels = _set_wedge_by_labels
 
     delete_element = delete_element
+    get_dependents = get_dependents
 
     def remove_by_label(self, label: str) -> None:
         el = self.get_element_by_label(label)

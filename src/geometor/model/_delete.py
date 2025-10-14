@@ -23,6 +23,37 @@ def _get_dependents_recursive(model, parent_element, dependents_set):
                 _get_dependents_recursive(model, element, dependents_set)
 
 
+def get_dependents(self, element_or_label):
+    """
+    Finds and returns a set of all elements that depend on the given element.
+
+    This method is for checking dependencies without performing any deletion.
+
+    Args:
+        element_or_label (spg.GeometryEntity or str): The element object or its
+            label to check for dependents.
+
+    Returns:
+        set: A set of dependent elements. Returns an empty set if the element
+             is not found or has no dependents.
+    """
+    if isinstance(element_or_label, str):
+        element_to_check = self.get_element_by_label(element_or_label)
+        if not element_to_check:
+            console.print(f"[bold red]Error:[/bold red] Element with label '{element_or_label}' not found.")
+            return set()
+    else:
+        element_to_check = element_or_label
+
+    if element_to_check not in self:
+        console.print(f"[bold red]Error:[/bold red] Element '{element_to_check}' not found in the model.")
+        return set()
+
+    dependents = set()
+    _get_dependents_recursive(self, element_to_check, dependents)
+    return dependents
+
+
 def delete_element(self, element_or_label):
     """
     Deletes an element and performs a cascading delete of all its dependents.
