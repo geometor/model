@@ -63,6 +63,7 @@ GeometryObject = (
     | Wedge
     | Section
     | Chain
+    | sp.FiniteSet
 )
 
 

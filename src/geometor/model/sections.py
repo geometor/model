@@ -109,15 +109,16 @@ def _set_section(model, points: list[spg.Point], classes=[], label="") -> Sectio
 
     # TODO: check points and minimum count of 3
     section = Section(points)
+    section_repr = sp.FiniteSet(*points)
 
     if not label:
         points_labels = [str(model[pt].label or pt) for pt in points]
         points_labels = " ".join(points_labels)
         label = f"/ {points_labels} /"
 
-    details = Element(section, parents=points, classes=classes, label=label)
+    details = Element(section_repr, parents=points, classes=classes, label=label)
 
-    model[section] = details
+    model[section_repr] = details
 
     print(f"{details.label}")
     return section

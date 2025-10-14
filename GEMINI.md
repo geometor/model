@@ -4,6 +4,7 @@ A Python library for creating and manipulating geometric constructions, providin
 
 ## Key Modules (`src/geometor/model/`)
 
+-   **`__init__.py`**: `Model` class and event trigger system.
 -   **`element.py`**: Core `Element` class.
 -   **`_points.py`**: `Point` class and functions.
 -   **`_lines.py`**: `Line` class and functions.
