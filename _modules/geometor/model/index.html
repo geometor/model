@@ -169,7 +169,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.chains</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._serialize</span><span class="w"> </span><span class="kn">import</span> <span class="n">save_model</span><span class="p">,</span> <span class="n">load_model</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._delete</span><span class="w"> </span><span class="kn">import</span> <span class="n">delete_element</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._delete</span><span class="w"> </span><span class="kn">import</span> <span class="n">delete_element</span><span class="p">,</span> <span class="n">get_dependents</span>
 
 <span class="n">GeometryObject</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">spg</span><span class="o">.</span><span class="n">Point</span>
@@ -180,6 +180,7 @@
     <span class="o">|</span> <span class="n">Wedge</span>
     <span class="o">|</span> <span class="n">Section</span>
     <span class="o">|</span> <span class="n">Chain</span>
+    <span class="o">|</span> <span class="n">sp</span><span class="o">.</span><span class="n">FiniteSet</span>
 <span class="p">)</span>
 
 
@@ -304,6 +305,7 @@
     <span class="c1">#  set_wedge_by_labels = _set_wedge_by_labels</span>
 
     <span class="n">delete_element</span> <span class="o">=</span> <span class="n">delete_element</span>
+    <span class="n">get_dependents</span> <span class="o">=</span> <span class="n">get_dependents</span>
 
 <div class="viewcode-block" id="Model.remove_by_label">
 <a class="viewcode-back" href="../../../modules/geometor.model/#geometor.model.Model.remove_by_label">[docs]</a>

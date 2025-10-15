@@ -113,6 +113,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.set_polygon_by_labels"><code class="docutils literal notranslate"><span class="pre">Model.set_polygon_by_labels()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.set_wedge"><code class="docutils literal notranslate"><span class="pre">Model.set_wedge()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.delete_element"><code class="docutils literal notranslate"><span class="pre">Model.delete_element()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.get_dependents"><code class="docutils literal notranslate"><span class="pre">Model.get_dependents()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.remove_by_label"><code class="docutils literal notranslate"><span class="pre">Model.remove_by_label()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.points"><code class="docutils literal notranslate"><span class="pre">Model.points</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.structs"><code class="docutils literal notranslate"><span class="pre">Model.structs</span></code></a></li>
@@ -510,6 +511,25 @@ constructed from it, directly or indirectly.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><dl class="simple">
 <dt>element_or_label (spg.GeometryEntity or str): The element object or its</dt><dd><p>label to be deleted.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.Model.get_dependents">
+<span class="sig-name descname"><span class="pre">get_dependents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element_or_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.Model.get_dependents" title="Link to this definition"></a></dt>
+<dd><p>Finds and returns a set of all elements that depend on the given element.</p>
+<p>This method is for checking dependencies without performing any deletion.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>element_or_label (spg.GeometryEntity or str): The element object or its</dt><dd><p>label to check for dependents.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>set: A set of dependent elements. Returns an empty set if the element</dt><dd><p>is not found or has no dependents.</p>
 </dd>
 </dl>
 </dd>
