@@ -14,8 +14,8 @@ def run():
     model.construct_circle(A, B)
     model.construct_circle(B, A)
 
-    E = model.get_element_by_label("E")
-    F = model.get_element_by_label("F")
+    E = model.get_element_by_ID("E")
+    F = model.get_element_by_ID("F")
 
     model.set_polygon([A, B, E])
     model.set_polygon([A, B, F])

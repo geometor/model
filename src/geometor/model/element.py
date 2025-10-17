@@ -20,14 +20,14 @@ class Element:
         A list of parent elements (default is None).
     - ``classes`` : list[str]
         A list of class labels (default is None).
-    - ``label`` : str
-        - A string label for the element
-        - if label is none, a label is generated
+    - ``ID`` : str
+        - A string ID for the element
+        - if ID is none, a ID is generated
         - is used as a reference in reports and plots
 
     attributes
     ----------
-    - ``label`` : :class:`python:str`
+    - ``ID`` : :class:`python:str`
         name used in presentation and reports
     - ``classes`` : dict
         dict with strings for class name
@@ -42,7 +42,7 @@ class Element:
         sympy_obj,
         parents: list | None = None,
         classes: list[str] | None = None,
-        label: str = "",
+        ID: str = "",
     ):
         """
         Initializes an Element of the model.
@@ -61,7 +61,7 @@ class Element:
 
         self.parents = {key: "" for key in parents}
         self.classes = {key: "" for key in classes}
-        self.label = label
+        self.ID = ID
 
 
 class CircleElement(Element):
@@ -78,14 +78,14 @@ class CircleElement(Element):
         A list of parent elements (default is None).
     - ``classes`` : list[str]
         A list of class labels (default is None).
-    - ``label`` : str
-        - A string label for the element
-        - if label is none, a label is generated
+    - ``ID`` : str
+        - A string ID for the element
+        - if ID is none, a ID is generated
         - is used as a reference in reports and plots
 
     attributes
     ----------
-    - ``label`` : :class:`python:str`
+    - ``ID`` : :class:`python:str`
         name used in presentation and reports
     - ``classes`` : dict
         dict with strings for class name
@@ -98,9 +98,9 @@ class CircleElement(Element):
         pt_radius: spg.Point,
         parents: list | None = None,
         classes: list[str] | None = None,
-        label: str = "",
+        ID: str = "",
     ):
-        super().__init__(sympy_obj, parents, classes, label)
+        super().__init__(sympy_obj, parents, classes, ID)
         self.pt_radius = pt_radius
 
 
@@ -147,20 +147,20 @@ def find_intersection(test_tuple: tuple) -> tuple:
     return prev, struct, result
 
 
-def _get_ancestors_labels(self, element) -> dict[str, dict]:
+def _get_ancestors_IDs(self, element) -> dict[str, dict]:
     """
-    Retrieves the labels of the ancestors for the given element.
+    Retrieves the IDs of the ancestors for the given element.
 
     The method recursively traverses the parent elements of the given element
-    and constructs a nested dictionary with labels representing the ancestor tree.
+    and constructs a nested dictionary with IDs representing the ancestor tree.
 
     parameters
     ----------
     - element : sympy.geometry object
-        The element for which the ancestors' labels are to be retrieved.
+        The element for which the ancestors' IDs are to be retrieved.
 
     returns
-    - dict : A nested dictionary representing the labels of the ancestors.
+    - dict : A nested dictionary representing the IDs of the ancestors.
 
     example
     -------
@@ -168,7 +168,7 @@ def _get_ancestors_labels(self, element) -> dict[str, dict]:
     {'A': {'B': {'D': {}}, 'C': {}}}
     """
 
-    ancestors = {self[element].label: {}}
+    ancestors = {self[element].ID: {}}
 
     if "given" in self[element].classes:
         return ancestors
@@ -180,9 +180,7 @@ def _get_ancestors_labels(self, element) -> dict[str, dict]:
         parents = list(self[element].parents.keys())[:2]
 
     for parent in parents:
-        ancestors[self[element].label].update(self.get_ancestors_labels(parent))
-
-    return ancestors
+        ancestors[self[element].ID].update(self.get_ancestors_IDs(parent))
 
 
 def _get_ancestors(self, element):
@@ -223,18 +221,18 @@ def _get_ancestors(self, element):
     return ancestors
 
 
-def _get_element_by_label(self, label: str):
-    """Finds and returns the element with the given label.
+def _get_element_by_ID(self, ID: str):
+    """Finds and returns the element with the given ID.
 
     parameters
     ----------
-    - ``label`` : :class:`str`: The label of the desired element.
+    - ``ID`` : :class:`str`: The ID of the desired element.
 
     returns
     -------
-    Element or None: The element with the matching label, or None if no match is found.
+    Element or None: The element with the matching ID, or None if no match is found.
     """
     for element_key, element in self.items():
-        if hasattr(element, "label") and element.label == label:
+        if hasattr(element, "ID") and element.ID == ID:
             return element_key
     return None

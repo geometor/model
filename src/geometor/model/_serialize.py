@@ -15,7 +15,7 @@ def save_model(model, file_path):
     for obj in sympy_objects:
         element = model[obj]
         element_data = {
-            'label': element.label,
+            'ID': element.ID,
             'classes': list(element.classes.keys()),
             'parents': [obj_to_index[p] for p in element.parents.keys()],
         }
@@ -23,15 +23,15 @@ def save_model(model, file_path):
             element_data['pt_radius'] = obj_to_index[element.pt_radius]
         serializable_elements.append(element_data)
 
-    # Capture the next label from the generator
-    # This is a bit of a hack; we generate the next label and then have to prepend it
+    # Capture the next ID from the generator
+    # This is a bit of a hack; we generate the next ID and then have to prepend it
     # to the generator sequence when we load. A better way might be to store the
     # generator's state, but that's more complex.
-    next_label = next(model.label_gen)
+    next_ID = next(model.ID_gen)
 
     serializable_model = {
         'name': model.name,
-        'next_label': next_label,
+        'next_ID': next_ID,
         'sympy_objects': [sp.srepr(obj) for obj in sympy_objects],
         'elements': serializable_elements,
     }
@@ -52,17 +52,17 @@ def load_model(file_path):
 
     model = Model(serializable_model.get('name', ''))
     
-    # Restore the label generator state
-    next_label = serializable_model.get('next_label')
-    if next_label:
+    # Restore the ID generator state
+    next_ID = serializable_model.get('next_ID')
+    if next_ID:
         # This is a bit of a trick. We need to effectively "put back" the saved
-        # next_label into the generator sequence.
+        # next_ID into the generator sequence.
         from itertools import chain
         # First, advance the generator to the correct position.
-        for label in model.label_gen:
-            if label == next_label:
+        for ID in model.ID_gen:
+            if ID == next_ID:
                 break
-        model.label_gen = chain([next_label], model.label_gen)
+        model.ID_gen = chain([next_ID], model.ID_gen)
     
     sympy_objects = [parse_expr(s) for s in serializable_model['sympy_objects']]
 
@@ -74,7 +74,7 @@ def load_model(file_path):
             pt_radius = sympy_objects[element_data['pt_radius']]
             element = CircleElement(
                 sympy_obj=sympy_obj,
-                label=element_data['label'],
+                ID=element_data['ID'],
                 classes=element_data['classes'],
                 parents=parents,
                 pt_radius=pt_radius
@@ -82,7 +82,7 @@ def load_model(file_path):
         else:
             element = Element(
                 sympy_obj=sympy_obj,
-                label=element_data['label'],
+                ID=element_data['ID'],
                 classes=element_data['classes'],
                 parents=parents
             )

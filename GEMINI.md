@@ -10,7 +10,7 @@ A Python library for creating and manipulating geometric constructions, providin
 -   **`_lines.py`**: `Line` class and functions.
 -   **`_circles.py`**: `Circle` class and functions.
 -   **`_segments.py`**: `Segment` class and functions.
--   **`_polygons.py`**: `Polygon` class and functions, including `_set_polygon_by_labels`.
+-   **`_polygons.py`**: `Polygon` class and functions, including `_set_polygon_by_IDs`.
 -   **`_delete.py`**: Functions for deleting elements and finding dependents.
 -   **`_serialize.py`**: JSON serialization and deserialization.
 -   **`chains.py`**: Logic for connected segments.

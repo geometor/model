@@ -6,21 +6,21 @@ from geometor.model.common import *
 from geometor.model.element import Element
 
 
-def _set_polygon_by_labels(
-        model, poly_pts_labels: list[str], classes: list = None, label: str = ""
+def _set_polygon_by_IDs(
+        model, poly_pts_IDs: list[str], classes: list = None, ID: str = ""
 ) -> spg.Line:
     """
-    find points by label and use them with :meth:`Model.construct_line`
+    find points by ID and use them with :meth:`Model.construct_line`
     """
     poly_pts = []
 
-    for poly_label in poly_pts_labels:
-        poly_pts.append(model.get_element_by_label(poly_label))
+    for poly_ID in poly_pts_IDs:
+        poly_pts.append(model.get_element_by_ID(poly_ID))
 
     return model.set_polygon(poly_pts, classes)
 
 
-def _set_polygon(model, poly_pts: list[spg.Point], classes=[], label="") -> spg.Polygon:
+def _set_polygon(model, poly_pts: list[spg.Point], classes=[], ID="") -> spg.Polygon:
     """
     set polygon (list of 3 or more points)
     """
@@ -28,14 +28,14 @@ def _set_polygon(model, poly_pts: list[spg.Point], classes=[], label="") -> spg.
     # TODO: check points and minimum count of 3
     poly = spg.Polygon(*poly_pts)
 
-    if not label:
-        poly_pts_labels = [str(model[pt].label or pt) for pt in poly_pts]
-        poly_pts_labels = " ".join(poly_pts_labels)
-        label = f"< {poly_pts_labels} >"
+    if not ID:
+        poly_pts_IDs = [str(model[pt].ID or pt) for pt in poly_pts]
+        poly_pts_IDs = " ".join(poly_pts_IDs)
+        ID = f"< {poly_pts_IDs} >"
 
-    details = Element(poly, parents=poly_pts, classes=classes, label=label)
+    details = Element(poly, parents=poly_pts, classes=classes, ID=ID)
 
     model[poly] = details
 
-    print(f"{details.label}")
+    print(f"{details.ID}")
     return poly

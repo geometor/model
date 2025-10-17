@@ -99,7 +99,7 @@ def _set_wedge(
     pt_sweep_end: spg.Point,
     direction="clockwise",
     classes: list = None,
-    label: str = "",
+    ID: str = "",
 ) -> Wedge:
     """
     sets a Wedge from 3 points and adds it to the model.
@@ -120,7 +120,7 @@ def _set_wedge(
     - ``pt_radius`` : :class:`sympy.geometry.point.Point` : point to mark radius
     - ``pt_end`` : :class:`sympy.geometry.point.Point` : A SymPy Point marking the sweep of the wedge
     - ``classes`` : :class:`list` *optional* : A list of string names for classes defining a set of styles. Defaults to None.
-    - ``label`` : :class:`str` *optional* : A text label for use in plotting and reporting. Defaults to an empty string.
+    - ``ID`` : :class:`str` *optional* : A text ID for use in plotting and reporting. Defaults to an empty string.
 
     returns
     -------
@@ -131,11 +131,11 @@ def _set_wedge(
     -------
         >>> from geometor.elements import *
         >>> model = Model("demo")
-        >>> A = model.set_point(0, 0, classes=["given"], label="A")
-        >>> B = model.set_point(1, 0, classes=["given"], label="B")
+        >>> A = model.set_point(0, 0, classes=["given"], ID="A")
+        >>> B = model.set_point(1, 0, classes=["given"], ID="B")
         >>> model.construct_circle(A, B)
         >>> model.construct_circle(B, A)
-        >>> model._set_wedge_by_labels('A', 'B', 'C')
+        >>> model._set_wedge_by_IDs('A', 'B', 'C')
         <Wedge object ...>
 
     notes
@@ -156,21 +156,21 @@ def _set_wedge(
 
     struct = Wedge(pt_center, pt_radius, pt_sweep_start, pt_sweep_end)
 
-    if not label:
-        pt_center_label = model[pt_center].label
-        pt_radius_label = model[pt_radius].label
-        label = f"( {pt_center_label} {pt_radius_label} )"
-        label += f"< {model[pt_sweep_start].label} {pt_center_label} {model[pt_sweep_end].label} >"
+    if not ID:
+        pt_center_ID = model[pt_center].ID
+        pt_radius_ID = model[pt_radius].ID
+        ID = f"( {pt_center_ID} {pt_radius_ID} )"
+        ID += f"< {model[pt_sweep_start].ID} {pt_center_ID} {model[pt_sweep_end].ID} >"
 
     details = CircleElement(
         struct,
         parents=[pt_center, pt_radius],
         classes=classes,
-        label=label,
+        ID=ID,
         pt_radius=pt_radius,
     )
 
     model[struct] = details
-    console.print(f"[orchid1]{details.label}[/orchid1]")
+    console.print(f"[orchid1]{details.ID}[/orchid1]")
 
     return struct

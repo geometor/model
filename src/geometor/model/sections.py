@@ -29,11 +29,11 @@ class Section:
         ]
         self.clean_expr = clean_expr
 
-    def get_labels(self, model) -> list[str]:
+    def get_IDs(self, model) -> list[str]:
         """
-        returns a list of labels
+        returns a list of IDs
         """
-        return [model[pt].label for pt in self.points]
+        return [model[pt].ID for pt in self.points]
 
     @property
     def ratio(self) -> sp.Expr:
@@ -88,21 +88,21 @@ class Section:
         max_length_index = self.lengths.index(self.max_length())
         return self.segments[max_length_index]
 
-def _set_section_by_labels(
-        model, points_labels: list[str], classes: list = None, label: str = ""
+def _set_section_by_IDs(
+        model, points_IDs: list[str], classes: list = None, ID: str = ""
 ) -> Section:
     """
-    find points by label and use them with :meth:`Model.set_section`
+    find points by ID and use them with :meth:`Model.set_section`
     """
     points = []
 
-    for point_label in points_labels:
-        points.append(model.get_element_by_label(poly_label))
+    for point_ID in points_IDs:
+        points.append(model.get_element_by_ID(poly_ID))
 
-    return model.set_section(points, classes, label)
+    return model.set_section(points, classes, ID)
 
 
-def _set_section(model, points: list[spg.Point], classes=[], label="") -> Section:
+def _set_section(model, points: list[spg.Point], classes=[], ID="") -> Section:
     """
     set section (list of 3 points on a line)
     """
@@ -111,14 +111,14 @@ def _set_section(model, points: list[spg.Point], classes=[], label="") -> Sectio
     section = Section(points)
     section_repr = sp.FiniteSet(*points)
 
-    if not label:
-        points_labels = [str(model[pt].label or pt) for pt in points]
-        points_labels = " ".join(points_labels)
-        label = f"/ {points_labels} /"
+    if not ID:
+        points_IDs = [str(model[pt].ID or pt) for pt in points]
+        points_IDs = " ".join(points_IDs)
+        ID = f"/ {points_IDs} /"
 
-    details = Element(section_repr, parents=points, classes=classes, label=label)
+    details = Element(section_repr, parents=points, classes=classes, ID=ID)
 
     model[section_repr] = details
 
-    print(f"{details.label}")
+    print(f"{details.ID}")
     return section

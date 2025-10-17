@@ -16,8 +16,8 @@ def run():
 
     print(f"{c1.area=}")
 
-    E = model.get_element_by_label("E")
-    F = model.get_element_by_label("F")
+    E = model.get_element_by_ID("E")
+    F = model.get_element_by_ID("F")
 
     w = model.set_wedge(A, B, F, E)
     print(f"{w.area=}")

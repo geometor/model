@@ -19,8 +19,8 @@ def run():
     # unit circle
     model.construct_circle(A, B)
 
-    E = model.get_element_by_label('E')
-    #  model[C].label = 'C'
+    E = model.get_element_by_ID('E')
+    #  model[C].ID = 'C'
 
     # perpendicular
     model.construct_line(A, D)
@@ -28,15 +28,15 @@ def run():
     # diagonal
     model.construct_line(D, C)
 
-    G = model.get_element_by_label('G')
+    G = model.get_element_by_ID('G')
 
     model.construct_circle(E, G, classes=['green'])
 
-    J = model.get_element_by_label('J')
+    J = model.get_element_by_ID('J')
 
     model.construct_line(D, J)
     
-    N = model.get_element_by_label('N')
+    N = model.get_element_by_ID('N')
     model[N].classes['red'] = ''
 
     report_summary(model)

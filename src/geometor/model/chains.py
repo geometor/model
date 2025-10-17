@@ -129,16 +129,16 @@ class Chain:
         return symmetry_count
 
     @property
-    def fibonacci_labels(self) -> list[str]:
+    def fibonacci_IDs(self) -> list[str]:
         """
-        Creates and returns Fibonacci-style labels for each segment based on
+        Creates and returns Fibonacci-style IDs for each segment based on
         their lengths.
 
         returns
         -------
         - :class:`list[str]`
             A list of strings where each string is a Fibonacci-style 
-            label corresponding to a segment.
+            ID corresponding to a segment.
         """
 
         # Step 1: Define Symbols

@@ -23,27 +23,27 @@ def _get_dependents_recursive(model, parent_element, dependents_set):
                 _get_dependents_recursive(model, element, dependents_set)
 
 
-def get_dependents(self, element_or_label):
+def get_dependents(self, element_or_ID):
     """
     Finds and returns a set of all elements that depend on the given element.
 
     This method is for checking dependencies without performing any deletion.
 
     Args:
-        element_or_label (spg.GeometryEntity or str): The element object or its
-            label to check for dependents.
+        element_or_ID (spg.GeometryEntity or str): The element object or its
+            ID to check for dependents.
 
     Returns:
         set: A set of dependent elements. Returns an empty set if the element
              is not found or has no dependents.
     """
-    if isinstance(element_or_label, str):
-        element_to_check = self.get_element_by_label(element_or_label)
+    if isinstance(element_or_ID, str):
+        element_to_check = self.get_element_by_ID(element_or_ID)
         if not element_to_check:
-            console.print(f"[bold red]Error:[/bold red] Element with label '{element_or_label}' not found.")
+            console.print(f"[bold red]Error:[/bold red] Element with ID '{element_or_ID}' not found.")
             return set()
     else:
-        element_to_check = element_or_label
+        element_to_check = element_or_ID
 
     if element_to_check not in self:
         console.print(f"[bold red]Error:[/bold red] Element '{element_to_check}' not found in the model.")
@@ -54,7 +54,7 @@ def get_dependents(self, element_or_label):
     return dependents
 
 
-def delete_element(self, element_or_label):
+def delete_element(self, element_or_ID):
     """
     Deletes an element and performs a cascading delete of all its dependents.
 
@@ -62,16 +62,16 @@ def delete_element(self, element_or_label):
     constructed from it, directly or indirectly.
 
     Args:
-        element_or_label (spg.GeometryEntity or str): The element object or its
-            label to be deleted.
+        element_or_ID (spg.GeometryEntity or str): The element object or its
+            ID to be deleted.
     """
-    if isinstance(element_or_label, str):
-        element_to_delete = self.get_element_by_label(element_or_label)
+    if isinstance(element_or_ID, str):
+        element_to_delete = self.get_element_by_ID(element_or_ID)
         if not element_to_delete:
-            console.print(f"[bold red]Error:[/bold red] Element with label '{element_or_label}' not found.")
+            console.print(f"[bold red]Error:[/bold red] Element with ID '{element_or_ID}' not found.")
             return
     else:
-        element_to_delete = element_or_label
+        element_to_delete = element_or_ID
 
     if element_to_delete not in self:
         # This can happen if the object exists but isn't in this specific model

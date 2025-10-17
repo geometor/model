@@ -33,19 +33,19 @@ from geometor.model.element import (
     Element,
     CircleElement,
     _get_ancestors,
-    _get_ancestors_labels,
-    _get_element_by_label,
+    _get_ancestors_IDs,
+    _get_element_by_ID,
 )
 
 from geometor.model._points import _set_point
-from geometor.model._lines import _construct_line, _construct_line_by_labels
+from geometor.model._lines import _construct_line, _construct_line_by_IDs
 from geometor.model._circles import (
     _construct_circle,
-    _construct_circle_by_labels,
+    _construct_circle_by_IDs,
 )
-from geometor.model._polygons import _set_polygon, _set_polygon_by_labels
-from geometor.model._segments import _set_segment, _set_segment_by_labels
-from geometor.model.sections import Section, _set_section, _set_section_by_labels
+from geometor.model._polygons import _set_polygon, _set_polygon_by_IDs
+from geometor.model._segments import _set_segment, _set_segment_by_IDs
+from geometor.model.sections import Section, _set_section, _set_section_by_IDs
 
 from geometor.model.wedges import Wedge, _set_wedge # _set_wedge_by_labels
 from geometor.model.sections import *
@@ -96,27 +96,27 @@ class Model(dict):
     -------
     - :meth:`set_point` -> :class:`Point <sympy.geometry.point.Point>`
     - :meth:`construct_line` -> :class:`Line <sympy.geometry.line.Line>`
-    - :meth:`construct_line_by_labels` -> :class:`Line <sympy.geometry.line.Line>`
+    - :meth:`construct_line_by_IDs` -> :class:`Line <sympy.geometry.line.Line>`
     - :meth:`construct_circle` -> :class:`Circle <sympy.geometry.ellipse.Circle>`
-    - :meth:`construct_circle_by_labels` -> :class:`Circle <sympy.geometry.ellipse.Circle>`
+    - :meth:`construct_circle_by_IDs` -> :class:`Circle <sympy.geometry.ellipse.Circle>`
     - :meth:`set_segment` -> :class:`Segment <sympy.geometry.line.Segment>`
-    - :meth:`set_segment_by_labels` -> :class:`Segment <sympy.geometry.line.Segment>`
+    - :meth:`set_segment_by_IDs` -> :class:`Segment <sympy.geometry.line.Segment>`
     - :meth:`set_polygon` -> :class:`Polygon <sympy.geometry.polygon.Polygon>`
-    - :meth:`set_polygon_by_labels` -> :class:`Polygon <sympy.geometry.polygon.Polygon>`
+    - :meth:`set_polygon_by_IDs` -> :class:`Polygon <sympy.geometry.polygon.Polygon>`
     - :meth:`set_wedge` -> :class:`Wedge`
 
     - :meth:`limits` -> :class:`list`
         returns the x, y limits of the points and circle boundaries in the model
 
     - :meth:`get_ancestors` ->
-    - :meth:`get_ancestors_labels` ->
+    - :meth:`get_ancestors_IDs` ->
 
-    - :meth:`get_element_by_label` ->
+    - :meth:`get_element_by_ID` ->
 
     - :meth:`save` ->
     - :meth:`load` ->
 
-    - :meth:`point_label_generator` -> Iterator[str]
+    - :meth:`point_ID_generator` -> Iterator[str]
 
     .. todo:: add `get_bounds_polygon` method to Model
 
@@ -125,7 +125,7 @@ class Model(dict):
     def __init__(self, name: str = ""):
         super().__init__()
         self._name = name
-        self.label_gen = self.point_label_generator()
+        self.ID_gen = self.point_ID_generator()
         self._events = {}
 
     def add_event_listener(self, event, listener):
@@ -165,19 +165,19 @@ class Model(dict):
     set_point = _set_point
 
     construct_line = _construct_line
-    construct_line_by_labels = _construct_line_by_labels
+    construct_line_by_IDs = _construct_line_by_IDs
 
     construct_circle = _construct_circle
-    construct_circle_by_labels = _construct_circle_by_labels
+    construct_circle_by_IDs = _construct_circle_by_IDs
 
     set_segment = _set_segment
-    set_segment_by_labels = _set_segment_by_labels
+    set_segment_by_IDs = _set_segment_by_IDs
 
     set_section = _set_section
-    set_section_by_labels = _set_section_by_labels
+    set_section_by_IDs = _set_section_by_IDs
 
     set_polygon = _set_polygon
-    set_polygon_by_labels = _set_polygon_by_labels
+    set_polygon_by_IDs = _set_polygon_by_IDs
 
     set_wedge = _set_wedge
     #  set_wedge_by_labels = _set_wedge_by_labels
@@ -185,8 +185,8 @@ class Model(dict):
     delete_element = delete_element
     get_dependents = get_dependents
 
-    def remove_by_label(self, label: str) -> None:
-        el = self.get_element_by_label(label)
+    def remove_by_ID(self, ID: str) -> None:
+        el = self.get_element_by_ID(ID)
         del self[el]
 
     @property
@@ -256,12 +256,12 @@ class Model(dict):
         return [[min(x_vals), max(x_vals)], [min(y_vals), max(y_vals)]]
 
     get_ancestors = _get_ancestors
-    get_ancestors_labels = _get_ancestors_labels
+    get_ancestors_IDs = _get_ancestors_IDs
 
-    get_element_by_label = _get_element_by_label
+    get_element_by_ID = _get_element_by_ID
 
 
-    def point_label_generator(self) -> Iterator[str]:
+    def point_ID_generator(self) -> Iterator[str]:
         letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         repeat = 1
 
@@ -284,8 +284,8 @@ if __name__ == "__main__":
     model.construct_circle(A, B)
     model.construct_circle(B, A)
 
-    E = model.get_element_by_label("E")
-    F = model.get_element_by_label("F")
+    E = model.get_element_by_ID("E")
+    F = model.get_element_by_ID("F")
     model.construct_line(E, F)
 
     report_sequence(model)

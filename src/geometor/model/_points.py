@@ -6,7 +6,7 @@ from geometor.model.common import *
 from geometor.model.utils import *
 
 from geometor.model.element import Element
-from geometor.model.reports import get_colored_label
+from geometor.model.reports import get_colored_ID
 
 
 def _set_point(
@@ -15,7 +15,7 @@ def _set_point(
     y_val: sp.Expr,
     parents: list = None,
     classes: list = None,
-    label: str = "",
+    ID: str = "",
 ) -> spg.Point:
     """
     Adds a point to the model, finds duplicates, cleans values, and sets
@@ -29,7 +29,7 @@ def _set_point(
       Defaults to None.
     - ``classes`` list, optional: A list of string names for classes defining
       a set of styles. Defaults to None.
-    - ``label`` str, optional: A text label for use in plotting and
+    - ``ID`` str, optional: A text ID for use in plotting and
       reporting. Defaults to an empty string.
 
     returns
@@ -59,7 +59,7 @@ def _set_point(
 
     pt = spg.Point(x_val, y_val)
 
-    details = Element(pt, parents, classes, label)
+    details = Element(pt, parents, classes, ID)
 
     if pt in self.points:
         # add attributes
@@ -76,15 +76,15 @@ def _set_point(
                 self[prev_pt].classes.update(details.classes)
                 return prev_pt
 
-    if not label:
-        label = next(self.label_gen)
+    if not ID:
+        ID = next(self.ID_gen)
 
-    details = Element(pt, parents, classes, label)
+    details = Element(pt, parents, classes, ID)
     self[pt] = details
     self._publish_event("point_added", pt)
-    
-    text_label = get_colored_label(pt, label)
-    console.print(f"[gold3]{text_label}[/gold3] = {{ {str(pt.x)}, {str(pt.y)} }}")
-    #  console.print(f"[gold3]{text_label}[/gold3] = {{ {sp.pretty(pt.x)}, {sp.pretty(pt.y)} }}")
-    #  print(f"{text_label} = {{ {sp.pprint(pt.x)}, {str(pt.y)} }}")
+
+    text_ID = get_colored_ID(pt, ID)
+    console.print(text_ID, f" = {{ {str(pt.x)}, {str(pt.y)} }}")
+    #  console.print(f"[gold3]{text_ID}[/gold3] = {{ {sp.pretty(pt.x)}, {sp.pretty(pt.y)} }}")
+    #  print(f"{text_ID} = {{ {sp.pprint(pt.x)}, {str(pt.y)} }}")
     return pt

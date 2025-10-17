@@ -14,8 +14,8 @@ from .utils import *
 from .element import (
     Element,
     _get_ancestors,
-    _get_ancestors_labels,
-    _get_element_by_label,
+    _get_ancestors_IDs,
+    _get_element_by_ID,
 )
 
 
@@ -77,7 +77,7 @@ def report_group_by_type(model):
 
     # Points
     table = Table(title="Points")
-    table.add_column("Label", justify="center")
+    table.add_column("ID", justify="center")
     table.add_column("x", justify="center")
     table.add_column("y", justify="center")
     table.add_column("classes", justify="center")
@@ -85,15 +85,15 @@ def report_group_by_type(model):
 
     for el in model.points:
         details = model[el]
-        el_label = get_colored_label(el, model[el].label)
+        el_ID = get_colored_ID(el, model[el].ID)
         el_classes = list(model[el].classes.keys())
         el_parents_text = Text()  # Initialize an empty Text object for parents
         for parent in details.parents.keys():
-            el_parents_text.append(get_colored_label(parent, model[parent].label))
+            el_parents_text.append(get_colored_ID(parent, model[parent].ID))
             el_parents_text.append("\n")
 
         table.add_row(
-            el_label,
+            el_ID,
             str(el.x),
             str(el.y),
             "\n".join(el_classes),
@@ -114,16 +114,16 @@ def report_group_by_type(model):
     for el in model.lines:
         pt_1, pt_2 = el.points
         details = model[el]
-        el_label = get_colored_label(el, model[el].label)
+        el_ID = get_colored_ID(el, model[el].ID)
         el_classes = list(model[el].classes.keys())
         el_parents_text = Text()  # Initialize an empty Text object for parents
         for parent in details.parents.keys():
-            el_parents_text.append(get_colored_label(parent, model[parent].label))
+            el_parents_text.append(get_colored_ID(parent, model[parent].ID))
             el_parents_text.append("\n")
         table.add_row(
-            el_label,
-            str(model[pt_1].label or pt_1),
-            str(model[pt_2].label or pt_2),
+            el_ID,
+            str(model[pt_1].ID or pt_1),
+            str(model[pt_2].ID or pt_2),
             "\n".join(el_classes),
             el_parents_text,
             str(el.equation()),
@@ -134,7 +134,7 @@ def report_group_by_type(model):
 
     # Circles
     table = Table(title="Circles")
-    table.add_column("Label", style="red", justify="center")
+    table.add_column("ID", style="red", justify="center")
     table.add_column("pt_ctr", justify="center")
     table.add_column("pt_rad", justify="center")
     table.add_column("classes", justify="center")
@@ -146,16 +146,16 @@ def report_group_by_type(model):
         pt_2 = model[el].pt_radius
         #  pt_1, pt_2 = el.points
         details = model[el]
-        el_label = get_colored_label(el, model[el].label)
+        el_ID = get_colored_ID(el, model[el].ID)
         el_classes = list(model[el].classes.keys())
         el_parents_text = Text()  # Initialize an empty Text object for parents
         for parent in details.parents.keys():
-            el_parents_text.append(get_colored_label(parent, model[parent].label))
+            el_parents_text.append(get_colored_ID(parent, model[parent].ID))
             el_parents_text.append("\n")
         table.add_row(
-            el_label,
-            str(model[pt_1].label or pt_1),
-            str(model[pt_2].label or pt_2),
+            el_ID,
+            str(model[pt_1].ID or pt_1),
+            str(model[pt_2].ID or pt_2),
             "\n".join(el_classes),
             el_parents_text,
             str(el.equation()),
@@ -165,21 +165,21 @@ def report_group_by_type(model):
     console.print(table)
 
 
-def get_colored_label(el, label):
-    """Get the colored label for a geometric element."""
-    label_color = ""
+def get_colored_ID(el, ID):
+    """Get the colored ID for a geometric element."""
+    ID_color = ""
     if isinstance(el, spg.Point):
-        label_color = "gold3"
+        ID_color = "gold3"
     elif isinstance(el, spg.Line):
-        label_color = "white"
+        ID_color = "white"
     elif isinstance(el, spg.Circle):
-        label_color = "orchid1"
+        ID_color = "orchid1"
     elif isinstance(el, spg.Segment):
-        label_color = "gold3"
+        ID_color = "gold3"
     elif isinstance(el, spg.Polygon):
-        label_color = "bright_green"
+        ID_color = "bright_green"
 
-    return Text(label, style=label_color)
+    return Text(ID, style=ID_color)
 
 
 def report_sequence(model):
@@ -190,7 +190,7 @@ def report_sequence(model):
 
     table = Table(title="Sequence", row_styles=["on black", ""])
 
-    table.add_column("Label", style="bold", justify="center")
+    table.add_column("ID", style="bold", justify="center")
     table.add_column("<", justify="center")
     table.add_column(">", justify="center")
     table.add_column("classes", justify="center")
@@ -202,12 +202,12 @@ def report_sequence(model):
         el_parents_text = Text()  # Initialize an empty Text object for parents
         #  breakpoint()
         for parent in details.parents.keys():
-            el_parents_text.append(get_colored_label(parent, model[parent].label))
+            el_parents_text.append(get_colored_ID(parent, model[parent].ID))
             el_parents_text.append("\n")
 
-        label = get_colored_label(el, details.label)
+        ID = get_colored_ID(el, details.ID)
         row = [
-            label,
+            ID,
             "",
             "",
             "\n".join(el_classes),
@@ -221,8 +221,8 @@ def report_sequence(model):
 
         elif isinstance(el, spg.Line):
             pt_1, pt_2 = el.points
-            row[1] = str(model[pt_1].label or pt_1)
-            row[2] = str(model[pt_2].label or pt_2)
+            row[1] = str(model[pt_1].ID or pt_1)
+            row[2] = str(model[pt_2].ID or pt_2)
             row[5] = sp.pretty(el.equation())
 
         elif isinstance(el, spg.Circle):
@@ -230,17 +230,17 @@ def report_sequence(model):
             pt_radius = (
                 details.pt_radius
             )  # Assuming the radius point is stored in the details
-            row[1] = str(model[pt_center].label or pt_center)
-            row[2] = str(model[pt_radius].label or pt_radius)
+            row[1] = str(model[pt_center].ID or pt_center)
+            row[2] = str(model[pt_radius].ID or pt_radius)
             row[5] = sp.pretty(el.equation())
 
         elif isinstance(el, spg.Segment):
             pt_1, pt_2 = el.points
-            row[1] = str(model[pt_1].label or pt_1)
-            row[2] = str(model[pt_2].label or pt_2)
+            row[1] = str(model[pt_1].ID or pt_1)
+            row[2] = str(model[pt_2].ID or pt_2)
 
         elif isinstance(el, spg.Polygon):
-            vertices = ", ".join(str(model[pt].label or pt) for pt in el.vertices)
+            vertices = ", ".join(str(model[pt].ID or pt) for pt in el.vertices)
             row[1] = vertices
 
         table.add_row(*row)

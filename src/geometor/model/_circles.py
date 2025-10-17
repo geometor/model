@@ -12,16 +12,16 @@ from geometor.model.element import (
 )
 
 
-def _construct_circle_by_labels(
-    model, pt_1_label: str, pt_2_label: str, classes: list = None, label: str = ""
+def _construct_circle_by_IDs(
+    model, pt_1_ID: str, pt_2_ID: str, classes: list = None, ID: str = ""
 ) -> spg.Line:
     """
-    find points by label and use them with :meth:`Model.construct_line`
+    find points by ID and use them with :meth:`Model.construct_line`
     """
 
-    pt_1 = model.get_element_by_label(pt_1_label)
-    pt_2 = model.get_element_by_label(pt_2_label)
-    return model.construct_circle(pt_1, pt_2, classes, label)
+    pt_1 = model.get_element_by_ID(pt_1_ID)
+    pt_2 = model.get_element_by_ID(pt_2_ID)
+    return model.construct_circle(pt_1, pt_2, classes, ID)
 
 
 def _construct_circle(
@@ -29,7 +29,7 @@ def _construct_circle(
     pt_center: spg.Point,
     pt_radius: spg.Point,
     classes: list = None,
-    label: str = "",
+    ID: str = "",
 ) -> spg.Circle:
     """
     Constructs a Circle from two points and adds it to the model.
@@ -49,7 +49,7 @@ def _construct_circle(
     - ``pt_center`` : :class:`sympy.geometry.point.Point` A SymPy Point representing the circle center.
     - ``pt_radius`` : :class:`sympy.geometry.point.Point` A SymPy Point marking the length of the radius.
     - ``classes`` : :class:`list` *optional* A list of string names for classes defining a set of styles. Defaults to None.
-    - ``label`` : :class:`str` *optional* A text label for use in plotting and reporting. Defaults to an empty string.
+    - ``ID`` : :class:`str` *optional* A text ID for use in plotting and reporting. Defaults to an empty string.
 
     returns
     -------
@@ -60,8 +60,8 @@ def _construct_circle(
     -------
     >>> from geometor.elements import *
     >>> model = Model("demo")
-    >>> A = model.set_point(0, 0, classes=["given"], label="A")
-    >>> B = model.set_point(1, 0, classes=["given"], label="B")
+    >>> A = model.set_point(0, 0, classes=["given"], ID="A")
+    >>> B = model.set_point(1, 0, classes=["given"], ID="B")
     >>> model.construct_circle(A, B)
     <spg.Circle object ...>
 
@@ -83,16 +83,16 @@ def _construct_circle(
 
     struct = spg.Circle(pt_center, radius_len)
 
-    if not label:
-        pt_1_label = model[pt_center].label
-        pt_2_label = model[pt_radius].label
-        label = f"( {pt_1_label} {pt_2_label} )"
+    if not ID:
+        pt_1_ID = model[pt_center].ID
+        pt_2_ID = model[pt_radius].ID
+        ID = f"( {pt_1_ID} {pt_2_ID} )"
 
     details = CircleElement(
         struct,
         parents=[pt_center, pt_radius],
         classes=classes,
-        label=label,
+        ID=ID,
         pt_radius=pt_radius,
     )
     #  details.pt_radius = pt_radius
@@ -107,7 +107,7 @@ def _construct_circle(
         # add the new circle to the model
 
         model[struct] = details
-        console.print(f"[orchid1]{details.label}[/orchid1] = {str(struct.equation())}")
+        console.print(f"[orchid1]{details.ID}[/orchid1] = {str(struct.equation())}")
 
         find_all_intersections(model, struct)
 

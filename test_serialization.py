@@ -11,8 +11,8 @@ def compare_models(m1, m2):
     dict2 = m2.to_browser_dict()
 
     # Sort elements for consistent comparison
-    dict1['elements'].sort(key=lambda x: x['label'])
-    dict2['elements'].sort(key=lambda x: x['label'])
+    dict1['elements'].sort(key=lambda x: x['ID'])
+    dict2['elements'].sort(key=lambda x: x['ID'])
 
     if dict1 == dict2:
         print("✅ Models are identical.")
@@ -60,13 +60,13 @@ print("-" * 20)
 
 # 5. Add a new element to both models
 print("Step 5: Adding a new, identical element to both models...")
-E_orig = model_original.get_element_by_label("E")
-F_orig = model_original.get_element_by_label("F")
+E_orig = model_original.get_element_by_ID("E")
+F_orig = model_original.get_element_by_ID("F")
 model_original.construct_line(E_orig, F_orig)
 print(" -> New line added to original model.")
 
-E_reload = model_reloaded.get_element_by_label("E")
-F_reload = model_reloaded.get_element_by_label("F")
+E_reload = model_reloaded.get_element_by_ID("E")
+F_reload = model_reloaded.get_element_by_ID("F")
 model_reloaded.construct_line(E_reload, F_reload)
 print(" -> New line added to reloaded model.")
 print("-" * 20)
