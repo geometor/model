@@ -220,7 +220,7 @@
     <span class="n">pt_sweep_end</span><span class="p">:</span> <span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">,</span>
     <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;clockwise&quot;</span><span class="p">,</span>
     <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="n">ID</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Wedge</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    sets a Wedge from 3 points and adds it to the model.</span>
@@ -241,7 +241,7 @@
 <span class="sd">    - ``pt_radius`` : :class:`sympy.geometry.point.Point` : point to mark radius</span>
 <span class="sd">    - ``pt_end`` : :class:`sympy.geometry.point.Point` : A SymPy Point marking the sweep of the wedge</span>
 <span class="sd">    - ``classes`` : :class:`list` *optional* : A list of string names for classes defining a set of styles. Defaults to None.</span>
-<span class="sd">    - ``label`` : :class:`str` *optional* : A text label for use in plotting and reporting. Defaults to an empty string.</span>
+<span class="sd">    - ``ID`` : :class:`str` *optional* : A text ID for use in plotting and reporting. Defaults to an empty string.</span>
 
 <span class="sd">    returns</span>
 <span class="sd">    -------</span>
@@ -252,11 +252,11 @@
 <span class="sd">    -------</span>
 <span class="sd">        &gt;&gt;&gt; from geometor.elements import *</span>
 <span class="sd">        &gt;&gt;&gt; model = Model(&quot;demo&quot;)</span>
-<span class="sd">        &gt;&gt;&gt; A = model.set_point(0, 0, classes=[&quot;given&quot;], label=&quot;A&quot;)</span>
-<span class="sd">        &gt;&gt;&gt; B = model.set_point(1, 0, classes=[&quot;given&quot;], label=&quot;B&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; A = model.set_point(0, 0, classes=[&quot;given&quot;], ID=&quot;A&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; B = model.set_point(1, 0, classes=[&quot;given&quot;], ID=&quot;B&quot;)</span>
 <span class="sd">        &gt;&gt;&gt; model.construct_circle(A, B)</span>
 <span class="sd">        &gt;&gt;&gt; model.construct_circle(B, A)</span>
-<span class="sd">        &gt;&gt;&gt; model._set_wedge_by_labels(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; model._set_wedge_by_IDs(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;)</span>
 <span class="sd">        &lt;Wedge object ...&gt;</span>
 
 <span class="sd">    notes</span>
@@ -277,22 +277,22 @@
 
     <span class="n">struct</span> <span class="o">=</span> <span class="n">Wedge</span><span class="p">(</span><span class="n">pt_center</span><span class="p">,</span> <span class="n">pt_radius</span><span class="p">,</span> <span class="n">pt_sweep_start</span><span class="p">,</span> <span class="n">pt_sweep_end</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">label</span><span class="p">:</span>
-        <span class="n">pt_center_label</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="n">pt_center</span><span class="p">]</span><span class="o">.</span><span class="n">label</span>
-        <span class="n">pt_radius_label</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="n">pt_radius</span><span class="p">]</span><span class="o">.</span><span class="n">label</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;( </span><span class="si">{</span><span class="n">pt_center_label</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">pt_radius_label</span><span class="si">}</span><span class="s2"> )&quot;</span>
-        <span class="n">label</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&lt; </span><span class="si">{</span><span class="n">model</span><span class="p">[</span><span class="n">pt_sweep_start</span><span class="p">]</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">pt_center_label</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">model</span><span class="p">[</span><span class="n">pt_sweep_end</span><span class="p">]</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2"> &gt;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ID</span><span class="p">:</span>
+        <span class="n">pt_center_ID</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="n">pt_center</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span>
+        <span class="n">pt_radius_ID</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="n">pt_radius</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span>
+        <span class="n">ID</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;( </span><span class="si">{</span><span class="n">pt_center_ID</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">pt_radius_ID</span><span class="si">}</span><span class="s2"> )&quot;</span>
+        <span class="n">ID</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&lt; </span><span class="si">{</span><span class="n">model</span><span class="p">[</span><span class="n">pt_sweep_start</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">pt_center_ID</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">model</span><span class="p">[</span><span class="n">pt_sweep_end</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span><span class="si">}</span><span class="s2"> &gt;&quot;</span>
 
     <span class="n">details</span> <span class="o">=</span> <span class="n">CircleElement</span><span class="p">(</span>
         <span class="n">struct</span><span class="p">,</span>
         <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="n">pt_center</span><span class="p">,</span> <span class="n">pt_radius</span><span class="p">],</span>
         <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+        <span class="n">ID</span><span class="o">=</span><span class="n">ID</span><span class="p">,</span>
         <span class="n">pt_radius</span><span class="o">=</span><span class="n">pt_radius</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="n">model</span><span class="p">[</span><span class="n">struct</span><span class="p">]</span> <span class="o">=</span> <span class="n">details</span>
-    <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[orchid1]</span><span class="si">{</span><span class="n">details</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2">[/orchid1]&quot;</span><span class="p">)</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[orchid1]</span><span class="si">{</span><span class="n">details</span><span class="o">.</span><span class="n">ID</span><span class="si">}</span><span class="s2">[/orchid1]&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">struct</span>
 </pre></div>

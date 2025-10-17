@@ -149,13 +149,13 @@
         <span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">clean_expr</span> <span class="o">=</span> <span class="n">clean_expr</span>
 
-<div class="viewcode-block" id="Section.get_labels">
-<a class="viewcode-back" href="../../../../modules/geometor.model.sections/#geometor.model.sections.Section.get_labels">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<div class="viewcode-block" id="Section.get_IDs">
+<a class="viewcode-back" href="../../../../modules/geometor.model.sections/#geometor.model.sections.Section.get_IDs">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_IDs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        returns a list of labels</span>
+<span class="sd">        returns a list of IDs</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">model</span><span class="p">[</span><span class="n">pt</span><span class="p">]</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="p">[</span><span class="n">model</span><span class="p">[</span><span class="n">pt</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">]</span></div>
 
 
     <span class="nd">@property</span>
@@ -212,21 +212,21 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">segments</span><span class="p">[</span><span class="n">max_length_index</span><span class="p">]</span></div>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_set_section_by_labels</span><span class="p">(</span>
-        <span class="n">model</span><span class="p">,</span> <span class="n">points_labels</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_set_section_by_IDs</span><span class="p">(</span>
+        <span class="n">model</span><span class="p">,</span> <span class="n">points_IDs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ID</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Section</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    find points by label and use them with :meth:`Model.set_section`</span>
+<span class="sd">    find points by ID and use them with :meth:`Model.set_section`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">points</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">for</span> <span class="n">point_label</span> <span class="ow">in</span> <span class="n">points_labels</span><span class="p">:</span>
-        <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get_element_by_label</span><span class="p">(</span><span class="n">poly_label</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">point_ID</span> <span class="ow">in</span> <span class="n">points_IDs</span><span class="p">:</span>
+        <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get_element_by_ID</span><span class="p">(</span><span class="n">poly_ID</span><span class="p">))</span>
 
-    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">set_section</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">set_section</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">ID</span><span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_set_section</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">],</span> <span class="n">classes</span><span class="o">=</span><span class="p">[],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Section</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_set_section</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">],</span> <span class="n">classes</span><span class="o">=</span><span class="p">[],</span> <span class="n">ID</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Section</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    set section (list of 3 points on a line)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -235,16 +235,16 @@
     <span class="n">section</span> <span class="o">=</span> <span class="n">Section</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
     <span class="n">section_repr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">FiniteSet</span><span class="p">(</span><span class="o">*</span><span class="n">points</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">label</span><span class="p">:</span>
-        <span class="n">points_labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="n">pt</span><span class="p">]</span><span class="o">.</span><span class="n">label</span> <span class="ow">or</span> <span class="n">pt</span><span class="p">)</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">points</span><span class="p">]</span>
-        <span class="n">points_labels</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">points_labels</span><span class="p">)</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/ </span><span class="si">{</span><span class="n">points_labels</span><span class="si">}</span><span class="s2"> /&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ID</span><span class="p">:</span>
+        <span class="n">points_IDs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="n">pt</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span> <span class="ow">or</span> <span class="n">pt</span><span class="p">)</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">points</span><span class="p">]</span>
+        <span class="n">points_IDs</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">points_IDs</span><span class="p">)</span>
+        <span class="n">ID</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/ </span><span class="si">{</span><span class="n">points_IDs</span><span class="si">}</span><span class="s2"> /&quot;</span>
 
-    <span class="n">details</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="n">section_repr</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="n">points</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">details</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="n">section_repr</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="n">points</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span> <span class="n">ID</span><span class="o">=</span><span class="n">ID</span><span class="p">)</span>
 
     <span class="n">model</span><span class="p">[</span><span class="n">section_repr</span><span class="p">]</span> <span class="o">=</span> <span class="n">details</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">details</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">details</span><span class="o">.</span><span class="n">ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">section</span>
 </pre></div>
 <div class="section">

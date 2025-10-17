@@ -106,7 +106,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.chains.Chain.numerical_lengths"><code class="docutils literal notranslate"><span class="pre">Chain.numerical_lengths</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.chains.Chain.flow"><code class="docutils literal notranslate"><span class="pre">Chain.flow</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.chains.Chain.count_symmetry_lines"><code class="docutils literal notranslate"><span class="pre">Chain.count_symmetry_lines()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#geometor.model.chains.Chain.fibonacci_labels"><code class="docutils literal notranslate"><span class="pre">Chain.fibonacci_labels</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#geometor.model.chains.Chain.fibonacci_IDs"><code class="docutils literal notranslate"><span class="pre">Chain.fibonacci_IDs</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -256,16 +256,16 @@ that the next segment is longer.</p>
 <dd></dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="geometor.model.chains.Chain.fibonacci_labels">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fibonacci_labels</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#geometor.model.chains.Chain.fibonacci_labels" title="Link to this definition"></a></dt>
-<dd><p>Creates and returns Fibonacci-style labels for each segment based on
+<dt class="sig sig-object py" id="geometor.model.chains.Chain.fibonacci_IDs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fibonacci_IDs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#geometor.model.chains.Chain.fibonacci_IDs" title="Link to this definition"></a></dt>
+<dd><p>Creates and returns Fibonacci-style IDs for each segment based on
 their lengths.</p>
 <section id="id5">
 <h2>returns<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><dl class="simple">
 <dt><code class="xref py py-class docutils literal notranslate"><span class="pre">list[str]</span></code></dt><dd><p>A list of strings where each string is a Fibonacci-style 
-label corresponding to a segment.</p>
+ID corresponding to a segment.</p>
 </dd>
 </dl>
 </li>

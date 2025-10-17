@@ -140,14 +140,14 @@
 <span class="sd">        A list of parent elements (default is None).</span>
 <span class="sd">    - ``classes`` : list[str]</span>
 <span class="sd">        A list of class labels (default is None).</span>
-<span class="sd">    - ``label`` : str</span>
-<span class="sd">        - A string label for the element</span>
-<span class="sd">        - if label is none, a label is generated</span>
+<span class="sd">    - ``ID`` : str</span>
+<span class="sd">        - A string ID for the element</span>
+<span class="sd">        - if ID is none, a ID is generated</span>
 <span class="sd">        - is used as a reference in reports and plots</span>
 
 <span class="sd">    attributes</span>
 <span class="sd">    ----------</span>
-<span class="sd">    - ``label`` : :class:`python:str`</span>
+<span class="sd">    - ``ID`` : :class:`python:str`</span>
 <span class="sd">        name used in presentation and reports</span>
 <span class="sd">    - ``classes`` : dict</span>
 <span class="sd">        dict with strings for class name</span>
@@ -162,7 +162,7 @@
         <span class="n">sympy_obj</span><span class="p">,</span>
         <span class="n">parents</span><span class="p">:</span> <span class="nb">list</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">ID</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes an Element of the model.</span>
@@ -181,7 +181,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">parents</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="s2">&quot;&quot;</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">parents</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="s2">&quot;&quot;</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">ID</span></div>
 
 
 
@@ -201,14 +201,14 @@
 <span class="sd">        A list of parent elements (default is None).</span>
 <span class="sd">    - ``classes`` : list[str]</span>
 <span class="sd">        A list of class labels (default is None).</span>
-<span class="sd">    - ``label`` : str</span>
-<span class="sd">        - A string label for the element</span>
-<span class="sd">        - if label is none, a label is generated</span>
+<span class="sd">    - ``ID`` : str</span>
+<span class="sd">        - A string ID for the element</span>
+<span class="sd">        - if ID is none, a ID is generated</span>
 <span class="sd">        - is used as a reference in reports and plots</span>
 
 <span class="sd">    attributes</span>
 <span class="sd">    ----------</span>
-<span class="sd">    - ``label`` : :class:`python:str`</span>
+<span class="sd">    - ``ID`` : :class:`python:str`</span>
 <span class="sd">        name used in presentation and reports</span>
 <span class="sd">    - ``classes`` : dict</span>
 <span class="sd">        dict with strings for class name</span>
@@ -221,9 +221,9 @@
         <span class="n">pt_radius</span><span class="p">:</span> <span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">,</span>
         <span class="n">parents</span><span class="p">:</span> <span class="nb">list</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">ID</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">sympy_obj</span><span class="p">,</span> <span class="n">parents</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">sympy_obj</span><span class="p">,</span> <span class="n">parents</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">ID</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pt_radius</span> <span class="o">=</span> <span class="n">pt_radius</span></div>
 
 
@@ -280,20 +280,20 @@
 
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_get_ancestors_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_ancestors_IDs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Retrieves the labels of the ancestors for the given element.</span>
+<span class="sd">    Retrieves the IDs of the ancestors for the given element.</span>
 
 <span class="sd">    The method recursively traverses the parent elements of the given element</span>
-<span class="sd">    and constructs a nested dictionary with labels representing the ancestor tree.</span>
+<span class="sd">    and constructs a nested dictionary with IDs representing the ancestor tree.</span>
 
 <span class="sd">    parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    - element : sympy.geometry object</span>
-<span class="sd">        The element for which the ancestors&#39; labels are to be retrieved.</span>
+<span class="sd">        The element for which the ancestors&#39; IDs are to be retrieved.</span>
 
 <span class="sd">    returns</span>
-<span class="sd">    - dict : A nested dictionary representing the labels of the ancestors.</span>
+<span class="sd">    - dict : A nested dictionary representing the IDs of the ancestors.</span>
 
 <span class="sd">    example</span>
 <span class="sd">    -------</span>
@@ -301,7 +301,7 @@
 <span class="sd">    {&#39;A&#39;: {&#39;B&#39;: {&#39;D&#39;: {}}, &#39;C&#39;: {}}}</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">ancestors</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="p">[</span><span class="n">element</span><span class="p">]</span><span class="o">.</span><span class="n">label</span><span class="p">:</span> <span class="p">{}}</span>
+    <span class="n">ancestors</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="p">[</span><span class="n">element</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span><span class="p">:</span> <span class="p">{}}</span>
 
     <span class="k">if</span> <span class="s2">&quot;given&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">[</span><span class="n">element</span><span class="p">]</span><span class="o">.</span><span class="n">classes</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">ancestors</span>
@@ -313,9 +313,7 @@
         <span class="n">parents</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">element</span><span class="p">]</span><span class="o">.</span><span class="n">parents</span><span class="o">.</span><span class="n">keys</span><span class="p">())[:</span><span class="mi">2</span><span class="p">]</span>
 
     <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="n">parents</span><span class="p">:</span>
-        <span class="n">ancestors</span><span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">element</span><span class="p">]</span><span class="o">.</span><span class="n">label</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_ancestors_labels</span><span class="p">(</span><span class="n">parent</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="n">ancestors</span>
+        <span class="n">ancestors</span><span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">element</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_ancestors_IDs</span><span class="p">(</span><span class="n">parent</span><span class="p">))</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_get_ancestors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
@@ -356,19 +354,19 @@
     <span class="k">return</span> <span class="n">ancestors</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_get_element_by_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Finds and returns the element with the given label.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_element_by_ID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ID</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Finds and returns the element with the given ID.</span>
 
 <span class="sd">    parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    - ``label`` : :class:`str`: The label of the desired element.</span>
+<span class="sd">    - ``ID`` : :class:`str`: The ID of the desired element.</span>
 
 <span class="sd">    returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    Element or None: The element with the matching label, or None if no match is found.</span>
+<span class="sd">    Element or None: The element with the matching ID, or None if no match is found.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">element_key</span><span class="p">,</span> <span class="n">element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">element</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">label</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="s2">&quot;ID&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">element</span><span class="o">.</span><span class="n">ID</span> <span class="o">==</span> <span class="n">ID</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">element_key</span>
     <span class="k">return</span> <span class="kc">None</span>
 </pre></div>
