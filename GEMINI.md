@@ -1,25 +1,17 @@
 # GEOMETOR Model
 
-A Python library for creating and manipulating geometric constructions, providing a foundation for applications like the GEOMETOR Explorer.
+A Python library for creating and manipulating geometric constructions.
 
-## Key Modules (`src/geometor/model/`)
+## Overview
 
--   **`__init__.py`**: Main `Model` class, now a `dict` subclass with an event system.
--   **`element.py`**: Core `Element` class.
--   **`_points.py`**: `Point` class and functions.
--   **`_lines.py`**: `Line` class and functions.
--   **`_circles.py`**: `Circle` class and functions.
--   **`_segments.py`**: `Segment` class and functions.
--   **`_polygons.py`**: `Polygon` class and functions, including `_set_polygon_by_IDs`.
--   **`_delete.py`**: Functions for deleting elements and finding dependents.
--   **`_serialize.py`**: JSON serialization and deserialization.
--   **`chains.py`**: Logic for connected segments.
--   **`sections.py`**: Logic for line sections.
--   **`wedges.py`**: Logic for wedges (angles).
--   **`reports.py`**: Reporting and analysis.
--   **`helpers.py`**: Helper functions.
--   **`utils.py`**: Utility functions.
+The `model` library provides the foundation for other GEOMETOR applications. It defines the core data structures for geometric elements (points, lines, circles) and provides a rich API for creating, modifying, and analyzing constructions.
 
-## Development Plan
+## Index
 
-See `ROADMAP.md`.
+-   `__init__.py`: Main `Model` class, a `dict` subclass with an event system.
+-   `element.py`: The core `Element` class for all geometric objects.
+-   `_points.py`: `Point` class and related functions.
+-   `_lines.py`: `Line` class and related functions.
+-   `_circles.py`: `Circle` class and related functions.
+-   `_polygons.py`: `Polygon` class and related functions.
+-   `_serialize.py`: JSON serialization and deserialization for the model.
