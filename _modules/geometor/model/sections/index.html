@@ -178,9 +178,25 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_golden</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="c1"># Use symbolic simplification to check for equality, avoiding float precision issues.</span>
-        <span class="c1"># We simplify the difference between the ratio and phi (and 1/phi).</span>
-        <span class="c1"># If the result is 0, they are symbolically equal.</span>
+        <span class="c1"># First, perform a quick check using floating-point numbers.</span>
+        <span class="n">l1_float</span><span class="p">,</span> <span class="n">l2_float</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">floats</span>
+        <span class="k">if</span> <span class="n">l1_float</span> <span class="o">&lt;</span> <span class="n">l2_float</span><span class="p">:</span>
+            <span class="n">l1_float</span><span class="p">,</span> <span class="n">l2_float</span> <span class="o">=</span> <span class="n">l2_float</span><span class="p">,</span> <span class="n">l1_float</span>
+
+        <span class="k">if</span> <span class="n">l2_float</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">ratio_float</span> <span class="o">=</span> <span class="n">l1_float</span> <span class="o">/</span> <span class="n">l2_float</span>
+        <span class="n">phi_float</span> <span class="o">=</span> <span class="n">phi</span><span class="o">.</span><span class="n">evalf</span><span class="p">()</span>
+        
+        <span class="c1"># Set a tolerance for the floating-point comparison.</span>
+        <span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1e-5</span>
+
+        <span class="c1"># Check if the ratio is close to phi.</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ratio_float</span> <span class="o">-</span> <span class="n">phi_float</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tolerance</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># If the floating-point check passes, then perform the symbolic comparison.</span>
         <span class="n">is_phi</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ratio</span> <span class="o">-</span> <span class="n">phi</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
         <span class="n">is_inv_phi</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ratio</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">phi</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span>
         <span class="k">return</span> <span class="n">is_phi</span> <span class="ow">or</span> <span class="n">is_inv_phi</span>
