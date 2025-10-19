@@ -55,9 +55,25 @@ class Section:
 
     @property
     def is_golden(self) -> bool:
-        # Use symbolic simplification to check for equality, avoiding float precision issues.
-        # We simplify the difference between the ratio and phi (and 1/phi).
-        # If the result is 0, they are symbolically equal.
+        # First, perform a quick check using floating-point numbers.
+        l1_float, l2_float = self.floats
+        if l1_float < l2_float:
+            l1_float, l2_float = l2_float, l1_float
+
+        if l2_float == 0:
+            return False
+
+        ratio_float = l1_float / l2_float
+        phi_float = phi.evalf()
+        
+        # Set a tolerance for the floating-point comparison.
+        tolerance = 1e-5
+
+        # Check if the ratio is close to phi.
+        if abs(ratio_float - phi_float) > tolerance:
+            return False
+
+        # If the floating-point check passes, then perform the symbolic comparison.
         is_phi = sp.simplify(self.ratio - phi) == 0
         is_inv_phi = sp.simplify(self.ratio - (1 / phi)) == 0
         return is_phi or is_inv_phi
