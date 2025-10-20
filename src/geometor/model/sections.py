@@ -29,6 +29,15 @@ class Section:
         ]
         self.clean_expr = clean_expr
 
+    def __eq__(self, other):
+        if not isinstance(other, Section):
+            return NotImplemented
+        return self.points == other.points
+
+    def __hash__(self):
+        # Use a tuple of points for hashing, as lists are not hashable
+        return hash(tuple(self.points))
+
     def get_IDs(self, model) -> list[str]:
         """
         returns a list of IDs
