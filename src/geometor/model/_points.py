@@ -81,10 +81,11 @@ def _set_point(
 
     details = Element(pt, parents, classes, ID)
     self[pt] = details
-    self._publish_event("point_added", pt)
+    self._new_points.append(pt)
+    if self._analysis_hook:
+        self._analysis_hook(self, pt)
 
     text_ID = get_colored_ID(pt, ID)
-    console.print(text_ID, f" = {{ {str(pt.x)}, {str(pt.y)} }}")
     #  console.print(f"[gold3]{text_ID}[/gold3] = {{ {sp.pretty(pt.x)}, {sp.pretty(pt.y)} }}")
     #  print(f"{text_ID} = {{ {sp.pprint(pt.x)}, {str(pt.y)} }}")
     return pt

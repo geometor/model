@@ -1,6 +1,15 @@
 changelog
 =========
 
+0.2.1
+-----
+*2025-10-20*
+
+**changed**
+
+.. + Replaced the event-driven system with a synchronous analysis hook to simplify the architecture and ensure correct execution order.
+.. + Decoupled all logging from the model library; logging is now handled by the calling application.
+
 0.1.0 
 -----
 *2023-11-15*
@@ -19,4 +28,3 @@ changelog
 
 .. + Fixed bug in data processing (`#42 <https://github.com/example/repo/issues/42>`_)
 .. + Improved error handling in API calls
-

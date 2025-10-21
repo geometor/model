@@ -12,7 +12,7 @@ points, lines, circles, polygons, and segments.
 __author__ = "geometor"
 __maintainer__ = "geometor"
 __email__ = "github@geometor.com"
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 __licence__ = "MIT"
 
 from geometor.model.common import *
@@ -71,72 +71,25 @@ class Model(dict):
     """
     A collection of geometric elements, including points, lines, circles, and
     polygons, represented using the `sympy.geometry` library.
-
-    When lines and circles are added to the model, intersection points of the
-    new element with the preceding elements are identify and added.
-
-    When new elements or points are added to the model, we check for existing
-    duplicates.
-
-    parameters
-    ----------
-    - ``name`` : :class:`str`
-        establish name for the model instance
-
-    attributes
-    ----------
-    - :attr:`name` -> :class:`str` *name of the model*
-    - :attr:`points` -> :class:`list` [:class:`Point <sympy.geometry.point.Point>`]
-    - :attr:`lines` -> :class:`list` [:class:`Line <sympy.geometry.point.Line>`]
-    - :attr:`circles` -> :class:`list` [:class:`Circle <sympy.geometry.point.Circle>`]
-    - :attr:`structs` -> :class:`list` [Struct]
-        returns list of structs (lines and circles) in the Model
-
-    methods
-    -------
-    - :meth:`set_point` -> :class:`Point <sympy.geometry.point.Point>`
-    - :meth:`construct_line` -> :class:`Line <sympy.geometry.line.Line>`
-    - :meth:`construct_line_by_IDs` -> :class:`Line <sympy.geometry.line.Line>`
-    - :meth:`construct_circle` -> :class:`Circle <sympy.geometry.ellipse.Circle>`
-    - :meth:`construct_circle_by_IDs` -> :class:`Circle <sympy.geometry.ellipse.Circle>`
-    - :meth:`set_segment` -> :class:`Segment <sympy.geometry.line.Segment>`
-    - :meth:`set_segment_by_IDs` -> :class:`Segment <sympy.geometry.line.Segment>`
-    - :meth:`set_polygon` -> :class:`Polygon <sympy.geometry.polygon.Polygon>`
-    - :meth:`set_polygon_by_IDs` -> :class:`Polygon <sympy.geometry.polygon.Polygon>`
-    - :meth:`set_wedge` -> :class:`Wedge`
-
-    - :meth:`limits` -> :class:`list`
-        returns the x, y limits of the points and circle boundaries in the model
-
-    - :meth:`get_ancestors` ->
-    - :meth:`get_ancestors_IDs` ->
-
-    - :meth:`get_element_by_ID` ->
-
-    - :meth:`save` ->
-    - :meth:`load` ->
-
-    - :meth:`point_ID_generator` -> Iterator[str]
-
-    .. todo:: add `get_bounds_polygon` method to Model
-
     """
 
     def __init__(self, name: str = ""):
         super().__init__()
         self._name = name
         self.ID_gen = self.point_ID_generator()
-        self._events = {}
+        self._analysis_hook = None
+        self._new_points = []
 
-    def add_event_listener(self, event, listener):
-        if event not in self._events:
-            self._events[event] = []
-        self._events[event].append(listener)
+    def set_analysis_hook(self, hook_function):
+        self._analysis_hook = hook_function
 
-    def _publish_event(self, event, *args, **kwargs):
-        if event in self._events:
-            for listener in self._events[event]:
-                listener(*args, **kwargs)
+    @property
+    def new_points(self) -> list[spg.Point]:
+        """The new_points of the model"""
+        return self._new_points
+
+    def clear_new_points(self):
+        self._new_points = []
 
     @property
     def name(self) -> str:
@@ -150,11 +103,6 @@ class Model(dict):
     def __setitem__(self, key: GeometryObject, value: Element):
         """
         control types for keys and values
-        parameters:
-            ``key`` : :class:`spg.entity` or custom objects like Wedge
-                the geometric element object
-            ``value`` : :class:`Element`
-                side car object with info about the geometric object
         """
         if not isinstance(key, GeometryObject):
             raise TypeError(f"{key=} must be an instance of Element class")
@@ -180,7 +128,6 @@ class Model(dict):
     set_polygon_by_IDs = _set_polygon_by_IDs
 
     set_wedge = _set_wedge
-    #  set_wedge_by_labels = _set_wedge_by_labels
 
     delete_element = delete_element
     get_dependents = get_dependents
@@ -227,11 +174,7 @@ class Model(dict):
     def limits(self) -> tuple[tuple[float, float], tuple[float, float]]:
         """
         Find x, y limits from points and circles of the model
-
-        Returns a list of x, y limits:
-            ``((x_min, x_max), (y_min, y_max))``
         """
-
         x_vals = []
         y_vals = []
 
@@ -266,28 +209,6 @@ class Model(dict):
         repeat = 1
 
         while True:
-            # Iterate through combinations of letters based on the current repeat value
             for letter in letters:
                 yield str(letter) * repeat
-
-            # Increment the repeat value for the next cycle
             repeat += 1
-
-
-if __name__ == "__main__":
-    from geometor.model.reports import *
-
-    model = Model("demo")
-    A = model.set_point(0, 0, classes=["given"])
-    B = model.set_point(1, 0, classes=["given"])
-    model.construct_line(A, B)
-    model.construct_circle(A, B)
-    model.construct_circle(B, A)
-
-    E = model.get_element_by_ID("E")
-    F = model.get_element_by_ID("F")
-    model.construct_line(E, F)
-
-    report_sequence(model)
-    report_group_by_type(model)
-    report_summary(model)

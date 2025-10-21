@@ -30,45 +30,11 @@ def _construct_circle(
     pt_radius: spg.Point,
     classes: list = None,
     ID: str = "",
+    logger=None,
 ) -> spg.Circle:
+    model.clear_new_points()
     """
     Constructs a Circle from two points and adds it to the model.
-
-    operations
-    ----------
-    - create an instance of :class:`sympy.geometry.ellipse.Circle`as ``circle``
-    - create a ``details`` object from :class:`Element`
-    - add parents to details
-        initial parents are the two starting points
-    - check for duplicates in in the ``model``
-    - find intersection points for new element with all precedng elements
-    - Add ``circle`` to the model.
-
-    parameters
-    ----------
-    - ``pt_center`` : :class:`sympy.geometry.point.Point` A SymPy Point representing the circle center.
-    - ``pt_radius`` : :class:`sympy.geometry.point.Point` A SymPy Point marking the length of the radius.
-    - ``classes`` : :class:`list` *optional* A list of string names for classes defining a set of styles. Defaults to None.
-    - ``ID`` : :class:`str` *optional* A text ID for use in plotting and reporting. Defaults to an empty string.
-
-    returns
-    -------
-    - :class:`Circle <sympy.geometry.ellipse.Circle>`:
-        The constructed circle.
-
-    example
-    -------
-    >>> from geometor.elements import *
-    >>> model = Model("demo")
-    >>> A = model.set_point(0, 0, classes=["given"], ID="A")
-    >>> B = model.set_point(1, 0, classes=["given"], ID="B")
-    >>> model.construct_circle(A, B)
-    <spg.Circle object ...>
-
-    notes
-    -----
-    SymPy defines a circle as a center point and a radius length, so the radius length is calculated for the spg.Circle.
-
     """
 
     if classes is None:
@@ -107,7 +73,8 @@ def _construct_circle(
         # add the new circle to the model
 
         model[struct] = details
-        console.print(f"[orchid1]{details.ID}[/orchid1] = {str(struct.equation())}")
+        if logger:
+            logger.info(f"{details.ID} = {str(struct.equation())}")
 
         find_all_intersections(model, struct)
 
