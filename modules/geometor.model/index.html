@@ -98,7 +98,9 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../">modules</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">geometor.model</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#geometor.model.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.add_event_listener"><code class="docutils literal notranslate"><span class="pre">Model.add_event_listener()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.set_analysis_hook"><code class="docutils literal notranslate"><span class="pre">Model.set_analysis_hook()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.new_points"><code class="docutils literal notranslate"><span class="pre">Model.new_points</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.clear_new_points"><code class="docutils literal notranslate"><span class="pre">Model.clear_new_points()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.name"><code class="docutils literal notranslate"><span class="pre">Model.name</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.set_point"><code class="docutils literal notranslate"><span class="pre">Model.set_point()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geometor.model.Model.construct_line"><code class="docutils literal notranslate"><span class="pre">Model.construct_line()</span></code></a></li>
@@ -188,66 +190,20 @@ points, lines, circles, polygons, and segments.</p>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
 <p>A collection of geometric elements, including points, lines, circles, and
 polygons, represented using the <cite>sympy.geometry</cite> library.</p>
-<p>When lines and circles are added to the model, intersection points of the
-new element with the preceding elements are identify and added.</p>
-<p>When new elements or points are added to the model, we check for existing
-duplicates.</p>
-<section id="parameters">
-<h2>parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
-<ul>
-<li><dl>
-<dt><code class="docutils literal notranslate"><span class="pre">name</span></code><span class="classifier"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>establish name for the model instance</p>
-</dd>
-</dl>
-</li>
-</ul>
-</section>
-<section id="attributes">
-<h2>attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="#geometor.model.Model.name" title="geometor.model.Model.name"><code class="xref py py-attr docutils literal notranslate"><span class="pre">name</span></code></a> -&gt; <a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> <em>name of the model</em></p></li>
-<li><p><a class="reference internal" href="#geometor.model.Model.points" title="geometor.model.Model.points"><code class="xref py py-attr docutils literal notranslate"><span class="pre">points</span></code></a> -&gt; <a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> [<a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a>]</p></li>
-<li><p><a class="reference internal" href="#geometor.model.Model.lines" title="geometor.model.Model.lines"><code class="xref py py-attr docutils literal notranslate"><span class="pre">lines</span></code></a> -&gt; <a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">Line</span></code>]</p></li>
-<li><p><a class="reference internal" href="#geometor.model.Model.circles" title="geometor.model.Model.circles"><code class="xref py py-attr docutils literal notranslate"><span class="pre">circles</span></code></a> -&gt; <a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">Circle</span></code>]</p></li>
-<li><dl class="simple">
-<dt><a class="reference internal" href="#geometor.model.Model.structs" title="geometor.model.Model.structs"><code class="xref py py-attr docutils literal notranslate"><span class="pre">structs</span></code></a> -&gt; <a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> [Struct]</dt><dd><p>returns list of structs (lines and circles) in the Model</p>
-</dd>
-</dl>
-</li>
-</ul>
-</section>
-<section id="methods">
-<h2>methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="#geometor.model.Model.set_point" title="geometor.model.Model.set_point"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_point()</span></code></a> -&gt; <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a></p></li>
-<li><p><a class="reference internal" href="#geometor.model.Model.construct_line" title="geometor.model.Model.construct_line"><code class="xref py py-meth docutils literal notranslate"><span class="pre">construct_line()</span></code></a> -&gt; <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/lines.html#sympy.geometry.line.Line" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Line</span></code></a></p></li>
-<li><p><a class="reference internal" href="#geometor.model.Model.construct_line_by_IDs" title="geometor.model.Model.construct_line_by_IDs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">construct_line_by_IDs()</span></code></a> -&gt; <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/lines.html#sympy.geometry.line.Line" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Line</span></code></a></p></li>
-<li><p><a class="reference internal" href="#geometor.model.Model.construct_circle" title="geometor.model.Model.construct_circle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">construct_circle()</span></code></a> -&gt; <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/ellipses.html#sympy.geometry.ellipse.Circle" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circle</span></code></a></p></li>
-<li><p><a class="reference internal" href="#geometor.model.Model.construct_circle_by_IDs" title="geometor.model.Model.construct_circle_by_IDs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">construct_circle_by_IDs()</span></code></a> -&gt; <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/ellipses.html#sympy.geometry.ellipse.Circle" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circle</span></code></a></p></li>
-<li><p><a class="reference internal" href="#geometor.model.Model.set_segment" title="geometor.model.Model.set_segment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_segment()</span></code></a> -&gt; <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/lines.html#sympy.geometry.line.Segment" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a></p></li>
-<li><p><a class="reference internal" href="#geometor.model.Model.set_segment_by_IDs" title="geometor.model.Model.set_segment_by_IDs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_segment_by_IDs()</span></code></a> -&gt; <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/lines.html#sympy.geometry.line.Segment" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a></p></li>
-<li><p><a class="reference internal" href="#geometor.model.Model.set_polygon" title="geometor.model.Model.set_polygon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_polygon()</span></code></a> -&gt; <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/polygons.html#sympy.geometry.polygon.Polygon" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Polygon</span></code></a></p></li>
-<li><p><a class="reference internal" href="#geometor.model.Model.set_polygon_by_IDs" title="geometor.model.Model.set_polygon_by_IDs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_polygon_by_IDs()</span></code></a> -&gt; <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/polygons.html#sympy.geometry.polygon.Polygon" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Polygon</span></code></a></p></li>
-<li><p><a class="reference internal" href="#geometor.model.Model.set_wedge" title="geometor.model.Model.set_wedge"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_wedge()</span></code></a> -&gt; <code class="xref py py-class docutils literal notranslate"><span class="pre">Wedge</span></code></p></li>
-<li><dl class="simple">
-<dt><a class="reference internal" href="#geometor.model.Model.limits" title="geometor.model.Model.limits"><code class="xref py py-meth docutils literal notranslate"><span class="pre">limits()</span></code></a> -&gt; <a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a></dt><dd><p>returns the x, y limits of the points and circle boundaries in the model</p>
-</dd>
-</dl>
-</li>
-<li><p><a class="reference internal" href="#geometor.model.Model.get_ancestors" title="geometor.model.Model.get_ancestors"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_ancestors()</span></code></a> -&gt;</p></li>
-<li><p><a class="reference internal" href="#geometor.model.Model.get_ancestors_IDs" title="geometor.model.Model.get_ancestors_IDs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_ancestors_IDs()</span></code></a> -&gt;</p></li>
-<li><p><a class="reference internal" href="#geometor.model.Model.get_element_by_ID" title="geometor.model.Model.get_element_by_ID"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_element_by_ID()</span></code></a> -&gt;</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">save()</span></code> -&gt;</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">load()</span></code> -&gt;</p></li>
-<li><p><a class="reference internal" href="#geometor.model.Model.point_ID_generator" title="geometor.model.Model.point_ID_generator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">point_ID_generator()</span></code></a> -&gt; Iterator[str]</p></li>
-</ul>
-<div class="admonition-todo admonition" id="id1">
-<p class="admonition-title">Todo</p>
-<p>add <cite>get_bounds_polygon</cite> method to Model</p>
-</div>
 <dl class="py method">
-<dt class="sig sig-object py" id="geometor.model.Model.add_event_listener">
-<span class="sig-name descname"><span class="pre">add_event_listener</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">listener</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/geometor/model/#Model.add_event_listener"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geometor.model.Model.add_event_listener" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="geometor.model.Model.set_analysis_hook">
+<span class="sig-name descname"><span class="pre">set_analysis_hook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hook_function</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/geometor/model/#Model.set_analysis_hook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geometor.model.Model.set_analysis_hook" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geometor.model.Model.new_points">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">new_points</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#geometor.model.Model.new_points" title="Link to this definition"></a></dt>
+<dd><p>The new_points of the model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geometor.model.Model.clear_new_points">
+<span class="sig-name descname"><span class="pre">clear_new_points</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/geometor/model/#Model.clear_new_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geometor.model.Model.clear_new_points" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -261,8 +217,8 @@ duplicates.</p>
 <span class="sig-name descname"><span class="pre">set_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.14.0)"><span class="pre">Expr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.14.0)"><span class="pre">Expr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parents</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a></span></span><a class="headerlink" href="#geometor.model.Model.set_point" title="Link to this definition"></a></dt>
 <dd><p>Adds a point to the model, finds duplicates, cleans values, and sets
 parents and classes.</p>
-<section id="id2">
-<h3>parameters<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<section id="parameters">
+<h2>parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">x_val</span></code> : <a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.expr.Expr</span></code></a>: The x-value of the point.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">y_val</span></code> : <a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.expr.Expr</span></code></a>: The y-value of the point.</p></li>
@@ -275,13 +231,13 @@ reporting. Defaults to an empty string.</p></li>
 </ul>
 </section>
 <section id="returns">
-<h3>returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h3>
+<h2>returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code></a>: The set point.</p></li>
 </ul>
 </section>
 <section id="example">
-<h3>example<a class="headerlink" href="#example" title="Link to this heading"></a></h3>
+<h2>example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;demo&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
@@ -290,56 +246,15 @@ reporting. Defaults to an empty string.</p></li>
 </div>
 </section>
 <section id="notes">
-<h3>notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h3>
+<h2>notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
 <p>The function simplifies the x and y values before adding, and it updates the attributes if the point is already in the model.</p>
 </section>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.Model.construct_line">
-<span class="sig-name descname"><span class="pre">construct_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/lines.html#sympy.geometry.line.Line" title="(in SymPy v1.14.0)"><span class="pre">Line</span></a></span></span><a class="headerlink" href="#geometor.model.Model.construct_line" title="Link to this definition"></a></dt>
-<dd><p>Constructs a <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/lines.html#sympy.geometry.line.Line" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Line</span></code></a> from two points and
-adds it to the <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<section id="id3">
-<h3>parameters<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pt_1</span></code> : <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code></a> <em>A SymPy Point marking the
-first point of the line</em></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pt_2</span></code> : <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code></a>: A SymPy Point marking the
-second point of the line</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">classes</span></code>  : list: Additional classes (optional)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ID</span></code>  : str: ID for the line (optional)</p></li>
-</ul>
-</section>
-<section id="id4">
-<h3>returns<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/lines.html#sympy.geometry.line.Line" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.line.Line</span></code></a>: The constructed line</p></li>
-</ul>
-</section>
-<section id="id5">
-<h3>example<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">geometor.elements</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;demo&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">],</span> <span class="n">ID</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">],</span> <span class="n">ID</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">construct_line</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-<span class="go">&lt;spg.Line object ...&gt;</span>
-</pre></div>
-</div>
-</section>
-<section id="operations">
-<h3>operations<a class="headerlink" href="#operations" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>create an instance of <code class="docutils literal notranslate"><span class="pre">spg.Line</span></code></p></li>
-<li><p>create a <code class="docutils literal notranslate"><span class="pre">details</span></code> object from <code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></p></li>
-<li><p>add parents to details</p></li>
-<li><p>check for duplicates in elements.</p></li>
-<li><p>find intersection points for new element with all precedng elements</p></li>
-<li><p>Add <code class="docutils literal notranslate"><span class="pre">line</span></code> to the model.</p></li>
-</ul>
-</section>
-</dd></dl>
+<span class="sig-name descname"><span class="pre">construct_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/lines.html#sympy.geometry.line.Line" title="(in SymPy v1.14.0)"><span class="pre">Line</span></a></span></span><a class="headerlink" href="#geometor.model.Model.construct_line" title="Link to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.Model.construct_line_by_IDs">
@@ -349,58 +264,8 @@ second point of the line</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.Model.construct_circle">
-<span class="sig-name descname"><span class="pre">construct_circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/ellipses.html#sympy.geometry.ellipse.Circle" title="(in SymPy v1.14.0)"><span class="pre">Circle</span></a></span></span><a class="headerlink" href="#geometor.model.Model.construct_circle" title="Link to this definition"></a></dt>
-<dd><p>Constructs a Circle from two points and adds it to the model.</p>
-<section id="id6">
-<h3>operations<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>create an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.ellipse.Circle`as</span> <span class="pre">``circle`</span></code></p></li>
-<li><p>create a <code class="docutils literal notranslate"><span class="pre">details</span></code> object from <code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></p></li>
-<li><dl class="simple">
-<dt>add parents to details</dt><dd><p>initial parents are the two starting points</p>
-</dd>
-</dl>
-</li>
-<li><p>check for duplicates in in the <code class="docutils literal notranslate"><span class="pre">model</span></code></p></li>
-<li><p>find intersection points for new element with all precedng elements</p></li>
-<li><p>Add <code class="docutils literal notranslate"><span class="pre">circle</span></code> to the model.</p></li>
-</ul>
-</section>
-<section id="id7">
-<h3>parameters<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pt_center</span></code> : <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code></a> A SymPy Point representing the circle center.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pt_radius</span></code> : <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code></a> A SymPy Point marking the length of the radius.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">classes</span></code> : <a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> <em>optional</em> A list of string names for classes defining a set of styles. Defaults to None.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ID</span></code> : <a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> <em>optional</em> A text ID for use in plotting and reporting. Defaults to an empty string.</p></li>
-</ul>
-</section>
-<section id="id8">
-<h3>returns<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><dl class="simple">
-<dt><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/ellipses.html#sympy.geometry.ellipse.Circle" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circle</span></code></a>:</dt><dd><p>The constructed circle.</p>
-</dd>
-</dl>
-</li>
-</ul>
-</section>
-<section id="id9">
-<h3>example<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">geometor.elements</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;demo&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">],</span> <span class="n">ID</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">],</span> <span class="n">ID</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-<span class="go">&lt;spg.Circle object ...&gt;</span>
-</pre></div>
-</div>
-</section>
-<section id="id10">
-<h3>notes<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
-<p>SymPy defines a circle as a center point and a radius length, so the radius length is calculated for the spg.Circle.</p>
-</section>
-</dd></dl>
+<span class="sig-name descname"><span class="pre">construct_circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/ellipses.html#sympy.geometry.ellipse.Circle" title="(in SymPy v1.14.0)"><span class="pre">Circle</span></a></span></span><a class="headerlink" href="#geometor.model.Model.construct_circle" title="Link to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.Model.construct_circle_by_IDs">
@@ -448,8 +313,8 @@ second point of the line</p></li>
 <dt class="sig sig-object py" id="geometor.model.Model.set_wedge">
 <span class="sig-name descname"><span class="pre">set_wedge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_sweep_start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_sweep_end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clockwise'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../geometor.model.wedges/#geometor.model.wedges.Wedge" title="geometor.model.wedges.Wedge"><span class="pre">Wedge</span></a></span></span><a class="headerlink" href="#geometor.model.Model.set_wedge" title="Link to this definition"></a></dt>
 <dd><p>sets a Wedge from 3 points and adds it to the model.</p>
-<section id="id11">
-<h3>operations<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<section id="operations">
+<h2>operations<a class="headerlink" href="#operations" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>create an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">geometor.model.Wedge</span></code></p></li>
 <li><p>create a <code class="docutils literal notranslate"><span class="pre">details</span></code> object from <code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></p></li>
@@ -462,8 +327,8 @@ second point of the line</p></li>
 <li><p>find intersection points for new element with all precedng elements</p></li>
 <li><p>Add <code class="docutils literal notranslate"><span class="pre">circle</span></code> to the model.</p></li>
 </ul>
-<section id="id12">
-<h4>parameters<a class="headerlink" href="#id12" title="Link to this heading"></a></h4>
+<section id="id1">
+<h3>parameters<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pt_center</span></code> : <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code></a> : point for circle center</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pt_radius</span></code> : <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code></a> : point to mark radius</p></li>
@@ -472,8 +337,8 @@ second point of the line</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ID</span></code> : <a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> <em>optional</em> : A text ID for use in plotting and reporting. Defaults to an empty string.</p></li>
 </ul>
 </section>
-<section id="id13">
-<h4>returns<a class="headerlink" href="#id13" title="Link to this heading"></a></h4>
+<section id="id2">
+<h3>returns<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><dl class="simple">
 <dt><code class="xref py py-class docutils literal notranslate"><span class="pre">Wedge</span></code></dt><dd><p>The portion of a circle</p>
@@ -482,8 +347,8 @@ second point of the line</p></li>
 </li>
 </ul>
 </section>
-<section id="id14">
-<h4>example<a class="headerlink" href="#id14" title="Link to this heading"></a></h4>
+<section id="id3">
+<h3>example<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">geometor.elements</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;demo&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">],</span> <span class="n">ID</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
@@ -495,8 +360,8 @@ second point of the line</p></li>
 </pre></div>
 </div>
 </section>
-<section id="id15">
-<h4>notes<a class="headerlink" href="#id15" title="Link to this heading"></a></h4>
+<section id="id4">
+<h3>notes<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>SymPy defines a circle as a center point and a radius length, so the radius length is calculated for the spg.Circle.</p>
 </section>
 </section>
@@ -569,10 +434,6 @@ constructed from it, directly or indirectly.</p>
 <dt class="sig sig-object py" id="geometor.model.Model.limits">
 <span class="sig-name descname"><span class="pre">limits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#tuple" title="(in Python v3.9)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#tuple" title="(in Python v3.9)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.9/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#tuple" title="(in Python v3.9)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.9/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/geometor/model/#Model.limits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geometor.model.Model.limits" title="Link to this definition"></a></dt>
 <dd><p>Find x, y limits from points and circles of the model</p>
-<dl class="simple">
-<dt>Returns a list of x, y limits:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">((x_min,</span> <span class="pre">x_max),</span> <span class="pre">(y_min,</span> <span class="pre">y_max))</span></code></p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -581,8 +442,8 @@ constructed from it, directly or indirectly.</p>
 <dd><p>Retrieves the ancestors for the given element.</p>
 <p>The method recursively traverses the parent elements of the given element
 and constructs a nested dictionary representing the ancestor tree.</p>
-<section id="id16">
-<h3>parameters<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
+<section id="id5">
+<h2>parameters<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><dl class="simple">
 <dt>element<span class="classifier">sympy.geometry object</span></dt><dd><p>The element for which the ancestors are to be retrieved.</p>
@@ -591,14 +452,14 @@ and constructs a nested dictionary representing the ancestor tree.</p>
 </li>
 </ul>
 </section>
-<section id="id17">
-<h3>returns<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<section id="id6">
+<h2>returns<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>dict : A nested dictionary representing the ancestors.</p></li>
 </ul>
 </section>
-<section id="id18">
-<h3>example<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<section id="id7">
+<h2>example<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
 <p>If element A has parents B and C, and B has parent D, the method returns:
 {A: {B: {D: {}}, C: {}}}</p>
 </section>
@@ -610,8 +471,8 @@ and constructs a nested dictionary representing the ancestor tree.</p>
 <dd><p>Retrieves the IDs of the ancestors for the given element.</p>
 <p>The method recursively traverses the parent elements of the given element
 and constructs a nested dictionary with IDs representing the ancestor tree.</p>
-<section id="id19">
-<h3>parameters<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<section id="id8">
+<h2>parameters<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><dl class="simple">
 <dt>element<span class="classifier">sympy.geometry object</span></dt><dd><p>The element for which the ancestors’ IDs are to be retrieved.</p>
@@ -622,8 +483,8 @@ and constructs a nested dictionary with IDs representing the ancestor tree.</p>
 <p>returns
 - dict : A nested dictionary representing the IDs of the ancestors.</p>
 </section>
-<section id="id20">
-<h3>example<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<section id="id9">
+<h2>example<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
 <p>If element A has parents B and C, and B has parent D, the method returns:
 {‘A’: {‘B’: {‘D’: {}}, ‘C’: {}}}</p>
 </section>
@@ -633,14 +494,14 @@ and constructs a nested dictionary with IDs representing the ancestor tree.</p>
 <dt class="sig sig-object py" id="geometor.model.Model.get_element_by_ID">
 <span class="sig-name descname"><span class="pre">get_element_by_ID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.Model.get_element_by_ID" title="Link to this definition"></a></dt>
 <dd><p>Finds and returns the element with the given ID.</p>
-<section id="id21">
-<h3>parameters<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
+<section id="id10">
+<h2>parameters<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ID</span></code> : <a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>: The ID of the desired element.</p></li>
 </ul>
 </section>
-<section id="id22">
-<h3>returns<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
+<section id="id11">
+<h2>returns<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
 <p>Element or None: The element with the matching ID, or None if no match is found.</p>
 </section>
 </dd></dl>
@@ -650,7 +511,6 @@ and constructs a nested dictionary with IDs representing the ancestor tree.</p>
 <span class="sig-name descname"><span class="pre">point_ID_generator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.9/library/collections.abc.html#collections.abc.Iterator" title="(in Python v3.9)"><span class="pre">Iterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/geometor/model/#Model.point_ID_generator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geometor.model.Model.point_ID_generator" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
-</section>
 </dd></dl>
 
 </section>
