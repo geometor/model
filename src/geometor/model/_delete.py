@@ -85,10 +85,17 @@ def delete_element(self, element_or_ID):
     # 2. The full set to remove includes the initial element
     elements_to_remove = dependents | {element_to_delete}
 
-    # 3. Remove all identified elements from the model
-    for el in elements_to_remove:
+    # 3. Filter out elements that came before the element to delete
+    model_elements = list(self.keys())
+    delete_index = model_elements.index(element_to_delete)
+
+    final_elements_to_remove = {
+        el for el in elements_to_remove
+        if model_elements.index(el) >= delete_index
+    }
+
+    # 4. Remove all identified elements from the model
+    for el in final_elements_to_remove:
         if el in self:
             del self[el]
-
-    console.print(f"Deleted {len(elements_to_remove)} element(s) including dependents.")
 
