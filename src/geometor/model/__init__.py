@@ -78,6 +78,7 @@ class Model(dict):
         self._name = name
         self._logger = logger
         self.ID_gen = self.point_ID_generator()
+        self.last_point_id = ""
         self._analysis_hook = None
         self._new_points = []
 

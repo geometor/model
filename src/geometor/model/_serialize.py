@@ -23,15 +23,9 @@ def save_model(model, file_path):
             element_data['pt_radius'] = obj_to_index[element.pt_radius]
         serializable_elements.append(element_data)
 
-    # Capture the next ID from the generator
-    # This is a bit of a hack; we generate the next ID and then have to prepend it
-    # to the generator sequence when we load. A better way might be to store the
-    # generator's state, but that's more complex.
-    next_ID = next(model.ID_gen)
-
     serializable_model = {
         'name': model.name,
-        'next_ID': next_ID,
+        'last_point_id': model.last_point_id,
         'sympy_objects': [sp.srepr(obj) for obj in sympy_objects],
         'elements': serializable_elements,
     }
@@ -53,16 +47,13 @@ def load_model(file_path, logger=None):
     model = Model(serializable_model.get('name', ''), logger=logger)
     
     # Restore the ID generator state
-    next_ID = serializable_model.get('next_ID')
-    if next_ID:
-        # This is a bit of a trick. We need to effectively "put back" the saved
-        # next_ID into the generator sequence.
-        from itertools import chain
-        # First, advance the generator to the correct position.
+    last_point_id = serializable_model.get('last_point_id')
+    if last_point_id:
+        model.last_point_id = last_point_id
+        # Advance the generator to the correct position.
         for ID in model.ID_gen:
-            if ID == next_ID:
+            if ID == last_point_id:
                 break
-        model.ID_gen = chain([next_ID], model.ID_gen)
     
     sympy_objects = [parse_expr(s) for s in serializable_model['sympy_objects']]
 
@@ -86,6 +77,7 @@ def load_model(file_path, logger=None):
                 classes=element_data['classes'],
                 parents=parents
             )
-        model[sympy_obj] = element
+        # Bypass the custom __setitem__ to avoid triggering intersection searches
+        super(Model, model).__setitem__(sympy_obj, element)
     
     return model

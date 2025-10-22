@@ -78,6 +78,7 @@ def _set_point(
 
     if not ID:
         ID = next(self.ID_gen)
+        self.last_point_id = ID
 
     details = Element(pt, parents, classes, ID)
     self[pt] = details
