@@ -30,7 +30,6 @@ def _construct_circle(
     pt_radius: spg.Point,
     classes: list = None,
     ID: str = "",
-    logger=None,
 ) -> spg.Circle:
     model.clear_new_points()
     """
@@ -73,8 +72,7 @@ def _construct_circle(
         # add the new circle to the model
 
         model[struct] = details
-        if logger:
-            logger.info(f"{details.ID} = {str(struct.equation())}")
+        model.log(f"[bold]{details.ID}[/bold] = {str(struct.equation())}")
 
         find_all_intersections(model, struct)
 

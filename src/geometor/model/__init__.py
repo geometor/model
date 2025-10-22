@@ -12,7 +12,7 @@ points, lines, circles, polygons, and segments.
 __author__ = "geometor"
 __maintainer__ = "geometor"
 __email__ = "github@geometor.com"
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 __licence__ = "MIT"
 
 from geometor.model.common import *
@@ -73,12 +73,17 @@ class Model(dict):
     polygons, represented using the `sympy.geometry` library.
     """
 
-    def __init__(self, name: str = ""):
+    def __init__(self, name: str = "", logger=None):
         super().__init__()
         self._name = name
+        self._logger = logger
         self.ID_gen = self.point_ID_generator()
         self._analysis_hook = None
         self._new_points = []
+
+    def log(self, message):
+        if self._logger:
+            self._logger.info(message)
 
     def set_analysis_hook(self, hook_function):
         self._analysis_hook = hook_function

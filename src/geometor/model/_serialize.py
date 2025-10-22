@@ -40,7 +40,7 @@ def save_model(model, file_path):
         json.dump(serializable_model, file, indent=4)
 
 
-def load_model(file_path):
+def load_model(file_path, logger=None):
     """
     Loads a model from a JSON file and returns a new Model instance.
     """
@@ -50,7 +50,7 @@ def load_model(file_path):
     with open(file_path, 'r') as file:
         serializable_model = json.load(file)
 
-    model = Model(serializable_model.get('name', ''))
+    model = Model(serializable_model.get('name', ''), logger=logger)
     
     # Restore the ID generator state
     next_ID = serializable_model.get('next_ID')

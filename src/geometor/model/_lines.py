@@ -22,7 +22,7 @@ def _construct_line_by_IDs(
 
 
 def _construct_line(
-    model, pt_1: spg.Point, pt_2: spg.Point, classes: list = None, ID: str = "", logger=None
+    model, pt_1: spg.Point, pt_2: spg.Point, classes: list = None, ID: str = ""
 ) -> spg.Line:
     model.clear_new_points()
     """
@@ -56,8 +56,7 @@ def _construct_line(
     else:
         # add struct
         model[struct] = details
-        if logger:
-            logger.info(f"{details.ID} = {struct.equation()}")
+        model.log(f"[bold]{details.ID}[/bold] = {struct.equation()}")
 
         find_all_intersections(model, struct)
 
