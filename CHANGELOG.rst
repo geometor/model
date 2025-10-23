@@ -1,6 +1,14 @@
 changelog
 =========
 
+0.2.3
+-----
+*2025-10-22*
+
+**added**
+
+.. + Added `guide` property to model elements to exclude them from intersection calculations and analysis.
+
 0.2.1
 -----
 *2025-10-20*
