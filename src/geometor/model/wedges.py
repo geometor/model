@@ -13,28 +13,29 @@ from geometor.model.element import (
 
 
 class Wedge:
-    def __init__(
-        self,
-        pt_center: spg.Point,
-        pt_radius: spg.Point,
-        pt_sweep_start: spg.Point,
-        pt_sweep_end: spg.Point,
-        direction: str = "clockwise",
-    ):
-        #  super().__init__(*args)
-        self._circle = spg.Circle(pt_center, pt_center.distance(pt_radius))
+    def __init__(self, points: list[spg.Point]):
+        assert len(points) == 4, "A wedge must be defined by four points."
+        self.points = points
+        self.pt_center = points[0]
+        self.pt_radius = points[1]
+        self.pt_sweep_start = points[2]
+        self.pt_sweep_end = points[3]
 
-        self.pt_center = pt_center
-        self.pt_radius = pt_radius
-        self.sweep_ray = spg.Ray(pt_center, pt_sweep_end)
-        self.start_ray = spg.Ray(
-            pt_center, pt_sweep_start if pt_sweep_start else radius_point
-        )
+        self._circle = spg.Circle(self.pt_center, self.pt_center.distance(self.pt_radius))
+        self.sweep_ray = spg.Ray(self.pt_center, self.pt_sweep_end)
+        self.start_ray = spg.Ray(self.pt_center, self.pt_sweep_start)
 
         self.start_point, self.end_point = self._find_arc_endpoints()
-        self.direction = direction
+        # self.direction = direction
 
-        self.points = [pt_center, pt_radius, pt_sweep_start, pt_sweep_end]
+    def __repr__(self):
+        points_repr = [sp.srepr(p) for p in self.points]
+        return f"Wedge([{', '.join(points_repr)}])"
+
+    def _sstr(self, printer):
+        points_repr = [printer.doprint(p) for p in self.points]
+        return f"Wedge([{', '.join(points_repr)}])"
+
 
     def _find_arc_endpoints(self) -> tuple[spg.Point, spg.Point]:
         intersections_start = self.circle.intersection(self.start_ray)
@@ -154,7 +155,7 @@ def _set_wedge(
             "Both pt_center and pt_radius must be instances of sympy.geometry.point.Point"
         )
 
-    struct = Wedge(pt_center, pt_radius, pt_sweep_start, pt_sweep_end)
+    struct = Wedge([pt_center, pt_radius, pt_sweep_start, pt_sweep_end])
 
     if not ID:
         pt_center_ID = model[pt_center].ID

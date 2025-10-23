@@ -4,6 +4,7 @@ import sympy as sp
 from .common import *
 from .element import Element, CircleElement
 from .sections import Section
+from .wedges import Wedge
 
 def save_model(model, file_path):
     """
@@ -14,6 +15,9 @@ def save_model(model, file_path):
         if isinstance(element.object, Section):
             points_repr = [sp.srepr(p) for p in element.object.points]
             sympy_obj_repr = f"Section([{', '.join(points_repr)}])"
+        elif isinstance(element.object, Wedge):
+            points_repr = [sp.srepr(p) for p in element.object.points]
+            sympy_obj_repr = f"Wedge([{', '.join(points_repr)}])"
         else:
             sympy_obj_repr = sp.srepr(element.object)
 
@@ -61,7 +65,7 @@ def load_model(file_path, logger=None):
     
     id_to_sympy = {}
     id_to_element_data = {}
-    local_dict = {'Section': Section}
+    local_dict = {'Section': Section, 'Wedge': Wedge}
 
     # First pass: create all sympy objects and map them by ID
     for element_data in serializable_model['elements']:
