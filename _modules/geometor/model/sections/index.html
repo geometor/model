@@ -158,6 +158,14 @@
         <span class="c1"># Use a tuple of points for hashing, as lists are not hashable</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">))</span>
 
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">points_repr</span> <span class="o">=</span> <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">srepr</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">]</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Section([</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">points_repr</span><span class="p">)</span><span class="si">}</span><span class="s2">])&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_sstr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">printer</span><span class="p">):</span>
+        <span class="n">points_repr</span> <span class="o">=</span> <span class="p">[</span><span class="n">printer</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">]</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Section([</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">points_repr</span><span class="p">)</span><span class="si">}</span><span class="s2">])&quot;</span>
+
 <div class="viewcode-block" id="Section.get_IDs">
 <a class="viewcode-back" href="../../../../modules/geometor.model.sections/#geometor.model.sections.Section.get_IDs">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_IDs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
@@ -258,16 +266,15 @@
 
     <span class="c1"># TODO: check points and minimum count of 3</span>
     <span class="n">section</span> <span class="o">=</span> <span class="n">Section</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
-    <span class="n">section_repr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">FiniteSet</span><span class="p">(</span><span class="o">*</span><span class="n">points</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">ID</span><span class="p">:</span>
         <span class="n">points_IDs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="n">pt</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span> <span class="ow">or</span> <span class="n">pt</span><span class="p">)</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">points</span><span class="p">]</span>
         <span class="n">points_IDs</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">points_IDs</span><span class="p">)</span>
         <span class="n">ID</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/ </span><span class="si">{</span><span class="n">points_IDs</span><span class="si">}</span><span class="s2"> /&quot;</span>
 
-    <span class="n">details</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="n">section_repr</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="n">points</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span> <span class="n">ID</span><span class="o">=</span><span class="n">ID</span><span class="p">)</span>
+    <span class="n">details</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="n">points</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span> <span class="n">ID</span><span class="o">=</span><span class="n">ID</span><span class="p">)</span>
 
-    <span class="n">model</span><span class="p">[</span><span class="n">section_repr</span><span class="p">]</span> <span class="o">=</span> <span class="n">details</span>
+    <span class="n">model</span><span class="p">[</span><span class="n">section</span><span class="p">]</span> <span class="o">=</span> <span class="n">details</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">details</span><span class="o">.</span><span class="n">ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">section</span>
