@@ -1,6 +1,14 @@
 changelog
 =========
 
+0.2.5
+-----
+*2025-10-23*
+
+**fixed**
+
+.. + Fixed serialization of `Wedge` objects, ensuring models can be saved and loaded correctly.
+
 0.2.4
 -----
 *2025-10-23*
