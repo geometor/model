@@ -30,6 +30,7 @@ def _construct_circle(
     pt_radius: spg.Point,
     classes: list = None,
     ID: str = "",
+    guide: bool = False,
 ) -> spg.Circle:
     model.clear_new_points()
     """
@@ -59,6 +60,7 @@ def _construct_circle(
         classes=classes,
         ID=ID,
         pt_radius=pt_radius,
+        guide=guide,
     )
     #  details.pt_radius = pt_radius
 

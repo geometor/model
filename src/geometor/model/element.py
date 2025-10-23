@@ -43,6 +43,7 @@ class Element:
         parents: list | None = None,
         classes: list[str] | None = None,
         ID: str = "",
+        guide: bool = False,
     ):
         """
         Initializes an Element of the model.
@@ -62,6 +63,7 @@ class Element:
         self.parents = {key: "" for key in parents}
         self.classes = {key: "" for key in classes}
         self.ID = ID
+        self.guide = guide
 
 
 class CircleElement(Element):
@@ -99,8 +101,9 @@ class CircleElement(Element):
         parents: list | None = None,
         classes: list[str] | None = None,
         ID: str = "",
+        guide: bool = False,
     ):
-        super().__init__(sympy_obj, parents, classes, ID)
+        super().__init__(sympy_obj, parents, classes, ID, guide)
         self.pt_radius = pt_radius
 
 
@@ -126,7 +129,13 @@ def check_existence(
 
 def find_all_intersections(self, struct: Struct) -> None:
     """find all intersections in the model for the given struct"""
-    test_structs = [(el, struct) for el in self.structs if not el.equals(struct)]
+    if self[struct].guide:
+        return
+    test_structs = [
+        (el, struct)
+        for el in self.structs
+        if not el.equals(struct) and not self[el].guide
+    ]
 
     # check intersections
     with Pool(cpu_count()) as pool:

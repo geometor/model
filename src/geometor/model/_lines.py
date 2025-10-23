@@ -22,7 +22,7 @@ def _construct_line_by_IDs(
 
 
 def _construct_line(
-    model, pt_1: spg.Point, pt_2: spg.Point, classes: list = None, ID: str = ""
+    model, pt_1: spg.Point, pt_2: spg.Point, classes: list = None, ID: str = "", guide: bool = False
 ) -> spg.Line:
     model.clear_new_points()
     """
@@ -44,7 +44,7 @@ def _construct_line(
         pt_2_ID = model[pt_2].ID
         ID = f"- {pt_1_ID} {pt_2_ID} -"
 
-    details = Element(struct, parents=[pt_1, pt_2], classes=classes, ID=ID)
+    details = Element(struct, parents=[pt_1, pt_2], classes=classes, ID=ID, guide=guide)
 
     exists, existing_line = check_existence(model, struct, model.lines)
 

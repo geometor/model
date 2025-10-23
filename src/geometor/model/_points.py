@@ -16,6 +16,7 @@ def _set_point(
     parents: list = None,
     classes: list = None,
     ID: str = "",
+    guide: bool = False,
 ) -> spg.Point:
     """
     Adds a point to the model, finds duplicates, cleans values, and sets
@@ -59,7 +60,7 @@ def _set_point(
 
     pt = spg.Point(x_val, y_val)
 
-    details = Element(pt, parents, classes, ID)
+    details = Element(pt, parents, classes, ID, guide)
 
     if pt in self.points:
         # add attributes
@@ -80,7 +81,7 @@ def _set_point(
         ID = next(self.ID_gen)
         self.last_point_id = ID
 
-    details = Element(pt, parents, classes, ID)
+    details = Element(pt, parents, classes, ID, guide)
     self[pt] = details
     self._new_points.append(pt)
     if self._analysis_hook:
