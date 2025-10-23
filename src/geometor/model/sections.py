@@ -38,6 +38,14 @@ class Section:
         # Use a tuple of points for hashing, as lists are not hashable
         return hash(tuple(self.points))
 
+    def __repr__(self):
+        points_repr = [sp.srepr(p) for p in self.points]
+        return f"Section([{', '.join(points_repr)}])"
+
+    def _sstr(self, printer):
+        points_repr = [printer.doprint(p) for p in self.points]
+        return f"Section([{', '.join(points_repr)}])"
+
     def get_IDs(self, model) -> list[str]:
         """
         returns a list of IDs
@@ -134,16 +142,15 @@ def _set_section(model, points: list[spg.Point], classes=[], ID="") -> Section:
 
     # TODO: check points and minimum count of 3
     section = Section(points)
-    section_repr = sp.FiniteSet(*points)
 
     if not ID:
         points_IDs = [str(model[pt].ID or pt) for pt in points]
         points_IDs = " ".join(points_IDs)
         ID = f"/ {points_IDs} /"
 
-    details = Element(section_repr, parents=points, classes=classes, ID=ID)
+    details = Element(section, parents=points, classes=classes, ID=ID)
 
-    model[section_repr] = details
+    model[section] = details
 
     print(f"{details.ID}")
     return section

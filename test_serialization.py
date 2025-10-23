@@ -67,6 +67,8 @@ B = model_original.set_point(1, 0, classes=["given"])
 l1 = model_original.construct_line(A, B)
 c1 = model_original.construct_circle(A, B)
 c2 = model_original.construct_circle(B, A)
+C = model_original.get_element_by_ID("C")
+model_original.set_section([C, A, B])
 print("Initial model created.")
 print("-" * 20)
 

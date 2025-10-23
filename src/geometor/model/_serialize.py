@@ -3,31 +3,34 @@ from sympy.parsing.sympy_parser import parse_expr
 import sympy as sp
 from .common import *
 from .element import Element, CircleElement
+from .sections import Section
 
 def save_model(model, file_path):
     """
-    Saves a Model object to a JSON file.
+    Saves a Model object to a JSON file as a list of elements.
     """
-    sympy_objects = list(model.keys())
-    obj_to_index = {obj: i for i, obj in enumerate(sympy_objects)}
-
     serializable_elements = []
-    for obj in sympy_objects:
-        element = model[obj]
+    for element in model.values():
+        if isinstance(element.object, Section):
+            points_repr = [sp.srepr(p) for p in element.object.points]
+            sympy_obj_repr = f"Section([{', '.join(points_repr)}])"
+        else:
+            sympy_obj_repr = sp.srepr(element.object)
+
         element_data = {
+            'sympy_obj': sympy_obj_repr,
             'ID': element.ID,
             'classes': list(element.classes.keys()),
-            'parents': [obj_to_index[p] for p in element.parents.keys()],
+            'parents': [model[p].ID for p in element.parents.keys()],
             'guide': element.guide,
         }
         if isinstance(element, CircleElement):
-            element_data['pt_radius'] = obj_to_index[element.pt_radius]
+            element_data['pt_radius'] = model[element.pt_radius].ID
         serializable_elements.append(element_data)
 
     serializable_model = {
         'name': model.name,
         'last_point_id': model.last_point_id,
-        'sympy_objects': [sp.srepr(obj) for obj in sympy_objects],
         'elements': serializable_elements,
     }
 
@@ -56,14 +59,23 @@ def load_model(file_path, logger=None):
             if ID == last_point_id:
                 break
     
-    sympy_objects = [parse_expr(s) for s in serializable_model['sympy_objects']]
+    id_to_sympy = {}
+    id_to_element_data = {}
+    local_dict = {'Section': Section}
 
-    for i, element_data in enumerate(serializable_model['elements']):
-        sympy_obj = sympy_objects[i]
-        parents = [sympy_objects[j] for j in element_data['parents']]
+    # First pass: create all sympy objects and map them by ID
+    for element_data in serializable_model['elements']:
+        sympy_obj = parse_expr(element_data['sympy_obj'], local_dict=local_dict)
+        id_to_sympy[element_data['ID']] = sympy_obj
+        id_to_element_data[element_data['ID']] = element_data
+
+    # Second pass: create elements and link parents
+    for id, element_data in id_to_element_data.items():
+        sympy_obj = id_to_sympy[id]
+        parents = [id_to_sympy[p_id] for p_id in element_data['parents']]
         
         if 'pt_radius' in element_data:
-            pt_radius = sympy_objects[element_data['pt_radius']]
+            pt_radius = id_to_sympy[element_data['pt_radius']]
             element = CircleElement(
                 sympy_obj=sympy_obj,
                 ID=element_data['ID'],
