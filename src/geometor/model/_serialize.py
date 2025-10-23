@@ -18,6 +18,7 @@ def save_model(model, file_path):
             'ID': element.ID,
             'classes': list(element.classes.keys()),
             'parents': [obj_to_index[p] for p in element.parents.keys()],
+            'guide': element.guide,
         }
         if isinstance(element, CircleElement):
             element_data['pt_radius'] = obj_to_index[element.pt_radius]
@@ -68,14 +69,16 @@ def load_model(file_path, logger=None):
                 ID=element_data['ID'],
                 classes=element_data['classes'],
                 parents=parents,
-                pt_radius=pt_radius
+                pt_radius=pt_radius,
+                guide=element_data.get('guide', False)
             )
         else:
             element = Element(
                 sympy_obj=sympy_obj,
                 ID=element_data['ID'],
                 classes=element_data['classes'],
-                parents=parents
+                parents=parents,
+                guide=element_data.get('guide', False)
             )
         # Bypass the custom __setitem__ to avoid triggering intersection searches
         super(Model, model).__setitem__(sympy_obj, element)
