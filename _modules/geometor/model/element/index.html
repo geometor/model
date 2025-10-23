@@ -163,6 +163,7 @@
         <span class="n">parents</span><span class="p">:</span> <span class="nb">list</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">ID</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">guide</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes an Element of the model.</span>
@@ -181,7 +182,8 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">parents</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="s2">&quot;&quot;</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">parents</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="s2">&quot;&quot;</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">ID</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">ID</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">guide</span> <span class="o">=</span> <span class="n">guide</span></div>
 
 
 
@@ -222,8 +224,9 @@
         <span class="n">parents</span><span class="p">:</span> <span class="nb">list</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">ID</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">guide</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">sympy_obj</span><span class="p">,</span> <span class="n">parents</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">ID</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">sympy_obj</span><span class="p">,</span> <span class="n">parents</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="n">guide</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pt_radius</span> <span class="o">=</span> <span class="n">pt_radius</span></div>
 
 
@@ -255,7 +258,13 @@
 <a class="viewcode-back" href="../../../../modules/geometor.model.element/#geometor.model.element.find_all_intersections">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">find_all_intersections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">struct</span><span class="p">:</span> <span class="n">Struct</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;find all intersections in the model for the given struct&quot;&quot;&quot;</span>
-    <span class="n">test_structs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">el</span><span class="p">,</span> <span class="n">struct</span><span class="p">)</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">structs</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">el</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">struct</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="p">[</span><span class="n">struct</span><span class="p">]</span><span class="o">.</span><span class="n">guide</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="n">test_structs</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">struct</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">structs</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">el</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">struct</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">[</span><span class="n">el</span><span class="p">]</span><span class="o">.</span><span class="n">guide</span>
+    <span class="p">]</span>
 
     <span class="c1"># check intersections</span>
     <span class="k">with</span> <span class="n">Pool</span><span class="p">(</span><span class="n">cpu_count</span><span class="p">())</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
