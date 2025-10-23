@@ -24,7 +24,7 @@ def save_model(model, file_path):
         element_data = {
             'sympy_obj': sympy_obj_repr,
             'ID': element.ID,
-            'classes': list(element.classes.keys()),
+            'classes': list(element.classes),
             'parents': [model[p].ID for p in element.parents.keys()],
             'guide': element.guide,
         }

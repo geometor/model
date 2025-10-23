@@ -38,7 +38,7 @@ def _construct_circle(
     """
 
     if classes is None:
-        classes = {}
+        classes = []
     # find radius length for sympy.Circle
     radius_len = pt_center.distance(pt_radius)
 
