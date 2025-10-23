@@ -1,6 +1,14 @@
 changelog
 =========
 
+0.2.4
+-----
+*2025-10-23*
+
+**fixed**
+
+.. + Fixed serialization of `Section` objects, ensuring models can be saved and loaded correctly.
+
 0.2.3
 -----
 *2025-10-22*
