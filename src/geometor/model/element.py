@@ -176,8 +176,19 @@ def _get_ancestors_IDs(self, element) -> dict[str, dict]:
     If element A has parents B and C, and B has parent D, the method returns:
     {'A': {'B': {'D': {}}, 'C': {}}}
     """
-
+    from geometor.model.sections import Section
     ancestors = {self[element].ID: {}}
+
+    if isinstance(element, Section):
+        for pt in element.points:
+            ancestors[self[element].ID].update(self.get_ancestors_IDs(pt))
+        return ancestors
+
+    if isinstance(element, spg.Polygon):
+        for pt in element.vertices:
+            ancestors[self[element].ID].update(self.get_ancestors_IDs(pt))
+        return ancestors
+
 
     if "given" in self[element].classes:
         return ancestors
