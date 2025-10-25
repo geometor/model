@@ -191,6 +191,8 @@ def _get_ancestors_IDs(self, element) -> dict[str, dict]:
     for parent in parents:
         ancestors[self[element].ID].update(self.get_ancestors_IDs(parent))
 
+    return ancestors
+
 
 def _get_ancestors(self, element):
     """
