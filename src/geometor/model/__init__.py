@@ -12,7 +12,7 @@ points, lines, circles, polygons, and segments.
 __author__ = "geometor"
 __maintainer__ = "geometor"
 __email__ = "github@geometor.com"
-__version__ = "0.2.5"
+__version__ = "0.2.6"
 __licence__ = "MIT"
 
 from geometor.model.common import *

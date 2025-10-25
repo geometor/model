@@ -4,6 +4,7 @@ helper functions for polygons
 
 from geometor.model.common import *
 from geometor.model.element import Element
+from geometor.model.utils import clean_expr
 
 
 def _set_polygon_by_IDs(
@@ -34,6 +35,8 @@ def _set_polygon(model, poly_pts: list[spg.Point], classes=[], ID="") -> spg.Pol
         ID = f"< {poly_pts_IDs} >"
 
     details = Element(poly, parents=poly_pts, classes=classes, ID=ID)
+
+    details.side_lengths = [clean_expr(side.length) for side in poly.sides]
 
     model[poly] = details
 

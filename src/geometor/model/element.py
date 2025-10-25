@@ -4,6 +4,7 @@ ElementDetails class
 intersection functions
 """
 from geometor.model.common import *
+from geometor.model.utils import clean_expr
 
 Struct = (spg.Line | spg.Circle)
 
@@ -64,6 +65,19 @@ class Element:
         self.classes = {key: "" for key in classes}
         self.ID = ID
         self.guide = guide
+
+    @property
+    def length(self):
+        """
+        Returns the cleaned length of the element.
+        For polygons, it returns the list of cleaned side lengths.
+        """
+        if hasattr(self, "side_lengths"):
+            return self.side_lengths
+        if hasattr(self.object, "length"):
+            return clean_expr(self.object.length)
+        return None
+
 
 
 class CircleElement(Element):
