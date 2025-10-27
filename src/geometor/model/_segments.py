@@ -4,6 +4,8 @@ segment helper functions for sequencer
 
 from geometor.model.common import *
 from geometor.model.element import Element
+from geometor.model.colors import COLORS
+from rich.table import Table
 
 def _set_segment_by_IDs(
     model, pt_1_ID: str, pt_2_ID: str, classes: list = None, ID: str = ""
@@ -28,5 +30,11 @@ def _set_segment(model, pt_1: spg.Point, pt_2: spg.Point, classes=[], ID="") -> 
     details = Element(segment, parents=[pt_1, pt_2], classes=classes, ID=ID)
 
     model[segment] = details
+
+    classes_str = " : " + " ".join(classes) if classes else ""
+    model.log(f"[{COLORS['segment']} bold]{details.ID}[/{COLORS['segment']} bold]{classes_str}")
+    table = Table(show_header=False, box=None, padding=(0, 4))
+    table.add_row("    len:", f"[cyan]{sp.pretty(segment.length)}[/cyan]")
+    model.log(table)
 
     return segment

@@ -12,7 +12,7 @@ points, lines, circles, polygons, and segments.
 __author__ = "geometor"
 __maintainer__ = "geometor"
 __email__ = "github@geometor.com"
-__version__ = "0.2.6"
+__version__ = "0.3.0"
 __licence__ = "MIT"
 
 from geometor.model.common import *
@@ -67,6 +67,10 @@ GeometryObject = (
 )
 
 
+import logging
+from rich.logging import RichHandler
+import rich
+
 class Model(dict):
     """
     A collection of geometric elements, including points, lines, circles, and
@@ -76,7 +80,14 @@ class Model(dict):
     def __init__(self, name: str = "", logger=None):
         super().__init__()
         self._name = name
-        self._logger = logger
+        if logger:
+            self._logger = logger
+        else:
+            self._logger = logging.getLogger(f"geometor.model.{name}")
+            self._logger.setLevel(logging.INFO)
+            if not self._logger.handlers:
+                self._logger.addHandler(RichHandler(markup=True))
+
         self.ID_gen = self.point_ID_generator()
         self.last_point_id = ""
         self._analysis_hook = None
@@ -84,7 +95,10 @@ class Model(dict):
 
     def log(self, message):
         if self._logger:
-            self._logger.info(message)
+            if hasattr(message, '__rich_console__'):
+                rich.print(message)
+            else:
+                self._logger.info(message)
 
     def set_analysis_hook(self, hook_function):
         self._analysis_hook = hook_function

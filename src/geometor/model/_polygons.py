@@ -5,6 +5,8 @@ helper functions for polygons
 from geometor.model.common import *
 from geometor.model.element import Element
 from geometor.model.utils import clean_expr
+from geometor.model.colors import COLORS
+from rich.table import Table
 
 
 def _set_polygon_by_IDs(
@@ -40,5 +42,12 @@ def _set_polygon(model, poly_pts: list[spg.Point], classes=[], ID="") -> spg.Pol
 
     model[poly] = details
 
-    print(f"{details.ID}")
+    classes_str = " : " + " ".join(classes) if classes else ""
+    model.log(f"[{COLORS['polygon']} bold]{details.ID}[/{COLORS['polygon']} bold]{classes_str}")
+    table = Table(show_header=False, box=None, padding=(0, 4))
+    for i, side in enumerate(poly.sides):
+        table.add_row(f"    side {i+1}:", f"[cyan]{sp.pretty(side.length)}[/cyan]")
+    table.add_row("    area:", f"[cyan]{sp.pretty(poly.area)}[/cyan]")
+    model.log(table)
+
     return poly

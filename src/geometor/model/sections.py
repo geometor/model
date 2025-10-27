@@ -12,6 +12,8 @@ from geometor.model.element import (
     find_all_intersections,
     check_existence,
 )
+from geometor.model.colors import COLORS
+from rich.table import Table
 
 #  from geometor.model import Model
 
@@ -152,5 +154,12 @@ def _set_section(model, points: list[spg.Point], classes=[], ID="") -> Section:
 
     model[section] = details
 
-    print(f"{details.ID}")
+    classes_str = " : " + " ".join(classes) if classes else ""
+    model.log(f"[{COLORS['section']} bold]{details.ID}[/{COLORS['section']} bold]{classes_str}")
+    table = Table(show_header=False, box=None, padding=(0, 4))
+    for i, length in enumerate(section.lengths):
+        table.add_row(f"    len {i+1}:", f"[cyan]{sp.pretty(length)}[/cyan]")
+    table.add_row("    ratio:", f"[cyan]{sp.pretty(section.ratio)}[/cyan]")
+    model.log(table)
+
     return section

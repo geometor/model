@@ -10,6 +10,8 @@ from geometor.model.element import (
     find_all_intersections,
     check_existence,
 )
+from geometor.model.colors import COLORS
+from rich.table import Table
 
 
 class Wedge:
@@ -172,6 +174,13 @@ def _set_wedge(
     )
 
     model[struct] = details
-    console.print(f"[orchid1]{details.ID}[/orchid1]")
+
+    classes_str = " : " + " ".join(classes) if classes else ""
+    model.log(f"[{COLORS['polygon']} bold]{details.ID}[/{COLORS['polygon']} bold]{classes_str}")
+    table = Table(show_header=False, box=None, padding=(0, 4))
+    table.add_row("    r:", f"[cyan]{sp.pretty(struct.circle.radius)}[/cyan]")
+    table.add_row("    rad:", f"[cyan]{sp.pretty(struct.radians)}[/cyan]")
+    table.add_row("    deg:", f"[cyan]{sp.pretty(struct.degrees)}[/cyan]")
+    model.log(table)
 
     return struct

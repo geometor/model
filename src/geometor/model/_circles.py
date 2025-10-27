@@ -10,6 +10,8 @@ from geometor.model.element import (
     find_all_intersections,
     check_existence,
 )
+from geometor.model.colors import COLORS
+from rich.table import Table
 
 
 def _construct_circle_by_IDs(
@@ -74,7 +76,14 @@ def _construct_circle(
         # add the new circle to the model
 
         model[struct] = details
-        model.log(f"[bold]{details.ID}[/bold] = {str(struct.equation())}")
+
+        classes_str = " : " + " ".join(classes) if classes else ""
+        model.log(f"[{COLORS['circle']} bold]{details.ID}[/{COLORS['circle']} bold]{classes_str}")
+        table = Table(show_header=False, box=None, padding=(0, 4))
+        table.add_row("    ctr:", f"[cyan]{model[pt_center].ID}[/cyan]")
+        table.add_row("    r:", f"[cyan]{sp.pretty(struct.radius)}[/cyan]")
+        table.add_row("    eq:", f"[cyan]{sp.pretty(struct.equation())}[/cyan]")
+        model.log(table)
 
         find_all_intersections(model, struct)
 

@@ -5,6 +5,8 @@ helper functions for Model class
 from geometor.model.common import *
 
 from geometor.model.element import *
+from geometor.model.colors import COLORS
+from rich.table import Table
 
 #  from geometor.model.model import Model
 
@@ -42,7 +44,7 @@ def _construct_line(
     if not ID:
         pt_1_ID = model[pt_1].ID
         pt_2_ID = model[pt_2].ID
-        ID = f"- {pt_1_ID} {pt_2_ID} -"
+        ID = f"[ {pt_1_ID} {pt_2_ID} ]"
 
     details = Element(struct, parents=[pt_1, pt_2], classes=classes, ID=ID, guide=guide)
 
@@ -56,7 +58,14 @@ def _construct_line(
     else:
         # add struct
         model[struct] = details
-        model.log(f"[bold]{details.ID}[/bold] = {struct.equation()}")
+        
+        classes_str = " : " + " ".join(classes) if classes else ""
+        model.log(f"[{COLORS['line']} bold]{details.ID}[/{COLORS['line']} bold]{classes_str}")
+        table = Table(show_header=False, box=None, padding=(0, 4))
+        table.add_row("    eq:", f"[cyan]{sp.pretty(struct.equation())}[/cyan]")
+        table.add_row("    coef:", f"[cyan]{struct.coefficients}[/cyan]")
+        table.add_row("    pts:", f"[cyan]{model[pt_1].ID}, {model[pt_2].ID}[/cyan]")
+        model.log(table)
 
         find_all_intersections(model, struct)
 

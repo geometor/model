@@ -7,6 +7,8 @@ from geometor.model.utils import *
 
 from geometor.model.element import Element
 from geometor.model.reports import get_colored_ID
+from geometor.model.colors import COLORS
+from rich.table import Table
 
 
 def _set_point(
@@ -84,10 +86,22 @@ def _set_point(
     details = Element(pt, parents, classes, ID, guide)
     self[pt] = details
     self._new_points.append(pt)
+
+    text_ID = get_colored_ID(pt, ID)
+    color = COLORS["point"]
+    if "given" in classes:
+        color = COLORS["point_given"]
+    classes_str = " : " + " ".join(classes) if classes else ""
+    self.log(f"    [{color} bold]{text_ID}[/{color} bold]{classes_str}")
+
+    table = Table(show_header=False, box=None, padding=(0, 4))
+    table.add_row("    x:", f"[cyan]{sp.pretty(pt.x)}[/cyan]")
+    table.add_row("    y:", f"[cyan]{sp.pretty(pt.y)}[/cyan]")
+    self.log(table)
+
     if self._analysis_hook:
         self._analysis_hook(self, pt)
 
-    text_ID = get_colored_ID(pt, ID)
     #  console.print(f"[gold3]{text_ID}[/gold3] = {{ {sp.pretty(pt.x)}, {sp.pretty(pt.y)} }}")
     #  print(f"{text_ID} = {{ {sp.pprint(pt.x)}, {str(pt.y)} }}")
     return pt
