@@ -190,33 +190,43 @@ def _get_ancestors_IDs(self, element) -> dict[str, dict]:
     If element A has parents B and C, and B has parent D, the method returns:
     {'A': {'B': {'D': {}}, 'C': {}}}
     """
-    from geometor.model.sections import Section
-    ancestors = {self[element].ID: {}}
+    visited = set()
 
-    if isinstance(element, Section):
-        for pt in element.points:
-            ancestors[self[element].ID].update(self.get_ancestors_IDs(pt))
+    def _recursive_get(el):
+        from geometor.model.sections import Section
+        element_id = self[el].ID
+        if element_id in visited:
+            return {}  # Cycle detected
+
+        visited.add(element_id)
+
+        ancestors = {element_id: {}}
+
+        if isinstance(el, Section):
+            for pt in el.points:
+                ancestors[element_id].update(_recursive_get(pt))
+            return ancestors
+
+        if isinstance(el, spg.Polygon):
+            for pt in el.vertices:
+                ancestors[element_id].update(_recursive_get(pt))
+            return ancestors
+
+        if "given" in self[el].classes:
+            return ancestors
+
+        # Check if the element has parents
+        parents = []
+        if self[el].parents:
+            # Consider only the first two parents
+            parents = list(self[el].parents.keys())[:2]
+
+        for parent in parents:
+            ancestors[element_id].update(_recursive_get(parent))
+
         return ancestors
 
-    if isinstance(element, spg.Polygon):
-        for pt in element.vertices:
-            ancestors[self[element].ID].update(self.get_ancestors_IDs(pt))
-        return ancestors
-
-
-    if "given" in self[element].classes:
-        return ancestors
-
-    # Check if the element has parents
-    parents = []
-    if self[element].parents:
-        # Consider only the first two parents
-        parents = list(self[element].parents.keys())[:2]
-
-    for parent in parents:
-        ancestors[self[element].ID].update(self.get_ancestors_IDs(parent))
-
-    return ancestors
+    return _recursive_get(element)
 
 
 def _get_ancestors(self, element):
