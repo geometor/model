@@ -1,6 +1,14 @@
 changelog
 =========
 
+0.3.1
+-----
+*2025-10-30*
+
+**fixed**
+
+.. + Fixed a recursion error in `_get_ancestors_IDs` by adding cycle detection.
+
 0.2.5
 -----
 *2025-10-23*
