@@ -13,5 +13,6 @@ The `model` library provides the foundation for other GEOMETOR applications. It 
 -   `_points.py`: `Point` class and related functions.
 -   `_lines.py`: `Line` class and related functions.
 -   `_circles.py`: `Circle` class and related functions.
+-   `_polynomials.py`: `Polynomial` class and related functions.
 -   `_polygons.py`: `Polygon` class and related functions.
 -   `_serialize.py`: JSON serialization and deserialization for the model.

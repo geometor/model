@@ -18,6 +18,7 @@ dependencies = [
     "rich",
     "jinja2",
     "numpy",
+    "pytest",
 ]
 
 [project.scripts]

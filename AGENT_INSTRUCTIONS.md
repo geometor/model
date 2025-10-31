@@ -2,7 +2,7 @@
 
 Always start by creating a new branch for the task:
 ```bash
-git switch -c <feature-or-fix>/<feature-name>
+git switch -c fix/documents update
 ```
 
 # Instructions for Agent: Changelog and Task Management

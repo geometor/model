@@ -1,6 +1,16 @@
 changelog
 =========
 
+0.4.0
+-----
+*2025-10-31*
+
+**added**
+
+.. + Added `Polynomial` element to the model.
+.. + Added `add_poly` method to the `Model` class.
+.. + Added `pytest` for testing.
+
 0.3.1
 -----
 *2025-10-30*

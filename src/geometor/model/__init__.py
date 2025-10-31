@@ -12,7 +12,7 @@ points, lines, circles, polygons, and segments.
 __author__ = "geometor"
 __maintainer__ = "geometor"
 __email__ = "github@geometor.com"
-__version__ = "0.3.2"
+__version__ = "0.4.0"
 __licence__ = "MIT"
 
 from geometor.model.common import *
@@ -52,6 +52,7 @@ from geometor.model.sections import *
 from geometor.model.chains import *
 
 from geometor.model._serialize import save_model, load_model
+from geometor.model._polynomials import Polynomial
 from geometor.model._delete import delete_element, get_dependents
 
 GeometryObject = (
@@ -63,6 +64,8 @@ GeometryObject = (
     | Wedge
     | Section
     | Chain
+    | Polynomial
+    | sp.Expr
     | sp.FiniteSet
 )
 
@@ -92,6 +95,7 @@ class Model(dict):
         self.last_point_id = ""
         self._analysis_hook = None
         self._new_points = []
+        self._poly_count = 0
 
     def log(self, message):
         if self._logger:
@@ -125,7 +129,7 @@ class Model(dict):
         control types for keys and values
         """
         if not isinstance(key, GeometryObject):
-            raise TypeError(f"{key=} must be an instance of Element class")
+            raise TypeError(f"{key=} must be an instance of GeometryObject")
         if not isinstance(value, Element):
             raise TypeError(f"{ value= } must be an instance of Element class")
         super().__setitem__(key, value)
@@ -148,6 +152,26 @@ class Model(dict):
     set_polygon_by_IDs = _set_polygon_by_IDs
 
     set_wedge = _set_wedge
+
+    set_wedge = _set_wedge
+
+    def poly(self, coeffs: list, name: str = "", classes: list = [], group: str = "") -> Polynomial:
+        """
+        Create a Polynomial element.
+        """
+        return Polynomial(coeffs, name=name, classes=classes, group=group)
+
+    def add_poly(self, coeffs: list, name: str = "", classes: list = [], group: str = "") -> Polynomial:
+        """
+        Create and add a Polynomial element to the model.
+        """
+        if not name:
+            self._poly_count += 1
+            name = f"Poly{self._poly_count}"
+        poly_el = self.poly(coeffs, name=name, classes=classes, group=group)
+        self[poly_el.poly.as_expr()] = poly_el
+        self.log(f"* add_element: {poly_el}")
+        return poly_el
 
     delete_element = delete_element
     get_dependents = get_dependents
