@@ -142,7 +142,6 @@ dependencies
 
 - sympy
 - rich
-- textual
 - jinja2
 - numpy (this may now not be required)
 

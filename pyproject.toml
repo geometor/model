@@ -14,10 +14,7 @@ classifiers = [
 ]
 dependencies = [
     "sympy",
-    "textual",
     "rich",
-    "jinja2",
-    "numpy",
     "pytest",
 ]
 
