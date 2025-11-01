@@ -142,8 +142,8 @@ dependencies
 
 - sympy
 - rich
-- jinja2
-- numpy (this may now not be required)
+- pytest
+
 
 contributing
 ------------
