@@ -1,3 +1,6 @@
+:navigation: header
+:order: 1
+
 mission
 =======
 
@@ -11,7 +14,4 @@ mission
 goals
 -----
 
-.. .. postlist:: 
-   :category: GOALS
-   :excerpts:
 

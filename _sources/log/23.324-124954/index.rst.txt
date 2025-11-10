@@ -1,9 +1,9 @@
+:type: log
+:date: 23.324-124954
+:author: phi
+
 First Log - Lots of changes
 ===========================
-
-.. post::  23.324-124954
-   :tags: 
-   :category: status
 
 
 This log entry marks the commencement of the Geometor.model project. After

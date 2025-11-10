@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>model.chains &mdash; Project name not set  documentation</title>
+  <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=ea5fcf70" />
+  <link rel="stylesheet" type="text/css" href="../../_static/css/styles.css?v=85f2e26d" />
+  <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="../../index.html">
+        <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+      </a>
+      <div class="org-repo">
+        <span class="org">geometor</span>
+        •
+        <span class="repo">model</span>
+      </div>
+    </div>
+    <nav aria-label="Header">
+      <input type="checkbox" id="nav-Header-toggle" >
+      <label for="nav-Header-toggle" >Header</label>
+      <ul>
+        <li>
+          <a href="../../mission/index.html"  >mission</a>
+        </li>
+        <li>
+          <a href="../../usage/index.html"  >usage</a>
+        </li>
+        <li>
+          <a href="../../modules/index.html"  >modules</a>
+        </li>
+        <li>
+          <a href="../../log/index.html"  >log</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="motto"></div>
+  </header>
+  <main>
+
+    <article>
+      <nav class="context">
+        <div class="prev">
+        </div>
+        <div class="next">
+        </div>
+      </nav>
+      <nav class="breadcrumbs">
+        <span><a href="../../index.html">Home</a></span>
+          <span>/</span>
+        <span><a href="../index.html">Module code</a></span>
+          <span>/</span>
+        <span><a href="../model.html">model</a></span>
+        <span>/</span>
+        <span>model.chains</span>
+      </nav>
+      <div class="content">
+          <h1>Source code for model.chains</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rich</span><span class="w"> </span><span class="kn">import</span> <span class="nb">print</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="c1">#  from geometor.render import *</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.sections</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+
+<div class="viewcode-block" id="Chain">
+<a class="viewcode-back" href="../../modules/api/model/chains/index.html#model.chains.Chain">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Chain</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing a chain of connected golden sections,</span>
+<span class="sd">    facilitating the extraction of segments, points, and lengths, as well as</span>
+<span class="sd">    analyzing the flow and symmetry within the chain.</span>
+
+<span class="sd">    Each chain’s flow is characterized by the comparative lengths of</span>
+<span class="sd">    consecutive segments, represented symbolically to understand the</span>
+<span class="sd">    progression and transitions in segment lengths. Furthermore, this module</span>
+<span class="sd">    empowers users to explore symmetry lines within chains, unveiling a subtle,</span>
+<span class="sd">    profound aspect of geometric harmony.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sections</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Section</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes a Chain object with a list of connected sections.</span>
+
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        - ``sections`` : :class:`list[Section]`</span>
+<span class="sd">            A list of Section objects representing a chain of connected golden sections.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Chain.sections">
+<a class="viewcode-back" href="../../modules/api/model/chains/index.html#model.chains.Chain.sections">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sections</span> <span class="o">=</span> <span class="n">sections</span></div>
+
+<div class="viewcode-block" id="Chain.segments">
+<a class="viewcode-back" href="../../modules/api/model/chains/index.html#model.chains.Chain.segments">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">segments</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">extract_segments</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Chain.points">
+<a class="viewcode-back" href="../../modules/api/model/chains/index.html#model.chains.Chain.points">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">extract_points</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Chain.extract_segments">
+<a class="viewcode-back" href="../../modules/api/model/chains/index.html#model.chains.Chain.extract_segments">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">extract_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Segment</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Extracts unique segments from the chain.</span>
+
+<span class="sd">        returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        - :class:`list[spg.Segment]`</span>
+<span class="sd">            A list containing the unique segments in the chain.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">segments</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">section</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sections</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">segment</span> <span class="ow">in</span> <span class="n">section</span><span class="o">.</span><span class="n">segments</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">existing</span><span class="p">)</span> <span class="k">for</span> <span class="n">existing</span> <span class="ow">in</span> <span class="n">segments</span><span class="p">):</span>
+                    <span class="n">segments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">segment</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">segments</span></div>
+
+
+<div class="viewcode-block" id="Chain.extract_points">
+<a class="viewcode-back" href="../../modules/api/model/chains/index.html#model.chains.Chain.extract_points">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">extract_points</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Extracts unique points from the chain while maintaining order.</span>
+
+<span class="sd">        returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        - :class:`list[spg.Point]`</span>
+<span class="sd">            A list containing the ordered unique points from the chain.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">section</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sections</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">section</span><span class="o">.</span><span class="n">points</span><span class="p">:</span>
+                <span class="n">points</span><span class="p">[</span><span class="n">point</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></div>
+
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Chain.lengths">
+<a class="viewcode-back" href="../../modules/api/model/chains/index.html#model.chains.Chain.lengths">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">lengths</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Extract the symbolic lengths of the segments in the chain.</span>
+
+<span class="sd">        returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        - :class:`list[sp.Expr]`</span>
+<span class="sd">            A list containing the symbolic lengths of each segment in the chain.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">clean_expr</span><span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">length</span><span class="p">)</span> <span class="k">for</span> <span class="n">segment</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">segments</span><span class="p">]</span></div>
+
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Chain.numerical_lengths">
+<a class="viewcode-back" href="../../modules/api/model/chains/index.html#model.chains.Chain.numerical_lengths">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">numerical_lengths</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate and extract the numerical lengths of the segments in the chain.</span>
+
+<span class="sd">        returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        - :class:`list[float]`</span>
+<span class="sd">            A list containing the evaluated numerical lengths of each</span>
+<span class="sd">            segment in the chain.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">length</span><span class="o">.</span><span class="n">evalf</span><span class="p">())</span> <span class="k">for</span> <span class="n">segment</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">segments</span><span class="p">]</span></div>
+
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Chain.flow">
+<a class="viewcode-back" href="../../modules/api/model/chains/index.html#model.chains.Chain.flow">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">flow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Determine the flow of the segments in the chain by comparing the lengths</span>
+<span class="sd">        of consecutive segments.</span>
+
+<span class="sd">        returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        - :class:`list[str]`</span>
+<span class="sd">            A list of symbols representing the flow of segment lengths. &#39;&gt;&#39;</span>
+<span class="sd">            indicates that the previous segment is longer, &#39;&lt;&#39; indicates</span>
+<span class="sd">            that the next segment is longer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">flow_symbols</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">lengths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical_lengths</span>  <span class="c1"># Using numerical lengths for comparison</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">lengths</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">lengths</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="n">flow_symbols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">lengths</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">lengths</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="n">flow_symbols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">flow_symbols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)</span>  <span class="c1"># Equal lengths</span>
+
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">flow_symbols</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Chain.count_symmetry_lines">
+<a class="viewcode-back" href="../../modules/api/model/chains/index.html#model.chains.Chain.count_symmetry_lines">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">count_symmetry_lines</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">symmetry_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">flow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flow</span>
+        <span class="n">flow_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">flow</span><span class="p">)</span>
+
+        <span class="c1"># Iterate over the flow string to identify changes in direction</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">flow_length</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">flow</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">flow</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="n">symmetry_count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">symmetry_count</span></div>
+
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Chain.fibonacci_IDs">
+<a class="viewcode-back" href="../../modules/api/model/chains/index.html#model.chains.Chain.fibonacci_IDs">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fibonacci_IDs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates and returns Fibonacci-style IDs for each segment based on</span>
+<span class="sd">        their lengths.</span>
+
+<span class="sd">        returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        - :class:`list[str]`</span>
+<span class="sd">            A list of strings where each string is a Fibonacci-style </span>
+<span class="sd">            ID corresponding to a segment.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Step 1: Define Symbols</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;a b&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Step 2: Generate Expressions</span>
+        <span class="n">expressions</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span>
+        <span class="n">unique_lengths</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numerical_lengths</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_lengths</span><span class="p">)):</span>
+            <span class="n">next_expr</span> <span class="o">=</span> <span class="n">expressions</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">expressions</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">expressions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_expr</span><span class="p">)</span>
+
+        <span class="c1"># Step 3: Mapping Expressions</span>
+        <span class="n">length_to_expr</span> <span class="o">=</span> <span class="p">{</span><span class="n">length</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">length</span><span class="p">,</span> <span class="n">expr</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">unique_lengths</span><span class="p">,</span> <span class="n">expressions</span><span class="p">)}</span>
+
+        <span class="c1"># Assign expressions to segments</span>
+        <span class="n">segment_expressions</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">length_to_expr</span><span class="p">[</span><span class="n">length</span><span class="p">])</span> <span class="k">for</span> <span class="n">length</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical_lengths</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">segment_expressions</span></div>
+</div>
+
+</pre></div>
+      </div>
+      <footer></footer>
+    </article>
+
+  </main>
+
+<div class="asides">
+    <aside>
+        <h3>Search</h3>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+    </aside>
+    
+<aside>
+    <h3>Recent Logs</h3>
+    <ul>
+        
+            <li><a href="../../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+        
+    </ul>
+</aside>
+
+</div>
+<footer>
+    <div class="footer-nav">
+    <ul>
+        <li><a href="../../about.html">about</a></li>
+        <li><a href="../../connect.html">connect</a></li>
+        <li><a href="../../glossary.html">glossary</a></li>
+        <li><a href="../../todos.html">todos</a></li>
+        <li><a href="../../changelog.html">changelog</a></li>
+    </ul>
+</div>
+    <hr/>
+    <div role="contentinfo">
+        <p>
+                &copy; Copyright .
+        </p>
+    </div>
+</footer>
+
+  <script src="../../_static/jquery.js?v=5d32c60e"></script>
+  <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+  <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+  <script src="../../_static/doctools.js?v=9bcbadda"></script>
+  <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+
+
+</body>
+</html>

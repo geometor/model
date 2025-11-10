@@ -1,0 +1,163 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>&lt;no title&gt; &mdash; Project name not set  documentation</title>
+  <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=ea5fcf70" />
+  <link rel="stylesheet" type="text/css" href="_static/css/styles.css?v=85f2e26d" />
+  <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src="_static/logo.png" class="logo" alt="Logo"/>
+      </a>
+      <div class="org-repo">
+        <span class="org">geometor</span>
+        •
+        <span class="repo">model</span>
+      </div>
+    </div>
+    <nav aria-label="Header">
+      <input type="checkbox" id="nav-Header-toggle" >
+      <label for="nav-Header-toggle" >Header</label>
+      <ul>
+        <li>
+          <a href="mission/index.html"  >mission</a>
+        </li>
+        <li>
+          <a href="usage/index.html"  >usage</a>
+        </li>
+        <li>
+          <a href="modules/index.html"  >modules</a>
+        </li>
+        <li>
+          <a href="log/index.html"  >log</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="motto"></div>
+  </header>
+  <main>
+
+    <article>
+      <nav class="context">
+        <div class="prev">
+           <a href="index.html" class="prev" title="model" >Prev</a>
+        </div>
+        <div class="next">
+          <a href="glossary.html" class="next" title="glossary" >Next</a>
+        </div>
+      </nav>
+      <nav class="breadcrumbs">
+        <span><a href="index.html">Home</a></span>
+        <span>/</span>
+        <span>&lt;no title&gt;</span>
+      </nav>
+      <div class="content">
+          <p><code class="docutils literal notranslate"><span class="pre">geometor.model</span></code> is the foundational library for the <a class="reference external" href="https://geometor.com">GEOMETOR</a> initiative.</p>
+<p>At the core of the module is the <code class="docutils literal notranslate"><span class="pre">Model</span></code> class which establishes the field
+and methods of operation for creating the geometric constructions while maintaining integrity.</p>
+<p>The <strong>field</strong> might be easy to consider as a Cartesian grid. But in reality, it
+is an ordered set of information and operations. Points are the information.
+Lines and circles are the operations.</p>
+<p>In our system, all geometric elements of the <code class="docutils literal notranslate"><span class="pre">Model</span></code> are defined as <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/index.html">Sympy Geometry</a>
+objects. This means a <code class="docutils literal notranslate"><span class="pre">Point</span></code> can be defined as a pair of any algebraic
+<a class="reference external" href="https://docs.sympy.org/latest/tutorials/intro-tutorial/basic_operations.html">Sympy Expressions</a> that can be evaluated into a floating point value.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Line</span></code> and <code class="docutils literal notranslate"><span class="pre">Circle</span></code> are each defined by two points. So each construction
+must begin with at least two given points at the start. As lines and circles
+are added, intersection points are discovered with previous lines and circles
+and added to the model, so they may be used with new lines and circles.</p>
+<p>There are three main operations of the <code class="docutils literal notranslate"><span class="pre">Model</span></code>:</p>
+<ul class="simple">
+<li><p>set_point</p></li>
+<li><p>construct_line</p></li>
+<li><p>construct_circle</p></li>
+</ul>
+<p>The major responsibilities of the <code class="docutils literal notranslate"><span class="pre">Model</span></code>:</p>
+<ul>
+<li><p><strong>deduplicate</strong></p>
+<p>when elements are added to the model, we check to see if they already exist. This is particularly important for intersection points that often coincide with exisitng points.</p>
+</li>
+<li><p><strong>clean values</strong></p></li>
+<li><p>discover <strong>intersections</strong></p></li>
+<li><p><strong>save</strong> to and load from json</p></li>
+<li><p>maintain a set of <strong>related</strong> info for each element:</p>
+<ul class="simple">
+<li><p>ancestral relationships</p></li>
+<li><p>establish labels for elements</p></li>
+<li><p>classes for styles</p></li>
+</ul>
+</li>
+</ul>
+<p>All of the plotting functionality has moved to <strong>GEOMETOR</strong> <a class="reference external" href="https://github.com/geometor/render">render</a>. However, there are several report functions in the this module:</p>
+<ul class="simple">
+<li><p>report_summary</p></li>
+<li><p>report_group_by_type</p></li>
+<li><p>report_sequence</p></li>
+</ul>
+<img alt="_images/screenshot.png" src="_images/screenshot.png" />
+
+      </div>
+      <footer></footer>
+    </article>
+
+  </main>
+
+<div class="asides">
+    <aside>
+        <h3>Search</h3>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+    </aside>
+    
+<aside>
+    <h3>Recent Logs</h3>
+    <ul>
+        
+            <li><a href="log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+        
+    </ul>
+</aside>
+
+</div>
+<footer>
+      <div class="rst-footer-buttons" role="navigation" aria-label="Footer Nav">
+          <a href="index.html" class="btn btn-neutral float-left" title="model" accesskey="p" rel="prev"> Previous</a>
+          <a href="glossary.html" class="btn btn-neutral float-right" title="glossary" accesskey="n" rel="next">Next </a>
+      </div>
+    <div class="footer-nav">
+    <ul>
+        <li><a href="about.html">about</a></li>
+        <li><a href="connect.html">connect</a></li>
+        <li><a href="glossary.html">glossary</a></li>
+        <li><a href="todos.html">todos</a></li>
+        <li><a href="changelog.html">changelog</a></li>
+    </ul>
+</div>
+    <hr/>
+    <div role="contentinfo">
+        <p>
+                &copy; Copyright .
+        </p>
+    </div>
+</footer>
+
+  <script src="_static/jquery.js?v=5d32c60e"></script>
+  <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+  <script src="_static/documentation_options.js?v=5929fcd5"></script>
+  <script src="_static/doctools.js?v=9bcbadda"></script>
+  <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+
+
+</body>
+</html>

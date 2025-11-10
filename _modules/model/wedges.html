@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>model.wedges &mdash; Project name not set  documentation</title>
+  <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=ea5fcf70" />
+  <link rel="stylesheet" type="text/css" href="../../_static/css/styles.css?v=85f2e26d" />
+  <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="../../index.html">
+        <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+      </a>
+      <div class="org-repo">
+        <span class="org">geometor</span>
+        •
+        <span class="repo">model</span>
+      </div>
+    </div>
+    <nav aria-label="Header">
+      <input type="checkbox" id="nav-Header-toggle" >
+      <label for="nav-Header-toggle" >Header</label>
+      <ul>
+        <li>
+          <a href="../../mission/index.html"  >mission</a>
+        </li>
+        <li>
+          <a href="../../usage/index.html"  >usage</a>
+        </li>
+        <li>
+          <a href="../../modules/index.html"  >modules</a>
+        </li>
+        <li>
+          <a href="../../log/index.html"  >log</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="motto"></div>
+  </header>
+  <main>
+
+    <article>
+      <nav class="context">
+        <div class="prev">
+        </div>
+        <div class="next">
+        </div>
+      </nav>
+      <nav class="breadcrumbs">
+        <span><a href="../../index.html">Home</a></span>
+          <span>/</span>
+        <span><a href="../index.html">Module code</a></span>
+          <span>/</span>
+        <span><a href="../model.html">model</a></span>
+        <span>/</span>
+        <span>model.wedges</span>
+      </nav>
+      <div class="content">
+          <h1>Source code for model.wedges</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">wedge functions for Model class</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.common</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.element</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Element</span><span class="p">,</span>
+    <span class="n">CircleElement</span><span class="p">,</span>
+    <span class="n">find_all_intersections</span><span class="p">,</span>
+    <span class="n">check_existence</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">COLORS</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">Table</span>
+
+
+<div class="viewcode-block" id="Wedge">
+<a class="viewcode-back" href="../../modules/api/model/wedges/index.html#model.wedges.Wedge">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Wedge</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">]):</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;A wedge must be defined by four points.&quot;</span>
+<div class="viewcode-block" id="Wedge.points">
+<a class="viewcode-back" href="../../modules/api/model/wedges/index.html#model.wedges.Wedge.points">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">points</span></div>
+
+<div class="viewcode-block" id="Wedge.pt_center">
+<a class="viewcode-back" href="../../modules/api/model/wedges/index.html#model.wedges.Wedge.pt_center">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pt_center</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Wedge.pt_radius">
+<a class="viewcode-back" href="../../modules/api/model/wedges/index.html#model.wedges.Wedge.pt_radius">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pt_radius</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Wedge.pt_sweep_start">
+<a class="viewcode-back" href="../../modules/api/model/wedges/index.html#model.wedges.Wedge.pt_sweep_start">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pt_sweep_start</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Wedge.pt_sweep_end">
+<a class="viewcode-back" href="../../modules/api/model/wedges/index.html#model.wedges.Wedge.pt_sweep_end">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pt_sweep_end</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span></div>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_circle</span> <span class="o">=</span> <span class="n">spg</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pt_center</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pt_center</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pt_radius</span><span class="p">))</span>
+<div class="viewcode-block" id="Wedge.sweep_ray">
+<a class="viewcode-back" href="../../modules/api/model/wedges/index.html#model.wedges.Wedge.sweep_ray">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sweep_ray</span> <span class="o">=</span> <span class="n">spg</span><span class="o">.</span><span class="n">Ray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pt_center</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pt_sweep_end</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Wedge.start_ray">
+<a class="viewcode-back" href="../../modules/api/model/wedges/index.html#model.wedges.Wedge.start_ray">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_ray</span> <span class="o">=</span> <span class="n">spg</span><span class="o">.</span><span class="n">Ray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pt_center</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pt_sweep_start</span><span class="p">)</span></div>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_point</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_point</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_arc_endpoints</span><span class="p">()</span>
+        <span class="c1"># self.direction = direction</span>
+
+<div class="viewcode-block" id="Wedge.__repr__">
+<a class="viewcode-back" href="../../modules/api/model/wedges/index.html#model.wedges.Wedge.__repr__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">points_repr</span> <span class="o">=</span> <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">srepr</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">]</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Wedge([</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">points_repr</span><span class="p">)</span><span class="si">}</span><span class="s2">])&quot;</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_sstr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">printer</span><span class="p">):</span>
+        <span class="n">points_repr</span> <span class="o">=</span> <span class="p">[</span><span class="n">printer</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">]</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Wedge([</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">points_repr</span><span class="p">)</span><span class="si">}</span><span class="s2">])&quot;</span>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_find_arc_endpoints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">,</span> <span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">]:</span>
+        <span class="n">intersections_start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">circle</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_ray</span><span class="p">)</span>
+        <span class="n">intersections_sweep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">circle</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sweep_ray</span><span class="p">)</span>
+
+        <span class="c1"># Ensure the rays intersect the circle</span>
+        <span class="k">if</span> <span class="n">intersections_start</span> <span class="ow">and</span> <span class="n">intersections_sweep</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">intersections_start</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">intersections_sweep</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Rays do not intersect the circle.&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Wedge.circle">
+<a class="viewcode-back" href="../../modules/api/model/wedges/index.html#model.wedges.Wedge.circle">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">circle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">spg</span><span class="o">.</span><span class="n">Circle</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_circle</span></div>
+
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Wedge.radians">
+<a class="viewcode-back" href="../../modules/api/model/wedges/index.html#model.wedges.Wedge.radians">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">radians</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_ray</span><span class="o">.</span><span class="n">angle_between</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sweep_ray</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">angle</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">direction</span> <span class="o">==</span> <span class="s2">&quot;clockwise&quot;</span> <span class="k">else</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">pi</span> <span class="o">-</span> <span class="n">angle</span></div>
+
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Wedge.degrees">
+<a class="viewcode-back" href="../../modules/api/model/wedges/index.html#model.wedges.Wedge.degrees">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">degrees</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sp</span><span class="o">.</span><span class="n">deg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">radians</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Wedge.ratio">
+<a class="viewcode-back" href="../../modules/api/model/wedges/index.html#model.wedges.Wedge.ratio">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">radians</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Wedge.area">
+<a class="viewcode-back" href="../../modules/api/model/wedges/index.html#model.wedges.Wedge.area">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
+        <span class="c1"># Using the ratio of the angle to the full circle to find the area</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">circle</span><span class="o">.</span><span class="n">area</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ratio</span></div>
+
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Wedge.arc_length">
+<a class="viewcode-back" href="../../modules/api/model/wedges/index.html#model.wedges.Wedge.arc_length">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">arc_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
+        <span class="c1"># Using the ratio of the angle to the full circle to find the arc length</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">circle</span><span class="o">.</span><span class="n">circumference</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ratio</span></div>
+
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Wedge.perimeter">
+<a class="viewcode-back" href="../../modules/api/model/wedges/index.html#model.wedges.Wedge.perimeter">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">perimeter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
+        <span class="c1"># Including the two radii to form the full boundary of the wedge</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">arc_length</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">circle</span><span class="o">.</span><span class="n">radius</span></div>
+</div>
+
+
+
+<span class="c1">#  def _set_wedge_by_labels(</span>
+    <span class="c1">#  model, pt_1_label: str, pt_2_label: str, classes: list = None, label: str = &quot;&quot;</span>
+<span class="c1">#  ) -&gt; Wedge:</span>
+    <span class="c1">#  &quot;&quot;&quot;</span>
+    <span class="c1">#  find points by label and use them with :meth:`Model.construct_line`</span>
+    <span class="c1">#  &quot;&quot;&quot;</span>
+
+    <span class="c1">#  pt_1 = model.get_element_by_label(pt_1_label)</span>
+    <span class="c1">#  pt_2 = model.get_element_by_label(pt_2_label)</span>
+    <span class="c1">#  model.construct_circle(pt_1, pt_2, classes, label)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_set_wedge</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">pt_center</span><span class="p">:</span> <span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">,</span>
+    <span class="n">pt_radius</span><span class="p">:</span> <span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">,</span>
+    <span class="n">pt_sweep_start</span><span class="p">:</span> <span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">,</span>
+    <span class="n">pt_sweep_end</span><span class="p">:</span> <span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">,</span>
+    <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;clockwise&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">ID</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Wedge</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sets a Wedge from 3 points and adds it to the model.</span>
+
+<span class="sd">    operations</span>
+<span class="sd">    ~~~~~~~~~~</span>
+<span class="sd">    - create an instance of :class:`geometor.model.Wedge`</span>
+<span class="sd">    - create a ``details`` object from :class:`Element`</span>
+<span class="sd">    - add parents to details</span>
+<span class="sd">        initial parents are the two starting points</span>
+<span class="sd">    - check for duplicates in in the ``model``</span>
+<span class="sd">    - find intersection points for new element with all precedng elements</span>
+<span class="sd">    - Add ``circle`` to the model.</span>
+
+<span class="sd">    parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    - ``pt_center`` : :class:`sympy.geometry.point.Point` : point for circle center</span>
+<span class="sd">    - ``pt_radius`` : :class:`sympy.geometry.point.Point` : point to mark radius</span>
+<span class="sd">    - ``pt_end`` : :class:`sympy.geometry.point.Point` : A SymPy Point marking the sweep of the wedge</span>
+<span class="sd">    - ``classes`` : :class:`list` *optional* : A list of string names for classes defining a set of styles. Defaults to None.</span>
+<span class="sd">    - ``ID`` : :class:`str` *optional* : A text ID for use in plotting and reporting. Defaults to an empty string.</span>
+
+<span class="sd">    returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    - :class:`Wedge`</span>
+<span class="sd">        The portion of a circle</span>
+
+<span class="sd">    example</span>
+<span class="sd">    -------</span>
+<span class="sd">        &gt;&gt;&gt; from geometor.elements import *</span>
+<span class="sd">        &gt;&gt;&gt; model = Model(&quot;demo&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; A = model.set_point(0, 0, classes=[&quot;given&quot;], ID=&quot;A&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; B = model.set_point(1, 0, classes=[&quot;given&quot;], ID=&quot;B&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; model.construct_circle(A, B)</span>
+<span class="sd">        &gt;&gt;&gt; model.construct_circle(B, A)</span>
+<span class="sd">        &gt;&gt;&gt; model._set_wedge_by_IDs(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;)</span>
+<span class="sd">        &lt;Wedge object ...&gt;</span>
+
+<span class="sd">    notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    SymPy defines a circle as a center point and a radius length, so the radius length is calculated for the spg.Circle.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">classes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">classes</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># find radius length for sympy.Circle</span>
+    <span class="c1">#  radius_len = pt_center.distance(pt_radius)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pt_center</span><span class="p">,</span> <span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pt_radius</span><span class="p">,</span> <span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+            <span class="s2">&quot;Both pt_center and pt_radius must be instances of sympy.geometry.point.Point&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">struct</span> <span class="o">=</span> <span class="n">Wedge</span><span class="p">([</span><span class="n">pt_center</span><span class="p">,</span> <span class="n">pt_radius</span><span class="p">,</span> <span class="n">pt_sweep_start</span><span class="p">,</span> <span class="n">pt_sweep_end</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ID</span><span class="p">:</span>
+        <span class="n">pt_center_ID</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="n">pt_center</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span>
+        <span class="n">pt_radius_ID</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="n">pt_radius</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span>
+        <span class="n">ID</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;( </span><span class="si">{</span><span class="n">pt_center_ID</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">pt_radius_ID</span><span class="si">}</span><span class="s2"> )&quot;</span>
+        <span class="n">ID</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&lt; </span><span class="si">{</span><span class="n">model</span><span class="p">[</span><span class="n">pt_sweep_start</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">pt_center_ID</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">model</span><span class="p">[</span><span class="n">pt_sweep_end</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span><span class="si">}</span><span class="s2"> &gt;&quot;</span>
+
+    <span class="n">details</span> <span class="o">=</span> <span class="n">CircleElement</span><span class="p">(</span>
+        <span class="n">struct</span><span class="p">,</span>
+        <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="n">pt_center</span><span class="p">,</span> <span class="n">pt_radius</span><span class="p">],</span>
+        <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
+        <span class="n">ID</span><span class="o">=</span><span class="n">ID</span><span class="p">,</span>
+        <span class="n">pt_radius</span><span class="o">=</span><span class="n">pt_radius</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">model</span><span class="p">[</span><span class="n">struct</span><span class="p">]</span> <span class="o">=</span> <span class="n">details</span>
+
+    <span class="n">classes_str</span> <span class="o">=</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span> <span class="k">if</span> <span class="n">classes</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">&#39;polygon&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> bold]</span><span class="si">{</span><span class="n">details</span><span class="o">.</span><span class="n">ID</span><span class="si">}</span><span class="s2">[/</span><span class="si">{</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">&#39;polygon&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> bold]</span><span class="si">{</span><span class="n">classes_str</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">show_header</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">&quot;    r:&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;[cyan]</span><span class="si">{</span><span class="n">sp</span><span class="o">.</span><span class="n">pretty</span><span class="p">(</span><span class="n">struct</span><span class="o">.</span><span class="n">circle</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span><span class="si">}</span><span class="s2">[/cyan]&quot;</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">&quot;    rad:&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;[cyan]</span><span class="si">{</span><span class="n">sp</span><span class="o">.</span><span class="n">pretty</span><span class="p">(</span><span class="n">struct</span><span class="o">.</span><span class="n">radians</span><span class="p">)</span><span class="si">}</span><span class="s2">[/cyan]&quot;</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">&quot;    deg:&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;[cyan]</span><span class="si">{</span><span class="n">sp</span><span class="o">.</span><span class="n">pretty</span><span class="p">(</span><span class="n">struct</span><span class="o">.</span><span class="n">degrees</span><span class="p">)</span><span class="si">}</span><span class="s2">[/cyan]&quot;</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">struct</span>
+</pre></div>
+      </div>
+      <footer></footer>
+    </article>
+
+  </main>
+
+<div class="asides">
+    <aside>
+        <h3>Search</h3>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+    </aside>
+    
+<aside>
+    <h3>Recent Logs</h3>
+    <ul>
+        
+            <li><a href="../../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+        
+    </ul>
+</aside>
+
+</div>
+<footer>
+    <div class="footer-nav">
+    <ul>
+        <li><a href="../../about.html">about</a></li>
+        <li><a href="../../connect.html">connect</a></li>
+        <li><a href="../../glossary.html">glossary</a></li>
+        <li><a href="../../todos.html">todos</a></li>
+        <li><a href="../../changelog.html">changelog</a></li>
+    </ul>
+</div>
+    <hr/>
+    <div role="contentinfo">
+        <p>
+                &copy; Copyright .
+        </p>
+    </div>
+</footer>
+
+  <script src="../../_static/jquery.js?v=5d32c60e"></script>
+  <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+  <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+  <script src="../../_static/doctools.js?v=9bcbadda"></script>
+  <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+
+
+</body>
+</html>

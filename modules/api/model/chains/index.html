@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>model.chains &mdash; Project name not set  documentation</title>
+  <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=ea5fcf70" />
+  <link rel="stylesheet" type="text/css" href="../../../../_static/css/styles.css?v=85f2e26d" />
+  <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="../../../../index.html">
+        <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+      </a>
+      <div class="org-repo">
+        <span class="org">geometor</span>
+        •
+        <span class="repo">model</span>
+      </div>
+    </div>
+    <nav aria-label="Header">
+      <input type="checkbox" id="nav-Header-toggle" >
+      <label for="nav-Header-toggle" >Header</label>
+      <ul>
+        <li>
+          <a href="../../../../mission/index.html"  >mission</a>
+        </li>
+        <li>
+          <a href="../../../../usage/index.html"  >usage</a>
+        </li>
+        <li>
+          <a href="../../../index.html"  >modules</a>
+        </li>
+        <li>
+          <a href="../../../../log/index.html"  >log</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="motto"></div>
+  </header>
+  <main>
+
+    <article>
+      <nav class="context">
+        <div class="prev">
+           <a href="../__main__/index.html" class="prev" title="model.__main__" >Prev</a>
+        </div>
+        <div class="next">
+          <a href="../colors/index.html" class="next" title="model.colors" >Next</a>
+        </div>
+      </nav>
+      <nav class="breadcrumbs">
+        <span><a href="../../../../index.html">Home</a></span>
+          <span>/</span>
+        <span><a href="../../../index.html">modules</a></span>
+          <span>/</span>
+        <span><a href="../index.html">model</a></span>
+        <span>/</span>
+        <span>model.chains</span>
+      </nav>
+      <div class="content">
+          <section id="module-model.chains">
+<span id="model-chains"></span><h1>model.chains<a class="headerlink" href="#module-model.chains" title="Link to this heading">¶</a></h1>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#model.chains.Chain" title="model.chains.Chain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Chain</span></code></a></p></td>
+<td><p>A class representing a chain of connected golden sections,</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="model.chains.Chain">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.chains.</span></span><span class="sig-name descname"><span class="pre">Chain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sections</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">geometor.model.sections.Section</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/model/chains.html#Chain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.chains.Chain" title="Link to this definition">¶</a></dt>
+<dd><p>A class representing a chain of connected golden sections,
+facilitating the extraction of segments, points, and lengths, as well as
+analyzing the flow and symmetry within the chain.</p>
+<p>Each chain’s flow is characterized by the comparative lengths of
+consecutive segments, represented symbolically to understand the
+progression and transitions in segment lengths. Furthermore, this module
+empowers users to explore symmetry lines within chains, unveiling a subtle,
+profound aspect of geometric harmony.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.chains.Chain.sections">
+<span class="sig-name descname"><span class="pre">sections</span></span><a class="reference internal" href="../../../../_modules/model/chains.html#Chain.sections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.chains.Chain.sections" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.chains.Chain.segments">
+<span class="sig-name descname"><span class="pre">segments</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../../_modules/model/chains.html#Chain.segments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.chains.Chain.segments" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.chains.Chain.points">
+<span class="sig-name descname"><span class="pre">points</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../../_modules/model/chains.html#Chain.points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.chains.Chain.points" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.chains.Chain.extract_segments">
+<span class="sig-name descname"><span class="pre">extract_segments</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">geometor.model.sections.spg.Segment</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../_modules/model/chains.html#Chain.extract_segments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.chains.Chain.extract_segments" title="Link to this definition">¶</a></dt>
+<dd><p>Extracts unique segments from the chain.</p>
+<section id="returns">
+<h3>returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="xref py py-class docutils literal notranslate"><span class="pre">list[spg.Segment]</span></code></dt><dd><p>A list containing the unique segments in the chain.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.chains.Chain.extract_points">
+<span class="sig-name descname"><span class="pre">extract_points</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">geometor.model.sections.spg.Point</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../_modules/model/chains.html#Chain.extract_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.chains.Chain.extract_points" title="Link to this definition">¶</a></dt>
+<dd><p>Extracts unique points from the chain while maintaining order.</p>
+<section id="id1">
+<h3>returns<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="xref py py-class docutils literal notranslate"><span class="pre">list[spg.Point]</span></code></dt><dd><p>A list containing the ordered unique points from the chain.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="model.chains.Chain.lengths">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lengths</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">geometor.model.sections.sp.Expr</span><span class="p"><span class="pre">]</span></span></em><a class="reference internal" href="../../../../_modules/model/chains.html#Chain.lengths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.chains.Chain.lengths" title="Link to this definition">¶</a></dt>
+<dd><p>Extract the symbolic lengths of the segments in the chain.</p>
+<section id="id2">
+<h3>returns<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="xref py py-class docutils literal notranslate"><span class="pre">list[sp.Expr]</span></code></dt><dd><p>A list containing the symbolic lengths of each segment in the chain.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="model.chains.Chain.numerical_lengths">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">numerical_lengths</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.9/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></em><a class="reference internal" href="../../../../_modules/model/chains.html#Chain.numerical_lengths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.chains.Chain.numerical_lengths" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate and extract the numerical lengths of the segments in the chain.</p>
+<section id="id3">
+<h3>returns<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="xref py py-class docutils literal notranslate"><span class="pre">list[float]</span></code></dt><dd><p>A list containing the evaluated numerical lengths of each
+segment in the chain.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="model.chains.Chain.flow">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">flow</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="reference internal" href="../../../../_modules/model/chains.html#Chain.flow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.chains.Chain.flow" title="Link to this definition">¶</a></dt>
+<dd><p>Determine the flow of the segments in the chain by comparing the lengths
+of consecutive segments.</p>
+<section id="id4">
+<h3>returns<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="xref py py-class docutils literal notranslate"><span class="pre">list[str]</span></code></dt><dd><p>A list of symbols representing the flow of segment lengths. ‘&gt;’
+indicates that the previous segment is longer, ‘&lt;’ indicates
+that the next segment is longer.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.chains.Chain.count_symmetry_lines">
+<span class="sig-name descname"><span class="pre">count_symmetry_lines</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.9/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../../../../_modules/model/chains.html#Chain.count_symmetry_lines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.chains.Chain.count_symmetry_lines" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="model.chains.Chain.fibonacci_IDs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fibonacci_IDs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="reference internal" href="../../../../_modules/model/chains.html#Chain.fibonacci_IDs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.chains.Chain.fibonacci_IDs" title="Link to this definition">¶</a></dt>
+<dd><p>Creates and returns Fibonacci-style IDs for each segment based on
+their lengths.</p>
+<section id="id5">
+<h3>returns<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="xref py py-class docutils literal notranslate"><span class="pre">list[str]</span></code></dt><dd><p>A list of strings where each string is a Fibonacci-style
+ID corresponding to a segment.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+      </div>
+      <footer></footer>
+    </article>
+
+  </main>
+
+<div class="asides">
+    <aside>
+        <h3>Search</h3>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+    </aside>
+    
+<aside>
+    <h3>Recent Logs</h3>
+    <ul>
+        
+            <li><a href="../../../../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+        
+    </ul>
+</aside>
+
+</div>
+<footer>
+      <div class="rst-footer-buttons" role="navigation" aria-label="Footer Nav">
+          <a href="../__main__/index.html" class="btn btn-neutral float-left" title="model.__main__" accesskey="p" rel="prev"> Previous</a>
+          <a href="../colors/index.html" class="btn btn-neutral float-right" title="model.colors" accesskey="n" rel="next">Next </a>
+      </div>
+    <div class="footer-nav">
+    <ul>
+        <li><a href="../../../../about.html">about</a></li>
+        <li><a href="../../../../connect.html">connect</a></li>
+        <li><a href="../../../../glossary.html">glossary</a></li>
+        <li><a href="../../../../todos.html">todos</a></li>
+        <li><a href="../../../../changelog.html">changelog</a></li>
+    </ul>
+</div>
+    <hr/>
+    <div role="contentinfo">
+        <p>
+                &copy; Copyright .
+        </p>
+    </div>
+</footer>
+
+  <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+  <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+  <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+  <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+  <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+model.reports
+=============
+
+.. py:module:: model.reports
+
+.. autoapi-nested-parse::
+
+   report helper functions
+
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   model.reports.generate_dot
+   model.reports.report_summary
+   model.reports.report_group_by_type
+   model.reports.get_colored_ID
+   model.reports.report_sequence
+
+
+Module Contents
+---------------
+
+.. py:function:: generate_dot(graph, parent=None, dot_string='', defined_nodes=None)
+
+.. py:function:: report_summary(model)
+
+.. py:function:: report_group_by_type(model)
+
+.. py:function:: get_colored_ID(el, ID)
+
+   Get the colored ID for a geometric element.
+
+
+.. py:function:: report_sequence(model)
+
+   Generate a sequential report of the model using rich Console layouts.
+
+

@@ -1,0 +1,83 @@
+model.wedges
+============
+
+.. py:module:: model.wedges
+
+.. autoapi-nested-parse::
+
+   wedge functions for Model class
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   model.wedges.Wedge
+
+
+Module Contents
+---------------
+
+.. py:class:: Wedge(points: list[geometor.model.common.spg.Point])
+
+   .. py:attribute:: points
+
+
+   .. py:attribute:: pt_center
+
+
+   .. py:attribute:: pt_radius
+
+
+   .. py:attribute:: pt_sweep_start
+
+
+   .. py:attribute:: pt_sweep_end
+
+
+   .. py:attribute:: sweep_ray
+
+
+   .. py:attribute:: start_ray
+
+
+   .. py:method:: __repr__()
+
+
+   .. py:property:: circle
+      :type: geometor.model.common.spg.Circle
+
+
+
+   .. py:property:: radians
+      :type: geometor.model.common.sp.Expr
+
+
+
+   .. py:property:: degrees
+      :type: geometor.model.common.sp.Expr
+
+
+
+   .. py:property:: ratio
+      :type: geometor.model.common.sp.Expr
+
+
+
+   .. py:property:: area
+      :type: geometor.model.common.sp.Expr
+
+
+
+   .. py:property:: arc_length
+      :type: geometor.model.common.sp.Expr
+
+
+
+   .. py:property:: perimeter
+      :type: geometor.model.common.sp.Expr
+
+
+

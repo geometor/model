@@ -1,0 +1,111 @@
+model.sections
+==============
+
+.. py:module:: model.sections
+
+.. autoapi-nested-parse::
+
+   section functions for Model class
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   model.sections.phi
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   model.sections.Section
+
+
+Module Contents
+---------------
+
+.. py:data:: phi
+
+.. py:class:: Section(points: list[geometor.model.utils.spg.Point])
+
+   .. py:attribute:: points
+
+
+   .. py:attribute:: segments
+
+
+   .. py:attribute:: clean_expr
+
+
+   .. py:method:: __eq__(other)
+
+
+   .. py:method:: __hash__()
+
+
+   .. py:method:: __repr__()
+
+
+   .. py:method:: get_IDs(model) -> list[str]
+
+      returns a list of IDs
+
+
+
+   .. py:property:: ratio
+      :type: geometor.model.utils.sp.Expr
+
+
+      returns the ratio of the symbolic lengths of each segment
+
+
+
+   .. py:property:: lengths
+      :type: list[geometor.model.utils.sp.Expr]
+
+
+
+   .. py:property:: floats
+      :type: list[float]
+
+
+
+   .. py:property:: is_golden
+      :type: bool
+
+
+
+   .. py:property:: min_length
+      :type: geometor.model.utils.sp.Expr
+
+
+
+   .. py:property:: min_float
+      :type: float
+
+
+
+   .. py:property:: min_segment
+      :type: geometor.model.utils.spg.Segment
+
+
+
+   .. py:property:: max_length
+      :type: geometor.model.utils.sp.Expr
+
+
+
+   .. py:property:: max_float
+      :type: float
+
+
+
+   .. py:property:: max_segment
+      :type: geometor.model.utils.spg.Segment
+
+
+

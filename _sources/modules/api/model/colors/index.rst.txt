@@ -1,0 +1,19 @@
+model.colors
+============
+
+.. py:module:: model.colors
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   model.colors.COLORS
+
+
+Module Contents
+---------------
+
+.. py:data:: COLORS
+
