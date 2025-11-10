@@ -11,7 +11,6 @@ from sympy.abc import x, y
 sp.init_printing()
 
 import math as math
-import numpy as np
 from collections import defaultdict
 import logging
 
