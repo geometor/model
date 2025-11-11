@@ -4,7 +4,7 @@ import geometor.model as module
 version = module.__version__
 
 org = "geometor"
-org_name = "geometor"
+org_name = "GEOMETOR"
 
 repo = "model"
 repo_name = "model"

@@ -1,3 +1,6 @@
+GEOMETOR • model
+================
+
 `geometor.model`` is the foundational library for the GEOMETOR_ initiative.
 
 Additional information about ``geometor.model`` can be seen at the `Project's Website`_
