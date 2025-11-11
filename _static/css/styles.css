@@ -788,7 +788,7 @@ article > figure {
 }
 
 article > figure > img {
-  width: 100%;
+  max-width: 100%;
   height: 100%;
   margin: 0 auto;
   object-position: center;
@@ -834,7 +834,15 @@ article > .content > * + * {
   margin-top: var(--fitz);
 }
 
-article > .content > h1 {
+article > .content p {
+  margin-bottom: var(--fitz);
+}
+
+article > .content h1, article > .content > h2, article > .content > h3, article > .content > h4, article > .content > h5, article > .content > h6 {
+  margin-top: var(--fitz-2);
+}
+
+article > .content h1 {
   border-bottom: 1px solid var(--color-key);
   margin-bottom: var(--fitz-2);
 }
@@ -866,6 +874,10 @@ article > .content > blockquote > ul {
   font-style: italic;
   list-style-type: square;
   padding-top: .5em;
+}
+
+article > .content img {
+  max-width: 100%;
 }
 
 article > footer {

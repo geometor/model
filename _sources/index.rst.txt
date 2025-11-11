@@ -1,5 +1,5 @@
-model
-=====
+GEOMETOR • model
+================
 
 .. image:: _static/splash.png
 

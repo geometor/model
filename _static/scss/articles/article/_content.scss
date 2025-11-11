@@ -6,11 +6,15 @@
     margin-top: var(--fitz);
   }
 
-  > p {
-
+  p {
+    margin-bottom: var(--fitz);
   }
 
-  > h1 {
+  h1, > h2, > h3, > h4, > h5, > h6 {
+    margin-top: var(--fitz-2);
+  }
+
+  h1 {
     border-bottom: 1px solid var(--color-key);
     margin-bottom: var(--fitz-2);
   }
@@ -53,5 +57,9 @@
       padding-top: .5em;
       // font-size: .9em;
     }
+  }
+
+  img {
+    max-width: 100%;
   }
 }
