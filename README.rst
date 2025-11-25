@@ -1,174 +1,74 @@
 GEOMETOR • model
 ================
 
-`geometor.model`` is the foundational library for the GEOMETOR_ initiative.
+.. image:: https://img.shields.io/pypi/v/geometor-model.svg
+   :target: https://pypi.python.org/pypi/geometor-model
+.. image:: https://img.shields.io/github/license/geometor/model.svg
+   :target: https://github.com/geometor/model/blob/main/LICENSE
 
-Additional information about ``geometor.model`` can be seen at the `Project's Website`_
+The symbolic engine for GEOMETOR.
 
-
-* Contents:
-
-  + 1 mission_
-  + 2 overview_
-  + 3 installation_
-  + 4 usage_
-  + 5 dependencies_
-  + 6 contributing_
-  + 7 license_
-
-mission
--------
-
-The mission of this module is to establish a rigorous system for defining
-classical geometric constructions of points, lines and circles. But in our
-case, we are not using straight edge and compass. We are creating the geometric
-elements as expressions in symbolic algebra thanks to the power of the `Sympy`_
-library.
-
-overview
+Overview
 --------
 
-At the core of the module is the ``Model`` class which establishes the field
-and methods of operation for creating the geometric constructions while
-maintaining integrity. 
+**geometor.model** is the foundational library for the GEOMETOR initiative. It establishes a rigorous system for defining classical geometric constructions using symbolic algebra.
 
-The **field** might be easy to consider as a Cartesian grid. But in reality, it
-is an ordered set of information and operations. Points are the information.
-Lines and circles are the operations.
+In this system:
+- **Points** are information.
+- **Lines** and **Circles** are operations.
 
-In our system, all geometric elements of the ``Model`` are defined as `Sympy
-Geometry`_ objects. This means a ``Point`` can be defined as a pair of any
-algebraic `Sympy Expressions`_ that can be evaluated into a floating point
-value. 
+We leverage the power of `SymPy`_ to define elements as exact algebraic expressions rather than floating-point approximations.
 
-``Line`` and ``Circle`` are each defined by two points. So each construction
-must begin with at least two given points at the start. As lines and circles
-are added, intersection points are discovered with previous lines and circles
-and added to the model, so they may be used with new lines and circles. 
-
-There are three main operations of the ``Model``:
-
-- set_point
-- construct_line
-- construct_circle
-
-The major responsibilities of the ``Model``:
-
-- **deduplicate**
-
-  when elements are added to the model, we check to see if they already exist. This is particularly important for intersection points that often coincide with exisitng points. 
-- clean values
-- discover intersections
-- save to and load from json
-- maintain a set of related info for each element:
-
-  - ancestral relationships
-  - establish labels for elements
-  - classes for styles
-  - event triggers
-
-All of the plotting functionality is now handled by the **GEOMETOR** `explorer`_. However, there are several report functions in the this module:
-
-- report_summary
-- report_group_by_type
-- report_sequence
-
-.. image:: screenshot.png
-
-
-Key Files
----------
-
--   ``__init__.py``: Main ``Model`` class, a ``dict`` subclass with an event system.
--   ``element.py``: The core ``Element`` class for all geometric objects.
--   ``_points.py``: ``Point`` class and related functions.
--   ``_lines.py``: ``Line`` class and related functions.
--   ``_circles.py``: ``Circle`` class and related functions.
--   ``_polygons.py``: ``Polygon`` class and related functions.
--   ``_serialize.py``: JSON serialization and deserialization for the model.
-
-
-installation
+Key Features
 ------------
 
-You can install ``geometor.model`` using pip:
+- **Symbolic Precision**: All elements are defined using symbolic algebra.
+- **Intersection Discovery**: Automatically finds intersection points as new lines and circles are added.
+- **Ancestral Tracking**: Maintains the history and dependencies of every element.
+- **Serialization**: Save and load models to JSON for analysis and visualization.
 
-.. code-block:: bash
-
-   pip install geometor-model
-
-or clone this repo and install it directly.
-
-.. code-block:: bash
-
-   git clone https://github.com/geometor/model
-   cd model
-   pip install -e .
-
-
-usage
+Usage
 -----
-In this simple example, we create the classic *vesica pisces*
+
+Create a model, add points, and perform constructions:
+
+.. code-block:: bash
+
+    # Run the model script
+    model
+
+Or use it as a library:
 
 .. code-block:: python
 
-     from geometor.model import *
+    from geometor.model import *
 
-     model = Model("vesica")
-     A = model.set_point(0, 0, classes=["given"])
-     B = model.set_point(1, 0, classes=["given"])
+    # Initialize model
+    model = Model("vesica")
 
-     model.construct_line(A, B)
+    # Set given points
+    A = model.set_point(0, 0, classes=["given"])
+    B = model.set_point(1, 0, classes=["given"])
 
-     model.construct_circle(A, B)
-     model.construct_circle(B, A)
+    # Construct lines and circles
+    model.construct_line(A, B)
+    model.construct_circle(A, B)
+    model.construct_circle(B, A)
 
-     E = model.get_element_by_ID("E")
-     F = model.get_element_by_ID("F")
+    # Analyze
+    report_summary(model)
 
-     model.set_polygon([A, B, E])
-     model.set_polygon([A, B, F])
+Resources
+---------
 
-     model.construct_line(E, F)
+- **Documentation**: https://geometor.github.io/model
+- **Source Code**: https://github.com/geometor/model
+- **Issues**: https://github.com/geometor/model/issues
 
-     report_summary(model)
-     report_group_by_type(model)
-     report_sequence(model)
+Related Projects
+----------------
 
-     model.save("vesica.json")
+- `GEOMETOR Explorer <https://github.com/geometor/explorer>`_: Interactive visualization.
+- `GEOMETOR Divine <https://github.com/geometor/divine>`_: Golden ratio analysis.
 
-
-dependencies
-------------
-
-**model** depends on the following Python packages:
-
-- sympy
-- rich
-- pytest
-
-
-contributing
-------------
-
-Contributions are welcome! 
-
-
-Please see our Issues_ for specific opportunities.
-
-Share thoughts in the Discussions_ forum
-
-license
--------
-
-**model** is licensed under the MIT License. See the `LICENSE` file for more details.
-
-.. _Issues: https://github.com/geometor/model/issues
-.. _Discussions: https://github.com/geometor/model/discussions
-
-.. _explorer: https://github.com/geometor/explorer
-.. _`Sympy Expressions`: https://docs.sympy.org/latest/tutorials/intro-tutorial/basic_operations.html
-.. _`Sympy Geometry`: https://docs.sympy.org/latest/modules/geometry/index.html
-.. _`Sympy`: https://docs.sympy.org
-.. _GEOMETOR: https://geometor.com
-   .. _`Project's Website`: https://geometor.github.io/model
+.. _SymPy: https://www.sympy.org
