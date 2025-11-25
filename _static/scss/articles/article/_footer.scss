@@ -2,7 +2,7 @@
 > footer {
   grid-area: footer;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: column;
   justify-content: space-between;
 
   > aside,

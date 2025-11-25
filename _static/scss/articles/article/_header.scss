@@ -1,6 +1,9 @@
 
 > header {
 
+  display: flex;
+  flex-flow: column;
+
   > h1 {
     // text-align: left;
     font-size: 1.4em;

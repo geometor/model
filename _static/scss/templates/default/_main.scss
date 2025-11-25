@@ -33,20 +33,21 @@
         justify-content: space-between;
       }
 
-      > article.excerpt {
-        // @include article-card;
-        display: flex;
-        justify-content: space-between;
-
-        figure {
-          max-width: 12em;
+      &.cards {
+        > article.excerpt {
+          @include article-card;
         }
-        .content {
-          display: none;
-        }
+      }
 
-        footer {
-          display: none;
+      &.banner {
+        > article.excerpt {
+          @include article-banner;
+        }
+      }
+
+      &.panel {
+        > article.excerpt {
+          @include article-panel;
         }
       }
 

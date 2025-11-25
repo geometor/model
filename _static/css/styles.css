@@ -709,9 +709,8 @@ button:hover {
 article {
   padding: var(--fitz-2);
   margin: var(--fitz);
-  display: grid;
-  grid-template-areas: " context  " " header " " figure " " content " " gallery " " footer ";
-  grid-template-columns: auto;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 article > * {
@@ -719,44 +718,45 @@ article > * {
   margin: 0;
 }
 
-article > nav.context {
+article nav.context {
   grid-area: context;
+  width: 100%;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: flex-start;
 }
 
-article > nav.context div {
+article nav.context div {
   min-width: 4em;
 }
 
-article > nav.context a {
+article nav.context a {
   --offset: 1.2em;
 }
 
-article > nav.context a.prev {
+article nav.context a.prev {
   justify-content: flex-start;
 }
 
-article > nav.context a.prev::before {
+article nav.context a.prev::before {
   padding-top: .1em;
   font-family: var(--font-icon);
   content: "<";
   text-align: left;
 }
 
-article > nav.context a.next {
+article nav.context a.next {
   justify-content: flex-end;
   padding-left: var(--fitz);
   padding-right: var(--offset);
 }
 
-article > nav.context a.next::before {
+article nav.context a.next::before {
   display: none;
 }
 
-article > nav.context a.next::after {
+article nav.context a.next::after {
   padding-top: .1em;
   font-family: var(--font-icon);
   content: ">";
@@ -766,15 +766,15 @@ article > nav.context a.next::after {
   text-align: right;
 }
 
-article > nav.context .breadcrumbs {
+article nav.context .breadcrumbs {
   text-align: center;
 }
 
-article > nav.context .breadcrumbs a {
+article nav.context .breadcrumbs a {
   display: block;
 }
 
-article > nav.context .breadcrumbs a::before {
+article nav.context .breadcrumbs a::before {
   font-family: var(--font-icon);
   content: "^";
   padding: 0 .25em;
@@ -806,6 +806,11 @@ article > figure.modal {
 
 article > figure.modal > img {
   max-height: none;
+}
+
+article > header {
+  display: flex;
+  flex-flow: column;
 }
 
 article > header > h1 {
@@ -883,7 +888,7 @@ article > .content img {
 article > footer {
   grid-area: footer;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: column;
   justify-content: space-between;
 }
 
@@ -976,24 +981,97 @@ article > .gallery.modal > .list > figure > img {
 
 @media (min-width: 96em) {
   article {
-    grid-template-areas: " header context " " content figure " " content gallery " " content footer ";
-    grid-template-columns: auto var(--col);
+    flex-flow: row wrap;
+  }
+  article > .content {
+    flex: 1 1 calc(100% - var(--col));
+    order: 1;
+  }
+  article > figure {
+    flex: 1 1 var(--col);
+    order: 2;
+  }
+  article > .gallery {
+    flex: 1 1 var(--col);
+    order: 4;
   }
   article > footer {
+    flex: 1 1 var(--col);
+    order: 5;
     flex-flow: column nowrap;
     justify-content: flex-start;
   }
 }
 
 @media (min-width: 108em) {
-  article {
-    grid-template-columns: auto var(--col-2);
+  article > .content {
+    flex: 1 1 calc(100% - var(--col-2));
+  }
+  article > figure, article > .gallery, article > footer {
+    flex: 0 0 var(--col-2);
   }
 }
 
 article.excerpt {
-  cursor: pointer;
-  transition: box-shadow .5s,  background .5s, color .5s;
+  padding: var(--fitz);
+  margin: var(--fitz-half) 0;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+article.excerpt > .content {
+  display: flex;
+  flex-flow: row-reverse nowrap;
+  align-items: flex-start;
+  gap: var(--fitz);
+  margin-bottom: var(--fitz-half);
+}
+
+article.excerpt > .content > figure {
+  flex: 0 0 8em;
+  max-width: 8em;
+  height: 6em;
+  overflow: hidden;
+  margin: 0;
+}
+
+article.excerpt > .content > figure a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+article.excerpt > .content > figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+article.excerpt > .content > section {
+  flex: 1;
+}
+
+article.excerpt > .content > section h2 {
+  font-size: 1.1em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+article.excerpt > .content > section blockquote {
+  margin: 0;
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+
+article.excerpt > footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+article.excerpt > footer .meta {
+  font-size: 0.7em;
+  gap: 0.5em;
 }
 
 article.excerpt .article-share {
@@ -1002,12 +1080,6 @@ article.excerpt .article-share {
 
 article.excerpt .more {
   align-self: flex-end;
-}
-
-article.excerpt:hover {
-  --bg: var(--color-key-lighter);
-  color: black;
-  box-shadow: 0.25em 0.25em 0.25em rgba(0, 0, 0, 0.4);
 }
 
 /* asides *****************************/
@@ -1565,21 +1637,118 @@ body > main > .collection > header {
   justify-content: space-between;
 }
 
-body > main > .collection > article.excerpt {
+body > main > .collection.cards > article.excerpt {
+  /* article-card */
   display: flex;
-  justify-content: space-between;
+  flex: column nowrap;
 }
 
-body > main > .collection > article.excerpt figure {
-  max-width: 12em;
+body > main > .collection.cards > article.excerpt > figure > img {
+  width: 100%;
+  height: 100%;
+  height: calc(var(--col) - 2em);
 }
 
-body > main > .collection > article.excerpt .content {
+body > main > .collection.cards > article.excerpt > footer > aside {
+  padding: 0;
+}
+
+body > main > .collection.cards > article.excerpt > footer > aside > h1, body > main > .collection.cards > article.excerpt > footer > aside h2 {
   display: none;
 }
 
-body > main > .collection > article.excerpt footer {
+body > main > .collection.cards > article.excerpt > footer > nav {
+  text-align: right;
+  padding: 0;
+}
+
+body > main > .collection.cards > article.excerpt > footer .more {
+  margin: 0 auto;
+  text-align: center;
+}
+
+body > main > .collection.banner > article.excerpt {
+  /* article-banner */
+}
+
+body > main > .collection.banner > article.excerpt > figure {
+  max-height: 9em;
+  padding: var(--fitz);
+}
+
+body > main > .collection.banner > article.excerpt > figure > img {
+  height: 100%;
+  object-position: center;
+}
+
+body > main > .collection.banner > article.excerpt > header {
+  padding: var(--fitz);
+  text-align: left;
+  display: block;
+}
+
+body > main > .collection.banner > article.excerpt > header > * {
+  text-align: left;
+  margin-left: 0;
+}
+
+body > main > .collection.banner > article.excerpt > .content {
+  text-align: left;
+  margin: 0;
+}
+
+body > main > .collection.banner > article.excerpt > .content .summary {
+  text-align: left;
+}
+
+body > main > .collection.banner > article.excerpt > .content .summary > ul {
+  list-style: disc;
+  text-align: left;
+  margin: 0;
+  margin-left: 1em;
+  padding: 0;
+}
+
+body > main > .collection.banner > article.excerpt > .content .summary > ul li::after {
   display: none;
+}
+
+body > main > .collection.banner > article.excerpt > footer > aside {
+  padding: 0;
+}
+
+body > main > .collection.banner > article.excerpt > footer > aside > h1, body > main > .collection.banner > article.excerpt > footer > aside h2 {
+  display: none;
+}
+
+body > main > .collection.banner > article.excerpt > footer > nav {
+  padding: 0;
+}
+
+body > main > .collection.panel > article.excerpt {
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: ' figure header' ' figure content ' ' figure footer ';
+}
+
+body > main > .collection.panel > article.excerpt > figure {
+  height: var(--col);
+}
+
+body > main > .collection.panel > article.excerpt > footer > aside {
+  padding: 0;
+}
+
+body > main > .collection.panel > article.excerpt > footer > aside > h1 {
+  display: none;
+}
+
+body > main > .collection.panel > article.excerpt > footer > aside > ul > li {
+  display: inline;
+}
+
+body > main > .collection.panel > article.excerpt > footer > nav {
+  text-align: right;
+  padding: 0;
 }
 
 body > main > .collection.expand > article.excerpt {
@@ -1659,7 +1828,6 @@ body > footer {
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   padding-top: 1em;
   border-top: 1px solid var(--border-color);
   margin-top: 1em;
