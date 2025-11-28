@@ -33,10 +33,10 @@
           <a href="../../usage/index.html"  >usage</a>
         </li>
         <li>
-          <a href="../../modules/index.html"  >modules</a>
+          <a href="../../log/index.html"  >log</a>
         </li>
         <li>
-          <a href="../../log/index.html"  >log</a>
+          <a href="../../modules/index.html"  >modules</a>
         </li>
       </ul>
     </nav>
@@ -67,13 +67,16 @@
 <span class="sd">ElementDetails class</span>
 <span class="sd">intersection functions</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.common</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy.geometry</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">spg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pool</span><span class="p">,</span> <span class="n">cpu_count</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">clean_expr</span>
 
 <div class="viewcode-block" id="Struct">
 <a class="viewcode-back" href="../../modules/api/model/element/index.html#model.element.Struct">[docs]</a>
 <span class="n">Struct</span> <span class="o">=</span> <span class="p">(</span><span class="n">spg</span><span class="o">.</span><span class="n">Line</span> <span class="o">|</span> <span class="n">spg</span><span class="o">.</span><span class="n">Circle</span><span class="p">)</span></div>
 
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Element&quot;</span><span class="p">,</span> <span class="s2">&quot;CircleElement&quot;</span><span class="p">,</span> <span class="s2">&quot;Struct&quot;</span><span class="p">,</span> <span class="s2">&quot;check_existence&quot;</span><span class="p">,</span> <span class="s2">&quot;find_all_intersections&quot;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Element">
 <a class="viewcode-back" href="../../modules/api/model/element/index.html#model.element.Element">[docs]</a>
@@ -262,112 +265,15 @@
 
 
 
-<div class="viewcode-block" id="find_intersection">
-<a class="viewcode-back" href="../../modules/api/model/element/index.html#model.element.find_intersection">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">find_intersection</span><span class="p">(</span><span class="n">test_tuple</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;find intersection for two structs&quot;&quot;&quot;</span>
     <span class="n">prev</span><span class="p">,</span> <span class="n">struct</span> <span class="o">=</span> <span class="n">test_tuple</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">prev</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">prev</span><span class="p">,</span> <span class="n">struct</span><span class="p">,</span> <span class="n">result</span></div>
+    <span class="k">return</span> <span class="n">prev</span><span class="p">,</span> <span class="n">struct</span><span class="p">,</span> <span class="n">result</span>
 
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_get_ancestors_IDs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Retrieves the IDs of the ancestors for the given element.</span>
-
-<span class="sd">    The method recursively traverses the parent elements of the given element</span>
-<span class="sd">    and constructs a nested dictionary with IDs representing the ancestor tree.</span>
-
-<span class="sd">    parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    - element : sympy.geometry object</span>
-<span class="sd">        The element for which the ancestors&#39; IDs are to be retrieved.</span>
-
-<span class="sd">    returns</span>
-<span class="sd">    - dict : A nested dictionary representing the IDs of the ancestors.</span>
-
-<span class="sd">    example</span>
-<span class="sd">    -------</span>
-<span class="sd">    If element A has parents B and C, and B has parent D, the method returns:</span>
-<span class="sd">    {&#39;A&#39;: {&#39;B&#39;: {&#39;D&#39;: {}}, &#39;C&#39;: {}}}</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_recursive_get</span><span class="p">(</span><span class="n">el</span><span class="p">):</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.sections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Section</span>
-        <span class="n">element_id</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">el</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span>
-        <span class="k">if</span> <span class="n">element_id</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">{}</span>  <span class="c1"># Cycle detected</span>
-
-        <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">element_id</span><span class="p">)</span>
-
-        <span class="n">ancestors</span> <span class="o">=</span> <span class="p">{</span><span class="n">element_id</span><span class="p">:</span> <span class="p">{}}</span>
-
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">Section</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">el</span><span class="o">.</span><span class="n">points</span><span class="p">:</span>
-                <span class="n">ancestors</span><span class="p">[</span><span class="n">element_id</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">_recursive_get</span><span class="p">(</span><span class="n">pt</span><span class="p">))</span>
-            <span class="k">return</span> <span class="n">ancestors</span>
-
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">spg</span><span class="o">.</span><span class="n">Polygon</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">el</span><span class="o">.</span><span class="n">vertices</span><span class="p">:</span>
-                <span class="n">ancestors</span><span class="p">[</span><span class="n">element_id</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">_recursive_get</span><span class="p">(</span><span class="n">pt</span><span class="p">))</span>
-            <span class="k">return</span> <span class="n">ancestors</span>
-
-        <span class="k">if</span> <span class="s2">&quot;given&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">[</span><span class="n">el</span><span class="p">]</span><span class="o">.</span><span class="n">classes</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">ancestors</span>
-
-        <span class="c1"># Check if the element has parents</span>
-        <span class="n">parents</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="p">[</span><span class="n">el</span><span class="p">]</span><span class="o">.</span><span class="n">parents</span><span class="p">:</span>
-            <span class="c1"># Consider only the first two parents</span>
-            <span class="n">parents</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">el</span><span class="p">]</span><span class="o">.</span><span class="n">parents</span><span class="o">.</span><span class="n">keys</span><span class="p">())[:</span><span class="mi">2</span><span class="p">]</span>
-
-        <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="n">parents</span><span class="p">:</span>
-            <span class="n">ancestors</span><span class="p">[</span><span class="n">element_id</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">_recursive_get</span><span class="p">(</span><span class="n">parent</span><span class="p">))</span>
-
-        <span class="k">return</span> <span class="n">ancestors</span>
-
-    <span class="k">return</span> <span class="n">_recursive_get</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">_get_ancestors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Retrieves the ancestors for the given element.</span>
-
-<span class="sd">    The method recursively traverses the parent elements of the given element</span>
-<span class="sd">    and constructs a nested dictionary representing the ancestor tree.</span>
-
-<span class="sd">    parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    - element : sympy.geometry object</span>
-<span class="sd">        The element for which the ancestors are to be retrieved.</span>
-
-<span class="sd">    returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    - dict : A nested dictionary representing the ancestors.</span>
-
-<span class="sd">    example</span>
-<span class="sd">    -------</span>
-<span class="sd">    If element A has parents B and C, and B has parent D, the method returns:</span>
-<span class="sd">    {A: {B: {D: {}}, C: {}}}</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ancestors</span> <span class="o">=</span> <span class="p">{</span><span class="n">element</span><span class="p">:</span> <span class="p">{}}</span>
-
-    <span class="k">if</span> <span class="s2">&quot;given&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">[</span><span class="n">element</span><span class="p">]</span><span class="o">.</span><span class="n">classes</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">ancestors</span>
-
-    <span class="c1"># Check if the element has parents</span>
-    <span class="n">parents</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="p">[</span><span class="n">element</span><span class="p">]</span><span class="o">.</span><span class="n">parents</span><span class="p">:</span>
-        <span class="c1"># Consider only the first two parents</span>
-        <span class="n">parents</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">element</span><span class="p">]</span><span class="o">.</span><span class="n">parents</span><span class="o">.</span><span class="n">keys</span><span class="p">())[:</span><span class="mi">2</span><span class="p">]</span>
-
-    <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="n">parents</span><span class="p">:</span>
-        <span class="n">ancestors</span><span class="p">[</span><span class="n">element</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_ancestors</span><span class="p">(</span><span class="n">parent</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="n">ancestors</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_get_element_by_ID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ID</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>

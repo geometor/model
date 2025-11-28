@@ -42,7 +42,7 @@ Module Contents
 
 
 
-   .. py:method:: extract_segments() -> list[geometor.model.sections.spg.Segment]
+   .. py:method:: extract_segments() -> list[sympy.geometry.Segment]
 
       Extracts unique segments from the chain.
 
@@ -53,7 +53,7 @@ Module Contents
 
 
 
-   .. py:method:: extract_points() -> list[geometor.model.sections.spg.Point]
+   .. py:method:: extract_points() -> list[sympy.geometry.Point]
 
       Extracts unique points from the chain while maintaining order.
 
@@ -65,7 +65,7 @@ Module Contents
 
 
    .. py:property:: lengths
-      :type: list[geometor.model.sections.sp.Expr]
+      :type: list[sympy.Expr]
 
 
       Extract the symbolic lengths of the segments in the chain.

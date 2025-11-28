@@ -33,10 +33,10 @@
           <a href="../../usage/index.html"  >usage</a>
         </li>
         <li>
-          <a href="../../modules/index.html"  >modules</a>
+          <a href="../../log/index.html"  >log</a>
         </li>
         <li>
-          <a href="../../log/index.html"  >log</a>
+          <a href="../../modules/index.html"  >modules</a>
         </li>
       </ul>
     </nav>
@@ -66,7 +66,20 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.common</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy.geometry</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">spg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich</span><span class="w"> </span><span class="kn">import</span> <span class="nb">print</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;clean_expr&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;spread&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;compare_points&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;point_value&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sort_points&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;log_init&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;print_log&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;elapsed&quot;</span><span class="p">,</span>
+<span class="p">]</span>
 
 <span class="c1">#  from geometor.model import *</span>
 

@@ -33,10 +33,10 @@
           <a href="../usage/index.html"  >usage</a>
         </li>
         <li>
-          <a href="../modules/index.html"  >modules</a>
+          <a href="../log/index.html"  >log</a>
         </li>
         <li>
-          <a href="../log/index.html"  >log</a>
+          <a href="../modules/index.html"  >modules</a>
         </li>
       </ul>
     </nav>
@@ -71,31 +71,36 @@
 <span class="sd">in 2D space. The `Model` class is based on the `list` data structure, and can contain</span>
 <span class="sd">points, lines, circles, polygons, and segments.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<div class="viewcode-block" id="__author__">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.__author__">[docs]</a>
-<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;geometor&quot;</span></div>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;geometor&quot;</span>
+<span class="n">__maintainer__</span> <span class="o">=</span> <span class="s2">&quot;geometor&quot;</span>
+<span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;github@geometor.com&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;0.4.2&quot;</span>
+<span class="n">__licence__</span> <span class="o">=</span> <span class="s2">&quot;MIT&quot;</span>
 
-<div class="viewcode-block" id="__maintainer__">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.__maintainer__">[docs]</a>
-<span class="n">__maintainer__</span> <span class="o">=</span> <span class="s2">&quot;geometor&quot;</span></div>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy.geometry</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">spg</span>
 
-<div class="viewcode-block" id="__email__">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.__email__">[docs]</a>
-<span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;github@geometor.com&quot;</span></div>
+<div class="viewcode-block" id="Point">
+<a class="viewcode-back" href="../modules/api/model/index.html#model.Point">[docs]</a>
+<span class="n">Point</span> <span class="o">=</span> <span class="n">spg</span><span class="o">.</span><span class="n">Point</span></div>
 
-<div class="viewcode-block" id="__version__">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.__version__">[docs]</a>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;0.4.0&quot;</span></div>
+<div class="viewcode-block" id="Line">
+<a class="viewcode-back" href="../modules/api/model/index.html#model.Line">[docs]</a>
+<span class="n">Line</span> <span class="o">=</span> <span class="n">spg</span><span class="o">.</span><span class="n">Line</span></div>
 
-<div class="viewcode-block" id="__licence__">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.__licence__">[docs]</a>
-<span class="n">__licence__</span> <span class="o">=</span> <span class="s2">&quot;MIT&quot;</span></div>
+<div class="viewcode-block" id="Circle">
+<a class="viewcode-back" href="../modules/api/model/index.html#model.Circle">[docs]</a>
+<span class="n">Circle</span> <span class="o">=</span> <span class="n">spg</span><span class="o">.</span><span class="n">Circle</span></div>
 
+<div class="viewcode-block" id="Polygon">
+<a class="viewcode-back" href="../modules/api/model/index.html#model.Polygon">[docs]</a>
+<span class="n">Polygon</span> <span class="o">=</span> <span class="n">spg</span><span class="o">.</span><span class="n">Polygon</span></div>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.common</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<div class="viewcode-block" id="Segment">
+<a class="viewcode-back" href="../modules/api/model/index.html#model.Segment">[docs]</a>
+<span class="n">Segment</span> <span class="o">=</span> <span class="n">spg</span><span class="o">.</span><span class="n">Segment</span></div>
+
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.element</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="c1">#  from geometor.model.model import Model</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.wedges</span><span class="w"> </span><span class="kn">import</span> <span class="n">Wedge</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.sections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Section</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.chains</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chain</span>
@@ -104,343 +109,28 @@
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterator</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.element</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">Element</span><span class="p">,</span>
-    <span class="n">CircleElement</span><span class="p">,</span>
-    <span class="n">_get_ancestors</span><span class="p">,</span>
-    <span class="n">_get_ancestors_IDs</span><span class="p">,</span>
-    <span class="n">_get_element_by_ID</span><span class="p">,</span>
-<span class="p">)</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._points</span><span class="w"> </span><span class="kn">import</span> <span class="n">_set_point</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._lines</span><span class="w"> </span><span class="kn">import</span> <span class="n">_construct_line</span><span class="p">,</span> <span class="n">_construct_line_by_IDs</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._circles</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">_construct_circle</span><span class="p">,</span>
-    <span class="n">_construct_circle_by_IDs</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._polygons</span><span class="w"> </span><span class="kn">import</span> <span class="n">_set_polygon</span><span class="p">,</span> <span class="n">_set_polygon_by_IDs</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._segments</span><span class="w"> </span><span class="kn">import</span> <span class="n">_set_segment</span><span class="p">,</span> <span class="n">_set_segment_by_IDs</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.sections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Section</span><span class="p">,</span> <span class="n">_set_section</span><span class="p">,</span> <span class="n">_set_section_by_IDs</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.wedges</span><span class="w"> </span><span class="kn">import</span> <span class="n">Wedge</span><span class="p">,</span> <span class="n">_set_wedge</span> <span class="c1"># _set_wedge_by_labels</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.sections</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.chains</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._serialize</span><span class="w"> </span><span class="kn">import</span> <span class="n">save_model</span><span class="p">,</span> <span class="n">load_model</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._polynomials</span><span class="w"> </span><span class="kn">import</span> <span class="n">Polynomial</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model._delete</span><span class="w"> </span><span class="kn">import</span> <span class="n">delete_element</span><span class="p">,</span> <span class="n">get_dependents</span>
-
-<div class="viewcode-block" id="GeometryObject">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.GeometryObject">[docs]</a>
-<span class="n">GeometryObject</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">spg</span><span class="o">.</span><span class="n">Point</span>
-    <span class="o">|</span> <span class="n">spg</span><span class="o">.</span><span class="n">Line</span>
-    <span class="o">|</span> <span class="n">spg</span><span class="o">.</span><span class="n">Circle</span>
-    <span class="o">|</span> <span class="n">spg</span><span class="o">.</span><span class="n">Segment</span>
-    <span class="o">|</span> <span class="n">spg</span><span class="o">.</span><span class="n">Polygon</span>
-    <span class="o">|</span> <span class="n">Wedge</span>
-    <span class="o">|</span> <span class="n">Section</span>
-    <span class="o">|</span> <span class="n">Chain</span>
-    <span class="o">|</span> <span class="n">Polynomial</span>
-    <span class="o">|</span> <span class="n">sp</span><span class="o">.</span><span class="n">Expr</span>
-    <span class="o">|</span> <span class="n">sp</span><span class="o">.</span><span class="n">FiniteSet</span>
-<span class="p">)</span></div>
-
-
-
-<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">rich.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">RichHandler</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">rich</span>
-
-<div class="viewcode-block" id="Model">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">Model</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A collection of geometric elements, including points, lines, circles, and</span>
-<span class="sd">    polygons, represented using the `sympy.geometry` library.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="k">if</span> <span class="n">logger</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">logger</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;geometor.model.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">RichHandler</span><span class="p">(</span><span class="n">markup</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-
-<div class="viewcode-block" id="Model.ID_gen">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.ID_gen">[docs]</a>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ID_gen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">point_ID_generator</span><span class="p">()</span></div>
-
-<div class="viewcode-block" id="Model.last_point_id">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.last_point_id">[docs]</a>
-        <span class="bp">self</span><span class="o">.</span><span class="n">last_point_id</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span></div>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_hook</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_new_points</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_poly_count</span> <span class="o">=</span> <span class="mi">0</span>
-
-<div class="viewcode-block" id="Model.log">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.log">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s1">&#39;__rich_console__&#39;</span><span class="p">):</span>
-                <span class="n">rich</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">message</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="Model.set_analysis_hook">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.set_analysis_hook">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">set_analysis_hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hook_function</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_hook</span> <span class="o">=</span> <span class="n">hook_function</span></div>
-
-
-    <span class="nd">@property</span>
-<div class="viewcode-block" id="Model.new_points">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.new_points">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">new_points</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The new_points of the model&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_points</span></div>
-
-
-<div class="viewcode-block" id="Model.clear_new_points">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.clear_new_points">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">clear_new_points</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_new_points</span> <span class="o">=</span> <span class="p">[]</span></div>
-
-
-    <span class="nd">@property</span>
-<div class="viewcode-block" id="Model.name">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.name">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The name of the model&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span></div>
-
-
-    <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">value</span>
-
-<div class="viewcode-block" id="Model.__setitem__">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.__setitem__">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">GeometryObject</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Element</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        control types for keys and values</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">GeometryObject</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">=}</span><span class="s2"> must be an instance of GeometryObject&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Element</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="w"> </span><span class="n">value</span><span class="si">= }</span><span class="s2"> must be an instance of Element class&quot;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="Model.set_point">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.set_point">[docs]</a>
-    <span class="n">set_point</span> <span class="o">=</span> <span class="n">_set_point</span></div>
-
-
-<div class="viewcode-block" id="Model.construct_line">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.construct_line">[docs]</a>
-    <span class="n">construct_line</span> <span class="o">=</span> <span class="n">_construct_line</span></div>
-
-<div class="viewcode-block" id="Model.construct_line_by_IDs">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.construct_line_by_IDs">[docs]</a>
-    <span class="n">construct_line_by_IDs</span> <span class="o">=</span> <span class="n">_construct_line_by_IDs</span></div>
-
-
-<div class="viewcode-block" id="Model.construct_circle">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.construct_circle">[docs]</a>
-    <span class="n">construct_circle</span> <span class="o">=</span> <span class="n">_construct_circle</span></div>
-
-<div class="viewcode-block" id="Model.construct_circle_by_IDs">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.construct_circle_by_IDs">[docs]</a>
-    <span class="n">construct_circle_by_IDs</span> <span class="o">=</span> <span class="n">_construct_circle_by_IDs</span></div>
-
-
-<div class="viewcode-block" id="Model.set_segment">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.set_segment">[docs]</a>
-    <span class="n">set_segment</span> <span class="o">=</span> <span class="n">_set_segment</span></div>
-
-<div class="viewcode-block" id="Model.set_segment_by_IDs">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.set_segment_by_IDs">[docs]</a>
-    <span class="n">set_segment_by_IDs</span> <span class="o">=</span> <span class="n">_set_segment_by_IDs</span></div>
-
-
-<div class="viewcode-block" id="Model.set_section">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.set_section">[docs]</a>
-    <span class="n">set_section</span> <span class="o">=</span> <span class="n">_set_section</span></div>
-
-<div class="viewcode-block" id="Model.set_section_by_IDs">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.set_section_by_IDs">[docs]</a>
-    <span class="n">set_section_by_IDs</span> <span class="o">=</span> <span class="n">_set_section_by_IDs</span></div>
-
-
-<div class="viewcode-block" id="Model.set_polygon">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.set_polygon">[docs]</a>
-    <span class="n">set_polygon</span> <span class="o">=</span> <span class="n">_set_polygon</span></div>
-
-<div class="viewcode-block" id="Model.set_polygon_by_IDs">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.set_polygon_by_IDs">[docs]</a>
-    <span class="n">set_polygon_by_IDs</span> <span class="o">=</span> <span class="n">_set_polygon_by_IDs</span></div>
-
-
-<div class="viewcode-block" id="Model.set_wedge">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.set_wedge">[docs]</a>
-    <span class="n">set_wedge</span> <span class="o">=</span> <span class="n">_set_wedge</span></div>
-
-
-    <span class="n">set_wedge</span> <span class="o">=</span> <span class="n">_set_wedge</span>
-
-<div class="viewcode-block" id="Model.poly">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.poly">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">poly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coeffs</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">group</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Polynomial</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Create a Polynomial element.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Polynomial</span><span class="p">(</span><span class="n">coeffs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="Model.add_poly">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.add_poly">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">add_poly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coeffs</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">group</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Polynomial</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Create and add a Polynomial element to the model.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_poly_count</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Poly</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_poly_count</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="n">poly_el</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="p">(</span><span class="n">coeffs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">)</span>
-        <span class="bp">self</span><span class="p">[</span><span class="n">poly_el</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">as_expr</span><span class="p">()]</span> <span class="o">=</span> <span class="n">poly_el</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;* add_element: </span><span class="si">{</span><span class="n">poly_el</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">poly_el</span></div>
-
-
-<div class="viewcode-block" id="Model.delete_element">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.delete_element">[docs]</a>
-    <span class="n">delete_element</span> <span class="o">=</span> <span class="n">delete_element</span></div>
-
-<div class="viewcode-block" id="Model.get_dependents">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.get_dependents">[docs]</a>
-    <span class="n">get_dependents</span> <span class="o">=</span> <span class="n">get_dependents</span></div>
-
-
-<div class="viewcode-block" id="Model.remove_by_ID">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.remove_by_ID">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">remove_by_ID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ID</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">el</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_element_by_ID</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span>
-        <span class="k">del</span> <span class="bp">self</span><span class="p">[</span><span class="n">el</span><span class="p">]</span></div>
-
-
-    <span class="nd">@property</span>
-<div class="viewcode-block" id="Model.points">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.points">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">points</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        returns point elements from model as list</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">el</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">)]</span></div>
-
-
-    <span class="nd">@property</span>
-<div class="viewcode-block" id="Model.structs">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.structs">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">structs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Struct</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        returns struct elements (line or circle) from model as list</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">[</span>
-            <span class="n">el</span>
-            <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span>
-            <span class="k">if</span> <span class="p">(</span>
-                <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="p">(</span><span class="n">spg</span><span class="o">.</span><span class="n">Line</span><span class="p">,</span> <span class="n">spg</span><span class="o">.</span><span class="n">Circle</span><span class="p">))</span>
-                <span class="ow">and</span> <span class="s2">&quot;guide&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">[</span><span class="n">el</span><span class="p">]</span><span class="o">.</span><span class="n">classes</span>
-            <span class="p">)</span>
-        <span class="p">]</span></div>
-
-
-    <span class="nd">@property</span>
-<div class="viewcode-block" id="Model.lines">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.lines">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">lines</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Line</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        returns line elements from model as list</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">el</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">spg</span><span class="o">.</span><span class="n">Line</span><span class="p">)]</span></div>
-
-
-    <span class="nd">@property</span>
-<div class="viewcode-block" id="Model.circles">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.circles">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">circles</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Circle</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        returns circle elements from model as list</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">el</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">spg</span><span class="o">.</span><span class="n">Circle</span><span class="p">)]</span></div>
-
-
-<div class="viewcode-block" id="Model.limits">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.limits">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">limits</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Find x, y limits from points and circles of the model</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">x_vals</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">y_vals</span> <span class="o">=</span> <span class="p">[]</span>
-
-        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">):</span>
-                <span class="n">x_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
-                <span class="n">y_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
-
-            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">spg</span><span class="o">.</span><span class="n">Circle</span><span class="p">):</span>
-                <span class="n">x_vals</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
-                    <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">center</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">el</span><span class="o">.</span><span class="n">radius</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">center</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">el</span><span class="o">.</span><span class="n">radius</span><span class="p">)]</span>
-                <span class="p">)</span>
-                <span class="n">y_vals</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
-                    <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">center</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">el</span><span class="o">.</span><span class="n">radius</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">center</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">el</span><span class="o">.</span><span class="n">radius</span><span class="p">)]</span>
-                <span class="p">)</span>
-
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">x_vals</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">y_vals</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">&quot;Model contains no geometric elements to determine limits.&quot;</span>
-            <span class="p">)</span>
-
-        <span class="k">return</span> <span class="p">[[</span><span class="nb">min</span><span class="p">(</span><span class="n">x_vals</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x_vals</span><span class="p">)],</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">y_vals</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">y_vals</span><span class="p">)]]</span></div>
-
-
-<div class="viewcode-block" id="Model.get_ancestors">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.get_ancestors">[docs]</a>
-    <span class="n">get_ancestors</span> <span class="o">=</span> <span class="n">_get_ancestors</span></div>
-
-<div class="viewcode-block" id="Model.get_ancestors_IDs">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.get_ancestors_IDs">[docs]</a>
-    <span class="n">get_ancestors_IDs</span> <span class="o">=</span> <span class="n">_get_ancestors_IDs</span></div>
-
-
-<div class="viewcode-block" id="Model.get_element_by_ID">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.get_element_by_ID">[docs]</a>
-    <span class="n">get_element_by_ID</span> <span class="o">=</span> <span class="n">_get_element_by_ID</span></div>
-
-
-
-<div class="viewcode-block" id="Model.point_ID_generator">
-<a class="viewcode-back" href="../modules/api/model/index.html#model.Model.point_ID_generator">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">point_ID_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="n">letters</span> <span class="o">=</span> <span class="s2">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span>
-        <span class="n">repeat</span> <span class="o">=</span> <span class="mi">1</span>
-
-        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">letters</span><span class="p">:</span>
-                <span class="k">yield</span> <span class="nb">str</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span> <span class="o">*</span> <span class="n">repeat</span>
-            <span class="n">repeat</span> <span class="o">+=</span> <span class="mi">1</span></div>
-</div>
-
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.polynomials</span><span class="w"> </span><span class="kn">import</span> <span class="n">Polynomial</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.serialize</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_model</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">GeometryObject</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Model&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Point&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Line&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Circle&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Polygon&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Segment&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Wedge&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Section&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Chain&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Polynomial&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Element&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;GeometryObject&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;load_model&quot;</span><span class="p">,</span>
+<span class="p">]</span>
 </pre></div>
       </div>
       <footer>

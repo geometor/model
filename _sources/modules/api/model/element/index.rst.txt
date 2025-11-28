@@ -35,7 +35,6 @@ Functions
 
    model.element.check_existence
    model.element.find_all_intersections
-   model.element.find_intersection
 
 
 Module Contents
@@ -99,7 +98,7 @@ Module Contents
 
 
 
-.. py:class:: CircleElement(sympy_obj: geometor.model.common.spg.Circle, pt_radius: geometor.model.common.spg.Point, parents: list | None = None, classes: list[str] | None = None, ID: str = '', guide: bool = False)
+.. py:class:: CircleElement(sympy_obj: sympy.geometry.Circle, pt_radius: sympy.geometry.Point, parents: list | None = None, classes: list[str] | None = None, ID: str = '', guide: bool = False)
 
    Bases: :py:obj:`Element`
 
@@ -145,10 +144,5 @@ Module Contents
 .. py:function:: find_all_intersections(self, struct: Struct) -> None
 
    find all intersections in the model for the given struct
-
-
-.. py:function:: find_intersection(test_tuple: tuple) -> tuple
-
-   find intersection for two structs
 
 

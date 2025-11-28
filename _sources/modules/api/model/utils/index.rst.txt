@@ -32,7 +32,7 @@ Module Contents
    simplify and denest SymPy expressions
 
 
-.. py:function:: spread(l1: geometor.model.common.spg.Line, l2: geometor.model.common.spg.Line)
+.. py:function:: spread(l1: sympy.geometry.Line, l2: sympy.geometry.Line)
 
    calculate the spread of two lines
 

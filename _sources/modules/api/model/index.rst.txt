@@ -23,13 +23,22 @@ Submodules
    :maxdepth: 1
 
    /modules/api/model/__main__/index
+   /modules/api/model/ancestors/index
    /modules/api/model/chains/index
+   /modules/api/model/circles/index
    /modules/api/model/colors/index
-   /modules/api/model/common/index
+   /modules/api/model/delete/index
    /modules/api/model/element/index
    /modules/api/model/helpers/index
+   /modules/api/model/lines/index
+   /modules/api/model/model/index
+   /modules/api/model/points/index
+   /modules/api/model/polygons/index
+   /modules/api/model/polynomials/index
    /modules/api/model/reports/index
    /modules/api/model/sections/index
+   /modules/api/model/segments/index
+   /modules/api/model/serialize/index
    /modules/api/model/utils/index
    /modules/api/model/wedges/index
 
@@ -39,199 +48,23 @@ Attributes
 
 .. autoapisummary::
 
-   model.__author__
-   model.__maintainer__
-   model.__email__
-   model.__version__
-   model.__licence__
-   model.GeometryObject
-
-
-Classes
--------
-
-.. autoapisummary::
-
-   model.Model
+   model.Point
+   model.Line
+   model.Circle
+   model.Polygon
+   model.Segment
 
 
 Package Contents
 ----------------
 
-.. py:data:: __author__
-   :value: 'geometor'
+.. py:data:: Point
 
+.. py:data:: Line
 
-.. py:data:: __maintainer__
-   :value: 'geometor'
+.. py:data:: Circle
 
+.. py:data:: Polygon
 
-.. py:data:: __email__
-   :value: 'github@geometor.com'
-
-
-.. py:data:: __version__
-   :value: '0.4.0'
-
-
-.. py:data:: __licence__
-   :value: 'MIT'
-
-
-.. py:data:: GeometryObject
-
-.. py:class:: Model(name: str = '', logger=None)
-
-   Bases: :py:obj:`dict`
-
-
-   A collection of geometric elements, including points, lines, circles, and
-   polygons, represented using the `sympy.geometry` library.
-
-
-   .. py:attribute:: ID_gen
-
-
-   .. py:attribute:: last_point_id
-      :value: ''
-
-
-
-   .. py:method:: log(message)
-
-
-   .. py:method:: set_analysis_hook(hook_function)
-
-
-   .. py:property:: new_points
-      :type: list[geometor.model.chains.spg.Point]
-
-
-      The new_points of the model
-
-
-
-   .. py:method:: clear_new_points()
-
-
-   .. py:property:: name
-      :type: str
-
-
-      The name of the model
-
-
-
-   .. py:method:: __setitem__(key: GeometryObject, value: geometor.model.chains.Element)
-
-      control types for keys and values
-
-
-
-   .. py:attribute:: set_point
-
-
-   .. py:attribute:: construct_line
-
-
-   .. py:attribute:: construct_line_by_IDs
-
-
-   .. py:attribute:: construct_circle
-
-
-   .. py:attribute:: construct_circle_by_IDs
-
-
-   .. py:attribute:: set_segment
-
-
-   .. py:attribute:: set_segment_by_IDs
-
-
-   .. py:attribute:: set_section
-
-
-   .. py:attribute:: set_section_by_IDs
-
-
-   .. py:attribute:: set_polygon
-
-
-   .. py:attribute:: set_polygon_by_IDs
-
-
-   .. py:attribute:: set_wedge
-
-
-   .. py:method:: poly(coeffs: list, name: str = '', classes: list = [], group: str = '') -> geometor.model._polynomials.Polynomial
-
-      Create a Polynomial element.
-
-
-
-   .. py:method:: add_poly(coeffs: list, name: str = '', classes: list = [], group: str = '') -> geometor.model._polynomials.Polynomial
-
-      Create and add a Polynomial element to the model.
-
-
-
-   .. py:attribute:: delete_element
-
-
-   .. py:attribute:: get_dependents
-
-
-   .. py:method:: remove_by_ID(ID: str) -> None
-
-
-   .. py:property:: points
-      :type: list[geometor.model.chains.spg.Point]
-
-
-      returns point elements from model as list
-
-
-
-   .. py:property:: structs
-      :type: list[geometor.model.chains.Struct]
-
-
-      returns struct elements (line or circle) from model as list
-
-
-
-   .. py:property:: lines
-      :type: list[geometor.model.chains.spg.Line]
-
-
-      returns line elements from model as list
-
-
-
-   .. py:property:: circles
-      :type: list[geometor.model.chains.spg.Circle]
-
-
-      returns circle elements from model as list
-
-
-
-   .. py:method:: limits() -> tuple[tuple[float, float], tuple[float, float]]
-
-      Find x, y limits from points and circles of the model
-
-
-
-   .. py:attribute:: get_ancestors
-
-
-   .. py:attribute:: get_ancestors_IDs
-
-
-   .. py:attribute:: get_element_by_ID
-
-
-   .. py:method:: point_ID_generator() -> geometor.model.chains.Iterator[str]
-
+.. py:data:: Segment
 

@@ -14,13 +14,64 @@ Classes
 
 .. autoapisummary::
 
+   model.wedges.WedgesMixin
    model.wedges.Wedge
 
 
 Module Contents
 ---------------
 
-.. py:class:: Wedge(points: list[geometor.model.common.spg.Point])
+.. py:class:: WedgesMixin
+
+   Mixin for the Model class containing wedge construction operations.
+
+
+   .. py:method:: set_wedge(pt_center: sympy.geometry.Point, pt_radius: sympy.geometry.Point, pt_sweep_start: sympy.geometry.Point, pt_sweep_end: sympy.geometry.Point, direction='clockwise', classes: list = None, ID: str = '') -> Wedge
+
+      sets a Wedge from 3 points and adds it to the model.
+
+      operations
+      ~~~~~~~~~~
+      - create an instance of :class:`geometor.model.Wedge`
+      - create a ``details`` object from :class:`Element`
+      - add parents to details
+          initial parents are the two starting points
+      - check for duplicates in in the ``model``
+      - find intersection points for new element with all precedng elements
+      - Add ``circle`` to the model.
+
+      parameters
+      ----------
+      - ``pt_center`` : :class:`sympy.geometry.point.Point` : point for circle center
+      - ``pt_radius`` : :class:`sympy.geometry.point.Point` : point to mark radius
+      - ``pt_end`` : :class:`sympy.geometry.point.Point` : A SymPy Point marking the sweep of the wedge
+      - ``classes`` : :class:`list` *optional* : A list of string names for classes defining a set of styles. Defaults to None.
+      - ``ID`` : :class:`str` *optional* : A text ID for use in plotting and reporting. Defaults to an empty string.
+
+      returns
+      -------
+      - :class:`Wedge`
+          The portion of a circle
+
+      example
+      -------
+          >>> from geometor.elements import *
+          >>> model = Model("demo")
+          >>> A = model.set_point(0, 0, classes=["given"], ID="A")
+          >>> B = model.set_point(1, 0, classes=["given"], ID="B")
+          >>> model.construct_circle(A, B)
+          >>> model.construct_circle(B, A)
+          >>> model._set_wedge_by_IDs('A', 'B', 'C')
+          <Wedge object ...>
+
+      notes
+      -----
+      SymPy defines a circle as a center point and a radius length, so the radius length is calculated for the spg.Circle.
+
+
+
+
+.. py:class:: Wedge(points: list[sympy.geometry.Point])
 
    .. py:attribute:: points
 
@@ -47,37 +98,37 @@ Module Contents
 
 
    .. py:property:: circle
-      :type: geometor.model.common.spg.Circle
+      :type: sympy.geometry.Circle
 
 
 
    .. py:property:: radians
-      :type: geometor.model.common.sp.Expr
+      :type: sympy.Expr
 
 
 
    .. py:property:: degrees
-      :type: geometor.model.common.sp.Expr
+      :type: sympy.Expr
 
 
 
    .. py:property:: ratio
-      :type: geometor.model.common.sp.Expr
+      :type: sympy.Expr
 
 
 
    .. py:property:: area
-      :type: geometor.model.common.sp.Expr
+      :type: sympy.Expr
 
 
 
    .. py:property:: arc_length
-      :type: geometor.model.common.sp.Expr
+      :type: sympy.Expr
 
 
 
    .. py:property:: perimeter
-      :type: geometor.model.common.sp.Expr
+      :type: sympy.Expr
 
 
 

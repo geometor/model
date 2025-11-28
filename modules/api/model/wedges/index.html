@@ -33,10 +33,10 @@
           <a href="../../../../usage/index.html"  >usage</a>
         </li>
         <li>
-          <a href="../../../index.html"  >modules</a>
+          <a href="../../../../log/index.html"  >log</a>
         </li>
         <li>
-          <a href="../../../../log/index.html"  >log</a>
+          <a href="../../../index.html"  >modules</a>
         </li>
       </ul>
     </nav>
@@ -49,7 +49,7 @@
       <nav class="breadcrumbs">
         <span><a href="../../../../index.html">Home</a></span>
           <span>/</span>
-        <span><a href="../../../index.html">modules</a></span>
+        <span><a href="../../index.html">API Reference</a></span>
           <span>/</span>
         <span><a href="../index.html">model</a></span>
         <span>/</span>
@@ -60,7 +60,6 @@
              <a href="../utils/index.html" class="btn btn-neutral float-left" title="model.utils" >Prev</a>
           </div>
           <div class="next">
-            <a href="../../../../log/index.html" class="btn btn-neutral float-right" title="log" >Next</a>
           </div>
         </nav>
           <section id="module-model.wedges">
@@ -70,7 +69,10 @@
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#model.wedges.Wedge" title="model.wedges.Wedge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Wedge</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#model.wedges.WedgesMixin" title="model.wedges.WedgesMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WedgesMixin</span></code></a></p></td>
+<td><p>Mixin for the Model class containing wedge construction operations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#model.wedges.Wedge" title="model.wedges.Wedge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Wedge</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -79,8 +81,72 @@
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
 <dl class="py class">
+<dt class="sig sig-object py" id="model.wedges.WedgesMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.wedges.</span></span><span class="sig-name descname"><span class="pre">WedgesMixin</span></span><a class="reference internal" href="../../../../_modules/model/wedges.html#WedgesMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.WedgesMixin" title="Link to this definition">¶</a></dt>
+<dd><p>Mixin for the Model class containing wedge construction operations.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="model.wedges.WedgesMixin.set_wedge">
+<span class="sig-name descname"><span class="pre">set_wedge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_sweep_start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_sweep_end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clockwise'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#model.wedges.Wedge" title="model.wedges.Wedge"><span class="pre">Wedge</span></a></span></span><a class="reference internal" href="../../../../_modules/model/wedges.html#WedgesMixin.set_wedge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.WedgesMixin.set_wedge" title="Link to this definition">¶</a></dt>
+<dd><p>sets a Wedge from 3 points and adds it to the model.</p>
+<section id="operations">
+<h3>operations<a class="headerlink" href="#operations" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>create an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">geometor.model.Wedge</span></code></p></li>
+<li><p>create a <code class="docutils literal notranslate"><span class="pre">details</span></code> object from <code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></p></li>
+<li><dl class="simple">
+<dt>add parents to details</dt><dd><p>initial parents are the two starting points</p>
+</dd>
+</dl>
+</li>
+<li><p>check for duplicates in in the <code class="docutils literal notranslate"><span class="pre">model</span></code></p></li>
+<li><p>find intersection points for new element with all precedng elements</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">circle</span></code> to the model.</p></li>
+</ul>
+<section id="parameters">
+<h4>parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pt_center</span></code> : <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code></a> : point for circle center</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pt_radius</span></code> : <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code></a> : point to mark radius</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pt_end</span></code> : <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code></a> : A SymPy Point marking the sweep of the wedge</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">classes</span></code> : <a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> <em>optional</em> : A list of string names for classes defining a set of styles. Defaults to None.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ID</span></code> : <a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> <em>optional</em> : A text ID for use in plotting and reporting. Defaults to an empty string.</p></li>
+</ul>
+</section>
+<section id="returns">
+<h4>returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><dl class="simple">
+<dt><a class="reference internal" href="#model.wedges.Wedge" title="model.wedges.Wedge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wedge</span></code></a></dt><dd><p>The portion of a circle</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="example">
+<h4>example<a class="headerlink" href="#example" title="Link to this heading">¶</a></h4>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">geometor.elements</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;demo&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">],</span> <span class="n">ID</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">],</span> <span class="n">ID</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">_set_wedge_by_IDs</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">)</span>
+<span class="go">&lt;Wedge object ...&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="notes">
+<h4>notes<a class="headerlink" href="#notes" title="Link to this heading">¶</a></h4>
+<p>SymPy defines a circle as a center point and a radius length, so the radius length is calculated for the spg.Circle.</p>
+</section>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="model.wedges.Wedge">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.wedges.</span></span><span class="sig-name descname"><span class="pre">Wedge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">geometor.model.common.spg.Point</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/model/wedges.html#Wedge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.Wedge" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.wedges.</span></span><span class="sig-name descname"><span class="pre">Wedge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/model/wedges.html#Wedge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.Wedge" title="Link to this definition">¶</a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="model.wedges.Wedge.points">
 <span class="sig-name descname"><span class="pre">points</span></span><a class="reference internal" href="../../../../_modules/model/wedges.html#Wedge.points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.Wedge.points" title="Link to this definition">¶</a></dt>
@@ -123,37 +189,37 @@
 
 <dl class="py property">
 <dt class="sig sig-object py" id="model.wedges.Wedge.circle">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">circle</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">geometor.model.common.spg.Circle</span></em><a class="reference internal" href="../../../../_modules/model/wedges.html#Wedge.circle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.Wedge.circle" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">circle</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sympy.geometry.Circle</span></em><a class="reference internal" href="../../../../_modules/model/wedges.html#Wedge.circle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.Wedge.circle" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="model.wedges.Wedge.radians">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">radians</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">geometor.model.common.sp.Expr</span></em><a class="reference internal" href="../../../../_modules/model/wedges.html#Wedge.radians"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.Wedge.radians" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">radians</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sympy.Expr</span></em><a class="reference internal" href="../../../../_modules/model/wedges.html#Wedge.radians"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.Wedge.radians" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="model.wedges.Wedge.degrees">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">degrees</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">geometor.model.common.sp.Expr</span></em><a class="reference internal" href="../../../../_modules/model/wedges.html#Wedge.degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.Wedge.degrees" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">degrees</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sympy.Expr</span></em><a class="reference internal" href="../../../../_modules/model/wedges.html#Wedge.degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.Wedge.degrees" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="model.wedges.Wedge.ratio">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ratio</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">geometor.model.common.sp.Expr</span></em><a class="reference internal" href="../../../../_modules/model/wedges.html#Wedge.ratio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.Wedge.ratio" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ratio</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sympy.Expr</span></em><a class="reference internal" href="../../../../_modules/model/wedges.html#Wedge.ratio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.Wedge.ratio" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="model.wedges.Wedge.area">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">area</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">geometor.model.common.sp.Expr</span></em><a class="reference internal" href="../../../../_modules/model/wedges.html#Wedge.area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.Wedge.area" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">area</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sympy.Expr</span></em><a class="reference internal" href="../../../../_modules/model/wedges.html#Wedge.area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.Wedge.area" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="model.wedges.Wedge.arc_length">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">arc_length</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">geometor.model.common.sp.Expr</span></em><a class="reference internal" href="../../../../_modules/model/wedges.html#Wedge.arc_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.Wedge.arc_length" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">arc_length</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sympy.Expr</span></em><a class="reference internal" href="../../../../_modules/model/wedges.html#Wedge.arc_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.Wedge.arc_length" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="model.wedges.Wedge.perimeter">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">perimeter</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">geometor.model.common.sp.Expr</span></em><a class="reference internal" href="../../../../_modules/model/wedges.html#Wedge.perimeter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.Wedge.perimeter" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">perimeter</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sympy.Expr</span></em><a class="reference internal" href="../../../../_modules/model/wedges.html#Wedge.perimeter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.wedges.Wedge.perimeter" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -170,7 +236,6 @@
              <a href="../utils/index.html" class="btn btn-neutral float-left" title="model.utils" >Prev</a>
           </div>
           <div class="next">
-            <a href="../../../../log/index.html" class="btn btn-neutral float-right" title="log" >Next</a>
           </div>
         </nav></footer>
     </article>

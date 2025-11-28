@@ -1,0 +1,219 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>model.polygons &mdash; Project name not set  documentation</title>
+  <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=ea5fcf70" />
+  <link rel="stylesheet" type="text/css" href="../../_static/css/styles.css?v=a3216404" />
+  <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="../../index.html">
+        <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+      </a>
+      <div class="org-repo">
+        <span class="org">GEOMETOR</span>
+        •
+        <span class="repo">model</span>
+      </div>
+    </div>
+    <nav aria-label="Header">
+      <input type="checkbox" id="nav-Header-toggle" >
+      <label for="nav-Header-toggle" >Header</label>
+      <ul>
+        <li>
+          <a href="../../mission/index.html"  >mission</a>
+        </li>
+        <li>
+          <a href="../../usage/index.html"  >usage</a>
+        </li>
+        <li>
+          <a href="../../log/index.html"  >log</a>
+        </li>
+        <li>
+          <a href="../../modules/index.html"  >modules</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="motto"></div>
+  </header>
+  <main>
+
+    <article>
+      <div class="content">
+      <nav class="breadcrumbs">
+        <span><a href="../../index.html">Home</a></span>
+          <span>/</span>
+        <span><a href="../index.html">Module code</a></span>
+          <span>/</span>
+        <span><a href="../model.html">model</a></span>
+        <span>/</span>
+        <span>model.polygons</span>
+      </nav>
+        <nav class="context">
+          <div class="prev">
+          </div>
+          <div class="next">
+          </div>
+        </nav>
+          <h1>Source code for model.polygons</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">helper functions for polygons</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy.geometry</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">spg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.element</span><span class="w"> </span><span class="kn">import</span> <span class="n">Element</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">clean_expr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">COLORS</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">Table</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;PolygonsMixin&quot;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="PolygonsMixin">
+<a class="viewcode-back" href="../../modules/api/model/polygons/index.html#model.polygons.PolygonsMixin">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">PolygonsMixin</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Mixin for the Model class containing polygon construction operations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PolygonsMixin.set_polygon_by_IDs">
+<a class="viewcode-back" href="../../modules/api/model/polygons/index.html#model.polygons.PolygonsMixin.set_polygon_by_IDs">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_polygon_by_IDs</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">poly_pts_IDs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ID</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">spg</span><span class="o">.</span><span class="n">Polygon</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        find points by ID and use them with :meth:`Model.set_polygon`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">poly_pts</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">poly_ID</span> <span class="ow">in</span> <span class="n">poly_pts_IDs</span><span class="p">:</span>
+            <span class="n">poly_pts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_element_by_ID</span><span class="p">(</span><span class="n">poly_ID</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_polygon</span><span class="p">(</span><span class="n">poly_pts</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="PolygonsMixin.set_polygon">
+<a class="viewcode-back" href="../../modules/api/model/polygons/index.html#model.polygons.PolygonsMixin.set_polygon">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_polygon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">poly_pts</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">],</span> <span class="n">classes</span><span class="o">=</span><span class="p">[],</span> <span class="n">ID</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">spg</span><span class="o">.</span><span class="n">Polygon</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        set polygon (list of 3 or more points)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># TODO: check points and minimum count of 3</span>
+        <span class="n">poly</span> <span class="o">=</span> <span class="n">spg</span><span class="o">.</span><span class="n">Polygon</span><span class="p">(</span><span class="o">*</span><span class="n">poly_pts</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ID</span><span class="p">:</span>
+            <span class="n">poly_pts_IDs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">pt</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span> <span class="ow">or</span> <span class="n">pt</span><span class="p">)</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">poly_pts</span><span class="p">]</span>
+            <span class="n">poly_pts_IDs</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">poly_pts_IDs</span><span class="p">)</span>
+            <span class="n">ID</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&lt; </span><span class="si">{</span><span class="n">poly_pts_IDs</span><span class="si">}</span><span class="s2"> &gt;&quot;</span>
+
+        <span class="n">details</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="n">poly_pts</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span> <span class="n">ID</span><span class="o">=</span><span class="n">ID</span><span class="p">)</span>
+
+        <span class="n">details</span><span class="o">.</span><span class="n">side_lengths</span> <span class="o">=</span> <span class="p">[</span><span class="n">clean_expr</span><span class="p">(</span><span class="n">side</span><span class="o">.</span><span class="n">length</span><span class="p">)</span> <span class="k">for</span> <span class="n">side</span> <span class="ow">in</span> <span class="n">poly</span><span class="o">.</span><span class="n">sides</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="p">[</span><span class="n">poly</span><span class="p">]</span> <span class="o">=</span> <span class="n">details</span>
+
+        <span class="n">classes_str</span> <span class="o">=</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span> <span class="k">if</span> <span class="n">classes</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">&#39;polygon&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> bold]</span><span class="si">{</span><span class="n">details</span><span class="o">.</span><span class="n">ID</span><span class="si">}</span><span class="s2">[/</span><span class="si">{</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">&#39;polygon&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> bold]</span><span class="si">{</span><span class="n">classes_str</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">show_header</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">side</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">poly</span><span class="o">.</span><span class="n">sides</span><span class="p">):</span>
+            <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    side </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;[cyan]</span><span class="si">{</span><span class="n">sp</span><span class="o">.</span><span class="n">pretty</span><span class="p">(</span><span class="n">side</span><span class="o">.</span><span class="n">length</span><span class="p">)</span><span class="si">}</span><span class="s2">[/cyan]&quot;</span><span class="p">)</span>
+        <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">&quot;    area:&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;[cyan]</span><span class="si">{</span><span class="n">sp</span><span class="o">.</span><span class="n">pretty</span><span class="p">(</span><span class="n">poly</span><span class="o">.</span><span class="n">area</span><span class="p">)</span><span class="si">}</span><span class="s2">[/cyan]&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">poly</span></div>
+</div>
+
+</pre></div>
+      </div>
+      <footer>
+
+
+        <nav class="context">
+          <div class="prev">
+          </div>
+          <div class="next">
+          </div>
+        </nav></footer>
+    </article>
+
+  </main>
+
+<div class="asides">
+    <aside>
+        <h3>Search</h3>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+    </aside>
+    
+<aside>
+    <h3>Recent Logs</h3>
+    <ul>
+        
+            <li><a href="../../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+        
+    </ul>
+</aside>
+
+    
+
+    
+
+    
+
+<aside class="aside-types">
+    <h3>Types</h3>
+    <ul>
+        
+        <li><a href="../../types/log.html">log</a></li>
+        
+    </ul>
+</aside>
+
+</div>
+<footer>
+    <div class="footer-nav">
+    <ul>
+        <li><a href="../../about.html">about</a></li>
+        <li><a href="../../connect.html">connect</a></li>
+        <li><a href="../../glossary.html">glossary</a></li>
+        <li><a href="../../todos.html">todos</a></li>
+        <li><a href="../../changelog.html">changelog</a></li>
+    </ul>
+</div>
+    <hr/>
+    <div role="contentinfo">
+        <p>
+                &copy; Copyright .
+        </p>
+    </div>
+</footer>
+
+  <script src="../../_static/jquery.js?v=5d32c60e"></script>
+  <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+  <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+  <script src="../../_static/doctools.js?v=9bcbadda"></script>
+  <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+  <script src="../../_static/js/collection_controls.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+model.delete
+============
+
+.. py:module:: model.delete
+
+.. autoapi-nested-parse::
+
+   Deletion functions for the Model class.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   model.delete.console
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   model.delete.DeleteMixin
+
+
+Module Contents
+---------------
+
+.. py:data:: console
+
+.. py:class:: DeleteMixin
+
+   Mixin for the Model class containing deletion operations.
+
+
+   .. py:method:: get_dependents(element_or_ID)
+
+      Finds and returns a set of all elements that depend on the given element.
+
+      This method is for checking dependencies without performing any deletion.
+
+      Args:
+          element_or_ID (spg.GeometryEntity or str): The element object or its
+              ID to check for dependents.
+
+      Returns:
+          set: A set of dependent elements. Returns an empty set if the element
+               is not found or has no dependents.
+
+
+
+   .. py:method:: delete_element(element_or_ID)
+
+      Deletes an element and performs a cascading delete of all its dependents.
+
+      This method removes the specified element and any other elements that were
+      constructed from it, directly or indirectly.
+
+      Args:
+          element_or_ID (spg.GeometryEntity or str): The element object or its
+              ID to be deleted.
+
+
+

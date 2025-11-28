@@ -33,10 +33,10 @@
           <a href="../../usage/index.html"  >usage</a>
         </li>
         <li>
-          <a href="../../modules/index.html"  >modules</a>
+          <a href="../../log/index.html"  >log</a>
         </li>
         <li>
-          <a href="../../log/index.html"  >log</a>
+          <a href="../../modules/index.html"  >modules</a>
         </li>
       </ul>
     </nav>
@@ -65,10 +65,12 @@
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">section functions for Model class</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="c1">#  from __future__ import annotations</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.common</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">clean_expr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy.geometry</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">spg</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.element</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">Element</span><span class="p">,</span>
@@ -79,11 +81,68 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">COLORS</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rich.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">Table</span>
 
-<span class="c1">#  from geometor.model import Model</span>
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
 
 <div class="viewcode-block" id="phi">
 <a class="viewcode-back" href="../../modules/api/model/sections/index.html#model.sections.phi">[docs]</a>
 <span class="n">phi</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="SectionsMixin">
+<a class="viewcode-back" href="../../modules/api/model/sections/index.html#model.sections.SectionsMixin">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SectionsMixin</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Mixin for the Model class containing section construction operations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="SectionsMixin.set_section_by_IDs">
+<a class="viewcode-back" href="../../modules/api/model/sections/index.html#model.sections.SectionsMixin.set_section_by_IDs">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_section_by_IDs</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">points_IDs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ID</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Section</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        find points by ID and use them with :meth:`Model.set_section`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">point_ID</span> <span class="ow">in</span> <span class="n">points_IDs</span><span class="p">:</span>
+            <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_element_by_ID</span><span class="p">(</span><span class="n">point_ID</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_section</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">ID</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="SectionsMixin.set_section">
+<a class="viewcode-back" href="../../modules/api/model/sections/index.html#model.sections.SectionsMixin.set_section">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_section</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">],</span> <span class="n">classes</span><span class="o">=</span><span class="p">[],</span> <span class="n">ID</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Section</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        set section (list of 3 points on a line)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># TODO: check points and minimum count of 3</span>
+        <span class="n">section</span> <span class="o">=</span> <span class="n">Section</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ID</span><span class="p">:</span>
+            <span class="n">points_IDs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">pt</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span> <span class="ow">or</span> <span class="n">pt</span><span class="p">)</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">points</span><span class="p">]</span>
+            <span class="n">points_IDs</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">points_IDs</span><span class="p">)</span>
+            <span class="n">ID</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/ </span><span class="si">{</span><span class="n">points_IDs</span><span class="si">}</span><span class="s2"> /&quot;</span>
+
+        <span class="n">details</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="n">points</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span> <span class="n">ID</span><span class="o">=</span><span class="n">ID</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="p">[</span><span class="n">section</span><span class="p">]</span> <span class="o">=</span> <span class="n">details</span>
+
+        <span class="n">classes_str</span> <span class="o">=</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span> <span class="k">if</span> <span class="n">classes</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">&#39;section&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> bold]</span><span class="si">{</span><span class="n">details</span><span class="o">.</span><span class="n">ID</span><span class="si">}</span><span class="s2">[/</span><span class="si">{</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">&#39;section&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> bold]</span><span class="si">{</span><span class="n">classes_str</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">show_header</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">length</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">section</span><span class="o">.</span><span class="n">lengths</span><span class="p">):</span>
+            <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    len </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;[cyan]</span><span class="si">{</span><span class="n">sp</span><span class="o">.</span><span class="n">pretty</span><span class="p">(</span><span class="n">length</span><span class="p">)</span><span class="si">}</span><span class="s2">[/cyan]&quot;</span><span class="p">)</span>
+        <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">&quot;    ratio:&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;[cyan]</span><span class="si">{</span><span class="n">sp</span><span class="o">.</span><span class="n">pretty</span><span class="p">(</span><span class="n">section</span><span class="o">.</span><span class="n">ratio</span><span class="p">)</span><span class="si">}</span><span class="s2">[/cyan]&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">section</span></div>
+</div>
 
 
 
@@ -243,47 +302,6 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">segments</span><span class="p">[</span><span class="n">max_length_index</span><span class="p">]</span></div>
 </div>
 
-
-<span class="k">def</span><span class="w"> </span><span class="nf">_set_section_by_IDs</span><span class="p">(</span>
-        <span class="n">model</span><span class="p">,</span> <span class="n">points_IDs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ID</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Section</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    find points by ID and use them with :meth:`Model.set_section`</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">points</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">point_ID</span> <span class="ow">in</span> <span class="n">points_IDs</span><span class="p">:</span>
-        <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get_element_by_ID</span><span class="p">(</span><span class="n">poly_ID</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">set_section</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">ID</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">_set_section</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">],</span> <span class="n">classes</span><span class="o">=</span><span class="p">[],</span> <span class="n">ID</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Section</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    set section (list of 3 points on a line)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="c1"># TODO: check points and minimum count of 3</span>
-    <span class="n">section</span> <span class="o">=</span> <span class="n">Section</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">ID</span><span class="p">:</span>
-        <span class="n">points_IDs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="n">pt</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span> <span class="ow">or</span> <span class="n">pt</span><span class="p">)</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">points</span><span class="p">]</span>
-        <span class="n">points_IDs</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">points_IDs</span><span class="p">)</span>
-        <span class="n">ID</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/ </span><span class="si">{</span><span class="n">points_IDs</span><span class="si">}</span><span class="s2"> /&quot;</span>
-
-    <span class="n">details</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="n">points</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span> <span class="n">ID</span><span class="o">=</span><span class="n">ID</span><span class="p">)</span>
-
-    <span class="n">model</span><span class="p">[</span><span class="n">section</span><span class="p">]</span> <span class="o">=</span> <span class="n">details</span>
-
-    <span class="n">classes_str</span> <span class="o">=</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span> <span class="k">if</span> <span class="n">classes</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">&#39;section&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> bold]</span><span class="si">{</span><span class="n">details</span><span class="o">.</span><span class="n">ID</span><span class="si">}</span><span class="s2">[/</span><span class="si">{</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">&#39;section&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> bold]</span><span class="si">{</span><span class="n">classes_str</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">show_header</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">length</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">section</span><span class="o">.</span><span class="n">lengths</span><span class="p">):</span>
-        <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    len </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;[cyan]</span><span class="si">{</span><span class="n">sp</span><span class="o">.</span><span class="n">pretty</span><span class="p">(</span><span class="n">length</span><span class="p">)</span><span class="si">}</span><span class="s2">[/cyan]&quot;</span><span class="p">)</span>
-    <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">&quot;    ratio:&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;[cyan]</span><span class="si">{</span><span class="n">sp</span><span class="o">.</span><span class="n">pretty</span><span class="p">(</span><span class="n">section</span><span class="o">.</span><span class="n">ratio</span><span class="p">)</span><span class="si">}</span><span class="s2">[/cyan]&quot;</span><span class="p">)</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">section</span>
 </pre></div>
       </div>
       <footer>
