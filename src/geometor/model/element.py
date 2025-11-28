@@ -3,6 +3,7 @@ Element type
 ElementDetails class
 intersection functions
 """
+from __future__ import annotations
 import sympy.geometry as spg
 from multiprocessing import Pool, cpu_count
 from geometor.model.utils import clean_expr
@@ -13,32 +14,21 @@ __all__ = ["Element", "CircleElement", "Struct", "check_existence", "find_all_in
 
 class Element:
     """
-    a container for special attributes of an element of a model that are
-    not supported by the SymPy elements
+    A container for special attributes of an element of a model that are
+    not supported by the SymPy elements.
 
-    parameters
-    ----------
-    - ``sympy_obj`` :
-        The sympy object representing the geometric entity.
-    - ``parents`` : list[objects]
-        A list of parent elements (default is None).
-    - ``classes`` : list[str]
-        A list of class labels (default is None).
-    - ``ID`` : str
-        - A string ID for the element
-        - if ID is none, a ID is generated
-        - is used as a reference in reports and plots
+    Args:
+        sympy_obj: The sympy object representing the geometric entity.
+        parents: A list of parent elements.
+        classes: A list of class labels.
+        ID: A string ID for the element. If empty, an ID is generated.
+        guide: If True, the element is a guide and excluded from intersections.
 
-    attributes
-    ----------
-    - ``ID`` : :class:`python:str`
-        name used in presentation and reports
-    - ``classes`` : dict
-        dict with strings for class name
-    - ``parents`` : dict
-        dict with keys as parent sympy objects
-
-
+    Attributes:
+        ID (str): Name used in presentation and reports.
+        classes (dict): Dict with strings for class name.
+        parents (dict): Dict with keys as parent sympy objects.
+        guide (bool): Whether the element is a guide.
     """
 
     def __init__(
@@ -52,11 +42,9 @@ class Element:
         """
         Initializes an Element of the model.
 
-        handles default argument issues
-
-        casts classes and parents into keys for a dict
-        ensures uniqueness - maintains order
-
+        Handles default argument issues.
+        Casts classes and parents into keys for a dict.
+        Ensures uniqueness - maintains order.
         """
         self.object = sympy_obj
         if classes is None:
@@ -84,33 +72,23 @@ class Element:
 
 
 class CircleElement(Element):
-    '''
-    same as :class:`Element` but adds a ``pt_radius``
+    """
+    Same as :class:`Element` but adds a ``pt_radius``.
 
-    parameters
-    ----------
-    - ``sympy_obj`` :
-        The sympy object representing the geometric entity.
-    - ``pt_radius`` : spg.Point
-        A list of parent elements (default is None).
-    - ``parents`` : list[objects]
-        A list of parent elements (default is None).
-    - ``classes`` : list[str]
-        A list of class labels (default is None).
-    - ``ID`` : str
-        - A string ID for the element
-        - if ID is none, a ID is generated
-        - is used as a reference in reports and plots
+    Args:
+        sympy_obj: The sympy object representing the geometric entity.
+        pt_radius: The point defining the radius.
+        parents: A list of parent elements.
+        classes: A list of class labels.
+        ID: A string ID for the element.
+        guide: If True, the element is a guide.
 
-    attributes
-    ----------
-    - ``ID`` : :class:`python:str`
-        name used in presentation and reports
-    - ``classes`` : dict
-        dict with strings for class name
-    - ``parents`` : dict
-        dict with keys as parent sympy objects
-    '''
+    Attributes:
+        ID (str): Name used in presentation and reports.
+        classes (dict): Dict with strings for class name.
+        parents (dict): Dict with keys as parent sympy objects.
+        pt_radius (spg.Point): The point defining the radius.
+    """
     def __init__(
         self,
         sympy_obj: spg.Circle,
@@ -127,9 +105,16 @@ class CircleElement(Element):
 def check_existence(
     self, struct: Struct, existing_structs: list[Struct]
 ) -> tuple[bool, Struct]:
-    """Check if a geometric structure exists in the model.
-    
+    """
+    Check if a geometric structure exists in the model.
 
+    Args:
+        struct: The structure to check.
+        existing_structs: List of existing structures in the model.
+
+    Returns:
+        tuple[bool, Struct]: A tuple containing a boolean indicating existence
+        and the existing structure if found (otherwise None).
     """
     # Check by reference
     if struct in existing_structs:
@@ -145,7 +130,12 @@ def check_existence(
 
 
 def find_all_intersections(self, struct: Struct) -> None:
-    """find all intersections in the model for the given struct"""
+    """
+    Find all intersections in the model for the given struct.
+
+    Args:
+        struct: The structure to find intersections for.
+    """
     if self[struct].guide:
         return
     test_structs = [
@@ -177,15 +167,14 @@ def find_intersection(test_tuple: tuple) -> tuple:
 
 
 def _get_element_by_ID(self, ID: str):
-    """Finds and returns the element with the given ID.
+    """
+    Finds and returns the element with the given ID.
 
-    parameters
-    ----------
-    - ``ID`` : :class:`str`: The ID of the desired element.
+    Args:
+        ID: The ID of the desired element.
 
-    returns
-    -------
-    Element or None: The element with the matching ID, or None if no match is found.
+    Returns:
+        Element | None: The element with the matching ID, or None if no match is found.
     """
     for element_key, element in self.items():
         if hasattr(element, "ID") and element.ID == ID:

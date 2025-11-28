@@ -4,6 +4,7 @@ ancestor functions for Model class
 from __future__ import annotations
 from typing import TYPE_CHECKING
 import sympy as sp
+
 import sympy.geometry as spg
 
 if TYPE_CHECKING:

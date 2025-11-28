@@ -1,18 +1,26 @@
 """
+The :mod:`geometor.model` module provides the core data structures and logic for constructing
+geometric models in 2D space. It serves as the foundation for the Geometor
+project, enabling the creation, manipulation, and analysis of geometric
+constructions.
 
-The Model module provides a set of tools for constructing geometric models.
-It relies heavily on sympy for providing the algebraic infrastructure
-the functions here are for creating the abstract model, not the rendering
-see the Render module for plotting with matplotlib
+Key Components:
+---------------
+- **Model**: The central class :class:`Model` representing a collection of geometric elements.
+- **Elements**: Wrappers around SymPy geometry objects (:class:`Point`, :class:`Line`, :class:`Circle`, :class:`Polygon`).
+- **Mixins**: Modular functionality for the Model class.
+- **Analysis**: Tools for analyzing geometric relationships (:class:`Section`, :class:`Chain`, :class:`Wedge`).
 
-This module provides the `Model` class, which is used to represent a geometric model
-in 2D space. The `Model` class is based on the `list` data structure, and can contain
-points, lines, circles, polygons, and segments.
+Usage:
+------
+Initialize a :class:`Model` and use its methods to add points, construct lines and circles,
+and perform geometric operations.
 """
+from __future__ import annotations
 __author__ = "geometor"
 __maintainer__ = "geometor"
 __email__ = "github@geometor.com"
-__version__ = "0.4.2"
+__version__ = "0.4.3"
 __licence__ = "MIT"
 
 import sympy.geometry as spg

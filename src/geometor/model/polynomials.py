@@ -5,7 +5,8 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 from .element import Element
 from sympy import Poly, Symbol, sympify
-import sympy as sp
+
+import sympy.geometry as spg
 from sympy.geometry import Line, Circle, Point
 
 if TYPE_CHECKING:

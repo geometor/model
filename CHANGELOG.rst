@@ -1,6 +1,12 @@
 changelog
 =========
 
+0.4.3
+-----
+
+-   Refined docstrings and type hinting.
+-   Fixed `from __future__ import annotations` placement.
+
 0.4.2
 -----
 *2025-11-28*

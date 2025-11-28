@@ -44,6 +44,13 @@ class Model(dict, PointsMixin, LinesMixin, CirclesMixin, PolygonsMixin, Segments
     """
 
     def __init__(self, name: str = "", logger=None):
+        """
+        Initialize the Model.
+
+        Args:
+            name: The name of the model.
+            logger: An optional logger instance. If None, a default logger is created.
+        """
         super().__init__()
         self._name = name
         if logger:
@@ -89,7 +96,14 @@ class Model(dict, PointsMixin, LinesMixin, CirclesMixin, PolygonsMixin, Segments
 
     def __setitem__(self, key: GeometryObject, value: Element):
         """
-        control types for keys and values
+        Set an item in the model, enforcing type checks.
+
+        Args:
+            key: The geometric object (GeometryObject).
+            value: The element wrapper (Element).
+
+        Raises:
+            TypeError: If key or value are not of the expected types.
         """
         if not isinstance(key, GeometryObject):
             raise TypeError(f"{key=} must be an instance of GeometryObject")
@@ -138,7 +152,13 @@ class Model(dict, PointsMixin, LinesMixin, CirclesMixin, PolygonsMixin, Segments
 
     def limits(self) -> tuple[tuple[float, float], tuple[float, float]]:
         """
-        Find x, y limits from points and circles of the model
+        Find x, y limits from points and circles of the model.
+
+        Returns:
+            tuple: A tuple containing ((min_x, max_x), (min_y, max_y)).
+
+        Raises:
+            ValueError: If the model contains no geometric elements.
         """
         x_vals = []
         y_vals = []

@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING
 from rich.console import Console
 console = Console()
 import sympy as sp
+
 import sympy.geometry as spg
 
 if TYPE_CHECKING:

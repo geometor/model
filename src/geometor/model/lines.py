@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 from geometor.model.element import *
 
 import sympy as sp
+
 import sympy.geometry as spg
 
 from geometor.model.colors import COLORS

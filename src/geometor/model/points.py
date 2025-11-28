@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING
 
 from geometor.model.utils import clean_expr
 import sympy as sp
+
 import sympy.geometry as spg
 
 from geometor.model.element import Element
