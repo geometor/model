@@ -4,4 +4,9 @@
 modules
 =======
 
-.. include:: api/index.rst
+.. include:: api/geometor/model/index.rst
+
+.. .. toctree::
+   :glob:
+
+   api/**

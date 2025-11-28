@@ -1,8 +1,12 @@
 """
 wedge functions for Model class
 """
+from __future__ import annotations
+from typing import TYPE_CHECKING
 
-from geometor.model.common import *
+from geometor.model.utils import clean_expr
+import sympy as sp
+import sympy.geometry as spg
 
 from geometor.model.element import (
     Element,
@@ -12,6 +16,106 @@ from geometor.model.element import (
 )
 from geometor.model.colors import COLORS
 from rich.table import Table
+
+if TYPE_CHECKING:
+    from .model import Model
+
+
+class WedgesMixin:
+    """
+    Mixin for the Model class containing wedge construction operations.
+    """
+
+    def set_wedge(
+        self,
+        pt_center: spg.Point,
+        pt_radius: spg.Point,
+        pt_sweep_start: spg.Point,
+        pt_sweep_end: spg.Point,
+        direction="clockwise",
+        classes: list = None,
+        ID: str = "",
+    ) -> Wedge:
+        """
+        sets a Wedge from 3 points and adds it to the model.
+
+        operations
+        ~~~~~~~~~~
+        - create an instance of :class:`geometor.model.Wedge`
+        - create a ``details`` object from :class:`Element`
+        - add parents to details
+            initial parents are the two starting points
+        - check for duplicates in in the ``model``
+        - find intersection points for new element with all precedng elements
+        - Add ``circle`` to the model.
+
+        parameters
+        ----------
+        - ``pt_center`` : :class:`sympy.geometry.point.Point` : point for circle center
+        - ``pt_radius`` : :class:`sympy.geometry.point.Point` : point to mark radius
+        - ``pt_end`` : :class:`sympy.geometry.point.Point` : A SymPy Point marking the sweep of the wedge
+        - ``classes`` : :class:`list` *optional* : A list of string names for classes defining a set of styles. Defaults to None.
+        - ``ID`` : :class:`str` *optional* : A text ID for use in plotting and reporting. Defaults to an empty string.
+
+        returns
+        -------
+        - :class:`Wedge`
+            The portion of a circle
+
+        example
+        -------
+            >>> from geometor.elements import *
+            >>> model = Model("demo")
+            >>> A = model.set_point(0, 0, classes=["given"], ID="A")
+            >>> B = model.set_point(1, 0, classes=["given"], ID="B")
+            >>> model.construct_circle(A, B)
+            >>> model.construct_circle(B, A)
+            >>> model._set_wedge_by_IDs('A', 'B', 'C')
+            <Wedge object ...>
+
+        notes
+        -----
+        SymPy defines a circle as a center point and a radius length, so the radius length is calculated for the spg.Circle.
+
+        """
+
+        if classes is None:
+            classes = {}
+        # find radius length for sympy.Circle
+        #  radius_len = pt_center.distance(pt_radius)
+
+        if not isinstance(pt_center, spg.Point) or not isinstance(pt_radius, spg.Point):
+            raise TypeError(
+                "Both pt_center and pt_radius must be instances of sympy.geometry.point.Point"
+            )
+
+        struct = Wedge([pt_center, pt_radius, pt_sweep_start, pt_sweep_end])
+
+        if not ID:
+            pt_center_ID = self[pt_center].ID
+            pt_radius_ID = self[pt_radius].ID
+            ID = f"( {pt_center_ID} {pt_radius_ID} )"
+            ID += f"< {self[pt_sweep_start].ID} {pt_center_ID} {self[pt_sweep_end].ID} >"
+
+        details = CircleElement(
+            struct,
+            parents=[pt_center, pt_radius],
+            classes=classes,
+            ID=ID,
+            pt_radius=pt_radius,
+        )
+
+        self[struct] = details
+
+        classes_str = " : " + " ".join(classes) if classes else ""
+        self.log(f"[{COLORS['polygon']} bold]{details.ID}[/{COLORS['polygon']} bold]{classes_str}")
+        table = Table(show_header=False, box=None, padding=(0, 4))
+        table.add_row("    r:", f"[cyan]{sp.pretty(struct.circle.radius)}[/cyan]")
+        table.add_row("    rad:", f"[cyan]{sp.pretty(struct.radians)}[/cyan]")
+        table.add_row("    deg:", f"[cyan]{sp.pretty(struct.degrees)}[/cyan]")
+        self.log(table)
+
+        return struct
 
 
 class Wedge:
@@ -80,107 +184,3 @@ class Wedge:
     def perimeter(self) -> sp.Expr:
         # Including the two radii to form the full boundary of the wedge
         return self.arc_length + 2 * self.circle.radius
-
-
-#  def _set_wedge_by_labels(
-    #  model, pt_1_label: str, pt_2_label: str, classes: list = None, label: str = ""
-#  ) -> Wedge:
-    #  """
-    #  find points by label and use them with :meth:`Model.construct_line`
-    #  """
-
-    #  pt_1 = model.get_element_by_label(pt_1_label)
-    #  pt_2 = model.get_element_by_label(pt_2_label)
-    #  model.construct_circle(pt_1, pt_2, classes, label)
-
-
-def _set_wedge(
-    model,
-    pt_center: spg.Point,
-    pt_radius: spg.Point,
-    pt_sweep_start: spg.Point,
-    pt_sweep_end: spg.Point,
-    direction="clockwise",
-    classes: list = None,
-    ID: str = "",
-) -> Wedge:
-    """
-    sets a Wedge from 3 points and adds it to the model.
-
-    operations
-    ~~~~~~~~~~
-    - create an instance of :class:`geometor.model.Wedge`
-    - create a ``details`` object from :class:`Element`
-    - add parents to details
-        initial parents are the two starting points
-    - check for duplicates in in the ``model``
-    - find intersection points for new element with all precedng elements
-    - Add ``circle`` to the model.
-
-    parameters
-    ----------
-    - ``pt_center`` : :class:`sympy.geometry.point.Point` : point for circle center
-    - ``pt_radius`` : :class:`sympy.geometry.point.Point` : point to mark radius
-    - ``pt_end`` : :class:`sympy.geometry.point.Point` : A SymPy Point marking the sweep of the wedge
-    - ``classes`` : :class:`list` *optional* : A list of string names for classes defining a set of styles. Defaults to None.
-    - ``ID`` : :class:`str` *optional* : A text ID for use in plotting and reporting. Defaults to an empty string.
-
-    returns
-    -------
-    - :class:`Wedge`
-        The portion of a circle
-
-    example
-    -------
-        >>> from geometor.elements import *
-        >>> model = Model("demo")
-        >>> A = model.set_point(0, 0, classes=["given"], ID="A")
-        >>> B = model.set_point(1, 0, classes=["given"], ID="B")
-        >>> model.construct_circle(A, B)
-        >>> model.construct_circle(B, A)
-        >>> model._set_wedge_by_IDs('A', 'B', 'C')
-        <Wedge object ...>
-
-    notes
-    -----
-    SymPy defines a circle as a center point and a radius length, so the radius length is calculated for the spg.Circle.
-
-    """
-
-    if classes is None:
-        classes = {}
-    # find radius length for sympy.Circle
-    #  radius_len = pt_center.distance(pt_radius)
-
-    if not isinstance(pt_center, spg.Point) or not isinstance(pt_radius, spg.Point):
-        raise TypeError(
-            "Both pt_center and pt_radius must be instances of sympy.geometry.point.Point"
-        )
-
-    struct = Wedge([pt_center, pt_radius, pt_sweep_start, pt_sweep_end])
-
-    if not ID:
-        pt_center_ID = model[pt_center].ID
-        pt_radius_ID = model[pt_radius].ID
-        ID = f"( {pt_center_ID} {pt_radius_ID} )"
-        ID += f"< {model[pt_sweep_start].ID} {pt_center_ID} {model[pt_sweep_end].ID} >"
-
-    details = CircleElement(
-        struct,
-        parents=[pt_center, pt_radius],
-        classes=classes,
-        ID=ID,
-        pt_radius=pt_radius,
-    )
-
-    model[struct] = details
-
-    classes_str = " : " + " ".join(classes) if classes else ""
-    model.log(f"[{COLORS['polygon']} bold]{details.ID}[/{COLORS['polygon']} bold]{classes_str}")
-    table = Table(show_header=False, box=None, padding=(0, 4))
-    table.add_row("    r:", f"[cyan]{sp.pretty(struct.circle.radius)}[/cyan]")
-    table.add_row("    rad:", f"[cyan]{sp.pretty(struct.radians)}[/cyan]")
-    table.add_row("    deg:", f"[cyan]{sp.pretty(struct.degrees)}[/cyan]")
-    model.log(table)
-
-    return struct

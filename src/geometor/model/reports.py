@@ -7,14 +7,13 @@ from rich.console import Console
 from rich.table import Table
 from rich.text import Text
 
-from .common import *
+import sympy as sp
+import sympy.geometry as spg
 
 from .utils import *
 
 from .element import (
     Element,
-    _get_ancestors,
-    _get_ancestors_IDs,
     _get_element_by_ID,
 )
 

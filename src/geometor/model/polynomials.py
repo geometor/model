@@ -1,8 +1,39 @@
 """
 Polynomial element for geometor.model
 """
+from __future__ import annotations
+from typing import TYPE_CHECKING
 from .element import Element
 from sympy import Poly, Symbol, sympify
+import sympy as sp
+from sympy.geometry import Line, Circle, Point
+
+if TYPE_CHECKING:
+    from .model import Model
+
+__all__ = ["PolynomialsMixin", "Polynomial"]
+
+class PolynomialsMixin:
+    """
+    Mixin for the Model class containing polynomial construction operations.
+    """
+    def poly(self, coeffs: list, name: str = "", classes: list = [], group: str = "") -> Polynomial:
+        """
+        Create a Polynomial element.
+        """
+        return Polynomial(coeffs, name=name, classes=classes, group=group)
+
+    def add_poly(self, coeffs: list, name: str = "", classes: list = [], group: str = "") -> Polynomial:
+        """
+        Create and add a Polynomial element to the model.
+        """
+        if not name:
+            self._poly_count += 1
+            name = f"Poly{self._poly_count}"
+        poly_el = self.poly(coeffs, name=name, classes=classes, group=group)
+        self[poly_el.poly.as_expr()] = poly_el
+        self.log(f"* add_element: {poly_el}")
+        return poly_el
 
 class Polynomial(Element):
     """
@@ -44,10 +75,6 @@ class Polynomial(Element):
         return self.poly.real_roots()
 
     def intersection(self, other):
-        from ._lines import Line
-        from ._circles import Circle
-        from ._points import Point
-
         intersections = []
         if isinstance(other, Polynomial):
             # Solve for x where self.poly.as_expr() == other.poly.as_expr()

@@ -1,6 +1,6 @@
 import os
 import tempfile
-from geometor.model import Model, save_model, load_model
+from geometor.model import Model, load_model
 
 def compare_models(m1, m2):
     """
@@ -76,7 +76,7 @@ print("-" * 20)
 tmp_dir = tempfile.gettempdir()
 file_path = os.path.join(tmp_dir, "test_model.json")
 print(f"Step 2: Saving model to {file_path}...")
-save_model(model_original, file_path)
+model_original.save(file_path)
 print("Model saved.")
 print("-" * 20)
 

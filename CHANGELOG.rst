@@ -1,6 +1,17 @@
 changelog
 =========
 
+0.4.1
+-----
+*2025-11-28*
+
+**changed**
+
+.. + Refactored model organization: Removed underscore prefixes from module names.
+.. + Removed `common.py` to reduce circular dependencies.
+.. + Integrated serialization logic directly into `Model` class methods.
+.. + Organized `Sections` and `Wedges` functionality into Mixins.
+
 0.4.0
 -----
 *2025-10-31*

@@ -1,11 +1,12 @@
 from rich import print
 from collections import defaultdict
 
-from geometor.model import *
-from geometor.model.utils import *
-#  from geometor.render import *
-from geometor.model.sections import *
+import sympy as sp
+import sympy.geometry as spg
+from geometor.model.utils import clean_expr
+from geometor.model.sections import Section
 
+__all__ = ["Chain"]
 
 class Chain:
     """

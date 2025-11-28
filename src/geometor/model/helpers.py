@@ -5,8 +5,20 @@ these types of operations need to be integrated into the euclid model
 """
 
 
-from geometor.model.common import *
+import sympy as sp
+import sympy.geometry as spg
 from geometor.model import *
+
+__all__ = [
+    "line_get_y",
+    "set_given_start_points",
+    "set_given_start_points_zero",
+    "set_equilateral_poles",
+    "construct_perpendicular_bisector",
+    "set_midpoint",
+    "set_given_rect_points",
+    "set_given_square_points",
+]
 
 
 # helpers ******************************

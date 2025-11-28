@@ -1,10 +1,12 @@
 """
 section functions for Model class
 """
-#  from __future__ import annotations
+from __future__ import annotations
+from typing import TYPE_CHECKING
 
-from geometor.model.common import *
-from geometor.model.utils import *
+from geometor.model.utils import clean_expr
+import sympy as sp
+import sympy.geometry as spg
 
 from geometor.model.element import (
     Element,
@@ -15,9 +17,57 @@ from geometor.model.element import (
 from geometor.model.colors import COLORS
 from rich.table import Table
 
-#  from geometor.model import Model
+if TYPE_CHECKING:
+    from .model import Model
 
 phi = sp.Rational(1, 2) + (sp.sqrt(5) / 2)
+
+
+class SectionsMixin:
+    """
+    Mixin for the Model class containing section construction operations.
+    """
+
+    def set_section_by_IDs(
+            self, points_IDs: list[str], classes: list = None, ID: str = ""
+    ) -> Section:
+        """
+        find points by ID and use them with :meth:`Model.set_section`
+        """
+        points = []
+
+        for point_ID in points_IDs:
+            points.append(self.get_element_by_ID(point_ID))
+
+        return self.set_section(points, classes, ID)
+
+
+    def set_section(self, points: list[spg.Point], classes=[], ID="") -> Section:
+        """
+        set section (list of 3 points on a line)
+        """
+
+        # TODO: check points and minimum count of 3
+        section = Section(points)
+
+        if not ID:
+            points_IDs = [str(self[pt].ID or pt) for pt in points]
+            points_IDs = " ".join(points_IDs)
+            ID = f"/ {points_IDs} /"
+
+        details = Element(section, parents=points, classes=classes, ID=ID)
+
+        self[section] = details
+
+        classes_str = " : " + " ".join(classes) if classes else ""
+        self.log(f"[{COLORS['section']} bold]{details.ID}[/{COLORS['section']} bold]{classes_str}")
+        table = Table(show_header=False, box=None, padding=(0, 4))
+        for i, length in enumerate(section.lengths):
+            table.add_row(f"    len {i+1}:", f"[cyan]{sp.pretty(length)}[/cyan]")
+        table.add_row("    ratio:", f"[cyan]{sp.pretty(section.ratio)}[/cyan]")
+        self.log(table)
+
+        return section
 
 
 class Section:
@@ -122,44 +172,3 @@ class Section:
     def max_segment(self) -> spg.Segment:
         max_length_index = self.lengths.index(self.max_length())
         return self.segments[max_length_index]
-
-def _set_section_by_IDs(
-        model, points_IDs: list[str], classes: list = None, ID: str = ""
-) -> Section:
-    """
-    find points by ID and use them with :meth:`Model.set_section`
-    """
-    points = []
-
-    for point_ID in points_IDs:
-        points.append(model.get_element_by_ID(poly_ID))
-
-    return model.set_section(points, classes, ID)
-
-
-def _set_section(model, points: list[spg.Point], classes=[], ID="") -> Section:
-    """
-    set section (list of 3 points on a line)
-    """
-
-    # TODO: check points and minimum count of 3
-    section = Section(points)
-
-    if not ID:
-        points_IDs = [str(model[pt].ID or pt) for pt in points]
-        points_IDs = " ".join(points_IDs)
-        ID = f"/ {points_IDs} /"
-
-    details = Element(section, parents=points, classes=classes, ID=ID)
-
-    model[section] = details
-
-    classes_str = " : " + " ".join(classes) if classes else ""
-    model.log(f"[{COLORS['section']} bold]{details.ID}[/{COLORS['section']} bold]{classes_str}")
-    table = Table(show_header=False, box=None, padding=(0, 4))
-    for i, length in enumerate(section.lengths):
-        table.add_row(f"    len {i+1}:", f"[cyan]{sp.pretty(length)}[/cyan]")
-    table.add_row("    ratio:", f"[cyan]{sp.pretty(section.ratio)}[/cyan]")
-    model.log(table)
-
-    return section
