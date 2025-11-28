@@ -9,7 +9,7 @@ from geometor.model.utils import clean_expr
 
 Struct = (spg.Line | spg.Circle)
 
-__all__ = ["Element", "CircleElement", "Struct"]
+__all__ = ["Element", "CircleElement", "Struct", "check_existence", "find_all_intersections"]
 
 class Element:
     """

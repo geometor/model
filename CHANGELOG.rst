@@ -1,6 +1,15 @@
 changelog
 =========
 
+0.4.2
+-----
+*2025-11-28*
+
+**fixed**
+
+.. + Export `check_existence` and `find_all_intersections` from `geometor.model.element` for easier access.
+.. + Removed outdated and redundant API documentation files.
+
 0.4.1
 -----
 *2025-11-28*
