@@ -1,0 +1,39 @@
+geometor.model.polygons
+=======================
+
+.. py:module:: geometor.model.polygons
+
+.. autoapi-nested-parse::
+
+   helper functions for polygons
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   geometor.model.polygons.PolygonsMixin
+
+
+Module Contents
+---------------
+
+.. py:class:: PolygonsMixin
+
+   Mixin for the Model class containing polygon construction operations.
+
+
+   .. py:method:: set_polygon_by_IDs(poly_pts_IDs: list[str], classes: list = None, ID: str = '') -> sympy.geometry.Polygon
+
+      find points by ID and use them with :meth:`Model.set_polygon`
+
+
+
+   .. py:method:: set_polygon(poly_pts: list[sympy.geometry.Point], classes=[], ID='') -> sympy.geometry.Polygon
+
+      set polygon (list of 3 or more points)
+
+
+

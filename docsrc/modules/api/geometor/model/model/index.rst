@@ -1,0 +1,347 @@
+geometor.model.model
+====================
+
+.. py:module:: geometor.model.model
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   geometor.model.model.GeometryObject
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   geometor.model.model.Model
+
+
+Module Contents
+---------------
+
+.. py:data:: GeometryObject
+
+.. py:class:: Model(name: str = '', logger=None)
+
+   Bases: :py:obj:`dict`, :py:obj:`geometor.model.points.PointsMixin`, :py:obj:`geometor.model.lines.LinesMixin`, :py:obj:`geometor.model.circles.CirclesMixin`, :py:obj:`geometor.model.polygons.PolygonsMixin`, :py:obj:`geometor.model.segments.SegmentsMixin`, :py:obj:`geometor.model.polynomials.PolynomialsMixin`, :py:obj:`geometor.model.serialize.SerializeMixin`, :py:obj:`geometor.model.delete.DeleteMixin`, :py:obj:`geometor.model.sections.SectionsMixin`, :py:obj:`geometor.model.wedges.WedgesMixin`, :py:obj:`geometor.model.ancestors.AncestorsMixin`
+
+
+   A collection of geometric elements, including points, lines, circles, and
+   polygons, represented using the `sympy.geometry` library.
+
+
+   .. py:attribute:: ID_gen
+
+
+   .. py:attribute:: last_point_id
+      :value: ''
+
+
+
+   .. py:method:: log(message)
+
+
+   .. py:method:: set_analysis_hook(hook_function)
+
+
+   .. py:property:: new_points
+      :type: list[sympy.geometry.Point]
+
+
+      The new_points of the model
+
+
+   .. py:method:: clear_new_points()
+
+
+   .. py:property:: name
+      :type: str
+
+
+      The name of the model
+
+
+   .. py:method:: __setitem__(key: GeometryObject, value: geometor.model.element.Element)
+
+      control types for keys and values
+
+
+
+   .. py:method:: remove_by_ID(ID: str) -> None
+
+
+   .. py:property:: points
+      :type: list[sympy.geometry.Point]
+
+
+      returns point elements from model as list
+
+
+   .. py:property:: structs
+      :type: list[geometor.model.element.Struct]
+
+
+      returns struct elements (line or circle) from model as list
+
+
+   .. py:property:: lines
+      :type: list[sympy.geometry.Line]
+
+
+      returns line elements from model as list
+
+
+   .. py:property:: circles
+      :type: list[sympy.geometry.Circle]
+
+
+      returns circle elements from model as list
+
+
+   .. py:method:: limits() -> tuple[tuple[float, float], tuple[float, float]]
+
+      Find x, y limits from points and circles of the model
+
+
+
+   .. py:attribute:: get_element_by_ID
+
+
+   .. py:method:: point_ID_generator() -> collections.abc.Iterator[str]
+
+
+   .. py:method:: set_point(x_val: sympy.Expr, y_val: sympy.Expr, parents: list = None, classes: list = None, ID: str = '', guide: bool = False) -> sympy.geometry.Point
+
+      Adds a point to the model, finds duplicates, cleans values, and sets
+      parents and classes.
+
+      :param - ``x_val``:
+      :type - ``x_val``: :class:`sympy.core.expr.Expr`: The x-value of the point.
+      :param - ``y_val``:
+      :type - ``y_val``: :class:`sympy.core.expr.Expr`: The y-value of the point.
+      :param - ``parents``: Defaults to None.
+      :type - ``parents``: list, optional: A list of parent elements or references.
+      :param - ``classes`` list: a set of styles. Defaults to None.
+      :type - ``classes`` list: A list of string names for classes defining
+      :param optional: a set of styles. Defaults to None.
+      :type optional: A list of string names for classes defining
+      :param - ``ID`` str: reporting. Defaults to an empty string.
+      :type - ``ID`` str: A text ID for use in plotting and
+      :param optional: reporting. Defaults to an empty string.
+      :type optional: A text ID for use in plotting and
+
+      :returns: **- :class:`sympy.geometry.point.Point`**
+      :rtype: The set point.
+
+      .. rubric:: Example
+
+      >>> from geometor.model import *
+      >>> model = Model("demo")
+      >>> model.set_point(0, 0, classes=["given"])
+      <spg.Point object ...>
+
+      .. rubric:: Notes
+
+      The function simplifies the x and y values before adding, and it updates the attributes if the point is already in the model.
+
+
+
+   .. py:method:: construct_line_by_IDs(pt_1_ID: str, pt_2_ID: str, classes: list = None, ID: str = '') -> sympy.geometry.Line
+
+      find points by ID and use them with :meth:`Model.construct_line`
+
+
+
+   .. py:method:: construct_line(pt_1: sympy.geometry.Point, pt_2: sympy.geometry.Point, classes: list = None, ID: str = '', guide: bool = False) -> sympy.geometry.Line
+
+      Constructs a :class:`Line <sympy.geometry.line.Line>` from two points and
+      adds it to the :class:`Model <geometor.model.model.Model>`
+
+
+
+   .. py:method:: construct_circle_by_IDs(pt_1_ID: str, pt_2_ID: str, classes: list = None, ID: str = '') -> sympy.geometry.Line
+
+      find points by ID and use them with :meth:`Model.construct_line`
+
+
+
+   .. py:method:: construct_circle(pt_center: sympy.geometry.Point, pt_radius: sympy.geometry.Point, classes: list = None, ID: str = '', guide: bool = False) -> sympy.geometry.Circle
+
+      Constructs a Circle from two points and adds it to the model.
+
+
+
+   .. py:method:: set_polygon_by_IDs(poly_pts_IDs: list[str], classes: list = None, ID: str = '') -> sympy.geometry.Polygon
+
+      find points by ID and use them with :meth:`Model.set_polygon`
+
+
+
+   .. py:method:: set_polygon(poly_pts: list[sympy.geometry.Point], classes=[], ID='') -> sympy.geometry.Polygon
+
+      set polygon (list of 3 or more points)
+
+
+
+   .. py:method:: set_segment_by_IDs(pt_1_ID: str, pt_2_ID: str, classes: list = None, ID: str = '') -> sympy.geometry.Segment
+
+      find points by ID and use them with :meth:`Model.set_segment`
+
+
+
+   .. py:method:: set_segment(pt_1: sympy.geometry.Point, pt_2: sympy.geometry.Point, classes=[], ID='') -> sympy.geometry.Segment
+
+      set segment (list of points) for demonstration in the model
+
+
+
+   .. py:method:: poly(coeffs: list, name: str = '', classes: list = [], group: str = '') -> Polynomial
+
+      Create a Polynomial element.
+
+
+
+   .. py:method:: add_poly(coeffs: list, name: str = '', classes: list = [], group: str = '') -> Polynomial
+
+      Create and add a Polynomial element to the model.
+
+
+
+   .. py:method:: save(file_path)
+
+      Saves a Model object to a JSON file as a list of elements.
+
+
+
+   .. py:method:: get_dependents(element_or_ID)
+
+      Finds and returns a set of all elements that depend on the given element.
+
+      This method is for checking dependencies without performing any deletion.
+
+      :param element_or_ID: The element object or its
+                            ID to check for dependents.
+      :type element_or_ID: spg.GeometryEntity or str
+
+      :returns:
+
+                A set of dependent elements. Returns an empty set if the element
+                     is not found or has no dependents.
+      :rtype: set
+
+
+
+   .. py:method:: delete_element(element_or_ID)
+
+      Deletes an element and performs a cascading delete of all its dependents.
+
+      This method removes the specified element and any other elements that were
+      constructed from it, directly or indirectly.
+
+      :param element_or_ID: The element object or its
+                            ID to be deleted.
+      :type element_or_ID: spg.GeometryEntity or str
+
+
+
+   .. py:method:: set_section_by_IDs(points_IDs: list[str], classes: list = None, ID: str = '') -> Section
+
+      find points by ID and use them with :meth:`Model.set_section`
+
+
+
+   .. py:method:: set_section(points: list[sympy.geometry.Point], classes=[], ID='') -> Section
+
+      set section (list of 3 points on a line)
+
+
+
+   .. py:method:: set_wedge(pt_center: sympy.geometry.Point, pt_radius: sympy.geometry.Point, pt_sweep_start: sympy.geometry.Point, pt_sweep_end: sympy.geometry.Point, direction='clockwise', classes: list = None, ID: str = '') -> Wedge
+
+      sets a Wedge from 3 points and adds it to the model.
+
+      operations
+      ~~~~~~~~~~
+      - create an instance of :class:`geometor.model.Wedge`
+      - create a ``details`` object from :class:`Element`
+      - add parents to details
+          initial parents are the two starting points
+      - check for duplicates in in the ``model``
+      - find intersection points for new element with all precedng elements
+      - Add ``circle`` to the model.
+
+      :param - ``pt_center``:
+      :type - ``pt_center``: :class:`sympy.geometry.point.Point` : point for circle center
+      :param - ``pt_radius``:
+      :type - ``pt_radius``: :class:`sympy.geometry.point.Point` : point to mark radius
+      :param - ``pt_end``:
+      :type - ``pt_end``: :class:`sympy.geometry.point.Point` : A SymPy Point marking the sweep of the wedge
+      :param - ``classes``:
+      :type - ``classes``: :class:`list` *optional* : A list of string names for classes defining a set of styles. Defaults to None.
+      :param - ``ID``:
+      :type - ``ID``: :class:`str` *optional* : A text ID for use in plotting and reporting. Defaults to an empty string.
+
+      :returns: The portion of a circle
+      :rtype: - :class:`Wedge`
+
+      .. rubric:: Example
+
+      >>> from geometor.elements import *
+      >>> model = Model("demo")
+      >>> A = model.set_point(0, 0, classes=["given"], ID="A")
+      >>> B = model.set_point(1, 0, classes=["given"], ID="B")
+      >>> model.construct_circle(A, B)
+      >>> model.construct_circle(B, A)
+      >>> model._set_wedge_by_IDs('A', 'B', 'C')
+      <Wedge object ...>
+
+      .. rubric:: Notes
+
+      SymPy defines a circle as a center point and a radius length, so the radius length is calculated for the spg.Circle.
+
+
+
+   .. py:method:: get_ancestors_IDs(element) -> dict[str, dict]
+
+      Retrieves the IDs of the ancestors for the given element.
+
+      The method recursively traverses the parent elements of the given element
+      and constructs a nested dictionary with IDs representing the ancestor tree.
+
+      :param - element: The element for which the ancestors' IDs are to be retrieved.
+      :type - element: sympy.geometry object
+      :param returns:
+      :param - dict:
+      :type - dict: A nested dictionary representing the IDs of the ancestors.
+
+      .. rubric:: Example
+
+      If element A has parents B and C, and B has parent D, the method returns:
+      {'A': {'B': {'D': {}}, 'C': {}}}
+
+
+
+   .. py:method:: get_ancestors(element)
+
+      Retrieves the ancestors for the given element.
+
+      The method recursively traverses the parent elements of the given element
+      and constructs a nested dictionary representing the ancestor tree.
+
+      :param - element: The element for which the ancestors are to be retrieved.
+      :type - element: sympy.geometry object
+
+      :returns: **- dict**
+      :rtype: A nested dictionary representing the ancestors.
+
+      .. rubric:: Example
+
+      If element A has parents B and C, and B has parent D, the method returns:
+      {A: {B: {D: {}}, C: {}}}
+
+
+

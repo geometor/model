@@ -1,0 +1,109 @@
+geometor.model.polynomials
+==========================
+
+.. py:module:: geometor.model.polynomials
+
+.. autoapi-nested-parse::
+
+   Polynomial element for geometor.model
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   geometor.model.polynomials.PolynomialsMixin
+   geometor.model.polynomials.Polynomial
+
+
+Module Contents
+---------------
+
+.. py:class:: PolynomialsMixin
+
+   Mixin for the Model class containing polynomial construction operations.
+
+
+   .. py:method:: poly(coeffs: list, name: str = '', classes: list = [], group: str = '') -> Polynomial
+
+      Create a Polynomial element.
+
+
+
+   .. py:method:: add_poly(coeffs: list, name: str = '', classes: list = [], group: str = '') -> Polynomial
+
+      Create and add a Polynomial element to the model.
+
+
+
+.. py:class:: Polynomial(coeffs, name='', classes=None, group=None)
+
+   Bases: :py:obj:`geometor.model.element.Element`
+
+
+   A polynomial element defined by its coefficients.
+
+
+   .. py:attribute:: x
+
+
+   .. py:attribute:: y
+
+
+   .. py:attribute:: coeffs
+
+
+   .. py:attribute:: poly
+
+
+   .. py:method:: __str__()
+
+
+   .. py:method:: __repr__()
+
+
+   .. py:method:: equation()
+
+
+   .. py:method:: eval(val)
+
+
+   .. py:method:: degree()
+
+
+   .. py:method:: all_coeffs()
+
+
+   .. py:method:: real_roots()
+
+
+   .. py:method:: intersection(other)
+
+
+   .. py:attribute:: object
+
+
+   .. py:attribute:: parents
+
+
+   .. py:attribute:: classes
+
+
+   .. py:attribute:: ID
+      :value: ''
+
+
+
+   .. py:attribute:: guide
+      :value: False
+
+
+
+   .. py:property:: length
+
+      Returns the cleaned length of the element.
+      For polygons, it returns the list of cleaned side lengths.
+
+
