@@ -26,7 +26,7 @@ nav.context {
 
       &::before {
         padding-top: .1em;
-        font-family: var(--font-icon);
+        font-family: $font-icon;
         content: "<";
         text-align: left;
       }
@@ -36,7 +36,7 @@ nav.context {
       justify-content: flex-end;
 
       padding-left: var(--fitz);
-      padding-right: var(--offset);
+      padding-right: $offset;
 
       &::before {
         display: none;
@@ -44,10 +44,10 @@ nav.context {
 
       &::after {
         padding-top: .1em;
-        font-family: var(--font-icon);
+        font-family: $font-icon;
         content: ">";
-        width: var(--offset);
-        margin-right: calc(var(--offset) * -1);
+        width: $offset;
+        margin-right: calc($offset * -1);
         display: inline-block;
         text-align: right;
       }
@@ -60,7 +60,7 @@ nav.context {
       // padding: 0;
 
       &::before {
-        font-family: var(--font-icon);
+        font-family: $font-icon;
         content: "^";
         padding: 0 .25em;
       }

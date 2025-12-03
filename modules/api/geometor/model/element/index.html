@@ -1,0 +1,422 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>geometor.model.element &mdash; Project name not set  documentation</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=ea5fcf70" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/css/styles.css?v=b9bf8c56" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
+  <link rel="stylesheet" href="../../../../../_static/css/print.css" type="text/css" media="print" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="../../../../../index.html">
+        <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+      </a>
+      <div class="org-repo">
+        <span class="org">GEOMETOR</span>
+        •
+        <span class="repo">model</span>
+      </div>
+    </div>
+    <nav aria-label="Header">
+      <input type="checkbox" id="nav-Header-toggle" >
+      <label for="nav-Header-toggle" >Header</label>
+      <ul>
+        <li>
+          <a href="../../../../../mission/index.html"  >mission</a>
+        </li>
+        <li>
+          <a href="../../../../../usage/index.html"  >usage</a>
+        </li>
+        <li>
+          <a href="../../../../../log/index.html"  >log</a>
+        </li>
+        <li>
+          <a href="../../../../index.html"  >modules</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="motto"></div>
+  </header>
+  <main>
+
+    <article>
+      <div class="content">
+      <nav class="breadcrumbs">
+        <span><a href="../../../../../index.html">Home</a></span>
+          <span>/</span>
+        <span><a href="../../../../index.html">modules</a></span>
+        <span>/</span>
+        <span>geometor.model.element</span>
+      </nav>
+        <nav class="context">
+          <div class="prev">
+             <a href="../delete/index.html" class="btn btn-neutral float-left" title="geometor.model.delete" >Prev</a>
+          </div>
+          <div class="next">
+            <a href="../helpers/index.html" class="btn btn-neutral float-right" title="geometor.model.helpers" >Next</a>
+          </div>
+        </nav>
+          <section id="module-geometor.model.element">
+<span id="geometor-model-element"></span><h1>geometor.model.element<a class="headerlink" href="#module-geometor.model.element" title="Link to this heading">¶</a></h1>
+<p>Element type
+ElementDetails class
+intersection functions</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.element.Struct" title="geometor.model.element.Struct"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Struct</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.element.Element" title="geometor.model.element.Element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Element</span></code></a></p></td>
+<td><p>A container for special attributes of an element of a model that are</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.element.CircleElement" title="geometor.model.element.CircleElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircleElement</span></code></a></p></td>
+<td><p>Same as <a class="reference internal" href="#geometor.model.element.Element" title="geometor.model.element.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> but adds a <code class="docutils literal notranslate"><span class="pre">pt_radius</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.element.check_existence" title="geometor.model.element.check_existence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_existence</span></code></a>(→ tuple[bool, Struct])</p></td>
+<td><p>Check if a geometric structure exists in the model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.element.find_all_intersections" title="geometor.model.element.find_all_intersections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_all_intersections</span></code></a>(→ None)</p></td>
+<td><p>Find all intersections in the model for the given struct.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="geometor.model.element.Struct">
+<span class="sig-prename descclassname"><span class="pre">geometor.model.element.</span></span><span class="sig-name descname"><span class="pre">Struct</span></span><a class="headerlink" href="#geometor.model.element.Struct" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="geometor.model.element.Element">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geometor.model.element.</span></span><span class="sig-name descname"><span class="pre">Element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sympy_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parents</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guide</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.element.Element" title="Link to this definition">¶</a></dt>
+<dd><p>A container for special attributes of an element of a model that are
+not supported by the SymPy elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sympy_obj</strong> – The sympy object representing the geometric entity.</p></li>
+<li><p><strong>parents</strong> – A list of parent elements.</p></li>
+<li><p><strong>classes</strong> – A list of class labels.</p></li>
+<li><p><strong>ID</strong> – A string ID for the element. If empty, an ID is generated.</p></li>
+<li><p><strong>guide</strong> – If True, the element is a guide and excluded from intersections.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geometor.model.element.Element.ID">
+<span class="sig-name descname"><span class="pre">ID</span></span><a class="headerlink" href="#geometor.model.element.Element.ID" title="Link to this definition">¶</a></dt>
+<dd><p>Name used in presentation and reports.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geometor.model.element.Element.classes">
+<span class="sig-name descname"><span class="pre">classes</span></span><a class="headerlink" href="#geometor.model.element.Element.classes" title="Link to this definition">¶</a></dt>
+<dd><p>Dict with strings for class name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geometor.model.element.Element.parents">
+<span class="sig-name descname"><span class="pre">parents</span></span><a class="headerlink" href="#geometor.model.element.Element.parents" title="Link to this definition">¶</a></dt>
+<dd><p>Dict with keys as parent sympy objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geometor.model.element.Element.guide">
+<span class="sig-name descname"><span class="pre">guide</span></span><a class="headerlink" href="#geometor.model.element.Element.guide" title="Link to this definition">¶</a></dt>
+<dd><p>Whether the element is a guide.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.9/library/functions.html#bool" title="(in Python v3.9)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geometor.model.element.Element.object">
+<span class="sig-name descname"><span class="pre">object</span></span><a class="headerlink" href="#geometor.model.element.Element.object" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">parents</span></span><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">classes</span></span><a class="headerlink" href="#id1" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#id2" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">guide</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#id3" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geometor.model.element.Element.length">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">length</span></span><a class="headerlink" href="#geometor.model.element.Element.length" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the cleaned length of the element.
+For polygons, it returns the list of cleaned side lengths.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="geometor.model.element.CircleElement">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geometor.model.element.</span></span><span class="sig-name descname"><span class="pre">CircleElement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sympy_obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Circle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parents</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guide</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.element.CircleElement" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#geometor.model.element.Element" title="geometor.model.element.Element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Element</span></code></a></p>
+<p>Same as <a class="reference internal" href="#geometor.model.element.Element" title="geometor.model.element.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> but adds a <code class="docutils literal notranslate"><span class="pre">pt_radius</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sympy_obj</strong> – The sympy object representing the geometric entity.</p></li>
+<li><p><strong>pt_radius</strong> – The point defining the radius.</p></li>
+<li><p><strong>parents</strong> – A list of parent elements.</p></li>
+<li><p><strong>classes</strong> – A list of class labels.</p></li>
+<li><p><strong>ID</strong> – A string ID for the element.</p></li>
+<li><p><strong>guide</strong> – If True, the element is a guide.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geometor.model.element.CircleElement.ID">
+<span class="sig-name descname"><span class="pre">ID</span></span><a class="headerlink" href="#geometor.model.element.CircleElement.ID" title="Link to this definition">¶</a></dt>
+<dd><p>Name used in presentation and reports.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geometor.model.element.CircleElement.classes">
+<span class="sig-name descname"><span class="pre">classes</span></span><a class="headerlink" href="#geometor.model.element.CircleElement.classes" title="Link to this definition">¶</a></dt>
+<dd><p>Dict with strings for class name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geometor.model.element.CircleElement.parents">
+<span class="sig-name descname"><span class="pre">parents</span></span><a class="headerlink" href="#geometor.model.element.CircleElement.parents" title="Link to this definition">¶</a></dt>
+<dd><p>Dict with keys as parent sympy objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geometor.model.element.CircleElement.pt_radius">
+<span class="sig-name descname"><span class="pre">pt_radius</span></span><a class="headerlink" href="#geometor.model.element.CircleElement.pt_radius" title="Link to this definition">¶</a></dt>
+<dd><p>The point defining the radius.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>spg.Point</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">pt_radius</span></span><a class="headerlink" href="#id4" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geometor.model.element.CircleElement.object">
+<span class="sig-name descname"><span class="pre">object</span></span><a class="headerlink" href="#geometor.model.element.CircleElement.object" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">parents</span></span><a class="headerlink" href="#id5" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">classes</span></span><a class="headerlink" href="#id6" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#id7" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geometor.model.element.CircleElement.guide">
+<span class="sig-name descname"><span class="pre">guide</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#geometor.model.element.CircleElement.guide" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geometor.model.element.CircleElement.length">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">length</span></span><a class="headerlink" href="#geometor.model.element.CircleElement.length" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the cleaned length of the element.
+For polygons, it returns the list of cleaned side lengths.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geometor.model.element.check_existence">
+<span class="sig-prename descclassname"><span class="pre">geometor.model.element.</span></span><span class="sig-name descname"><span class="pre">check_existence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">struct</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Struct</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing_structs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Struct</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#tuple" title="(in Python v3.9)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.9/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Struct</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.element.check_existence" title="Link to this definition">¶</a></dt>
+<dd><p>Check if a geometric structure exists in the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>struct</strong> – The structure to check.</p></li>
+<li><p><strong>existing_structs</strong> – List of existing structures in the model.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing a boolean indicating existence
+and the existing structure if found (otherwise None).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#tuple" title="(in Python v3.9)">tuple</a>[<a class="reference external" href="https://docs.python.org/3.9/library/functions.html#bool" title="(in Python v3.9)">bool</a>, Struct]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geometor.model.element.find_all_intersections">
+<span class="sig-prename descclassname"><span class="pre">geometor.model.element.</span></span><span class="sig-name descname"><span class="pre">find_all_intersections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">struct</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Struct</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.9/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.element.find_all_intersections" title="Link to this definition">¶</a></dt>
+<dd><p>Find all intersections in the model for the given struct.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>struct</strong> – The structure to find intersections for.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+      </div>
+      <footer>
+
+
+        <nav class="context">
+          <div class="prev">
+             <a href="../delete/index.html" class="btn btn-neutral float-left" title="geometor.model.delete" >Prev</a>
+          </div>
+          <div class="next">
+            <a href="../helpers/index.html" class="btn btn-neutral float-right" title="geometor.model.helpers" >Next</a>
+          </div>
+        </nav></footer>
+    </article>
+
+  </main>
+
+<div class="asides">
+    <aside>
+        <h3>Search</h3>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+    </aside>
+    
+<aside>
+    <h3>Recent Logs</h3>
+    <ul>
+        
+            <li><a href="../../../../../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+        
+    </ul>
+</aside>
+
+    
+
+    
+
+    
+
+<aside class="aside-types">
+    <h3>Types</h3>
+    <ul>
+        
+        <li><a href="../../../../../types/log.html">log</a></li>
+        
+    </ul>
+</aside>
+
+</div>
+<footer>
+    <div class="footer-nav">
+    <ul>
+        <li><a href="../../../../../about.html">about</a></li>
+        <li><a href="../../../../../connect.html">connect</a></li>
+        <li><a href="../../../../../glossary.html">glossary</a></li>
+        <li><a href="../../../../../todos.html">todos</a></li>
+        <li><a href="../../../../../changelog.html">changelog</a></li>
+    </ul>
+</div>
+    <hr/>
+    <div role="contentinfo">
+        <p>
+                &copy; Copyright .
+        </p>
+    </div>
+</footer>
+
+  <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+  <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+  <script src="../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+  <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
+  <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+  <script src="../../../../../_static/js/collection_controls.js?v=b6b5297a"></script>
+
+
+</body>
+</html>

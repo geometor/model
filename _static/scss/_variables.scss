@@ -1,0 +1,30 @@
+/* SCSS Variables */
+
+// Colors
+$bg-color: #1a1a1a;
+$bg-alt-color: #2a2a2a;
+$text-color: #cccccc;
+$heading-color: #ffffff;
+$link-color: #88aaff;
+$link-hover-color: #aabbff;
+$border-color: #444444;
+
+// Fonts
+$font-primary: "Fira Sans Condensed";
+$font-display: "Fira Sans";
+$font-code: "Fira Code";
+$font-icon: 'photon-icon';
+$bullet: '✴';
+
+// Spacing (Fitz)
+$fitz: .5em;
+$col: 18em;
+
+// Legacy/Mapped Variables
+$color-key: $link-color;
+$color-key-dark: darken($color-key, 10%);
+$color-key-light: lighten($color-key, 10%);
+$color-key-lighter: lighten($color-key, 20%);
+
+$color-fg: $text-color;
+$offset: 1rem;

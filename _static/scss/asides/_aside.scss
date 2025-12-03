@@ -28,7 +28,7 @@ aside, nav {
 
   &.article-share, &.follow {
     ul {
-      font-family: var(--font-icon);
+      font-family: $font-icon;
       list-style: none;
       display: flex;
       flex-flow: row wrap;

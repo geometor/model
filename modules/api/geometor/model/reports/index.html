@@ -1,0 +1,202 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>geometor.model.reports &mdash; Project name not set  documentation</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=ea5fcf70" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/css/styles.css?v=b9bf8c56" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
+  <link rel="stylesheet" href="../../../../../_static/css/print.css" type="text/css" media="print" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="../../../../../index.html">
+        <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+      </a>
+      <div class="org-repo">
+        <span class="org">GEOMETOR</span>
+        •
+        <span class="repo">model</span>
+      </div>
+    </div>
+    <nav aria-label="Header">
+      <input type="checkbox" id="nav-Header-toggle" >
+      <label for="nav-Header-toggle" >Header</label>
+      <ul>
+        <li>
+          <a href="../../../../../mission/index.html"  >mission</a>
+        </li>
+        <li>
+          <a href="../../../../../usage/index.html"  >usage</a>
+        </li>
+        <li>
+          <a href="../../../../../log/index.html"  >log</a>
+        </li>
+        <li>
+          <a href="../../../../index.html"  >modules</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="motto"></div>
+  </header>
+  <main>
+
+    <article>
+      <div class="content">
+      <nav class="breadcrumbs">
+        <span><a href="../../../../../index.html">Home</a></span>
+          <span>/</span>
+        <span><a href="../../../../index.html">modules</a></span>
+        <span>/</span>
+        <span>geometor.model.reports</span>
+      </nav>
+        <nav class="context">
+          <div class="prev">
+             <a href="../polynomials/index.html" class="btn btn-neutral float-left" title="geometor.model.polynomials" >Prev</a>
+          </div>
+          <div class="next">
+            <a href="../sections/index.html" class="btn btn-neutral float-right" title="geometor.model.sections" >Next</a>
+          </div>
+        </nav>
+          <section id="module-geometor.model.reports">
+<span id="geometor-model-reports"></span><h1>geometor.model.reports<a class="headerlink" href="#module-geometor.model.reports" title="Link to this heading">¶</a></h1>
+<p>report helper functions</p>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.reports.generate_dot" title="geometor.model.reports.generate_dot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_dot</span></code></a>(graph[, parent, dot_string, defined_nodes])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.reports.report_summary" title="geometor.model.reports.report_summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">report_summary</span></code></a>(model)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.reports.report_group_by_type" title="geometor.model.reports.report_group_by_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">report_group_by_type</span></code></a>(model)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.reports.get_colored_ID" title="geometor.model.reports.get_colored_ID"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_colored_ID</span></code></a>(el, ID)</p></td>
+<td><p>Get the colored ID for a geometric element.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.reports.report_sequence" title="geometor.model.reports.report_sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">report_sequence</span></code></a>(model)</p></td>
+<td><p>Generate a sequential report of the model using rich Console layouts.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="geometor.model.reports.generate_dot">
+<span class="sig-prename descclassname"><span class="pre">geometor.model.reports.</span></span><span class="sig-name descname"><span class="pre">generate_dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dot_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defined_nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.reports.generate_dot" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geometor.model.reports.report_summary">
+<span class="sig-prename descclassname"><span class="pre">geometor.model.reports.</span></span><span class="sig-name descname"><span class="pre">report_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.reports.report_summary" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geometor.model.reports.report_group_by_type">
+<span class="sig-prename descclassname"><span class="pre">geometor.model.reports.</span></span><span class="sig-name descname"><span class="pre">report_group_by_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.reports.report_group_by_type" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geometor.model.reports.get_colored_ID">
+<span class="sig-prename descclassname"><span class="pre">geometor.model.reports.</span></span><span class="sig-name descname"><span class="pre">get_colored_ID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">el</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.reports.get_colored_ID" title="Link to this definition">¶</a></dt>
+<dd><p>Get the colored ID for a geometric element.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geometor.model.reports.report_sequence">
+<span class="sig-prename descclassname"><span class="pre">geometor.model.reports.</span></span><span class="sig-name descname"><span class="pre">report_sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.reports.report_sequence" title="Link to this definition">¶</a></dt>
+<dd><p>Generate a sequential report of the model using rich Console layouts.</p>
+</dd></dl>
+
+</section>
+</section>
+
+      </div>
+      <footer>
+
+
+        <nav class="context">
+          <div class="prev">
+             <a href="../polynomials/index.html" class="btn btn-neutral float-left" title="geometor.model.polynomials" >Prev</a>
+          </div>
+          <div class="next">
+            <a href="../sections/index.html" class="btn btn-neutral float-right" title="geometor.model.sections" >Next</a>
+          </div>
+        </nav></footer>
+    </article>
+
+  </main>
+
+<div class="asides">
+    <aside>
+        <h3>Search</h3>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+    </aside>
+    
+<aside>
+    <h3>Recent Logs</h3>
+    <ul>
+        
+            <li><a href="../../../../../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+        
+    </ul>
+</aside>
+
+    
+
+    
+
+    
+
+<aside class="aside-types">
+    <h3>Types</h3>
+    <ul>
+        
+        <li><a href="../../../../../types/log.html">log</a></li>
+        
+    </ul>
+</aside>
+
+</div>
+<footer>
+    <div class="footer-nav">
+    <ul>
+        <li><a href="../../../../../about.html">about</a></li>
+        <li><a href="../../../../../connect.html">connect</a></li>
+        <li><a href="../../../../../glossary.html">glossary</a></li>
+        <li><a href="../../../../../todos.html">todos</a></li>
+        <li><a href="../../../../../changelog.html">changelog</a></li>
+    </ul>
+</div>
+    <hr/>
+    <div role="contentinfo">
+        <p>
+                &copy; Copyright .
+        </p>
+    </div>
+</footer>
+
+  <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+  <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+  <script src="../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+  <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
+  <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+  <script src="../../../../../_static/js/collection_controls.js?v=b6b5297a"></script>
+
+
+</body>
+</html>

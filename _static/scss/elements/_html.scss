@@ -1,14 +1,15 @@
 html {
   height: 100%;
   max-width: 100%;
-  color: var(--text-color);
-  background: var(--bg-color);
-  font-family: var(--font);
+  color: $text-color;
+  background: $bg-color;
+  font-family: $font-primary;
   font-weight: 400;
   line-height: 1.35;
   text-align: left;
 }
 
 body {
-  background-color: var(--bg-color);
+  background-color: $bg-color;
+  padding: var(--fitz-half);
 }

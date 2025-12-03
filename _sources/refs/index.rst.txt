@@ -1,10 +1,4 @@
 references
 ==========
 
-.. toctree::
-
-   sympy
-   matplotlib
-   textualize
-   
-
+.. collection::

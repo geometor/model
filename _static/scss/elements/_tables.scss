@@ -1,6 +1,6 @@
 
 table {
-	--border-color: var(--color-fg);
+	--border-color: $color-fg;
 	max-width: 100%;
 }
 
@@ -12,6 +12,6 @@ td {
 th {
 	font-weight: 700;
 	// font-family: $font-display;
-	// border-bottom: 2px solid var(--border-color);
+	// border-bottom: 2px solid $border-color;
 	text-align: right;
 }

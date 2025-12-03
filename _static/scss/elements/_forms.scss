@@ -7,7 +7,7 @@ optgroup,
 select,
 textarea {
 
-  font-family: var(--font); //* 1 */
+  font-family: $font-primary; //* 1 */
   font-size: 100%; //* 1 */
   line-height: 1.15; //* 1 */
 
@@ -87,7 +87,7 @@ input[type=password],
 input[type=search],
 input[type=text],
 textarea {
-  --bg: var(--color-key-lighter);
+  --bg: $color-key-lighter;
 
   display: block;
   padding: .4em;
@@ -111,7 +111,7 @@ textarea {
   }
   // Placeholder text
   &::placeholder {
-  --color: var(--color-key-dark);
+  --color: $color-key-dark;
   }
 }
 // Form submit.
@@ -122,8 +122,8 @@ input[type=submit] {
   border: 0 none;
   border-radius: .5em;
 
-  color: var(--color-key-lighter);
-  background: var(--color-key);
+  color: $color-key-lighter;
+  background: $color-key;
   padding: .5em;
   margin: .5em 0;
   text-decoration: none;
@@ -148,21 +148,21 @@ select {
 label {
   display: block;
   font-weight: bold;
-  font-family: var(--font);
+  font-family: $font-primary;
 }
 
 button {
   border: 0 none;
   border-radius: .5em;
 
-  color: var(--color-key-lighter);
-  background: var(--color-key);
+  color: $color-key-lighter;
+  background: $color-key;
   padding: .5em;
   margin: .5em;
   text-decoration: none;
 
   &:hover {
-    background: var(--color-key-light);
+    background: $color-key-light;
     text-decoration: none;
   }
 

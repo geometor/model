@@ -1,12 +1,12 @@
 nav.breadcrumbs {
   padding: 0.5em 0;
   margin-bottom: 1em;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid $border-color;
   display: block;
 
   a {
     text-decoration: none;
-    color: var(--link-color);
+    color: $link-color;
     display: inline;
     --offset: 0;
 
@@ -17,6 +17,6 @@ nav.breadcrumbs {
 
   span {
     margin: 0 0.5em;
-    color: var(--text-color);
+    color: $text-color;
   }
 }

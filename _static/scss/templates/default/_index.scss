@@ -1,24 +1,23 @@
 /* templates/_default *****************************/
 
 body {
-  color: var(--text-color);
-  background: var(--bg-color);
-
-  padding: var(--fitz);
-  display: flex;
-  flex-flow: column nowrap;
-
-  > * {
-    background: var(--bg-alt-color);
-    margin: var(--fitz);
-    padding: var(--fitz);
-  }
-
   // Assign grid areas to the main semantic elements
-  > header { grid-area: header; }
-  > main { grid-area: main; }
-  > .asides { grid-area: asides; }
-  > footer { grid-area: footer; }
+  > header { 
+    @extend %section-default;
+    grid-area: header; 
+  }
+  > main { 
+    @extend %section-default;
+    grid-area: main; 
+  }
+  > .asides { 
+    @extend %section-default;
+    grid-area: asides; 
+  }
+  > footer { 
+    @extend %section-default;
+    grid-area: footer; 
+  }
 
   @import 'header';
   @import 'main';

@@ -16,7 +16,7 @@ cite {
 }
 
 mark {
-	--bg: var(--color-key);
+	--bg: $color-key;
 
 	background: var(--bg);
 }

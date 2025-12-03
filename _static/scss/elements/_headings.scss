@@ -2,12 +2,12 @@
 
 
 %heading-default {
-  font-family: var(--font-display);
+  font-family: $font-display;
   // font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
   font-weight: 700;
   font-size: 1.2em;
   line-height: 1.5;
-  color: var(--heading-color);
+  color: $heading-color;
 
   display: block;
 }

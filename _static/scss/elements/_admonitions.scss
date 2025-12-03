@@ -2,7 +2,7 @@
 
 @mixin admonition($color) {
   border-left: 5px solid $color;
-  background-color: var(--bg-alt-color);
+  background-color: $bg-alt-color;
   padding: var(--fitz);
   margin: var(--fitz-2) 0;
 
@@ -17,7 +17,7 @@
 }
 
 .admonition {
-  @include admonition(var(--text-color));
+  @include admonition($text-color);
 }
 
 .admonition-todo {

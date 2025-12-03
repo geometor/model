@@ -1,20 +1,24 @@
-/* photon ✴ Theme Components and Templates */
+/* foundation ✴ Theme Components and Templates */
 
-@import 'fonts';
-@import 'color';
+// 1. Base styles (order is important)
+@import '_variables';
+@import 'fonts/index';
+@import 'color/index';
+@import '_common'; // Contains the %section-default placeholder
+@import 'elements/index';
 
-:root {
-  --fitz: .5em;
-  --fitz-2: calc(var(--fitz) * 2);
-  --fitz-half: calc(var(--fitz) / 2);
+// 2. Mixins
+@import '../../components/article/mixins/index';
 
-  --col: 18em;
-  --col-2: calc( var(--col) * 2 );
-  --col-3: calc( var(--col) * 3 );
-}
+// 3. Component styles
+@import '../../components/article/article';
+@import '../../components/article/excerpt';
+@import '../../components/collection/collection';
+@import '../../components/site/header';
+@import '../../components/site/footer';
+@import '../../components/site/nav';
+@import '../../components/asides/asides';
+@import '../../components/asides/search';
 
-@import 'elements';
-@import 'articles';
-@import 'asides';
-@import 'sections';
-@import 'templates';
+// 4. Template/Layout specific styles (if any)
+@import 'templates/index';

@@ -1,0 +1,234 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>geometor.model.helpers &mdash; Project name not set  documentation</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=ea5fcf70" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/css/styles.css?v=b9bf8c56" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
+  <link rel="stylesheet" href="../../../../../_static/css/print.css" type="text/css" media="print" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="../../../../../index.html">
+        <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+      </a>
+      <div class="org-repo">
+        <span class="org">GEOMETOR</span>
+        •
+        <span class="repo">model</span>
+      </div>
+    </div>
+    <nav aria-label="Header">
+      <input type="checkbox" id="nav-Header-toggle" >
+      <label for="nav-Header-toggle" >Header</label>
+      <ul>
+        <li>
+          <a href="../../../../../mission/index.html"  >mission</a>
+        </li>
+        <li>
+          <a href="../../../../../usage/index.html"  >usage</a>
+        </li>
+        <li>
+          <a href="../../../../../log/index.html"  >log</a>
+        </li>
+        <li>
+          <a href="../../../../index.html"  >modules</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="motto"></div>
+  </header>
+  <main>
+
+    <article>
+      <div class="content">
+      <nav class="breadcrumbs">
+        <span><a href="../../../../../index.html">Home</a></span>
+          <span>/</span>
+        <span><a href="../../../../index.html">modules</a></span>
+        <span>/</span>
+        <span>geometor.model.helpers</span>
+      </nav>
+        <nav class="context">
+          <div class="prev">
+             <a href="../element/index.html" class="btn btn-neutral float-left" title="geometor.model.element" >Prev</a>
+          </div>
+          <div class="next">
+            <a href="../lines/index.html" class="btn btn-neutral float-right" title="geometor.model.lines" >Next</a>
+          </div>
+        </nav>
+          <section id="module-geometor.model.helpers">
+<span id="geometor-model-helpers"></span><h1>geometor.model.helpers<a class="headerlink" href="#module-geometor.model.helpers" title="Link to this heading">¶</a></h1>
+<p>a few helper functions from earlier constructions</p>
+<p>these types of operations need to be integrated into the euclid model</p>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.line_get_y" title="geometor.model.helpers.line_get_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">line_get_y</span></code></a>(l1, x)</p></td>
+<td><p>return y value for specific x</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_start_points" title="geometor.model.helpers.set_given_start_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_start_points</span></code></a>(model)</p></td>
+<td><p>create inital two points -</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_start_points_zero" title="geometor.model.helpers.set_given_start_points_zero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_start_points_zero</span></code></a>(model)</p></td>
+<td><p>create inital two points -</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_equilateral_poles" title="geometor.model.helpers.set_equilateral_poles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_equilateral_poles</span></code></a>(model, pt_1, pt_2[, add_circles])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.construct_perpendicular_bisector" title="geometor.model.helpers.construct_perpendicular_bisector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">construct_perpendicular_bisector</span></code></a>(model, pt_1, pt_2[, ...])</p></td>
+<td><p>perform fundamental operations for two points</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_midpoint" title="geometor.model.helpers.set_midpoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_midpoint</span></code></a>(model, pt_1, pt_2[, add_circles])</p></td>
+<td><p>perform fundamental operations for two points</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_rect_points" title="geometor.model.helpers.set_given_rect_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_rect_points</span></code></a>(model, pt, x_offset, y_offset)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_square_points" title="geometor.model.helpers.set_given_square_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_square_points</span></code></a>(model, pt, offset)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="geometor.model.helpers.line_get_y">
+<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">line_get_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.helpers.line_get_y" title="Link to this definition">¶</a></dt>
+<dd><p>return y value for specific x</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geometor.model.helpers.set_given_start_points">
+<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">set_given_start_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.helpers.set_given_start_points" title="Link to this definition">¶</a></dt>
+<dd><p>create inital two points -
+establishing the unit for the field</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geometor.model.helpers.set_given_start_points_zero">
+<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">set_given_start_points_zero</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.helpers.set_given_start_points_zero" title="Link to this definition">¶</a></dt>
+<dd><p>create inital two points -
+establishing the unit for the field</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geometor.model.helpers.set_equilateral_poles">
+<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">set_equilateral_poles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><span class="pre">geometor.model.Model</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">geometor.model.spg.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">geometor.model.spg.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_circles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.helpers.set_equilateral_poles" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geometor.model.helpers.construct_perpendicular_bisector">
+<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">construct_perpendicular_bisector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_circles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.helpers.construct_perpendicular_bisector" title="Link to this definition">¶</a></dt>
+<dd><p>perform fundamental operations for two points
+and add perpendicular bisector</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geometor.model.helpers.set_midpoint">
+<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">set_midpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_circles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.helpers.set_midpoint" title="Link to this definition">¶</a></dt>
+<dd><p>perform fundamental operations for two points
+and add perpendicular bisector</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geometor.model.helpers.set_given_rect_points">
+<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">set_given_rect_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_offset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.helpers.set_given_rect_points" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geometor.model.helpers.set_given_square_points">
+<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">set_given_square_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.helpers.set_given_square_points" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+
+      </div>
+      <footer>
+
+
+        <nav class="context">
+          <div class="prev">
+             <a href="../element/index.html" class="btn btn-neutral float-left" title="geometor.model.element" >Prev</a>
+          </div>
+          <div class="next">
+            <a href="../lines/index.html" class="btn btn-neutral float-right" title="geometor.model.lines" >Next</a>
+          </div>
+        </nav></footer>
+    </article>
+
+  </main>
+
+<div class="asides">
+    <aside>
+        <h3>Search</h3>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+    </aside>
+    
+<aside>
+    <h3>Recent Logs</h3>
+    <ul>
+        
+            <li><a href="../../../../../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+        
+    </ul>
+</aside>
+
+    
+
+    
+
+    
+
+<aside class="aside-types">
+    <h3>Types</h3>
+    <ul>
+        
+        <li><a href="../../../../../types/log.html">log</a></li>
+        
+    </ul>
+</aside>
+
+</div>
+<footer>
+    <div class="footer-nav">
+    <ul>
+        <li><a href="../../../../../about.html">about</a></li>
+        <li><a href="../../../../../connect.html">connect</a></li>
+        <li><a href="../../../../../glossary.html">glossary</a></li>
+        <li><a href="../../../../../todos.html">todos</a></li>
+        <li><a href="../../../../../changelog.html">changelog</a></li>
+    </ul>
+</div>
+    <hr/>
+    <div role="contentinfo">
+        <p>
+                &copy; Copyright .
+        </p>
+    </div>
+</footer>
+
+  <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+  <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+  <script src="../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+  <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
+  <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+  <script src="../../../../../_static/js/collection_controls.js?v=b6b5297a"></script>
+
+
+</body>
+</html>
