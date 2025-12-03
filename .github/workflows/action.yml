@@ -3,7 +3,7 @@ name: Build and Deploy Sphinx
 on:
   push:
     branches:
-      - main  # or master, depending on your default branch name
+      - main
 
 jobs:
   build-and-deploy:
@@ -14,7 +14,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: photon-platform/action-deploy-sphinx-gh-pages
-      uses: photon-platform/action-deploy-sphinx-gh-pages@v18
+      uses: photon-platform/action-deploy-sphinx-gh-pages@v20
       with:
         modules_repo_urls: 'https://github.com/geometor/model.git'
-        python_version: '3.10'  # Optional, default is '3.x'
+        python_version: '3.13'
