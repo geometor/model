@@ -1,11 +1,10 @@
 """
-a few helper functions from earlier constructions
-
-these types of operations need to be integrated into the euclid model
+The :mod:`geometor.model.helpers` module provides helper functions for geometric constructions.
 """
 
 import sympy as sp
 import sympy.geometry as spg
+
 from geometor.model.model import Model
 
 __all__ = [

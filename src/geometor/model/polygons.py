@@ -1,18 +1,18 @@
 """
-helper functions for polygons
+The :mod:`geometor.model.polygons` module provides polygon construction and manipulation for the Model class.
 """
 
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
-
 import sympy as sp
-
 import sympy.geometry as spg
+from rich.table import Table
+
+from geometor.model.colors import COLORS, get_color
 from geometor.model.element import Element
 from geometor.model.utils import clean_expr
-from geometor.model.colors import COLORS
-from rich.table import Table
 
 if TYPE_CHECKING:
     pass
@@ -58,9 +58,8 @@ class PolygonsMixin:
         self[poly] = details
 
         classes_str = " : " + " ".join(classes) if classes else ""
-        self.log(
-            f"[{COLORS['polygon']} bold]{details.ID}[/{COLORS['polygon']} bold]{classes_str}"
-        )
+        color = get_color(poly, classes)
+        self.log(f"[{color} bold]{details.ID}[/{color} bold]{classes_str}")
         table = Table(show_header=False, box=None, padding=(0, 4))
         for i, side in enumerate(poly.sides):
             table.add_row(

@@ -1,6 +1,18 @@
 changelog
 =========
 
+0.4.4
+-----
+*2025-12-04*
+
+**changed**
+
+.. + Refactored report generation into `ReportMixin`.
+.. + Centralized color definitions in `geometor.model.colors`.
+.. + Enhanced docstrings and type hinting across modules.
+.. + Updated `__main__.py` to use new reporting methods.
+.. + Fixed imports in demo scripts.
+
 0.4.3
 -----
 

@@ -1,12 +1,17 @@
-import json
-from sympy.parsing.sympy_parser import parse_expr
-import sympy as sp
+"""
+The :mod:`geometor.model.serialize` module provides serialization functions for the Model class.
+"""
 
-from .element import Element, CircleElement
+import json
+from typing import TYPE_CHECKING
+
+import sympy as sp
+from sympy.parsing.sympy_parser import parse_expr
+
+from .element import CircleElement, Element
+from .polynomials import Polynomial
 from .sections import Section
 from .wedges import Wedge
-from .polynomials import Polynomial
-from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     pass

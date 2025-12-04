@@ -1,20 +1,20 @@
 """
-section functions for Model class
+The :mod:`geometor.model.sections` module provides section construction and manipulation for the Model class.
 """
 
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
-from geometor.model.utils import clean_expr
 import sympy as sp
-
 import sympy.geometry as spg
+from rich.table import Table
 
+from geometor.model.colors import COLORS
 from geometor.model.element import (
     Element,
 )
-from geometor.model.colors import COLORS
-from rich.table import Table
+from geometor.model.utils import clean_expr
 
 if TYPE_CHECKING:
     pass

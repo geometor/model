@@ -1,12 +1,13 @@
 """
-Element type
-ElementDetails class
-intersection functions
+The :mod:`geometor.model.element` module provides core element classes and intersection logic.
 """
 
 from __future__ import annotations
-import sympy.geometry as spg
+
 from multiprocessing import Pool, cpu_count
+
+import sympy.geometry as spg
+
 from geometor.model.utils import clean_expr
 
 Struct = spg.Line | spg.Circle
@@ -31,12 +32,6 @@ class Element:
         classes: A list of class labels.
         ID: A string ID for the element. If empty, an ID is generated.
         guide: If True, the element is a guide and excluded from intersections.
-
-    Attributes:
-        ID (str): Name used in presentation and reports.
-        classes (dict): Dict with strings for class name.
-        parents (dict): Dict with keys as parent sympy objects.
-        guide (bool): Whether the element is a guide.
     """
 
     def __init__(
@@ -61,9 +56,16 @@ class Element:
             parents = []
 
         self.parents = {key: "" for key in parents}
+        #: Dict with keys as parent sympy objects.
+
         self.classes = {key: "" for key in classes}
+        #: Dict with strings for class name.
+
         self.ID = ID
+        #: Name used in presentation and reports.
+
         self.guide = guide
+        #: Whether the element is a guide.
 
     @property
     def length(self):
@@ -89,12 +91,6 @@ class CircleElement(Element):
         classes: A list of class labels.
         ID: A string ID for the element.
         guide: If True, the element is a guide.
-
-    Attributes:
-        ID (str): Name used in presentation and reports.
-        classes (dict): Dict with strings for class name.
-        parents (dict): Dict with keys as parent sympy objects.
-        pt_radius (spg.Point): The point defining the radius.
     """
 
     def __init__(
@@ -108,6 +104,7 @@ class CircleElement(Element):
     ):
         super().__init__(sympy_obj, parents, classes, ID, guide)
         self.pt_radius = pt_radius
+        #: The point defining the radius.
 
 
 def check_existence(

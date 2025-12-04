@@ -1,24 +1,31 @@
+"""
+provides the central :class:`geometor.model.model.Model` class.
+
+"""
+
 from __future__ import annotations
+
 import logging
-from rich.logging import RichHandler
+
 import rich
-import sympy.geometry as spg
 import sympy as sp
+import sympy.geometry as spg
+from rich.logging import RichHandler
 
-
-from .element import Element, Struct, _get_element_by_ID
-from .points import PointsMixin
-from .lines import LinesMixin
-from .circles import CirclesMixin
-from .polygons import PolygonsMixin
-from .segments import SegmentsMixin
-from .polynomials import PolynomialsMixin, Polynomial
-from .serialize import SerializeMixin
-from .delete import DeleteMixin
-from .sections import SectionsMixin, Section
-from .wedges import WedgesMixin, Wedge
-from .chains import Chain
 from .ancestors import AncestorsMixin
+from .chains import Chain
+from .circles import CirclesMixin
+from .delete import DeleteMixin
+from .element import Element, Struct, _get_element_by_ID
+from .lines import LinesMixin
+from .points import PointsMixin
+from .polygons import PolygonsMixin
+from .polynomials import Polynomial, PolynomialsMixin
+from .reports import ReportMixin
+from .sections import Section, SectionsMixin
+from .segments import SegmentsMixin
+from .serialize import SerializeMixin
+from .wedges import Wedge, WedgesMixin
 
 GeometryObject = (
     spg.Point
@@ -46,14 +53,17 @@ class Model(
     SegmentsMixin,
     PolynomialsMixin,
     SerializeMixin,
+    ReportMixin,
     DeleteMixin,
     SectionsMixin,
     WedgesMixin,
     AncestorsMixin,
 ):
     """
-    A collection of geometric elements, including points, lines, circles, and
-    polygons, represented using the `sympy.geometry` library.
+    The central class representing a collection of geometric elements.
+
+    It inherits from `dict` and various Mixins to provide a rich API for
+    geometric construction and analysis.
     """
 
     def __init__(self, name: str = "", logger=None):

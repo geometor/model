@@ -1,4 +1,5 @@
 from photon_platform.publish.global_conf import *
+
 import geometor.model as module
 
 version = module.__version__

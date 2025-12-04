@@ -1,16 +1,16 @@
-"""utils"""
+"""
+The :mod:`geometor.model.utils` module provides utility functions for the Model class.
+"""
 
+# time *********************
+import datetime
 import logging
 import os as os
+from timeit import default_timer as timer
 
 import sympy as sp
 import sympy.geometry as spg
 from rich import print
-
-# time *********************
-import datetime
-from timeit import default_timer as timer
-
 
 __all__ = [
     "clean_expr",

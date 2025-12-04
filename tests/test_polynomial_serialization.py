@@ -1,6 +1,8 @@
-import pytest
 import os
+
+import pytest
 from sympy import Symbol
+
 from geometor.model import Model, load_model
 from geometor.model.polynomials import Polynomial
 

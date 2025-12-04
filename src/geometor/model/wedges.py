@@ -1,19 +1,19 @@
 """
-wedge functions for Model class
+The :mod:`geometor.model.wedges` module provides wedge construction and manipulation for the Model class.
 """
 
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
 import sympy as sp
-
 import sympy.geometry as spg
+from rich.table import Table
 
+from geometor.model.colors import COLORS
 from geometor.model.element import (
     CircleElement,
 )
-from geometor.model.colors import COLORS
-from rich.table import Table
 
 if TYPE_CHECKING:
     pass

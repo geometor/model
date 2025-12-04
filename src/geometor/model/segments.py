@@ -1,17 +1,17 @@
 """
-segment helper functions for sequencer
+The :mod:`geometor.model.segments` module provides segment construction and manipulation for the Model class.
 """
 
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
-
 import sympy as sp
-
 import sympy.geometry as spg
-from geometor.model.element import Element
-from geometor.model.colors import COLORS
 from rich.table import Table
+
+from geometor.model.colors import COLORS
+from geometor.model.element import Element
 
 if TYPE_CHECKING:
     pass

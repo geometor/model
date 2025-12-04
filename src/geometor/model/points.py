@@ -1,24 +1,22 @@
 """
-helper functions for Model class
+The :mod:`geometor.model.points` module provides point construction and manipulation for the Model class.
 """
 
 from __future__ import annotations
+
+from collections.abc import Iterator
 from typing import TYPE_CHECKING
 
-from geometor.model.utils import clean_expr
 import sympy as sp
-
 import sympy.geometry as spg
-
-from geometor.model.element import Element
-from geometor.model.reports import get_colored_ID
-from geometor.model.colors import COLORS
 from rich.table import Table
+
+from geometor.model.colors import COLORS, get_color
+from geometor.model.element import Element
+from geometor.model.utils import clean_expr
 
 if TYPE_CHECKING:
     pass
-
-from collections.abc import Iterator
 
 __all__ = ["PointsMixin"]
 
@@ -113,12 +111,9 @@ class PointsMixin:
         self[pt] = details
         self._new_points.append(pt)
 
-        text_ID = get_colored_ID(pt, ID)
-        color = COLORS["point"]
-        if "given" in classes:
-            color = COLORS["point_given"]
+        color = get_color(pt, classes)
         classes_str = " : " + " ".join(classes) if classes else ""
-        self.log(f"    [{color} bold]{text_ID}[/{color} bold]{classes_str}")
+        self.log(f"    [{color} bold]{ID}[/{color} bold]{classes_str}")
 
         table = Table(show_header=False, box=None, padding=(0, 4))
         table.add_row("    x:", f"[cyan]{sp.pretty(pt.x)}[/cyan]")

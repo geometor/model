@@ -1,19 +1,17 @@
 """
-helper functions for Model class
+The :mod:`geometor.model.lines` module provides line construction and manipulation for the Model class.
 """
 
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
-
-from geometor.model.element import Element, check_existence, find_all_intersections
-
 import sympy as sp
-
 import sympy.geometry as spg
-
-from geometor.model.colors import COLORS
 from rich.table import Table
+
+from geometor.model.colors import COLORS, get_color
+from geometor.model.element import Element, check_existence, find_all_intersections
 
 if TYPE_CHECKING:
     pass
@@ -82,9 +80,8 @@ class LinesMixin:
             self[struct] = details
 
             classes_str = " : " + " ".join(classes) if classes else ""
-            self.log(
-                f"[{COLORS['line']} bold]{details.ID}[/{COLORS['line']} bold]{classes_str}"
-            )
+            color = get_color(struct, classes)
+            self.log(f"[{color} bold]{details.ID}[/{color} bold]{classes_str}")
             table = Table(show_header=False, box=None, padding=(0, 4))
             table.add_row("    eq:", f"[cyan]{sp.pretty(struct.equation())}[/cyan]")
             table.add_row("    coef:", f"[cyan]{struct.coefficients}[/cyan]")

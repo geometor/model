@@ -1,6 +1,7 @@
 import pytest
-from geometor.model import Model, Polynomial
 from sympy import Symbol
+
+from geometor.model import Model, Polynomial
 
 
 def test_polynomial_creation():

@@ -16,3 +16,10 @@ The `model` library provides the foundation for other GEOMETOR applications. It 
 -   `polynomials.py`: `Polynomial` class and related functions.
 -   `polygons.py`: `Polygon` class and related functions.
 -   `serialize.py`: JSON serialization and deserialization for the model.
+-   `reports.py`: Reporting functionality and `ReportMixin`.
+-   `colors.py`: Color definitions and utilities.
+-   `ancestors.py`: Ancestor retrieval functions.
+-   `chains.py`: Chain analysis.
+-   `sections.py`: Section analysis.
+-   `wedges.py`: Wedge analysis.
+-   `delete.py`: Deletion logic.

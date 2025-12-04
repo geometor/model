@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
-import numpy as np
 import mplcursors
+import numpy as np
+
 #  np.random.seed(42)
 
 #  fig, ax = plt.subplots()

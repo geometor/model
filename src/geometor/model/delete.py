@@ -1,9 +1,11 @@
 """
-Deletion functions for the Model class.
+The :mod:`geometor.model.delete` module provides deletion functions for the Model class.
 """
 
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
+
 from rich.console import Console
 
 console = Console()

@@ -1,5 +1,5 @@
-from sympy import symbols, solve
-from sympy.geometry import Point, Line
+from sympy import solve, symbols
+from sympy.geometry import Line, Point
 
 t1, t2 = symbols("t1 t2")
 P1, P2 = Point(0, 0), Point(4, 4)

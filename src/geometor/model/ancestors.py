@@ -1,5 +1,5 @@
 """
-ancestor functions for Model class
+The :mod:`geometor.model.ancestors` module provides ancestor retrieval functions for the Model class.
 """
 
 from __future__ import annotations

@@ -1,7 +1,12 @@
+"""
+The :mod:`geometor.model.chains` module provides the Chain class for analyzing connected golden sections.
+"""
+
 import sympy as sp
 import sympy.geometry as spg
-from geometor.model.utils import clean_expr
+
 from geometor.model.sections import Section
+from geometor.model.utils import clean_expr
 
 __all__ = ["Chain"]
 

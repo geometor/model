@@ -1,8 +1,10 @@
-from geometor.utils import *
-from geometor.model import *
-from geometor.render import *
-from geometor.pappus import *
 from itertools import permutations
+
+from geometor.pappus import *
+from geometor.render import *
+from geometor.utils import *
+
+from geometor.model import *
 
 sp.init_printing()
 

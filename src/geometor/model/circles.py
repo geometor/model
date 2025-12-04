@@ -1,24 +1,21 @@
 """
-circle functions for Model class
+The :mod:`geometor.model.circles` module provides circle construction and manipulation for the Model class.
 """
 
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
-
 import sympy as sp
-
 import sympy.geometry as spg
-from geometor.model.element import (
-    CircleElement,
-    find_all_intersections,
-    check_existence,
-)
-from geometor.model.colors import COLORS
 from rich.table import Table
 
-if TYPE_CHECKING:
-    pass
+from geometor.model.colors import COLORS, get_color
+from geometor.model.element import (
+    CircleElement,
+    check_existence,
+    find_all_intersections,
+)
 
 __all__ = ["CirclesMixin"]
 
@@ -91,9 +88,8 @@ class CirclesMixin:
             self[struct] = details
 
             classes_str = " : " + " ".join(classes) if classes else ""
-            self.log(
-                f"[{COLORS['circle']} bold]{details.ID}[/{COLORS['circle']} bold]{classes_str}"
-            )
+            color = get_color(struct, classes)
+            self.log(f"[{color} bold]{details.ID}[/{color} bold]{classes_str}")
             table = Table(show_header=False, box=None, padding=(0, 4))
             table.add_row("    ctr:", f"[cyan]{self[pt_center].ID}[/cyan]")
             table.add_row("    r:", f"[cyan]{sp.pretty(struct.radius)}[/cyan]")

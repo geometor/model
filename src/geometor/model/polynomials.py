@@ -1,13 +1,15 @@
 """
-Polynomial element for geometor.model
+The :mod:`geometor.model.polynomials` module provides polynomial element for the Model class.
 """
 
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
-from .element import Element
 
 import sympy as sp
-from sympy.geometry import Line, Circle, Point
+from sympy.geometry import Circle, Line, Point
+
+from .element import Element
 
 if TYPE_CHECKING:
     pass
