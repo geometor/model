@@ -5,7 +5,7 @@ geometor.model.utils
 
 .. autoapi-nested-parse::
 
-   utils
+   The :mod:`geometor.model.utils` module provides utility functions for the Model class.
 
 
 

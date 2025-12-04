@@ -3,6 +3,11 @@ geometor.model.chains
 
 .. py:module:: geometor.model.chains
 
+.. autoapi-nested-parse::
+
+   The :mod:`geometor.model.chains` module provides the Chain class for analyzing connected golden sections.
+
+
 
 Classes
 -------

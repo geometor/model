@@ -5,9 +5,7 @@ geometor.model.helpers
 
 .. autoapi-nested-parse::
 
-   a few helper functions from earlier constructions
-
-   these types of operations need to be integrated into the euclid model
+   The :mod:`geometor.model.helpers` module provides helper functions for geometric constructions.
 
 
 

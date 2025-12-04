@@ -5,7 +5,7 @@ geometor.model.wedges
 
 .. autoapi-nested-parse::
 
-   wedge functions for Model class
+   The :mod:`geometor.model.wedges` module provides wedge construction and manipulation for the Model class.
 
 
 

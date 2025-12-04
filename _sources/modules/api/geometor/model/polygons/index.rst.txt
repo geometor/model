@@ -5,7 +5,7 @@ geometor.model.polygons
 
 .. autoapi-nested-parse::
 
-   helper functions for polygons
+   The :mod:`geometor.model.polygons` module provides polygon construction and manipulation for the Model class.
 
 
 

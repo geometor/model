@@ -5,8 +5,16 @@ geometor.model.reports
 
 .. autoapi-nested-parse::
 
-   report helper functions
+   The :mod:`geometor.model.reports` module provides reporting functions for the Model class.
 
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   geometor.model.reports.ReportMixin
 
 
 Functions
@@ -15,10 +23,7 @@ Functions
 .. autoapisummary::
 
    geometor.model.reports.generate_dot
-   geometor.model.reports.report_summary
-   geometor.model.reports.report_group_by_type
    geometor.model.reports.get_colored_ID
-   geometor.model.reports.report_sequence
 
 
 Module Contents
@@ -26,17 +31,25 @@ Module Contents
 
 .. py:function:: generate_dot(graph, parent=None, dot_string='', defined_nodes=None)
 
-.. py:function:: report_summary(model)
+.. py:class:: ReportMixin
 
-.. py:function:: report_group_by_type(model)
+   Mixin for the Model class containing report generation methods.
 
-.. py:function:: get_colored_ID(el, ID)
+
+   .. py:method:: report_summary()
+
+
+   .. py:method:: report_group_by_type()
+
+
+   .. py:method:: report_sequence()
+
+      Generate a sequential report of the model using rich Console layouts.
+
+
+
+.. py:function:: get_colored_ID(el, ID, classes=None)
 
    Get the colored ID for a geometric element.
-
-
-.. py:function:: report_sequence(model)
-
-   Generate a sequential report of the model using rich Console layouts.
 
 

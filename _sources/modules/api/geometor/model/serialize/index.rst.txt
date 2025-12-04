@@ -3,6 +3,11 @@ geometor.model.serialize
 
 .. py:module:: geometor.model.serialize
 
+.. autoapi-nested-parse::
+
+   The :mod:`geometor.model.serialize` module provides serialization functions for the Model class.
+
+
 
 Classes
 -------

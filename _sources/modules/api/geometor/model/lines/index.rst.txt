@@ -5,7 +5,7 @@ geometor.model.lines
 
 .. autoapi-nested-parse::
 
-   helper functions for Model class
+   The :mod:`geometor.model.lines` module provides line construction and manipulation for the Model class.
 
 
 

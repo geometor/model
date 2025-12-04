@@ -5,7 +5,7 @@ geometor.model.segments
 
 .. autoapi-nested-parse::
 
-   segment helper functions for sequencer
+   The :mod:`geometor.model.segments` module provides segment construction and manipulation for the Model class.
 
 
 

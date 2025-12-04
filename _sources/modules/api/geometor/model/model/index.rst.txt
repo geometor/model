@@ -3,6 +3,11 @@ geometor.model.model
 
 .. py:module:: geometor.model.model
 
+.. autoapi-nested-parse::
+
+   provides the central :class:`geometor.model.model.Model` class.
+
+
 
 Attributes
 ----------
@@ -27,11 +32,13 @@ Module Contents
 
 .. py:class:: Model(name: str = '', logger=None)
 
-   Bases: :py:obj:`dict`, :py:obj:`geometor.model.points.PointsMixin`, :py:obj:`geometor.model.lines.LinesMixin`, :py:obj:`geometor.model.circles.CirclesMixin`, :py:obj:`geometor.model.polygons.PolygonsMixin`, :py:obj:`geometor.model.segments.SegmentsMixin`, :py:obj:`geometor.model.polynomials.PolynomialsMixin`, :py:obj:`geometor.model.serialize.SerializeMixin`, :py:obj:`geometor.model.delete.DeleteMixin`, :py:obj:`geometor.model.sections.SectionsMixin`, :py:obj:`geometor.model.wedges.WedgesMixin`, :py:obj:`geometor.model.ancestors.AncestorsMixin`
+   Bases: :py:obj:`dict`, :py:obj:`geometor.model.points.PointsMixin`, :py:obj:`geometor.model.lines.LinesMixin`, :py:obj:`geometor.model.circles.CirclesMixin`, :py:obj:`geometor.model.polygons.PolygonsMixin`, :py:obj:`geometor.model.segments.SegmentsMixin`, :py:obj:`geometor.model.polynomials.PolynomialsMixin`, :py:obj:`geometor.model.serialize.SerializeMixin`, :py:obj:`geometor.model.reports.ReportMixin`, :py:obj:`geometor.model.delete.DeleteMixin`, :py:obj:`geometor.model.sections.SectionsMixin`, :py:obj:`geometor.model.wedges.WedgesMixin`, :py:obj:`geometor.model.ancestors.AncestorsMixin`
 
 
-   A collection of geometric elements, including points, lines, circles, and
-   polygons, represented using the `sympy.geometry` library.
+   The central class representing a collection of geometric elements.
+
+   It inherits from `dict` and various Mixins to provide a rich API for
+   geometric construction and analysis.
 
 
    .. py:attribute:: ID_gen
@@ -224,6 +231,18 @@ Module Contents
    .. py:method:: save(file_path)
 
       Saves a Model object to a JSON file as a list of elements.
+
+
+
+   .. py:method:: report_summary()
+
+
+   .. py:method:: report_group_by_type()
+
+
+   .. py:method:: report_sequence()
+
+      Generate a sequential report of the model using rich Console layouts.
 
 
 

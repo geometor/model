@@ -5,7 +5,7 @@ geometor.model.delete
 
 .. autoapi-nested-parse::
 
-   Deletion functions for the Model class.
+   The :mod:`geometor.model.delete` module provides deletion functions for the Model class.
 
 
 

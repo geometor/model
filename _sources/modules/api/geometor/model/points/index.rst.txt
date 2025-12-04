@@ -5,7 +5,7 @@ geometor.model.points
 
 .. autoapi-nested-parse::
 
-   helper functions for Model class
+   The :mod:`geometor.model.points` module provides point construction and manipulation for the Model class.
 
 
 

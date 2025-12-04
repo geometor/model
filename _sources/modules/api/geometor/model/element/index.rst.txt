@@ -5,9 +5,7 @@ geometor.model.element
 
 .. autoapi-nested-parse::
 
-   Element type
-   ElementDetails class
-   intersection functions
+   The :mod:`geometor.model.element` module provides core element classes and intersection logic.
 
 
 
@@ -53,30 +51,6 @@ Module Contents
    :param ID: A string ID for the element. If empty, an ID is generated.
    :param guide: If True, the element is a guide and excluded from intersections.
 
-   .. attribute:: ID
-
-      Name used in presentation and reports.
-
-      :type: str
-
-   .. attribute:: classes
-
-      Dict with strings for class name.
-
-      :type: dict
-
-   .. attribute:: parents
-
-      Dict with keys as parent sympy objects.
-
-      :type: dict
-
-   .. attribute:: guide
-
-      Whether the element is a guide.
-
-      :type: bool
-
 
    .. py:attribute:: object
 
@@ -116,30 +90,6 @@ Module Contents
    :param classes: A list of class labels.
    :param ID: A string ID for the element.
    :param guide: If True, the element is a guide.
-
-   .. attribute:: ID
-
-      Name used in presentation and reports.
-
-      :type: str
-
-   .. attribute:: classes
-
-      Dict with strings for class name.
-
-      :type: dict
-
-   .. attribute:: parents
-
-      Dict with keys as parent sympy objects.
-
-      :type: dict
-
-   .. attribute:: pt_radius
-
-      The point defining the radius.
-
-      :type: spg.Point
 
 
    .. py:attribute:: pt_radius

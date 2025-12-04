@@ -5,7 +5,7 @@ geometor.model.circles
 
 .. autoapi-nested-parse::
 
-   circle functions for Model class
+   The :mod:`geometor.model.circles` module provides circle construction and manipulation for the Model class.
 
 
 

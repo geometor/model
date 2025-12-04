@@ -5,7 +5,7 @@ geometor.model.polynomials
 
 .. autoapi-nested-parse::
 
-   Polynomial element for geometor.model
+   The :mod:`geometor.model.polynomials` module provides polynomial element for the Model class.
 
 
 

@@ -5,7 +5,7 @@ geometor.model.__main__
 
 .. autoapi-nested-parse::
 
-   The package entry point into the application.
+   The :mod:`geometor.model.__main__` module is the entry point for the application.
 
 
 
