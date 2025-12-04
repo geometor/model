@@ -1,30 +1,36 @@
 """
 Polynomial element for geometor.model
 """
+
 from __future__ import annotations
 from typing import TYPE_CHECKING
 from .element import Element
-from sympy import Poly, Symbol, sympify
 
-import sympy.geometry as spg
+import sympy as sp
 from sympy.geometry import Line, Circle, Point
 
 if TYPE_CHECKING:
-    from .model import Model
+    pass
 
 __all__ = ["PolynomialsMixin", "Polynomial"]
+
 
 class PolynomialsMixin:
     """
     Mixin for the Model class containing polynomial construction operations.
     """
-    def poly(self, coeffs: list, name: str = "", classes: list = [], group: str = "") -> Polynomial:
+
+    def poly(
+        self, coeffs: list, name: str = "", classes: list = [], group: str = ""
+    ) -> Polynomial:
         """
         Create a Polynomial element.
         """
         return Polynomial(coeffs, name=name, classes=classes, group=group)
 
-    def add_poly(self, coeffs: list, name: str = "", classes: list = [], group: str = "") -> Polynomial:
+    def add_poly(
+        self, coeffs: list, name: str = "", classes: list = [], group: str = ""
+    ) -> Polynomial:
         """
         Create and add a Polynomial element to the model.
         """
@@ -36,22 +42,24 @@ class PolynomialsMixin:
         self.log(f"* add_element: {poly_el}")
         return poly_el
 
+
 class Polynomial(Element):
     """
     A polynomial element defined by its coefficients.
     """
+
     def __init__(self, coeffs, name="", classes=None, group=None):
         if classes is None:
             classes = []
         if group:
             classes.append(group)
 
-        self.x = Symbol('x')
-        self.y = Symbol('y')
-        self.coeffs = [sympify(c) for c in coeffs]
+        self.x = sp.Symbol("x")
+        self.y = sp.Symbol("y")
+        self.coeffs = [sp.sympify(c) for c in coeffs]
         # sympy Poly expects coeffs from highest to lowest degree
-        self.poly = Poly(self.coeffs, self.x) 
-        
+        self.poly = sp.Poly(self.coeffs, self.x)
+
         super().__init__(self.poly.as_expr(), ID=name, classes=classes)
 
     def __str__(self):
@@ -99,7 +107,9 @@ class Polynomial(Element):
                 # We need to express y in terms of x or vice versa from the line equation
                 # For simplicity, let's assume the line equation can be solved for y
                 line_eq = other.equation()
-                y_line = sp.solve(line_eq, self.y) # Assuming self.y is defined as Symbol('y') in Polynomial
+                y_line = sp.solve(
+                    line_eq, self.y
+                )  # Assuming self.y is defined as Symbol('y') in Polynomial
                 if y_line:
                     # Substitute y in polynomial with y_line[0]
                     poly_expr_y = self.poly.as_expr().subs(self.y, y_line[0])
@@ -112,5 +122,5 @@ class Polynomial(Element):
                 # This is significantly more complex and will require a dedicated solver
                 # For now, we'll return an empty list for polynomial-circle intersections
                 pass
-        
+
         return intersections

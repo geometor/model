@@ -1,6 +1,7 @@
 """
 helper functions for polygons
 """
+
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
@@ -14,9 +15,10 @@ from geometor.model.colors import COLORS
 from rich.table import Table
 
 if TYPE_CHECKING:
-    from .model import Model
+    pass
 
 __all__ = ["PolygonsMixin"]
+
 
 class PolygonsMixin:
     """
@@ -24,7 +26,7 @@ class PolygonsMixin:
     """
 
     def set_polygon_by_IDs(
-            self, poly_pts_IDs: list[str], classes: list = None, ID: str = ""
+        self, poly_pts_IDs: list[str], classes: list = None, ID: str = ""
     ) -> spg.Polygon:
         """
         find points by ID and use them with :meth:`Model.set_polygon`
@@ -35,7 +37,6 @@ class PolygonsMixin:
             poly_pts.append(self.get_element_by_ID(poly_ID))
 
         return self.set_polygon(poly_pts, classes)
-
 
     def set_polygon(self, poly_pts: list[spg.Point], classes=[], ID="") -> spg.Polygon:
         """
@@ -57,10 +58,14 @@ class PolygonsMixin:
         self[poly] = details
 
         classes_str = " : " + " ".join(classes) if classes else ""
-        self.log(f"[{COLORS['polygon']} bold]{details.ID}[/{COLORS['polygon']} bold]{classes_str}")
+        self.log(
+            f"[{COLORS['polygon']} bold]{details.ID}[/{COLORS['polygon']} bold]{classes_str}"
+        )
         table = Table(show_header=False, box=None, padding=(0, 4))
         for i, side in enumerate(poly.sides):
-            table.add_row(f"    side {i+1}:", f"[cyan]{sp.pretty(side.length)}[/cyan]")
+            table.add_row(
+                f"    side {i + 1}:", f"[cyan]{sp.pretty(side.length)}[/cyan]"
+            )
         table.add_row("    area:", f"[cyan]{sp.pretty(poly.area)}[/cyan]")
         self.log(table)
 

@@ -1,6 +1,7 @@
 """
 segment helper functions for sequencer
 """
+
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
@@ -13,9 +14,10 @@ from geometor.model.colors import COLORS
 from rich.table import Table
 
 if TYPE_CHECKING:
-    from .model import Model
+    pass
 
 __all__ = ["SegmentsMixin"]
+
 
 class SegmentsMixin:
     """
@@ -33,7 +35,9 @@ class SegmentsMixin:
         pt_2 = self.get_element_by_ID(pt_2_ID)
         return self.set_segment(pt_1, pt_2, classes, ID)
 
-    def set_segment(self, pt_1: spg.Point, pt_2: spg.Point, classes=[], ID="") -> spg.Segment:
+    def set_segment(
+        self, pt_1: spg.Point, pt_2: spg.Point, classes=[], ID=""
+    ) -> spg.Segment:
         """
         set segment (list of points) for demonstration in the model
         """
@@ -47,7 +51,9 @@ class SegmentsMixin:
         self[segment] = details
 
         classes_str = " : " + " ".join(classes) if classes else ""
-        self.log(f"[{COLORS['segment']} bold]{details.ID}[/{COLORS['segment']} bold]{classes_str}")
+        self.log(
+            f"[{COLORS['segment']} bold]{details.ID}[/{COLORS['segment']} bold]{classes_str}"
+        )
         table = Table(show_header=False, box=None, padding=(0, 4))
         table.add_row("    len:", f"[cyan]{sp.pretty(segment.length)}[/cyan]")
         self.log(table)

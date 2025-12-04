@@ -1,16 +1,17 @@
 """
 Deletion functions for the Model class.
 """
+
 from __future__ import annotations
 from typing import TYPE_CHECKING
 from rich.console import Console
-console = Console()
-import sympy as sp
 
-import sympy.geometry as spg
+console = Console()
+
 
 if TYPE_CHECKING:
-    from .model import Model
+    pass
+
 
 class DeleteMixin:
     """
@@ -35,7 +36,6 @@ class DeleteMixin:
                     # Recurse to find the children of this newly found dependent
                     self._get_dependents_recursive(element, dependents_set)
 
-
     def get_dependents(self, element_or_ID):
         """
         Finds and returns a set of all elements that depend on the given element.
@@ -53,19 +53,22 @@ class DeleteMixin:
         if isinstance(element_or_ID, str):
             element_to_check = self.get_element_by_ID(element_or_ID)
             if not element_to_check:
-                console.print(f"[bold red]Error:[/bold red] Element with ID '{element_or_ID}' not found.")
+                console.print(
+                    f"[bold red]Error:[/bold red] Element with ID '{element_or_ID}' not found."
+                )
                 return set()
         else:
             element_to_check = element_or_ID
 
         if element_to_check not in self:
-            console.print(f"[bold red]Error:[/bold red] Element '{element_to_check}' not found in the model.")
+            console.print(
+                f"[bold red]Error:[/bold red] Element '{element_to_check}' not found in the model."
+            )
             return set()
 
         dependents = set()
         self._get_dependents_recursive(element_to_check, dependents)
         return dependents
-
 
     def delete_element(self, element_or_ID):
         """
@@ -81,14 +84,18 @@ class DeleteMixin:
         if isinstance(element_or_ID, str):
             element_to_delete = self.get_element_by_ID(element_or_ID)
             if not element_to_delete:
-                console.print(f"[bold red]Error:[/bold red] Element with ID '{element_or_ID}' not found.")
+                console.print(
+                    f"[bold red]Error:[/bold red] Element with ID '{element_or_ID}' not found."
+                )
                 return
         else:
             element_to_delete = element_or_ID
 
         if element_to_delete not in self:
             # This can happen if the object exists but isn't in this specific model
-            console.print(f"[bold red]Error:[/bold red] Element '{element_to_delete}' not found in the model.")
+            console.print(
+                f"[bold red]Error:[/bold red] Element '{element_to_delete}' not found in the model."
+            )
             return
 
         # 1. Recursively find all dependents
@@ -103,8 +110,7 @@ class DeleteMixin:
         delete_index = model_elements.index(element_to_delete)
 
         final_elements_to_remove = {
-            el for el in elements_to_remove
-            if model_elements.index(el) >= delete_index
+            el for el in elements_to_remove if model_elements.index(el) >= delete_index
         }
 
         # 4. Remove all identified elements from the model

@@ -2,6 +2,7 @@ import pytest
 from geometor.model import Model, Polynomial
 from sympy import Symbol
 
+
 def test_polynomial_creation():
     coeffs = [1, -1, -1]  # x^2 - x - 1
     poly_el = Polynomial(coeffs, name="golden_poly")
@@ -10,6 +11,7 @@ def test_polynomial_creation():
     assert poly_el.ID == "golden_poly"
     assert poly_el.degree() == 2
     assert poly_el.all_coeffs() == [1, -1, -1]
+
 
 def test_add_polynomial_to_model():
     model = Model("test_model")
@@ -21,12 +23,14 @@ def test_add_polynomial_to_model():
     assert model[poly_el.equation()] == poly_el
     assert len(model) == 1
 
+
 def test_polynomial_evaluation():
     coeffs = [1, -1, -1]  # x^2 - x - 1
     poly_el = Polynomial(coeffs)
     assert poly_el.eval(0) == -1
     assert poly_el.eval(1) == -1
     assert poly_el.eval(2) == 1
+
 
 def test_polynomial_roots():
     coeffs = [1, -1, -1]  # x^2 - x - 1

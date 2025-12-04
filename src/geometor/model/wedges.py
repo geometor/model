@@ -1,25 +1,22 @@
 """
 wedge functions for Model class
 """
+
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
-from geometor.model.utils import clean_expr
 import sympy as sp
 
 import sympy.geometry as spg
 
 from geometor.model.element import (
-    Element,
     CircleElement,
-    find_all_intersections,
-    check_existence,
 )
 from geometor.model.colors import COLORS
 from rich.table import Table
 
 if TYPE_CHECKING:
-    from .model import Model
+    pass
 
 
 class WedgesMixin:
@@ -96,7 +93,9 @@ class WedgesMixin:
             pt_center_ID = self[pt_center].ID
             pt_radius_ID = self[pt_radius].ID
             ID = f"( {pt_center_ID} {pt_radius_ID} )"
-            ID += f"< {self[pt_sweep_start].ID} {pt_center_ID} {self[pt_sweep_end].ID} >"
+            ID += (
+                f"< {self[pt_sweep_start].ID} {pt_center_ID} {self[pt_sweep_end].ID} >"
+            )
 
         details = CircleElement(
             struct,
@@ -109,7 +108,9 @@ class WedgesMixin:
         self[struct] = details
 
         classes_str = " : " + " ".join(classes) if classes else ""
-        self.log(f"[{COLORS['polygon']} bold]{details.ID}[/{COLORS['polygon']} bold]{classes_str}")
+        self.log(
+            f"[{COLORS['polygon']} bold]{details.ID}[/{COLORS['polygon']} bold]{classes_str}"
+        )
         table = Table(show_header=False, box=None, padding=(0, 4))
         table.add_row("    r:", f"[cyan]{sp.pretty(struct.circle.radius)}[/cyan]")
         table.add_row("    rad:", f"[cyan]{sp.pretty(struct.radians)}[/cyan]")
@@ -128,7 +129,9 @@ class Wedge:
         self.pt_sweep_start = points[2]
         self.pt_sweep_end = points[3]
 
-        self._circle = spg.Circle(self.pt_center, self.pt_center.distance(self.pt_radius))
+        self._circle = spg.Circle(
+            self.pt_center, self.pt_center.distance(self.pt_radius)
+        )
         self.sweep_ray = spg.Ray(self.pt_center, self.pt_sweep_end)
         self.start_ray = spg.Ray(self.pt_center, self.pt_sweep_start)
 
@@ -142,7 +145,6 @@ class Wedge:
     def _sstr(self, printer):
         points_repr = [printer.doprint(p) for p in self.points]
         return f"Wedge([{', '.join(points_repr)}])"
-
 
     def _find_arc_endpoints(self) -> tuple[spg.Point, spg.Point]:
         intersections_start = self.circle.intersection(self.start_ray)

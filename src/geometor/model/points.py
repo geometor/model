@@ -1,6 +1,7 @@
 """
 helper functions for Model class
 """
+
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
@@ -15,16 +16,18 @@ from geometor.model.colors import COLORS
 from rich.table import Table
 
 if TYPE_CHECKING:
-    from .model import Model
+    pass
 
 from collections.abc import Iterator
 
 __all__ = ["PointsMixin"]
 
+
 class PointsMixin:
     """
     Mixin for the Model class containing point construction operations.
     """
+
     def point_ID_generator(self) -> Iterator[str]:
         letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         repeat = 1

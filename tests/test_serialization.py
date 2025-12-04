@@ -2,6 +2,7 @@ import os
 import tempfile
 from geometor.model import Model, load_model
 
+
 def compare_models(m1, m2):
     """
     Compares two Model objects to see if they are equivalent by checking their internal structure.
@@ -36,21 +37,28 @@ def compare_models(m1, m2):
 
         # Compare classes
         if el1.classes.keys() != el2.classes.keys():
-            print(f"❌ Mismatch in classes for element {ID}: {el1.classes.keys()} vs {el2.classes.keys()}")
+            print(
+                f"❌ Mismatch in classes for element {ID}: {el1.classes.keys()} vs {el2.classes.keys()}"
+            )
             return False
 
         # Compare parents by their IDs
         parents1_ids = sorted([m1[p].ID for p in el1.parents.keys()])
         parents2_ids = sorted([m2[p].ID for p in el2.parents.keys()])
         if parents1_ids != parents2_ids:
-            print(f"❌ Mismatch in parents for element {ID}: {parents1_ids} vs {parents2_ids}")
+            print(
+                f"❌ Mismatch in parents for element {ID}: {parents1_ids} vs {parents2_ids}"
+            )
             return False
 
         # Compare pt_radius for circles by ID
         from geometor.model.element import CircleElement
+
         if isinstance(el1, CircleElement):
             if not isinstance(el2, CircleElement):
-                print(f"❌ Type mismatch for element {ID}: CircleElement vs {type(el2)}")
+                print(
+                    f"❌ Type mismatch for element {ID}: CircleElement vs {type(el2)}"
+                )
                 return False
             if m1[el1.pt_radius].ID != m2[el2.pt_radius].ID:
                 print(f"❌ Mismatch in pt_radius for circle {ID}")
@@ -58,6 +66,7 @@ def compare_models(m1, m2):
 
     print("✅ Models are identical.")
     return True
+
 
 # 1. Create an initial model
 print("Step 1: Creating the initial model...")
@@ -113,4 +122,3 @@ print("-" * 20)
 # Cleanup
 os.remove(file_path)
 print(f"Cleaned up temporary file: {file_path}")
-

@@ -10,4 +10,3 @@ repo = "model"
 repo_name = "model"
 
 setup_globals(org, org_name, repo, repo_name)
-

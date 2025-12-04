@@ -1,6 +1,7 @@
 """The package entry point into the application."""
+
 from geometor.model import Model
-from geometor.model.reports import *
+from geometor.model.reports import report_group_by_type, report_sequence, report_summary
 
 model = Model("demo")
 A = model.set_point(0, 0, classes=["given"])

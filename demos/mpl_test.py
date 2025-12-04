@@ -23,23 +23,25 @@ import mplcursors
 #  c1 = mplcursors.cursor(left_artist)
 #  @c1.connect("add")
 #  def _(sel):
-    #  sel.annotation.set(position=(5, 5))
-    #  # Note: Needs to be set separately due to matplotlib/matplotlib#8956.
-    #  sel.annotation.set_bbox(None)
+#  sel.annotation.set(position=(5, 5))
+#  # Note: Needs to be set separately due to matplotlib/matplotlib#8956.
+#  sel.annotation.set_bbox(None)
 
 #  # Make the box have a white background with a fancier connecting arrow
 #  c2 = mplcursors.cursor(right_artist)
 #  @c2.connect("add")
 #  def _(sel):
-    #  sel.annotation.get_bbox_patch().set(fc="white")
-    #  sel.annotation.arrow_patch.set(arrowstyle="simple", fc="white", alpha=.5)
+#  sel.annotation.get_bbox_patch().set(fc="white")
+#  sel.annotation.arrow_patch.set(arrowstyle="simple", fc="white", alpha=.5)
 
 #  plt.show()
 
 fig, ax = plt.subplots()
 ax.plot(range(10), "o-")
-ax.set_title('Press "e" to enable/disable the datacursor\n'
-             'Press "h" to hide/show any annotation boxes')
+ax.set_title(
+    'Press "e" to enable/disable the datacursor\n'
+    'Press "h" to hide/show any annotation boxes'
+)
 
 mplcursors.cursor(bindings={"toggle_visible": "h", "toggle_enabled": "e"})
 

@@ -1,12 +1,10 @@
-from rich import print
-from collections import defaultdict
-
 import sympy as sp
 import sympy.geometry as spg
 from geometor.model.utils import clean_expr
 from geometor.model.sections import Section
 
 __all__ = ["Chain"]
+
 
 class Chain:
     """
@@ -138,12 +136,12 @@ class Chain:
         returns
         -------
         - :class:`list[str]`
-            A list of strings where each string is a Fibonacci-style 
+            A list of strings where each string is a Fibonacci-style
             ID corresponding to a segment.
         """
 
         # Step 1: Define Symbols
-        a, b = sp.symbols('a b')
+        a, b = sp.symbols("a b")
 
         # Step 2: Generate Expressions
         expressions = [a, b]
@@ -153,9 +151,14 @@ class Chain:
             expressions.append(next_expr)
 
         # Step 3: Mapping Expressions
-        length_to_expr = {length: str(expr).replace(" ", "") for length, expr in zip(unique_lengths, expressions)}
+        length_to_expr = {
+            length: str(expr).replace(" ", "")
+            for length, expr in zip(unique_lengths, expressions)
+        }
 
         # Assign expressions to segments
-        segment_expressions = [str(length_to_expr[length]) for length in self.numerical_lengths]
+        segment_expressions = [
+            str(length_to_expr[length]) for length in self.numerical_lengths
+        ]
 
         return segment_expressions

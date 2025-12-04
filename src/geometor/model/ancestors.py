@@ -1,14 +1,11 @@
 """
 ancestor functions for Model class
 """
+
 from __future__ import annotations
-from typing import TYPE_CHECKING
-import sympy as sp
 
 import sympy.geometry as spg
 
-if TYPE_CHECKING:
-    Model
 
 class AncestorsMixin:
     """
@@ -39,6 +36,7 @@ class AncestorsMixin:
 
         def _recursive_get(el):
             from geometor.model.sections import Section
+
             element_id = self[el].ID
             if element_id in visited:
                 return {}  # Cycle detected
@@ -72,7 +70,6 @@ class AncestorsMixin:
             return ancestors
 
         return _recursive_get(element)
-
 
     def get_ancestors(self, element):
         """

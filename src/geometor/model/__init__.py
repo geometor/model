@@ -16,7 +16,9 @@ Usage:
 Initialize a :class:`Model` and use its methods to add points, construct lines and circles,
 and perform geometric operations.
 """
+
 from __future__ import annotations
+
 __author__ = "geometor"
 __maintainer__ = "geometor"
 __email__ = "github@geometor.com"
@@ -25,27 +27,25 @@ __licence__ = "MIT"
 
 import sympy.geometry as spg
 
+from geometor.model.element import Element, CircleElement
+from geometor.model.wedges import Wedge
+from geometor.model.sections import Section
+from geometor.model.chains import Chain
+
+# from geometor.model.reports import *
+
+# from collections.abc import Iterator
+
+from geometor.model.polynomials import Polynomial
+from geometor.model.serialize import load_model
+
+from geometor.model.model import Model, GeometryObject
+
 Point = spg.Point
 Line = spg.Line
 Circle = spg.Circle
 Polygon = spg.Polygon
 Segment = spg.Segment
-
-from geometor.model.element import *
-from geometor.model.wedges import Wedge
-from geometor.model.sections import Section
-from geometor.model.chains import Chain
-
-from geometor.model.reports import *
-
-from collections.abc import Iterator
-
-
-
-from geometor.model.polynomials import Polynomial
-from geometor.model.serialize import load_model
-
-from .model import Model, GeometryObject
 
 __all__ = [
     "Model",
@@ -59,6 +59,7 @@ __all__ = [
     "Chain",
     "Polynomial",
     "Element",
+    "CircleElement",
     "GeometryObject",
     "load_model",
 ]

@@ -1,11 +1,12 @@
 """
 helper functions for Model class
 """
+
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
 
-from geometor.model.element import *
+from geometor.model.element import Element, check_existence, find_all_intersections
 
 import sympy as sp
 
@@ -15,9 +16,10 @@ from geometor.model.colors import COLORS
 from rich.table import Table
 
 if TYPE_CHECKING:
-    from .model import Model
+    pass
 
 __all__ = ["LinesMixin"]
+
 
 class LinesMixin:
     """
@@ -35,16 +37,20 @@ class LinesMixin:
         pt_2 = self.get_element_by_ID(pt_2_ID)
         return self.construct_line(pt_1, pt_2, classes, ID)
 
-
     def construct_line(
-        self, pt_1: spg.Point, pt_2: spg.Point, classes: list = None, ID: str = "", guide: bool = False
+        self,
+        pt_1: spg.Point,
+        pt_2: spg.Point,
+        classes: list = None,
+        ID: str = "",
+        guide: bool = False,
     ) -> spg.Line:
         """
         Constructs a :class:`Line <sympy.geometry.line.Line>` from two points and
         adds it to the :class:`Model <geometor.model.model.Model>`
         """
         self.clear_new_points()
-        
+
         if classes is None:
             classes = []
 
@@ -60,7 +66,9 @@ class LinesMixin:
             pt_2_ID = self[pt_2].ID
             ID = f"[ {pt_1_ID} {pt_2_ID} ]"
 
-        details = Element(struct, parents=[pt_1, pt_2], classes=classes, ID=ID, guide=guide)
+        details = Element(
+            struct, parents=[pt_1, pt_2], classes=classes, ID=ID, guide=guide
+        )
 
         exists, existing_line = check_existence(self, struct, self.lines)
 
@@ -72,9 +80,11 @@ class LinesMixin:
         else:
             # add struct
             self[struct] = details
-            
+
             classes_str = " : " + " ".join(classes) if classes else ""
-            self.log(f"[{COLORS['line']} bold]{details.ID}[/{COLORS['line']} bold]{classes_str}")
+            self.log(
+                f"[{COLORS['line']} bold]{details.ID}[/{COLORS['line']} bold]{classes_str}"
+            )
             table = Table(show_header=False, box=None, padding=(0, 4))
             table.add_row("    eq:", f"[cyan]{sp.pretty(struct.equation())}[/cyan]")
             table.add_row("    coef:", f"[cyan]{struct.coefficients}[/cyan]")

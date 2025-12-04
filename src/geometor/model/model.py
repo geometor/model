@@ -4,7 +4,6 @@ from rich.logging import RichHandler
 import rich
 import sympy.geometry as spg
 import sympy as sp
-from collections.abc import Iterator
 
 
 from .element import Element, Struct, _get_element_by_ID
@@ -37,7 +36,21 @@ GeometryObject = (
 
 __all__ = ["Model", "GeometryObject"]
 
-class Model(dict, PointsMixin, LinesMixin, CirclesMixin, PolygonsMixin, SegmentsMixin, PolynomialsMixin, SerializeMixin, DeleteMixin, SectionsMixin, WedgesMixin, AncestorsMixin):
+
+class Model(
+    dict,
+    PointsMixin,
+    LinesMixin,
+    CirclesMixin,
+    PolygonsMixin,
+    SegmentsMixin,
+    PolynomialsMixin,
+    SerializeMixin,
+    DeleteMixin,
+    SectionsMixin,
+    WedgesMixin,
+    AncestorsMixin,
+):
     """
     A collection of geometric elements, including points, lines, circles, and
     polygons, represented using the `sympy.geometry` library.
@@ -69,7 +82,7 @@ class Model(dict, PointsMixin, LinesMixin, CirclesMixin, PolygonsMixin, Segments
 
     def log(self, message):
         if self._logger:
-            if hasattr(message, '__rich_console__'):
+            if hasattr(message, "__rich_console__"):
                 rich.print(message)
             else:
                 self._logger.info(message)
@@ -182,6 +195,5 @@ class Model(dict, PointsMixin, LinesMixin, CirclesMixin, PolygonsMixin, Segments
             )
 
         return [[min(x_vals), max(x_vals)], [min(y_vals), max(y_vals)]]
-
 
     get_element_by_ID = _get_element_by_ID

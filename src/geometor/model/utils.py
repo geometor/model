@@ -1,10 +1,16 @@
 """utils"""
+
 import logging
 import os as os
 
 import sympy as sp
 import sympy.geometry as spg
 from rich import print
+
+# time *********************
+import datetime
+from timeit import default_timer as timer
+
 
 __all__ = [
     "clean_expr",
@@ -27,6 +33,7 @@ def clean_expr(expr):
     expr = sp.simplify(expr)
     expr = sp.sqrtdenest(expr)
     return expr
+
 
 def spread(l1: spg.Line, l2: spg.Line):
     """calculate the spread of two lines"""
@@ -79,11 +86,6 @@ def log_init(name):
 def print_log(txt=""):
     print(txt)
     logging.info(txt)
-
-
-# time *********************
-import datetime
-from timeit import default_timer as timer
 
 
 def elapsed(start_time):

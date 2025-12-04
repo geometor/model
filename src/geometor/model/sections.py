@@ -1,6 +1,7 @@
 """
 section functions for Model class
 """
+
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
@@ -11,15 +12,12 @@ import sympy.geometry as spg
 
 from geometor.model.element import (
     Element,
-    CircleElement,
-    find_all_intersections,
-    check_existence,
 )
 from geometor.model.colors import COLORS
 from rich.table import Table
 
 if TYPE_CHECKING:
-    from .model import Model
+    pass
 
 phi = sp.Rational(1, 2) + (sp.sqrt(5) / 2)
 
@@ -30,7 +28,7 @@ class SectionsMixin:
     """
 
     def set_section_by_IDs(
-            self, points_IDs: list[str], classes: list = None, ID: str = ""
+        self, points_IDs: list[str], classes: list = None, ID: str = ""
     ) -> Section:
         """
         find points by ID and use them with :meth:`Model.set_section`
@@ -41,7 +39,6 @@ class SectionsMixin:
             points.append(self.get_element_by_ID(point_ID))
 
         return self.set_section(points, classes, ID)
-
 
     def set_section(self, points: list[spg.Point], classes=[], ID="") -> Section:
         """
@@ -61,10 +58,12 @@ class SectionsMixin:
         self[section] = details
 
         classes_str = " : " + " ".join(classes) if classes else ""
-        self.log(f"[{COLORS['section']} bold]{details.ID}[/{COLORS['section']} bold]{classes_str}")
+        self.log(
+            f"[{COLORS['section']} bold]{details.ID}[/{COLORS['section']} bold]{classes_str}"
+        )
         table = Table(show_header=False, box=None, padding=(0, 4))
         for i, length in enumerate(section.lengths):
-            table.add_row(f"    len {i+1}:", f"[cyan]{sp.pretty(length)}[/cyan]")
+            table.add_row(f"    len {i + 1}:", f"[cyan]{sp.pretty(length)}[/cyan]")
         table.add_row("    ratio:", f"[cyan]{sp.pretty(section.ratio)}[/cyan]")
         self.log(table)
 
@@ -135,7 +134,7 @@ class Section:
 
         ratio_float = l1_float / l2_float
         phi_float = phi.evalf()
-        
+
         # Set a tolerance for the floating-point comparison.
         tolerance = 1e-5
 

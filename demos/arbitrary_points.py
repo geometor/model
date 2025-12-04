@@ -1,7 +1,7 @@
 from sympy import symbols, solve
 from sympy.geometry import Point, Line
 
-t1, t2 = symbols('t1 t2')
+t1, t2 = symbols("t1 t2")
 P1, P2 = Point(0, 0), Point(4, 4)
 P3, P4 = Point(0, 4), Point(4, 0)
 

@@ -3,14 +3,22 @@ Element type
 ElementDetails class
 intersection functions
 """
+
 from __future__ import annotations
 import sympy.geometry as spg
 from multiprocessing import Pool, cpu_count
 from geometor.model.utils import clean_expr
 
-Struct = (spg.Line | spg.Circle)
+Struct = spg.Line | spg.Circle
 
-__all__ = ["Element", "CircleElement", "Struct", "check_existence", "find_all_intersections"]
+__all__ = [
+    "Element",
+    "CircleElement",
+    "Struct",
+    "check_existence",
+    "find_all_intersections",
+]
+
 
 class Element:
     """
@@ -70,7 +78,6 @@ class Element:
         return None
 
 
-
 class CircleElement(Element):
     """
     Same as :class:`Element` but adds a ``pt_radius``.
@@ -89,6 +96,7 @@ class CircleElement(Element):
         parents (dict): Dict with keys as parent sympy objects.
         pt_radius (spg.Point): The point defining the radius.
     """
+
     def __init__(
         self,
         sympy_obj: spg.Circle,
@@ -161,9 +169,6 @@ def find_intersection(test_tuple: tuple) -> tuple:
     result = struct.intersection(prev)
 
     return prev, struct, result
-
-
-
 
 
 def _get_element_by_ID(self, ID: str):

@@ -4,10 +4,9 @@ a few helper functions from earlier constructions
 these types of operations need to be integrated into the euclid model
 """
 
-
 import sympy as sp
 import sympy.geometry as spg
-from geometor.model import *
+from geometor.model.model import Model
 
 __all__ = [
     "line_get_y",
@@ -80,6 +79,7 @@ def construct_perpendicular_bisector(model, pt_1, pt_2, add_circles=True):
     pole_1, pole_2 = set_equilateral_poles(model, pt_1, pt_2, add_circles)
     return model.construct_line(pole_1, pole_2, classes=["bisector"])
 
+
 def set_midpoint(model, pt_1, pt_2, add_circles=True):
     """perform fundamental operations for two points
     and add perpendicular bisector"""
@@ -89,11 +89,11 @@ def set_midpoint(model, pt_1, pt_2, add_circles=True):
 
 def set_given_rect_points(model, pt, x_offset, y_offset):
     rect_points = [pt]
-    pt_x0 = model.set_point(pt.x + x_offset, pt.y, classes=['given'])
+    pt_x0 = model.set_point(pt.x + x_offset, pt.y, classes=["given"])
     rect_points.append(pt_x0)
-    pt_xy = model.set_point(pt.x + x_offset, pt.y + y_offset, classes=['given'])
+    pt_xy = model.set_point(pt.x + x_offset, pt.y + y_offset, classes=["given"])
     rect_points.append(pt_xy)
-    pt_0y = model.set_point(pt.x, pt.y + y_offset, classes=['given'])
+    pt_0y = model.set_point(pt.x, pt.y + y_offset, classes=["given"])
     rect_points.append(pt_0y)
 
     return rect_points

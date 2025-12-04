@@ -4,6 +4,7 @@ from sympy import Symbol
 from geometor.model import Model, load_model
 from geometor.model.polynomials import Polynomial
 
+
 @pytest.fixture
 def setup_model_with_polynomial():
     model = Model("test_model")
@@ -11,6 +12,7 @@ def setup_model_with_polynomial():
     poly = Polynomial([1, 2, 1], name="P1")
     model.add_poly(poly.coeffs, name=poly.ID)
     return model
+
 
 def test_polynomial_serialization(setup_model_with_polynomial, tmp_path):
     model = setup_model_with_polynomial
@@ -28,7 +30,7 @@ def test_polynomial_serialization(setup_model_with_polynomial, tmp_path):
     # Verify the polynomial
     original_poly_key = model.get_element_by_ID("P1")
     original_poly_element = model[original_poly_key]
-    
+
     loaded_poly_key = loaded_model.get_element_by_ID("P1")
     loaded_poly_element = loaded_model[loaded_poly_key]
 

@@ -10,12 +10,7 @@ from rich.text import Text
 import sympy as sp
 import sympy.geometry as spg
 
-from .utils import *
-
-from .element import (
-    Element,
-    _get_element_by_ID,
-)
+# from .utils import *
 
 
 def generate_dot(graph, parent=None, dot_string="", defined_nodes=None):
@@ -26,10 +21,10 @@ def generate_dot(graph, parent=None, dot_string="", defined_nodes=None):
     for node, children in graph.items():
         # Define the node with the appropriate shape and label only if not already defined
         if node not in defined_nodes:
-            if node.startswith('['):  # Line
+            if node.startswith("["):  # Line
                 shape = "rectangle"
                 label = node[1:-1]
-            elif node.startswith('('):  # Circle
+            elif node.startswith("("):  # Circle
                 shape = "ellipse"
                 label = node[1:-1]
             else:  # Point

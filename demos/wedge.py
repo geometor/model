@@ -1,6 +1,7 @@
 """
 constructs the classic 'vesica pisces'
 """
+
 from geometor.model import *
 
 
