@@ -46,7 +46,7 @@ Module Contents
    establishing the unit for the field
 
 
-.. py:function:: set_equilateral_poles(model: geometor.model.Model, pt_1: geometor.model.spg.Point, pt_2: geometor.model.spg.Point, add_circles=True)
+.. py:function:: set_equilateral_poles(model: geometor.model.model.Model, pt_1: sympy.geometry.Point, pt_2: sympy.geometry.Point, add_circles=True)
 
 .. py:function:: construct_perpendicular_bisector(model, pt_1, pt_2, add_circles=True)
 
