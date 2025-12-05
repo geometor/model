@@ -4,9 +4,9 @@ dynamic = ["version"]
 authors = [
   { name="phi ARCHITECT", email="github@phiarchitect.com" },
 ]
-description = "create and manage log entries for a python project"
+description = "A symbolic engine for defining and verifying geometric constructions."
 readme = "README.rst"
-requires-python = ">=3.7"
+requires-python = ">=3.13"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -15,7 +15,12 @@ classifiers = [
 dependencies = [
     "sympy",
     "rich",
+]
+
+[project.optional-dependencies]
+dev = [
     "pytest",
+    "matplotlib",
 ]
 
 [project.scripts]

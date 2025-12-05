@@ -6,7 +6,7 @@ GEOMETOR • model
 .. image:: https://img.shields.io/github/license/geometor/model.svg
    :target: https://github.com/geometor/model/blob/main/LICENSE
 
-The symbolic engine for GEOMETOR.
+A symbolic engine for defining and verifying geometric constructions.
 
 Overview
 --------
