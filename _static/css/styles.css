@@ -436,6 +436,20 @@ th {
   text-align: right;
 }
 
+.viewcode-link .pre {
+  display: none;
+}
+
+.viewcode-link::after {
+  content: "{}";
+  font-family: "Fira Code", monospace;
+  font-weight: bold;
+  font-size: 1rem;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 0.2em;
+}
+
 /* elements/forms *****************************/
 button,
 input,

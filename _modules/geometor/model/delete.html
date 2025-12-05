@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>geometor.model.delete &mdash; Project name not set  documentation</title>
+  <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea5fcf70" />
+  <link rel="stylesheet" type="text/css" href="../../../_static/css/styles.css?v=bc127b54" />
+  <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+  <link rel="stylesheet" href="../../../_static/css/print.css" type="text/css" media="print" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="../../../index.html">
+        <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+      </a>
+      <div class="org-repo">
+        <span class="org">GEOMETOR</span>
+        •
+        <span class="repo">model</span>
+      </div>
+    </div>
+    <nav aria-label="Header">
+      <input type="checkbox" id="nav-Header-toggle" >
+      <label for="nav-Header-toggle" >Header</label>
+      <ul>
+        <li>
+          <a href="../../../mission/index.html"  >mission</a>
+        </li>
+        <li>
+          <a href="../../../usage/index.html"  >usage</a>
+        </li>
+        <li>
+          <a href="../../../log/index.html"  >log</a>
+        </li>
+        <li>
+          <a href="../../../modules/index.html"  >modules</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="motto"></div>
+  </header>
+  <main>
+
+    <article>
+      <div class="content">
+      <nav class="breadcrumbs">
+        <span><a href="../../../index.html">Home</a></span>
+          <span>/</span>
+        <span><a href="../../index.html">Module code</a></span>
+        <span>/</span>
+        <span>geometor.model.delete</span>
+      </nav>
+        <nav class="context">
+          <div class="prev">
+          </div>
+          <div class="next">
+          </div>
+        </nav>
+          <h1>Source code for geometor.model.delete</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">The :mod:`geometor.model.delete` module provides deletion functions for the Model class.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich.console</span><span class="w"> </span><span class="kn">import</span> <span class="n">Console</span>
+
+<div class="viewcode-block" id="console">
+<a class="viewcode-back" href="../../../modules/api/geometor/model/delete/index.html#geometor.model.delete.console">[docs]</a>
+<span class="n">console</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span></div>
+
+
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+
+<div class="viewcode-block" id="DeleteMixin">
+<a class="viewcode-back" href="../../../modules/api/geometor/model/delete/index.html#geometor.model.delete.DeleteMixin">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DeleteMixin</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Mixin for the Model class containing deletion operations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_dependents_recursive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent_element</span><span class="p">,</span> <span class="n">dependents_set</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recursively finds all elements that depend on the given parent_element.</span>
+
+<span class="sd">        An element is considered a dependent if the parent_element is in its</span>
+<span class="sd">        &#39;parents&#39; list. This function traverses the entire dependency tree.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            parent_element (spg.GeometryEntity): The element whose dependents are to be found.</span>
+<span class="sd">            dependents_set (set): A set to store the found dependent elements.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">element</span><span class="p">,</span> <span class="n">details</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">parent_element</span> <span class="ow">in</span> <span class="n">details</span><span class="o">.</span><span class="n">parents</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">element</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dependents_set</span><span class="p">:</span>
+                    <span class="n">dependents_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+                    <span class="c1"># Recurse to find the children of this newly found dependent</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_get_dependents_recursive</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">dependents_set</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DeleteMixin.get_dependents">
+<a class="viewcode-back" href="../../../modules/api/geometor/model/delete/index.html#geometor.model.delete.DeleteMixin.get_dependents">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_dependents</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element_or_ID</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Finds and returns a set of all elements that depend on the given element.</span>
+
+<span class="sd">        This method is for checking dependencies without performing any deletion.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            element_or_ID (spg.GeometryEntity or str): The element object or its</span>
+<span class="sd">                ID to check for dependents.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            set: A set of dependent elements. Returns an empty set if the element</span>
+<span class="sd">                 is not found or has no dependents.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element_or_ID</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">element_to_check</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_element_by_ID</span><span class="p">(</span><span class="n">element_or_ID</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">element_to_check</span><span class="p">:</span>
+                <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;[bold red]Error:[/bold red] Element with ID &#39;</span><span class="si">{</span><span class="n">element_or_ID</span><span class="si">}</span><span class="s2">&#39; not found.&quot;</span>
+                <span class="p">)</span>
+                <span class="k">return</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">element_to_check</span> <span class="o">=</span> <span class="n">element_or_ID</span>
+
+        <span class="k">if</span> <span class="n">element_to_check</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;[bold red]Error:[/bold red] Element &#39;</span><span class="si">{</span><span class="n">element_to_check</span><span class="si">}</span><span class="s2">&#39; not found in the model.&quot;</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="nb">set</span><span class="p">()</span>
+
+        <span class="n">dependents</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_dependents_recursive</span><span class="p">(</span><span class="n">element_to_check</span><span class="p">,</span> <span class="n">dependents</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dependents</span></div>
+
+
+<div class="viewcode-block" id="DeleteMixin.delete_element">
+<a class="viewcode-back" href="../../../modules/api/geometor/model/delete/index.html#geometor.model.delete.DeleteMixin.delete_element">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">delete_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element_or_ID</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Deletes an element and performs a cascading delete of all its dependents.</span>
+
+<span class="sd">        This method removes the specified element and any other elements that were</span>
+<span class="sd">        constructed from it, directly or indirectly.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            element_or_ID (spg.GeometryEntity or str): The element object or its</span>
+<span class="sd">                ID to be deleted.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element_or_ID</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">element_to_delete</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_element_by_ID</span><span class="p">(</span><span class="n">element_or_ID</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">element_to_delete</span><span class="p">:</span>
+                <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;[bold red]Error:[/bold red] Element with ID &#39;</span><span class="si">{</span><span class="n">element_or_ID</span><span class="si">}</span><span class="s2">&#39; not found.&quot;</span>
+                <span class="p">)</span>
+                <span class="k">return</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">element_to_delete</span> <span class="o">=</span> <span class="n">element_or_ID</span>
+
+        <span class="k">if</span> <span class="n">element_to_delete</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="c1"># This can happen if the object exists but isn&#39;t in this specific model</span>
+            <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;[bold red]Error:[/bold red] Element &#39;</span><span class="si">{</span><span class="n">element_to_delete</span><span class="si">}</span><span class="s2">&#39; not found in the model.&quot;</span>
+            <span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="c1"># 1. Recursively find all dependents</span>
+        <span class="n">dependents</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_dependents_recursive</span><span class="p">(</span><span class="n">element_to_delete</span><span class="p">,</span> <span class="n">dependents</span><span class="p">)</span>
+
+        <span class="c1"># 2. The full set to remove includes the initial element</span>
+        <span class="n">elements_to_remove</span> <span class="o">=</span> <span class="n">dependents</span> <span class="o">|</span> <span class="p">{</span><span class="n">element_to_delete</span><span class="p">}</span>
+
+        <span class="c1"># 3. Filter out elements that came before the element to delete</span>
+        <span class="n">model_elements</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">delete_index</span> <span class="o">=</span> <span class="n">model_elements</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">element_to_delete</span><span class="p">)</span>
+
+        <span class="n">final_elements_to_remove</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">el</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">elements_to_remove</span> <span class="k">if</span> <span class="n">model_elements</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">el</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">delete_index</span>
+        <span class="p">}</span>
+
+        <span class="c1"># 4. Remove all identified elements from the model</span>
+        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">final_elements_to_remove</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+                <span class="k">del</span> <span class="bp">self</span><span class="p">[</span><span class="n">el</span><span class="p">]</span></div>
+</div>
+
+</pre></div>
+      </div>
+      <footer>
+
+
+        <nav class="context">
+          <div class="prev">
+          </div>
+          <div class="next">
+          </div>
+        </nav></footer>
+    </article>
+
+  </main>
+
+<div class="asides">
+    <aside>
+        <h3>Search</h3>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+    </aside>
+    
+<aside>
+    <h3>Recent Logs</h3>
+    <ul>
+        
+            <li><a href="../../../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+        
+    </ul>
+</aside>
+
+    
+
+    
+
+    
+
+<aside class="aside-types">
+    <h3>Types</h3>
+    <ul>
+        
+        <li><a href="../../../types/log.html">log</a></li>
+        
+    </ul>
+</aside>
+
+</div>
+<footer>
+    <div class="footer-nav">
+    <ul>
+        <li><a href="../../../about.html">about</a></li>
+        <li><a href="../../../connect.html">connect</a></li>
+        <li><a href="../../../glossary.html">glossary</a></li>
+        <li><a href="../../../todos.html">todos</a></li>
+        <li><a href="../../../changelog.html">changelog</a></li>
+    </ul>
+</div>
+    <hr/>
+    <div role="contentinfo">
+        <p>
+                &copy; Copyright .
+        </p>
+    </div>
+</footer>
+
+  <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+  <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+  <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+  <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+  <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+  <script src="../../../_static/js/collection_controls.js?v=b6b5297a"></script>
+
+
+</body>
+</html>

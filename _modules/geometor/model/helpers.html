@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>geometor.model.helpers &mdash; Project name not set  documentation</title>
+  <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea5fcf70" />
+  <link rel="stylesheet" type="text/css" href="../../../_static/css/styles.css?v=bc127b54" />
+  <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+  <link rel="stylesheet" href="../../../_static/css/print.css" type="text/css" media="print" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="../../../index.html">
+        <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+      </a>
+      <div class="org-repo">
+        <span class="org">GEOMETOR</span>
+        •
+        <span class="repo">model</span>
+      </div>
+    </div>
+    <nav aria-label="Header">
+      <input type="checkbox" id="nav-Header-toggle" >
+      <label for="nav-Header-toggle" >Header</label>
+      <ul>
+        <li>
+          <a href="../../../mission/index.html"  >mission</a>
+        </li>
+        <li>
+          <a href="../../../usage/index.html"  >usage</a>
+        </li>
+        <li>
+          <a href="../../../log/index.html"  >log</a>
+        </li>
+        <li>
+          <a href="../../../modules/index.html"  >modules</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="motto"></div>
+  </header>
+  <main>
+
+    <article>
+      <div class="content">
+      <nav class="breadcrumbs">
+        <span><a href="../../../index.html">Home</a></span>
+          <span>/</span>
+        <span><a href="../../index.html">Module code</a></span>
+        <span>/</span>
+        <span>geometor.model.helpers</span>
+      </nav>
+        <nav class="context">
+          <div class="prev">
+          </div>
+          <div class="next">
+          </div>
+        </nav>
+          <h1>Source code for geometor.model.helpers</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">The :mod:`geometor.model.helpers` module provides helper functions for geometric constructions.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy.geometry</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">spg</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;line_get_y&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;set_given_start_points&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;set_given_start_points_zero&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;set_equilateral_poles&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;construct_perpendicular_bisector&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;set_midpoint&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;set_given_rect_points&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;set_given_square_points&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<span class="c1"># helpers ******************************</span>
+<div class="viewcode-block" id="line_get_y">
+<a class="viewcode-back" href="../../../modules/api/geometor/model/helpers/index.html#geometor.model.helpers.line_get_y">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">line_get_y</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;return y value for specific x&quot;&quot;&quot;</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="n">coefficients</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="n">c</span><span class="p">)</span> <span class="o">/</span> <span class="n">b</span></div>
+
+
+
+<div class="viewcode-block" id="set_given_start_points">
+<a class="viewcode-back" href="../../../modules/api/geometor/model/helpers/index.html#geometor.model.helpers.set_given_start_points">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_given_start_points</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;create inital two points -</span>
+<span class="sd">    establishing the unit for the field&quot;&quot;&quot;</span>
+    <span class="n">p1</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
+    <span class="n">p2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span></div>
+
+
+
+<div class="viewcode-block" id="set_given_start_points_zero">
+<a class="viewcode-back" href="../../../modules/api/geometor/model/helpers/index.html#geometor.model.helpers.set_given_start_points_zero">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_given_start_points_zero</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;create inital two points -</span>
+<span class="sd">    establishing the unit for the field&quot;&quot;&quot;</span>
+    <span class="n">p1</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
+    <span class="n">p2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span></div>
+
+
+
+<div class="viewcode-block" id="set_equilateral_poles">
+<a class="viewcode-back" href="../../../modules/api/geometor/model/helpers/index.html#geometor.model.helpers.set_equilateral_poles">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_equilateral_poles</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">pt_1</span><span class="p">:</span> <span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">,</span> <span class="n">pt_2</span><span class="p">:</span> <span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">,</span> <span class="n">add_circles</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">):</span>
+    <span class="k">if</span> <span class="n">add_circles</span><span class="p">:</span>
+        <span class="n">c1</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">pt_1</span><span class="p">,</span> <span class="n">pt_2</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;guide&quot;</span><span class="p">])</span>
+        <span class="n">c2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">pt_2</span><span class="p">,</span> <span class="n">pt_1</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;guide&quot;</span><span class="p">])</span>
+        <span class="n">pts</span> <span class="o">=</span> <span class="n">c1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span>
+        <span class="n">set_points</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">pts</span><span class="p">:</span>
+            <span class="n">pt</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pt</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+            <span class="n">set_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
+            <span class="c1">#  model[pt].parents[c1] = &quot;&quot;</span>
+            <span class="c1">#  model[pt].parents[c2] = &quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">set_points</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">c1</span> <span class="o">=</span> <span class="n">spg</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="n">pt_1</span><span class="p">,</span> <span class="n">pt_1</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">pt_2</span><span class="p">))</span>
+        <span class="n">c2</span> <span class="o">=</span> <span class="n">spg</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="n">pt_2</span><span class="p">,</span> <span class="n">pt_2</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">pt_1</span><span class="p">))</span>
+        <span class="n">pts</span> <span class="o">=</span> <span class="n">c1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span>
+        <span class="n">set_points</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">pts</span><span class="p">:</span>
+            <span class="n">pt</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pt</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+            <span class="n">set_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
+            <span class="n">model</span><span class="p">[</span><span class="n">pt</span><span class="p">]</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="n">c1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">model</span><span class="p">[</span><span class="n">pt</span><span class="p">]</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="n">c2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">set_points</span></div>
+
+
+
+<div class="viewcode-block" id="construct_perpendicular_bisector">
+<a class="viewcode-back" href="../../../modules/api/geometor/model/helpers/index.html#geometor.model.helpers.construct_perpendicular_bisector">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">construct_perpendicular_bisector</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">pt_1</span><span class="p">,</span> <span class="n">pt_2</span><span class="p">,</span> <span class="n">add_circles</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;perform fundamental operations for two points</span>
+<span class="sd">    and add perpendicular bisector&quot;&quot;&quot;</span>
+    <span class="n">pole_1</span><span class="p">,</span> <span class="n">pole_2</span> <span class="o">=</span> <span class="n">set_equilateral_poles</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">pt_1</span><span class="p">,</span> <span class="n">pt_2</span><span class="p">,</span> <span class="n">add_circles</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">construct_line</span><span class="p">(</span><span class="n">pole_1</span><span class="p">,</span> <span class="n">pole_2</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;bisector&quot;</span><span class="p">])</span></div>
+
+
+
+<div class="viewcode-block" id="set_midpoint">
+<a class="viewcode-back" href="../../../modules/api/geometor/model/helpers/index.html#geometor.model.helpers.set_midpoint">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_midpoint</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">pt_1</span><span class="p">,</span> <span class="n">pt_2</span><span class="p">,</span> <span class="n">add_circles</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;perform fundamental operations for two points</span>
+<span class="sd">    and add perpendicular bisector&quot;&quot;&quot;</span>
+    <span class="n">pole_1</span><span class="p">,</span> <span class="n">pole_2</span> <span class="o">=</span> <span class="n">set_equilateral_poles</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">pt_1</span><span class="p">,</span> <span class="n">pt_2</span><span class="p">,</span> <span class="n">add_circles</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">construct_line</span><span class="p">(</span><span class="n">pole_1</span><span class="p">,</span> <span class="n">pole_2</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;bisector&quot;</span><span class="p">])</span></div>
+
+
+
+<div class="viewcode-block" id="set_given_rect_points">
+<a class="viewcode-back" href="../../../modules/api/geometor/model/helpers/index.html#geometor.model.helpers.set_given_rect_points">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_given_rect_points</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">pt</span><span class="p">,</span> <span class="n">x_offset</span><span class="p">,</span> <span class="n">y_offset</span><span class="p">):</span>
+    <span class="n">rect_points</span> <span class="o">=</span> <span class="p">[</span><span class="n">pt</span><span class="p">]</span>
+    <span class="n">pt_x0</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">x_offset</span><span class="p">,</span> <span class="n">pt</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
+    <span class="n">rect_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pt_x0</span><span class="p">)</span>
+    <span class="n">pt_xy</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">x_offset</span><span class="p">,</span> <span class="n">pt</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">y_offset</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
+    <span class="n">rect_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pt_xy</span><span class="p">)</span>
+    <span class="n">pt_0y</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pt</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">y_offset</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
+    <span class="n">rect_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pt_0y</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">rect_points</span></div>
+
+
+
+<div class="viewcode-block" id="set_given_square_points">
+<a class="viewcode-back" href="../../../modules/api/geometor/model/helpers/index.html#geometor.model.helpers.set_given_square_points">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_given_square_points</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">pt</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">set_given_rect_points</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">pt</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span></div>
+
+</pre></div>
+      </div>
+      <footer>
+
+
+        <nav class="context">
+          <div class="prev">
+          </div>
+          <div class="next">
+          </div>
+        </nav></footer>
+    </article>
+
+  </main>
+
+<div class="asides">
+    <aside>
+        <h3>Search</h3>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+    </aside>
+    
+<aside>
+    <h3>Recent Logs</h3>
+    <ul>
+        
+            <li><a href="../../../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+        
+    </ul>
+</aside>
+
+    
+
+    
+
+    
+
+<aside class="aside-types">
+    <h3>Types</h3>
+    <ul>
+        
+        <li><a href="../../../types/log.html">log</a></li>
+        
+    </ul>
+</aside>
+
+</div>
+<footer>
+    <div class="footer-nav">
+    <ul>
+        <li><a href="../../../about.html">about</a></li>
+        <li><a href="../../../connect.html">connect</a></li>
+        <li><a href="../../../glossary.html">glossary</a></li>
+        <li><a href="../../../todos.html">todos</a></li>
+        <li><a href="../../../changelog.html">changelog</a></li>
+    </ul>
+</div>
+    <hr/>
+    <div role="contentinfo">
+        <p>
+                &copy; Copyright .
+        </p>
+    </div>
+</footer>
+
+  <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+  <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+  <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+  <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+  <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+  <script src="../../../_static/js/collection_controls.js?v=b6b5297a"></script>
+
+
+</body>
+</html>
