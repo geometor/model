@@ -42,4 +42,3 @@ def get_color(element, classes=None):
         return COLORS["polygon"]
 
     return "white"
-

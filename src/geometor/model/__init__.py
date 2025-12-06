@@ -4,11 +4,7 @@ The :mod:`geometor.model` module provides the core data structures and logic for
 
 from __future__ import annotations
 
-__author__ = "geometor"
-__maintainer__ = "geometor"
-__email__ = "github@geometor.com"
 __version__ = "0.4.4"
-__licence__ = "MIT"
 
 from geometor.model.serialize import load_model
 from geometor.model.model import GeometryObject, Model
@@ -17,7 +13,7 @@ __all__ = [
     "Model",
     "GeometryObject",
     "load_model",
-] 
+]
 
 """ import sympy.geometry as spg
 

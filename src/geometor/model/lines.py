@@ -10,7 +10,7 @@ import sympy as sp
 import sympy.geometry as spg
 from rich.table import Table
 
-from geometor.model.colors import COLORS, get_color
+from geometor.model.colors import get_color
 from geometor.model.element import Element, check_existence, find_all_intersections
 
 if TYPE_CHECKING:

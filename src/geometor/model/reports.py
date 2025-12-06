@@ -11,6 +11,8 @@ from rich.text import Text
 
 # from .utils import *
 
+from .colors import get_color
+
 
 def generate_dot(graph, parent=None, dot_string="", defined_nodes=None):
     if parent is None:
@@ -44,7 +46,6 @@ def generate_dot(graph, parent=None, dot_string="", defined_nodes=None):
         dot_string += "}\n"
 
     return dot_string
-
 
 
 class ReportMixin:
@@ -238,9 +239,6 @@ class ReportMixin:
             table.add_row(*row)
 
         console.print(table)
-
-
-from .colors import get_color
 
 
 def get_colored_ID(el, ID, classes=None):

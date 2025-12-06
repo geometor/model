@@ -4,13 +4,12 @@ The :mod:`geometor.model.circles` module provides circle construction and manipu
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
 
 import sympy as sp
 import sympy.geometry as spg
 from rich.table import Table
 
-from geometor.model.colors import COLORS, get_color
+from geometor.model.colors import get_color
 from geometor.model.element import (
     CircleElement,
     check_existence,

@@ -10,7 +10,7 @@ import sympy as sp
 import sympy.geometry as spg
 from rich.table import Table
 
-from geometor.model.colors import COLORS, get_color
+from geometor.model.colors import get_color
 from geometor.model.element import Element
 from geometor.model.utils import clean_expr
 
