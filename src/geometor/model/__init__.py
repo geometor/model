@@ -4,7 +4,7 @@ The :mod:`geometor.model` module provides the core data structures and logic for
 
 from __future__ import annotations
 
-__version__ = "0.4.4"
+__version__ = "0.4.5"
 
 from geometor.model.serialize import load_model
 from geometor.model.model import GeometryObject, Model

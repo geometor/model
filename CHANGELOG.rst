@@ -1,6 +1,15 @@
 changelog
 =========
 
+0.4.5
+-----
+*2025-12-06*
+
+**changed**
+
+.. + Refined metadata.
+.. + Updated documentation.
+
 0.4.4
 -----
 *2025-12-04*
