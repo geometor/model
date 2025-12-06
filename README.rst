@@ -30,15 +30,6 @@ Key Features
 Usage
 -----
 
-Create a model, add points, and perform constructions:
-
-.. code-block:: bash
-
-    # Run the model script
-    model
-
-Or use it as a library:
-
 .. code-block:: python
 
     from geometor.model import *
