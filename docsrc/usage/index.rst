@@ -4,4 +4,5 @@
 usage
 =====
 
-.. include:: installation.rst
+.. collection::
+   :sort: order

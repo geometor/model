@@ -1,0 +1,128 @@
+geometor.model.sections
+=======================
+
+.. py:module:: geometor.model.sections
+
+.. autoapi-nested-parse::
+
+   The :mod:`geometor.model.sections` module provides section construction and manipulation for the Model class.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   geometor.model.sections.phi
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   geometor.model.sections.SectionsMixin
+   geometor.model.sections.Section
+
+
+Module Contents
+---------------
+
+.. py:data:: phi
+
+.. py:class:: SectionsMixin
+
+   Mixin for the Model class containing section construction operations.
+
+
+   .. py:method:: set_section_by_IDs(points_IDs: list[str], classes: list = None, ID: str = '') -> Section
+
+      find points by ID and use them with :meth:`Model.set_section`
+
+
+
+   .. py:method:: set_section(points: list[sympy.geometry.Point], classes=[], ID='') -> Section
+
+      set section (list of 3 points on a line)
+
+
+
+.. py:class:: Section(points: list[sympy.geometry.Point])
+
+   .. py:attribute:: points
+
+
+   .. py:attribute:: segments
+
+
+   .. py:attribute:: clean_expr
+
+
+   .. py:method:: __eq__(other)
+
+
+   .. py:method:: __hash__()
+
+
+   .. py:method:: __repr__()
+
+
+   .. py:method:: get_IDs(model) -> list[str]
+
+      returns a list of IDs
+
+
+
+   .. py:property:: ratio
+      :type: sympy.Expr
+
+
+      returns the ratio of the symbolic lengths of each segment
+
+
+   .. py:property:: lengths
+      :type: list[sympy.Expr]
+
+
+
+   .. py:property:: floats
+      :type: list[float]
+
+
+
+   .. py:property:: is_golden
+      :type: bool
+
+
+
+   .. py:property:: min_length
+      :type: sympy.Expr
+
+
+
+   .. py:property:: min_float
+      :type: float
+
+
+
+   .. py:property:: min_segment
+      :type: sympy.geometry.Segment
+
+
+
+   .. py:property:: max_length
+      :type: sympy.Expr
+
+
+
+   .. py:property:: max_float
+      :type: float
+
+
+
+   .. py:property:: max_segment
+      :type: sympy.geometry.Segment
+
+
+

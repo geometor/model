@@ -1,0 +1,116 @@
+geometor.model.element
+======================
+
+.. py:module:: geometor.model.element
+
+.. autoapi-nested-parse::
+
+   The :mod:`geometor.model.element` module provides core element classes and intersection logic.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   geometor.model.element.Struct
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   geometor.model.element.Element
+   geometor.model.element.CircleElement
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   geometor.model.element.check_existence
+   geometor.model.element.find_all_intersections
+
+
+Module Contents
+---------------
+
+.. py:data:: Struct
+
+.. py:class:: Element(sympy_obj, parents: list | None = None, classes: list[str] | None = None, ID: str = '', guide: bool = False)
+
+   A container for special attributes of an element of a model that are
+   not supported by the SymPy elements.
+
+   :param sympy_obj: The sympy object representing the geometric entity.
+   :param parents: A list of parent elements.
+   :param classes: A list of class labels.
+   :param ID: A string ID for the element. If empty, an ID is generated.
+   :param guide: If True, the element is a guide and excluded from intersections.
+
+
+   .. py:attribute:: object
+
+
+   .. py:attribute:: parents
+
+
+   .. py:attribute:: classes
+
+
+   .. py:attribute:: ID
+      :value: ''
+
+
+
+   .. py:attribute:: guide
+      :value: False
+
+
+
+   .. py:property:: length
+
+      Returns the cleaned length of the element.
+      For polygons, it returns the list of cleaned side lengths.
+
+
+.. py:class:: CircleElement(sympy_obj: sympy.geometry.Circle, pt_radius: sympy.geometry.Point, parents: list | None = None, classes: list[str] | None = None, ID: str = '', guide: bool = False)
+
+   Bases: :py:obj:`Element`
+
+
+   Same as :class:`Element` but adds a ``pt_radius``.
+
+   :param sympy_obj: The sympy object representing the geometric entity.
+   :param pt_radius: The point defining the radius.
+   :param parents: A list of parent elements.
+   :param classes: A list of class labels.
+   :param ID: A string ID for the element.
+   :param guide: If True, the element is a guide.
+
+
+   .. py:attribute:: pt_radius
+
+
+.. py:function:: check_existence(self, struct: Struct, existing_structs: list[Struct]) -> tuple[bool, Struct]
+
+   Check if a geometric structure exists in the model.
+
+   :param struct: The structure to check.
+   :param existing_structs: List of existing structures in the model.
+
+   :returns: A tuple containing a boolean indicating existence
+             and the existing structure if found (otherwise None).
+   :rtype: tuple[bool, Struct]
+
+
+.. py:function:: find_all_intersections(self, struct: Struct) -> None
+
+   Find all intersections in the model for the given struct.
+
+   :param struct: The structure to find intersections for.
+
+

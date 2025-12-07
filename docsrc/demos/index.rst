@@ -1,7 +1,8 @@
+:navigation: header
+:order: 4 
+
 demos
 =====
 
-.. toctree::
+.. collection::
 
-   demo
-   vesica

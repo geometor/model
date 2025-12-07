@@ -23,9 +23,9 @@ def run():
 
     model.construct_line(E, F)
 
-    report_summary(model)
-    report_group_by_type(model)
-    report_sequence(model)
+    model.report_summary()
+    model.report_group_by_type()
+    model.report_sequence()
 
     model.save("vesica.json")
 
