@@ -37,10 +37,13 @@
           <a href="../../../usage/index.html"  >usage</a>
         </li>
         <li>
+          <a href="../../../log/index.html"  >log</a>
+        </li>
+        <li>
           <a href="../../../modules/index.html"  >modules</a>
         </li>
         <li>
-          <a href="../../../log/index.html"  >log</a>
+          <a href="../../../demos/index.html"  >demos</a>
         </li>
       </ul>
     </nav>
@@ -92,14 +95,14 @@
 
 
 <div class="viewcode-block" id="SectionsMixin">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.SectionsMixin">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/sections.html#geometor.model.sections.SectionsMixin">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">SectionsMixin</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Mixin for the Model class containing section construction operations.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="SectionsMixin.set_section_by_IDs">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.SectionsMixin.set_section_by_IDs">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/sections.html#geometor.model.sections.SectionsMixin.set_section_by_IDs">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_section_by_IDs</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">points_IDs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ID</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Section</span><span class="p">:</span>
@@ -115,7 +118,7 @@
 
 
 <div class="viewcode-block" id="SectionsMixin.set_section">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.SectionsMixin.set_section">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/sections.html#geometor.model.sections.SectionsMixin.set_section">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_section</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">],</span> <span class="n">classes</span><span class="o">=</span><span class="p">[],</span> <span class="n">ID</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Section</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        set section (list of 3 points on a line)</span>
@@ -149,7 +152,7 @@
 
 
 <div class="viewcode-block" id="Section">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/sections.html#geometor.model.sections.Section">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Section</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">]):</span>
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;A section must be defined by three points.&quot;</span>
@@ -197,7 +200,7 @@
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Section([</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">points_repr</span><span class="p">)</span><span class="si">}</span><span class="s2">])&quot;</span>
 
 <div class="viewcode-block" id="Section.get_IDs">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section.get_IDs">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/sections.html#geometor.model.sections.Section.get_IDs">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_IDs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        returns a list of IDs</span>
@@ -207,7 +210,7 @@
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Section.ratio">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section.ratio">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/sections.html#geometor.model.sections.Section.ratio">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        returns the ratio of the symbolic lengths of each segment</span>
@@ -220,21 +223,21 @@
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Section.lengths">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section.lengths">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/sections.html#geometor.model.sections.Section.lengths">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">lengths</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">]:</span>
         <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">clean_expr</span><span class="p">(</span><span class="n">seg</span><span class="o">.</span><span class="n">length</span><span class="p">)</span> <span class="k">for</span> <span class="n">seg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">segments</span><span class="p">]</span></div>
 
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Section.floats">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section.floats">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/sections.html#geometor.model.sections.Section.floats">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">floats</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
         <span class="k">return</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">length</span><span class="o">.</span><span class="n">evalf</span><span class="p">())</span> <span class="k">for</span> <span class="n">length</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">lengths</span><span class="p">]</span></div>
 
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Section.is_golden">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section.is_golden">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/sections.html#geometor.model.sections.Section.is_golden">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_golden</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="c1"># First, perform a quick check using floating-point numbers.</span>
         <span class="n">l1_float</span><span class="p">,</span> <span class="n">l2_float</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">floats</span>
@@ -262,21 +265,21 @@
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Section.min_length">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section.min_length">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/sections.html#geometor.model.sections.Section.min_length">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">min_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lengths</span><span class="p">)</span></div>
 
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Section.min_float">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section.min_float">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/sections.html#geometor.model.sections.Section.min_float">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">min_float</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">floats</span><span class="p">)</span></div>
 
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Section.min_segment">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section.min_segment">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/sections.html#geometor.model.sections.Section.min_segment">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">min_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">spg</span><span class="o">.</span><span class="n">Segment</span><span class="p">:</span>
         <span class="n">min_length_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lengths</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">min_length</span><span class="p">())</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">segments</span><span class="p">[</span><span class="n">min_length_index</span><span class="p">]</span></div>
@@ -284,21 +287,21 @@
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Section.max_length">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section.max_length">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/sections.html#geometor.model.sections.Section.max_length">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">max_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lengths</span><span class="p">)</span></div>
 
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Section.max_float">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section.max_float">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/sections.html#geometor.model.sections.Section.max_float">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">max_float</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">floats</span><span class="p">)</span></div>
 
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Section.max_segment">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section.max_segment">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/sections.html#geometor.model.sections.Section.max_segment">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">max_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">spg</span><span class="o">.</span><span class="n">Segment</span><span class="p">:</span>
         <span class="n">max_length_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lengths</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_length</span><span class="p">())</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">segments</span><span class="p">[</span><span class="n">max_length_index</span><span class="p">]</span></div>

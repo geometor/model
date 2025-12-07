@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>demo &mdash; Project name not set  documentation</title>
+  <title>getting started &mdash; Project name not set  documentation</title>
   <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=ea5fcf70" />
   <link rel="stylesheet" type="text/css" href="../_static/css/styles.css?v=bc127b54" />
   <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
@@ -34,13 +34,16 @@
           <a href="../mission/index.html"  >mission</a>
         </li>
         <li>
-          <a href="../usage/index.html"  >usage</a>
+          <a href="index.html"  >usage</a>
+        </li>
+        <li>
+          <a href="../log/index.html"  >log</a>
         </li>
         <li>
           <a href="../modules/index.html"  >modules</a>
         </li>
         <li>
-          <a href="../log/index.html"  >log</a>
+          <a href="../demos/index.html"  >demos</a>
         </li>
       </ul>
     </nav>
@@ -53,19 +56,33 @@
       <nav class="breadcrumbs">
         <span><a href="../index.html">Home</a></span>
         <span>/</span>
-        <span>demo</span>
+        <span>getting started</span>
       </nav>
         <nav class="context">
           <div class="prev">
-             <a href="vesica.html" class="btn btn-neutral float-left" title="vesica" >Prev</a>
           </div>
           <div class="next">
-            <a href="index.html" class="btn btn-neutral float-right" title="demos" >Next</a>
           </div>
         </nav>
-          <section id="demo">
-<h1>demo<a class="headerlink" href="#demo" title="Link to this heading">¶</a></h1>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+          <section id="getting-started">
+<h1>getting started<a class="headerlink" href="#getting-started" title="Link to this heading">¶</a></h1>
+<p>To start using <code class="docutils literal notranslate"><span class="pre">geometor.model</span></code>, you need to create a <code class="docutils literal notranslate"><span class="pre">Model</span></code> instance. This object will hold all your geometric elements and manage their relationships.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
+
+<span class="c1"># Initialize a new model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;my_first_construction&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>From here, you can start adding points and constructing elements.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add two starting points</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
+
+<span class="c1"># Construct a line connecting them</span>
+<span class="n">line_AB</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">construct_line</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+
+<span class="c1"># Construct a circle centered at A passing through B</span>
+<span class="n">circle_A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -73,13 +90,13 @@
       </div>
       <footer>
 
+        <div class="meta">
+        </div>
 
         <nav class="context">
           <div class="prev">
-             <a href="vesica.html" class="btn btn-neutral float-left" title="vesica" >Prev</a>
           </div>
           <div class="next">
-            <a href="index.html" class="btn btn-neutral float-right" title="demos" >Next</a>
           </div>
         </nav></footer>
     </article>

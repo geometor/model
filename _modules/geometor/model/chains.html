@@ -37,10 +37,13 @@
           <a href="../../../usage/index.html"  >usage</a>
         </li>
         <li>
+          <a href="../../../log/index.html"  >log</a>
+        </li>
+        <li>
           <a href="../../../modules/index.html"  >modules</a>
         </li>
         <li>
-          <a href="../../../log/index.html"  >log</a>
+          <a href="../../../demos/index.html"  >demos</a>
         </li>
       </ul>
     </nav>
@@ -78,7 +81,7 @@
 
 
 <div class="viewcode-block" id="Chain">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/chains/index.html#geometor.model.chains.Chain">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/chains.html#geometor.model.chains.Chain">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Chain</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class representing a chain of connected golden sections,</span>
@@ -116,7 +119,7 @@
 
 
 <div class="viewcode-block" id="Chain.extract_segments">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/chains/index.html#geometor.model.chains.Chain.extract_segments">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/chains.html#geometor.model.chains.Chain.extract_segments">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">extract_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Segment</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Extracts unique segments from the chain.</span>
@@ -135,7 +138,7 @@
 
 
 <div class="viewcode-block" id="Chain.extract_points">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/chains/index.html#geometor.model.chains.Chain.extract_points">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/chains.html#geometor.model.chains.Chain.extract_points">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">extract_points</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Extracts unique points from the chain while maintaining order.</span>
@@ -154,7 +157,7 @@
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Chain.lengths">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/chains/index.html#geometor.model.chains.Chain.lengths">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/chains.html#geometor.model.chains.Chain.lengths">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">lengths</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Extract the symbolic lengths of the segments in the chain.</span>
@@ -169,7 +172,7 @@
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Chain.numerical_lengths">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/chains/index.html#geometor.model.chains.Chain.numerical_lengths">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/chains.html#geometor.model.chains.Chain.numerical_lengths">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">numerical_lengths</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculate and extract the numerical lengths of the segments in the chain.</span>
@@ -185,7 +188,7 @@
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Chain.flow">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/chains/index.html#geometor.model.chains.Chain.flow">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/chains.html#geometor.model.chains.Chain.flow">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">flow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Determine the flow of the segments in the chain by comparing the lengths</span>
@@ -213,7 +216,7 @@
 
 
 <div class="viewcode-block" id="Chain.count_symmetry_lines">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/chains/index.html#geometor.model.chains.Chain.count_symmetry_lines">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/chains.html#geometor.model.chains.Chain.count_symmetry_lines">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">count_symmetry_lines</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="n">symmetry_count</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">flow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flow</span>
@@ -229,7 +232,7 @@
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Chain.fibonacci_IDs">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/chains/index.html#geometor.model.chains.Chain.fibonacci_IDs">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/chains.html#geometor.model.chains.Chain.fibonacci_IDs">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">fibonacci_IDs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates and returns Fibonacci-style IDs for each segment based on</span>

@@ -37,10 +37,13 @@
           <a href="../../../usage/index.html"  >usage</a>
         </li>
         <li>
+          <a href="../../../log/index.html"  >log</a>
+        </li>
+        <li>
           <a href="../../../modules/index.html"  >modules</a>
         </li>
         <li>
-          <a href="../../../log/index.html"  >log</a>
+          <a href="../../../demos/index.html"  >demos</a>
         </li>
       </ul>
     </nav>
@@ -87,14 +90,14 @@
 
 
 <div class="viewcode-block" id="PolygonsMixin">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/polygons/index.html#geometor.model.polygons.PolygonsMixin">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/polygons.html#geometor.model.polygons.PolygonsMixin">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">PolygonsMixin</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Mixin for the Model class containing polygon construction operations.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="PolygonsMixin.set_polygon_by_IDs">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/polygons/index.html#geometor.model.polygons.PolygonsMixin.set_polygon_by_IDs">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/polygons.html#geometor.model.polygons.PolygonsMixin.set_polygon_by_IDs">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_polygon_by_IDs</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">poly_pts_IDs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ID</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">spg</span><span class="o">.</span><span class="n">Polygon</span><span class="p">:</span>
@@ -110,7 +113,7 @@
 
 
 <div class="viewcode-block" id="PolygonsMixin.set_polygon">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/polygons/index.html#geometor.model.polygons.PolygonsMixin.set_polygon">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/polygons.html#geometor.model.polygons.PolygonsMixin.set_polygon">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_polygon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">poly_pts</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">],</span> <span class="n">classes</span><span class="o">=</span><span class="p">[],</span> <span class="n">ID</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">spg</span><span class="o">.</span><span class="n">Polygon</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        set polygon (list of 3 or more points)</span>

@@ -37,10 +37,13 @@
           <a href="../../../usage/index.html"  >usage</a>
         </li>
         <li>
+          <a href="../../../log/index.html"  >log</a>
+        </li>
+        <li>
           <a href="../../../modules/index.html"  >modules</a>
         </li>
         <li>
-          <a href="../../../log/index.html"  >log</a>
+          <a href="../../../demos/index.html"  >demos</a>
         </li>
       </ul>
     </nav>
@@ -86,14 +89,14 @@
 
 
 <div class="viewcode-block" id="WedgesMixin">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/wedges/index.html#geometor.model.wedges.WedgesMixin">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/wedges.html#geometor.model.wedges.WedgesMixin">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">WedgesMixin</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Mixin for the Model class containing wedge construction operations.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="WedgesMixin.set_wedge">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/wedges/index.html#geometor.model.wedges.WedgesMixin.set_wedge">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/wedges.html#geometor.model.wedges.WedgesMixin.set_wedge">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_wedge</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">pt_center</span><span class="p">:</span> <span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">,</span>
@@ -193,7 +196,7 @@
 
 
 <div class="viewcode-block" id="Wedge">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/wedges/index.html#geometor.model.wedges.Wedge">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/wedges.html#geometor.model.wedges.Wedge">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Wedge</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">spg</span><span class="o">.</span><span class="n">Point</span><span class="p">]):</span>
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;A wedge must be defined by four points.&quot;</span>
@@ -256,14 +259,14 @@
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Wedge.circle">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/wedges/index.html#geometor.model.wedges.Wedge.circle">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/wedges.html#geometor.model.wedges.Wedge.circle">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">circle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">spg</span><span class="o">.</span><span class="n">Circle</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_circle</span></div>
 
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Wedge.radians">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/wedges/index.html#geometor.model.wedges.Wedge.radians">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/wedges.html#geometor.model.wedges.Wedge.radians">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">radians</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
         <span class="n">angle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_ray</span><span class="o">.</span><span class="n">angle_between</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sweep_ray</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">angle</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">direction</span> <span class="o">==</span> <span class="s2">&quot;clockwise&quot;</span> <span class="k">else</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">pi</span> <span class="o">-</span> <span class="n">angle</span></div>
@@ -271,21 +274,21 @@
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Wedge.degrees">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/wedges/index.html#geometor.model.wedges.Wedge.degrees">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/wedges.html#geometor.model.wedges.Wedge.degrees">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">degrees</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sp</span><span class="o">.</span><span class="n">deg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">radians</span><span class="p">)</span></div>
 
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Wedge.ratio">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/wedges/index.html#geometor.model.wedges.Wedge.ratio">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/wedges.html#geometor.model.wedges.Wedge.ratio">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">radians</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span></div>
 
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Wedge.area">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/wedges/index.html#geometor.model.wedges.Wedge.area">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/wedges.html#geometor.model.wedges.Wedge.area">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
         <span class="c1"># Using the ratio of the angle to the full circle to find the area</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">circle</span><span class="o">.</span><span class="n">area</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ratio</span></div>
@@ -293,7 +296,7 @@
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Wedge.arc_length">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/wedges/index.html#geometor.model.wedges.Wedge.arc_length">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/wedges.html#geometor.model.wedges.Wedge.arc_length">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">arc_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
         <span class="c1"># Using the ratio of the angle to the full circle to find the arc length</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">circle</span><span class="o">.</span><span class="n">circumference</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ratio</span></div>
@@ -301,7 +304,7 @@
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Wedge.perimeter">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/wedges/index.html#geometor.model.wedges.Wedge.perimeter">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/wedges.html#geometor.model.wedges.Wedge.perimeter">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">perimeter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sp</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
         <span class="c1"># Including the two radii to form the full boundary of the wedge</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">arc_length</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">circle</span><span class="o">.</span><span class="n">radius</span></div>

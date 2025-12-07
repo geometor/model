@@ -39,7 +39,7 @@ The major responsibilities of the ``Model``:
   - establish labels for elements
   - classes for styles
 
-All of the plotting functionality has moved to **GEOMETOR** `render`_. However, there are several report functions in the this module:
+All of the plotting functionality has moved to **GEOMETOR** `explorer`_. However, there are several report functions in this module:
 
 - report_summary
 - report_group_by_type
@@ -50,7 +50,7 @@ All of the plotting functionality has moved to **GEOMETOR** `render`_. However, 
 .. _`GEOMETOR`: https://geometor.com
 
 
-.. _render: https://github.com/geometor/render
+.. _explorer: https://github.com/geometor/explorer
 .. _`Sympy Expressions`: https://docs.sympy.org/latest/tutorials/intro-tutorial/basic_operations.html
 .. _`Sympy Geometry`: https://docs.sympy.org/latest/modules/geometry/index.html
 .. _`Sympy`: https://docs.sympy.org

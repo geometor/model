@@ -37,10 +37,13 @@
           <a href="../../../usage/index.html"  >usage</a>
         </li>
         <li>
+          <a href="../../../log/index.html"  >log</a>
+        </li>
+        <li>
           <a href="../../../modules/index.html"  >modules</a>
         </li>
         <li>
-          <a href="../../../log/index.html"  >log</a>
+          <a href="../../../demos/index.html"  >demos</a>
         </li>
       </ul>
     </nav>
@@ -84,14 +87,14 @@
 
 
 <div class="viewcode-block" id="PolynomialsMixin">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/polynomials/index.html#geometor.model.polynomials.PolynomialsMixin">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/polynomials.html#geometor.model.polynomials.PolynomialsMixin">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">PolynomialsMixin</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Mixin for the Model class containing polynomial construction operations.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="PolynomialsMixin.poly">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/polynomials/index.html#geometor.model.polynomials.PolynomialsMixin.poly">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/polynomials.html#geometor.model.polynomials.PolynomialsMixin.poly">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">poly</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">coeffs</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">group</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Polynomial</span><span class="p">:</span>
@@ -102,7 +105,7 @@
 
 
 <div class="viewcode-block" id="PolynomialsMixin.add_poly">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/polynomials/index.html#geometor.model.polynomials.PolynomialsMixin.add_poly">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/polynomials.html#geometor.model.polynomials.PolynomialsMixin.add_poly">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">add_poly</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">coeffs</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">group</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Polynomial</span><span class="p">:</span>
@@ -121,7 +124,7 @@
 
 
 <div class="viewcode-block" id="Polynomial">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/polynomials/index.html#geometor.model.polynomials.Polynomial">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/polynomials.html#geometor.model.polynomials.Polynomial">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Polynomial</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A polynomial element defined by its coefficients.</span>
@@ -183,38 +186,38 @@
 
 
 <div class="viewcode-block" id="Polynomial.equation">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/polynomials/index.html#geometor.model.polynomials.Polynomial.equation">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/polynomials.html#geometor.model.polynomials.Polynomial.equation">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">equation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">as_expr</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Polynomial.eval">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/polynomials/index.html#geometor.model.polynomials.Polynomial.eval">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/polynomials.html#geometor.model.polynomials.Polynomial.eval">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">val</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Polynomial.degree">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/polynomials/index.html#geometor.model.polynomials.Polynomial.degree">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/polynomials.html#geometor.model.polynomials.Polynomial.degree">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">degree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span></div>
 </div>
 
 
 <div class="viewcode-block" id="Polynomial.all_coeffs">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/polynomials/index.html#geometor.model.polynomials.Polynomial.all_coeffs">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/polynomials.html#geometor.model.polynomials.Polynomial.all_coeffs">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">all_coeffs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">all_coeffs</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Polynomial.real_roots">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/polynomials/index.html#geometor.model.polynomials.Polynomial.real_roots">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/polynomials.html#geometor.model.polynomials.Polynomial.real_roots">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">real_roots</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">real_roots</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Polynomial.intersection">
-<a class="viewcode-back" href="../../../modules/api/geometor/model/polynomials/index.html#geometor.model.polynomials.Polynomial.intersection">[docs]</a>
+<a class="viewcode-back" href="../../../usage/model/elements/polynomials.html#geometor.model.polynomials.Polynomial.intersection">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">intersection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="n">intersections</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Polynomial</span><span class="p">):</span>

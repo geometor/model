@@ -4,14 +4,12 @@
 mission
 =======
 
-.. todo:: set mission statement and goals
-
-.. contents::
-   :local:
-   :backlinks: none
-
+    provide tools for modeling classical geometric constructions
 
 goals
 -----
+
+.. collection::
+   :sort: order
 
 
