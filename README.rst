@@ -47,7 +47,7 @@ Usage
     model.construct_circle(B, A)
 
     # Analyze
-    report_summary(model)
+    model.report_summary()
 
 Resources
 ---------
