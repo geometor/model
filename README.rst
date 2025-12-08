@@ -61,5 +61,6 @@ Related Projects
 
 - `GEOMETOR Explorer <https://github.com/geometor/explorer>`_: Interactive visualization.
 - `GEOMETOR Divine <https://github.com/geometor/divine>`_: Golden ratio analysis.
+- `GEOMETOR.com <https://geometor.com`: the center of everything
 
 .. _SymPy: https://www.sympy.org
