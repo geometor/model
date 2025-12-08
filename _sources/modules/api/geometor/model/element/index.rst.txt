@@ -5,7 +5,9 @@ geometor.model.element
 
 .. autoapi-nested-parse::
 
-   The :mod:`geometor.model.element` module provides core element classes and intersection logic.
+   Provides core element classes and intersection logic.
+
+   This module defines the foundational :class:`Element` container which wraps SymPy geometric objects with additional metadata like parents, user-defined classes, and IDs for the geometor system.
 
 
 
@@ -40,10 +42,11 @@ Module Contents
 
 .. py:data:: Struct
 
-.. py:class:: Element(sympy_obj, parents: list | None = None, classes: list[str] | None = None, ID: str = '', guide: bool = False)
+.. py:class:: Element(sympy_obj: sympy.geometry.entity.GeometryEntity, parents: list | None = None, classes: list[str] | None = None, ID: str = '', guide: bool = False)
 
-   A container for special attributes of an element of a model that are
-   not supported by the SymPy elements.
+   A container for special attributes of an element of a model.
+
+   The Element class extends the functionality of standard SymPy geometry objects by attaching model-specific metadata. It maintains a record of the element's lineage (parents), classification (classes), and identification (ID), which are essential for the constructive geometry framework.
 
    :param sympy_obj: The sympy object representing the geometric entity.
    :param parents: A list of parent elements.
@@ -72,9 +75,12 @@ Module Contents
 
 
    .. py:property:: length
+      :type: sympy.Expr | None
+
 
       Returns the cleaned length of the element.
-      For polygons, it returns the list of cleaned side lengths.
+
+      This property computes or retrieves the geometric length of the element, applying symbolic cleanup to ensure the expression is simplified. For polygons, it returns a list of side lengths.
 
 
 .. py:class:: CircleElement(sympy_obj: sympy.geometry.Circle, pt_radius: sympy.geometry.Point, parents: list | None = None, classes: list[str] | None = None, ID: str = '', guide: bool = False)
@@ -83,6 +89,8 @@ Module Contents
 
 
    Same as :class:`Element` but adds a ``pt_radius``.
+
+   This subclass is specifically designed for circle elements where the radius is defined by a specific point on the circumference. It preserves the relationship between the center and the radius point.
 
    :param sympy_obj: The sympy object representing the geometric entity.
    :param pt_radius: The point defining the radius.
@@ -95,21 +103,24 @@ Module Contents
    .. py:attribute:: pt_radius
 
 
-.. py:function:: check_existence(self, struct: Struct, existing_structs: list[Struct]) -> tuple[bool, Struct]
+.. py:function:: check_existence(self: geometor.model.model.Model, struct: Struct, existing_structs: list[Struct]) -> tuple[bool, Struct | None]
 
    Check if a geometric structure exists in the model.
+
+   This function verifies whether a given geometric structure (line or circle) is already present in the model's collection. It indicates existence by checking both object identity and mathematical equivalence of the defining equations.
 
    :param struct: The structure to check.
    :param existing_structs: List of existing structures in the model.
 
-   :returns: A tuple containing a boolean indicating existence
-             and the existing structure if found (otherwise None).
+   :returns: A tuple containing a boolean indicating existence and the existing structure if found (otherwise None).
    :rtype: tuple[bool, Struct]
 
 
-.. py:function:: find_all_intersections(self, struct: Struct) -> None
+.. py:function:: find_all_intersections(self: geometor.model.model.Model, struct: Struct) -> None
 
    Find all intersections in the model for the given struct.
+
+   This function computes the intersection points between the provided structure and all other eligible structures in the model. It uses parallel processing to efficiently handle potential intersections and updates the model with any newly found points.
 
    :param struct: The structure to find intersections for.
 

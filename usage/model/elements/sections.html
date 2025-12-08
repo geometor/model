@@ -37,10 +37,10 @@
           <a href="../../index.html"  >usage</a>
         </li>
         <li>
-          <a href="../../../modules/index.html"  >modules</a>
+          <a href="../../../log/index.html"  >log</a>
         </li>
         <li>
-          <a href="../../../log/index.html"  >log</a>
+          <a href="../../../modules/index.html"  >modules</a>
         </li>
         <li>
           <a href="../../../demos/index.html"  >demos</a>
@@ -71,22 +71,50 @@
           <section id="sections">
 <h1>sections<a class="headerlink" href="#sections" title="Link to this heading">¶</a></h1>
 <p>Sections refer to the division of segments, specifically analyzing Golden Sections.</p>
-<p>The <a class="reference internal" href="../../../modules/api/geometor/model/sections/index.html#module-geometor.model.sections" title="geometor.model.sections"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geometor.model.sections</span></code></a> module provides section construction and manipulation for the Model class.</p>
+<p>Provides section construction and manipulation for the Model class.</p>
+<p>This module defines the <cite>Section</cite> class and associated mixin methods. A section represents a sequence of three points on a line, and this module provides tools to create them, calculate their ratios, and determine if they exhibit Golden Ratio properties.</p>
 <dl class="py class">
 <dt class="sig sig-object py">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geometor.model.sections.</span></span><span class="sig-name descname"><span class="pre">SectionsMixin</span></span></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.13/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Mixin for the Model class containing section construction operations.</p>
+<p>This mixin equips the Model with methods to construct <cite>Section</cite> objects. It allows sections to be defined by listing point objects or their IDs, facilitating the study of collinear points and their proportional relationships.</p>
 <dl class="py method">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">set_section_by_IDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points_IDs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section" title="geometor.model.sections.Section"><span class="pre">Section</span></a></span></span></dt>
-<dd><p>find points by ID and use them with <code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.set_section()</span></code></p>
+<span class="sig-name descname"><span class="pre">set_section_by_IDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points_IDs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section" title="geometor.model.sections.Section"><span class="pre">Section</span></a></span></span></dt>
+<dd><p>Find points by ID and use them with <code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.set_section()</span></code>.</p>
+<p>This convenience method resolves string identifiers for points into their corresponding model elements and then creates a section. It simplifies the creation of sections when working with named points in the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>points_IDs</strong> – A list of point IDs.</p></li>
+<li><p><strong>classes</strong> – A list of class labels.</p></li>
+<li><p><strong>ID</strong> – A string ID for the section.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The constructed <a class="reference internal" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section" title="geometor.model.sections.Section"><code class="xref py py-class docutils literal notranslate"><span class="pre">Section</span></code></a>.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">set_section</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section" title="geometor.model.sections.Section"><span class="pre">Section</span></a></span></span></dt>
-<dd><p>set section (list of 3 points on a line)</p>
+<span class="sig-name descname"><span class="pre">set_section</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section" title="geometor.model.sections.Section"><span class="pre">Section</span></a></span></span></dt>
+<dd><p>Set section (list of 3 points on a line).</p>
+<p>This method constructs a <cite>Section</cite> from a list of three collinear points and adds it to the model. It automatically calculates the section’s ratio, generates an ID if needed, and logs the section’s details including segment lengths.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>points</strong> – A list of 3 collinear points.</p></li>
+<li><p><strong>classes</strong> – A list of class labels.</p></li>
+<li><p><strong>ID</strong> – A string ID for the section. If empty, one is generated.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The constructed <a class="reference internal" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section" title="geometor.model.sections.Section"><code class="xref py py-class docutils literal notranslate"><span class="pre">Section</span></code></a>.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -97,14 +125,29 @@
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.13/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_IDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span></dt>
-<dd><p>returns a list of IDs</p>
+<span class="sig-name descname"><span class="pre">get_IDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../modules/api/geometor/model/model/index.html#geometor.model.model.Model" title="geometor.model.model.Model"><span class="pre">Model</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dd><p>Returns a list of IDs.</p>
+<p>This method retrieves the unique identifiers for each of the three points that define the section, referencing the provided model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> – The model containing the points.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of point IDs.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ratio</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.14.0)"><span class="pre">Expr</span></a></em></dt>
-<dd><p>returns the ratio of the symbolic lengths of each segment</p>
+<dd><p>Returns the ratio of the symbolic lengths of each segment.</p>
+<p>This property calculates the ratio between the longer and shorter segments of the section. The result is returned as a simplified symbolic expression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The ratio as a symbolic expression.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py property">

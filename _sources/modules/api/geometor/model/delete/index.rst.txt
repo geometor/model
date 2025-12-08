@@ -5,7 +5,9 @@ geometor.model.delete
 
 .. autoapi-nested-parse::
 
-   The :mod:`geometor.model.delete` module provides deletion functions for the Model class.
+   Provides deletion functions for the Model class.
+
+   This module handles the removal of elements from the model. It includes logic to identify dependent elements (descendants) to ensure that deleting a parent element cascades correctly and maintains the integrity of the dependency graph.
 
 
 
@@ -34,35 +36,28 @@ Module Contents
 
    Mixin for the Model class containing deletion operations.
 
+   This mixin equips the Model with methods to safely delete elements. It provides functionality to trace the dependency tree and recursively remove an element along with all other elements that depend on it.
 
-   .. py:method:: get_dependents(element_or_ID)
+
+   .. py:method:: get_dependents(element_or_ID: sympy.geometry.entity.GeometryEntity | str) -> set[sympy.geometry.entity.GeometryEntity]
 
       Finds and returns a set of all elements that depend on the given element.
 
-      This method is for checking dependencies without performing any deletion.
+      This method serves as a query tool to inspect the impact of potentially deleting an element. It resolves the input to a model element and uses recursive search to gather all downstream dependencies.
 
-      :param element_or_ID: The element object or its
-                            ID to check for dependents.
-      :type element_or_ID: spg.GeometryEntity or str
+      :param element_or_ID: The element object or its ID to check for dependents.
 
-      :returns:
-
-                A set of dependent elements. Returns an empty set if the element
-                     is not found or has no dependents.
-      :rtype: set
+      :returns: A set of dependent elements. Returns an empty set if the element is not found or has no dependents.
 
 
 
-   .. py:method:: delete_element(element_or_ID)
+   .. py:method:: delete_element(element_or_ID: sympy.geometry.entity.GeometryEntity | str) -> None
 
       Deletes an element and performs a cascading delete of all its dependents.
 
-      This method removes the specified element and any other elements that were
-      constructed from it, directly or indirectly.
+      This is the primary method for removing content from the model. It verifies the existence of the target element, identifies the entire tree of dependent structures, and removes them all to prevent orphaned references in the model.
 
-      :param element_or_ID: The element object or its
-                            ID to be deleted.
-      :type element_or_ID: spg.GeometryEntity or str
+      :param element_or_ID: The element object or its ID to be deleted.
 
 
 

@@ -37,10 +37,10 @@
           <a href="../../../../../usage/index.html"  >usage</a>
         </li>
         <li>
-          <a href="../../../../index.html"  >modules</a>
+          <a href="../../../../../log/index.html"  >log</a>
         </li>
         <li>
-          <a href="../../../../../log/index.html"  >log</a>
+          <a href="../../../../index.html"  >modules</a>
         </li>
         <li>
           <a href="../../../../../demos/index.html"  >demos</a>
@@ -70,7 +70,8 @@
         </nav>
           <section id="module-geometor.model.reports">
 <span id="geometor-model-reports"></span><h1>geometor.model.reports<a class="headerlink" href="#module-geometor.model.reports" title="Link to this heading">¶</a></h1>
-<p>The <a class="reference internal" href="#module-geometor.model.reports" title="geometor.model.reports"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geometor.model.reports</span></code></a> module provides reporting functions for the Model class.</p>
+<p>Provides reporting functions for the Model class.</p>
+<p>This module offers tools for visualizing and summarizing the state of the geometric model. It includes functions to generate textual reports for the console using <cite>rich</cite> tables and methods to export the model’s structure as Graphviz DOT files for diagram generation.</p>
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
 <table class="autosummary longtable docutils align-default">
@@ -85,10 +86,10 @@
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.reports.generate_dot" title="geometor.model.reports.generate_dot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_dot</span></code></a>(graph[, parent, dot_string, defined_nodes])</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.reports.generate_dot" title="geometor.model.reports.generate_dot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_dot</span></code></a>(→ str)</p></td>
+<td><p>Generates a DOT string representing the graph structure of the model.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.reports.get_colored_ID" title="geometor.model.reports.get_colored_ID"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_colored_ID</span></code></a>(el, ID[, classes])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.reports.get_colored_ID" title="geometor.model.reports.get_colored_ID"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_colored_ID</span></code></a>(→ rich.text.Text)</p></td>
 <td><p>Get the colored ID for a geometric element.</p></td>
 </tr>
 </tbody>
@@ -98,35 +99,69 @@
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.reports.generate_dot">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.reports.</span></span><span class="sig-name descname"><span class="pre">generate_dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dot_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defined_nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.reports.generate_dot" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.reports.</span></span><span class="sig-name descname"><span class="pre">generate_dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dot_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defined_nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#set" title="(in Python v3.13)"><span class="pre">set</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#geometor.model.reports.generate_dot" title="Link to this definition">¶</a></dt>
+<dd><p>Generates a DOT string representing the graph structure of the model.</p>
+<p>This function traverses a nested dictionary representing the model’s ancestor graph and produces a Graphviz DOT format string. It handles node definition with appropriate shapes (rectangles for lines, ellipses for circles, points for points) and edge creation to visualize dependencies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> – A dictionary representing the graph structure/ancestors.</p></li>
+<li><p><strong>parent</strong> – The key of the parent node (used in recursion).</p></li>
+<li><p><strong>dot_string</strong> – The accumulating DOT string (used in recursion).</p></li>
+<li><p><strong>defined_nodes</strong> – A set of already defined nodes to prevent duplicates.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A string containing the complete DOT graph definition.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geometor.model.reports.ReportMixin">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geometor.model.reports.</span></span><span class="sig-name descname"><span class="pre">ReportMixin</span></span><a class="headerlink" href="#geometor.model.reports.ReportMixin" title="Link to this definition">¶</a></dt>
 <dd><p>Mixin for the Model class containing report generation methods.</p>
+<p>This mixin provides the Model with methods to output formatted summaries and detailed reports of its contents. It utilizes the <cite>rich</cite> library to create readable console tables of elements, organized by type or sequence, facilitating inspection and debugging.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.reports.ReportMixin.report_summary">
-<span class="sig-name descname"><span class="pre">report_summary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.reports.ReportMixin.report_summary" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">report_summary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.reports.ReportMixin.report_summary" title="Link to this definition">¶</a></dt>
+<dd><p>Prints a summary of the model’s contents to the console.</p>
+<p>This method compiles a high-level overview of the total number of elements in the model, broken down by category (points, lines, circles). It uses a formatted table for clear presentation of these statistics.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.reports.ReportMixin.report_group_by_type">
-<span class="sig-name descname"><span class="pre">report_group_by_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.reports.ReportMixin.report_group_by_type" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">report_group_by_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.reports.ReportMixin.report_group_by_type" title="Link to this definition">¶</a></dt>
+<dd><p>Prints a detailed report of all elements grouped by type.</p>
+<p>This method iterates through the model’s collections of points, lines, and circles, generating separate tables for each type. Each table includes detailed information such as IDs, coordinates/equations, parent dependencies, and associated classes.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.reports.ReportMixin.report_sequence">
-<span class="sig-name descname"><span class="pre">report_sequence</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.reports.ReportMixin.report_sequence" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">report_sequence</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.reports.ReportMixin.report_sequence" title="Link to this definition">¶</a></dt>
 <dd><p>Generate a sequential report of the model using rich Console layouts.</p>
+<p>This method lists all elements in the order they were added to the model. It presents a comprehensive view including the element’s ID, defining points or properties, parents, classes, and algebraic equation, providing a chronological log of the construction.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.reports.get_colored_ID">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.reports.</span></span><span class="sig-name descname"><span class="pre">get_colored_ID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">el</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.reports.get_colored_ID" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.reports.</span></span><span class="sig-name descname"><span class="pre">get_colored_ID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">el</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/entities.html#sympy.geometry.entity.GeometryEntity" title="(in SymPy v1.14.0)"><span class="pre">sympy.geometry.entity.GeometryEntity</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">rich.text.Text</span></span></span><a class="headerlink" href="#geometor.model.reports.get_colored_ID" title="Link to this definition">¶</a></dt>
 <dd><p>Get the colored ID for a geometric element.</p>
+<p>This helper checks the element’s classes to determine its color and returns a styled Text object suitable for rendering in the rich console.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>el</strong> – The geometric entity.</p></li>
+<li><p><strong>ID</strong> – The text ID of the element.</p></li>
+<li><p><strong>classes</strong> – A list of class names associated with the element.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">rich.text.Text</span></code> object containing the styled ID.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

@@ -5,7 +5,9 @@ geometor.model.polynomials
 
 .. autoapi-nested-parse::
 
-   The :mod:`geometor.model.polynomials` module provides polynomial element for the Model class.
+   Provides polynomial element for the Model class.
+
+   This module introduces polynomial elements into the geometric model, allowing for the representation and manipulation of algebraic curves defined by coefficients. It supports operations like evaluating the polynomial, finding roots, and calculating intersections with other geometric entities.
 
 
 
@@ -25,25 +27,47 @@ Module Contents
 
    Mixin for the Model class containing polynomial construction operations.
 
+   This mixin equips the Model with the ability to create and manage polynomial elements. It provides methods to instantiate polynomials from coefficients and integrate them into the model's collection of geometric objects.
 
-   .. py:method:: poly(coeffs: list, name: str = '', classes: list = [], group: str = '') -> Polynomial
+
+   .. py:method:: poly(coeffs: list, name: str = '', classes: list[str] | None = None, group: str = '') -> Polynomial
 
       Create a Polynomial element.
 
+      This method serves as a factory for creating standalone Polynomial objects given a list of coefficients. It allows for specifying optional metadata such as a name, classification classes, and a group identifier.
+
+      :param coeffs: A list of coefficients for the polynomial.
+      :param name: An optional name for the polynomial.
+      :param classes: A list of class labels.
+      :param group: An optional group identifier.
+
+      :returns: A new :class:`Polynomial` instance.
 
 
-   .. py:method:: add_poly(coeffs: list, name: str = '', classes: list = [], group: str = '') -> Polynomial
+
+   .. py:method:: add_poly(coeffs: list, name: str = '', classes: list[str] | None = None, group: str = '') -> Polynomial
 
       Create and add a Polynomial element to the model.
 
+      This method creates a new polynomial and immediately registers it within the model. It handles automatic name generation if none is provided, maps the polynomial's expression to its element wrapper, and logs the addition.
+
+      :param coeffs: A list of coefficients for the polynomial.
+      :param name: An optional name for the polynomial.
+      :param classes: A list of class labels.
+      :param group: An optional group identifier.
+
+      :returns: The added :class:`Polynomial` element.
 
 
-.. py:class:: Polynomial(coeffs, name='', classes=None, group=None)
+
+.. py:class:: Polynomial(coeffs: list, name: str = '', classes: list[str] | None = None, group: str | None = None)
 
    Bases: :py:obj:`geometor.model.element.Element`
 
 
    A polynomial element defined by its coefficients.
+
+   This class wraps a SymPy Polynomial object, extending it with the :class:`Element` interface for Model integration. It provides property accessors and methods for common polynomial operations like evaluation and intersection finding.
 
 
    .. py:attribute:: x
@@ -58,27 +82,27 @@ Module Contents
    .. py:attribute:: poly
 
 
-   .. py:method:: __str__()
+   .. py:method:: __str__() -> str
 
 
-   .. py:method:: __repr__()
+   .. py:method:: __repr__() -> str
 
 
-   .. py:method:: equation()
+   .. py:method:: equation() -> sympy.Expr
 
 
-   .. py:method:: eval(val)
+   .. py:method:: eval(val: sympy.Expr) -> sympy.Expr
 
 
-   .. py:method:: degree()
+   .. py:method:: degree() -> int
 
 
-   .. py:method:: all_coeffs()
+   .. py:method:: all_coeffs() -> list
 
 
-   .. py:method:: real_roots()
+   .. py:method:: real_roots() -> list
 
 
-   .. py:method:: intersection(other)
+   .. py:method:: intersection(other: sympy.geometry.entity.GeometryEntity) -> list[sympy.geometry.Point]
 
 

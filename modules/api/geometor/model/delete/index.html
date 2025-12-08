@@ -37,10 +37,10 @@
           <a href="../../../../../usage/index.html"  >usage</a>
         </li>
         <li>
-          <a href="../../../../index.html"  >modules</a>
+          <a href="../../../../../log/index.html"  >log</a>
         </li>
         <li>
-          <a href="../../../../../log/index.html"  >log</a>
+          <a href="../../../../index.html"  >modules</a>
         </li>
         <li>
           <a href="../../../../../demos/index.html"  >demos</a>
@@ -70,7 +70,8 @@
         </nav>
           <section id="module-geometor.model.delete">
 <span id="geometor-model-delete"></span><h1>geometor.model.delete<a class="headerlink" href="#module-geometor.model.delete" title="Link to this heading">¶</a></h1>
-<p>The <a class="reference internal" href="#module-geometor.model.delete" title="geometor.model.delete"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geometor.model.delete</span></code></a> module provides deletion functions for the Model class.</p>
+<p>Provides deletion functions for the Model class.</p>
+<p>This module handles the removal of elements from the model. It includes logic to identify dependent elements (descendants) to ensure that deleting a parent element cascades correctly and maintains the integrity of the dependency graph.</p>
 <section id="attributes">
 <h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
 <table class="autosummary longtable docutils align-default">
@@ -102,39 +103,30 @@
 <dt class="sig sig-object py" id="geometor.model.delete.DeleteMixin">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geometor.model.delete.</span></span><span class="sig-name descname"><span class="pre">DeleteMixin</span></span><a class="headerlink" href="#geometor.model.delete.DeleteMixin" title="Link to this definition">¶</a></dt>
 <dd><p>Mixin for the Model class containing deletion operations.</p>
+<p>This mixin equips the Model with methods to safely delete elements. It provides functionality to trace the dependency tree and recursively remove an element along with all other elements that depend on it.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.delete.DeleteMixin.get_dependents">
-<span class="sig-name descname"><span class="pre">get_dependents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element_or_ID</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.delete.DeleteMixin.get_dependents" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_dependents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element_or_ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/entities.html#sympy.geometry.entity.GeometryEntity" title="(in SymPy v1.14.0)"><span class="pre">sympy.geometry.entity.GeometryEntity</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#set" title="(in Python v3.13)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/entities.html#sympy.geometry.entity.GeometryEntity" title="(in SymPy v1.14.0)"><span class="pre">sympy.geometry.entity.GeometryEntity</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.delete.DeleteMixin.get_dependents" title="Link to this definition">¶</a></dt>
 <dd><p>Finds and returns a set of all elements that depend on the given element.</p>
-<p>This method is for checking dependencies without performing any deletion.</p>
+<p>This method serves as a query tool to inspect the impact of potentially deleting an element. It resolves the input to a model element and uses recursive search to gather all downstream dependencies.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>element_or_ID</strong> (<em>spg.GeometryEntity</em><em> or </em><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The element object or its
-ID to check for dependents.</p>
+<dd class="field-odd"><p><strong>element_or_ID</strong> – The element object or its ID to check for dependents.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><dl class="simple">
-<dt>A set of dependent elements. Returns an empty set if the element</dt><dd><p>is not found or has no dependents.</p>
-</dd>
-</dl>
-</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#set" title="(in Python v3.13)">set</a></p>
+<dd class="field-even"><p>A set of dependent elements. Returns an empty set if the element is not found or has no dependents.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.delete.DeleteMixin.delete_element">
-<span class="sig-name descname"><span class="pre">delete_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element_or_ID</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.delete.DeleteMixin.delete_element" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">delete_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element_or_ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/entities.html#sympy.geometry.entity.GeometryEntity" title="(in SymPy v1.14.0)"><span class="pre">sympy.geometry.entity.GeometryEntity</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.delete.DeleteMixin.delete_element" title="Link to this definition">¶</a></dt>
 <dd><p>Deletes an element and performs a cascading delete of all its dependents.</p>
-<p>This method removes the specified element and any other elements that were
-constructed from it, directly or indirectly.</p>
+<p>This is the primary method for removing content from the model. It verifies the existence of the target element, identifies the entire tree of dependent structures, and removes them all to prevent orphaned references in the model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>element_or_ID</strong> (<em>spg.GeometryEntity</em><em> or </em><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The element object or its
-ID to be deleted.</p>
+<dd class="field-odd"><p><strong>element_or_ID</strong> – The element object or its ID to be deleted.</p>
 </dd>
 </dl>
 </dd></dl>

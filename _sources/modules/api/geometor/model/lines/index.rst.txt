@@ -5,7 +5,9 @@ geometor.model.lines
 
 .. autoapi-nested-parse::
 
-   The :mod:`geometor.model.lines` module provides line construction and manipulation for the Model class.
+   Provides line construction and manipulation for the Model class.
+
+   This module encapsulates the logic for creating symbolic lines from points, managing their inclusion in the model, and determining their intersections with other geometric elements.
 
 
 
@@ -24,17 +26,39 @@ Module Contents
 
    Mixin for the Model class containing line construction operations.
 
-
-   .. py:method:: construct_line_by_IDs(pt_1_ID: str, pt_2_ID: str, classes: list = None, ID: str = '') -> sympy.geometry.Line
-
-      find points by ID and use them with :meth:`Model.construct_line`
+   This mixin provides methods to construct lines using pairs of points, identified either by their element IDs or directly by their SymPy Point objects. It handles the registration of lines in the model and the detection of intersections.
 
 
+   .. py:method:: construct_line_by_IDs(pt_1_ID: str, pt_2_ID: str, classes: list[str] | None = None, ID: str = '') -> sympy.geometry.Line
 
-   .. py:method:: construct_line(pt_1: sympy.geometry.Point, pt_2: sympy.geometry.Point, classes: list = None, ID: str = '', guide: bool = False) -> sympy.geometry.Line
+      Find points by ID and use them with :meth:`Model.construct_line`.
 
-      Constructs a :class:`Line <sympy.geometry.line.Line>` from two points and
-      adds it to the :class:`Model <geometor.model.model.Model>`
+      This convenience method allows for the creation of lines using the unique string identifiers of the start and end points, retrieving the corresponding point objects from the model before proceeding with construction.
+
+      :param pt_1_ID: The ID of the first point.
+      :param pt_2_ID: The ID of the second point.
+      :param classes: A list of class labels.
+      :param ID: A string ID for the line.
+
+      :returns: The constructed :class:`sympy.geometry.line.Line`.
+
+
+
+   .. py:method:: construct_line(pt_1: sympy.geometry.Point, pt_2: sympy.geometry.Point, classes: list[str] | None = None, ID: str = '', guide: bool = False) -> sympy.geometry.Line
+
+      Constructs a :class:`Line <sympy.geometry.line.Line>` from two points and adds it to the :class:`Model <geometor.model.model.Model>`.
+
+      This method creates a line connecting two given points. It checks if an equivalent line already exists in the model to prevent duplicates, merging attributes if necessary. If it's a new line, it calculates intersections with existing structures.
+
+      :param pt_1: The first point of the line.
+      :param pt_2: The second point of the line.
+      :param classes: A list of class labels.
+      :param ID: A string ID for the line. If empty, one is generated.
+      :param guide: If True, the line is a guide.
+
+      :returns: The constructed or retrieved :class:`sympy.geometry.line.Line`.
+
+      :raises TypeError: If ``pt_1`` or ``pt_2`` are not instances of ``sympy.geometry.point.Point``.
 
 
 

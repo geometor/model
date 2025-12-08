@@ -5,7 +5,9 @@ geometor.model.wedges
 
 .. autoapi-nested-parse::
 
-   The :mod:`geometor.model.wedges` module provides wedge construction and manipulation for the Model class.
+   Provides wedge construction and manipulation for the Model class.
+
+   This module introduces the `Wedge` element, which represents a sector of a circle defined by a center, a radius point, and sweep angles. It handles the creation, validation, and property calculation (like area and arc length) for these wedge shapes.
 
 
 
@@ -25,49 +27,38 @@ Module Contents
 
    Mixin for the Model class containing wedge construction operations.
 
+   This mixin provides the Model with the capability to define and manage `Wedge` elements. It includes methods to construct wedges from defining points and integrate them into the geometric model.
 
-   .. py:method:: set_wedge(pt_center: sympy.geometry.Point, pt_radius: sympy.geometry.Point, pt_sweep_start: sympy.geometry.Point, pt_sweep_end: sympy.geometry.Point, direction='clockwise', classes: list = None, ID: str = '') -> Wedge
 
-      sets a Wedge from 3 points and adds it to the model.
+   .. py:method:: set_wedge(pt_center: sympy.geometry.Point, pt_radius: sympy.geometry.Point, pt_sweep_start: sympy.geometry.Point, pt_sweep_end: sympy.geometry.Point, direction: str = 'clockwise', classes: list[str] | None = None, ID: str = '') -> Wedge
 
-      operations
-      ~~~~~~~~~~
-      - create an instance of :class:`geometor.model.Wedge`
-      - create a ``details`` object from :class:`Element`
-      - add parents to details
-          initial parents are the two starting points
-      - check for duplicates in in the ``model``
-      - find intersection points for new element with all precedng elements
-      - Add ``circle`` to the model.
+      Sets a Wedge from 3 points and adds it to the model.
 
-      :param - ``pt_center``:
-      :type - ``pt_center``: :class:`sympy.geometry.point.Point` : point for circle center
-      :param - ``pt_radius``:
-      :type - ``pt_radius``: :class:`sympy.geometry.point.Point` : point to mark radius
-      :param - ``pt_end``:
-      :type - ``pt_end``: :class:`sympy.geometry.point.Point` : A SymPy Point marking the sweep of the wedge
-      :param - ``classes``:
-      :type - ``classes``: :class:`list` *optional* : A list of string names for classes defining a set of styles. Defaults to None.
-      :param - ``ID``:
-      :type - ``ID``: :class:`str` *optional* : A text ID for use in plotting and reporting. Defaults to an empty string.
+      This method constructs a `Wedge` defined by a center, a radius point, and sweep points. It handles the low-level details of creating the `Wedge` object, wrapping it in an `Element`, calculating intersections, and adding it to the model structure.
 
-      :returns: The portion of a circle
-      :rtype: - :class:`Wedge`
+      :param pt_center: Point for circle center.
+      :param pt_radius: Point to mark radius.
+      :param pt_sweep_start: A SymPy Point marking the start of the sweep.
+      :param pt_sweep_end: A SymPy Point marking the end of the sweep.
+      :param direction: Direction of the sweep (default "clockwise").
+      :param classes: A list of string names for classes defining a set of styles.
+      :param ID: A text ID for use in plotting and reporting.
 
-      .. rubric:: Example
+      :returns: The constructed :class:`Wedge`.
 
-      >>> from geometor.elements import *
-      >>> model = Model("demo")
-      >>> A = model.set_point(0, 0, classes=["given"], ID="A")
-      >>> B = model.set_point(1, 0, classes=["given"], ID="B")
-      >>> model.construct_circle(A, B)
-      >>> model.construct_circle(B, A)
-      >>> model._set_wedge_by_IDs('A', 'B', 'C')
-      <Wedge object ...>
+      **example**
 
-      .. rubric:: Notes
+      .. code-block:: python
 
-      SymPy defines a circle as a center point and a radius length, so the radius length is calculated for the spg.Circle.
+          from geometor.elements import *
+          model = Model("demo")
+          A = model.set_point(0, 0, classes=["given"], ID="A")
+          B = model.set_point(1, 0, classes=["given"], ID="B")
+          model.construct_circle(A, B)
+          model.construct_circle(B, A)
+          model.set_wedge(A, B, C, D)
+          # <Wedge object ...>
+
 
 
 
@@ -94,7 +85,7 @@ Module Contents
    .. py:attribute:: start_ray
 
 
-   .. py:method:: __repr__()
+   .. py:method:: __repr__() -> str
 
 
    .. py:property:: circle

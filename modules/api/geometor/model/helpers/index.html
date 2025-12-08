@@ -37,10 +37,10 @@
           <a href="../../../../../usage/index.html"  >usage</a>
         </li>
         <li>
-          <a href="../../../../index.html"  >modules</a>
+          <a href="../../../../../log/index.html"  >log</a>
         </li>
         <li>
-          <a href="../../../../../log/index.html"  >log</a>
+          <a href="../../../../index.html"  >modules</a>
         </li>
         <li>
           <a href="../../../../../demos/index.html"  >demos</a>
@@ -70,33 +70,34 @@
         </nav>
           <section id="module-geometor.model.helpers">
 <span id="geometor-model-helpers"></span><h1>geometor.model.helpers<a class="headerlink" href="#module-geometor.model.helpers" title="Link to this heading">¶</a></h1>
-<p>The <a class="reference internal" href="#module-geometor.model.helpers" title="geometor.model.helpers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geometor.model.helpers</span></code></a> module provides helper functions for geometric constructions.</p>
+<p>Provides helper functions for geometric constructions.</p>
+<p>This module contains various utility functions that streamline common geometric operations, such as creating specific point configurations (rectangles, squares) and performing basic constructions like perpendicular bisectors.</p>
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.line_get_y" title="geometor.model.helpers.line_get_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">line_get_y</span></code></a>(l1, x)</p></td>
-<td><p>return y value for specific x</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.line_get_y" title="geometor.model.helpers.line_get_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">line_get_y</span></code></a>(→ sympy.Expr)</p></td>
+<td><p>Return y value for specific x.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_start_points" title="geometor.model.helpers.set_given_start_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_start_points</span></code></a>(model)</p></td>
-<td><p>create inital two points -</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_start_points_zero" title="geometor.model.helpers.set_given_start_points_zero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_start_points_zero</span></code></a>(model)</p></td>
-<td><p>create inital two points -</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_equilateral_poles" title="geometor.model.helpers.set_equilateral_poles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_equilateral_poles</span></code></a>(model, pt_1, pt_2[, add_circles])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_start_points" title="geometor.model.helpers.set_given_start_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_start_points</span></code></a>(→ tuple[sympy.geometry.Point, ...)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.construct_perpendicular_bisector" title="geometor.model.helpers.construct_perpendicular_bisector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">construct_perpendicular_bisector</span></code></a>(model, pt_1, pt_2[, ...])</p></td>
-<td><p>perform fundamental operations for two points</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_midpoint" title="geometor.model.helpers.set_midpoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_midpoint</span></code></a>(model, pt_1, pt_2[, add_circles])</p></td>
-<td><p>perform fundamental operations for two points</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_rect_points" title="geometor.model.helpers.set_given_rect_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_rect_points</span></code></a>(model, pt, x_offset, y_offset)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_start_points_zero" title="geometor.model.helpers.set_given_start_points_zero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_start_points_zero</span></code></a>(...)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_square_points" title="geometor.model.helpers.set_given_square_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_square_points</span></code></a>(model, pt, offset)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_equilateral_poles" title="geometor.model.helpers.set_equilateral_poles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_equilateral_poles</span></code></a>(→ list[sympy.geometry.Point])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.construct_perpendicular_bisector" title="geometor.model.helpers.construct_perpendicular_bisector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">construct_perpendicular_bisector</span></code></a>(→ sympy.geometry.Line)</p></td>
+<td><p>Perform fundamental operations for two points and add perpendicular bisector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_midpoint" title="geometor.model.helpers.set_midpoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_midpoint</span></code></a>(→ sympy.geometry.Line)</p></td>
+<td><p>Finds and sets the midpoint between two points.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_rect_points" title="geometor.model.helpers.set_given_rect_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_rect_points</span></code></a>(→ list[sympy.geometry.Point])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_square_points" title="geometor.model.helpers.set_given_square_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_square_points</span></code></a>(→ list[sympy.geometry.Point])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -106,51 +107,88 @@
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.helpers.line_get_y">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">line_get_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.helpers.line_get_y" title="Link to this definition">¶</a></dt>
-<dd><p>return y value for specific x</p>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">line_get_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.Expr</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.Expr</span></span></span><a class="headerlink" href="#geometor.model.helpers.line_get_y" title="Link to this definition">¶</a></dt>
+<dd><p>Return y value for specific x.</p>
+<p>This function calculates the y-coordinate on a given line for a specified x-value, essentially solving the line equation for y.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>l1</strong> – The line object.</p></li>
+<li><p><strong>x</strong> – The x-value to evaluate.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The corresponding y-value.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.helpers.set_given_start_points">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">set_given_start_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.helpers.set_given_start_points" title="Link to this definition">¶</a></dt>
-<dd><p>create inital two points -
-establishing the unit for the field</p>
-</dd></dl>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">set_given_start_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../model/index.html#geometor.model.model.Model" title="geometor.model.model.Model"><span class="pre">geometor.model.model.Model</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.helpers.set_given_start_points" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.helpers.set_given_start_points_zero">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">set_given_start_points_zero</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.helpers.set_given_start_points_zero" title="Link to this definition">¶</a></dt>
-<dd><p>create inital two points -
-establishing the unit for the field</p>
-</dd></dl>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">set_given_start_points_zero</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../model/index.html#geometor.model.model.Model" title="geometor.model.model.Model"><span class="pre">geometor.model.model.Model</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.helpers.set_given_start_points_zero" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.helpers.set_equilateral_poles">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">set_equilateral_poles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../model/index.html#geometor.model.model.Model" title="geometor.model.model.Model"><span class="pre">geometor.model.model.Model</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_circles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.helpers.set_equilateral_poles" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">set_equilateral_poles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../model/index.html#geometor.model.model.Model" title="geometor.model.model.Model"><span class="pre">geometor.model.model.Model</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_circles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.helpers.set_equilateral_poles" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.helpers.construct_perpendicular_bisector">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">construct_perpendicular_bisector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_circles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.helpers.construct_perpendicular_bisector" title="Link to this definition">¶</a></dt>
-<dd><p>perform fundamental operations for two points
-and add perpendicular bisector</p>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">construct_perpendicular_bisector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../model/index.html#geometor.model.model.Model" title="geometor.model.model.Model"><span class="pre">geometor.model.model.Model</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_circles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.geometry.Line</span></span></span><a class="headerlink" href="#geometor.model.helpers.construct_perpendicular_bisector" title="Link to this definition">¶</a></dt>
+<dd><p>Perform fundamental operations for two points and add perpendicular bisector.</p>
+<p>This function automates the classic geometric construction of a perpendicular bisector. It finds the intersection “poles” of two circles centered at the given points and constructs a line through them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – The model to add the construction to.</p></li>
+<li><p><strong>pt_1</strong> – The first point.</p></li>
+<li><p><strong>pt_2</strong> – The second point.</p></li>
+<li><p><strong>add_circles</strong> – Whether to add the construction circles to the model.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The bisector line.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.helpers.set_midpoint">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">set_midpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_circles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.helpers.set_midpoint" title="Link to this definition">¶</a></dt>
-<dd><p>perform fundamental operations for two points
-and add perpendicular bisector</p>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">set_midpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../model/index.html#geometor.model.model.Model" title="geometor.model.model.Model"><span class="pre">geometor.model.model.Model</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_circles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.geometry.Line</span></span></span><a class="headerlink" href="#geometor.model.helpers.set_midpoint" title="Link to this definition">¶</a></dt>
+<dd><p>Finds and sets the midpoint between two points.</p>
+<p>This function utilizes the perpendicular bisector construction to locate the geometric midpoint between the provided points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – The model to add the construction to.</p></li>
+<li><p><strong>pt_1</strong> – The first point.</p></li>
+<li><p><strong>pt_2</strong> – The second point.</p></li>
+<li><p><strong>add_circles</strong> – Whether to add the construction circles to the model.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>currently returns the bisector, logic might infer midpoint from intersection).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The bisector line (note</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.helpers.set_given_rect_points">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">set_given_rect_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_offset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.helpers.set_given_rect_points" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">set_given_rect_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../model/index.html#geometor.model.model.Model" title="geometor.model.model.Model"><span class="pre">geometor.model.model.Model</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.Expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.Expr</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.helpers.set_given_rect_points" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.helpers.set_given_square_points">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">set_given_square_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.helpers.set_given_square_points" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.helpers.</span></span><span class="sig-name descname"><span class="pre">set_given_square_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../model/index.html#geometor.model.model.Model" title="geometor.model.model.Model"><span class="pre">geometor.model.model.Model</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.Expr</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.helpers.set_given_square_points" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>

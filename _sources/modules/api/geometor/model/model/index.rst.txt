@@ -5,7 +5,9 @@ geometor.model.model
 
 .. autoapi-nested-parse::
 
-   provides the central :class:`geometor.model.model.Model` class.
+   Provides the central :class:`geometor.model.model.Model` class.
+
+   This module defines the core `Model` class, which aggregates all geometric construction, analysis, and management functionalities. It serves as the main entry point for creating and manipulating geometric systems.
 
 
 
@@ -30,15 +32,14 @@ Module Contents
 
 .. py:data:: GeometryObject
 
-.. py:class:: Model(name: str = '', logger=None)
+.. py:class:: Model(name: str = '', logger: logging.Logger | None = None)
 
    Bases: :py:obj:`dict`, :py:obj:`geometor.model.points.PointsMixin`, :py:obj:`geometor.model.lines.LinesMixin`, :py:obj:`geometor.model.circles.CirclesMixin`, :py:obj:`geometor.model.polygons.PolygonsMixin`, :py:obj:`geometor.model.segments.SegmentsMixin`, :py:obj:`geometor.model.polynomials.PolynomialsMixin`, :py:obj:`geometor.model.serialize.SerializeMixin`, :py:obj:`geometor.model.reports.ReportMixin`, :py:obj:`geometor.model.delete.DeleteMixin`, :py:obj:`geometor.model.sections.SectionsMixin`, :py:obj:`geometor.model.wedges.WedgesMixin`, :py:obj:`geometor.model.ancestors.AncestorsMixin`
 
 
    The central class representing a collection of geometric elements.
 
-   It inherits from `dict` and various Mixins to provide a rich API for
-   geometric construction and analysis.
+   The Model class is a comprehensive container that inherits from `dict` to store geometric elements mapped to their symbolic representations. It composes multiple mixins to provide a rich feature set, including point plotting, circle/line construction, serialization, reporting, and more.
 
 
    .. py:attribute:: ID_gen
@@ -49,32 +50,34 @@ Module Contents
 
 
 
-   .. py:method:: log(message)
+   .. py:method:: log(message: object) -> None
 
 
-   .. py:method:: set_analysis_hook(hook_function)
+   .. py:method:: set_analysis_hook(hook_function: Callable) -> None
 
 
    .. py:property:: new_points
       :type: list[sympy.geometry.Point]
 
 
-      The new_points of the model
+      The new_points of the model.
 
 
-   .. py:method:: clear_new_points()
+   .. py:method:: clear_new_points() -> None
 
 
    .. py:property:: name
       :type: str
 
 
-      The name of the model
+      The name of the model.
 
 
-   .. py:method:: __setitem__(key: GeometryObject, value: geometor.model.element.Element)
+   .. py:method:: __setitem__(key: GeometryObject, value: geometor.model.element.Element) -> None
 
       Set an item in the model, enforcing type checks.
+
+      This override of the dictionary setter ensures type safety for the model. It validates that keys are recognized GeometryObjects and values are Element wrappers, maintaining the integrity of the model's storage.
 
       :param key: The geometric object (GeometryObject).
       :param value: The element wrapper (Element).
@@ -90,33 +93,35 @@ Module Contents
       :type: list[sympy.geometry.Point]
 
 
-      returns point elements from model as list
+      Returns point elements from model as list.
 
 
    .. py:property:: structs
       :type: list[geometor.model.element.Struct]
 
 
-      returns struct elements (line or circle) from model as list
+      Returns struct elements (line or circle) from model as list.
 
 
    .. py:property:: lines
       :type: list[sympy.geometry.Line]
 
 
-      returns line elements from model as list
+      Returns line elements from model as list.
 
 
    .. py:property:: circles
       :type: list[sympy.geometry.Circle]
 
 
-      returns circle elements from model as list
+      Returns circle elements from model as list.
 
 
    .. py:method:: limits() -> tuple[tuple[float, float], tuple[float, float]]
 
       Find x, y limits from points and circles of the model.
+
+      This method calculates the bounding box of all geometric elements currently in the model. It iterates through points and circles (accounting for radii) to determine the minimum and maximum coordinates.
 
       :returns: A tuple containing ((min_x, max_x), (min_y, max_y)).
       :rtype: tuple

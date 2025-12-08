@@ -37,10 +37,10 @@
           <a href="../../../../../usage/index.html"  >usage</a>
         </li>
         <li>
-          <a href="../../../../index.html"  >modules</a>
+          <a href="../../../../../log/index.html"  >log</a>
         </li>
         <li>
-          <a href="../../../../../log/index.html"  >log</a>
+          <a href="../../../../index.html"  >modules</a>
         </li>
         <li>
           <a href="../../../../../demos/index.html"  >demos</a>
@@ -70,7 +70,8 @@
         </nav>
           <section id="module-geometor.model.wedges">
 <span id="geometor-model-wedges"></span><h1>geometor.model.wedges<a class="headerlink" href="#module-geometor.model.wedges" title="Link to this heading">¶</a></h1>
-<p>The <a class="reference internal" href="#module-geometor.model.wedges" title="geometor.model.wedges"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geometor.model.wedges</span></code></a> module provides wedge construction and manipulation for the Model class.</p>
+<p>Provides wedge construction and manipulation for the Model class.</p>
+<p>This module introduces the <cite>Wedge</cite> element, which represents a sector of a circle defined by a center, a radius point, and sweep angles. It handles the creation, validation, and property calculation (like area and arc length) for these wedge shapes.</p>
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
 <table class="autosummary longtable docutils align-default">
@@ -90,73 +91,39 @@
 <dt class="sig sig-object py" id="geometor.model.wedges.WedgesMixin">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geometor.model.wedges.</span></span><span class="sig-name descname"><span class="pre">WedgesMixin</span></span><a class="headerlink" href="#geometor.model.wedges.WedgesMixin" title="Link to this definition">¶</a></dt>
 <dd><p>Mixin for the Model class containing wedge construction operations.</p>
+<p>This mixin provides the Model with the capability to define and manage <cite>Wedge</cite> elements. It includes methods to construct wedges from defining points and integrate them into the geometric model.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.wedges.WedgesMixin.set_wedge">
-<span class="sig-name descname"><span class="pre">set_wedge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_sweep_start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_sweep_end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clockwise'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geometor.model.wedges.Wedge" title="geometor.model.wedges.Wedge"><span class="pre">Wedge</span></a></span></span><a class="headerlink" href="#geometor.model.wedges.WedgesMixin.set_wedge" title="Link to this definition">¶</a></dt>
-<dd><p>sets a Wedge from 3 points and adds it to the model.</p>
-<section id="operations">
-<h3>operations<a class="headerlink" href="#operations" title="Link to this heading">¶</a></h3>
-<ul class="simple">
-<li><p>create an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">geometor.model.Wedge</span></code></p></li>
-<li><p>create a <code class="docutils literal notranslate"><span class="pre">details</span></code> object from <code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></p></li>
-<li><dl class="simple">
-<dt>add parents to details</dt><dd><p>initial parents are the two starting points</p>
-</dd>
-</dl>
-</li>
-<li><p>check for duplicates in in the <code class="docutils literal notranslate"><span class="pre">model</span></code></p></li>
-<li><p>find intersection points for new element with all precedng elements</p></li>
-<li><p>Add <code class="docutils literal notranslate"><span class="pre">circle</span></code> to the model.</p></li>
-</ul>
+<span class="sig-name descname"><span class="pre">set_wedge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_sweep_start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_sweep_end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'clockwise'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geometor.model.wedges.Wedge" title="geometor.model.wedges.Wedge"><span class="pre">Wedge</span></a></span></span><a class="headerlink" href="#geometor.model.wedges.WedgesMixin.set_wedge" title="Link to this definition">¶</a></dt>
+<dd><p>Sets a Wedge from 3 points and adds it to the model.</p>
+<p>This method constructs a <cite>Wedge</cite> defined by a center, a radius point, and sweep points. It handles the low-level details of creating the <cite>Wedge</cite> object, wrapping it in an <cite>Element</cite>, calculating intersections, and adding it to the model structure.</p>
 <dl class="field-list simple">
-<dt class="field-odd">param - <code class="docutils literal notranslate"><span class="pre">pt_center</span></code><span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-<dt class="field-even">type - <code class="docutils literal notranslate"><span class="pre">pt_center</span></code><span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code></a> : point for circle center</p>
-</dd>
-<dt class="field-odd">param - <code class="docutils literal notranslate"><span class="pre">pt_radius</span></code><span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-<dt class="field-even">type - <code class="docutils literal notranslate"><span class="pre">pt_radius</span></code><span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code></a> : point to mark radius</p>
-</dd>
-<dt class="field-odd">param - <code class="docutils literal notranslate"><span class="pre">pt_end</span></code><span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-<dt class="field-even">type - <code class="docutils literal notranslate"><span class="pre">pt_end</span></code><span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code></a> : A SymPy Point marking the sweep of the wedge</p>
-</dd>
-<dt class="field-odd">param - <code class="docutils literal notranslate"><span class="pre">classes</span></code><span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-<dt class="field-even">type - <code class="docutils literal notranslate"><span class="pre">classes</span></code><span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> <em>optional</em> : A list of string names for classes defining a set of styles. Defaults to None.</p>
-</dd>
-<dt class="field-odd">param - <code class="docutils literal notranslate"><span class="pre">ID</span></code><span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-<dt class="field-even">type - <code class="docutils literal notranslate"><span class="pre">ID</span></code><span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> <em>optional</em> : A text ID for use in plotting and reporting. Defaults to an empty string.</p>
-</dd>
-<dt class="field-odd">returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The portion of a circle</p>
-</dd>
-<dt class="field-even">rtype<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><a class="reference internal" href="#geometor.model.wedges.Wedge" title="geometor.model.wedges.Wedge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wedge</span></code></a></p></li>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pt_center</strong> – Point for circle center.</p></li>
+<li><p><strong>pt_radius</strong> – Point to mark radius.</p></li>
+<li><p><strong>pt_sweep_start</strong> – A SymPy Point marking the start of the sweep.</p></li>
+<li><p><strong>pt_sweep_end</strong> – A SymPy Point marking the end of the sweep.</p></li>
+<li><p><strong>direction</strong> – Direction of the sweep (default “clockwise”).</p></li>
+<li><p><strong>classes</strong> – A list of string names for classes defining a set of styles.</p></li>
+<li><p><strong>ID</strong> – A text ID for use in plotting and reporting.</p></li>
 </ul>
 </dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The constructed <a class="reference internal" href="#geometor.model.wedges.Wedge" title="geometor.model.wedges.Wedge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wedge</span></code></a>.</p>
+</dd>
 </dl>
-<p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">geometor.elements</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;demo&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">],</span> <span class="n">ID</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">],</span> <span class="n">ID</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">_set_wedge_by_IDs</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">)</span>
-<span class="go">&lt;Wedge object ...&gt;</span>
+<p><strong>example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">geometor.elements</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;demo&quot;</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">],</span> <span class="n">ID</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">],</span> <span class="n">ID</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">set_wedge</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+<span class="c1"># &lt;Wedge object ...&gt;</span>
 </pre></div>
 </div>
-<p class="rubric">Notes</p>
-<p>SymPy defines a circle as a center point and a radius length, so the radius length is calculated for the spg.Circle.</p>
-</section>
 </dd></dl>
 
 </dd></dl>
@@ -201,7 +168,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.wedges.Wedge.__repr__">
-<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.wedges.Wedge.__repr__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#geometor.model.wedges.Wedge.__repr__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">

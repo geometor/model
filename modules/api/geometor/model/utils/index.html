@@ -37,10 +37,10 @@
           <a href="../../../../../usage/index.html"  >usage</a>
         </li>
         <li>
-          <a href="../../../../index.html"  >modules</a>
+          <a href="../../../../../log/index.html"  >log</a>
         </li>
         <li>
-          <a href="../../../../../log/index.html"  >log</a>
+          <a href="../../../../index.html"  >modules</a>
         </li>
         <li>
           <a href="../../../../../demos/index.html"  >demos</a>
@@ -70,33 +70,34 @@
         </nav>
           <section id="module-geometor.model.utils">
 <span id="geometor-model-utils"></span><h1>geometor.model.utils<a class="headerlink" href="#module-geometor.model.utils" title="Link to this heading">¶</a></h1>
-<p>The <a class="reference internal" href="#module-geometor.model.utils" title="geometor.model.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geometor.model.utils</span></code></a> module provides utility functions for the Model class.</p>
+<p>Provides utility functions for the Model class.</p>
+<p>This module collects general-purpose utility functions used throughout the package. It includes tools for symbolic expression simplification (cleaning), point comparison and sorting, and logging setup.</p>
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.utils.clean_expr" title="geometor.model.utils.clean_expr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clean_expr</span></code></a>(expr)</p></td>
-<td><p>simplify and denest SymPy expressions</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.utils.clean_expr" title="geometor.model.utils.clean_expr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clean_expr</span></code></a>(→ sympy.Expr)</p></td>
+<td><p>Simplify and denest SymPy expressions.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.utils.spread" title="geometor.model.utils.spread"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spread</span></code></a>(l1, l2)</p></td>
-<td><p>calculate the spread of two lines</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.utils.spread" title="geometor.model.utils.spread"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spread</span></code></a>(→ sympy.Expr)</p></td>
+<td><p>Calculate the spread of two lines.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.utils.compare_points" title="geometor.model.utils.compare_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_points</span></code></a>(pt1, pt2)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.utils.compare_points" title="geometor.model.utils.compare_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_points</span></code></a>(→ int)</p></td>
+<td><p>Compare two points for sorting.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.utils.point_value" title="geometor.model.utils.point_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">point_value</span></code></a>(→ tuple[float, float])</p></td>
+<td><p>Get the numerical coordinates of a point.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.utils.sort_points" title="geometor.model.utils.sort_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort_points</span></code></a>(→ list[sympy.geometry.Point])</p></td>
+<td><p>Sort a list of points.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.utils.log_init" title="geometor.model.utils.log_init"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_init</span></code></a>(→ None)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.utils.point_value" title="geometor.model.utils.point_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">point_value</span></code></a>(pt)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.utils.print_log" title="geometor.model.utils.print_log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_log</span></code></a>(→ None)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.utils.sort_points" title="geometor.model.utils.sort_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort_points</span></code></a>(pts)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.utils.log_init" title="geometor.model.utils.log_init"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_init</span></code></a>(name)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.utils.print_log" title="geometor.model.utils.print_log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_log</span></code></a>([txt])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.utils.elapsed" title="geometor.model.utils.elapsed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">elapsed</span></code></a>(start_time)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.utils.elapsed" title="geometor.model.utils.elapsed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">elapsed</span></code></a>(→ str)</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -106,44 +107,98 @@
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.utils.clean_expr">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.utils.</span></span><span class="sig-name descname"><span class="pre">clean_expr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.utils.clean_expr" title="Link to this definition">¶</a></dt>
-<dd><p>simplify and denest SymPy expressions</p>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.utils.</span></span><span class="sig-name descname"><span class="pre">clean_expr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.Expr</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.Expr</span></span></span><a class="headerlink" href="#geometor.model.utils.clean_expr" title="Link to this definition">¶</a></dt>
+<dd><p>Simplify and denest SymPy expressions.</p>
+<p>This function applies a standard set of simplification routines to symbolic expressions, specifically targeting the simplification of square roots and nested radicals which are common in constructive geometry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>expr</strong> – The SymPy expression to clean.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The simplified expression.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.utils.spread">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.utils.</span></span><span class="sig-name descname"><span class="pre">spread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.utils.spread" title="Link to this definition">¶</a></dt>
-<dd><p>calculate the spread of two lines</p>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.utils.</span></span><span class="sig-name descname"><span class="pre">spread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Line</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.Expr</span></span></span><a class="headerlink" href="#geometor.model.utils.spread" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the spread of two lines.</p>
+<p>The spread is a rational invariant of two lines, equivalent to the square of the sine of the angle between them. It is a fundamental concept in rational trigonometry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>l1</strong> – The first line.</p></li>
+<li><p><strong>l2</strong> – The second line.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The spread as a symbolic expression.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.utils.compare_points">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.utils.</span></span><span class="sig-name descname"><span class="pre">compare_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.utils.compare_points" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.utils.</span></span><span class="sig-name descname"><span class="pre">compare_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#geometor.model.utils.compare_points" title="Link to this definition">¶</a></dt>
+<dd><p>Compare two points for sorting.</p>
+<p>This comparison function orders points primarily by their x-coordinates and secondarily by their y-coordinates. It returns 1 if pt1 &gt; pt2, -1 if pt1 &lt; pt2, and 0 if they are equal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pt1</strong> – The first point.</p></li>
+<li><p><strong>pt2</strong> – The second point.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An integer indicating the relative order (-1, 0, 1).</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.utils.point_value">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.utils.</span></span><span class="sig-name descname"><span class="pre">point_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.utils.point_value" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.utils.</span></span><span class="sig-name descname"><span class="pre">point_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.utils.point_value" title="Link to this definition">¶</a></dt>
+<dd><p>Get the numerical coordinates of a point.</p>
+<p>This helper extracts the floating-point values of a point’s x and y coordinates, suitable for use in sorting keys or numerical comparisons.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pt</strong> – The point to evaluate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple of (x, y) floats.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.utils.sort_points">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.utils.</span></span><span class="sig-name descname"><span class="pre">sort_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.utils.sort_points" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.utils.</span></span><span class="sig-name descname"><span class="pre">sort_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.utils.sort_points" title="Link to this definition">¶</a></dt>
+<dd><p>Sort a list of points.</p>
+<p>This function sorts a list of points using the <cite>point_value</cite> helper as the key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pts</strong> – The list of points to sort.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The sorted list of points.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.utils.log_init">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.utils.</span></span><span class="sig-name descname"><span class="pre">log_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.utils.log_init" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.utils.</span></span><span class="sig-name descname"><span class="pre">log_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.utils.log_init" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.utils.print_log">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.utils.</span></span><span class="sig-name descname"><span class="pre">print_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">txt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.utils.print_log" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.utils.</span></span><span class="sig-name descname"><span class="pre">print_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">txt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.utils.print_log" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.utils.elapsed">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.utils.</span></span><span class="sig-name descname"><span class="pre">elapsed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.utils.elapsed" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.utils.</span></span><span class="sig-name descname"><span class="pre">elapsed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#geometor.model.utils.elapsed" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>

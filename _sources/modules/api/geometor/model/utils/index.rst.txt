@@ -5,7 +5,9 @@ geometor.model.utils
 
 .. autoapi-nested-parse::
 
-   The :mod:`geometor.model.utils` module provides utility functions for the Model class.
+   Provides utility functions for the Model class.
+
+   This module collects general-purpose utility functions used throughout the package. It includes tools for symbolic expression simplification (cleaning), point comparison and sorting, and logging setup.
 
 
 
@@ -27,25 +29,66 @@ Functions
 Module Contents
 ---------------
 
-.. py:function:: clean_expr(expr)
+.. py:function:: clean_expr(expr: sympy.Expr) -> sympy.Expr
 
-   simplify and denest SymPy expressions
+   Simplify and denest SymPy expressions.
+
+   This function applies a standard set of simplification routines to symbolic expressions, specifically targeting the simplification of square roots and nested radicals which are common in constructive geometry.
+
+   :param expr: The SymPy expression to clean.
+
+   :returns: The simplified expression.
 
 
-.. py:function:: spread(l1: sympy.geometry.Line, l2: sympy.geometry.Line)
+.. py:function:: spread(l1: sympy.geometry.Line, l2: sympy.geometry.Line) -> sympy.Expr
 
-   calculate the spread of two lines
+   Calculate the spread of two lines.
+
+   The spread is a rational invariant of two lines, equivalent to the square of the sine of the angle between them. It is a fundamental concept in rational trigonometry.
+
+   :param l1: The first line.
+   :param l2: The second line.
+
+   :returns: The spread as a symbolic expression.
 
 
-.. py:function:: compare_points(pt1, pt2)
+.. py:function:: compare_points(pt1: sympy.geometry.Point, pt2: sympy.geometry.Point) -> int
 
-.. py:function:: point_value(pt)
+   Compare two points for sorting.
 
-.. py:function:: sort_points(pts)
+   This comparison function orders points primarily by their x-coordinates and secondarily by their y-coordinates. It returns 1 if pt1 > pt2, -1 if pt1 < pt2, and 0 if they are equal.
 
-.. py:function:: log_init(name)
+   :param pt1: The first point.
+   :param pt2: The second point.
 
-.. py:function:: print_log(txt='')
+   :returns: An integer indicating the relative order (-1, 0, 1).
 
-.. py:function:: elapsed(start_time)
+
+.. py:function:: point_value(pt: sympy.geometry.Point) -> tuple[float, float]
+
+   Get the numerical coordinates of a point.
+
+   This helper extracts the floating-point values of a point's x and y coordinates, suitable for use in sorting keys or numerical comparisons.
+
+   :param pt: The point to evaluate.
+
+   :returns: A tuple of (x, y) floats.
+
+
+.. py:function:: sort_points(pts: list[sympy.geometry.Point]) -> list[sympy.geometry.Point]
+
+   Sort a list of points.
+
+   This function sorts a list of points using the `point_value` helper as the key.
+
+   :param pts: The list of points to sort.
+
+   :returns: The sorted list of points.
+
+
+.. py:function:: log_init(name: str) -> None
+
+.. py:function:: print_log(txt: str = '') -> None
+
+.. py:function:: elapsed(start_time: float) -> str
 

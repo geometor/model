@@ -5,7 +5,9 @@ geometor.model.sections
 
 .. autoapi-nested-parse::
 
-   The :mod:`geometor.model.sections` module provides section construction and manipulation for the Model class.
+   Provides section construction and manipulation for the Model class.
+
+   This module defines the `Section` class and associated mixin methods. A section represents a sequence of three points on a line, and this module provides tools to create them, calculate their ratios, and determine if they exhibit Golden Ratio properties.
 
 
 
@@ -35,16 +37,34 @@ Module Contents
 
    Mixin for the Model class containing section construction operations.
 
-
-   .. py:method:: set_section_by_IDs(points_IDs: list[str], classes: list = None, ID: str = '') -> Section
-
-      find points by ID and use them with :meth:`Model.set_section`
+   This mixin equips the Model with methods to construct `Section` objects. It allows sections to be defined by listing point objects or their IDs, facilitating the study of collinear points and their proportional relationships.
 
 
+   .. py:method:: set_section_by_IDs(points_IDs: list[str], classes: list[str] | None = None, ID: str = '') -> Section
 
-   .. py:method:: set_section(points: list[sympy.geometry.Point], classes=[], ID='') -> Section
+      Find points by ID and use them with :meth:`Model.set_section`.
 
-      set section (list of 3 points on a line)
+      This convenience method resolves string identifiers for points into their corresponding model elements and then creates a section. It simplifies the creation of sections when working with named points in the model.
+
+      :param points_IDs: A list of point IDs.
+      :param classes: A list of class labels.
+      :param ID: A string ID for the section.
+
+      :returns: The constructed :class:`Section`.
+
+
+
+   .. py:method:: set_section(points: list[sympy.geometry.Point], classes: list[str] | None = None, ID: str = '') -> Section
+
+      Set section (list of 3 points on a line).
+
+      This method constructs a `Section` from a list of three collinear points and adds it to the model. It automatically calculates the section's ratio, generates an ID if needed, and logs the section's details including segment lengths.
+
+      :param points: A list of 3 collinear points.
+      :param classes: A list of class labels.
+      :param ID: A string ID for the section. If empty, one is generated.
+
+      :returns: The constructed :class:`Section`.
 
 
 
@@ -59,18 +79,24 @@ Module Contents
    .. py:attribute:: clean_expr
 
 
-   .. py:method:: __eq__(other)
+   .. py:method:: __eq__(other: object) -> bool
 
 
-   .. py:method:: __hash__()
+   .. py:method:: __hash__() -> int
 
 
-   .. py:method:: __repr__()
+   .. py:method:: __repr__() -> str
 
 
-   .. py:method:: get_IDs(model) -> list[str]
+   .. py:method:: get_IDs(model: geometor.model.model.Model) -> list[str]
 
-      returns a list of IDs
+      Returns a list of IDs.
+
+      This method retrieves the unique identifiers for each of the three points that define the section, referencing the provided model.
+
+      :param model: The model containing the points.
+
+      :returns: A list of point IDs.
 
 
 
@@ -78,7 +104,11 @@ Module Contents
       :type: sympy.Expr
 
 
-      returns the ratio of the symbolic lengths of each segment
+      Returns the ratio of the symbolic lengths of each segment.
+
+      This property calculates the ratio between the longer and shorter segments of the section. The result is returned as a simplified symbolic expression.
+
+      :returns: The ratio as a symbolic expression.
 
 
    .. py:property:: lengths

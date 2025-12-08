@@ -5,7 +5,9 @@ geometor.model.chains
 
 .. autoapi-nested-parse::
 
-   The :mod:`geometor.model.chains` module provides the Chain class for analyzing connected golden sections.
+   Provides the Chain class for analyzing connected golden sections.
+
+   This module defines the `Chain` class, which facilitates the study of sequences of connected geometric sections. It offers tools for extracting segments and points, analyzing the flow of segment lengths, and exploring symmetries within the structure.
 
 
 
@@ -22,16 +24,9 @@ Module Contents
 
 .. py:class:: Chain(sections: list[geometor.model.sections.Section])
 
-   A class representing a chain of connected golden sections,
-   facilitating the extraction of segments, points, and lengths, as well as
-   analyzing the flow and symmetry within the chain.
+   A class representing a chain of connected golden sections.
 
-   Each chain’s flow is characterized by the comparative lengths of
-   consecutive segments, represented symbolically to understand the
-   progression and transitions in segment lengths. Furthermore, this module
-   empowers users to explore symmetry lines within chains, unveiling a subtle,
-   profound aspect of geometric harmony.
-
+   The Chain class is designed to analyze the progression and properties of connected geometric sections. It characterizes the "flow" of the chain by comparing consecutive segment lengths and provides methods to extract segments, points, and symbolic lengths, as well as to identify lines of symmetry.
 
 
    .. py:attribute:: sections
@@ -51,8 +46,9 @@ Module Contents
 
       Extracts unique segments from the chain.
 
+      This method iterates through all sections in the chain and collects every unique segment involved. It ensures that no duplicate segments are stored in the chain's segment list.
+
       :returns: A list containing the unique segments in the chain.
-      :rtype: - :class:`list[spg.Segment]`
 
 
 
@@ -60,8 +56,9 @@ Module Contents
 
       Extracts unique points from the chain while maintaining order.
 
+      This method compiles a list of all unique points used to define the sections in the chain. The order of appearance is preserved to maintain the geometric flow of the chain.
+
       :returns: A list containing the ordered unique points from the chain.
-      :rtype: - :class:`list[spg.Point]`
 
 
 
@@ -71,8 +68,9 @@ Module Contents
 
       Extract the symbolic lengths of the segments in the chain.
 
+      This property returns the lengths of all segments in the chain as symbolic expressions, ensuring exact mathematical representation.
+
       :returns: A list containing the symbolic lengths of each segment in the chain.
-      :rtype: - :class:`list[sp.Expr]`
 
 
    .. py:property:: numerical_lengths
@@ -81,22 +79,20 @@ Module Contents
 
       Calculate and extract the numerical lengths of the segments in the chain.
 
-      :returns: A list containing the evaluated numerical lengths of each
-                segment in the chain.
-      :rtype: - :class:`list[float]`
+      This property evaluates the symbolic lengths of the segments to floating-point numbers. It is useful for numerical analysis and comparisons where symbolic exactness is not required.
+
+      :returns: A list containing the evaluated numerical lengths of each segment in the chain.
 
 
    .. py:property:: flow
       :type: list[str]
 
 
-      Determine the flow of the segments in the chain by comparing the lengths
-      of consecutive segments.
+      Determine the flow of the segments in the chain by comparing the lengths of consecutive segments.
 
-      :returns: A list of symbols representing the flow of segment lengths. '>'
-                indicates that the previous segment is longer, '<' indicates
-                that the next segment is longer.
-      :rtype: - :class:`list[str]`
+      This property analyzes the relative lengths of adjacent segments to produce a string representation of the chain's "flow" (e.g., using '<' and '>'). This visualization helps in understanding the growth or shrinkage patterns within the chain.
+
+      :returns: A list of symbols representing the flow of segment lengths. '>' indicates that the previous segment is longer, '<' indicates that the next segment is longer.
 
 
    .. py:method:: count_symmetry_lines() -> int
@@ -106,11 +102,10 @@ Module Contents
       :type: list[str]
 
 
-      Creates and returns Fibonacci-style IDs for each segment based on
-      their lengths.
+      Creates and returns Fibonacci-style IDs for each segment based on their lengths.
 
-      :returns: A list of strings where each string is a Fibonacci-style
-                ID corresponding to a segment.
-      :rtype: - :class:`list[str]`
+      This property generates symbolic identifiers (like 'a', 'b', 'a+b') for segments, mirroring the additive properties of Fibonacci sequences. It is particularly relevant when analyzing chains constructed with golden ratio proportions.
+
+      :returns: A list of strings where each string is a Fibonacci-style ID corresponding to a segment.
 
 

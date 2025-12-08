@@ -37,10 +37,10 @@
           <a href="../../../../../usage/index.html"  >usage</a>
         </li>
         <li>
-          <a href="../../../../index.html"  >modules</a>
+          <a href="../../../../../log/index.html"  >log</a>
         </li>
         <li>
-          <a href="../../../../../log/index.html"  >log</a>
+          <a href="../../../../index.html"  >modules</a>
         </li>
         <li>
           <a href="../../../../../demos/index.html"  >demos</a>
@@ -70,7 +70,8 @@
         </nav>
           <section id="module-geometor.model.ancestors">
 <span id="geometor-model-ancestors"></span><h1>geometor.model.ancestors<a class="headerlink" href="#module-geometor.model.ancestors" title="Link to this heading">¶</a></h1>
-<p>The <a class="reference internal" href="#module-geometor.model.ancestors" title="geometor.model.ancestors"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geometor.model.ancestors</span></code></a> module provides ancestor retrieval functions for the Model class.</p>
+<p>Provides ancestor retrieval functions for the <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">geometor.model.Model</span></code></a> class.</p>
+<p>We follow the chain of parents for the element.</p>
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
 <table class="autosummary longtable docutils align-default">
@@ -87,46 +88,55 @@
 <dt class="sig sig-object py" id="geometor.model.ancestors.AncestorsMixin">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geometor.model.ancestors.</span></span><span class="sig-name descname"><span class="pre">AncestorsMixin</span></span><a class="headerlink" href="#geometor.model.ancestors.AncestorsMixin" title="Link to this definition">¶</a></dt>
 <dd><p>Mixin for the Model class containing ancestor retrieval operations.</p>
+<p>get ancestors as IDs or elements</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.ancestors.AncestorsMixin.get_ancestors_IDs">
-<span class="sig-name descname"><span class="pre">get_ancestors_IDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.ancestors.AncestorsMixin.get_ancestors_IDs" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_ancestors_IDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/entities.html#sympy.geometry.entity.GeometryEntity" title="(in SymPy v1.14.0)"><span class="pre">sympy.geometry.entity.GeometryEntity</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.ancestors.AncestorsMixin.get_ancestors_IDs" title="Link to this definition">¶</a></dt>
 <dd><p>Retrieves the IDs of the ancestors for the given element.</p>
 <p>The method recursively traverses the parent elements of the given element
 and constructs a nested dictionary with IDs representing the ancestor tree.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>element</strong> (<em>-</em>) – The element for which the ancestors’ IDs are to be retrieved.</p></li>
-<li><p><strong>returns</strong></p></li>
-<li><p><strong>dict</strong> (<em>-</em>)</p></li>
-</ul>
+<dd class="field-odd"><p><strong>element</strong> – sympy.geometry object
+The element for which the ancestors’ IDs are to be retrieved.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A nested dictionary representing the IDs of the ancestors.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
 </dd>
 </dl>
-<p class="rubric">Example</p>
-<p>If element A has parents B and C, and B has parent D, the method returns:
-{‘A’: {‘B’: {‘D’: {}}, ‘C’: {}}}</p>
+<p><strong>example</strong></p>
+<p>If element A has parents B and C, and B has parent D, the method returns:</p>
+<blockquote>
+<div><p>{‘A’: {‘B’: {‘D’: {}}, ‘C’: {}}}</p>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.ancestors.AncestorsMixin.get_ancestors">
-<span class="sig-name descname"><span class="pre">get_ancestors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.ancestors.AncestorsMixin.get_ancestors" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_ancestors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/entities.html#sympy.geometry.entity.GeometryEntity" title="(in SymPy v1.14.0)"><span class="pre">sympy.geometry.entity.GeometryEntity</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/entities.html#sympy.geometry.entity.GeometryEntity" title="(in SymPy v1.14.0)"><span class="pre">sympy.geometry.entity.GeometryEntity</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.ancestors.AncestorsMixin.get_ancestors" title="Link to this definition">¶</a></dt>
 <dd><p>Retrieves the ancestors for the given element.</p>
 <p>The method recursively traverses the parent elements of the given element
 and constructs a nested dictionary representing the ancestor tree.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>element</strong> (<em>-</em>) – The element for which the ancestors are to be retrieved.</p>
+<dd class="field-odd"><p><strong>element</strong> – sympy.geometry object
+The element for which the ancestors are to be retrieved.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>- dict</strong></p>
+<dd class="field-even"><p>A nested dictionary representing the ancestors.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A nested dictionary representing the ancestors.</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
 </dd>
 </dl>
-<p class="rubric">Example</p>
-<p>If element A has parents B and C, and B has parent D, the method returns:
-{A: {B: {D: {}}, C: {}}}</p>
+<p><strong>example</strong></p>
+<p>If element A has parents B and C, and B has parent D, the method returns:</p>
+<blockquote>
+<div><p>{A: {B: {D: {}}, C: {}}}</p>
+</div></blockquote>
 </dd></dl>
 
 </dd></dl>

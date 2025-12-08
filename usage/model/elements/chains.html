@@ -37,10 +37,10 @@
           <a href="../../index.html"  >usage</a>
         </li>
         <li>
-          <a href="../../../modules/index.html"  >modules</a>
+          <a href="../../../log/index.html"  >log</a>
         </li>
         <li>
-          <a href="../../../log/index.html"  >log</a>
+          <a href="../../../modules/index.html"  >modules</a>
         </li>
         <li>
           <a href="../../../demos/index.html"  >demos</a>
@@ -71,32 +71,22 @@
           <section id="chains">
 <h1>chains<a class="headerlink" href="#chains" title="Link to this heading">¶</a></h1>
 <p>Chains are sequences of connected segments or related geometry.</p>
-<p>The <a class="reference internal" href="../../../modules/api/geometor/model/chains/index.html#module-geometor.model.chains" title="geometor.model.chains"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geometor.model.chains</span></code></a> module provides the Chain class for analyzing connected golden sections.</p>
+<p>Provides the Chain class for analyzing connected golden sections.</p>
+<p>This module defines the <cite>Chain</cite> class, which facilitates the study of sequences of connected geometric sections. It offers tools for extracting segments and points, analyzing the flow of segment lengths, and exploring symmetries within the structure.</p>
 <dl class="py class">
 <dt class="sig sig-object py">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geometor.model.chains.</span></span><span class="sig-name descname"><span class="pre">Chain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sections</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../../modules/api/geometor/model/sections/index.html#geometor.model.sections.Section" title="geometor.model.sections.Section"><span class="pre">Section</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.13/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>A class representing a chain of connected golden sections,
-facilitating the extraction of segments, points, and lengths, as well as
-analyzing the flow and symmetry within the chain.</p>
-<p>Each chain’s flow is characterized by the comparative lengths of
-consecutive segments, represented symbolically to understand the
-progression and transitions in segment lengths. Furthermore, this module
-empowers users to explore symmetry lines within chains, unveiling a subtle,
-profound aspect of geometric harmony.</p>
+<p>A class representing a chain of connected golden sections.</p>
+<p>The Chain class is designed to analyze the progression and properties of connected geometric sections. It characterizes the “flow” of the chain by comparing consecutive segment lengths and provides methods to extract segments, points, and symbolic lengths, as well as to identify lines of symmetry.</p>
 <dl class="py method">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">extract_segments</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/lines.html#sympy.geometry.line.Segment" title="(in SymPy v1.14.0)"><span class="pre">Segment</span></a><span class="p"><span class="pre">]</span></span></span></span></dt>
 <dd><p>Extracts unique segments from the chain.</p>
+<p>This method iterates through all sections in the chain and collects every unique segment involved. It ensures that no duplicate segments are stored in the chain’s segment list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A list containing the unique segments in the chain.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">list[spg.Segment]</span></code></p></li>
-</ul>
-</p>
 </dd>
 </dl>
 </dd></dl>
@@ -105,15 +95,10 @@ profound aspect of geometric harmony.</p>
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">extract_points</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a><span class="p"><span class="pre">]</span></span></span></span></dt>
 <dd><p>Extracts unique points from the chain while maintaining order.</p>
+<p>This method compiles a list of all unique points used to define the sections in the chain. The order of appearance is preserved to maintain the geometric flow of the chain.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A list containing the ordered unique points from the chain.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">list[spg.Point]</span></code></p></li>
-</ul>
-</p>
 </dd>
 </dl>
 </dd></dl>
@@ -122,15 +107,10 @@ profound aspect of geometric harmony.</p>
 <dt class="sig sig-object py">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lengths</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.14.0)"><span class="pre">Expr</span></a><span class="p"><span class="pre">]</span></span></em></dt>
 <dd><p>Extract the symbolic lengths of the segments in the chain.</p>
+<p>This property returns the lengths of all segments in the chain as symbolic expressions, ensuring exact mathematical representation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A list containing the symbolic lengths of each segment in the chain.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">list[sp.Expr]</span></code></p></li>
-</ul>
-</p>
 </dd>
 </dl>
 </dd></dl>
@@ -139,16 +119,10 @@ profound aspect of geometric harmony.</p>
 <dt class="sig sig-object py">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">numerical_lengths</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></em></dt>
 <dd><p>Calculate and extract the numerical lengths of the segments in the chain.</p>
+<p>This property evaluates the symbolic lengths of the segments to floating-point numbers. It is useful for numerical analysis and comparisons where symbolic exactness is not required.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A list containing the evaluated numerical lengths of each
-segment in the chain.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">list[float]</span></code></p></li>
-</ul>
-</p>
+<dd class="field-odd"><p>A list containing the evaluated numerical lengths of each segment in the chain.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -156,19 +130,11 @@ segment in the chain.</p>
 <dl class="py property">
 <dt class="sig sig-object py">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">flow</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em></dt>
-<dd><p>Determine the flow of the segments in the chain by comparing the lengths
-of consecutive segments.</p>
+<dd><p>Determine the flow of the segments in the chain by comparing the lengths of consecutive segments.</p>
+<p>This property analyzes the relative lengths of adjacent segments to produce a string representation of the chain’s “flow” (e.g., using ‘&lt;’ and ‘&gt;’). This visualization helps in understanding the growth or shrinkage patterns within the chain.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A list of symbols representing the flow of segment lengths. ‘&gt;’
-indicates that the previous segment is longer, ‘&lt;’ indicates
-that the next segment is longer.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">list[str]</span></code></p></li>
-</ul>
-</p>
+<dd class="field-odd"><p>A list of symbols representing the flow of segment lengths. ‘&gt;’ indicates that the previous segment is longer, ‘&lt;’ indicates that the next segment is longer.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -181,18 +147,11 @@ that the next segment is longer.</p>
 <dl class="py property">
 <dt class="sig sig-object py">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fibonacci_IDs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em></dt>
-<dd><p>Creates and returns Fibonacci-style IDs for each segment based on
-their lengths.</p>
+<dd><p>Creates and returns Fibonacci-style IDs for each segment based on their lengths.</p>
+<p>This property generates symbolic identifiers (like ‘a’, ‘b’, ‘a+b’) for segments, mirroring the additive properties of Fibonacci sequences. It is particularly relevant when analyzing chains constructed with golden ratio proportions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A list of strings where each string is a Fibonacci-style
-ID corresponding to a segment.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">list[str]</span></code></p></li>
-</ul>
-</p>
+<dd class="field-odd"><p>A list of strings where each string is a Fibonacci-style ID corresponding to a segment.</p>
 </dd>
 </dl>
 </dd></dl>

@@ -5,32 +5,23 @@ geometor.model.__main__
 
 .. autoapi-nested-parse::
 
-   The :mod:`geometor.model.__main__` module is the entry point for the application.
+   test entry point for the application.
 
 
 
-Attributes
-----------
+Functions
+---------
 
 .. autoapisummary::
 
-   geometor.model.__main__.model
-   geometor.model.__main__.A
-   geometor.model.__main__.B
-   geometor.model.__main__.E
-   geometor.model.__main__.F
+   geometor.model.__main__.run
 
 
 Module Contents
 ---------------
 
-.. py:data:: model
+.. py:function:: run() -> None
 
-.. py:data:: A
+   builds a vesica model and reports
 
-.. py:data:: B
-
-.. py:data:: E
-
-.. py:data:: F
 

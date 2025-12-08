@@ -5,7 +5,9 @@ geometor.model.circles
 
 .. autoapi-nested-parse::
 
-   The :mod:`geometor.model.circles` module provides circle construction and manipulation for the Model class.
+   Provides circle construction and manipulation for the Model class.
+
+   This module manages the creation of symbolic circles defined by a center point and a radius point. It handles the integration of these circles into the model, ensuring uniqueness and calculating intersections.
 
 
 
@@ -24,16 +26,39 @@ Module Contents
 
    Mixin for the Model class containing circle construction operations.
 
-
-   .. py:method:: construct_circle_by_IDs(pt_1_ID: str, pt_2_ID: str, classes: list = None, ID: str = '') -> sympy.geometry.Line
-
-      find points by ID and use them with :meth:`Model.construct_line`
+   This mixin extends the Model with capabilities to construct circles. It supports creating circles from point objects or their IDs and ensures they are correctly registered and intersected with other elements in the model.
 
 
+   .. py:method:: construct_circle_by_IDs(pt_1_ID: str, pt_2_ID: str, classes: list[str] | None = None, ID: str = '') -> sympy.geometry.Circle
 
-   .. py:method:: construct_circle(pt_center: sympy.geometry.Point, pt_radius: sympy.geometry.Point, classes: list = None, ID: str = '', guide: bool = False) -> sympy.geometry.Circle
+      Find points by ID and use them with :meth:`Model.construct_circle`.
+
+      This convenience wrapper enables circle construction using string identifiers for the center and radius points, simplifying the API when working with named elements.
+
+      :param pt_1_ID: The ID of the center point.
+      :param pt_2_ID: The ID of the radius point.
+      :param classes: A list of class labels.
+      :param ID: A string ID for the circle.
+
+      :returns: The constructed :class:`sympy.geometry.ellipse.Circle`.
+
+
+
+   .. py:method:: construct_circle(pt_center: sympy.geometry.Point, pt_radius: sympy.geometry.Point, classes: list[str] | None = None, ID: str = '', guide: bool = False) -> sympy.geometry.Circle
 
       Constructs a Circle from two points and adds it to the model.
+
+      This method creates a circle defined by a center point and a point on the circumference (establishing the radius). It checks for duplicates within the model, merging attributes if an equivalent circle exists, or computing intersections if it is new.
+
+      :param pt_center: The center point of the circle.
+      :param pt_radius: A point on the circumference of the circle.
+      :param classes: A list of class labels.
+      :param ID: A string ID for the circle. If empty, one is generated.
+      :param guide: If True, the circle is a guide.
+
+      :returns: The constructed or retrieved :class:`sympy.geometry.ellipse.Circle`.
+
+      :raises TypeError: If ``pt_center`` or ``pt_radius`` are not instances of ``sympy.geometry.point.Point``.
 
 
 

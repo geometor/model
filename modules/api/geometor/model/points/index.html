@@ -37,10 +37,10 @@
           <a href="../../../../../usage/index.html"  >usage</a>
         </li>
         <li>
-          <a href="../../../../index.html"  >modules</a>
+          <a href="../../../../../log/index.html"  >log</a>
         </li>
         <li>
-          <a href="../../../../../log/index.html"  >log</a>
+          <a href="../../../../index.html"  >modules</a>
         </li>
         <li>
           <a href="../../../../../demos/index.html"  >demos</a>
@@ -70,7 +70,8 @@
         </nav>
           <section id="module-geometor.model.points">
 <span id="geometor-model-points"></span><h1>geometor.model.points<a class="headerlink" href="#module-geometor.model.points" title="Link to this heading">¶</a></h1>
-<p>The <a class="reference internal" href="#module-geometor.model.points" title="geometor.model.points"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geometor.model.points</span></code></a> module provides point construction and manipulation for the Model class.</p>
+<p>Provides point construction and manipulation for the Model class.</p>
+<p>This module handles the creation, deduplication, and management of symbolic points within the geometric model. It ensures that points are unique, properly linked to their parents, and assigned identifiers for reference.</p>
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
 <table class="autosummary longtable docutils align-default">
@@ -87,6 +88,7 @@
 <dt class="sig sig-object py" id="geometor.model.points.PointsMixin">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geometor.model.points.</span></span><span class="sig-name descname"><span class="pre">PointsMixin</span></span><a class="headerlink" href="#geometor.model.points.PointsMixin" title="Link to this definition">¶</a></dt>
 <dd><p>Mixin for the Model class containing point construction operations.</p>
+<p>This mixin augments the Model class with methods specific to point handling, particularly the <cite>set_point</cite> method which is the primary entry point for adding points to the model. It also manages point ID generation.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.points.PointsMixin.point_ID_generator">
 <span class="sig-name descname"><span class="pre">point_ID_generator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Iterator" title="(in Python v3.13)"><span class="pre">collections.abc.Iterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.points.PointsMixin.point_ID_generator" title="Link to this definition">¶</a></dt>
@@ -94,37 +96,31 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.points.PointsMixin.set_point">
-<span class="sig-name descname"><span class="pre">set_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.Expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.Expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parents</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guide</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.geometry.Point</span></span></span><a class="headerlink" href="#geometor.model.points.PointsMixin.set_point" title="Link to this definition">¶</a></dt>
-<dd><p>Adds a point to the model, finds duplicates, cleans values, and sets
-parents and classes.</p>
+<span class="sig-name descname"><span class="pre">set_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.Expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.Expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parents</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guide</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.geometry.Point</span></span></span><a class="headerlink" href="#geometor.model.points.PointsMixin.set_point" title="Link to this definition">¶</a></dt>
+<dd><p>Adds a point to the model, finds duplicates, cleans values, and sets parents and classes.</p>
+<p>This method is the core mechanism for introducing points into the model. It simplifies the coordinates, checks for existing points to avoid duplicates, attempts to merge attributes if a duplicate is found, and triggers analysis hooks for the new point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x_val</strong> (<em>-</em>)</p></li>
-<li><p><strong>y_val</strong> (<em>-</em>)</p></li>
-<li><p><strong>parents</strong> (<em>-</em>) – Defaults to None.</p></li>
-<li><p><strong>list</strong> (<em>- classes</em>) – a set of styles. Defaults to None.</p></li>
-<li><p><strong>optional</strong> (<em>A text ID for use in plotting and</em>) – a set of styles. Defaults to None.</p></li>
-<li><p><strong>str</strong> (<em>- ID</em>) – reporting. Defaults to an empty string.</p></li>
-<li><p><strong>optional</strong> – reporting. Defaults to an empty string.</p></li>
+<li><p><strong>x_val</strong> – The x-value of the point.</p></li>
+<li><p><strong>y_val</strong> – The y-value of the point.</p></li>
+<li><p><strong>parents</strong> – A list of parent elements or references.</p></li>
+<li><p><strong>classes</strong> – A list of string names for classes defining a set of styles.</p></li>
+<li><p><strong>ID</strong> – A text ID for use in plotting and reporting.</p></li>
+<li><p><strong>guide</strong> – If True, the point is a guide.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>- :class:`sympy.geometry.point.Point`</strong></p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The set point.</p>
+<dd class="field-even"><p>The set point.</p>
 </dd>
 </dl>
-<p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;demo&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
-<span class="go">&lt;spg.Point object ...&gt;</span>
+<p><strong>example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;demo&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
+<span class="c1"># &lt;spg.Point object ...&gt;</span>
 </pre></div>
 </div>
-<p class="rubric">Notes</p>
-<p>The function simplifies the x and y values before adding, and it updates the attributes if the point is already in the model.</p>
 </dd></dl>
 
 </dd></dl>

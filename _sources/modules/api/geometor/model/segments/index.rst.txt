@@ -5,7 +5,9 @@ geometor.model.segments
 
 .. autoapi-nested-parse::
 
-   The :mod:`geometor.model.segments` module provides segment construction and manipulation for the Model class.
+   Provides segment construction and manipulation for the Model class.
+
+   This module defines `SegmentsMixin`, which allows the creation and management of line segments within the model. Segments are defined by two points and have a measurable length.
 
 
 
@@ -24,16 +26,36 @@ Module Contents
 
    Mixin for the Model class containing segment construction operations.
 
-
-   .. py:method:: set_segment_by_IDs(pt_1_ID: str, pt_2_ID: str, classes: list = None, ID: str = '') -> sympy.geometry.Segment
-
-      find points by ID and use them with :meth:`Model.set_segment`
+   This mixin augments the Model with functionality to explicitly explicitly define segments between points. While generally used for visualization or specific measurements, these segments are integrated into the model as distinct elements.
 
 
+   .. py:method:: set_segment_by_IDs(pt_1_ID: str, pt_2_ID: str, classes: list[str] | None = None, ID: str = '') -> sympy.geometry.Segment
 
-   .. py:method:: set_segment(pt_1: sympy.geometry.Point, pt_2: sympy.geometry.Point, classes=[], ID='') -> sympy.geometry.Segment
+      Find points by ID and use them with :meth:`Model.set_segment`.
 
-      set segment (list of points) for demonstration in the model
+      This convenience method enables the creation of segments using the unique string IDs of the start and end points. It retrieves the corresponding point objects from the model and delegates construction to `set_segment`.
+
+      :param pt_1_ID: The ID of the start point.
+      :param pt_2_ID: The ID of the end point.
+      :param classes: A list of class labels.
+      :param ID: A string ID for the segment.
+
+      :returns: The constructed :class:`sympy.geometry.line.Segment`.
+
+
+
+   .. py:method:: set_segment(pt_1: sympy.geometry.Point, pt_2: sympy.geometry.Point, classes: list[str] | None = None, ID: str = '') -> sympy.geometry.Segment
+
+      Set segment (list of points) for demonstration in the model.
+
+      This method constructs a segment between two points and adds it to the model. It handles ID generation, class assignment, and logging of the segment's length.
+
+      :param pt_1: The start point of the segment.
+      :param pt_2: The end point of the segment.
+      :param classes: A list of class labels.
+      :param ID: A string ID for the segment. If empty, one is generated.
+
+      :returns: The constructed :class:`sympy.geometry.line.Segment`.
 
 
 

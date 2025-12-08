@@ -37,10 +37,10 @@
           <a href="../../../../../usage/index.html"  >usage</a>
         </li>
         <li>
-          <a href="../../../../index.html"  >modules</a>
+          <a href="../../../../../log/index.html"  >log</a>
         </li>
         <li>
-          <a href="../../../../../log/index.html"  >log</a>
+          <a href="../../../../index.html"  >modules</a>
         </li>
         <li>
           <a href="../../../../../demos/index.html"  >demos</a>
@@ -70,7 +70,8 @@
         </nav>
           <section id="module-geometor.model.segments">
 <span id="geometor-model-segments"></span><h1>geometor.model.segments<a class="headerlink" href="#module-geometor.model.segments" title="Link to this heading">¶</a></h1>
-<p>The <a class="reference internal" href="#module-geometor.model.segments" title="geometor.model.segments"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geometor.model.segments</span></code></a> module provides segment construction and manipulation for the Model class.</p>
+<p>Provides segment construction and manipulation for the Model class.</p>
+<p>This module defines <cite>SegmentsMixin</cite>, which allows the creation and management of line segments within the model. Segments are defined by two points and have a measurable length.</p>
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
 <table class="autosummary longtable docutils align-default">
@@ -87,16 +88,45 @@
 <dt class="sig sig-object py" id="geometor.model.segments.SegmentsMixin">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geometor.model.segments.</span></span><span class="sig-name descname"><span class="pre">SegmentsMixin</span></span><a class="headerlink" href="#geometor.model.segments.SegmentsMixin" title="Link to this definition">¶</a></dt>
 <dd><p>Mixin for the Model class containing segment construction operations.</p>
+<p>This mixin augments the Model with functionality to explicitly explicitly define segments between points. While generally used for visualization or specific measurements, these segments are integrated into the model as distinct elements.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.segments.SegmentsMixin.set_segment_by_IDs">
-<span class="sig-name descname"><span class="pre">set_segment_by_IDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_1_ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2_ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.geometry.Segment</span></span></span><a class="headerlink" href="#geometor.model.segments.SegmentsMixin.set_segment_by_IDs" title="Link to this definition">¶</a></dt>
-<dd><p>find points by ID and use them with <code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.set_segment()</span></code></p>
+<span class="sig-name descname"><span class="pre">set_segment_by_IDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_1_ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2_ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.geometry.Segment</span></span></span><a class="headerlink" href="#geometor.model.segments.SegmentsMixin.set_segment_by_IDs" title="Link to this definition">¶</a></dt>
+<dd><p>Find points by ID and use them with <code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.set_segment()</span></code>.</p>
+<p>This convenience method enables the creation of segments using the unique string IDs of the start and end points. It retrieves the corresponding point objects from the model and delegates construction to <cite>set_segment</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pt_1_ID</strong> – The ID of the start point.</p></li>
+<li><p><strong>pt_2_ID</strong> – The ID of the end point.</p></li>
+<li><p><strong>classes</strong> – A list of class labels.</p></li>
+<li><p><strong>ID</strong> – A string ID for the segment.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The constructed <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/lines.html#sympy.geometry.line.Segment" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.line.Segment</span></code></a>.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.segments.SegmentsMixin.set_segment">
-<span class="sig-name descname"><span class="pre">set_segment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.geometry.Segment</span></span></span><a class="headerlink" href="#geometor.model.segments.SegmentsMixin.set_segment" title="Link to this definition">¶</a></dt>
-<dd><p>set segment (list of points) for demonstration in the model</p>
+<span class="sig-name descname"><span class="pre">set_segment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.geometry.Segment</span></span></span><a class="headerlink" href="#geometor.model.segments.SegmentsMixin.set_segment" title="Link to this definition">¶</a></dt>
+<dd><p>Set segment (list of points) for demonstration in the model.</p>
+<p>This method constructs a segment between two points and adds it to the model. It handles ID generation, class assignment, and logging of the segment’s length.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pt_1</strong> – The start point of the segment.</p></li>
+<li><p><strong>pt_2</strong> – The end point of the segment.</p></li>
+<li><p><strong>classes</strong> – A list of class labels.</p></li>
+<li><p><strong>ID</strong> – A string ID for the segment. If empty, one is generated.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The constructed <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/lines.html#sympy.geometry.line.Segment" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.line.Segment</span></code></a>.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

@@ -5,7 +5,9 @@ geometor.model.reports
 
 .. autoapi-nested-parse::
 
-   The :mod:`geometor.model.reports` module provides reporting functions for the Model class.
+   Provides reporting functions for the Model class.
+
+   This module offers tools for visualizing and summarizing the state of the geometric model. It includes functions to generate textual reports for the console using `rich` tables and methods to export the model's structure as Graphviz DOT files for diagram generation.
 
 
 
@@ -29,27 +31,61 @@ Functions
 Module Contents
 ---------------
 
-.. py:function:: generate_dot(graph, parent=None, dot_string='', defined_nodes=None)
+.. py:function:: generate_dot(graph: dict, parent: str | None = None, dot_string: str = '', defined_nodes: set | None = None) -> str
+
+   Generates a DOT string representing the graph structure of the model.
+
+   This function traverses a nested dictionary representing the model's ancestor graph and produces a Graphviz DOT format string. It handles node definition with appropriate shapes (rectangles for lines, ellipses for circles, points for points) and edge creation to visualize dependencies.
+
+   :param graph: A dictionary representing the graph structure/ancestors.
+   :param parent: The key of the parent node (used in recursion).
+   :param dot_string: The accumulating DOT string (used in recursion).
+   :param defined_nodes: A set of already defined nodes to prevent duplicates.
+
+   :returns: A string containing the complete DOT graph definition.
+
 
 .. py:class:: ReportMixin
 
    Mixin for the Model class containing report generation methods.
 
-
-   .. py:method:: report_summary()
-
-
-   .. py:method:: report_group_by_type()
+   This mixin provides the Model with methods to output formatted summaries and detailed reports of its contents. It utilizes the `rich` library to create readable console tables of elements, organized by type or sequence, facilitating inspection and debugging.
 
 
-   .. py:method:: report_sequence()
+   .. py:method:: report_summary() -> None
+
+      Prints a summary of the model's contents to the console.
+
+      This method compiles a high-level overview of the total number of elements in the model, broken down by category (points, lines, circles). It uses a formatted table for clear presentation of these statistics.
+
+
+
+   .. py:method:: report_group_by_type() -> None
+
+      Prints a detailed report of all elements grouped by type.
+
+      This method iterates through the model's collections of points, lines, and circles, generating separate tables for each type. Each table includes detailed information such as IDs, coordinates/equations, parent dependencies, and associated classes.
+
+
+
+   .. py:method:: report_sequence() -> None
 
       Generate a sequential report of the model using rich Console layouts.
 
+      This method lists all elements in the order they were added to the model. It presents a comprehensive view including the element's ID, defining points or properties, parents, classes, and algebraic equation, providing a chronological log of the construction.
 
 
-.. py:function:: get_colored_ID(el, ID, classes=None)
+
+.. py:function:: get_colored_ID(el: sympy.geometry.entity.GeometryEntity, ID: str, classes: list[str] | None = None) -> rich.text.Text
 
    Get the colored ID for a geometric element.
+
+   This helper checks the element's classes to determine its color and returns a styled Text object suitable for rendering in the rich console.
+
+   :param el: The geometric entity.
+   :param ID: The text ID of the element.
+   :param classes: A list of class names associated with the element.
+
+   :returns: A :class:`rich.text.Text` object containing the styled ID.
 
 
