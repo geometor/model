@@ -1,5 +1,6 @@
-"""
-The :mod:`geometor.model.wedges` module provides wedge construction and manipulation for the Model class.
+"""Provides wedge construction and manipulation for the Model class.
+
+This module introduces the `Wedge` element, which represents a sector of a circle defined by a center, a radius point, and sweep angles. It handles the creation, validation, and property calculation (like area and arc length) for these wedge shapes.
 """
 
 from __future__ import annotations
@@ -16,12 +17,13 @@ from geometor.model.element import (
 )
 
 if TYPE_CHECKING:
-    pass
+    from sympy.printing.printer import Printer
 
 
 class WedgesMixin:
-    """
-    Mixin for the Model class containing wedge construction operations.
+    """Mixin for the Model class containing wedge construction operations.
+    
+    This mixin provides the Model with the capability to define and manage `Wedge` elements. It includes methods to construct wedges from defining points and integrate them into the geometric model.
     """
 
     def set_wedge(
@@ -30,50 +32,38 @@ class WedgesMixin:
         pt_radius: spg.Point,
         pt_sweep_start: spg.Point,
         pt_sweep_end: spg.Point,
-        direction="clockwise",
-        classes: list = None,
+        direction: str = "clockwise",
+        classes: list[str] | None = None,
         ID: str = "",
     ) -> Wedge:
-        """
-        sets a Wedge from 3 points and adds it to the model.
+        """Sets a Wedge from 3 points and adds it to the model.
+        
+        This method constructs a `Wedge` defined by a center, a radius point, and sweep points. It handles the low-level details of creating the `Wedge` object, wrapping it in an `Element`, calculating intersections, and adding it to the model structure.
 
-        operations
-        ~~~~~~~~~~
-        - create an instance of :class:`geometor.model.Wedge`
-        - create a ``details`` object from :class:`Element`
-        - add parents to details
-            initial parents are the two starting points
-        - check for duplicates in in the ``model``
-        - find intersection points for new element with all precedng elements
-        - Add ``circle`` to the model.
+        Args:
+            pt_center: Point for circle center.
+            pt_radius: Point to mark radius.
+            pt_sweep_start: A SymPy Point marking the start of the sweep.
+            pt_sweep_end: A SymPy Point marking the end of the sweep.
+            direction: Direction of the sweep (default "clockwise").
+            classes: A list of string names for classes defining a set of styles.
+            ID: A text ID for use in plotting and reporting.
 
-        parameters
-        ----------
-        - ``pt_center`` : :class:`sympy.geometry.point.Point` : point for circle center
-        - ``pt_radius`` : :class:`sympy.geometry.point.Point` : point to mark radius
-        - ``pt_end`` : :class:`sympy.geometry.point.Point` : A SymPy Point marking the sweep of the wedge
-        - ``classes`` : :class:`list` *optional* : A list of string names for classes defining a set of styles. Defaults to None.
-        - ``ID`` : :class:`str` *optional* : A text ID for use in plotting and reporting. Defaults to an empty string.
+        Returns:
+            The constructed :class:`Wedge`.
 
-        returns
-        -------
-        - :class:`Wedge`
-            The portion of a circle
+        **example**
 
-        example
-        -------
-            >>> from geometor.elements import *
-            >>> model = Model("demo")
-            >>> A = model.set_point(0, 0, classes=["given"], ID="A")
-            >>> B = model.set_point(1, 0, classes=["given"], ID="B")
-            >>> model.construct_circle(A, B)
-            >>> model.construct_circle(B, A)
-            >>> model._set_wedge_by_IDs('A', 'B', 'C')
-            <Wedge object ...>
+        .. code-block:: python
 
-        notes
-        -----
-        SymPy defines a circle as a center point and a radius length, so the radius length is calculated for the spg.Circle.
+            from geometor.elements import *
+            model = Model("demo")
+            A = model.set_point(0, 0, classes=["given"], ID="A")
+            B = model.set_point(1, 0, classes=["given"], ID="B")
+            model.construct_circle(A, B)
+            model.construct_circle(B, A)
+            model.set_wedge(A, B, C, D)
+            # <Wedge object ...>
 
         """
 
@@ -121,7 +111,7 @@ class WedgesMixin:
 
 
 class Wedge:
-    def __init__(self, points: list[spg.Point]):
+    def __init__(self, points: list[spg.Point]) -> None:
         assert len(points) == 4, "A wedge must be defined by four points."
         self.points = points
         self.pt_center = points[0]
@@ -138,11 +128,11 @@ class Wedge:
         self.start_point, self.end_point = self._find_arc_endpoints()
         # self.direction = direction
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         points_repr = [sp.srepr(p) for p in self.points]
         return f"Wedge([{', '.join(points_repr)}])"
 
-    def _sstr(self, printer):
+    def _sstr(self, printer: Printer) -> str:
         points_repr = [printer.doprint(p) for p in self.points]
         return f"Wedge([{', '.join(points_repr)}])"
 

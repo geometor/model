@@ -1,6 +1,16 @@
 changelog
 =========
 
+0.4.6
+-----
+*2025-12-08*
+
+**changed**
+
+-   Comprehensive type hinting added to all core modules.
+-   Removed auto-generated API documentation.
+-   Updated .gitignore to exclude generated docs.
+
 0.4.5
 -----
 *2025-12-06*

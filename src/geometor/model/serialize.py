@@ -1,8 +1,12 @@
-"""
-The :mod:`geometor.model.serialize` module provides serialization functions for the Model class.
+"""Provides serialization functions for the Model class.
+
+This module is responsible for converting the complex, interconnected structure of the geometric model into a portable JSON format and reconstituting it back into a full object model. It ensures that all element relationships, metadata, and symbolic expressions are preserved during the save/load process.
 """
 
+from __future__ import annotations
+
 import json
+import logging
 from typing import TYPE_CHECKING
 
 import sympy as sp
@@ -14,17 +18,24 @@ from .sections import Section
 from .wedges import Wedge
 
 if TYPE_CHECKING:
-    pass
+    import logging
+
+    from geometor.model.model import Model
 
 
 class SerializeMixin:
-    """
-    Mixin for the Model class containing serialization operations.
+    """Mixin for the Model class containing serialization operations.
+    
+    This mixin adds persistence capabilities to the Model class, allowing it to export its state to a file. It uses JSON as the interchange format, serializing SymPy objects into string representations that can be accurately parsed back.
     """
 
-    def save(self, file_path):
-        """
-        Saves a Model object to a JSON file as a list of elements.
+    def save(self, file_path: str) -> None:
+        """Saves a Model object to a JSON file as a list of elements.
+        
+        This method iterates through all elements in the model, serializing their symbolic definitions, parents, and metadata into a dictionary structure. It uses SymPy's srepr for robust expression serialization and writes the result to the specified file path.
+
+        Args:
+            file_path: The path where the JSON file will be saved.
         """
         serializable_elements = []
         for element in self.values():
@@ -61,9 +72,17 @@ class SerializeMixin:
             json.dump(serializable_model, file, indent=4)
 
 
-def load_model(file_path, logger=None):
-    """
-    Loads a model from a JSON file and returns a new Model instance.
+def load_model(file_path: str, logger: logging.Logger | None = None) -> Model:
+    """Loads a model from a JSON file and returns a new Model instance.
+    
+    This function reads a JSON file containing serialized model data and reconstructs a :class:`geometor.model.Model` object. It performs a two-pass process: first parsing all symbolic expressions to recreate the geometry objects, and then linking them with their parents and metadata to restore the full dependency graph.
+
+    Args:
+        file_path: The path to the JSON file to load.
+        logger: An optional logger instance to attach to the new model.
+
+    Returns:
+        A new :class:`geometor.model.Model` instance populated with the loaded data.
     """
     # Import Model here to avoid circular dependency
     from geometor.model import Model

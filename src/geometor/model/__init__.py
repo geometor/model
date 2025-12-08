@@ -1,10 +1,11 @@
-"""
-The :mod:`geometor.model` module provides the core data structures and logic for constructing geometric models in 2D space.
+"""provides the core data structures and logic for constructing geometric models in 2D space.
+
+everything centers around :class:`Model`
 """
 
 from __future__ import annotations
 
-__version__ = "0.4.5"
+__version__ = "0.4.6"
 
 from geometor.model.serialize import load_model
 from geometor.model.model import GeometryObject, Model

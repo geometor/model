@@ -1,40 +1,43 @@
-"""
-The :mod:`geometor.model.ancestors` module provides ancestor retrieval functions for the Model class.
+"""Provides ancestor retrieval functions for the :class:`geometor.model.Model` class.
+
+We follow the chain of parents for the element. 
 """
 
 from __future__ import annotations
 
 import sympy.geometry as spg
+from sympy.geometry.entity import GeometryEntity
 
 
 class AncestorsMixin:
-    """
-    Mixin for the Model class containing ancestor retrieval operations.
+    """Mixin for the Model class containing ancestor retrieval operations.
+
+    get ancestors as IDs or elements
     """
 
-    def get_ancestors_IDs(self, element) -> dict[str, dict]:
-        """
-        Retrieves the IDs of the ancestors for the given element.
+    def get_ancestors_IDs(self, element: GeometryEntity) -> dict[str, dict]:
+        """Retrieves the IDs of the ancestors for the given element.
 
         The method recursively traverses the parent elements of the given element
         and constructs a nested dictionary with IDs representing the ancestor tree.
 
-        parameters
-        ----------
-        - element : sympy.geometry object
-            The element for which the ancestors' IDs are to be retrieved.
+        Args:
+            element: sympy.geometry object
+                The element for which the ancestors' IDs are to be retrieved.
 
-        returns
-        - dict : A nested dictionary representing the IDs of the ancestors.
+        Returns:
+            dict: A nested dictionary representing the IDs of the ancestors.
 
-        example
-        -------
+        **example**
+
         If element A has parents B and C, and B has parent D, the method returns:
-        {'A': {'B': {'D': {}}, 'C': {}}}
+
+            {'A': {'B': {'D': {}}, 'C': {}}}
+
         """
         visited = set()
 
-        def _recursive_get(el):
+        def _recursive_get(el: GeometryEntity) -> dict[str, dict]:
             from geometor.model.sections import Section
 
             element_id = self[el].ID
@@ -71,26 +74,25 @@ class AncestorsMixin:
 
         return _recursive_get(element)
 
-    def get_ancestors(self, element):
-        """
-        Retrieves the ancestors for the given element.
+    def get_ancestors(self, element: GeometryEntity) -> dict[GeometryEntity, dict]:
+        """Retrieves the ancestors for the given element.
 
         The method recursively traverses the parent elements of the given element
         and constructs a nested dictionary representing the ancestor tree.
 
-        parameters
-        ----------
-        - element : sympy.geometry object
-            The element for which the ancestors are to be retrieved.
+        Args:
+            element : sympy.geometry object
+                The element for which the ancestors are to be retrieved.
 
-        returns
-        -------
-        - dict : A nested dictionary representing the ancestors.
+        Returns:
+            dict : A nested dictionary representing the ancestors.
 
-        example
-        -------
+        **example**
+
         If element A has parents B and C, and B has parent D, the method returns:
-        {A: {B: {D: {}}, C: {}}}
+
+            {A: {B: {D: {}}, C: {}}}
+
         """
         ancestors = {element: {}}
 

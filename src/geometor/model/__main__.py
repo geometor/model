@@ -1,20 +1,26 @@
-"""
-The :mod:`geometor.model.__main__` module is the entry point for the application.
+"""test entry point for the application.
+
 """
 
 from geometor.model import Model
 
-model = Model("demo")
-A = model.set_point(0, 0, classes=["given"])
-B = model.set_point(1, 0, classes=["given"])
-model.construct_line(A, B)
-model.construct_circle(A, B)
-model.construct_circle(B, A)
+def run() -> None:
+    """builds a vesica model and reports"""
 
-E = model.get_element_by_label("E")
-F = model.get_element_by_label("F")
-model.construct_line(E, F)
+    model = Model("demo")
+    A = model.set_point(0, 0, classes=["given"])
+    B = model.set_point(1, 0, classes=["given"])
+    model.construct_line(A, B)
+    model.construct_circle(A, B)
+    model.construct_circle(B, A)
 
-model.report_sequence()
-model.report_group_by_type()
-model.report_summary()
+    E = model.get_element_by_label("E")
+    F = model.get_element_by_label("F")
+    model.construct_line(E, F)
+
+    model.report_sequence()
+    model.report_group_by_type()
+    model.report_summary()
+
+if __name__ == "__main__":
+    run()

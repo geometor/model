@@ -1,5 +1,6 @@
-"""
-The :mod:`geometor.model.points` module provides point construction and manipulation for the Model class.
+"""Provides point construction and manipulation for the Model class.
+
+This module handles the creation, deduplication, and management of symbolic points within the geometric model. It ensures that points are unique, properly linked to their parents, and assigned identifiers for reference.
 """
 
 from __future__ import annotations
@@ -22,8 +23,9 @@ __all__ = ["PointsMixin"]
 
 
 class PointsMixin:
-    """
-    Mixin for the Model class containing point construction operations.
+    """Mixin for the Model class containing point construction operations.
+    
+    This mixin augments the Model class with methods specific to point handling, particularly the `set_point` method which is the primary entry point for adding points to the model. It also manages point ID generation.
     """
 
     def point_ID_generator(self) -> Iterator[str]:
@@ -39,40 +41,35 @@ class PointsMixin:
         self,
         x_val: sp.Expr,
         y_val: sp.Expr,
-        parents: list = None,
-        classes: list = None,
+        parents: list | None = None,
+        classes: list[str] | None = None,
         ID: str = "",
         guide: bool = False,
     ) -> spg.Point:
-        """
-        Adds a point to the model, finds duplicates, cleans values, and sets
-        parents and classes.
+        """Adds a point to the model, finds duplicates, cleans values, and sets parents and classes.
+        
+        This method is the core mechanism for introducing points into the model. It simplifies the coordinates, checks for existing points to avoid duplicates, attempts to merge attributes if a duplicate is found, and triggers analysis hooks for the new point.
 
-        parameters
-        ----------
-        - ``x_val`` : :class:`sympy.core.expr.Expr`: The x-value of the point.
-        - ``y_val`` : :class:`sympy.core.expr.Expr`: The y-value of the point.
-        - ``parents`` : list, optional: A list of parent elements or references.
-          Defaults to None.
-        - ``classes`` list, optional: A list of string names for classes defining
-          a set of styles. Defaults to None.
-        - ``ID`` str, optional: A text ID for use in plotting and
-          reporting. Defaults to an empty string.
+        Args:
+            x_val: The x-value of the point.
+            y_val: The y-value of the point.
+            parents: A list of parent elements or references.
+            classes: A list of string names for classes defining a set of styles.
+            ID: A text ID for use in plotting and reporting.
+            guide: If True, the point is a guide.
 
-        returns
-        -------
-        - :class:`sympy.geometry.point.Point`: The set point.
+        Returns:
+            The set point.
 
-        example
-        -------
-        >>> from geometor.model import *
-        >>> model = Model("demo")
-        >>> model.set_point(0, 0, classes=["given"])
-        <spg.Point object ...>
+        **example**
 
-        notes
-        -----
-        The function simplifies the x and y values before adding, and it updates the attributes if the point is already in the model.
+        .. code-block:: python
+
+            from geometor.model import *
+            model = Model("demo")
+            model.set_point(0, 0, classes=["given"])
+            # <spg.Point object ...>
+
         """
 
         if classes is None:

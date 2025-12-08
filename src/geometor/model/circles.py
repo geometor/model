@@ -1,5 +1,6 @@
-"""
-The :mod:`geometor.model.circles` module provides circle construction and manipulation for the Model class.
+"""Provides circle construction and manipulation for the Model class.
+
+This module manages the creation of symbolic circles defined by a center point and a radius point. It handles the integration of these circles into the model, ensuring uniqueness and calculating intersections.
 """
 
 from __future__ import annotations
@@ -20,15 +21,26 @@ __all__ = ["CirclesMixin"]
 
 
 class CirclesMixin:
-    """
-    Mixin for the Model class containing circle construction operations.
+    """Mixin for the Model class containing circle construction operations.
+    
+    This mixin extends the Model with capabilities to construct circles. It supports creating circles from point objects or their IDs and ensures they are correctly registered and intersected with other elements in the model.
     """
 
     def construct_circle_by_IDs(
-        self, pt_1_ID: str, pt_2_ID: str, classes: list = None, ID: str = ""
-    ) -> spg.Line:
-        """
-        find points by ID and use them with :meth:`Model.construct_line`
+        self, pt_1_ID: str, pt_2_ID: str, classes: list[str] | None = None, ID: str = ""
+    ) -> spg.Circle:
+        """Find points by ID and use them with :meth:`Model.construct_circle`.
+        
+        This convenience wrapper enables circle construction using string identifiers for the center and radius points, simplifying the API when working with named elements.
+
+        Args:
+             pt_1_ID: The ID of the center point.
+             pt_2_ID: The ID of the radius point.
+             classes: A list of class labels.
+             ID: A string ID for the circle.
+
+        Returns:
+            The constructed :class:`sympy.geometry.ellipse.Circle`.
         """
 
         pt_1 = self.get_element_by_ID(pt_1_ID)
@@ -39,12 +51,26 @@ class CirclesMixin:
         self,
         pt_center: spg.Point,
         pt_radius: spg.Point,
-        classes: list = None,
+        classes: list[str] | None = None,
         ID: str = "",
         guide: bool = False,
     ) -> spg.Circle:
-        """
-        Constructs a Circle from two points and adds it to the model.
+        """Constructs a Circle from two points and adds it to the model.
+        
+        This method creates a circle defined by a center point and a point on the circumference (establishing the radius). It checks for duplicates within the model, merging attributes if an equivalent circle exists, or computing intersections if it is new.
+
+        Args:
+            pt_center: The center point of the circle.
+            pt_radius: A point on the circumference of the circle.
+            classes: A list of class labels.
+            ID: A string ID for the circle. If empty, one is generated.
+            guide: If True, the circle is a guide.
+
+        Returns:
+            The constructed or retrieved :class:`sympy.geometry.ellipse.Circle`.
+
+        Raises:
+            TypeError: If ``pt_center`` or ``pt_radius`` are not instances of ``sympy.geometry.point.Point``.
         """
         self.clear_new_points()
 

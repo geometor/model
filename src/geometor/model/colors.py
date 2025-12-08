@@ -3,6 +3,7 @@ The :mod:`geometor.model.colors` module defines the default colors for geometric
 """
 
 import sympy.geometry as spg
+from sympy.geometry.entity import GeometryEntity
 
 COLORS = {
     "point": "gold3",
@@ -18,7 +19,9 @@ COLORS = {
 }
 
 
-def get_color(element, classes=None):
+def get_color(
+    element: GeometryEntity, classes: list[str] | None = None
+) -> str:
     """
     Get the color for a geometric element based on its type and classes.
     """

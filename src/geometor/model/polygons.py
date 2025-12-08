@@ -1,5 +1,6 @@
-"""
-The :mod:`geometor.model.polygons` module provides polygon construction and manipulation for the Model class.
+"""Provides polygon construction and manipulation for the Model class.
+
+This module facilitates the creation and management of polygon elements within the model. It allows for defining polygons using lists of points or point identifiers and supports calculating properties like side lengths and area.
 """
 
 from __future__ import annotations
@@ -21,15 +22,25 @@ __all__ = ["PolygonsMixin"]
 
 
 class PolygonsMixin:
-    """
-    Mixin for the Model class containing polygon construction operations.
+    """Mixin for the Model class containing polygon construction operations.
+    
+    This mixin extends the Model with functionality to define polygons. It includes methods for creating polygons from both direct point objects and their corresponding string IDs, ensuring flexibility in how geometric shapes are defined.
     """
 
     def set_polygon_by_IDs(
-        self, poly_pts_IDs: list[str], classes: list = None, ID: str = ""
+        self, poly_pts_IDs: list[str], classes: list[str] | None = None, ID: str = ""
     ) -> spg.Polygon:
-        """
-        find points by ID and use them with :meth:`Model.set_polygon`
+        """Find points by ID and use them with :meth:`Model.set_polygon`.
+        
+        This helper method resolves a list of point IDs to their corresponding point objects in the model and then delegates to `set_polygon` to create the polygon element.
+
+        Args:
+            poly_pts_IDs: A list of point IDs.
+            classes: A list of class labels.
+            ID: A string ID for the polygon.
+
+        Returns:
+            The constructed :class:`sympy.geometry.polygon.Polygon`.
         """
         poly_pts = []
 
@@ -38,9 +49,20 @@ class PolygonsMixin:
 
         return self.set_polygon(poly_pts, classes)
 
-    def set_polygon(self, poly_pts: list[spg.Point], classes=[], ID="") -> spg.Polygon:
-        """
-        set polygon (list of 3 or more points)
+    def set_polygon(
+        self, poly_pts: list[spg.Point], classes: list[str] | None = None, ID: str = ""
+    ) -> spg.Polygon:
+        """Set polygon (list of 3 or more points).
+        
+        This method constructs a polygon from a list of points and adds it to the model. It calculates the lengths of the polygon's sides, generates an ID if one is not provided, and logs the polygon's properties including side lengths and area.
+
+        Args:
+            poly_pts: A list of 3 or more points defining the polygon vertices.
+            classes: A list of class labels.
+            ID: A string ID for the polygon. If empty, one is generated.
+
+        Returns:
+            The constructed :class:`sympy.geometry.polygon.Polygon`.
         """
 
         # TODO: check points and minimum count of 3

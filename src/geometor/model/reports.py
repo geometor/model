@@ -1,10 +1,12 @@
-"""
-The :mod:`geometor.model.reports` module provides reporting functions for the Model class.
+"""Provides reporting functions for the Model class.
+
+This module offers tools for visualizing and summarizing the state of the geometric model. It includes functions to generate textual reports for the console using `rich` tables and methods to export the model's structure as Graphviz DOT files for diagram generation.
 """
 #  from geometor.elements.model.common import *
 
 import sympy as sp
 import sympy.geometry as spg
+from sympy.geometry.entity import GeometryEntity
 from rich.console import Console
 from rich.table import Table
 from rich.text import Text
@@ -14,7 +16,25 @@ from rich.text import Text
 from .colors import get_color
 
 
-def generate_dot(graph, parent=None, dot_string="", defined_nodes=None):
+def generate_dot(
+    graph: dict,
+    parent: str | None = None,
+    dot_string: str = "",
+    defined_nodes: set | None = None,
+) -> str:
+    """Generates a DOT string representing the graph structure of the model.
+    
+    This function traverses a nested dictionary representing the model's ancestor graph and produces a Graphviz DOT format string. It handles node definition with appropriate shapes (rectangles for lines, ellipses for circles, points for points) and edge creation to visualize dependencies.
+
+    Args:
+        graph: A dictionary representing the graph structure/ancestors.
+        parent: The key of the parent node (used in recursion).
+        dot_string: The accumulating DOT string (used in recursion).
+        defined_nodes: A set of already defined nodes to prevent duplicates.
+
+    Returns:
+        A string containing the complete DOT graph definition.
+    """
     if parent is None:
         dot_string += "digraph {\n"
         defined_nodes = set()  # Keep track of defined nodes
@@ -49,11 +69,16 @@ def generate_dot(graph, parent=None, dot_string="", defined_nodes=None):
 
 
 class ReportMixin:
-    """
-    Mixin for the Model class containing report generation methods.
+    """Mixin for the Model class containing report generation methods.
+    
+    This mixin provides the Model with methods to output formatted summaries and detailed reports of its contents. It utilizes the `rich` library to create readable console tables of elements, organized by type or sequence, facilitating inspection and debugging.
     """
 
-    def report_summary(self):
+    def report_summary(self) -> None:
+        """Prints a summary of the model's contents to the console.
+        
+        This method compiles a high-level overview of the total number of elements in the model, broken down by category (points, lines, circles). It uses a formatted table for clear presentation of these statistics.
+        """
         console = Console()
 
         console.print(f"\nMODEL summary: {self.name}")
@@ -69,7 +94,11 @@ class ReportMixin:
         console.print("\n")
         console.print(table)
 
-    def report_group_by_type(self):
+    def report_group_by_type(self) -> None:
+        """Prints a detailed report of all elements grouped by type.
+        
+        This method iterates through the model's collections of points, lines, and circles, generating separate tables for each type. Each table includes detailed information such as IDs, coordinates/equations, parent dependencies, and associated classes.
+        """
         console = Console()
 
         console.print(f"\nMODEL report: {self.name}")
@@ -172,8 +201,11 @@ class ReportMixin:
         console.print("\n")
         console.print(table)
 
-    def report_sequence(self):
-        """Generate a sequential report of the model using rich Console layouts."""
+    def report_sequence(self) -> None:
+        """Generate a sequential report of the model using rich Console layouts.
+        
+        This method lists all elements in the order they were added to the model. It presents a comprehensive view including the element's ID, defining points or properties, parents, classes, and algebraic equation, providing a chronological log of the construction.
+        """
         console = Console()
 
         console.print(f"\nMODEL report: {self.name}")
@@ -241,7 +273,20 @@ class ReportMixin:
         console.print(table)
 
 
-def get_colored_ID(el, ID, classes=None):
-    """Get the colored ID for a geometric element."""
+def get_colored_ID(
+    el: GeometryEntity, ID: str, classes: list[str] | None = None
+) -> Text:
+    """Get the colored ID for a geometric element.
+    
+    This helper checks the element's classes to determine its color and returns a styled Text object suitable for rendering in the rich console.
+    
+    Args:
+        el: The geometric entity.
+        ID: The text ID of the element.
+        classes: A list of class names associated with the element.
+
+    Returns:
+        A :class:`rich.text.Text` object containing the styled ID.
+    """
     ID_color = get_color(el, classes)
     return Text(ID, style=ID_color)

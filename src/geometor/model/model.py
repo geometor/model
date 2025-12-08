@@ -1,11 +1,13 @@
-"""
-provides the central :class:`geometor.model.model.Model` class.
+"""Provides the central :class:`geometor.model.model.Model` class.
 
+This module defines the core `Model` class, which aggregates all geometric construction, analysis, and management functionalities. It serves as the main entry point for creating and manipulating geometric systems.
 """
 
 from __future__ import annotations
 
 import logging
+
+from typing import Callable
 
 import rich
 import sympy as sp
@@ -59,16 +61,15 @@ class Model(
     WedgesMixin,
     AncestorsMixin,
 ):
-    """
-    The central class representing a collection of geometric elements.
-
-    It inherits from `dict` and various Mixins to provide a rich API for
-    geometric construction and analysis.
+    """The central class representing a collection of geometric elements.
+    
+    The Model class is a comprehensive container that inherits from `dict` to store geometric elements mapped to their symbolic representations. It composes multiple mixins to provide a rich feature set, including point plotting, circle/line construction, serialization, reporting, and more.
     """
 
-    def __init__(self, name: str = "", logger=None):
-        """
-        Initialize the Model.
+    def __init__(self, name: str = "", logger: logging.Logger | None = None) -> None:
+        """Initialize the Model.
+        
+        The constructor sets up the model's environment, initializing identifiers, logging, and state containers for points and analysis hooks.
 
         Args:
             name: The name of the model.
@@ -90,36 +91,37 @@ class Model(
         self._new_points = []
         self._poly_count = 0
 
-    def log(self, message):
+    def log(self, message: object) -> None:
         if self._logger:
             if hasattr(message, "__rich_console__"):
                 rich.print(message)
             else:
                 self._logger.info(message)
 
-    def set_analysis_hook(self, hook_function):
+    def set_analysis_hook(self, hook_function: Callable) -> None:
         self._analysis_hook = hook_function
 
     @property
     def new_points(self) -> list[spg.Point]:
-        """The new_points of the model"""
+        """The new_points of the model."""
         return self._new_points
 
-    def clear_new_points(self):
+    def clear_new_points(self) -> None:
         self._new_points = []
 
     @property
     def name(self) -> str:
-        """The name of the model"""
+        """The name of the model."""
         return self._name
 
     @name.setter
-    def name(self, value) -> None:
+    def name(self, value: str) -> None:
         self._name = value
 
-    def __setitem__(self, key: GeometryObject, value: Element):
-        """
-        Set an item in the model, enforcing type checks.
+    def __setitem__(self, key: GeometryObject, value: Element) -> None:
+        """Set an item in the model, enforcing type checks.
+        
+        This override of the dictionary setter ensures type safety for the model. It validates that keys are recognized GeometryObjects and values are Element wrappers, maintaining the integrity of the model's storage.
 
         Args:
             key: The geometric object (GeometryObject).
@@ -140,16 +142,12 @@ class Model(
 
     @property
     def points(self) -> list[spg.Point]:
-        """
-        returns point elements from model as list
-        """
+        """Returns point elements from model as list."""
         return [el for el in self if isinstance(el, spg.Point)]
 
     @property
     def structs(self) -> list[Struct]:
-        """
-        returns struct elements (line or circle) from model as list
-        """
+        """Returns struct elements (line or circle) from model as list."""
         return [
             el
             for el in self
@@ -161,21 +159,18 @@ class Model(
 
     @property
     def lines(self) -> list[spg.Line]:
-        """
-        returns line elements from model as list
-        """
+        """Returns line elements from model as list."""
         return [el for el in self if isinstance(el, spg.Line)]
 
     @property
     def circles(self) -> list[spg.Circle]:
-        """
-        returns circle elements from model as list
-        """
+        """Returns circle elements from model as list."""
         return [el for el in self if isinstance(el, spg.Circle)]
 
     def limits(self) -> tuple[tuple[float, float], tuple[float, float]]:
-        """
-        Find x, y limits from points and circles of the model.
+        """Find x, y limits from points and circles of the model.
+        
+        This method calculates the bounding box of all geometric elements currently in the model. It iterates through points and circles (accounting for radii) to determine the minimum and maximum coordinates.
 
         Returns:
             tuple: A tuple containing ((min_x, max_x), (min_y, max_y)).

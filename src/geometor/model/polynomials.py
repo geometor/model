@@ -1,5 +1,6 @@
-"""
-The :mod:`geometor.model.polynomials` module provides polynomial element for the Model class.
+"""Provides polynomial element for the Model class.
+
+This module introduces polynomial elements into the geometric model, allowing for the representation and manipulation of algebraic curves defined by coefficients. It supports operations like evaluating the polynomial, finding roots, and calculating intersections with other geometric entities.
 """
 
 from __future__ import annotations
@@ -7,7 +8,9 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 import sympy as sp
+import sympy.geometry as spg
 from sympy.geometry import Circle, Line, Point
+from sympy.geometry.entity import GeometryEntity
 
 from .element import Element
 
@@ -18,23 +21,52 @@ __all__ = ["PolynomialsMixin", "Polynomial"]
 
 
 class PolynomialsMixin:
-    """
-    Mixin for the Model class containing polynomial construction operations.
+    """Mixin for the Model class containing polynomial construction operations.
+    
+    This mixin equips the Model with the ability to create and manage polynomial elements. It provides methods to instantiate polynomials from coefficients and integrate them into the model's collection of geometric objects.
     """
 
     def poly(
-        self, coeffs: list, name: str = "", classes: list = [], group: str = ""
+        self,
+        coeffs: list,
+        name: str = "",
+        classes: list[str] | None = None,
+        group: str = "",
     ) -> Polynomial:
-        """
-        Create a Polynomial element.
+        """Create a Polynomial element.
+        
+        This method serves as a factory for creating standalone Polynomial objects given a list of coefficients. It allows for specifying optional metadata such as a name, classification classes, and a group identifier.
+
+        Args:
+            coeffs: A list of coefficients for the polynomial.
+            name: An optional name for the polynomial.
+            classes: A list of class labels.
+            group: An optional group identifier.
+
+        Returns:
+            A new :class:`Polynomial` instance.
         """
         return Polynomial(coeffs, name=name, classes=classes, group=group)
 
     def add_poly(
-        self, coeffs: list, name: str = "", classes: list = [], group: str = ""
+        self,
+        coeffs: list,
+        name: str = "",
+        classes: list[str] | None = None,
+        group: str = "",
     ) -> Polynomial:
-        """
-        Create and add a Polynomial element to the model.
+        """Create and add a Polynomial element to the model.
+        
+        This method creates a new polynomial and immediately registers it within the model. It handles automatic name generation if none is provided, maps the polynomial's expression to its element wrapper, and logs the addition.
+
+        Args:
+            coeffs: A list of coefficients for the polynomial.
+            name: An optional name for the polynomial.
+            classes: A list of class labels.
+            group: An optional group identifier.
+
+        Returns:
+            The added :class:`Polynomial` element.
         """
         if not name:
             self._poly_count += 1
@@ -46,11 +78,18 @@ class PolynomialsMixin:
 
 
 class Polynomial(Element):
-    """
-    A polynomial element defined by its coefficients.
+    """A polynomial element defined by its coefficients.
+    
+    This class wraps a SymPy Polynomial object, extending it with the :class:`Element` interface for Model integration. It provides property accessors and methods for common polynomial operations like evaluation and intersection finding.
     """
 
-    def __init__(self, coeffs, name="", classes=None, group=None):
+    def __init__(
+        self,
+        coeffs: list,
+        name: str = "",
+        classes: list[str] | None = None,
+        group: str | None = None,
+    ) -> None:
         if classes is None:
             classes = []
         if group:
@@ -64,28 +103,28 @@ class Polynomial(Element):
 
         super().__init__(self.poly.as_expr(), ID=name, classes=classes)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Polynomial({self.poly.as_expr()})"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Polynomial({self.poly.as_expr()})"
 
-    def equation(self):
+    def equation(self) -> sp.Expr:
         return self.poly.as_expr()
 
-    def eval(self, val):
+    def eval(self, val: sp.Expr) -> sp.Expr:
         return self.poly.eval(val)
 
-    def degree(self):
+    def degree(self) -> int:
         return self.poly.degree()
 
-    def all_coeffs(self):
+    def all_coeffs(self) -> list:
         return self.poly.all_coeffs()
 
-    def real_roots(self):
+    def real_roots(self) -> list:
         return self.poly.real_roots()
 
-    def intersection(self, other):
+    def intersection(self, other: GeometryEntity) -> list[spg.Point]:
         intersections = []
         if isinstance(other, Polynomial):
             # Solve for x where self.poly.as_expr() == other.poly.as_expr()
