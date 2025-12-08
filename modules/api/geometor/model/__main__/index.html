@@ -34,9 +34,6 @@
           <a href="../../../../../mission/index.html"  >mission</a>
         </li>
         <li>
-          <a href="../../../../../usage/index.html"  >usage</a>
-        </li>
-        <li>
           <a href="../../../../../log/index.html"  >log</a>
         </li>
         <li>
@@ -44,6 +41,9 @@
         </li>
         <li>
           <a href="../../../../../demos/index.html"  >demos</a>
+        </li>
+        <li>
+          <a href="../../../../../usage/index.html"  >usage</a>
         </li>
       </ul>
     </nav>
@@ -70,23 +70,48 @@
         </nav>
           <section id="module-geometor.model.__main__">
 <span id="geometor-model-main"></span><h1>geometor.model.__main__<a class="headerlink" href="#module-geometor.model.__main__" title="Link to this heading">¶</a></h1>
-<p>test entry point for the application.</p>
+<p>Entry point for the application.</p>
+<p>Provides a CLI REPL for building geometric models.</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.__main__.console" title="geometor.model.__main__.console"><code class="xref py py-obj docutils literal notranslate"><span class="pre">console</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.__main__.run" title="geometor.model.__main__.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>(→ None)</p></td>
-<td><p>builds a vesica model and reports</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.__main__.parse_command" title="geometor.model.__main__.parse_command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_command</span></code></a>(→ None)</p></td>
+<td><p>Parses and executes a single command string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.__main__.run" title="geometor.model.__main__.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>(→ None)</p></td>
+<td><p>Runs the CLI REPL.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="geometor.model.__main__.console">
+<span class="sig-prename descclassname"><span class="pre">geometor.model.__main__.</span></span><span class="sig-name descname"><span class="pre">console</span></span><a class="headerlink" href="#geometor.model.__main__.console" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="geometor.model.__main__.parse_command">
+<span class="sig-prename descclassname"><span class="pre">geometor.model.__main__.</span></span><span class="sig-name descname"><span class="pre">parse_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><span class="pre">geometor.model.Model</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">command</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.__main__.parse_command" title="Link to this definition">¶</a></dt>
+<dd><p>Parses and executes a single command string.</p>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="geometor.model.__main__.run">
 <span class="sig-prename descclassname"><span class="pre">geometor.model.__main__.</span></span><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.__main__.run" title="Link to this definition">¶</a></dt>
-<dd><p>builds a vesica model and reports</p>
+<dd><p>Runs the CLI REPL.</p>
 </dd></dl>
 
 </section>

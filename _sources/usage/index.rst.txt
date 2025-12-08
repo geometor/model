@@ -1,5 +1,10 @@
 :navigation: header
-:order: 2
+:order:    points
+    lines
+    circles
+    polygons
+    cli
+    segments
 
 usage
 =====

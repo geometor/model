@@ -5,8 +5,18 @@ geometor.model.__main__
 
 .. autoapi-nested-parse::
 
-   test entry point for the application.
+   Entry point for the application.
 
+   Provides a CLI REPL for building geometric models.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   geometor.model.__main__.console
 
 
 Functions
@@ -14,14 +24,22 @@ Functions
 
 .. autoapisummary::
 
+   geometor.model.__main__.parse_command
    geometor.model.__main__.run
 
 
 Module Contents
 ---------------
 
+.. py:data:: console
+
+.. py:function:: parse_command(model: geometor.model.Model, command: str) -> None
+
+   Parses and executes a single command string.
+
+
 .. py:function:: run() -> None
 
-   builds a vesica model and reports
+   Runs the CLI REPL.
 
 

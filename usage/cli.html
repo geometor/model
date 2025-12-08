@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CLI Usage &mdash; Project name not set  documentation</title>
+  <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=ea5fcf70" />
+  <link rel="stylesheet" type="text/css" href="../_static/css/styles.css?v=b65c493b" />
+  <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+  <link rel="stylesheet" href="../_static/css/print.css" type="text/css" media="print" />
+  <link rel="icon" href="../_static/favicon.ico" />
+</head>
+
+<body>
+    <header>
+    <div class="logo">
+      <a href="../index.html">
+        <img src="../_static/logo.png" class="logo" alt="Logo"/>
+      </a>
+      <div class="org-repo">
+        <span class="org">GEOMETOR</span>
+        •
+        <span class="repo">model</span>
+      </div>
+    </div>
+    <nav aria-label="Header">
+      <input type="checkbox" id="nav-Header-toggle" >
+      <label for="nav-Header-toggle" >Header</label>
+      <ul>
+        <li>
+          <a href="../mission/index.html"  >mission</a>
+        </li>
+        <li>
+          <a href="../log/index.html"  >log</a>
+        </li>
+        <li>
+          <a href="../modules/index.html"  >modules</a>
+        </li>
+        <li>
+          <a href="../demos/index.html"  >demos</a>
+        </li>
+        <li>
+          <a href="index.html"  >usage</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="motto"></div>
+  </header>
+  <main>
+    
+    <article>
+      <div class="content">
+      <nav class="breadcrumbs">
+        <span><a href="../index.html">Home</a></span>
+          <span>/</span>
+        <span><a href="index.html">usage</a></span>
+        <span>/</span>
+        <span>CLI Usage</span>
+      </nav>
+        <nav class="context">
+          <div class="prev">
+             <a href="installation.html" class="btn btn-neutral float-left" title="installation" >Prev</a>
+          </div>
+          <div class="next">
+            <a href="model/index.html" class="btn btn-neutral float-right" title="model elements" >Next</a>
+          </div>
+        </nav>
+          <section id="cli-usage">
+<h1>CLI Usage<a class="headerlink" href="#cli-usage" title="Link to this heading">¶</a></h1>
+<p>The <strong>Geometor Model CLI</strong> provides an interactive environment (REPL) for constructing and analyzing geometric models using a concise, text-based syntax. It is designed for rapid experimentation and scripting.</p>
+<section id="starting-the-cli">
+<h2>Starting the CLI<a class="headerlink" href="#starting-the-cli" title="Link to this heading">¶</a></h2>
+<p>To start the CLI, run the module as a script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>geometor.model
+</pre></div>
+</div>
+<p>You will be greeted by the Geometor CLI prompt:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Geometor CLI
+Commands:
+  ...
+&gt;
+</pre></div>
+</div>
+</section>
+<section id="command-syntax">
+<h2>Command Syntax<a class="headerlink" href="#command-syntax" title="Link to this heading">¶</a></h2>
+<p>The CLI supports a variety of commands for creating geometric elements.</p>
+<section id="points">
+<h3>Points<a class="headerlink" href="#points" title="Link to this heading">¶</a></h3>
+<ul>
+<li><p><strong>Manual Label</strong>: Create a point with a specific label.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>A = 0, 0
+P1 = 1.5, -2
+</pre></div>
+</div>
+</li>
+<li><p><strong>Auto Label</strong>: Create a point and let the model assign the next available label (A, B, C…).</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>* 0, 0
+* 1, 0
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="lines">
+<h3>Lines<a class="headerlink" href="#lines" title="Link to this heading">¶</a></h3>
+<ul>
+<li><p><strong>Connect Points</strong>: Create a line passing through two points.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[ A B ]
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="circles">
+<h3>Circles<a class="headerlink" href="#circles" title="Link to this heading">¶</a></h3>
+<ul>
+<li><p><strong>Center &amp; Radius</strong>: Create a circle with a center point and a point on the circumference.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>( A B )
+</pre></div>
+</div>
+<p><em>Center: A, Point on Circle: B</em></p>
+</li>
+</ul>
+</section>
+<section id="polygons">
+<h3>Polygons<a class="headerlink" href="#polygons" title="Link to this heading">¶</a></h3>
+<ul>
+<li><p><strong>Polygon from Points</strong>: Create a polygon connecting 3 or more points.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt; A B C &gt;
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="linear-divisions">
+<h3>Linear Divisions<a class="headerlink" href="#linear-divisions" title="Link to this heading">¶</a></h3>
+<ul>
+<li><p><strong>Segment</strong>: Create a segment between two points.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/ A B /
+</pre></div>
+</div>
+</li>
+<li><p><strong>Section</strong>: Create a section defined by three collinear points (start, inner, end).</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/ A B C /
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="wedges">
+<h3>Wedges<a class="headerlink" href="#wedges" title="Link to this heading">¶</a></h3>
+<ul>
+<li><p><strong>Wedge</strong>: Create a wedge defined by a center, a radius point, and a sweep end point.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt; A B C )
+</pre></div>
+</div>
+<p><em>Center: A, Radius: B, Sweep to: C</em>
+<em>(Note: The sweep starts from the radius point B)</em></p>
+</li>
+</ul>
+</section>
+</section>
+<section id="scripting">
+<h2>Scripting<a class="headerlink" href="#scripting" title="Link to this heading">¶</a></h2>
+<p>You can pipe a file containing a list of commands directly into the CLI for batch processing.</p>
+<p><strong>Example Script (`script.txt`):</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>* 0, 0
+* 1, 0
+( A B )
+( B A )
+&lt; A C B &gt;
+exit
+</pre></div>
+</div>
+<p><strong>Run:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>geometor.model<span class="w"> </span>&lt;<span class="w"> </span>script.txt
+</pre></div>
+</div>
+</section>
+<section id="output">
+<h2>Output<a class="headerlink" href="#output" title="Link to this heading">¶</a></h2>
+<p>The CLI uses the <cite>rich</cite> library to provide formatted output, including:</p>
+<ul class="simple">
+<li><p><strong>Element Details</strong>: Coordinates, equations, and properties.</p></li>
+<li><p><strong>Intersection Logs</strong>: Automatically detected intersection points are logged as they are found.</p></li>
+<li><p><strong>Tables</strong>: Clean tabular data for complex objects like Polygons.</p></li>
+</ul>
+</section>
+</section>
+
+      </div>
+      <footer>
+
+
+        <nav class="context">
+          <div class="prev">
+             <a href="installation.html" class="btn btn-neutral float-left" title="installation" >Prev</a>
+          </div>
+          <div class="next">
+            <a href="model/index.html" class="btn btn-neutral float-right" title="model elements" >Next</a>
+          </div>
+        </nav></footer>
+    </article>
+
+  </main>
+
+  <div class="asides">
+    <aside>
+        <h3>Search</h3>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+    </aside>
+    
+<aside>
+    <h3>Recent Logs</h3>
+    <ul>
+        
+            <li><a href="../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+        
+    </ul>
+</aside>
+
+    
+
+    
+
+    
+
+<aside class="aside-types">
+    <h3>Types</h3>
+    <ul>
+        
+        <li><a href="../types/log.html">log</a></li>
+        
+    </ul>
+</aside>
+
+</div>
+  <footer>
+    <div class="footer-nav">
+    <ul>
+        <li><a href="../about.html">about</a></li>
+        <li><a href="../connect.html">connect</a></li>
+        <li><a href="../glossary.html">glossary</a></li>
+        <li><a href="../todos.html">todos</a></li>
+        <li><a href="../changelog.html">changelog</a></li>
+    </ul>
+</div>
+    <hr/>
+    <div role="contentinfo">
+        <p>
+                &copy; Copyright .
+        </p>
+    </div>
+</footer>
+  
+  <script src="../_static/jquery.js?v=5d32c60e"></script>
+  <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+  <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+  <script src="../_static/doctools.js?v=9bcbadda"></script>
+  <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+  <script src="../_static/js/collection_controls.js?v=b6b5297a"></script>
+  
+
+</body>
+
+</html>

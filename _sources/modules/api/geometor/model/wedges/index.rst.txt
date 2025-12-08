@@ -30,6 +30,22 @@ Module Contents
    This mixin provides the Model with the capability to define and manage `Wedge` elements. It includes methods to construct wedges from defining points and integrate them into the geometric model.
 
 
+   .. py:method:: set_wedge_by_IDs(pt_center_ID: str, pt_radius_ID: str, pt_sweep_start_ID: str, pt_sweep_end_ID: str, direction: str = 'clockwise', classes: list[str] | None = None, ID: str = '') -> Wedge
+
+      Find points by ID and use them with :meth:`Model.set_wedge`.
+
+      :param pt_center_ID: The ID of the center point.
+      :param pt_radius_ID: The ID of the radius point.
+      :param pt_sweep_start_ID: The ID of the sweep start point.
+      :param pt_sweep_end_ID: The ID of the sweep end point.
+      :param direction: Direction of the sweep (default "clockwise").
+      :param classes: A list of class labels.
+      :param ID: A string ID for the wedge.
+
+      :returns: The constructed :class:`Wedge`.
+
+
+
    .. py:method:: set_wedge(pt_center: sympy.geometry.Point, pt_radius: sympy.geometry.Point, pt_sweep_start: sympy.geometry.Point, pt_sweep_end: sympy.geometry.Point, direction: str = 'clockwise', classes: list[str] | None = None, ID: str = '') -> Wedge
 
       Sets a Wedge from 3 points and adds it to the model.
@@ -62,7 +78,7 @@ Module Contents
 
 
 
-.. py:class:: Wedge(points: list[sympy.geometry.Point])
+.. py:class:: Wedge(points: list[sympy.geometry.Point], direction: str = 'clockwise')
 
    .. py:attribute:: points
 
@@ -83,6 +99,11 @@ Module Contents
 
 
    .. py:attribute:: start_ray
+
+
+   .. py:attribute:: direction
+      :value: 'clockwise'
+
 
 
    .. py:method:: __repr__() -> str
