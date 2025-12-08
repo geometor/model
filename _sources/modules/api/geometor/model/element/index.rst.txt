@@ -95,31 +95,6 @@ Module Contents
    .. py:attribute:: pt_radius
 
 
-   .. py:attribute:: object
-
-
-   .. py:attribute:: parents
-
-
-   .. py:attribute:: classes
-
-
-   .. py:attribute:: ID
-      :value: ''
-
-
-
-   .. py:attribute:: guide
-      :value: False
-
-
-
-   .. py:property:: length
-
-      Returns the cleaned length of the element.
-      For polygons, it returns the list of cleaned side lengths.
-
-
 .. py:function:: check_existence(self, struct: Struct, existing_structs: list[Struct]) -> tuple[bool, Struct]
 
    Check if a geometric structure exists in the model.

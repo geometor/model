@@ -279,6 +279,12 @@ pre {
   display: block;
 }
 
+div.highlight {
+  background: black;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
 /* elements/a *****************************/
 a {
   color: #88aaff;
@@ -766,6 +772,48 @@ button:hover {
 
 .admonition-tip p {
   margin: 0;
+}
+
+/* elements/api *****************************/
+/* API Documentation Styles */
+dl.py dt.sig {
+  font-family: "Fira Code";
+  font-size: 0;
+}
+
+dl.py dt.sig > * {
+  font-size: 1rem;
+}
+
+dl.py dt.sig .sig-prename {
+  color: #888;
+}
+
+dl.py dt.sig .sig-name {
+  font-weight: bold;
+}
+
+dl.py dt.sig .sig-param {
+  display: block;
+  margin-left: 2rem;
+}
+
+dl.py dt.sig .sig-param::after {
+  content: ",";
+}
+
+dl.py dt.sig .sig-param:last-of-type::after {
+  content: "";
+}
+
+dl.py em.property {
+  color: #e74c3c;
+  font-style: normal;
+}
+
+dl.py dd {
+  padding: 1rem 1rem 1rem 2rem;
+  margin-left: 0;
 }
 
 article {

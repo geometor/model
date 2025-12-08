@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>geometor.model.delete &mdash; Project name not set  documentation</title>
   <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=ea5fcf70" />
-  <link rel="stylesheet" type="text/css" href="../../../../../_static/css/styles.css?v=bc127b54" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/css/styles.css?v=dabe459a" />
   <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
   <link rel="stylesheet" href="../../../../../_static/css/print.css" type="text/css" media="print" />
   <link rel="icon" href="../../../../../_static/favicon.ico" />
@@ -55,13 +55,17 @@
       <div class="content">
       <nav class="breadcrumbs">
         <span><a href="../../../../../index.html">Home</a></span>
+          <span>/</span>
+        <span><a href="../../../../index.html">modules</a></span>
         <span>/</span>
         <span>geometor.model.delete</span>
       </nav>
         <nav class="context">
           <div class="prev">
+             <a href="../colors/index.html" class="btn btn-neutral float-left" title="geometor.model.colors" >Prev</a>
           </div>
           <div class="next">
+            <a href="../element/index.html" class="btn btn-neutral float-right" title="geometor.model.element" >Next</a>
           </div>
         </nav>
           <section id="module-geometor.model.delete">
@@ -91,16 +95,16 @@
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
 <dl class="py data">
 <dt class="sig sig-object py" id="geometor.model.delete.console">
-<span class="sig-prename descclassname"><span class="pre">geometor.model.delete.</span></span><span class="sig-name descname"><span class="pre">console</span></span><a class="reference internal" href="../../../../../_modules/geometor/model/delete.html#console"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geometor.model.delete.console" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">geometor.model.delete.</span></span><span class="sig-name descname"><span class="pre">console</span></span><a class="headerlink" href="#geometor.model.delete.console" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geometor.model.delete.DeleteMixin">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geometor.model.delete.</span></span><span class="sig-name descname"><span class="pre">DeleteMixin</span></span><a class="reference internal" href="../../../../../_modules/geometor/model/delete.html#DeleteMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geometor.model.delete.DeleteMixin" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geometor.model.delete.</span></span><span class="sig-name descname"><span class="pre">DeleteMixin</span></span><a class="headerlink" href="#geometor.model.delete.DeleteMixin" title="Link to this definition">¶</a></dt>
 <dd><p>Mixin for the Model class containing deletion operations.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.delete.DeleteMixin.get_dependents">
-<span class="sig-name descname"><span class="pre">get_dependents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element_or_ID</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/geometor/model/delete.html#DeleteMixin.get_dependents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geometor.model.delete.DeleteMixin.get_dependents" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_dependents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element_or_ID</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.delete.DeleteMixin.get_dependents" title="Link to this definition">¶</a></dt>
 <dd><p>Finds and returns a set of all elements that depend on the given element.</p>
 <p>This method is for checking dependencies without performing any deletion.</p>
 <dl class="field-list simple">
@@ -123,7 +127,7 @@ ID to check for dependents.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geometor.model.delete.DeleteMixin.delete_element">
-<span class="sig-name descname"><span class="pre">delete_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element_or_ID</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/geometor/model/delete.html#DeleteMixin.delete_element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#geometor.model.delete.DeleteMixin.delete_element" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">delete_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element_or_ID</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.delete.DeleteMixin.delete_element" title="Link to this definition">¶</a></dt>
 <dd><p>Deletes an element and performs a cascading delete of all its dependents.</p>
 <p>This method removes the specified element and any other elements that were
 constructed from it, directly or indirectly.</p>
@@ -146,8 +150,10 @@ ID to be deleted.</p>
 
         <nav class="context">
           <div class="prev">
+             <a href="../colors/index.html" class="btn btn-neutral float-left" title="geometor.model.colors" >Prev</a>
           </div>
           <div class="next">
+            <a href="../element/index.html" class="btn btn-neutral float-right" title="geometor.model.element" >Next</a>
           </div>
         </nav></footer>
     </article>
