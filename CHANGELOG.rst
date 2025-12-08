@@ -1,6 +1,16 @@
 changelog
 =========
 
+0.5.0
+-----
+*2025-12-08*
+
+**added**
+
+-   **CLI REPL:** Introduced a command-line interface for interactive model building (`python -m geometor.model`).
+-   **Wedges:** Added `set_wedge_by_IDs` for easier wedge creation and support for `direction` in `Wedge` initialization.
+-   **Docs:** Added CLI usage documentation.
+
 0.4.6
 -----
 *2025-12-08*

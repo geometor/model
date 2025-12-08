@@ -9,6 +9,7 @@ The `model` library provides the foundation for other GEOMETOR applications. It 
 ## Index
 
 -   `__init__.py`: Main `Model` class, a `dict` subclass with a synchronous analysis hook.
+-   `__main__.py`: CLI entry point.
 -   `element.py`: The core `Element` class for all geometric objects.
 -   `points.py`: `Point` class and related functions.
 -   `lines.py`: `Line` class and related functions.

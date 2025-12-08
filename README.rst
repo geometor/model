@@ -19,6 +19,23 @@ In this system:
 
 We leverage the power of `SymPy`_ to define elements as exact algebraic expressions rather than floating-point approximations.
 
+CLI Usage
+---------
+
+The `geometor-model` package includes a command-line interface (CLI) for building and experimenting with geometric models interactively or via scripts.
+
+To start the CLI REPL:
+    
+    $ python -m geometor.model
+
+Features:
+*   Interactive REPL with rich output.
+*   Concise syntax for creating Points, Lines, Circles, Polygons, and more.
+*   Support for auto-labeling points.
+*   Pipe scripts for batch processing.
+
+For detailed usage instructions, see the `CLI Usage` section in the documentation.
+
 Key Features
 ------------
 

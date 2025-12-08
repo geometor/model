@@ -1,5 +1,6 @@
 """Provides the Chain class for analyzing connected golden sections.
 
+
 This module defines the `Chain` class, which facilitates the study of sequences of connected geometric sections. It offers tools for extracting segments and points, analyzing the flow of segment lengths, and exploring symmetries within the structure.
 """
 

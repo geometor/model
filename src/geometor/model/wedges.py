@@ -26,6 +26,45 @@ class WedgesMixin:
     This mixin provides the Model with the capability to define and manage `Wedge` elements. It includes methods to construct wedges from defining points and integrate them into the geometric model.
     """
 
+    def set_wedge_by_IDs(
+        self,
+        pt_center_ID: str,
+        pt_radius_ID: str,
+        pt_sweep_start_ID: str,
+        pt_sweep_end_ID: str,
+        direction: str = "clockwise",
+        classes: list[str] | None = None,
+        ID: str = "",
+    ) -> Wedge:
+        """Find points by ID and use them with :meth:`Model.set_wedge`.
+
+        Args:
+            pt_center_ID: The ID of the center point.
+            pt_radius_ID: The ID of the radius point.
+            pt_sweep_start_ID: The ID of the sweep start point.
+            pt_sweep_end_ID: The ID of the sweep end point.
+            direction: Direction of the sweep (default "clockwise").
+            classes: A list of class labels.
+            ID: A string ID for the wedge.
+
+        Returns:
+            The constructed :class:`Wedge`.
+        """
+        pt_center = self.get_element_by_ID(pt_center_ID)
+        pt_radius = self.get_element_by_ID(pt_radius_ID)
+        pt_sweep_start = self.get_element_by_ID(pt_sweep_start_ID)
+        pt_sweep_end = self.get_element_by_ID(pt_sweep_end_ID)
+
+        return self.set_wedge(
+            pt_center,
+            pt_radius,
+            pt_sweep_start,
+            pt_sweep_end,
+            direction,
+            classes,
+            ID,
+        )
+
     def set_wedge(
         self,
         pt_center: spg.Point,
@@ -77,7 +116,7 @@ class WedgesMixin:
                 "Both pt_center and pt_radius must be instances of sympy.geometry.point.Point"
             )
 
-        struct = Wedge([pt_center, pt_radius, pt_sweep_start, pt_sweep_end])
+        struct = Wedge([pt_center, pt_radius, pt_sweep_start, pt_sweep_end], direction)
 
         if not ID:
             pt_center_ID = self[pt_center].ID
@@ -111,7 +150,7 @@ class WedgesMixin:
 
 
 class Wedge:
-    def __init__(self, points: list[spg.Point]) -> None:
+    def __init__(self, points: list[spg.Point], direction: str = "clockwise") -> None:
         assert len(points) == 4, "A wedge must be defined by four points."
         self.points = points
         self.pt_center = points[0]
@@ -126,7 +165,7 @@ class Wedge:
         self.start_ray = spg.Ray(self.pt_center, self.pt_sweep_start)
 
         self.start_point, self.end_point = self._find_arc_endpoints()
-        # self.direction = direction
+        self.direction = direction
 
     def __repr__(self) -> str:
         points_repr = [sp.srepr(p) for p in self.points]
