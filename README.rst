@@ -11,7 +11,7 @@ A symbolic engine for defining and verifying geometric constructions.
 Overview
 --------
 
-**geometor.model** is the foundational library for the GEOMETOR initiative. It establishes a rigorous system for defining classical geometric constructions using symbolic algebra.
+``geometor.model`` is the foundational library for the GEOMETOR initiative. It establishes a rigorous system for defining classical geometric constructions using symbolic algebra.
 
 In this system:
 
@@ -23,7 +23,7 @@ We leverage the power of `SymPy`_ to define elements as exact algebraic expressi
 CLI Usage
 ---------
 
-The `geometor-model` package includes a command-line interface (CLI) for building and experimenting with geometric models interactively or via scripts.
+The ``geometor-model`` package includes a command-line interface (CLI) for building and experimenting with geometric models interactively or via scripts.
 
 To start the CLI REPL:
     
