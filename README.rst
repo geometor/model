@@ -14,6 +14,7 @@ Overview
 **geometor.model** is the foundational library for the GEOMETOR initiative. It establishes a rigorous system for defining classical geometric constructions using symbolic algebra.
 
 In this system:
+
 - **Points** are information.
 - **Lines** and **Circles** are operations.
 
@@ -29,10 +30,11 @@ To start the CLI REPL:
     $ python -m geometor.model
 
 Features:
-*   Interactive REPL with rich output.
-*   Concise syntax for creating Points, Lines, Circles, Polygons, and more.
-*   Support for auto-labeling points.
-*   Pipe scripts for batch processing.
+
+- Interactive REPL with rich output.
+- Concise syntax for creating Points, Lines, Circles, Polygons, and more.
+- Support for auto-labeling points.
+- Pipe scripts for batch processing.
 
 For detailed usage instructions, see the `CLI Usage` section in the documentation.
 
