@@ -1197,7 +1197,54 @@ article.excerpt .more {
 }
 
 .collection.layout-cards {
-  grid-template-columns: repeat(auto-fit, minmax(24em, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
+}
+
+.collection.layout-cards > article.excerpt .content {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.collection.layout-cards > article.excerpt .content figure {
+  margin: 0 auto;
+  width: 14em;
+  height: 14em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collection.layout-cards > article.excerpt .content figure a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.collection.layout-cards > article.excerpt .content figure img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.collection.layout-cards > article.excerpt .content section {
+  width: 100%;
+  text-align: center;
+}
+
+.collection.layout-cards > article.excerpt .content section blockquote {
+  border-left: none;
+  padding-left: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.collection.layout-cards > article.excerpt footer {
+  text-align: center;
 }
 
 .collection.layout-banners {
@@ -1275,8 +1322,6 @@ article.excerpt .more {
 .collection > article.excerpt .content figure img {
   width: 100%;
   height: auto;
-  object-fit: cover;
-  aspect-ratio: 16/9;
   border-radius: 4px;
 }
 
@@ -1289,14 +1334,30 @@ article.excerpt .more {
   .collection > article.excerpt .content {
     flex-direction: row;
     align-items: flex-start;
+    text-align: left;
   }
   .collection > article.excerpt .content figure {
-    width: 30%;
-    max-width: 15em;
+    width: 10em;
+    height: 10em;
     margin-right: var(--fitz);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .collection > article.excerpt .content figure a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
   }
   .collection > article.excerpt .content figure img {
-    aspect-ratio: 4/3;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
   }
 }
 
@@ -1319,20 +1380,35 @@ article.excerpt .more {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  text-align: left;
 }
 
 .collection.layout-list > article.excerpt .content figure {
-  width: 3em;
-  height: 3em;
+  width: 5em;
+  height: 5em;
   margin: 0;
   margin-right: var(--fitz);
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collection.layout-list > article.excerpt .content figure a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .collection.layout-list > article.excerpt .content figure img {
-  aspect-ratio: 1;
-  border-radius: 50%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
 }
 
 .collection.layout-list > article.excerpt .content section {
