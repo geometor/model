@@ -74,6 +74,7 @@ Resources
 - **Documentation**: https://geometor.github.io/model
 - **Source Code**: https://github.com/geometor/model
 - **Issues**: https://github.com/geometor/model/issues
+  
 
 Related Projects
 ----------------
