@@ -6,12 +6,12 @@ GEOMETOR • model
 .. image:: https://img.shields.io/github/license/geometor/model.svg
    :target: https://github.com/geometor/model/blob/main/LICENSE
 
-**The symbolic heart of the GEOMETOR project.**
+**A symbolic engine for defining and verifying geometric constructions.**
 
 Overview
 --------
 
-``geometor.model`` is a Python library for defining and verifying geometric constructions with symbolic accuracy. It treats geometry not as a visual approximation, but as a rigorous system of information and operations.
+``geometor.model`` is a symbolic engine for defining and verifying geometric constructions. It treats geometry not as a visual approximation, but as a rigorous system of information and operations.
 
 In this system:
 
@@ -51,8 +51,8 @@ Sample commands:
 
 .. code-block:: text
 
-    > A = 0, 0      # Set point A
-    > B = 1, 0      # Set point B
+    > * 0, 0      # Set point A
+    > * 1, 0      # Set point B
     > ( A B )       # Circle centered at A passing through B
     > [ A B ]       # Line through A and B
 
