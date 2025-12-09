@@ -6,67 +6,56 @@ GEOMETOR • model
 .. image:: https://img.shields.io/github/license/geometor/model.svg
    :target: https://github.com/geometor/model/blob/main/LICENSE
 
-A symbolic engine for defining and verifying geometric constructions.
+**The symbolic heart of the GEOMETOR project.**
 
 Overview
 --------
 
-``geometor.model`` is the foundational library for the GEOMETOR initiative. It establishes a rigorous system for defining classical geometric constructions using symbolic algebra.
+``geometor.model`` is a Python library for defining and verifying geometric constructions with symbolic accuracy. It treats geometry not as a visual approximation, but as a rigorous system of information and operations.
 
 In this system:
 
-- **Points** are information.
-- **Lines** and **Circles** are operations.
+- **Points** represent *information*. They are exact algebraic locations.
+- **Lines** and **Circles** represent *operations* performed on that information.
+- **Intersections** are the *consequences* of operations, yielding new information (Points).
 
-We leverage the power of `SymPy`_ to define elements as exact algebraic expressions rather than floating-point approximations.
-
-CLI Usage
----------
-
-The ``geometor-model`` package includes a command-line interface (CLI) for building and experimenting with geometric models interactively or via scripts.
-
-To start the CLI REPL:
-    
-    $ python -m geometor.model
-
-Features:
-
-- Interactive REPL with rich output.
-- Concise syntax for creating Points, Lines, Circles, Polygons, and more.
-- Support for auto-labeling points.
-- Pipe scripts for batch processing.
-
-For detailed usage instructions, see the `CLI Usage` section in the documentation.
+We leverage `SymPy <https://www.sympy.org>`_ to ensure that every coordinate and radius is an exact algebraic expression, allowing us to find deep relationships that floating-point arithmetic would miss.
 
 Key Features
 ------------
 
-- **Symbolic Precision**: All elements are defined using symbolic algebra.
-- **Intersection Discovery**: Automatically finds intersection points as new lines and circles are added.
-- **Ancestral Tracking**: Maintains the history and dependencies of every element.
-- **Serialization**: Save and load models to JSON for analysis and visualization.
+- **Symbolic Precision**: No rounding errors. $\sqrt{2}$ is $\sqrt{2}$, not $1.414...$.
+- **Ancestry Tracking**: Every element knows its parents. We can trace the lineage of any point back to the starting axioms.
+- **Automatic Intersection**: The model automatically calculates all intersection points whenever a new line or circle is added.
+- **Serialization**: Models can be saved to JSON and shared with other tools like `geometor.explorer`.
+
+Installation
+------------
+
+.. code-block:: bash
+
+    pip install geometor-model
 
 Usage
 -----
 
 .. code-block:: python
 
-    from geometor.model import *
+    from geometor.model import Model
 
-    # Initialize model
+    # Initialize a new model
     model = Model("vesica")
 
-    # Set given points
+    # Define two starting points
     A = model.set_point(0, 0, classes=["given"])
     B = model.set_point(1, 0, classes=["given"])
 
-    # Construct lines and circles
-    model.construct_line(A, B)
+    # Construct the Vesica Piscis
     model.construct_circle(A, B)
     model.construct_circle(B, A)
 
-    # Analyze
-    model.report_summary()
+    # The model now automatically contains the intersections of these circles
+    print(model.points)
 
 Resources
 ---------
@@ -74,13 +63,9 @@ Resources
 - **Documentation**: https://geometor.github.io/model
 - **Source Code**: https://github.com/geometor/model
 - **Issues**: https://github.com/geometor/model/issues
-  
 
 Related Projects
 ----------------
 
-- `GEOMETOR Explorer <https://github.com/geometor/explorer>`_: Interactive visualization.
-- `GEOMETOR Divine <https://github.com/geometor/divine>`_: Golden ratio analysis.
-- `GEOMETOR.com <https://geometor.com`: the center of everything
-
-.. _SymPy: https://www.sympy.org
+- `GEOMETOR Explorer <https://github.com/geometor/explorer>`_: Interactive visualization environment.
+- `GEOMETOR Divine <https://github.com/geometor/divine>`_: Golden ratio analysis engine.
