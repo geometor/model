@@ -36,6 +36,28 @@ Installation
 
     pip install geometor-model
 
+Command Line Interface
+----------------------
+
+The ``geometor.model`` package includes a robust CLI for interactive construction and scripting (REPL).
+
+Start the session:
+
+.. code-block:: bash
+
+    python -m geometor.model
+
+Sample commands:
+
+.. code-block:: text
+
+    > A = 0, 0      # Set point A
+    > B = 1, 0      # Set point B
+    > ( A B )       # Circle centered at A passing through B
+    > [ A B ]       # Line through A and B
+
+For full details, see the `CLI Usage <https://geometor.github.io/model/usage/cli.html>`_ documentation.
+
 Usage
 -----
 

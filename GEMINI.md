@@ -11,6 +11,7 @@ To create a digital equivalent of the compass and straightedge that operates wit
 -   **Model**: The container state. It holds lists of points, lines, circles, and segments. It manages the build process.
 -   **Element**: The base class for all geometric objects. Handles unique IDs, labels, classes, and ancestry.
 -   **Symbolic Engine**: Wraps SymPy functionality to handle algebraic coordinates and equations.
+-   **CLI**: A text-based interface for rapid modeling and scripting (`python -m geometor.model`).
 
 ## Architecture
 
