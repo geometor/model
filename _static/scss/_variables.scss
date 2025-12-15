@@ -1,30 +1,58 @@
 /* SCSS Variables */
 
-// Colors
-$bg-color: #1a1a1a;
-$bg-alt-color: #2a2a2a;
-$text-color: #cccccc;
-$heading-color: #ffffff;
-$link-color: #88aaff;
-$link-hover-color: #aabbff;
-$border-color: #444444;
+:root {
+  // Colors (OKLCH)
+  // oklch(Lightness Chroma Hue)
+  // Lightness: 0% (black) to 100% (white)
+  // Chroma: 0 (gray) to ~0.37 (vivid)
+  // Hue: 0 to 360 (degrees)
+  --bg-color: oklch(20% 0 0);
+  --bg-alt-color: oklch(25% 0 0);
+  --text-color: oklch(85% 0 0);
+  --heading-color: oklch(100% 0 0);
+  --link-color: oklch(70% 0.1 260);
+  --link-hover-color: oklch(80% 0.1 260);
+  --border-color: oklch(40% 0 0);
 
-// Fonts
-$font-primary: "Fira Sans Condensed";
-$font-display: "Fira Sans";
-$font-code: "Fira Code";
-$font-icon: 'photon-icon';
-$bullet: '✴';
+  // Semantic Colors
+  --color-success: oklch(65% 0.2 145);
+  --color-warning: oklch(85% 0.18 85);
+  --color-danger: oklch(60% 0.2 25);
+  --color-info: oklch(70% 0.15 240);
+  --color-note: oklch(80% 0.1 260); // Similar to link color usually
+  --color-tooltip: oklch(from #ffcb66 l c h);
+  --color-muted: oklch(60% 0 0);
+  --color-property: oklch(from #e74c3c l c h);
+  --color-guide: oklch(from red l c h / 0.2);
+  
+  // Derived Colors
+  --color-key-dark: color-mix(in oklch, var(--link-color), black 10%);
+  --color-key-light: color-mix(in oklch, var(--link-color), white 10%);
+  --color-key-lighter: color-mix(in oklch, var(--link-color), white 20%);
 
-// Spacing (Fitz)
-$fitz: .5em;
-$col: 18em;
+  // Spacing (Fitz)
+  --fitz: .5em;
+  --fitz-2: calc(var(--fitz) * 2);
+  --fitz-half: calc(var(--fitz) / 2);
 
-// Legacy/Mapped Variables
-$color-key: $link-color;
-$color-key-dark: darken($color-key, 10%);
-$color-key-light: lighten($color-key, 10%);
-$color-key-lighter: lighten($color-key, 20%);
+  --col: 18em;
+  --col-2: calc(var(--col) * 2);
+  --col-3: calc(var(--col) * 3);
+  
+  // Breakpoints
+  --bp-small: 40em;
+  --bp-medium: 60em;
+  --bp-large: 80em;
+  --bp-xlarge: 96em;
+  --bp-xxlarge: 108em;
+  --offset: 1rem;
 
-$color-fg: $text-color;
-$offset: 1rem;
+  // Fonts
+  --font-primary: "Fira Sans Condensed";
+  --font-display: "Fira Sans";
+  --font-code: "Fira Code";
+  --font-icon: 'photon-icon';
+  --bullet: '✴';
+
+
+}

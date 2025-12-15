@@ -48,7 +48,7 @@ Module Contents
 
    .. py:method:: set_wedge(pt_center: sympy.geometry.Point, pt_radius: sympy.geometry.Point, pt_sweep_start: sympy.geometry.Point, pt_sweep_end: sympy.geometry.Point, direction: str = 'clockwise', classes: list[str] | None = None, ID: str = '') -> Wedge
 
-      Sets a Wedge from 3 points and adds it to the model.
+      Set a Wedge from 3 points and add it to the model.
 
       This method constructs a `Wedge` defined by a center, a radius point, and sweep points. It handles the low-level details of creating the `Wedge` object, wrapping it in an `Element`, calculating intersections, and adding it to the model structure.
 
@@ -80,6 +80,12 @@ Module Contents
 
 .. py:class:: Wedge(points: list[sympy.geometry.Point], direction: str = 'clockwise')
 
+   Represents a wedge (sector) of a circle.
+
+   A Wedge is defined by a center point, a radius point (defining the circle),
+   and two sweep points determining the angle.
+
+
    .. py:attribute:: points
 
 
@@ -108,39 +114,56 @@ Module Contents
 
    .. py:method:: __repr__() -> str
 
+      Return string representation of the Wedge.
+
+
 
    .. py:property:: circle
       :type: sympy.geometry.Circle
 
+
+      The SymPy Circle geometric entity associated with this wedge.
 
 
    .. py:property:: radians
       :type: sympy.Expr
 
 
+      The angle of the wedge in radians.
+
 
    .. py:property:: degrees
       :type: sympy.Expr
 
+
+      The angle of the wedge in degrees.
 
 
    .. py:property:: ratio
       :type: sympy.Expr
 
 
+      The ratio of the wedge angle to a full circle (2*pi).
+
 
    .. py:property:: area
       :type: sympy.Expr
 
+
+      The area of the wedge sector.
 
 
    .. py:property:: arc_length
       :type: sympy.Expr
 
 
+      The length of the arc defined by the wedge.
+
 
    .. py:property:: perimeter
       :type: sympy.Expr
 
+
+      The total perimeter of the wedge (arc length + 2 * radius).
 
 

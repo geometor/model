@@ -39,7 +39,7 @@ Module Contents
 
    .. py:method:: save(file_path: str) -> None
 
-      Saves a Model object to a JSON file as a list of elements.
+      Save a Model object to a JSON file as a list of elements.
 
       This method iterates through all elements in the model, serializing their symbolic definitions, parents, and metadata into a dictionary structure. It uses SymPy's srepr for robust expression serialization and writes the result to the specified file path.
 
@@ -49,7 +49,7 @@ Module Contents
 
 .. py:function:: load_model(file_path: str, logger: logging.Logger | None = None) -> geometor.model.Model
 
-   Loads a model from a JSON file and returns a new Model instance.
+   Load a model from a JSON file and return a new Model instance.
 
    This function reads a JSON file containing serialized model data and reconstructs a :class:`geometor.model.Model` object. It performs a two-pass process: first parsing all symbolic expressions to recreate the geometry objects, and then linking them with their parents and metadata to restore the full dependency graph.
 

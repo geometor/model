@@ -1,3 +1,5 @@
+//OBSOLETE
+/* elements/a-tooltip *****************************/
 a[data-tooltip] {
   position: absolute;
   text-decoration: none;
@@ -12,7 +14,7 @@ a[data-tooltip] {
     padding: 5px 15px;
 
     color: black;
-    background: #ffcb66;
+    background: var(--color-tooltip);
 
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -37,7 +39,7 @@ a[data-tooltip] {
     width: 0;
     height: 0;
 
-    border-top: 20px solid #ffcb66;
+    border-top: 20px solid var(--color-tooltip);
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
 

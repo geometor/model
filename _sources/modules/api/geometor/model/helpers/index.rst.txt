@@ -43,9 +43,18 @@ Module Contents
 
 .. py:function:: set_given_start_points(model: geometor.model.model.Model) -> tuple[sympy.geometry.Point, sympy.geometry.Point]
 
+   Set the standard starting points at (-1/2, 0) and (1/2, 0).
+
+
 .. py:function:: set_given_start_points_zero(model: geometor.model.model.Model) -> tuple[sympy.geometry.Point, sympy.geometry.Point]
 
+   Set the standard starting points at (0, 0) and (1, 0).
+
+
 .. py:function:: set_equilateral_poles(model: geometor.model.model.Model, pt_1: sympy.geometry.Point, pt_2: sympy.geometry.Point, add_circles: bool = True) -> list[sympy.geometry.Point]
+
+   Find the two intersection points (poles) of circles entered at pt_1 and pt_2.
+
 
 .. py:function:: construct_perpendicular_bisector(model: geometor.model.model.Model, pt_1: sympy.geometry.Point, pt_2: sympy.geometry.Point, add_circles: bool = True) -> sympy.geometry.Line
 
@@ -63,7 +72,7 @@ Module Contents
 
 .. py:function:: set_midpoint(model: geometor.model.model.Model, pt_1: sympy.geometry.Point, pt_2: sympy.geometry.Point, add_circles: bool = True) -> sympy.geometry.Line
 
-   Finds and sets the midpoint between two points.
+   Find and set the midpoint between two points.
 
    This function utilizes the perpendicular bisector construction to locate the geometric midpoint between the provided points.
 
@@ -78,5 +87,11 @@ Module Contents
 
 .. py:function:: set_given_rect_points(model: geometor.model.model.Model, pt: sympy.geometry.Point, x_offset: sympy.Expr, y_offset: sympy.Expr) -> list[sympy.geometry.Point]
 
+   Set points forming a rectangle starting from a given point.
+
+
 .. py:function:: set_given_square_points(model: geometor.model.model.Model, pt: sympy.geometry.Point, offset: sympy.Expr) -> list[sympy.geometry.Point]
+
+   Set points forming a square starting from a given point.
+
 

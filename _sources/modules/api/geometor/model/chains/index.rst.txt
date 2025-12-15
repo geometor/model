@@ -7,7 +7,6 @@ geometor.model.chains
 
    Provides the Chain class for analyzing connected golden sections.
 
-
    This module defines the `Chain` class, which facilitates the study of sequences of connected geometric sections. It offers tools for extracting segments and points, analyzing the flow of segment lengths, and exploring symmetries within the structure.
 
 
@@ -45,7 +44,7 @@ Module Contents
 
    .. py:method:: extract_segments() -> list[sympy.geometry.Segment]
 
-      Extracts unique segments from the chain.
+      Extract unique segments from the chain.
 
       This method iterates through all sections in the chain and collects every unique segment involved. It ensures that no duplicate segments are stored in the chain's segment list.
 
@@ -55,7 +54,7 @@ Module Contents
 
    .. py:method:: extract_points() -> list[sympy.geometry.Point]
 
-      Extracts unique points from the chain while maintaining order.
+      Extract unique points from the chain while maintaining order.
 
       This method compiles a list of all unique points used to define the sections in the chain. The order of appearance is preserved to maintain the geometric flow of the chain.
 
@@ -97,6 +96,9 @@ Module Contents
 
 
    .. py:method:: count_symmetry_lines() -> int
+
+      Count the number of symmetry lines in the chain's flow.
+
 
 
    .. py:property:: fibonacci_IDs

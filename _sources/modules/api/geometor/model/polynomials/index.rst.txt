@@ -84,25 +84,49 @@ Module Contents
 
    .. py:method:: __str__() -> str
 
+      Return string representation of the Polynomial.
+
+
 
    .. py:method:: __repr__() -> str
+
+      Return canonical string representation of the Polynomial.
+
 
 
    .. py:method:: equation() -> sympy.Expr
 
+      Return the SymPy expression of the polynomial.
+
+
 
    .. py:method:: eval(val: sympy.Expr) -> sympy.Expr
+
+      Evaluate the polynomial at a given value.
+
 
 
    .. py:method:: degree() -> int
 
+      Return the degree of the polynomial.
+
+
 
    .. py:method:: all_coeffs() -> list
+
+      Return all coefficients of the polynomial.
+
 
 
    .. py:method:: real_roots() -> list
 
+      Return a list of real roots of the polynomial.
+
+
 
    .. py:method:: intersection(other: sympy.geometry.entity.GeometryEntity) -> list[sympy.geometry.Point]
+
+      Find intersections with other geometric entities.
+
 
 

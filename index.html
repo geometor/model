@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GEOMETOR • model &mdash; Project name not set  documentation</title>
   <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=ea5fcf70" />
-  <link rel="stylesheet" type="text/css" href="_static/css/styles.css?v=647d561f" />
+  <link rel="stylesheet" type="text/css" href="_static/css/styles.css?v=38c7a96b" />
   <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
   <link rel="stylesheet" href="_static/css/print.css" type="text/css" media="print" />
   <link rel="icon" href="_static/favicon.ico" />
 </head>
 
 <body>
-    <header>
+  <header>
     <div class="logo">
       <a href="#">
         <img src="_static/logo.png" class="logo" alt="Logo"/>
@@ -34,13 +34,16 @@
           <a href="mission/index.html"  >mission</a>
         </li>
         <li>
-          <a href="modules/index.html"  >modules</a>
-        </li>
-        <li>
           <a href="log/index.html"  >log</a>
         </li>
         <li>
+          <a href="modules/index.html"  >modules</a>
+        </li>
+        <li>
           <a href="demos/index.html"  >demos</a>
+        </li>
+        <li>
+          <a href="refs/index.html"  >references</a>
         </li>
         <li>
           <a href="usage/index.html"  >usage</a>
@@ -50,156 +53,138 @@
     <div class="motto"></div>
   </header>
   <main>
-    
     <article>
-      <div class="content">
+      <header>
       <nav class="breadcrumbs">
         <span><a href="#">Home</a></span>
-        <span>/</span>
-        <span>GEOMETOR • model</span>
       </nav>
         <nav class="context">
           <div class="prev">
           </div>
           <div class="next">
-            <a href="mission/index.html" class="btn btn-neutral float-right" title="mission" >Next</a>
+            <a href="mission/index.html" title="mission" >Next</a>
           </div>
         </nav>
-          <section id="geometor-model">
-<h1>GEOMETOR • model<a class="headerlink" href="#geometor-model" title="Link to this heading">¶</a></h1>
-<img alt="_images/splash.png" src="_images/splash.png" />
-<p><code class="docutils literal notranslate"><span class="pre">geometor.model</span></code> is the foundational library for the <a class="reference external" href="https://geometor.com">GEOMETOR</a> initiative.</p>
-<p>At the core of the module is the <code class="docutils literal notranslate"><span class="pre">Model</span></code> class which establishes the field
-and methods of operation for creating the geometric constructions while maintaining integrity.</p>
-<p>The <strong>field</strong> might be easy to consider as a Cartesian grid. But in reality, it
-is an ordered set of information and operations. Points are the information.
-Lines and circles are the operations.</p>
-<p>In our system, all geometric elements of the <code class="docutils literal notranslate"><span class="pre">Model</span></code> are defined as <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/index.html">Sympy Geometry</a>
-objects. This means a <code class="docutils literal notranslate"><span class="pre">Point</span></code> can be defined as a pair of any algebraic
-<a class="reference external" href="https://docs.sympy.org/latest/tutorials/intro-tutorial/basic_operations.html">Sympy Expressions</a> that can be evaluated into a floating point value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">Line</span></code> and <code class="docutils literal notranslate"><span class="pre">Circle</span></code> are each defined by two points. So each construction
-must begin with at least two given points at the start. As lines and circles
-are added, intersection points are discovered with previous lines and circles
-and added to the model, so they may be used with new lines and circles.</p>
-<p>There are three main operations of the <code class="docutils literal notranslate"><span class="pre">Model</span></code>:</p>
-<ul class="simple">
-<li><p>set_point</p></li>
-<li><p>construct_line</p></li>
-<li><p>construct_circle</p></li>
-</ul>
-<p>The major responsibilities of the <code class="docutils literal notranslate"><span class="pre">Model</span></code>:</p>
-<ul>
-<li><p><strong>deduplicate</strong></p>
-<p>when elements are added to the model, we check to see if they already exist. This is particularly important for intersection points that often coincide with exisitng points.</p>
-</li>
-<li><p><strong>clean values</strong></p></li>
-<li><p>discover <strong>intersections</strong></p></li>
-<li><p><strong>save</strong> to and load from json</p></li>
-<li><p>maintain a set of <strong>related</strong> info for each element:</p>
-<ul class="simple">
-<li><p>ancestral relationships</p></li>
-<li><p>establish labels for elements</p></li>
-<li><p>classes for styles</p></li>
-</ul>
-</li>
-</ul>
-<p>All of the plotting functionality has moved to <strong>GEOMETOR</strong> <a class="reference external" href="https://github.com/geometor/explorer">explorer</a>. However, there are several report functions in this module:</p>
-<ul class="simple">
-<li><p>report_summary</p></li>
-<li><p>report_group_by_type</p></li>
-<li><p>report_sequence</p></li>
-</ul>
-<img alt="_images/screenshot.png" src="_images/screenshot.png" />
-<section id="indices">
-<h2>indices<a class="headerlink" href="#indices" title="Link to this heading">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
-</ul>
-<div class="toctree-wrapper compound">
-</div>
-</section>
-</section>
+      </header>
+      <div class="content">
+        <section id="geometor-model">
+          <h1>GEOMETOR • model<a class="headerlink" href="#geometor-model" title="Link to this heading">¶</a></h1>
+          <img alt="_images/splash.png" src="_images/splash.png" />
+          <p><code class="docutils literal notranslate"><span class="pre">geometor.model</span></code> is the foundational library for the <a class="reference external" href="https://geometor.com">GEOMETOR</a> initiative.</p>
+          <p>At the core of the module is the <code class="docutils literal notranslate"><span class="pre">Model</span></code> class which establishes the field
+          and methods of operation for creating the geometric constructions while maintaining integrity.</p>
+          <p>The <strong>field</strong> might be easy to consider as a Cartesian grid. But in reality, it
+          is an ordered set of information and operations. Points are the information.
+          Lines and circles are the operations.</p>
+          <p>In our system, all geometric elements of the <code class="docutils literal notranslate"><span class="pre">Model</span></code> are defined as <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/index.html">Sympy Geometry</a>
+          objects. This means a <code class="docutils literal notranslate"><span class="pre">Point</span></code> can be defined as a pair of any algebraic
+          <a class="reference external" href="https://docs.sympy.org/latest/tutorials/intro-tutorial/basic_operations.html">Sympy Expressions</a> that can be evaluated into a floating point value.</p>
+          <p><code class="docutils literal notranslate"><span class="pre">Line</span></code> and <code class="docutils literal notranslate"><span class="pre">Circle</span></code> are each defined by two points. So each construction
+          must begin with at least two given points at the start. As lines and circles
+          are added, intersection points are discovered with previous lines and circles
+          and added to the model, so they may be used with new lines and circles.</p>
+          <p>There are three main operations of the <code class="docutils literal notranslate"><span class="pre">Model</span></code>:</p>
+          <ul class="simple">
+          <li><p>set_point</p></li>
+          <li><p>construct_line</p></li>
+          <li><p>construct_circle</p></li>
+          </ul>
+          <p>The major responsibilities of the <code class="docutils literal notranslate"><span class="pre">Model</span></code>:</p>
+          <ul>
+          <li><p><strong>deduplicate</strong></p>
+          <p>when elements are added to the model, we check to see if they already exist. This is particularly important for intersection points that often coincide with exisitng points.</p>
+          </li>
+          <li><p><strong>clean values</strong></p></li>
+          <li><p>discover <strong>intersections</strong></p></li>
+          <li><p><strong>save</strong> to and load from json</p></li>
+          <li><p>maintain a set of <strong>related</strong> info for each element:</p>
+          <ul class="simple">
+          <li><p>ancestral relationships</p></li>
+          <li><p>establish labels for elements</p></li>
+          <li><p>classes for styles</p></li>
+          </ul>
+          </li>
+          </ul>
+          <p>All of the plotting functionality has moved to <strong>GEOMETOR</strong> <a class="reference external" href="https://github.com/geometor/explorer">explorer</a>. However, there are several report functions in this module:</p>
+          <ul class="simple">
+          <li><p>report_summary</p></li>
+          <li><p>report_group_by_type</p></li>
+          <li><p>report_sequence</p></li>
+          </ul>
+          <img alt="_images/screenshot.png" src="_images/screenshot.png" />
+          <section id="indices">
+          <h2>indices<a class="headerlink" href="#indices" title="Link to this heading">¶</a></h2>
+          <ul class="simple">
+          <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+          <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+          <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+          </ul>
+          <div class="toctree-wrapper compound">
+          </div>
+          </section>
+          </section>
 
       </div>
       <footer>
-
 
         <nav class="context">
           <div class="prev">
           </div>
           <div class="next">
-            <a href="mission/index.html" class="btn btn-neutral float-right" title="mission" >Next</a>
+            <a href="mission/index.html" title="mission" >Next</a>
           </div>
-        </nav></footer>
+        </nav>
+      </footer>
     </article>
-
   </main>
-
   <div class="asides">
     <aside>
-        <h3>Search</h3>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
+      <h3>Search</h3>
+      <div role="search">
+        <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+      </div>
     </aside>
-    
-<aside>
-    <h3>Recent Logs</h3>
-    <ul>
-        
-            <li><a href="log/23.324-124954/index.html">First Log - Lots of changes</a></li>
-        
-    </ul>
-</aside>
-
-    
-
-    
-
-    
-
-<aside class="aside-types">
-    <h3>Types</h3>
-    <ul>
-        
+    <aside>
+      <h3>Recent Logs</h3>
+      <ul>
+        <li><a href="log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+      </ul>
+    </aside>
+    <aside class="aside-types">
+      <h3>Types</h3>
+      <ul>
         <li><a href="types/log.html">log</a></li>
-        
-    </ul>
-</aside>
-
-</div>
+      </ul>
+    </aside>
+  </div>
   <footer>
     <div class="footer-nav">
-    <ul>
+      <ul>
         <li><a href="about.html">about</a></li>
         <li><a href="connect.html">connect</a></li>
         <li><a href="glossary.html">glossary</a></li>
         <li><a href="todos.html">todos</a></li>
         <li><a href="changelog.html">changelog</a></li>
-    </ul>
-</div>
-    <hr/>
-    <div role="contentinfo">
-        <p>
-                &copy; Copyright .
-        </p>
+      </ul>
     </div>
-</footer>
-  
+    <hr />
+    <div role="contentinfo">
+      <p>
+        &copy; Copyright .
+      </p>
+    </div>
+  </footer>
+
   <script src="_static/jquery.js?v=5d32c60e"></script>
   <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
   <script src="_static/documentation_options.js?v=5929fcd5"></script>
   <script src="_static/doctools.js?v=9bcbadda"></script>
   <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
   <script src="_static/js/collection_controls.js?v=b6b5297a"></script>
-  
 
 </body>
-
 </html>

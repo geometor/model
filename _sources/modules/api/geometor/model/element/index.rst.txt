@@ -109,6 +109,7 @@ Module Contents
 
    This function verifies whether a given geometric structure (line or circle) is already present in the model's collection. It indicates existence by checking both object identity and mathematical equivalence of the defining equations.
 
+   :param self: The model instance.
    :param struct: The structure to check.
    :param existing_structs: List of existing structures in the model.
 
@@ -122,6 +123,7 @@ Module Contents
 
    This function computes the intersection points between the provided structure and all other eligible structures in the model. It uses parallel processing to efficiently handle potential intersections and updates the model with any newly found points.
 
+   :param self: The model instance.
    :param struct: The structure to find intersections for.
 
 

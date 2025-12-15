@@ -1,9 +1,8 @@
-
+/* elements/blockquotes *****************************/
 blockquote {
   display: block;
   padding: var(--fitz-2) ;
   // font-size: 1.2em;
-  border-left: 1px solid $color-key-dark;
 
   // left vertical rule
   &::before {
@@ -14,7 +13,6 @@ blockquote {
     // position: absolute;
     // left: 0;
     // top: 0;
-    // background: $color-key-dark;
   }
 
   //nested blockquote
@@ -24,7 +22,6 @@ blockquote {
     font-style: italic;
 
     &::before {
-      // content: $bullet;
       // display: inline;
       // padding-top: var(--fitz-2);
       // background: inherit;

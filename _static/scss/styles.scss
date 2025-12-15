@@ -1,24 +1,12 @@
 /* foundation ✴ Theme Components and Templates */
 
-// 1. Base styles (order is important)
 @import '_variables';
 @import 'fonts/index';
-@import 'color/index';
-@import '_common'; // Contains the %section-default placeholder
+
 @import 'elements/index';
 
-// 2. Mixins
-@import '../../components/article/mixins/index';
+@import '../../article/index';
+@import '../../article/excerpt';
+@import '../../collection/index';
 
-// 3. Component styles
-@import '../../components/article/article';
-@import '../../components/article/excerpt';
-@import '../../components/collection/collection';
-@import '../../components/site/header';
-@import '../../components/site/footer';
-@import '../../components/site/nav';
-@import '../../components/asides/asides';
-@import '../../components/asides/search';
-
-// 4. Template/Layout specific styles (if any)
-@import 'templates/index';
+@import '../../layout/index';

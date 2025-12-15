@@ -46,7 +46,7 @@ Module Contents
 
    .. py:method:: construct_line(pt_1: sympy.geometry.Point, pt_2: sympy.geometry.Point, classes: list[str] | None = None, ID: str = '', guide: bool = False) -> sympy.geometry.Line
 
-      Constructs a :class:`Line <sympy.geometry.line.Line>` from two points and adds it to the :class:`Model <geometor.model.model.Model>`.
+      Construct a :class:`Line <sympy.geometry.line.Line>` from two points and add it to the :class:`Model <geometor.model.model.Model>`.
 
       This method creates a line connecting two given points. It checks if an equivalent line already exists in the model to prevent duplicates, merging attributes if necessary. If it's a new line, it calculates intersections with existing structures.
 

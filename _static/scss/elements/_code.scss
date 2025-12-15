@@ -1,14 +1,15 @@
+/* elements/code *****************************/
 pre,
 code,
 kbd,
 samp {
   padding: .1em .25em;
-  font-family: $font-code;
+  font-family: var(--font-code);
   font-size: 1em;
   line-height: 1.5;
   font-weight: bold;
   // color:  var(--color-bg);
-  // background: $color-fg;
+  // background: var(--text-color);
 
   border-radius: 0;
 }

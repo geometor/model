@@ -1,18 +1,16 @@
-%default-list {
+/* elements/lists *****************************/
+ul, ol, li {
 	margin-left: 1em;
- }
+}
 
 ul {
-	@extend %default-list;
 	list-style: disc outside;
 }
 
 ol {
-	@extend %default-list;
 	list-style: decimal outside;
 }
 
 li {
-	@extend %default-list;
 	font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
 }

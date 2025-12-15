@@ -1,32 +1,18 @@
 /* base elements *****************************/
 
-/* elements/reset *****************************/
 @import 'reset';
-/* elements/html *****************************/
-@import 'html';
-/* elements/headings *****************************/
+@import 'sections';
 @import 'headings';
-/* elements/blocks *****************************/
 @import 'blocks';
-/* elements/lists *****************************/
 @import 'lists';
-/* elements/blockquotes *****************************/
 @import 'blockquotes';
-/* elements/code *****************************/
 @import 'code';
-/* elements/a *****************************/
 @import 'a';
-@import 'a-tooltip';
-/* elements/inline *****************************/
+// @import 'a-tooltip';
 @import 'inline';
-/* elements/figure *****************************/
 @import 'figure';
-/* elements/tables *****************************/
-@import '_tables';
-@import '_viewcode';
-/* elements/forms *****************************/
+@import 'tables';
+@import 'viewcode';
 @import 'forms';
-/* elements/admonitions *****************************/
 @import 'admonitions';
-/* elements/api *****************************/
 @import 'api';

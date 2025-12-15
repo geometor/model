@@ -52,8 +52,14 @@ Module Contents
 
    .. py:method:: log(message: object) -> None
 
+      Log a message to the model's logger or print if it's a rich object.
+
+
 
    .. py:method:: set_analysis_hook(hook_function: Callable) -> None
+
+      Set a hook function to be called during analysis/point addition.
+
 
 
    .. py:property:: new_points
@@ -64,6 +70,9 @@ Module Contents
 
 
    .. py:method:: clear_new_points() -> None
+
+      Clear the list of newly added points.
+
 
 
    .. py:property:: name
@@ -87,6 +96,9 @@ Module Contents
 
 
    .. py:method:: remove_by_ID(ID: str) -> None
+
+      Remove a geometric element from the model by its ID.
+
 
 
    .. py:property:: points

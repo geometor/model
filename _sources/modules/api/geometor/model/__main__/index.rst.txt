@@ -35,11 +35,11 @@ Module Contents
 
 .. py:function:: parse_command(model: geometor.model.Model, command: str) -> None
 
-   Parses and executes a single command string.
+   Parse and execute a single command string.
 
 
 .. py:function:: run() -> None
 
-   Runs the CLI REPL.
+   Run the CLI REPL.
 
 

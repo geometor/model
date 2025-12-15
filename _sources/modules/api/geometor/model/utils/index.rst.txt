@@ -88,7 +88,27 @@ Module Contents
 
 .. py:function:: log_init(name: str) -> None
 
+   Initialize logging for a session.
+
+   Sets up a log directory in the user's home Sessions folder and configures
+   basic logging to a 'build.log' file.
+
+   :param name: The name of the session/subdirectory to create.
+
+
 .. py:function:: print_log(txt: str = '') -> None
 
+   Print text to stdout and log it to the file.
+
+   :param txt: The text to print and log.
+
+
 .. py:function:: elapsed(start_time: float) -> str
+
+   Calculate and format the elapsed time since start.
+
+   :param start_time: The starting timestamp (from timer()).
+
+   :returns: A string representation of the elapsed timedelta.
+
 

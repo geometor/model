@@ -70,6 +70,12 @@ Module Contents
 
 .. py:class:: Section(points: list[sympy.geometry.Point])
 
+   Represents a section (division) of a line defined by three points.
+
+   A Section creates two segments from three collinear points and facilitates
+   analyzing their lengths and ratio, particularly for Golden Ratio checks.
+
+
    .. py:attribute:: points
 
 
@@ -81,20 +87,29 @@ Module Contents
 
    .. py:method:: __eq__(other: object) -> bool
 
+      Check equality based on points.
+
+
 
    .. py:method:: __hash__() -> int
+
+      Return hash based on points.
+
 
 
    .. py:method:: __repr__() -> str
 
+      Return string representation of the Section.
 
-   .. py:method:: get_IDs(model: geometor.model.model.Model) -> list[str]
 
-      Returns a list of IDs.
+
+   .. py:method:: get_IDs(model: geometor.model.Model) -> list[str]
+
+      Return a list of IDs.
 
       This method retrieves the unique identifiers for each of the three points that define the section, referencing the provided model.
 
-      :param model: The model containing the points.
+      :param model: The :class:`~geometor.model.model.Model` containing the points.
 
       :returns: A list of point IDs.
 
@@ -115,44 +130,62 @@ Module Contents
       :type: list[sympy.Expr]
 
 
+      The symbolic lengths of the two segments in the section.
+
 
    .. py:property:: floats
       :type: list[float]
 
+
+      The floating-point lengths of the two segments.
 
 
    .. py:property:: is_golden
       :type: bool
 
 
+      Check if the section's segments form a Golden Ratio.
+
 
    .. py:property:: min_length
       :type: sympy.Expr
 
+
+      The length of the shorter segment.
 
 
    .. py:property:: min_float
       :type: float
 
 
+      The length of the shorter segment as a float.
+
 
    .. py:property:: min_segment
       :type: sympy.geometry.Segment
 
+
+      The shorter segment object.
 
 
    .. py:property:: max_length
       :type: sympy.Expr
 
 
+      The length of the longer segment.
+
 
    .. py:property:: max_float
       :type: float
 
 
+      The length of the longer segment as a float.
+
 
    .. py:property:: max_segment
       :type: sympy.geometry.Segment
 
+
+      The longer segment object.
 
 

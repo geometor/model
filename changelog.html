@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>changelog &mdash; Project name not set  documentation</title>
   <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=ea5fcf70" />
-  <link rel="stylesheet" type="text/css" href="_static/css/styles.css?v=647d561f" />
+  <link rel="stylesheet" type="text/css" href="_static/css/styles.css?v=38c7a96b" />
   <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
   <link rel="stylesheet" href="_static/css/print.css" type="text/css" media="print" />
   <link rel="icon" href="_static/favicon.ico" />
 </head>
 
 <body>
-    <header>
+  <header>
     <div class="logo">
       <a href="index.html">
         <img src="_static/logo.png" class="logo" alt="Logo"/>
@@ -34,13 +34,16 @@
           <a href="mission/index.html"  >mission</a>
         </li>
         <li>
-          <a href="modules/index.html"  >modules</a>
-        </li>
-        <li>
           <a href="log/index.html"  >log</a>
         </li>
         <li>
+          <a href="modules/index.html"  >modules</a>
+        </li>
+        <li>
           <a href="demos/index.html"  >demos</a>
+        </li>
+        <li>
+          <a href="refs/index.html"  >references</a>
         </li>
         <li>
           <a href="usage/index.html"  >usage</a>
@@ -50,281 +53,274 @@
     <div class="motto"></div>
   </header>
   <main>
-    
     <article>
-      <div class="content">
+      <header>
       <nav class="breadcrumbs">
         <span><a href="index.html">Home</a></span>
-        <span>/</span>
-        <span>changelog</span>
       </nav>
         <nav class="context">
           <div class="prev">
-             <a href="todos.html" class="btn btn-neutral float-left" title="todos" >Prev</a>
+             <a href="todos.html" title="todos" >Prev</a>
           </div>
           <div class="next">
-            <a href="intro.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" >Next</a>
+            <a href="modules/api/index.html" title="API Reference" >Next</a>
           </div>
         </nav>
-          <section id="changelog">
-<h1>changelog<a class="headerlink" href="#changelog" title="Link to this heading">¶</a></h1>
-<section id="id1">
-<h2>0.5.0<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
-<p><em>2025-12-08</em></p>
-<p><strong>added</strong></p>
-<ul class="simple">
-<li><p><strong>CLI REPL:</strong> Introduced a command-line interface for interactive model building (<cite>python -m geometor.model</cite>).</p></li>
-<li><p><strong>Wedges:</strong> Added <cite>set_wedge_by_IDs</cite> for easier wedge creation and support for <cite>direction</cite> in <cite>Wedge</cite> initialization.</p></li>
-<li><p><strong>Docs:</strong> Added CLI usage documentation.</p></li>
-</ul>
-</section>
-<section id="id2">
-<h2>0.4.6<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
-<p><em>2025-12-08</em></p>
-<p><strong>changed</strong></p>
-<ul class="simple">
-<li><p>Comprehensive type hinting added to all core modules.</p></li>
-<li><p>Removed auto-generated API documentation.</p></li>
-<li><p>Updated .gitignore to exclude generated docs.</p></li>
-</ul>
-</section>
-<section id="id3">
-<h2>0.4.5<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
-<p><em>2025-12-06</em></p>
-<p><strong>changed</strong></p>
-<ul class="simple">
-<li><p>Refined metadata.</p></li>
-<li><p>Updated documentation.</p></li>
-</ul>
-</section>
-<section id="id4">
-<h2>0.4.4<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
-<p><em>2025-12-04</em></p>
-<p><strong>changed</strong></p>
-<ul class="simple">
-<li><p>Refactored report generation into <cite>ReportMixin</cite>.</p></li>
-<li><p>Centralized color definitions in <cite>geometor.model.colors</cite>.</p></li>
-<li><p>Enhanced docstrings and type hinting across modules.</p></li>
-<li><p>Updated <cite>__main__.py</cite> to use new reporting methods.</p></li>
-<li><p>Fixed imports in demo scripts.</p></li>
-</ul>
-</section>
-<section id="id5">
-<h2>0.4.3<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
-<ul class="simple">
-<li><p>Refined docstrings and type hinting.</p></li>
-<li><p>Fixed <cite>from __future__ import annotations</cite> placement.</p></li>
-</ul>
-</section>
-<section id="id6">
-<h2>0.4.2<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
-<p><em>2025-11-28</em></p>
-<p><strong>fixed</strong></p>
-<ul class="simple">
-<li><p>Export <cite>check_existence</cite> and <cite>find_all_intersections</cite> from <cite>geometor.model.element</cite> for easier access.</p></li>
-<li><p>Removed outdated and redundant API documentation files.</p></li>
-</ul>
-</section>
-<section id="id7">
-<h2>0.4.1<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
-<p><em>2025-11-28</em></p>
-<p><strong>changed</strong></p>
-<ul class="simple">
-<li><p>Refactored model organization: Removed underscore prefixes from module names.</p></li>
-<li><p>Removed <cite>common.py</cite> to reduce circular dependencies.</p></li>
-<li><p>Integrated serialization logic directly into <cite>Model</cite> class methods.</p></li>
-<li><p>Organized <cite>Sections</cite> and <cite>Wedges</cite> functionality into Mixins.</p></li>
-</ul>
-</section>
-<section id="id8">
-<h2>0.4.0<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
-<p><em>2025-10-31</em></p>
-<p><strong>added</strong></p>
-<ul class="simple">
-<li><p>Added <cite>Polynomial</cite> element to the model.</p></li>
-<li><p>Added <cite>add_poly</cite> method to the <cite>Model</cite> class.</p></li>
-<li><p>Added <cite>pytest</cite> for testing.</p></li>
-</ul>
-</section>
-<section id="id9">
-<h2>0.3.1<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
-<p><em>2025-10-30</em></p>
-<p><strong>fixed</strong></p>
-<ul class="simple">
-<li><p>Fixed a recursion error in <cite>_get_ancestors_IDs</cite> by adding cycle detection.</p></li>
-</ul>
-</section>
-<section id="id10">
-<h2>0.3.0<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
-<p><em>2025-10-27</em></p>
-<p><strong>added</strong></p>
-<ul class="simple">
-<li><p>Improved logging and output for better debugging and user feedback.</p></li>
-</ul>
-</section>
-<section id="id11">
-<h2>0.2.6<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
-<p><em>2025-10-25</em></p>
-<p><strong>added</strong></p>
-<ul class="simple">
-<li><p>Cleaned algebraic expressions for lengths to simplify complex mathematical representations.</p></li>
-</ul>
-<p><strong>fixed</strong></p>
-<ul class="simple">
-<li><p>Handled polygons in ancestor search to prevent errors and improve reliability.</p></li>
-<li><p>Added a missing return statement to ensure correct functionality.</p></li>
-</ul>
-</section>
-<section id="id12">
-<h2>0.2.5<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
-<p><em>2025-10-23</em></p>
-<p><strong>fixed</strong></p>
-<ul class="simple">
-<li><p>Fixed serialization of <cite>Wedge</cite> objects, ensuring models can be saved and loaded correctly.</p></li>
-<li><p>Correctly serialized element classes to handle sets, improving data integrity.</p></li>
-</ul>
-</section>
-<section id="id13">
-<h2>0.2.4<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
-<p><em>2025-10-23</em></p>
-<p><strong>fixed</strong></p>
-<ul class="simple">
-<li><p>Fixed serialization of <cite>Section</cite> objects, ensuring models can be saved and loaded correctly.</p></li>
-</ul>
-</section>
-<section id="id14">
-<h2>0.2.3<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
-<p><em>2025-10-22</em></p>
-<p><strong>added</strong></p>
-<ul class="simple">
-<li><p>Added <cite>guide</cite> property to model elements to exclude them from intersection calculations and analysis.</p></li>
-</ul>
-<p><strong>fixed</strong></p>
-<ul class="simple">
-<li><p>Persisted <cite>guide</cite> property to ensure it is saved and loaded correctly.</p></li>
-<li><p>Ensured delete only removes chronological dependents to prevent unintended data loss.</p></li>
-<li><p>Improved model loading speed and serialization stability for a more reliable user experience.</p></li>
-</ul>
-</section>
-<section id="id15">
-<h2>0.2.2<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
-<p><em>2025-10-22</em></p>
-<p><strong>changed</strong></p>
-<ul class="simple">
-<li><p>Refactored logging for better performance and readability.</p></li>
-</ul>
-</section>
-<section id="id16">
-<h2>0.2.1<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
-<p><em>2025-10-20</em></p>
-<p><strong>changed</strong></p>
-<ul class="simple">
-<li><p>Replaced the event-driven system with a synchronous analysis hook to simplify the architecture and ensure correct execution order.</p></li>
-<li><p>Decoupled all logging from the model library; logging is now handled by the calling application.</p></li>
-</ul>
-</section>
-<section id="id17">
-<h2>0.2.0<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h2>
-<p><em>2025-10-20</em></p>
-<p><strong>changed</strong></p>
-<ul class="simple">
-<li><p>Bumped version to 0.2.0.</p></li>
-<li><p>Optimized golden section check for better performance.</p></li>
-<li><p>Standardized on ‘ID’ instead of ‘label’ for element identification.</p></li>
-<li><p>Refactored the <cite>Model</cite> class and added delete functionality.</p></li>
-<li><p>Added an event system and refactored the <cite>Section</cite> representation.</p></li>
-</ul>
-</section>
-<section id="id18">
-<h2>0.1.0<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
-<p><em>2023-11-15</em></p>
-<ul class="simple">
-<li><p>Repository initialized.</p></li>
-</ul>
-</section>
-</section>
+      </header>
+      <div class="content">
+        <section id="changelog">
+          <h1>changelog<a class="headerlink" href="#changelog" title="Link to this heading">¶</a></h1>
+          <section id="id1">
+          <h2>0.5.1<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+          <p><em>2025-12-15</em></p>
+          <p><strong>fixed</strong></p>
+          <ul class="simple">
+          <li><p><strong>Docstrings:</strong> Standardized docstrings to Google style across all modules.</p></li>
+          <li><p><strong>Type Hints:</strong> Resolved extensive type hinting issues and added missing hints.</p></li>
+          <li><p><strong>Sphinx:</strong> Fixed ambiguous cross-reference warnings in documentation build.</p></li>
+          <li><p><strong>CLI:</strong> Fixed unused variable warnings in <cite>__main__.py</cite>.</p></li>
+          </ul>
+          </section>
+          <section id="id2">
+          <h2>0.5.0<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+          <p><em>2025-12-08</em></p>
+          <p><strong>added</strong></p>
+          <ul class="simple">
+          <li><p><strong>CLI REPL:</strong> Introduced a command-line interface for interactive model building (<cite>python -m geometor.model</cite>).</p></li>
+          <li><p><strong>Wedges:</strong> Added <cite>set_wedge_by_IDs</cite> for easier wedge creation and support for <cite>direction</cite> in <cite>Wedge</cite> initialization.</p></li>
+          <li><p><strong>Docs:</strong> Added CLI usage documentation.</p></li>
+          </ul>
+          </section>
+          <section id="id3">
+          <h2>0.4.6<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+          <p><em>2025-12-08</em></p>
+          <p><strong>changed</strong></p>
+          <ul class="simple">
+          <li><p>Comprehensive type hinting added to all core modules.</p></li>
+          <li><p>Removed auto-generated API documentation.</p></li>
+          <li><p>Updated .gitignore to exclude generated docs.</p></li>
+          </ul>
+          </section>
+          <section id="id4">
+          <h2>0.4.5<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+          <p><em>2025-12-06</em></p>
+          <p><strong>changed</strong></p>
+          <ul class="simple">
+          <li><p>Refined metadata.</p></li>
+          <li><p>Updated documentation.</p></li>
+          </ul>
+          </section>
+          <section id="id5">
+          <h2>0.4.4<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+          <p><em>2025-12-04</em></p>
+          <p><strong>changed</strong></p>
+          <ul class="simple">
+          <li><p>Refactored report generation into <cite>ReportMixin</cite>.</p></li>
+          <li><p>Centralized color definitions in <cite>geometor.model.colors</cite>.</p></li>
+          <li><p>Enhanced docstrings and type hinting across modules.</p></li>
+          <li><p>Updated <cite>__main__.py</cite> to use new reporting methods.</p></li>
+          <li><p>Fixed imports in demo scripts.</p></li>
+          </ul>
+          </section>
+          <section id="id6">
+          <h2>0.4.3<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+          <ul class="simple">
+          <li><p>Refined docstrings and type hinting.</p></li>
+          <li><p>Fixed <cite>from __future__ import annotations</cite> placement.</p></li>
+          </ul>
+          </section>
+          <section id="id7">
+          <h2>0.4.2<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+          <p><em>2025-11-28</em></p>
+          <p><strong>fixed</strong></p>
+          <ul class="simple">
+          <li><p>Export <cite>check_existence</cite> and <cite>find_all_intersections</cite> from <cite>geometor.model.element</cite> for easier access.</p></li>
+          <li><p>Removed outdated and redundant API documentation files.</p></li>
+          </ul>
+          </section>
+          <section id="id8">
+          <h2>0.4.1<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+          <p><em>2025-11-28</em></p>
+          <p><strong>changed</strong></p>
+          <ul class="simple">
+          <li><p>Refactored model organization: Removed underscore prefixes from module names.</p></li>
+          <li><p>Removed <cite>common.py</cite> to reduce circular dependencies.</p></li>
+          <li><p>Integrated serialization logic directly into <cite>Model</cite> class methods.</p></li>
+          <li><p>Organized <cite>Sections</cite> and <cite>Wedges</cite> functionality into Mixins.</p></li>
+          </ul>
+          </section>
+          <section id="id9">
+          <h2>0.4.0<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+          <p><em>2025-10-31</em></p>
+          <p><strong>added</strong></p>
+          <ul class="simple">
+          <li><p>Added <cite>Polynomial</cite> element to the model.</p></li>
+          <li><p>Added <cite>add_poly</cite> method to the <cite>Model</cite> class.</p></li>
+          <li><p>Added <cite>pytest</cite> for testing.</p></li>
+          </ul>
+          </section>
+          <section id="id10">
+          <h2>0.3.1<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+          <p><em>2025-10-30</em></p>
+          <p><strong>fixed</strong></p>
+          <ul class="simple">
+          <li><p>Fixed a recursion error in <cite>_get_ancestors_IDs</cite> by adding cycle detection.</p></li>
+          </ul>
+          </section>
+          <section id="id11">
+          <h2>0.3.0<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+          <p><em>2025-10-27</em></p>
+          <p><strong>added</strong></p>
+          <ul class="simple">
+          <li><p>Improved logging and output for better debugging and user feedback.</p></li>
+          </ul>
+          </section>
+          <section id="id12">
+          <h2>0.2.6<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+          <p><em>2025-10-25</em></p>
+          <p><strong>added</strong></p>
+          <ul class="simple">
+          <li><p>Cleaned algebraic expressions for lengths to simplify complex mathematical representations.</p></li>
+          </ul>
+          <p><strong>fixed</strong></p>
+          <ul class="simple">
+          <li><p>Handled polygons in ancestor search to prevent errors and improve reliability.</p></li>
+          <li><p>Added a missing return statement to ensure correct functionality.</p></li>
+          </ul>
+          </section>
+          <section id="id13">
+          <h2>0.2.5<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
+          <p><em>2025-10-23</em></p>
+          <p><strong>fixed</strong></p>
+          <ul class="simple">
+          <li><p>Fixed serialization of <cite>Wedge</cite> objects, ensuring models can be saved and loaded correctly.</p></li>
+          <li><p>Correctly serialized element classes to handle sets, improving data integrity.</p></li>
+          </ul>
+          </section>
+          <section id="id14">
+          <h2>0.2.4<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+          <p><em>2025-10-23</em></p>
+          <p><strong>fixed</strong></p>
+          <ul class="simple">
+          <li><p>Fixed serialization of <cite>Section</cite> objects, ensuring models can be saved and loaded correctly.</p></li>
+          </ul>
+          </section>
+          <section id="id15">
+          <h2>0.2.3<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
+          <p><em>2025-10-22</em></p>
+          <p><strong>added</strong></p>
+          <ul class="simple">
+          <li><p>Added <cite>guide</cite> property to model elements to exclude them from intersection calculations and analysis.</p></li>
+          </ul>
+          <p><strong>fixed</strong></p>
+          <ul class="simple">
+          <li><p>Persisted <cite>guide</cite> property to ensure it is saved and loaded correctly.</p></li>
+          <li><p>Ensured delete only removes chronological dependents to prevent unintended data loss.</p></li>
+          <li><p>Improved model loading speed and serialization stability for a more reliable user experience.</p></li>
+          </ul>
+          </section>
+          <section id="id16">
+          <h2>0.2.2<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
+          <p><em>2025-10-22</em></p>
+          <p><strong>changed</strong></p>
+          <ul class="simple">
+          <li><p>Refactored logging for better performance and readability.</p></li>
+          </ul>
+          </section>
+          <section id="id17">
+          <h2>0.2.1<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h2>
+          <p><em>2025-10-20</em></p>
+          <p><strong>changed</strong></p>
+          <ul class="simple">
+          <li><p>Replaced the event-driven system with a synchronous analysis hook to simplify the architecture and ensure correct execution order.</p></li>
+          <li><p>Decoupled all logging from the model library; logging is now handled by the calling application.</p></li>
+          </ul>
+          </section>
+          <section id="id18">
+          <h2>0.2.0<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
+          <p><em>2025-10-20</em></p>
+          <p><strong>changed</strong></p>
+          <ul class="simple">
+          <li><p>Bumped version to 0.2.0.</p></li>
+          <li><p>Optimized golden section check for better performance.</p></li>
+          <li><p>Standardized on ‘ID’ instead of ‘label’ for element identification.</p></li>
+          <li><p>Refactored the <cite>Model</cite> class and added delete functionality.</p></li>
+          <li><p>Added an event system and refactored the <cite>Section</cite> representation.</p></li>
+          </ul>
+          </section>
+          <section id="id19">
+          <h2>0.1.0<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h2>
+          <p><em>2023-11-15</em></p>
+          <ul class="simple">
+          <li><p>Repository initialized.</p></li>
+          </ul>
+          </section>
+          </section>
 
       </div>
       <footer>
 
         <div class="meta">
         </div>
-
         <nav class="context">
           <div class="prev">
-             <a href="todos.html" class="btn btn-neutral float-left" title="todos" >Prev</a>
+             <a href="todos.html" title="todos" >Prev</a>
           </div>
           <div class="next">
-            <a href="intro.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" >Next</a>
+            <a href="modules/api/index.html" title="API Reference" >Next</a>
           </div>
-        </nav></footer>
+        </nav>
+      </footer>
     </article>
-
   </main>
-
   <div class="asides">
     <aside>
-        <h3>Search</h3>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
+      <h3>Search</h3>
+      <div role="search">
+        <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+      </div>
     </aside>
-    
-<aside>
-    <h3>Recent Logs</h3>
-    <ul>
-        
-            <li><a href="log/23.324-124954/index.html">First Log - Lots of changes</a></li>
-        
-    </ul>
-</aside>
-
-    
-
-    
-
-    
-
-<aside class="aside-types">
-    <h3>Types</h3>
-    <ul>
-        
+    <aside>
+      <h3>Recent Logs</h3>
+      <ul>
+        <li><a href="log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+      </ul>
+    </aside>
+    <aside class="aside-types">
+      <h3>Types</h3>
+      <ul>
         <li><a href="types/log.html">log</a></li>
-        
-    </ul>
-</aside>
-
-</div>
+      </ul>
+    </aside>
+  </div>
   <footer>
     <div class="footer-nav">
-    <ul>
+      <ul>
         <li><a href="about.html">about</a></li>
         <li><a href="connect.html">connect</a></li>
         <li><a href="glossary.html">glossary</a></li>
         <li><a href="todos.html">todos</a></li>
         <li><a href="#">changelog</a></li>
-    </ul>
-</div>
-    <hr/>
-    <div role="contentinfo">
-        <p>
-                &copy; Copyright .
-        </p>
+      </ul>
     </div>
-</footer>
-  
+    <hr />
+    <div role="contentinfo">
+      <p>
+        &copy; Copyright .
+      </p>
+    </div>
+  </footer>
+
   <script src="_static/jquery.js?v=5d32c60e"></script>
   <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
   <script src="_static/documentation_options.js?v=5929fcd5"></script>
   <script src="_static/doctools.js?v=9bcbadda"></script>
   <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
   <script src="_static/js/collection_controls.js?v=b6b5297a"></script>
-  
 
 </body>
-
 </html>

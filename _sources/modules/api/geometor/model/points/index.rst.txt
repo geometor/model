@@ -31,10 +31,13 @@ Module Contents
 
    .. py:method:: point_ID_generator() -> collections.abc.Iterator[str]
 
+      Generate a sequence of point IDs (A, B, C, ... AA, AB, ...).
+
+
 
    .. py:method:: set_point(x_val: sympy.Expr, y_val: sympy.Expr, parents: list | None = None, classes: list[str] | None = None, ID: str = '', guide: bool = False) -> sympy.geometry.Point
 
-      Adds a point to the model, finds duplicates, cleans values, and sets parents and classes.
+      Add a point to the model, find duplicates, clean values, and set parents and classes.
 
       This method is the core mechanism for introducing points into the model. It simplifies the coordinates, checks for existing points to avoid duplicates, attempts to merge attributes if a duplicate is found, and triggers analysis hooks for the new point.
 

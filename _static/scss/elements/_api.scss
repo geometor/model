@@ -1,47 +1,49 @@
-/* API Documentation Styles */
+/* elements/api *****************************/
 
 dl.py {
-    dt.sig {
-        font-family: $font-code;
-        font-size: 0; // Hide text nodes (commas, spaces)
+  dt.sig {
+    font-family: var(--font-code);
+    font-size: 0; // Hide text nodes (commas, spaces)
 
-        // Reset font-size for child elements
-        &>* {
-            font-size: 1rem; // Restore visible font size
-        }
-
-        .sig-prename {
-            color: #888;
-        }
-
-        .sig-name {
-            font-weight: bold;
-        }
-
-        .sig-param {
-            display: block; // Force new line
-            margin-left: 2rem;
-
-            // Re-add comma
-            &::after {
-                content: ",";
-            }
-
-            // Remove comma from last param
-            &:last-of-type::after {
-                content: "";
-            }
-        }
+    // Reset font-size for child elements
+    &>* {
+      font-size: 1rem; // Restore visible font size
     }
 
-    // Property decorator styling
-    em.property {
-        color: #e74c3c; // Lighter red (consistent intensity with standard blue links)
-        font-style: normal; // usually em is italic, reset if desired, or keep
+    .sig-prename {
+      display: none;
+      color: var(--color-muted);
     }
 
-    dd {
-        padding: 1rem 1rem 1rem 2rem; // All around with extra on left
-        margin-left: 0; // Reset default margin if needed, or keep
+    .sig-name {
+      font-weight: bold;
+      color: var(--color-warning)
     }
+
+    .sig-param {
+      display: block; // Force new line
+      margin-left: 2rem;
+
+      // Re-add comma
+      &::after {
+        content: ",";
+      }
+
+      // Remove comma from last param
+      &:last-of-type::after {
+        content: "";
+      }
+    }
+  }
+
+  // Property decorator styling
+  em.property {
+    color: var(--color-property); // Lighter red (consistent intensity with standard blue links)
+    font-style: normal; // usually em is italic, reset if desired, or keep
+  }
+
+  dd {
+    padding: 1rem 1rem 1rem 2rem; // All around with extra on left
+    margin-left: 0; // Reset default margin if needed, or keep
+  }
 }

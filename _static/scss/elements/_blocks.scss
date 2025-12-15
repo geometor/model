@@ -1,3 +1,4 @@
+/* elements/blocks *****************************/
 // Paragraphs. OpenType ligatures and oldstyle figures enabled if available.
 p, div,
 dl, dd, dt,
@@ -34,5 +35,5 @@ dl {
 
 
 hr {
-  border-top: 1px solid $color-key;
+  border-top: 1px solid var(--link-color);
 }

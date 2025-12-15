@@ -1,100 +1,37 @@
-// 1. Change the font styles in all browsers (opinionated).
-// 2. Remove the margin in Firefox and Safari.
+/* elements/forms *****************************/
+// Trimmed to only what is used in the themes
 
-button,
-input,
-optgroup,
-select,
-textarea {
-
-  font-family: $font-primary; //* 1 */
-  font-size: 100%; //* 1 */
-  line-height: 1.15; //* 1 */
-
-}
-
-// Show the overflow in IE.
-// 1. Show the overflow in Edge.
 button,
 input {
-  overflow: visible; //* 1 */
+  font-family: var(--font-primary);
+  font-size: 100%;
+  line-height: 1.15;
+  overflow: visible;
 }
 
-// Remove the inheritance of text transform in Edge, Firefox, and IE.
-// 1. Remove the inheritance of text transform in Firefox.
-button,
-select {
-  text-transform: none; //* 1 */
+button {
+  text-transform: none;
 }
 
-
-// Correct the padding in Firefox.
-fieldset {
-  padding: 0 1em 1em 1em;
-  border: 5px solid #CC9;
-  margin: 1em 0;
-}
-// 1. Correct the text wrapping in Edge and IE.
-// 2. Correct the color inheritance from `fieldset` elements in IE.
-// 3. Remove the padding so developers are not caught out when they zero out
-//    `fieldset` elements in all browsers.
-
-legend {
-  color: inherit; //* 2 */
-  display: table; //* 1 */
-  max-width: 100%; //* 1 */
-  white-space: normal; //* 1 */
-  padding: 0 1em;
-  font-weight: 700;
-}
-// 1. Add the correct display in IE 9-.
-// 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
-
-progress {
-  display: inline-block; //* 1 */
-  vertical-align: baseline; //* 2 */
+[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
 }
 
-// Remove the default vertical scrollbar in IE.
-textarea {
-  overflow: auto;
-}
-// 1. Add the correct box sizing in IE 10-.
-// 2. Remove the padding in IE 10-.
-
-[type="checkbox"],
-[type="radio"] {
-  box-sizing: border-box; //* 1 */
-  padding: 0; //* 2 */
-}
-
-// 1. Correct the odd appearance in Chrome and Safari.
-// 2. Correct the outline style in Safari.
 [type="search"] {
-  outline-offset: -2px; //* 2 */
+  outline-offset: -2px;
 }
 
-// Add the correct display in IE 10-.
 [hidden] {
   display: none;
 }
 
-// original
-// input text
-input[type=email],
-input[type=number],
-input[type=password],
-input[type=search],
-input[type=text],
-textarea {
-  --bg: $color-key-lighter;
+// Basic text input styling (mostly used by search input override)
+input[type=text] {
+  --bg: var(--color-key-lighter);
 
   display: block;
   padding: .4em;
-  // margin: 0 0 2em;
-  // line-height: 2.9em;
-  // min-height: 3em;
-
   outline: 0 none;
   border: 1px solid var(--color);
 
@@ -109,12 +46,47 @@ textarea {
   &:focus {
     color: var(--color);
   }
-  // Placeholder text
   &::placeholder {
-  --color: $color-key-dark;
+  --color: var(--color-key-dark);
   }
 }
-// Form submit.
+
+input[type=search] {
+  --bg: var(--color-key-lighter);
+
+  display: block;
+  padding: .4em;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  box-shadow: none;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+
+  // Focus state
+  &:focus {
+    border-color: var(--link-color);
+    box-shadow: 0 0 0 3px var(--color-key-light);
+    outline: none;
+  }
+}
+
+// Checkboxes and Radios
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  --color: var(--color-key-dark);
+}
+
+// Form groups
+.form-group {
+  margin-bottom: 1rem;
+}
+
+// Submit button
 input[type=submit] {
   cursor: pointer;
   -webkit-appearance: none;
@@ -122,48 +94,71 @@ input[type=submit] {
   border: 0 none;
   border-radius: .5em;
 
-  color: $color-key-lighter;
-  background: $color-key;
+  color: var(--color-key-lighter);
+  background: var(--color-key);
   padding: .5em;
   margin: .5em 0;
   text-decoration: none;
   &:hover {
-
+    background: var(--link-hover-color);
   }
 }
-// Select element.
-select {
-  height: 2.75em;
-  margin: 0 0 2em;
-  padding: 0.575em 2em 0.575em 1.125em;
-  display: block;
-  width: 100%;
-  // -webkit-appearance: none;
-  // background: url("../images/arrow.svg") no-repeat right yellow;
-  // background-size: 25px;
-  color: var(--color);
-  border: 2px solid var(--color);
-}
 
+// Labels
 label {
   display: block;
   font-weight: bold;
-  font-family: $font-primary;
+  font-family: var(--font-primary);
+  margin-bottom: 0.5rem;
+  color: var(--color-key-lighter);
+  background: var(--link-color);
+}
+
+// Initial state for inputs
+input,
+textarea,
+select {
+  &:invalid {
+    background: var(--color-key-light);
+    border-color: var(--color-danger);
+  }
+}
+
+// Validation styles
+input:valid {
+    border-color: var(--color-success);
+}
+
+input:invalid {
+    border-color: var(--color-danger);
 }
 
 button {
   border: 0 none;
   border-radius: .5em;
 
-  color: $color-key-lighter;
-  background: $color-key;
+  color: var(--color-key-lighter);
+  background: var(--color-key);
   padding: .5em;
   margin: .5em;
   text-decoration: none;
 
   &:hover {
-    background: $color-key-light;
+    background: var(--color-key-light);
     text-decoration: none;
   }
+}
 
+// Button styles (if form related)
+button[type="submit"] {
+  color: var(--color-key-lighter);
+  background: var(--link-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--color-key-light);
+  }
 }

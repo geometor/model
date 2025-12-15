@@ -46,7 +46,7 @@ Module Contents
 
    .. py:method:: construct_circle(pt_center: sympy.geometry.Point, pt_radius: sympy.geometry.Point, classes: list[str] | None = None, ID: str = '', guide: bool = False) -> sympy.geometry.Circle
 
-      Constructs a Circle from two points and adds it to the model.
+      Construct a Circle from two points and add it to the model.
 
       This method creates a circle defined by a center point and a point on the circumference (establishing the radius). It checks for duplicates within the model, merging attributes if an equivalent circle exists, or computing intersections if it is new.
 

@@ -1,4 +1,4 @@
-
+/* elements/inline *****************************/
 b,
 strong {
 	font-weight: inherit;
@@ -16,7 +16,7 @@ cite {
 }
 
 mark {
-	--bg: $color-key;
+	--bg: var(--link-color);
 
 	background: var(--bg);
 }

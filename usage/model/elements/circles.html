@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>circles &mdash; Project name not set  documentation</title>
   <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea5fcf70" />
-  <link rel="stylesheet" type="text/css" href="../../../_static/css/styles.css?v=647d561f" />
+  <link rel="stylesheet" type="text/css" href="../../../_static/css/styles.css?v=38c7a96b" />
   <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
   <link rel="stylesheet" href="../../../_static/css/print.css" type="text/css" media="print" />
   <link rel="icon" href="../../../_static/favicon.ico" />
 </head>
 
 <body>
-    <header>
+  <header>
     <div class="logo">
       <a href="../../../index.html">
         <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
@@ -34,13 +34,16 @@
           <a href="../../../mission/index.html"  >mission</a>
         </li>
         <li>
-          <a href="../../../modules/index.html"  >modules</a>
-        </li>
-        <li>
           <a href="../../../log/index.html"  >log</a>
         </li>
         <li>
+          <a href="../../../modules/index.html"  >modules</a>
+        </li>
+        <li>
           <a href="../../../demos/index.html"  >demos</a>
+        </li>
+        <li>
+          <a href="../../../refs/index.html"  >references</a>
         </li>
         <li>
           <a href="../../index.html"  >usage</a>
@@ -50,164 +53,146 @@
     <div class="motto"></div>
   </header>
   <main>
-    
     <article>
-      <div class="content">
+      <header>
       <nav class="breadcrumbs">
         <span><a href="../../../index.html">Home</a></span>
           <span>/</span>
         <span><a href="../../index.html">usage</a></span>
-        <span>/</span>
-        <span>circles</span>
       </nav>
         <nav class="context">
           <div class="prev">
-             <a href="points.html" class="btn btn-neutral float-left" title="points" >Prev</a>
+             <a href="../index.html" title="model elements" >Prev</a>
           </div>
           <div class="next">
-            <a href="lines.html" class="btn btn-neutral float-right" title="lines" >Next</a>
+            <a href="polygons.html" title="polygons" >Next</a>
           </div>
         </nav>
-          <section id="circles">
-<h1>circles<a class="headerlink" href="#circles" title="Link to this heading">¶</a></h1>
-<p>Circles are defined by a center point and a radius point (or a set radius).</p>
-<p>Provides circle construction and manipulation for the Model class.</p>
-<p>This module manages the creation of symbolic circles defined by a center point and a radius point. It handles the integration of these circles into the model, ensuring uniqueness and calculating intersections.</p>
-<dl class="py class">
-<dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geometor.model.circles.</span></span><span class="sig-name descname"><span class="pre">CirclesMixin</span></span></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.13/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Mixin for the Model class containing circle construction operations.</p>
-<p>This mixin extends the Model with capabilities to construct circles. It supports creating circles from point objects or their IDs and ensures they are correctly registered and intersected with other elements in the model.</p>
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">construct_circle_by_IDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_1_ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2_ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/ellipses.html#sympy.geometry.ellipse.Circle" title="(in SymPy v1.14.0)"><span class="pre">Circle</span></a></span></span></dt>
-<dd><p>Find points by ID and use them with <code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.construct_circle()</span></code>.</p>
-<p>This convenience wrapper enables circle construction using string identifiers for the center and radius points, simplifying the API when working with named elements.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>pt_1_ID</strong> – The ID of the center point.</p></li>
-<li><p><strong>pt_2_ID</strong> – The ID of the radius point.</p></li>
-<li><p><strong>classes</strong> – A list of class labels.</p></li>
-<li><p><strong>ID</strong> – A string ID for the circle.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The constructed <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/ellipses.html#sympy.geometry.ellipse.Circle" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.ellipse.Circle</span></code></a>.</p>
-</dd>
-</dl>
-</dd></dl>
+      </header>
+      <div class="content">
+        <section id="circles">
+          <h1>circles<a class="headerlink" href="#circles" title="Link to this heading">¶</a></h1>
+          <p>Circles are defined by a center point and a radius point (or a set radius).</p>
+          <p>Provides circle construction and manipulation for the Model class.</p>
+          <p>This module manages the creation of symbolic circles defined by a center point and a radius point. It handles the integration of these circles into the model, ensuring uniqueness and calculating intersections.</p>
+          <dl class="py class">
+          <dt class="sig sig-object py">
+          <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geometor.model.circles.</span></span><span class="sig-name descname"><span class="pre">CirclesMixin</span></span></dt>
+          <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.13/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+          <p>Mixin for the Model class containing circle construction operations.</p>
+          <p>This mixin extends the Model with capabilities to construct circles. It supports creating circles from point objects or their IDs and ensures they are correctly registered and intersected with other elements in the model.</p>
+          <dl class="py method">
+          <dt class="sig sig-object py">
+          <span class="sig-name descname"><span class="pre">construct_circle_by_IDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_1_ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_2_ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/ellipses.html#sympy.geometry.ellipse.Circle" title="(in SymPy v1.14.0)"><span class="pre">Circle</span></a></span></span></dt>
+          <dd><p>Find points by ID and use them with <code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.construct_circle()</span></code>.</p>
+          <p>This convenience wrapper enables circle construction using string identifiers for the center and radius points, simplifying the API when working with named elements.</p>
+          <dl class="field-list simple">
+          <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+          <dd class="field-odd"><ul class="simple">
+          <li><p><strong>pt_1_ID</strong> – The ID of the center point.</p></li>
+          <li><p><strong>pt_2_ID</strong> – The ID of the radius point.</p></li>
+          <li><p><strong>classes</strong> – A list of class labels.</p></li>
+          <li><p><strong>ID</strong> – A string ID for the circle.</p></li>
+          </ul>
+          </dd>
+          <dt class="field-even">Returns<span class="colon">:</span></dt>
+          <dd class="field-even"><p>The constructed <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/ellipses.html#sympy.geometry.ellipse.Circle" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.ellipse.Circle</span></code></a>.</p>
+          </dd>
+          </dl>
+          </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">construct_circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guide</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/ellipses.html#sympy.geometry.ellipse.Circle" title="(in SymPy v1.14.0)"><span class="pre">Circle</span></a></span></span></dt>
-<dd><p>Constructs a Circle from two points and adds it to the model.</p>
-<p>This method creates a circle defined by a center point and a point on the circumference (establishing the radius). It checks for duplicates within the model, merging attributes if an equivalent circle exists, or computing intersections if it is new.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>pt_center</strong> – The center point of the circle.</p></li>
-<li><p><strong>pt_radius</strong> – A point on the circumference of the circle.</p></li>
-<li><p><strong>classes</strong> – A list of class labels.</p></li>
-<li><p><strong>ID</strong> – A string ID for the circle. If empty, one is generated.</p></li>
-<li><p><strong>guide</strong> – If True, the circle is a guide.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The constructed or retrieved <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/ellipses.html#sympy.geometry.ellipse.Circle" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.ellipse.Circle</span></code></a>.</p>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.13/library/exceptions.html#TypeError" title="(in Python v3.13)"><strong>TypeError</strong></a> – If <code class="docutils literal notranslate"><span class="pre">pt_center</span></code> or <code class="docutils literal notranslate"><span class="pre">pt_radius</span></code> are not instances of <code class="docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code>.</p>
-</dd>
-</dl>
-</dd></dl>
+          <dl class="py method">
+          <dt class="sig sig-object py">
+          <span class="sig-name descname"><span class="pre">construct_circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt_radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guide</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/ellipses.html#sympy.geometry.ellipse.Circle" title="(in SymPy v1.14.0)"><span class="pre">Circle</span></a></span></span></dt>
+          <dd><p>Construct a Circle from two points and add it to the model.</p>
+          <p>This method creates a circle defined by a center point and a point on the circumference (establishing the radius). It checks for duplicates within the model, merging attributes if an equivalent circle exists, or computing intersections if it is new.</p>
+          <dl class="field-list simple">
+          <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+          <dd class="field-odd"><ul class="simple">
+          <li><p><strong>pt_center</strong> – The center point of the circle.</p></li>
+          <li><p><strong>pt_radius</strong> – A point on the circumference of the circle.</p></li>
+          <li><p><strong>classes</strong> – A list of class labels.</p></li>
+          <li><p><strong>ID</strong> – A string ID for the circle. If empty, one is generated.</p></li>
+          <li><p><strong>guide</strong> – If True, the circle is a guide.</p></li>
+          </ul>
+          </dd>
+          <dt class="field-even">Returns<span class="colon">:</span></dt>
+          <dd class="field-even"><p>The constructed or retrieved <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/ellipses.html#sympy.geometry.ellipse.Circle" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.ellipse.Circle</span></code></a>.</p>
+          </dd>
+          <dt class="field-odd">Raises<span class="colon">:</span></dt>
+          <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.13/library/exceptions.html#TypeError" title="(in Python v3.13)"><strong>TypeError</strong></a> – If <code class="docutils literal notranslate"><span class="pre">pt_center</span></code> or <code class="docutils literal notranslate"><span class="pre">pt_radius</span></code> are not instances of <code class="docutils literal notranslate"><span class="pre">sympy.geometry.point.Point</span></code>.</p>
+          </dd>
+          </dl>
+          </dd></dl>
 
-</dd></dl>
+          </dd></dl>
 
-</section>
+          </section>
 
       </div>
       <footer>
 
         <div class="meta">
         </div>
-
         <nav class="context">
           <div class="prev">
-             <a href="points.html" class="btn btn-neutral float-left" title="points" >Prev</a>
+             <a href="../index.html" title="model elements" >Prev</a>
           </div>
           <div class="next">
-            <a href="lines.html" class="btn btn-neutral float-right" title="lines" >Next</a>
+            <a href="polygons.html" title="polygons" >Next</a>
           </div>
-        </nav></footer>
+        </nav>
+      </footer>
     </article>
-
   </main>
-
   <div class="asides">
     <aside>
-        <h3>Search</h3>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
+      <h3>Search</h3>
+      <div role="search">
+        <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+      </div>
     </aside>
-    
-<aside>
-    <h3>Recent Logs</h3>
-    <ul>
-        
-            <li><a href="../../../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
-        
-    </ul>
-</aside>
-
-    
-
-    
-
-    
-
-<aside class="aside-types">
-    <h3>Types</h3>
-    <ul>
-        
+    <aside>
+      <h3>Recent Logs</h3>
+      <ul>
+        <li><a href="../../../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+      </ul>
+    </aside>
+    <aside class="aside-types">
+      <h3>Types</h3>
+      <ul>
         <li><a href="../../../types/log.html">log</a></li>
-        
-    </ul>
-</aside>
-
-</div>
+      </ul>
+    </aside>
+  </div>
   <footer>
     <div class="footer-nav">
-    <ul>
+      <ul>
         <li><a href="../../../about.html">about</a></li>
         <li><a href="../../../connect.html">connect</a></li>
         <li><a href="../../../glossary.html">glossary</a></li>
         <li><a href="../../../todos.html">todos</a></li>
         <li><a href="../../../changelog.html">changelog</a></li>
-    </ul>
-</div>
-    <hr/>
-    <div role="contentinfo">
-        <p>
-                &copy; Copyright .
-        </p>
+      </ul>
     </div>
-</footer>
-  
+    <hr />
+    <div role="contentinfo">
+      <p>
+        &copy; Copyright .
+      </p>
+    </div>
+  </footer>
+
   <script src="../../../_static/jquery.js?v=5d32c60e"></script>
   <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
   <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
   <script src="../../../_static/doctools.js?v=9bcbadda"></script>
   <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
   <script src="../../../_static/js/collection_controls.js?v=b6b5297a"></script>
-  
 
 </body>
-
 </html>

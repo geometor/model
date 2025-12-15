@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>getting started &mdash; Project name not set  documentation</title>
   <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=ea5fcf70" />
-  <link rel="stylesheet" type="text/css" href="../_static/css/styles.css?v=647d561f" />
+  <link rel="stylesheet" type="text/css" href="../_static/css/styles.css?v=38c7a96b" />
   <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
   <link rel="stylesheet" href="../_static/css/print.css" type="text/css" media="print" />
   <link rel="icon" href="../_static/favicon.ico" />
 </head>
 
 <body>
-    <header>
+  <header>
     <div class="logo">
       <a href="../index.html">
         <img src="../_static/logo.png" class="logo" alt="Logo"/>
@@ -34,13 +34,16 @@
           <a href="../mission/index.html"  >mission</a>
         </li>
         <li>
-          <a href="../modules/index.html"  >modules</a>
-        </li>
-        <li>
           <a href="../log/index.html"  >log</a>
         </li>
         <li>
+          <a href="../modules/index.html"  >modules</a>
+        </li>
+        <li>
           <a href="../demos/index.html"  >demos</a>
+        </li>
+        <li>
+          <a href="../refs/index.html"  >references</a>
         </li>
         <li>
           <a href="index.html"  >usage</a>
@@ -50,128 +53,110 @@
     <div class="motto"></div>
   </header>
   <main>
-    
     <article>
-      <div class="content">
+      <header>
       <nav class="breadcrumbs">
         <span><a href="../index.html">Home</a></span>
           <span>/</span>
         <span><a href="index.html">usage</a></span>
-        <span>/</span>
-        <span>getting started</span>
       </nav>
         <nav class="context">
           <div class="prev">
-             <a href="model/elements/polynomials.html" class="btn btn-neutral float-left" title="polynomials" >Prev</a>
+             <a href="model/elements/points.html" title="points" >Prev</a>
           </div>
           <div class="next">
-            <a href="../about.html" class="btn btn-neutral float-right" title="about" >Next</a>
+            <a href="model/elements/lines.html" title="lines" >Next</a>
           </div>
         </nav>
-          <section id="getting-started">
-<h1>getting started<a class="headerlink" href="#getting-started" title="Link to this heading">¶</a></h1>
-<p>To start using <code class="docutils literal notranslate"><span class="pre">geometor.model</span></code>, you need to create a <code class="docutils literal notranslate"><span class="pre">Model</span></code> instance. This object will hold all your geometric elements and manage their relationships.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
+      </header>
+      <div class="content">
+        <section id="getting-started">
+          <h1>getting started<a class="headerlink" href="#getting-started" title="Link to this heading">¶</a></h1>
+          <p>To start using <code class="docutils literal notranslate"><span class="pre">geometor.model</span></code>, you need to create a <code class="docutils literal notranslate"><span class="pre">Model</span></code> instance. This object will hold all your geometric elements and manage their relationships.</p>
+          <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
 
-<span class="c1"># Initialize a new model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;my_first_construction&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>From here, you can start adding points and constructing elements.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add two starting points</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
-<span class="n">B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
+          <span class="c1"># Initialize a new model</span>
+          <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;my_first_construction&quot;</span><span class="p">)</span>
+          </pre></div>
+          </div>
+          <p>From here, you can start adding points and constructing elements.</p>
+          <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add two starting points</span>
+          <span class="n">A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
+          <span class="n">B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;given&quot;</span><span class="p">])</span>
 
-<span class="c1"># Construct a line connecting them</span>
-<span class="n">line_AB</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">construct_line</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+          <span class="c1"># Construct a line connecting them</span>
+          <span class="n">line_AB</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">construct_line</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
 
-<span class="c1"># Construct a circle centered at A passing through B</span>
-<span class="n">circle_A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
+          <span class="c1"># Construct a circle centered at A passing through B</span>
+          <span class="n">circle_A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+          </pre></div>
+          </div>
+          </section>
 
       </div>
       <footer>
 
         <div class="meta">
         </div>
-
         <nav class="context">
           <div class="prev">
-             <a href="model/elements/polynomials.html" class="btn btn-neutral float-left" title="polynomials" >Prev</a>
+             <a href="model/elements/points.html" title="points" >Prev</a>
           </div>
           <div class="next">
-            <a href="../about.html" class="btn btn-neutral float-right" title="about" >Next</a>
+            <a href="model/elements/lines.html" title="lines" >Next</a>
           </div>
-        </nav></footer>
+        </nav>
+      </footer>
     </article>
-
   </main>
-
   <div class="asides">
     <aside>
-        <h3>Search</h3>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
+      <h3>Search</h3>
+      <div role="search">
+        <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+      </div>
     </aside>
-    
-<aside>
-    <h3>Recent Logs</h3>
-    <ul>
-        
-            <li><a href="../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
-        
-    </ul>
-</aside>
-
-    
-
-    
-
-    
-
-<aside class="aside-types">
-    <h3>Types</h3>
-    <ul>
-        
+    <aside>
+      <h3>Recent Logs</h3>
+      <ul>
+        <li><a href="../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+      </ul>
+    </aside>
+    <aside class="aside-types">
+      <h3>Types</h3>
+      <ul>
         <li><a href="../types/log.html">log</a></li>
-        
-    </ul>
-</aside>
-
-</div>
+      </ul>
+    </aside>
+  </div>
   <footer>
     <div class="footer-nav">
-    <ul>
+      <ul>
         <li><a href="../about.html">about</a></li>
         <li><a href="../connect.html">connect</a></li>
         <li><a href="../glossary.html">glossary</a></li>
         <li><a href="../todos.html">todos</a></li>
         <li><a href="../changelog.html">changelog</a></li>
-    </ul>
-</div>
-    <hr/>
-    <div role="contentinfo">
-        <p>
-                &copy; Copyright .
-        </p>
+      </ul>
     </div>
-</footer>
-  
+    <hr />
+    <div role="contentinfo">
+      <p>
+        &copy; Copyright .
+      </p>
+    </div>
+  </footer>
+
   <script src="../_static/jquery.js?v=5d32c60e"></script>
   <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
   <script src="../_static/documentation_options.js?v=5929fcd5"></script>
   <script src="../_static/doctools.js?v=9bcbadda"></script>
   <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
   <script src="../_static/js/collection_controls.js?v=b6b5297a"></script>
-  
 
 </body>
-
 </html>

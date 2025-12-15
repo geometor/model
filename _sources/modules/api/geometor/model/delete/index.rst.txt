@@ -41,7 +41,7 @@ Module Contents
 
    .. py:method:: get_dependents(element_or_ID: sympy.geometry.entity.GeometryEntity | str) -> set[sympy.geometry.entity.GeometryEntity]
 
-      Finds and returns a set of all elements that depend on the given element.
+      Find and return a set of all elements that depend on the given element.
 
       This method serves as a query tool to inspect the impact of potentially deleting an element. It resolves the input to a model element and uses recursive search to gather all downstream dependencies.
 
@@ -53,7 +53,7 @@ Module Contents
 
    .. py:method:: delete_element(element_or_ID: sympy.geometry.entity.GeometryEntity | str) -> None
 
-      Deletes an element and performs a cascading delete of all its dependents.
+      Delete an element and perform a cascading delete of all its dependents.
 
       This is the primary method for removing content from the model. It verifies the existence of the target element, identifies the entire tree of dependent structures, and removes them all to prevent orphaned references in the model.
 
