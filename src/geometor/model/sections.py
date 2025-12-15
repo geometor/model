@@ -20,7 +20,7 @@ from geometor.model.utils import clean_expr
 if TYPE_CHECKING:
     from sympy.printing.printer import Printer
 
-    from geometor.model.model import Model
+    from geometor.model import Model
 
 phi = sp.Rational(1, 2) + (sp.sqrt(5) / 2)
 
@@ -45,6 +45,7 @@ class SectionsMixin:
 
         Returns:
              The constructed :class:`Section`.
+
         """
         points = []
 
@@ -67,8 +68,8 @@ class SectionsMixin:
 
         Returns:
             The constructed :class:`Section`.
-        """
 
+        """
         # TODO: check points and minimum count of 3
         section = Section(points)
 
@@ -95,7 +96,19 @@ class SectionsMixin:
 
 
 class Section:
+    """Represents a section (division) of a line defined by three points.
+
+    A Section creates two segments from three collinear points and facilitates
+    analyzing their lengths and ratio, particularly for Golden Ratio checks.
+    """
+
     def __init__(self, points: list[spg.Point]) -> None:
+        """Initialize a Section instance.
+
+        Args:
+            points: A list of 3 collinear sympy Points.
+
+        """
         assert len(points) == 3, "A section must be defined by three points."
 
         self.points = points
@@ -106,15 +119,18 @@ class Section:
         self.clean_expr = clean_expr
 
     def __eq__(self, other: object) -> bool:
+        """Check equality based on points."""
         if not isinstance(other, Section):
             return NotImplemented
         return self.points == other.points
 
     def __hash__(self) -> int:
+        """Return hash based on points."""
         # Use a tuple of points for hashing, as lists are not hashable
         return hash(tuple(self.points))
 
     def __repr__(self) -> str:
+        """Return string representation of the Section."""
         points_repr = [sp.srepr(p) for p in self.points]
         return f"Section([{', '.join(points_repr)}])"
 
@@ -122,16 +138,17 @@ class Section:
         points_repr = [printer.doprint(p) for p in self.points]
         return f"Section([{', '.join(points_repr)}])"
 
-    def get_IDs(self, model: Model) -> list[str]:
-        """Returns a list of IDs.
+    def get_IDs(self, model: geometor.model.Model) -> list[str]:
+        """Return a list of IDs.
         
         This method retrieves the unique identifiers for each of the three points that define the section, referencing the provided model.
 
         Args:
-            model: The model containing the points.
+            model: The :class:`~geometor.model.model.Model` containing the points.
 
         Returns:
              A list of point IDs.
+
         """
         return [model[pt].ID for pt in self.points]
 
@@ -143,6 +160,7 @@ class Section:
 
         Returns:
              The ratio as a symbolic expression.
+
         """
         l1, l2 = self.lengths
         if l1.evalf() < l2.evalf():
@@ -151,14 +169,17 @@ class Section:
 
     @property
     def lengths(self) -> list[sp.Expr]:
+        """The symbolic lengths of the two segments in the section."""
         return [self.clean_expr(seg.length) for seg in self.segments]
 
     @property
     def floats(self) -> list[float]:
+        """The floating-point lengths of the two segments."""
         return [float(length.evalf()) for length in self.lengths]
 
     @property
     def is_golden(self) -> bool:
+        """Check if the section's segments form a Golden Ratio."""
         # First, perform a quick check using floating-point numbers.
         l1_float, l2_float = self.floats
         if l1_float < l2_float:
@@ -184,26 +205,32 @@ class Section:
 
     @property
     def min_length(self) -> sp.Expr:
+        """The length of the shorter segment."""
         return min(self.lengths)
 
     @property
     def min_float(self) -> float:
+        """The length of the shorter segment as a float."""
         return min(self.floats)
 
     @property
     def min_segment(self) -> spg.Segment:
+        """The shorter segment object."""
         min_length_index = self.lengths.index(self.min_length())
         return self.segments[min_length_index]
 
     @property
     def max_length(self) -> sp.Expr:
+        """The length of the longer segment."""
         return max(self.lengths)
 
     @property
     def max_float(self) -> float:
+        """The length of the longer segment as a float."""
         return max(self.floats)
 
     @property
     def max_segment(self) -> spg.Segment:
+        """The longer segment object."""
         max_length_index = self.lengths.index(self.max_length())
         return self.segments[max_length_index]

@@ -30,12 +30,13 @@ class SerializeMixin:
     """
 
     def save(self, file_path: str) -> None:
-        """Saves a Model object to a JSON file as a list of elements.
+        """Save a Model object to a JSON file as a list of elements.
         
         This method iterates through all elements in the model, serializing their symbolic definitions, parents, and metadata into a dictionary structure. It uses SymPy's srepr for robust expression serialization and writes the result to the specified file path.
 
         Args:
             file_path: The path where the JSON file will be saved.
+
         """
         serializable_elements = []
         for element in self.values():
@@ -73,7 +74,7 @@ class SerializeMixin:
 
 
 def load_model(file_path: str, logger: logging.Logger | None = None) -> Model:
-    """Loads a model from a JSON file and returns a new Model instance.
+    """Load a model from a JSON file and return a new Model instance.
     
     This function reads a JSON file containing serialized model data and reconstructs a :class:`geometor.model.Model` object. It performs a two-pass process: first parsing all symbolic expressions to recreate the geometry objects, and then linking them with their parents and metadata to restore the full dependency graph.
 
@@ -83,6 +84,7 @@ def load_model(file_path: str, logger: logging.Logger | None = None) -> Model:
 
     Returns:
         A new :class:`geometor.model.Model` instance populated with the loaded data.
+
     """
     # Import Model here to avoid circular dependency
     from geometor.model import Model

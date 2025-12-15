@@ -41,6 +41,7 @@ class Element:
         classes: A list of class labels.
         ID: A string ID for the element. If empty, an ID is generated.
         guide: If True, the element is a guide and excluded from intersections.
+
     """
 
     def __init__(
@@ -51,7 +52,7 @@ class Element:
         ID: str = "",
         guide: bool = False,
     ) -> None:
-        """Initializes an Element of the model.
+        """Initialize an Element of the model.
 
         This method normalizes input arguments, ensuring classes and parents are stored as dictionary keys for efficient lookup and uniqueness. It prepares the element for integration into the model's dependency graph.
         """
@@ -98,6 +99,7 @@ class CircleElement(Element):
         classes: A list of class labels.
         ID: A string ID for the element.
         guide: If True, the element is a guide.
+
     """
 
     def __init__(
@@ -109,6 +111,7 @@ class CircleElement(Element):
         ID: str = "",
         guide: bool = False,
     ) -> None:
+        """Initialize a CircleElement."""
         super().__init__(sympy_obj, parents, classes, ID, guide)
         self.pt_radius = pt_radius
         #: The point defining the radius.
@@ -122,11 +125,13 @@ def check_existence(
     This function verifies whether a given geometric structure (line or circle) is already present in the model's collection. It indicates existence by checking both object identity and mathematical equivalence of the defining equations.
 
     Args:
+        self: The model instance.
         struct: The structure to check.
         existing_structs: List of existing structures in the model.
 
     Returns:
         tuple[bool, Struct]: A tuple containing a boolean indicating existence and the existing structure if found (otherwise None).
+
     """
     # Check by reference
     if struct in existing_structs:
@@ -147,7 +152,9 @@ def find_all_intersections(self: Model, struct: Struct) -> None:
     This function computes the intersection points between the provided structure and all other eligible structures in the model. It uses parallel processing to efficiently handle potential intersections and updates the model with any newly found points.
 
     Args:
+        self: The model instance.
         struct: The structure to find intersections for.
+
     """
     if self[struct].guide:
         return
@@ -177,15 +184,17 @@ def find_intersection(test_tuple: tuple[Struct, Struct]) -> tuple[Struct, Struct
 
 
 def _get_element_by_ID(self: Model, ID: str) -> GeometryEntity | None:
-    """Finds and returns the element with the given ID.
+    """Find and return the element with the given ID.
     
     This helper method scans the model for an element matching the provided string ID. It is useful for retrieving specific elements when their variable names are not directly accessible.
 
     Args:
+        self: The model instance.
         ID: The ID of the desired element.
 
     Returns:
         Element | None: The element with the matching ID, or None if no match is found.
+
     """
     for element_key, element in self.items():
         if hasattr(element, "ID") and element.ID == ID:

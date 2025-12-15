@@ -37,6 +37,7 @@ def clean_expr(expr: sp.Expr) -> sp.Expr:
 
     Returns:
         The simplified expression.
+
     """
     expr = sp.simplify(expr)
     expr = sp.sqrtdenest(expr)
@@ -54,6 +55,7 @@ def spread(l1: spg.Line, l2: spg.Line) -> sp.Expr:
 
     Returns:
         The spread as a symbolic expression.
+
     """
     a1, a2, a3 = l1.coefficients
     b1, b2, b3 = l2.coefficients
@@ -73,6 +75,7 @@ def compare_points(pt1: spg.Point, pt2: spg.Point) -> int:
 
     Returns:
         An integer indicating the relative order (-1, 0, 1).
+
     """
     if pt1.x.evalf() > pt2.x.evalf():
         return 1
@@ -97,6 +100,7 @@ def point_value(pt: spg.Point) -> tuple[float, float]:
 
     Returns:
         A tuple of (x, y) floats.
+
     """
     #  return pt.x.evalf()
     return (pt.x.evalf(), pt.y.evalf())
@@ -112,12 +116,22 @@ def sort_points(pts: list[spg.Point]) -> list[spg.Point]:
 
     Returns:
         The sorted list of points.
+
     """
     #  return sorted(list(pts), key=point_value)
     return sorted(pts, key=point_value)
 
 
 def log_init(name: str) -> None:
+    """Initialize logging for a session.
+
+    Sets up a log directory in the user's home Sessions folder and configures
+    basic logging to a 'build.log' file.
+
+    Args:
+        name: The name of the session/subdirectory to create.
+
+    """
     sessions = os.path.expanduser("~") + "/Sessions"
     out = f"{sessions}/{name}/"
     os.makedirs(out, exist_ok=True)
@@ -133,10 +147,25 @@ def log_init(name: str) -> None:
 
 
 def print_log(txt: str = "") -> None:
+    """Print text to stdout and log it to the file.
+
+    Args:
+        txt: The text to print and log.
+
+    """
     print(txt)
     logging.info(txt)
 
 
 def elapsed(start_time: float) -> str:
+    """Calculate and format the elapsed time since start.
+
+    Args:
+        start_time: The starting timestamp (from timer()).
+
+    Returns:
+        A string representation of the elapsed timedelta.
+
+    """
     secs = timer() - start_time
     return str(datetime.timedelta(seconds=secs))

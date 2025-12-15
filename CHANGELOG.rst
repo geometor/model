@@ -1,6 +1,17 @@
 changelog
 =========
 
+0.5.1
+-----
+*2025-12-15*
+
+**fixed**
+
+-   **Docstrings:** Standardized docstrings to Google style across all modules.
+-   **Type Hints:** Resolved extensive type hinting issues and added missing hints.
+-   **Sphinx:** Fixed ambiguous cross-reference warnings in documentation build.
+-   **CLI:** Fixed unused variable warnings in `__main__.py`.
+
 0.5.0
 -----
 *2025-12-08*

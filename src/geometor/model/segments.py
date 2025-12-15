@@ -41,8 +41,8 @@ class SegmentsMixin:
 
         Returns:
             The constructed :class:`sympy.geometry.line.Segment`.
-        """
 
+        """
         pt_1 = self.get_element_by_ID(pt_1_ID)
         pt_2 = self.get_element_by_ID(pt_2_ID)
         return self.set_segment(pt_1, pt_2, classes, ID)
@@ -66,6 +66,7 @@ class SegmentsMixin:
 
         Returns:
             The constructed :class:`sympy.geometry.line.Segment`.
+
         """
         segment = spg.Segment(pt_1, pt_2)
         if not ID:

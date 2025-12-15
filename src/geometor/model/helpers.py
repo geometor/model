@@ -32,6 +32,7 @@ def line_get_y(l1: spg.Line, x: sp.Expr) -> sp.Expr:
 
     Returns:
         The corresponding y-value.
+
     """
     a, b, c = l1.coefficients
 
@@ -39,12 +40,14 @@ def line_get_y(l1: spg.Line, x: sp.Expr) -> sp.Expr:
 
 
 def set_given_start_points(model: Model) -> tuple[spg.Point, spg.Point]:
+    """Set the standard starting points at (-1/2, 0) and (1/2, 0)."""
     p1 = model.set_point(sp.Rational(-1, 2), 0, classes=["given"])
     p2 = model.set_point(sp.Rational(1, 2), 0, classes=["given"])
     return p1, p2
 
 
 def set_given_start_points_zero(model: Model) -> tuple[spg.Point, spg.Point]:
+    """Set the standard starting points at (0, 0) and (1, 0)."""
     p1 = model.set_point(0, 0, classes=["given"])
     p2 = model.set_point(1, 0, classes=["given"])
     return p1, p2
@@ -53,6 +56,7 @@ def set_given_start_points_zero(model: Model) -> tuple[spg.Point, spg.Point]:
 def set_equilateral_poles(
     model: Model, pt_1: spg.Point, pt_2: spg.Point, add_circles: bool = True
 ) -> list[spg.Point]:
+    """Find the two intersection points (poles) of circles entered at pt_1 and pt_2."""
     if add_circles:
         c1 = model.construct_circle(pt_1, pt_2, classes=["guide"])
         c2 = model.construct_circle(pt_2, pt_1, classes=["guide"])
@@ -94,6 +98,7 @@ def construct_perpendicular_bisector(
 
     Returns:
         The bisector line.
+
     """
     pole_1, pole_2 = set_equilateral_poles(model, pt_1, pt_2, add_circles)
     return model.construct_line(pole_1, pole_2, classes=["bisector"])
@@ -102,7 +107,7 @@ def construct_perpendicular_bisector(
 def set_midpoint(
     model: Model, pt_1: spg.Point, pt_2: spg.Point, add_circles: bool = True
 ) -> spg.Line:
-    """Finds and sets the midpoint between two points.
+    """Find and set the midpoint between two points.
     
     This function utilizes the perpendicular bisector construction to locate the geometric midpoint between the provided points.
 
@@ -114,6 +119,7 @@ def set_midpoint(
 
     Returns:
         The bisector line (note: currently returns the bisector, logic might infer midpoint from intersection).
+
     """
     pole_1, pole_2 = set_equilateral_poles(model, pt_1, pt_2, add_circles)
     return model.construct_line(pole_1, pole_2, classes=["bisector"])
@@ -122,6 +128,7 @@ def set_midpoint(
 def set_given_rect_points(
     model: Model, pt: spg.Point, x_offset: sp.Expr, y_offset: sp.Expr
 ) -> list[spg.Point]:
+    """Set points forming a rectangle starting from a given point."""
     rect_points = [pt]
     pt_x0 = model.set_point(pt.x + x_offset, pt.y, classes=["given"])
     rect_points.append(pt_x0)
@@ -136,4 +143,5 @@ def set_given_rect_points(
 def set_given_square_points(
     model: Model, pt: spg.Point, offset: sp.Expr
 ) -> list[spg.Point]:
+    """Set points forming a square starting from a given point."""
     return set_given_rect_points(model, pt, offset, offset)

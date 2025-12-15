@@ -45,6 +45,7 @@ class PolynomialsMixin:
 
         Returns:
             A new :class:`Polynomial` instance.
+
         """
         return Polynomial(coeffs, name=name, classes=classes, group=group)
 
@@ -67,6 +68,7 @@ class PolynomialsMixin:
 
         Returns:
             The added :class:`Polynomial` element.
+
         """
         if not name:
             self._poly_count += 1
@@ -90,6 +92,15 @@ class Polynomial(Element):
         classes: list[str] | None = None,
         group: str | None = None,
     ) -> None:
+        """Initialize a Polynomial instance.
+
+        Args:
+            coeffs: A list of coefficients (highest degree first).
+            name: An optional name for the polynomial.
+            classes: A list of class labels.
+            group: An optional group identifier.
+
+        """
         if classes is None:
             classes = []
         if group:
@@ -104,27 +115,35 @@ class Polynomial(Element):
         super().__init__(self.poly.as_expr(), ID=name, classes=classes)
 
     def __str__(self) -> str:
+        """Return string representation of the Polynomial."""
         return f"Polynomial({self.poly.as_expr()})"
 
     def __repr__(self) -> str:
+        """Return canonical string representation of the Polynomial."""
         return f"Polynomial({self.poly.as_expr()})"
 
     def equation(self) -> sp.Expr:
+        """Return the SymPy expression of the polynomial."""
         return self.poly.as_expr()
 
     def eval(self, val: sp.Expr) -> sp.Expr:
+        """Evaluate the polynomial at a given value."""
         return self.poly.eval(val)
 
     def degree(self) -> int:
+        """Return the degree of the polynomial."""
         return self.poly.degree()
 
     def all_coeffs(self) -> list:
+        """Return all coefficients of the polynomial."""
         return self.poly.all_coeffs()
 
     def real_roots(self) -> list:
+        """Return a list of real roots of the polynomial."""
         return self.poly.real_roots()
 
     def intersection(self, other: GeometryEntity) -> list[spg.Point]:
+        """Find intersections with other geometric entities."""
         intersections = []
         if isinstance(other, Polynomial):
             # Solve for x where self.poly.as_expr() == other.poly.as_expr()

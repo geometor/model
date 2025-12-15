@@ -74,6 +74,7 @@ class Model(
         Args:
             name: The name of the model.
             logger: An optional logger instance. If None, a default logger is created.
+
         """
         super().__init__()
         self._name = name
@@ -92,6 +93,7 @@ class Model(
         self._poly_count = 0
 
     def log(self, message: object) -> None:
+        """Log a message to the model's logger or print if it's a rich object."""
         if self._logger:
             if hasattr(message, "__rich_console__"):
                 rich.print(message)
@@ -99,6 +101,7 @@ class Model(
                 self._logger.info(message)
 
     def set_analysis_hook(self, hook_function: Callable) -> None:
+        """Set a hook function to be called during analysis/point addition."""
         self._analysis_hook = hook_function
 
     @property
@@ -107,6 +110,7 @@ class Model(
         return self._new_points
 
     def clear_new_points(self) -> None:
+        """Clear the list of newly added points."""
         self._new_points = []
 
     @property
@@ -129,6 +133,7 @@ class Model(
 
         Raises:
             TypeError: If key or value are not of the expected types.
+
         """
         if not isinstance(key, GeometryObject):
             raise TypeError(f"{key=} must be an instance of GeometryObject")
@@ -137,6 +142,7 @@ class Model(
         super().__setitem__(key, value)
 
     def remove_by_ID(self, ID: str) -> None:
+        """Remove a geometric element from the model by its ID."""
         el = self.get_element_by_ID(ID)
         del self[el]
 
@@ -177,6 +183,7 @@ class Model(
 
         Raises:
             ValueError: If the model contains no geometric elements.
+
         """
         x_vals = []
         y_vals = []

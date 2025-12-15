@@ -16,7 +16,7 @@ class AncestorsMixin:
     """
 
     def get_ancestors_IDs(self, element: GeometryEntity) -> dict[str, dict]:
-        """Retrieves the IDs of the ancestors for the given element.
+        """Retrieve the IDs of the ancestors for the given element.
 
         The method recursively traverses the parent elements of the given element
         and constructs a nested dictionary with IDs representing the ancestor tree.
@@ -75,7 +75,7 @@ class AncestorsMixin:
         return _recursive_get(element)
 
     def get_ancestors(self, element: GeometryEntity) -> dict[GeometryEntity, dict]:
-        """Retrieves the ancestors for the given element.
+        """Retrieve the ancestors for the given element.
 
         The method recursively traverses the parent elements of the given element
         and constructs a nested dictionary representing the ancestor tree.

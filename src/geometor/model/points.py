@@ -29,6 +29,7 @@ class PointsMixin:
     """
 
     def point_ID_generator(self) -> Iterator[str]:
+        """Generate a sequence of point IDs (A, B, C, ... AA, AB, ...)."""
         letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         repeat = 1
 
@@ -46,7 +47,7 @@ class PointsMixin:
         ID: str = "",
         guide: bool = False,
     ) -> spg.Point:
-        """Adds a point to the model, finds duplicates, cleans values, and sets parents and classes.
+        """Add a point to the model, find duplicates, clean values, and set parents and classes.
         
         This method is the core mechanism for introducing points into the model. It simplifies the coordinates, checks for existing points to avoid duplicates, attempts to merge attributes if a duplicate is found, and triggers analysis hooks for the new point.
 
@@ -71,7 +72,6 @@ class PointsMixin:
             # <spg.Point object ...>
 
         """
-
         if classes is None:
             classes = []
         if parents is None:

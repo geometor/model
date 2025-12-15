@@ -49,6 +49,7 @@ class WedgesMixin:
 
         Returns:
             The constructed :class:`Wedge`.
+
         """
         pt_center = self.get_element_by_ID(pt_center_ID)
         pt_radius = self.get_element_by_ID(pt_radius_ID)
@@ -75,7 +76,7 @@ class WedgesMixin:
         classes: list[str] | None = None,
         ID: str = "",
     ) -> Wedge:
-        """Sets a Wedge from 3 points and adds it to the model.
+        """Set a Wedge from 3 points and add it to the model.
         
         This method constructs a `Wedge` defined by a center, a radius point, and sweep points. It handles the low-level details of creating the `Wedge` object, wrapping it in an `Element`, calculating intersections, and adding it to the model structure.
 
@@ -105,7 +106,6 @@ class WedgesMixin:
             # <Wedge object ...>
 
         """
-
         if classes is None:
             classes = {}
         # find radius length for sympy.Circle
@@ -150,7 +150,20 @@ class WedgesMixin:
 
 
 class Wedge:
+    """Represents a wedge (sector) of a circle.
+
+    A Wedge is defined by a center point, a radius point (defining the circle),
+    and two sweep points determining the angle.
+    """
+
     def __init__(self, points: list[spg.Point], direction: str = "clockwise") -> None:
+        """Initialize a Wedge instance.
+
+        Args:
+            points: A list of 4 sympy Points: [center, radius_pt, sweep_start, sweep_end].
+            direction: Direction of rotation, 'clockwise' or 'counter-clockwise'.
+
+        """
         assert len(points) == 4, "A wedge must be defined by four points."
         self.points = points
         self.pt_center = points[0]
@@ -168,6 +181,7 @@ class Wedge:
         self.direction = direction
 
     def __repr__(self) -> str:
+        """Return string representation of the Wedge."""
         points_repr = [sp.srepr(p) for p in self.points]
         return f"Wedge([{', '.join(points_repr)}])"
 
@@ -187,32 +201,39 @@ class Wedge:
 
     @property
     def circle(self) -> spg.Circle:
+        """The SymPy Circle geometric entity associated with this wedge."""
         return self._circle
 
     @property
     def radians(self) -> sp.Expr:
+        """The angle of the wedge in radians."""
         angle = self.start_ray.angle_between(self.sweep_ray)
         return angle if self.direction == "clockwise" else 2 * sp.pi - angle
 
     @property
     def degrees(self) -> sp.Expr:
+        """The angle of the wedge in degrees."""
         return sp.deg(self.radians)
 
     @property
     def ratio(self) -> sp.Expr:
+        """The ratio of the wedge angle to a full circle (2*pi)."""
         return self.radians / (2 * sp.pi)
 
     @property
     def area(self) -> sp.Expr:
+        """The area of the wedge sector."""
         # Using the ratio of the angle to the full circle to find the area
         return self.circle.area * self.ratio
 
     @property
     def arc_length(self) -> sp.Expr:
+        """The length of the arc defined by the wedge."""
         # Using the ratio of the angle to the full circle to find the arc length
         return self.circle.circumference * self.ratio
 
     @property
     def perimeter(self) -> sp.Expr:
+        """The total perimeter of the wedge (arc length + 2 * radius)."""
         # Including the two radii to form the full boundary of the wedge
         return self.arc_length + 2 * self.circle.radius

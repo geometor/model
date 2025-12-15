@@ -41,6 +41,7 @@ class PolygonsMixin:
 
         Returns:
             The constructed :class:`sympy.geometry.polygon.Polygon`.
+
         """
         poly_pts = []
 
@@ -63,8 +64,8 @@ class PolygonsMixin:
 
         Returns:
             The constructed :class:`sympy.geometry.polygon.Polygon`.
-        """
 
+        """
         # TODO: check points and minimum count of 3
         poly = spg.Polygon(*poly_pts)
 

@@ -1,6 +1,4 @@
-"""
-The :mod:`geometor.model.colors` module defines the default colors for geometric elements.
-"""
+"""The :mod:`geometor.model.colors` module defines the default colors for geometric elements."""
 
 import sympy.geometry as spg
 from sympy.geometry.entity import GeometryEntity
@@ -22,9 +20,7 @@ COLORS = {
 def get_color(
     element: GeometryEntity, classes: list[str] | None = None
 ) -> str:
-    """
-    Get the color for a geometric element based on its type and classes.
-    """
+    """Get the color for a geometric element based on its type and classes."""
     if classes is None:
         classes = []
 

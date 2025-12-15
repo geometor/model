@@ -41,8 +41,8 @@ class LinesMixin:
 
         Returns:
             The constructed :class:`sympy.geometry.line.Line`.
-        """
 
+        """
         pt_1 = self.get_element_by_ID(pt_1_ID)
         pt_2 = self.get_element_by_ID(pt_2_ID)
         return self.construct_line(pt_1, pt_2, classes, ID)
@@ -55,7 +55,7 @@ class LinesMixin:
         ID: str = "",
         guide: bool = False,
     ) -> spg.Line:
-        """Constructs a :class:`Line <sympy.geometry.line.Line>` from two points and adds it to the :class:`Model <geometor.model.model.Model>`.
+        """Construct a :class:`Line <sympy.geometry.line.Line>` from two points and add it to the :class:`Model <geometor.model.model.Model>`.
         
         This method creates a line connecting two given points. It checks if an equivalent line already exists in the model to prevent duplicates, merging attributes if necessary. If it's a new line, it calculates intersections with existing structures.
 
@@ -71,6 +71,7 @@ class LinesMixin:
 
         Raises:
             TypeError: If ``pt_1`` or ``pt_2`` are not instances of ``sympy.geometry.point.Point``.
+
         """
         self.clear_new_points()
 

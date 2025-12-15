@@ -33,6 +33,7 @@ class DeleteMixin:
         Args:
             parent_element: The element whose dependents are to be found.
             dependents_set: A set to store the found dependent elements.
+
         """
         for element, details in self.items():
             if parent_element in details.parents:
@@ -42,7 +43,7 @@ class DeleteMixin:
                     self._get_dependents_recursive(element, dependents_set)
 
     def get_dependents(self, element_or_ID: GeometryEntity | str) -> set[GeometryEntity]:
-        """Finds and returns a set of all elements that depend on the given element.
+        """Find and return a set of all elements that depend on the given element.
         
         This method serves as a query tool to inspect the impact of potentially deleting an element. It resolves the input to a model element and uses recursive search to gather all downstream dependencies.
 
@@ -51,6 +52,7 @@ class DeleteMixin:
 
         Returns:
             A set of dependent elements. Returns an empty set if the element is not found or has no dependents.
+
         """
         if isinstance(element_or_ID, str):
             element_to_check = self.get_element_by_ID(element_or_ID)
@@ -73,12 +75,13 @@ class DeleteMixin:
         return dependents
 
     def delete_element(self, element_or_ID: GeometryEntity | str) -> None:
-        """Deletes an element and performs a cascading delete of all its dependents.
+        """Delete an element and perform a cascading delete of all its dependents.
         
         This is the primary method for removing content from the model. It verifies the existence of the target element, identifies the entire tree of dependent structures, and removes them all to prevent orphaned references in the model.
 
         Args:
             element_or_ID: The element object or its ID to be deleted.
+
         """
         if isinstance(element_or_ID, str):
             element_to_delete = self.get_element_by_ID(element_or_ID)

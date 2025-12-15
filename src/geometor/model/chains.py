@@ -1,6 +1,5 @@
 """Provides the Chain class for analyzing connected golden sections.
 
-
 This module defines the `Chain` class, which facilitates the study of sequences of connected geometric sections. It offers tools for extracting segments and points, analyzing the flow of segment lengths, and exploring symmetries within the structure.
 """
 
@@ -20,24 +19,26 @@ class Chain:
     """
 
     def __init__(self, sections: list[Section]) -> None:
-        """Initializes a Chain object with a list of connected sections.
+        """Initialize a Chain object with a list of connected sections.
         
         This constructor accepts a list of Section objects that form the chain. It automatically triggers the extraction of unique segments and points from these sections to populate the chain's internal state.
 
         Args:
             sections: A list of Section objects representing a chain of connected golden sections.
+
         """
         self.sections = sections
         self.segments = self.extract_segments()
         self.points = self.extract_points()
 
     def extract_segments(self) -> list[spg.Segment]:
-        """Extracts unique segments from the chain.
+        """Extract unique segments from the chain.
         
         This method iterates through all sections in the chain and collects every unique segment involved. It ensures that no duplicate segments are stored in the chain's segment list.
 
         Returns:
             A list containing the unique segments in the chain.
+
         """
         segments = []
         for section in self.sections:
@@ -47,12 +48,13 @@ class Chain:
         return segments
 
     def extract_points(self) -> list[spg.Point]:
-        """Extracts unique points from the chain while maintaining order.
+        """Extract unique points from the chain while maintaining order.
         
         This method compiles a list of all unique points used to define the sections in the chain. The order of appearance is preserved to maintain the geometric flow of the chain.
 
         Returns:
              A list containing the ordered unique points from the chain.
+
         """
         points = {}
         for section in self.sections:
@@ -68,6 +70,7 @@ class Chain:
 
         Returns:
             A list containing the symbolic lengths of each segment in the chain.
+
         """
         return [clean_expr(segment.length) for segment in self.segments]
 
@@ -79,6 +82,7 @@ class Chain:
 
         Returns:
             A list containing the evaluated numerical lengths of each segment in the chain.
+
         """
         return [float(segment.length.evalf()) for segment in self.segments]
 
@@ -90,6 +94,7 @@ class Chain:
 
         Returns:
              A list of symbols representing the flow of segment lengths. '>' indicates that the previous segment is longer, '<' indicates that the next segment is longer.
+
         """
         flow_symbols = []
         lengths = self.numerical_lengths  # Using numerical lengths for comparison
@@ -105,6 +110,7 @@ class Chain:
         return "".join(flow_symbols)
 
     def count_symmetry_lines(self) -> int:
+        """Count the number of symmetry lines in the chain's flow."""
         symmetry_count = 0
         flow = self.flow
         flow_length = len(flow)
@@ -124,8 +130,8 @@ class Chain:
 
         Returns:
              A list of strings where each string is a Fibonacci-style ID corresponding to a segment.
-        """
 
+        """
         # Step 1: Define Symbols
         a, b = sp.symbols("a b")
 

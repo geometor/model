@@ -41,8 +41,8 @@ class CirclesMixin:
 
         Returns:
             The constructed :class:`sympy.geometry.ellipse.Circle`.
-        """
 
+        """
         pt_1 = self.get_element_by_ID(pt_1_ID)
         pt_2 = self.get_element_by_ID(pt_2_ID)
         return self.construct_circle(pt_1, pt_2, classes, ID)
@@ -55,7 +55,7 @@ class CirclesMixin:
         ID: str = "",
         guide: bool = False,
     ) -> spg.Circle:
-        """Constructs a Circle from two points and adds it to the model.
+        """Construct a Circle from two points and add it to the model.
         
         This method creates a circle defined by a center point and a point on the circumference (establishing the radius). It checks for duplicates within the model, merging attributes if an equivalent circle exists, or computing intersections if it is new.
 
@@ -71,6 +71,7 @@ class CirclesMixin:
 
         Raises:
             TypeError: If ``pt_center`` or ``pt_radius`` are not instances of ``sympy.geometry.point.Point``.
+
         """
         self.clear_new_points()
 

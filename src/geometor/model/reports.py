@@ -22,7 +22,7 @@ def generate_dot(
     dot_string: str = "",
     defined_nodes: set | None = None,
 ) -> str:
-    """Generates a DOT string representing the graph structure of the model.
+    """Generate a DOT string representing the graph structure of the model.
     
     This function traverses a nested dictionary representing the model's ancestor graph and produces a Graphviz DOT format string. It handles node definition with appropriate shapes (rectangles for lines, ellipses for circles, points for points) and edge creation to visualize dependencies.
 
@@ -34,6 +34,7 @@ def generate_dot(
 
     Returns:
         A string containing the complete DOT graph definition.
+
     """
     if parent is None:
         dot_string += "digraph {\n"
@@ -75,7 +76,7 @@ class ReportMixin:
     """
 
     def report_summary(self) -> None:
-        """Prints a summary of the model's contents to the console.
+        """Print a summary of the model's contents to the console.
         
         This method compiles a high-level overview of the total number of elements in the model, broken down by category (points, lines, circles). It uses a formatted table for clear presentation of these statistics.
         """
@@ -95,7 +96,7 @@ class ReportMixin:
         console.print(table)
 
     def report_group_by_type(self) -> None:
-        """Prints a detailed report of all elements grouped by type.
+        """Print a detailed report of all elements grouped by type.
         
         This method iterates through the model's collections of points, lines, and circles, generating separate tables for each type. Each table includes detailed information such as IDs, coordinates/equations, parent dependencies, and associated classes.
         """
@@ -287,6 +288,7 @@ def get_colored_ID(
 
     Returns:
         A :class:`rich.text.Text` object containing the styled ID.
+
     """
     ID_color = get_color(el, classes)
     return Text(ID, style=ID_color)
