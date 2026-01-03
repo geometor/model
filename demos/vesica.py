@@ -29,6 +29,9 @@ def run():
 
     model.save("vesica.json")
 
+    for pt in model.points:
+        print(model[pt].ID)
+
 
 if __name__ == "__main__":
     run()

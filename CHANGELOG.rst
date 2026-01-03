@@ -1,6 +1,15 @@
 changelog
 =========
 
+0.5.3
+-----
+*2026-01-03*
+
+**added**
+
+-   **Demos:** Added `demos/level-1.py`, `demos/level-2.py`, and `demos/level-3.py` scripts for verifying model performance and complexity.
+
+
 0.5.2
 -----
 *2026-01-03*
