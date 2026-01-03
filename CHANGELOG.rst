@@ -1,6 +1,16 @@
 changelog
 =========
 
+0.5.2
+-----
+*2026-01-03*
+
+**changed**
+
+-   **CLI:** Refactored CLI implementation into `src/geometor/model/cli.py`.
+-   **Model:** Added `parse_command` method to `Model` class for programmatic command execution.
+-   **Documentation:** Restructured mission and todo documentation.
+
 0.5.1
 -----
 *2025-12-15*

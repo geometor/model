@@ -5,7 +5,7 @@ everything centers around :class:`Model`
 
 from __future__ import annotations
 
-__version__ = "0.5.1"
+__version__ = "0.5.2"
 
 from geometor.model.serialize import load_model
 from geometor.model.model import GeometryObject, Model
