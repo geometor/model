@@ -23,32 +23,6 @@ To create a digital equivalent of the compass and straightedge that operates wit
 -   `intercepts.py`: Logic for calculating intersections between elements.
 -   `serialize.py`: Handles import/export to JSON, essential for communication with the Explorer.
 
-## Getting Started
 
-### Installation
 
-```bash
-git clone https://github.com/geometor/model
-cd model
-pip install -e .
-```
 
-### Running Tests
-
-```bash
-pytest
-```
-
-### Building Documentation
-
-```bash
-cd docsrc
-make html
-```
-
-## Development Workflow
-
-1.  **Define**: Create a new construction script in `demos/` or interactively in the CLI.
-2.  **Run**: Execute the script to generate the model.
-3.  **Verify**: Check the algebraic properties of the resulting elements.
-4.  **Export**: Save to JSON for visualization.
