@@ -1,0 +1,32 @@
+geometor.model.cli
+==================
+
+.. py:module:: geometor.model.cli
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   geometor.model.cli.console
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   geometor.model.cli.run
+
+
+Module Contents
+---------------
+
+.. py:data:: console
+
+.. py:function:: run() -> None
+
+   Run the CLI REPL.
+
+

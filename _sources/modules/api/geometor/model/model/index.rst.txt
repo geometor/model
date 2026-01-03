@@ -145,3 +145,9 @@ Module Contents
    .. py:attribute:: get_element_by_ID
 
 
+   .. py:method:: parse_command(command: str) -> None
+
+      Parse and execute a single command string.
+
+
+
