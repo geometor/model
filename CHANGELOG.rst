@@ -5,6 +5,15 @@ changelog
 -----
 *2026-01-04*
 
+0.5.5
+-----
+*2026-01-04*
+
+**changed**
+
+-   **Serialization:** Refactored ``save`` and ``load_model`` to use a dictionary structure for elements (keyed by ID) in the JSON output, improving readability and inspection.
+
+
 **added**
 
 -   **Model:** Added ``use_point_subscript`` parameter to ``Model`` initialization to support subscript point labeling (e.g., ``A2`` instead of ``AA``).

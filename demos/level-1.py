@@ -17,14 +17,13 @@ def run():
 
     fundamental("A", "B")
 
+    model.save("level-1a.json")
+
+    model = load_model("level-1a.json")
+
     model.report_summary()
     model.report_group_by_type()
     model.report_sequence()
-
-    model.save("level-1.json")
-
-    for pt in model.points:
-        print(model[pt].ID)
 
 
 if __name__ == "__main__":

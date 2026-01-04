@@ -38,7 +38,7 @@ class SerializeMixin:
             file_path: The path where the JSON file will be saved.
 
         """
-        serializable_elements = []
+        serializable_elements = {}
         for element in self.values():
             if isinstance(element.object, Section):
                 points_repr = [sp.srepr(p) for p in element.object.points]
@@ -61,7 +61,7 @@ class SerializeMixin:
             elif isinstance(element, Polynomial):
                 element_data["type"] = "Polynomial"
                 element_data["coeffs"] = [sp.srepr(c) for c in element.coeffs]
-            serializable_elements.append(element_data)
+            serializable_elements[element.ID] = element_data
 
         serializable_model = {
             "name": self.name,
@@ -113,7 +113,7 @@ def load_model(file_path: str, logger: logging.Logger | None = None) -> Model:
     local_dict = {"Section": Section, "Wedge": Wedge, "Polynomial": Polynomial}
 
     # First pass: create all sympy objects and map them by ID
-    for element_data in serializable_model["elements"]:
+    for element_id, element_data in serializable_model["elements"].items():
         sympy_obj = parse_expr(element_data["sympy_obj"], local_dict=local_dict)
         id_to_sympy[element_data["ID"]] = sympy_obj
         id_to_element_data[element_data["ID"]] = element_data
