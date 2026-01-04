@@ -32,7 +32,7 @@ Module Contents
 
 .. py:data:: GeometryObject
 
-.. py:class:: Model(name: str = '', logger: logging.Logger | None = None)
+.. py:class:: Model(name: str = '', logger: logging.Logger | None = None, use_point_subscript: bool = False)
 
    Bases: :py:obj:`dict`, :py:obj:`geometor.model.points.PointsMixin`, :py:obj:`geometor.model.lines.LinesMixin`, :py:obj:`geometor.model.circles.CirclesMixin`, :py:obj:`geometor.model.polygons.PolygonsMixin`, :py:obj:`geometor.model.segments.SegmentsMixin`, :py:obj:`geometor.model.polynomials.PolynomialsMixin`, :py:obj:`geometor.model.serialize.SerializeMixin`, :py:obj:`geometor.model.reports.ReportMixin`, :py:obj:`geometor.model.delete.DeleteMixin`, :py:obj:`geometor.model.sections.SectionsMixin`, :py:obj:`geometor.model.wedges.WedgesMixin`, :py:obj:`geometor.model.ancestors.AncestorsMixin`
 
@@ -40,6 +40,11 @@ Module Contents
    The central class representing a collection of geometric elements.
 
    The Model class is a comprehensive container that inherits from `dict` to store geometric elements mapped to their symbolic representations. It composes multiple mixins to provide a rich feature set, including point plotting, circle/line construction, serialization, reporting, and more.
+
+
+   .. py:attribute:: use_point_subscript
+      :value: False
+
 
 
    .. py:attribute:: ID_gen
