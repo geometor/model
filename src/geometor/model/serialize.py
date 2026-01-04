@@ -65,6 +65,7 @@ class SerializeMixin:
 
         serializable_model = {
             "name": self.name,
+            "use_point_subscript": self.use_point_subscript,
             "last_point_id": self.last_point_id,
             "elements": serializable_elements,
         }
@@ -92,7 +93,11 @@ def load_model(file_path: str, logger: logging.Logger | None = None) -> Model:
     with open(file_path, "r") as file:
         serializable_model = json.load(file)
 
-    model = Model(serializable_model.get("name", ""), logger=logger)
+    model = Model(
+        serializable_model.get("name", ""),
+        logger=logger,
+        use_point_subscript=serializable_model.get("use_point_subscript", False),
+    )
 
     # Restore the ID generator state
     last_point_id = serializable_model.get("last_point_id")

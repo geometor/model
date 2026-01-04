@@ -67,7 +67,12 @@ class Model(
     The Model class is a comprehensive container that inherits from `dict` to store geometric elements mapped to their symbolic representations. It composes multiple mixins to provide a rich feature set, including point plotting, circle/line construction, serialization, reporting, and more.
     """
 
-    def __init__(self, name: str = "", logger: logging.Logger | None = None) -> None:
+    def __init__(
+        self,
+        name: str = "",
+        logger: logging.Logger | None = None,
+        use_point_subscript: bool = False,
+    ) -> None:
         """Initialize the Model.
         
         The constructor sets up the model's environment, initializing identifiers, logging, and state containers for points and analysis hooks.
@@ -75,6 +80,8 @@ class Model(
         Args:
             name: The name of the model.
             logger: An optional logger instance. If None, a default logger is created.
+            use_point_subscript: If True, generate point labels with subscripts (e.g. A2) instead of repeating letters (e.g. AA).
+
 
         """
         super().__init__()
@@ -87,6 +94,7 @@ class Model(
             if not self._logger.handlers:
                 self._logger.addHandler(RichHandler(markup=True))
 
+        self.use_point_subscript = use_point_subscript
         self.ID_gen = self.point_ID_generator()
         self.last_point_id = ""
         self._analysis_hook = None

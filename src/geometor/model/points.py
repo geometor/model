@@ -101,8 +101,16 @@ class PointsMixin:
                     return prev_pt
 
         if not ID:
-            ID = next(self.ID_gen)
-            self.last_point_id = ID
+            raw_ID = next(self.ID_gen)
+            self.last_point_id = raw_ID
+
+            if self.use_point_subscript and len(raw_ID) > 1:
+                # convert AA -> A2
+                char = raw_ID[0]
+                count = len(raw_ID)
+                ID = f"{char}{count}"
+            else:
+                ID = raw_ID
 
         details = Element(pt, parents, classes, ID, guide)
         self[pt] = details

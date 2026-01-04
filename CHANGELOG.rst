@@ -1,6 +1,17 @@
 changelog
 =========
 
+0.5.4
+-----
+*2026-01-04*
+
+**added**
+
+-   **Model:** Added ``use_point_subscript`` parameter to ``Model`` initialization to support subscript point labeling (e.g., ``A2`` instead of ``AA``).
+-   **Points:** Implemented logic for generating subscript labels when ``use_point_subscript`` is True.
+-   **Serialization:** Added persistence for ``use_point_subscript`` flag in model JSON.
+
+
 0.5.3
 -----
 *2026-01-03*
