@@ -91,3 +91,4 @@ Related Projects
 
 - `GEOMETOR Explorer <https://github.com/geometor/explorer>`_: Interactive visualization environment.
 - `GEOMETOR Divine <https://github.com/geometor/divine>`_: Golden ratio analysis engine.
+
