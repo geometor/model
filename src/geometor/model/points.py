@@ -46,6 +46,7 @@ class PointsMixin:
         classes: list[str] | None = None,
         ID: str = "",
         guide: bool = False,
+        label: str = "",
     ) -> spg.Point:
         """Add a point to the model, find duplicates, clean values, and set parents and classes.
         
@@ -58,6 +59,7 @@ class PointsMixin:
             classes: A list of string names for classes defining a set of styles.
             ID: A text ID for use in plotting and reporting.
             guide: If True, the point is a guide.
+            label: Optional alias for ID.
 
         Returns:
             The set point.
@@ -72,6 +74,8 @@ class PointsMixin:
             # <spg.Point object ...>
 
         """
+        if label and not ID:
+            ID = label
         if classes is None:
             classes = []
         if parents is None:
@@ -85,11 +89,35 @@ class PointsMixin:
 
         details = Element(pt, parents, classes, ID, guide)
 
+        def _next_available_id(exclude: set[str] | None = None) -> str:
+            used_ids = {self[p].ID for p in self.points if self[p].ID}
+            if exclude:
+                used_ids.update(exclude)
+            while True:
+                raw_ID = next(self.ID_gen)
+                self.last_point_id = raw_ID
+                if self.use_point_subscript and len(raw_ID) > 1:
+                    char = raw_ID[0]
+                    count = len(raw_ID)
+                    cand_ID = f"{char}{count}"
+                else:
+                    cand_ID = raw_ID
+                if cand_ID not in used_ids:
+                    return cand_ID
+
+        def _claim_explicit_id(target_pt: spg.Point, new_id: str) -> None:
+            for other_pt in self.points:
+                if other_pt != target_pt and self[other_pt].ID == new_id:
+                    self[other_pt].ID = _next_available_id({new_id})
+            self[target_pt].ID = new_id
+
         if pt in self.points:
             # add attributes
             for parent in details.parents:
                 self[pt].parents[parent] = ""
             self[pt].classes.update(details.classes)
+            if ID:
+                _claim_explicit_id(pt, ID)
             return pt
 
         else:
@@ -98,19 +126,16 @@ class PointsMixin:
                     for parent in details.parents:
                         self[prev_pt].parents[parent] = ""
                     self[prev_pt].classes.update(details.classes)
+                    if ID:
+                        _claim_explicit_id(prev_pt, ID)
                     return prev_pt
 
         if not ID:
-            raw_ID = next(self.ID_gen)
-            self.last_point_id = raw_ID
-
-            if self.use_point_subscript and len(raw_ID) > 1:
-                # convert AA -> A2
-                char = raw_ID[0]
-                count = len(raw_ID)
-                ID = f"{char}{count}"
-            else:
-                ID = raw_ID
+            ID = _next_available_id()
+        else:
+            for other_pt in self.points:
+                if self[other_pt].ID == ID:
+                    self[other_pt].ID = _next_available_id({ID})
 
         details = Element(pt, parents, classes, ID, guide)
         self[pt] = details
