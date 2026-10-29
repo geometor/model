@@ -37,3 +37,33 @@ dl {
 hr {
   border-top: 1px solid var(--link-color);
 }
+
+.line-block {
+  margin-bottom: var(--fitz-half, 0.75rem);
+}
+
+.note-item {
+  margin-bottom: 1.15rem;
+  padding: 0.15rem 0 0.15rem 0.85rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.15);
+
+  > p {
+    margin-top: 0;
+    margin-bottom: 0.45rem;
+  }
+
+  > p:last-child {
+    margin-bottom: 0;
+  }
+
+  > ul,
+  > ol,
+  > blockquote {
+    margin-top: 0.35rem;
+    margin-bottom: 0.45rem;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}

@@ -1,15 +1,21 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-content_root="./">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>changelog &mdash; Project name not set  documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=ea5fcf70" />
-  <link rel="stylesheet" type="text/css" href="_static/css/styles.css?v=38c7a96b" />
+  <link rel="stylesheet" type="text/css" href="_static/css/styles.css?v=156d9f89" />
   <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
   <link rel="stylesheet" href="_static/css/print.css" type="text/css" media="print" />
   <link rel="icon" href="_static/favicon.ico" />
 </head>
@@ -67,14 +73,14 @@
           </div>
         </nav>
       </header>
-      <div class="content">
-        <section id="changelog">
+      <div class="content body" role="main">
+        <section class="level-1" id="changelog">
           <h1>changelog<a class="headerlink" href="#changelog" title="Link to this heading">¶</a></h1>
-          <section id="id1">
+          <section class="level-2" id="id1">
           <h2>0.5.4<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
           <p><em>2026-01-04</em></p>
           </section>
-          <section id="id2">
+          <section class="level-2" id="id2">
           <h2>0.5.5<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
           <p><em>2026-01-04</em></p>
           <p><strong>changed</strong></p>
@@ -88,7 +94,7 @@
           <li><p><strong>Serialization:</strong> Added persistence for <code class="docutils literal notranslate"><span class="pre">use_point_subscript</span></code> flag in model JSON.</p></li>
           </ul>
           </section>
-          <section id="id3">
+          <section class="level-2" id="id3">
           <h2>0.5.3<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
           <p><em>2026-01-03</em></p>
           <p><strong>added</strong></p>
@@ -96,7 +102,7 @@
           <li><p><strong>Demos:</strong> Added <cite>demos/level-1.py</cite>, <cite>demos/level-2.py</cite>, and <cite>demos/level-3.py</cite> scripts for verifying model performance and complexity.</p></li>
           </ul>
           </section>
-          <section id="id4">
+          <section class="level-2" id="id4">
           <h2>0.5.2<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
           <p><em>2026-01-03</em></p>
           <p><strong>changed</strong></p>
@@ -106,7 +112,7 @@
           <li><p><strong>Documentation:</strong> Restructured mission and todo documentation.</p></li>
           </ul>
           </section>
-          <section id="id5">
+          <section class="level-2" id="id5">
           <h2>0.5.1<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
           <p><em>2025-12-15</em></p>
           <p><strong>fixed</strong></p>
@@ -117,7 +123,7 @@
           <li><p><strong>CLI:</strong> Fixed unused variable warnings in <cite>__main__.py</cite>.</p></li>
           </ul>
           </section>
-          <section id="id6">
+          <section class="level-2" id="id6">
           <h2>0.5.0<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
           <p><em>2025-12-08</em></p>
           <p><strong>added</strong></p>
@@ -127,7 +133,7 @@
           <li><p><strong>Docs:</strong> Added CLI usage documentation.</p></li>
           </ul>
           </section>
-          <section id="id7">
+          <section class="level-2" id="id7">
           <h2>0.4.6<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
           <p><em>2025-12-08</em></p>
           <p><strong>changed</strong></p>
@@ -137,7 +143,7 @@
           <li><p>Updated .gitignore to exclude generated docs.</p></li>
           </ul>
           </section>
-          <section id="id8">
+          <section class="level-2" id="id8">
           <h2>0.4.5<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
           <p><em>2025-12-06</em></p>
           <p><strong>changed</strong></p>
@@ -146,7 +152,7 @@
           <li><p>Updated documentation.</p></li>
           </ul>
           </section>
-          <section id="id9">
+          <section class="level-2" id="id9">
           <h2>0.4.4<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
           <p><em>2025-12-04</em></p>
           <p><strong>changed</strong></p>
@@ -158,14 +164,14 @@
           <li><p>Fixed imports in demo scripts.</p></li>
           </ul>
           </section>
-          <section id="id10">
+          <section class="level-2" id="id10">
           <h2>0.4.3<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
           <ul class="simple">
           <li><p>Refined docstrings and type hinting.</p></li>
           <li><p>Fixed <cite>from __future__ import annotations</cite> placement.</p></li>
           </ul>
           </section>
-          <section id="id11">
+          <section class="level-2" id="id11">
           <h2>0.4.2<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
           <p><em>2025-11-28</em></p>
           <p><strong>fixed</strong></p>
@@ -174,7 +180,7 @@
           <li><p>Removed outdated and redundant API documentation files.</p></li>
           </ul>
           </section>
-          <section id="id12">
+          <section class="level-2" id="id12">
           <h2>0.4.1<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
           <p><em>2025-11-28</em></p>
           <p><strong>changed</strong></p>
@@ -185,7 +191,7 @@
           <li><p>Organized <cite>Sections</cite> and <cite>Wedges</cite> functionality into Mixins.</p></li>
           </ul>
           </section>
-          <section id="id13">
+          <section class="level-2" id="id13">
           <h2>0.4.0<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
           <p><em>2025-10-31</em></p>
           <p><strong>added</strong></p>
@@ -195,7 +201,7 @@
           <li><p>Added <cite>pytest</cite> for testing.</p></li>
           </ul>
           </section>
-          <section id="id14">
+          <section class="level-2" id="id14">
           <h2>0.3.1<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
           <p><em>2025-10-30</em></p>
           <p><strong>fixed</strong></p>
@@ -203,7 +209,7 @@
           <li><p>Fixed a recursion error in <cite>_get_ancestors_IDs</cite> by adding cycle detection.</p></li>
           </ul>
           </section>
-          <section id="id15">
+          <section class="level-2" id="id15">
           <h2>0.3.0<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
           <p><em>2025-10-27</em></p>
           <p><strong>added</strong></p>
@@ -211,7 +217,7 @@
           <li><p>Improved logging and output for better debugging and user feedback.</p></li>
           </ul>
           </section>
-          <section id="id16">
+          <section class="level-2" id="id16">
           <h2>0.2.6<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
           <p><em>2025-10-25</em></p>
           <p><strong>added</strong></p>
@@ -224,7 +230,7 @@
           <li><p>Added a missing return statement to ensure correct functionality.</p></li>
           </ul>
           </section>
-          <section id="id17">
+          <section class="level-2" id="id17">
           <h2>0.2.5<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h2>
           <p><em>2025-10-23</em></p>
           <p><strong>fixed</strong></p>
@@ -233,7 +239,7 @@
           <li><p>Correctly serialized element classes to handle sets, improving data integrity.</p></li>
           </ul>
           </section>
-          <section id="id18">
+          <section class="level-2" id="id18">
           <h2>0.2.4<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
           <p><em>2025-10-23</em></p>
           <p><strong>fixed</strong></p>
@@ -241,7 +247,7 @@
           <li><p>Fixed serialization of <cite>Section</cite> objects, ensuring models can be saved and loaded correctly.</p></li>
           </ul>
           </section>
-          <section id="id19">
+          <section class="level-2" id="id19">
           <h2>0.2.3<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h2>
           <p><em>2025-10-22</em></p>
           <p><strong>added</strong></p>
@@ -255,7 +261,7 @@
           <li><p>Improved model loading speed and serialization stability for a more reliable user experience.</p></li>
           </ul>
           </section>
-          <section id="id20">
+          <section class="level-2" id="id20">
           <h2>0.2.2<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h2>
           <p><em>2025-10-22</em></p>
           <p><strong>changed</strong></p>
@@ -263,7 +269,7 @@
           <li><p>Refactored logging for better performance and readability.</p></li>
           </ul>
           </section>
-          <section id="id21">
+          <section class="level-2" id="id21">
           <h2>0.2.1<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h2>
           <p><em>2025-10-20</em></p>
           <p><strong>changed</strong></p>
@@ -272,7 +278,7 @@
           <li><p>Decoupled all logging from the model library; logging is now handled by the calling application.</p></li>
           </ul>
           </section>
-          <section id="id22">
+          <section class="level-2" id="id22">
           <h2>0.2.0<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h2>
           <p><em>2025-10-20</em></p>
           <p><strong>changed</strong></p>
@@ -284,7 +290,7 @@
           <li><p>Added an event system and refactored the <cite>Section</cite> representation.</p></li>
           </ul>
           </section>
-          <section id="id23">
+          <section class="level-2" id="id23">
           <h2>0.1.0<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h2>
           <p><em>2023-11-15</em></p>
           <ul class="simple">
@@ -310,11 +316,19 @@
     </article>
   </main>
   <div class="asides">
-    <aside>
+    <aside class="aside-search">
       <h3>Search</h3>
-      <div role="search">
-        <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+      <div id="searchbox" role="search">
+        <form id="rtd-search-form" class="wy-form search-form" action="search.html" method="get">
+          <div class="search-field">
+            <input type="search" name="q" placeholder="Search docs..." aria-label="Search docs" autocomplete="off" />
+            <button type="submit" class="search-submit" aria-label="Search" title="Search">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+          </div>
           <input type="hidden" name="check_keywords" value="yes" />
           <input type="hidden" name="area" value="default" />
         </form>
@@ -357,6 +371,8 @@
   <script src="_static/doctools.js?v=fd6eb6e6"></script>
   <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
   <script src="_static/js/collection_controls.js?v=b6b5297a"></script>
+  <script src="_static/js/geometor_interactive.js?v=421e4467"></script>
+  <script src="_static/js/search_highlight.js"></script>
 
 </body>
 </html>

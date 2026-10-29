@@ -26,48 +26,42 @@ button {
   display: none;
 }
 
-// Basic text input styling (mostly used by search input override)
-input[type=text] {
-  --bg: var(--color-key-lighter);
-
+// Basic text and search input styling
+input[type=text],
+input[type=search] {
   display: block;
-  padding: .4em;
+  box-sizing: border-box;
+  padding: 0.45em 0.75em;
   outline: 0 none;
-  border: 1px solid var(--color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: none;
 
   text-align: left;
-  color: var(--color);
-  background: var(--bg);
+  color: var(--text-color);
+  background: var(--bg-alt-color);
   appearance: none;
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  line-height: 1.4;
 
   width: 100%;
   max-width: 100%;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
 
-  &:focus {
-    color: var(--color);
-  }
   &::placeholder {
-  --color: var(--color-key-dark);
+    color: var(--color-muted);
+    opacity: 1;
   }
-}
 
-input[type=search] {
-  --bg: var(--color-key-lighter);
+  &:hover {
+    border-color: color-mix(in oklch, var(--border-color), var(--text-color) 30%);
+  }
 
-  display: block;
-  padding: .4em;
-  border: 1px solid var(--border-color);
-  border-radius: 3px;
-  box-shadow: none;
-  font-family: inherit;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  width: 100%;
-
-  // Focus state
   &:focus {
+    color: var(--heading-color);
     border-color: var(--link-color);
-    box-shadow: 0 0 0 3px var(--color-key-light);
+    box-shadow: 0 0 0 2px color-mix(in oklch, var(--link-color), transparent 75%);
     outline: none;
   }
 }
@@ -112,25 +106,6 @@ label {
   margin-bottom: 0.5rem;
   color: var(--color-key-lighter);
   background: var(--link-color);
-}
-
-// Initial state for inputs
-input,
-textarea,
-select {
-  &:invalid {
-    background: var(--color-key-light);
-    border-color: var(--color-danger);
-  }
-}
-
-// Validation styles
-input:valid {
-    border-color: var(--color-success);
-}
-
-input:invalid {
-    border-color: var(--color-danger);
 }
 
 button {

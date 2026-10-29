@@ -35,7 +35,7 @@ Module Contents
 
 
 
-   .. py:method:: set_point(x_val: sympy.Expr, y_val: sympy.Expr, parents: list | None = None, classes: list[str] | None = None, ID: str = '', guide: bool = False) -> sympy.geometry.Point
+   .. py:method:: set_point(x_val: sympy.Expr, y_val: sympy.Expr, parents: list | None = None, classes: list[str] | None = None, ID: str = '', guide: bool = False, label: str = '') -> sympy.geometry.Point
 
       Add a point to the model, find duplicates, clean values, and set parents and classes.
 
@@ -47,6 +47,7 @@ Module Contents
       :param classes: A list of string names for classes defining a set of styles.
       :param ID: A text ID for use in plotting and reporting.
       :param guide: If True, the point is a guide.
+      :param label: Optional alias for ID.
 
       :returns: The set point.
 
