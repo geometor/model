@@ -6,78 +6,68 @@ GEOMETOR • model
 .. image:: https://img.shields.io/github/license/geometor/model.svg
    :target: https://github.com/geometor/model/blob/main/LICENSE
 
-**A symbolic engine for defining and verifying geometric constructions.**
+**Symbolic compass-and-straightedge construction engine for the GEOMETOR ecosystem.**
 
 Overview
 --------
 
-``geometor.model`` is a symbolic engine for defining and verifying geometric constructions. It treats geometry not as a visual approximation, but as a rigorous system of information and operations.
+``geometor.model`` is the foundational symbolic algebra engine for defining, constructing, and verifying geometric systems with exact precision. Powered by `SymPy <https://www.sympy.org>`_, it treats constructive geometry as an ordered deductive system of information and operations:
 
-In this system:
+- **Points** represent *information*—exact algebraic coordinates ($\sqrt{2}$, $\varphi = \frac{1+\sqrt{5}}{2}$, etc.) without floating-point approximation noise.
+- **Lines** and **Circles** represent *operations* performed on pairs of existing points.
+- **Intersections** are the *consequences* of operations, automatically computed, simplified, deduplicated, and added to the model with full ancestral lineage.
+- **Segments**, **Wedges/Angles**, and **Polygons** represent derived structural measurements and regions.
 
-- **Points** represent *information*. They are exact algebraic locations.
-- **Lines** and **Circles** represent *operations* performed on that information.
-- **Intersections** are the *consequences* of operations, yielding new information (Points).
+Role Across the GEOMETOR Ecosystem & Coordination with ``publish``
+------------------------------------------------------------------
 
-We leverage `SymPy <https://www.sympy.org>`_ to ensure that every coordinate and radius is an exact algebraic expression, allowing us to find deep relationships that floating-point arithmetic would miss.
+``geometor.model`` powers the executable constructions and interactive SVG diagrams across all GEOMETOR repositories:
+
+- **`geometor/elements <https://github.com/geometor/elements>`_**: Every proposition in the G-Index (`G.1`–`G.525`) includes a standalone ``geometor.model`` Python script (`g1.py`) rendered in the **Code** track of the Book Codex.
+- **`geometor/etc <https://github.com/geometor/etc>`_**: Every triangle center (`X(1)`–`X(1000)+`) is constructed via composable ``geometor.model`` operations (`model.py`), serialized to JSON (`x-NNNNN.json`), and rendered into two-layer SVGs across four reference triangles.
+- **`geometor/explorer <https://github.com/geometor/explorer>`_**: Provides the interactive Flask/SVG web workbench and live CLI over ``geometor.model`` JSON states.
+- **`photon-platform/publish <https://github.com/photon-platform/publish>`_**: Connects ``geometor.model`` element labels and symbolic indications (`[ A B ]`, `/ A B /`, `( A B C )`, `< B A C )`, `< A B C >`, `A`) to `:g:` and `:eq:` roles in Sphinx documentation with bidirectional SVG highlighting and step-by-step construction playback.
 
 Key Features
 ------------
 
-- **Symbolic Precision**: No rounding errors. $\sqrt{2}$ is $\sqrt{2}$, not $1.414...$.
-- **Ancestry Tracking**: Every element knows its parents. We can trace the lineage of any point back to the starting axioms.
-- **Automatic Intersection**: The model automatically calculates all intersection points whenever a new line or circle is added.
-- **Serialization**: Models can be saved to JSON and shared with other tools like `geometor.explorer`.
+- **Exact Symbolic Precision**: Every coordinate, radius, line equation, and spread is maintained as an exact SymPy algebraic expression.
+- **Ancestry & Dependency Tracking**: Every constructed element records its parent primitives, enabling automatic dependency tree extraction (`ancestors`) and step-by-step playback.
+- **Automatic Intersection Discovery & Deduplication**: Adding a line or circle automatically computes all intersections with existing primitives and merges coincident algebraic points.
+- **JSON Serialization & Interactive CLI**: Save and load complete model histories to/from JSON (`serialize.py`) or build models interactively via `python3 -m geometor.model`.
 
-Installation
-------------
-
-.. code-block:: bash
-
-    pip install geometor-model
-
-Command Line Interface
-----------------------
-
-The ``geometor.model`` package includes a robust CLI for interactive construction and scripting (REPL).
-
-Start the session:
+Installation & Usage
+--------------------
 
 .. code-block:: bash
 
-    python -m geometor.model
+   pip install geometor-model
 
-Sample commands:
-
-.. code-block:: text
-
-    > * 0, 0      # Set point A
-    > * 1, 0      # Set point B
-    > ( A B )       # Circle centered at A passing through B
-    > [ A B ]       # Line through A and B
-
-For full details, see the `CLI Usage <https://geometor.github.io/model/usage/cli.html>`_ documentation.
-
-Usage
------
+Python API:
 
 .. code-block:: python
 
-    from geometor.model import Model
+   from geometor.model import Model
 
-    # Initialize a new model
-    model = Model("vesica")
+   model = Model("equilateral")
+   A = model.set_point(0, 0, classes=["given"], label="A")
+   B = model.set_point(1, 0, classes=["given"], label="B")
 
-    # Define two starting points
-    A = model.set_point(0, 0, classes=["given"])
-    B = model.set_point(1, 0, classes=["given"])
+   model.construct_circle(A, B)
+   model.construct_circle(B, A)
 
-    # Construct the Vesica Piscis
-    model.construct_circle(A, B)
-    model.construct_circle(B, A)
+   # Intersections C and D are automatically discovered and labeled
+   for pt in model.points:
+       print(pt.label, pt.x, pt.y)
 
-    # The model now automatically contains the intersections of these circles
-    print(model.points)
+Documentation & Deployment
+--------------------------
+
+Built with `photon-platform/publish <https://github.com/photon-platform/publish>`_ in the unified Classical Scriptorium Book Codex theme:
+
+.. code-block:: bash
+
+   publish test
 
 Resources
 ---------
@@ -85,10 +75,3 @@ Resources
 - **Documentation**: https://geometor.github.io/model
 - **Source Code**: https://github.com/geometor/model
 - **Issues**: https://github.com/geometor/model/issues
-
-Related Projects
-----------------
-
-- `GEOMETOR Explorer <https://github.com/geometor/explorer>`_: Interactive visualization environment.
-- `GEOMETOR Divine <https://github.com/geometor/divine>`_: Golden ratio analysis engine.
-

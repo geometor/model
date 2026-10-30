@@ -1,59 +1,27 @@
-.. geometor.model intro
+**Symbolic compass-and-straightedge construction engine for the GEOMETOR ecosystem.**
 
-``geometor.model`` is the foundational library for the `GEOMETOR`_ initiative.
+``geometor.model`` is the foundational library for the `GEOMETOR <https://geometor.com>`_ initiative. At the core of the module is the ``Model`` class, which establishes an exact symbolic field (`SymPy <https://docs.sympy.org>`_) for creating, analyzing, and serializing geometric constructions.
 
+----
 
-At the core of the module is the ``Model`` class which establishes the field
-and methods of operation for creating the geometric constructions while maintaining integrity.
+Core Principles
+---------------
 
-The **field** might be easy to consider as a Cartesian grid. But in reality, it
-is an ordered set of information and operations. Points are the information.
-Lines and circles are the operations.
+- **Points as Information**: Every ``Point`` is defined as a pair of exact algebraic SymPy expressions (`x`, `y`) rather than floating-point approximations.
+- **Lines & Circles as Operations**: Each ``Line`` (`[ A B ]`) and ``Circle`` (`( A B )`) is constructed from two existing points.
+- **Intersections as Consequences**: Whenever a new line or circle is constructed, ``Model`` automatically solves for all intersection points with existing primitives, simplifies and deduplicates algebraic coordinates, and records parent ancestry.
+- **Structures & Measurements**: Segments (`/ A B /`), Polygons (`< A B C >`), and Wedges/Angles (`< B A C )`) attach directly to model points.
 
-In our system, all geometric elements of the ``Model`` are defined as `Sympy Geometry`_
-objects. This means a ``Point`` can be defined as a pair of any algebraic
-`Sympy Expressions`_ that can be evaluated into a floating point value.
+----
 
-``Line`` and ``Circle`` are each defined by two points. So each construction
-must begin with at least two given points at the start. As lines and circles
-are added, intersection points are discovered with previous lines and circles
-and added to the model, so they may be used with new lines and circles.
+Ecosystem Integration
+---------------------
 
-There are three main operations of the ``Model``:
+``geometor.model`` powers the symbolic constructions across the entire GEOMETOR platform and coordinates directly with ``photon-platform/publish``:
 
-- set_point
-- construct_line
-- construct_circle
-
-The major responsibilities of the ``Model``:
-
-- **deduplicate**
-
-  when elements are added to the model, we check to see if they already exist. This is particularly important for intersection points that often coincide with exisitng points.
-- **clean values**
-- discover **intersections**
-- **save** to and load from json
-- maintain a set of **related** info for each element:
-
-  - ancestral relationships
-  - establish labels for elements
-  - classes for styles
-
-All of the plotting functionality has moved to **GEOMETOR** `explorer`_. However, there are several report functions in this module:
-
-- report_summary
-- report_group_by_type
-- report_sequence
+- `GEOMETOR • explorer <https://geometor.github.io/explorer>`_: Interactive web workbench, animation timeline, and golden-ratio analyzer over serialized ``geometor.model`` JSON files.
+- `GEOMETOR • elements <https://geometor.github.io/elements>`_: Executable `g1.py` construction scripts and interactive step-by-step SVG diagrams across the 525-node G-Index.
+- `GEOMETOR • etc <https://geometor.github.io/etc>`_: Composable triangle-center constructions (`model.py` and `x-NNNNN.json`) across four reference triangles in the *Encyclopedia of Triangle Centers*.
+- `PHOTON • publish <https://photon-platform.github.io/publish>`_: Renders ``geometor.model`` symbolic indications via `:g:` and `:eq:` roles with bidirectional SVG highlighting in the Book Codex theme.
 
 .. image:: /_static/screenshot.png
-
-.. _`GEOMETOR`: https://geometor.com
-
-
-.. _explorer: https://github.com/geometor/explorer
-.. _`Sympy Expressions`: https://docs.sympy.org/latest/tutorials/intro-tutorial/basic_operations.html
-.. _`Sympy Geometry`: https://docs.sympy.org/latest/modules/geometry/index.html
-.. _`Sympy`: https://docs.sympy.org
-.. _GEOMETOR: https://geometor.com
-.. _`Project's Website`: https://geometor.github.io/model
-
