@@ -5,9 +5,9 @@ GEOMETOR • model
 
 .. include:: intro.rst
 
+----
 
-
-indices
+Indices
 -------
 
 * :ref:`genindex`

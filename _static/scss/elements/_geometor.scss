@@ -46,6 +46,7 @@
   }
 }
 
+:root,
 body.is-book-page,
 article.book-layout,
 article.book-reading-pane {
@@ -462,6 +463,7 @@ article.book-layout nav,
     margin-bottom: 0.75rem;
     text-indent: 0 !important;
     border-bottom: none !important;
+    clear: both;
 
     a.headerlink {
       font-size: 0.72em;
@@ -539,7 +541,7 @@ article.book-layout nav,
     margin-bottom: 0.4rem !important;
   }
 
-  /* Paragraphs & Classical 2em First-Line Indentation */
+  /* Paragraphs & Classical 2em First-Line Indentation (for folio-book-page) */
   p {
     text-indent: 2em;
     margin-top: 0 !important;
@@ -548,6 +550,12 @@ article.book-layout nav,
     text-justify: inter-word;
     hyphens: auto;
     -webkit-hyphens: auto;
+  }
+
+  &:not(.folio-book-page) p {
+    text-indent: 0 !important;
+    margin-bottom: 0.85em !important;
+    text-align: left;
   }
 
   /* Explicit resets where first-line paragraph indentation is NOT desired */
@@ -560,6 +568,8 @@ article.book-layout nav,
   .footnote-list p,
   .footnotes p,
   p.rubric,
+  figcaption p,
+  img.folio-initial-cap + p,
   .no-indent,
   .title-page p,
   .work-toc p,
@@ -1343,6 +1353,48 @@ a.justification-link {
   }
 }
 
+img.folio-initial-cap {
+  float: left;
+  width: 4.5rem;
+  height: auto;
+  margin: 0.18rem 0.95rem 0.35rem 0;
+  padding: 3px;
+  background-color: #ffffff;
+  border: 1px solid var(--book-border, #3d3934);
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.22);
+}
+
+.book-reading-pane .book-content figure:not(.photon-svg) {
+  margin: 1.35rem auto;
+  text-align: center;
+  clear: both;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--book-border, #3d3934);
+    border-radius: 6px;
+    padding: 4px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+  }
+
+  figcaption {
+    margin-top: 0.45rem;
+    font-size: 0.94rem;
+    font-style: italic;
+    color: var(--book-text-muted, #9c958a);
+    text-align: center;
+
+    p {
+      text-indent: 0 !important;
+      text-align: center !important;
+      margin: 0.15rem 0 !important;
+    }
+  }
+}
+
 sup.line-num {
   font-size: 0.75em;
   line-height: 0;
@@ -2037,6 +2089,10 @@ svg.euclid-graphic text.geom-assert-secondary tspan {
           height: auto;
           object-fit: contain;
           border-radius: 2px;
+          background-color: transparent !important;
+          border: none !important;
+          padding: 0 !important;
+          box-shadow: none !important;
         }
       }
 
@@ -2231,6 +2287,43 @@ div.graphviz {
 /* -------------------------------------------------------------------------
    17. Pseudocode Construction Steps (.geom-step) & Step-by-Step SVG Player
    ------------------------------------------------------------------------- */
+.geom-steps-viewport {
+  max-height: clamp(14rem, 36vh, 22rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  margin: 0.35rem 0 1.5rem;
+  padding: 0.45rem 0.55rem;
+  background-color: rgba(0, 0, 0, 0.16);
+  border: 1px solid var(--book-border, #3d3934);
+  border-radius: 6px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.22);
+  scrollbar-width: thin;
+  scrollbar-color: var(--book-border-dark, #544f47) transparent;
+
+  &:focus,
+  &:focus-visible {
+    outline: 1px solid rgba(232, 184, 90, 0.45);
+    border-color: var(--book-border-dark, #544f47);
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--book-border-dark, #544f47);
+    border-radius: 3px;
+  }
+}
+
+figure.photon-svg:has(+ .geom-steps-viewport) {
+  margin-bottom: 0.35rem !important;
+}
+
 .geom-step {
   position: relative;
   text-indent: 0 !important;
@@ -2256,13 +2349,14 @@ div.graphviz {
   }
 
   &.geom-step-active {
-    background-color: rgba(232, 184, 90, 0.09);
+    background-color: rgba(232, 184, 90, 0.11);
     border-left-color: var(--geom-accent, #e8b85a);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
   }
 
   &.geom-step-assert.geom-step-active,
   &.geom-step-conclude.geom-step-active {
-    background-color: rgba(94, 194, 126, 0.09);
+    background-color: rgba(94, 194, 126, 0.11);
     border-left-color: var(--geom-assert, #5ec27e);
   }
 
@@ -2367,5 +2461,233 @@ svg.euclid-graphic .geom-step-hidden:not(.geom-highlight-active):not(.geom-highl
   pointer-events: none !important;
 }
 
+/* -------------------------------------------------------------------------
+   18. Formal Proposition Signatures (.geom-signature) & Function Calls (.geom-fn)
+   ------------------------------------------------------------------------- */
+.geom-signature {
+  margin: 0.55rem 0 0.75rem;
+  padding: 0.55rem 0.85rem;
+  background-color: var(--book-surface, #272629);
+  border: 1px solid var(--book-border, #3d3934);
+  border-left: 3px solid var(--geom-accent, #e8b85a);
+  border-radius: 5px;
+  font-family: var(--book-font-mono, monospace);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--book-text, #d6cfc5);
+  text-indent: 0 !important;
+  text-align: left !important;
 
+  &.geom-signature-theorem,
+  &.geom-signature-cn,
+  &.geom-signature-def,
+  &.geom-signature-rule {
+    border-left-color: var(--geom-assert, #5ec27e);
+  }
+
+  p,
+  .line-block,
+  .line {
+    text-indent: 0 !important;
+    text-align: left !important;
+    margin: 0.12rem 0 !important;
+  }
+
+  .line-block {
+    margin: 0 !important;
+  }
+}
+
+.geom-fn,
+a.geom-fn {
+  font-family: var(--book-font-mono, monospace);
+  font-size: 0.88em;
+  font-weight: 600;
+  font-style: normal;
+  color: var(--book-link, #de836e) !important;
+  background-color: rgba(222, 131, 110, 0.10);
+  border: 1px solid rgba(222, 131, 110, 0.34);
+  border-radius: 3px;
+  padding: 0.04rem 0.34rem;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: color 0.12s ease, background-color 0.12s ease, border-color 0.12s ease;
+
+  &:hover {
+    color: var(--book-link-hover, #f5a492) !important;
+    background-color: rgba(222, 131, 110, 0.22);
+    border-color: var(--book-link, #de836e);
+    text-decoration: none !important;
+  }
+
+  &.geom-fn-def {
+    color: var(--geom-accent, #e8b85a) !important;
+    background-color: rgba(232, 184, 90, 0.12);
+    border-color: rgba(232, 184, 90, 0.42);
+  }
+}
+
+.geom-rule-just {
+  float: right;
+  text-indent: 0 !important;
+  font-family: var(--book-font-mono, monospace);
+  font-size: 0.78rem;
+  font-style: normal;
+  letter-spacing: 0.01em;
+  color: var(--book-text-muted, #9c958a);
+  margin-left: 0.65rem;
+
+  .geom-because {
+    color: var(--geom-assert, #5ec27e);
+    font-weight: 700;
+    margin-right: 0.1rem;
+  }
+
+  a.geom-rule,
+  span.geom-rule {
+    font-family: var(--book-font-mono, monospace);
+    font-size: 0.78rem;
+    color: var(--book-link, #de836e) !important;
+    text-decoration: none !important;
+    border-bottom: 1px dotted rgba(222, 131, 110, 0.55);
+    border-radius: 2px;
+    padding: 0 2px;
+    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+
+    &:hover {
+      color: var(--book-link-hover, #f5a492) !important;
+      border-bottom: 1px solid var(--book-link, #de836e);
+      background-color: rgba(222, 131, 110, 0.12);
+      text-decoration: none !important;
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------
+   19. Collapsible Scholarly Apparatus Blocks (details.book-collapse) & Notes (.note-item)
+   ------------------------------------------------------------------------- */
+details.book-collapse {
+  margin: 0.75rem 0 1.25rem;
+  background-color: var(--book-surface, #272629);
+  border: 1px solid var(--book-border, #3d3934);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-color: var(--book-border-dark, #544f47);
+  }
+
+  > summary.book-collapse-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.55rem 0.9rem;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    transition: background-color 0.15s ease;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &:hover {
+      background-color: var(--book-surface-alt, #313035);
+    }
+  }
+
+  .book-collapse-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--book-font-display, 'Cormorant Garamond', Georgia, serif);
+    font-weight: 600;
+    font-size: 0.96rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--book-text, #d6cfc5);
+
+    .collapse-icon {
+      display: inline-block;
+      color: var(--book-link, #de836e);
+      font-size: 0.95rem;
+      line-height: 1;
+      transition: transform 0.15s ease;
+    }
+  }
+
+  .book-collapse-badge {
+    font-family: var(--book-font-mono, monospace);
+    font-size: 0.75rem;
+    color: var(--book-text-muted, #9c958a);
+    background-color: var(--book-surface-alt, #313035);
+    border: 1px solid var(--book-border, #3d3934);
+    padding: 0.12rem 0.55rem;
+    border-radius: 12px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  &[open] {
+    > summary.book-collapse-summary {
+      border-bottom: 1px solid var(--book-border, #3d3934);
+      background-color: rgba(255, 255, 255, 0.02);
+    }
+
+    .collapse-icon {
+      transform: rotate(90deg);
+    }
+  }
+
+  .book-collapse-body {
+    padding: 0.75rem 1rem;
+    font-size: 0.98rem;
+    line-height: 1.6;
+
+    p {
+      text-indent: 0 !important;
+      text-align: left !important;
+      margin: 0.3rem 0 !important;
+    }
+
+    ul,
+    ol {
+      margin: 0.2rem 0 !important;
+      padding-left: 1.25rem;
+    }
+
+    li {
+      margin-bottom: 0.32rem;
+      line-height: 1.55;
+
+      p {
+        margin: 0 !important;
+      }
+    }
+
+    &.line-catalog p,
+    .line-catalog p {
+      font-family: var(--book-font-mono, monospace);
+      font-size: 0.86rem;
+      line-height: 1.75;
+      color: var(--book-text, #d6cfc5);
+    }
+  }
+}
+
+.book-reading-pane .book-content .note-item {
+  margin: 0.65rem 0;
+  padding: 0.35rem 0.85rem;
+  border-left: 2px solid var(--book-border-dark, #544f47);
+  background-color: rgba(255, 255, 255, 0.015);
+  border-radius: 0 4px 4px 0;
+
+  p {
+    text-indent: 0 !important;
+    text-align: left !important;
+    margin: 0.25rem 0 !important;
+  }
+}
 

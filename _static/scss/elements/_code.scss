@@ -3,34 +3,37 @@ pre,
 code,
 kbd,
 samp {
-  padding: .1em .25em;
+  padding: 0.1em 0.3em;
   font-family: var(--font-code);
-  font-size: 1em;
+  font-size: 0.9em;
   line-height: 1.5;
-  font-weight: bold;
-  // color:  var(--color-bg);
-  // background: var(--text-color);
-
-  border-radius: 0;
+  font-weight: 400;
+  color: var(--book-code-text, #d6cfc5);
+  background: var(--book-code-bg, #29282b);
+  border-radius: 3px;
 }
 
 code {
   height: auto;
 
   pre & {
-    padding: 1em;
-
+    padding: 0;
+    background: transparent;
     display: block;
   }
 }
 
 pre {
   display: block;
+  background: transparent;
+  padding: 0;
 }
 
 div.highlight {
-  background: black;
-  padding: 1rem;
-  border-radius: 4px;
-  margin-bottom: var(--fitz);
+  background: var(--book-code-bg, #29282b);
+  border: 1px solid var(--book-border, #3d3934);
+  padding: 0.85rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  overflow-x: auto;
 }

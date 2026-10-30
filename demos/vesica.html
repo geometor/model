@@ -6,12 +6,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>vesica &mdash; Project name not set  documentation</title>
+  <title>vesica &mdash; GEOMETOR • model</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Fira+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=ea5fcf70" />
-  <link rel="stylesheet" type="text/css" href="../_static/css/styles.css?v=156d9f89" />
+  <link rel="stylesheet" type="text/css" href="../_static/css/styles.css?v=3d8cc37d" />
   <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -20,7 +20,7 @@
   <link rel="icon" href="../_static/favicon.ico" />
 </head>
 
-<body>
+<body class="book-theme-classical-serif">
   <header>
     <div class="logo">
       <a href="../index.html">
@@ -40,13 +40,13 @@
           <a href="../mission/index.html"  >mission</a>
         </li>
         <li>
-          <a href="../log/index.html"  >log</a>
-        </li>
-        <li>
           <a href="../modules/index.html"  >modules</a>
         </li>
         <li>
-          <a href="index.html"  >demos</a>
+          <a href="../log/index.html"  >log</a>
+        </li>
+        <li>
+          <a href="index.html" class="is-active" aria-selected="true" >demos</a>
         </li>
         <li>
           <a href="../refs/index.html"  >references</a>
@@ -58,78 +58,88 @@
     </nav>
     <div class="motto"></div>
   </header>
-  <main>
-    <article>
-      <header>
-      <nav class="breadcrumbs">
-        <span><a href="../index.html">Home</a></span>
-          <span>/</span>
-        <span><a href="index.html">demos</a></span>
-      </nav>
-        <nav class="context">
-          <div class="prev">
-             <a href="index.html" title="demos" >Prev</a>
+  <main class="book-main">
+    <article class="book-layout book-reading-pane">
+      <header class="book-header">
+        <div class="book-header-bar">
+          <div class="book-header-identity">
+            <a class="book-portal-link" href="../index.html" title="Return to Project Portal">&larr; model</a>
+            <span class="book-header-sep">/</span>
+            <a class="book-title-link" href="../index.html">GEOMETOR • model</a>
           </div>
-          <div class="next">
-            <a href="../refs/index.html" title="references" >Next</a>
+          <div class="book-header-breadcrumbs book-header-badges" role="navigation" aria-label="Breadcrumbs">
+            <a class="book-crumb-link" href="index.html">demos</a>
           </div>
-        </nav>
+        </div>
+        <div class="book-header-nav">
+          <div class="book-nav-prev">
+            <a class="book-nav-btn" href="index.html" title="demos">&larr; <span class="nav-label">Prev</span></a>
+          </div>
+          <div class="book-nav-center">
+          </div>
+          <div class="book-nav-next">
+            <a class="book-nav-btn" href="../refs/index.html" title="references"><span class="nav-label">Next</span> &rarr;</a>
+          </div>
+        </div>
       </header>
-      <div class="content body" role="main">
+      <div class="content body book-content" role="main">
         <section class="level-1" id="vesica">
-          <h1>vesica<a class="headerlink" href="#vesica" title="Link to this heading">¶</a></h1>
-          <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">"""</span>
-          <span class="sd">constructs the classic 'vesica pisces'</span>
-          <span class="sd">"""</span>
+        <h1>vesica<a class="headerlink" href="#vesica" title="Link to this heading">¶</a></h1>
+        <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">"""</span>
+        <span class="sd">constructs the classic 'vesica pisces'</span>
+        <span class="sd">"""</span>
 
-          <span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-
-
-          <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">():</span>
-              <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">"vesica"</span><span class="p">)</span>
-              <span class="n">A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">"given"</span><span class="p">])</span>
-              <span class="n">B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">"given"</span><span class="p">])</span>
-
-              <span class="n">model</span><span class="o">.</span><span class="n">construct_line</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-
-              <span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-              <span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
-
-              <span class="n">E</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_element_by_ID</span><span class="p">(</span><span class="s2">"E"</span><span class="p">)</span>
-              <span class="n">F</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_element_by_ID</span><span class="p">(</span><span class="s2">"F"</span><span class="p">)</span>
-
-              <span class="n">model</span><span class="o">.</span><span class="n">set_polygon</span><span class="p">([</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">E</span><span class="p">])</span>
-              <span class="n">model</span><span class="o">.</span><span class="n">set_polygon</span><span class="p">([</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">F</span><span class="p">])</span>
-
-              <span class="n">model</span><span class="o">.</span><span class="n">construct_line</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">F</span><span class="p">)</span>
-
-              <span class="n">model</span><span class="o">.</span><span class="n">report_summary</span><span class="p">()</span>
-              <span class="n">model</span><span class="o">.</span><span class="n">report_group_by_type</span><span class="p">()</span>
-              <span class="n">model</span><span class="o">.</span><span class="n">report_sequence</span><span class="p">()</span>
-
-              <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"vesica.json"</span><span class="p">)</span>
-
-              <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">points</span><span class="p">:</span>
-                  <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="n">pt</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span><span class="p">)</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">geometor.model</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
 
-          <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-              <span class="n">run</span><span class="p">()</span>
-          </pre></div>
-          </div>
-          </section>
+        <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">():</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">"vesica"</span><span class="p">)</span>
+            <span class="n">A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">"given"</span><span class="p">])</span>
+            <span class="n">B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">"given"</span><span class="p">])</span>
+
+            <span class="n">model</span><span class="o">.</span><span class="n">construct_line</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+
+            <span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">construct_circle</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+
+            <span class="n">E</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_element_by_ID</span><span class="p">(</span><span class="s2">"E"</span><span class="p">)</span>
+            <span class="n">F</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_element_by_ID</span><span class="p">(</span><span class="s2">"F"</span><span class="p">)</span>
+
+            <span class="n">model</span><span class="o">.</span><span class="n">set_polygon</span><span class="p">([</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">E</span><span class="p">])</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">set_polygon</span><span class="p">([</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">F</span><span class="p">])</span>
+
+            <span class="n">model</span><span class="o">.</span><span class="n">construct_line</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">F</span><span class="p">)</span>
+
+            <span class="n">model</span><span class="o">.</span><span class="n">report_summary</span><span class="p">()</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">report_group_by_type</span><span class="p">()</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">report_sequence</span><span class="p">()</span>
+
+            <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"vesica.json"</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">points</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="n">pt</span><span class="p">]</span><span class="o">.</span><span class="n">ID</span><span class="p">)</span>
+
+
+        <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+            <span class="n">run</span><span class="p">()</span>
+        </pre></div>
+        </div>
+        </section>
 
       </div>
-      <footer>
-
-        <nav class="context">
-          <div class="prev">
-             <a href="index.html" title="demos" >Prev</a>
+      <footer class="book-footer">
+        <div class="book-footer-ornament">&#10086;</div>
+        <div class="book-footer-nav">
+          <div class="book-nav-prev">
+            <a class="book-nav-btn" href="index.html" title="demos">&larr; <span class="nav-label">demos</span></a>
           </div>
-          <div class="next">
-            <a href="../refs/index.html" title="references" >Next</a>
+          <div class="book-nav-center">
+            <a class="book-toc-link" href="../index.html">GEOMETOR • model</a>
           </div>
-        </nav>
+          <div class="book-nav-next">
+            <a class="book-nav-btn" href="../refs/index.html" title="references"><span class="nav-label">references</span> &rarr;</a>
+          </div>
+        </div>
       </footer>
     </article>
   </main>
@@ -152,7 +162,7 @@
         </form>
       </div>
     </aside>
-    <aside>
+    <aside class="aside-recent-logs">
       <h3>Recent Logs</h3>
       <ul>
         <li><a href="../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
@@ -168,28 +178,28 @@
   <footer>
     <div class="footer-nav">
       <ul>
-        <li><a href="../about.html">about</a></li>
-        <li><a href="../connect.html">connect</a></li>
-        <li><a href="../glossary.html">glossary</a></li>
-        <li><a href="../todos/index.html">todos</a></li>
-        <li><a href="../changelog.html">changelog</a></li>
+        <li><a href="../about.html"  >about</a></li>
+        <li><a href="../connect.html"  >connect</a></li>
+        <li><a href="../glossary.html"  >glossary</a></li>
+        <li><a href="../todos/index.html"  >todos</a></li>
+        <li><a href="../changelog.html"  >changelog</a></li>
       </ul>
     </div>
     <hr />
     <div role="contentinfo">
       <p>
-        &copy; Copyright .
+        &copy; Copyright 2026, GEOMETOR.
       </p>
     </div>
   </footer>
 
   <script src="../_static/jquery.js?v=5d32c60e"></script>
   <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-  <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+  <script src="../_static/documentation_options.js?v=722679d6"></script>
   <script src="../_static/doctools.js?v=fd6eb6e6"></script>
   <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
   <script src="../_static/js/collection_controls.js?v=b6b5297a"></script>
-  <script src="../_static/js/geometor_interactive.js?v=421e4467"></script>
+  <script src="../_static/js/geometor_interactive.js?v=4430a5d4"></script>
   <script src="../_static/js/search_highlight.js"></script>
 
 </body>

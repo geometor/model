@@ -6,12 +6,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>geometor.model.delete &mdash; Project name not set  documentation</title>
+  <title>geometor.model.delete &mdash; GEOMETOR • model</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Fira+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=ea5fcf70" />
-  <link rel="stylesheet" type="text/css" href="../../../../../_static/css/styles.css?v=156d9f89" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/css/styles.css?v=3d8cc37d" />
   <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -20,7 +20,7 @@
   <link rel="icon" href="../../../../../_static/favicon.ico" />
 </head>
 
-<body>
+<body class="book-theme-classical-serif">
   <header>
     <div class="logo">
       <a href="../../../../../index.html">
@@ -40,10 +40,10 @@
           <a href="../../../../../mission/index.html"  >mission</a>
         </li>
         <li>
-          <a href="../../../../../log/index.html"  >log</a>
+          <a href="../../../../index.html" class="is-active" aria-selected="true" >modules</a>
         </li>
         <li>
-          <a href="../../../../index.html"  >modules</a>
+          <a href="../../../../../log/index.html"  >log</a>
         </li>
         <li>
           <a href="../../../../../demos/index.html"  >demos</a>
@@ -58,103 +58,113 @@
     </nav>
     <div class="motto"></div>
   </header>
-  <main>
-    <article>
-      <header>
-      <nav class="breadcrumbs">
-        <span><a href="../../../../../index.html">Home</a></span>
-          <span>/</span>
-        <span><a href="../../../../index.html">modules</a></span>
-      </nav>
-        <nav class="context">
-          <div class="prev">
-             <a href="../colors/index.html" title="geometor.model.colors" >Prev</a>
+  <main class="book-main">
+    <article class="book-layout book-reading-pane">
+      <header class="book-header">
+        <div class="book-header-bar">
+          <div class="book-header-identity">
+            <a class="book-portal-link" href="../../../../../index.html" title="Return to Project Portal">&larr; model</a>
+            <span class="book-header-sep">/</span>
+            <a class="book-title-link" href="../../../../../index.html">GEOMETOR • model</a>
           </div>
-          <div class="next">
-            <a href="../element/index.html" title="geometor.model.element" >Next</a>
+          <div class="book-header-breadcrumbs book-header-badges" role="navigation" aria-label="Breadcrumbs">
+            <a class="book-crumb-link" href="../../../../index.html">modules</a>
           </div>
-        </nav>
+        </div>
+        <div class="book-header-nav">
+          <div class="book-nav-prev">
+            <a class="book-nav-btn" href="../colors/index.html" title="geometor.model.colors">&larr; <span class="nav-label">Prev</span></a>
+          </div>
+          <div class="book-nav-center">
+          </div>
+          <div class="book-nav-next">
+            <a class="book-nav-btn" href="../element/index.html" title="geometor.model.element"><span class="nav-label">Next</span> &rarr;</a>
+          </div>
+        </div>
       </header>
-      <div class="content body" role="main">
+      <div class="content body book-content" role="main">
         <section class="level-1" id="module-geometor.model.delete">
-          <span id="geometor-model-delete"></span><h1>geometor.model.delete<a class="headerlink" href="#module-geometor.model.delete" title="Link to this heading">¶</a></h1>
-          <p>Provides deletion functions for the Model class.</p>
-          <p>This module handles the removal of elements from the model. It includes logic to identify dependent elements (descendants) to ensure that deleting a parent element cascades correctly and maintains the integrity of the dependency graph.</p>
-          <section class="level-2" id="attributes">
-          <h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
-          <table class="autosummary longtable docutils align-default">
-          <tbody>
-          <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.delete.console" title="geometor.model.delete.console"><code class="xref py py-obj docutils literal notranslate"><span class="pre">console</span></code></a></p></td>
-          <td><p></p></td>
-          </tr>
-          </tbody>
-          </table>
-          </section>
-          <section class="level-2" id="classes">
-          <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
-          <table class="autosummary longtable docutils align-default">
-          <tbody>
-          <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.delete.DeleteMixin" title="geometor.model.delete.DeleteMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DeleteMixin</span></code></a></p></td>
-          <td><p>Mixin for the Model class containing deletion operations.</p></td>
-          </tr>
-          </tbody>
-          </table>
-          </section>
-          <section class="level-2" id="module-contents">
-          <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
-          <dl class="py data">
-          <dt class="sig sig-object py" id="geometor.model.delete.console">
-          <span class="sig-prename descclassname"><span class="pre">geometor.model.delete.</span></span><span class="sig-name descname"><span class="pre">console</span></span><a class="headerlink" href="#geometor.model.delete.console" title="Link to this definition">¶</a></dt>
-          <dd></dd></dl>
+        <span id="geometor-model-delete"></span><h1>geometor.model.delete<a class="headerlink" href="#module-geometor.model.delete" title="Link to this heading">¶</a></h1>
+        <p>Provides deletion functions for the Model class.</p>
+        <p>This module handles the removal of elements from the model. It includes logic to identify dependent elements (descendants) to ensure that deleting a parent element cascades correctly and maintains the integrity of the dependency graph.</p>
+        <section class="level-2" id="attributes">
+        <h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
+        <table class="autosummary longtable docutils align-default">
+        <tbody>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.delete.console" title="geometor.model.delete.console"><code class="xref py py-obj docutils literal notranslate"><span class="pre">console</span></code></a></p></td>
+        <td><p></p></td>
+        </tr>
+        </tbody>
+        </table>
+        </section>
+        <section class="level-2" id="classes">
+        <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+        <table class="autosummary longtable docutils align-default">
+        <tbody>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.delete.DeleteMixin" title="geometor.model.delete.DeleteMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DeleteMixin</span></code></a></p></td>
+        <td><p>Mixin for the Model class containing deletion operations.</p></td>
+        </tr>
+        </tbody>
+        </table>
+        </section>
+        <section class="level-2" id="module-contents">
+        <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+        <dl class="py data">
+        <dt class="sig sig-object py" id="geometor.model.delete.console">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.delete.</span></span><span class="sig-name descname"><span class="pre">console</span></span><a class="headerlink" href="#geometor.model.delete.console" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
 
-          <dl class="py class">
-          <dt class="sig sig-object py" id="geometor.model.delete.DeleteMixin">
-          <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">geometor.model.delete.</span></span><span class="sig-name descname"><span class="pre">DeleteMixin</span></span><a class="headerlink" href="#geometor.model.delete.DeleteMixin" title="Link to this definition">¶</a></dt>
-          <dd><p>Mixin for the Model class containing deletion operations.</p>
-          <p>This mixin equips the Model with methods to safely delete elements. It provides functionality to trace the dependency tree and recursively remove an element along with all other elements that depend on it.</p>
-          <dl class="py method">
-          <dt class="sig sig-object py" id="geometor.model.delete.DeleteMixin.get_dependents">
-          <span class="sig-name descname"><span class="pre">get_dependents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element_or_ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/entities.html#sympy.geometry.entity.GeometryEntity" title="(in SymPy v1.14.0)"><span class="pre">sympy.geometry.entity.GeometryEntity</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#set" title="(in Python v3.13)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/entities.html#sympy.geometry.entity.GeometryEntity" title="(in SymPy v1.14.0)"><span class="pre">sympy.geometry.entity.GeometryEntity</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.delete.DeleteMixin.get_dependents" title="Link to this definition">¶</a></dt>
-          <dd><p>Find and return a set of all elements that depend on the given element.</p>
-          <p>This method serves as a query tool to inspect the impact of potentially deleting an element. It resolves the input to a model element and uses recursive search to gather all downstream dependencies.</p>
-          <dl class="field-list simple">
-          <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-          <dd class="field-odd"><p><strong>element_or_ID</strong> – The element object or its ID to check for dependents.</p>
-          </dd>
-          <dt class="field-even">Returns<span class="colon">:</span></dt>
-          <dd class="field-even"><p>A set of dependent elements. Returns an empty set if the element is not found or has no dependents.</p>
-          </dd>
-          </dl>
-          </dd></dl>
+        <dl class="py class">
+        <dt class="sig sig-object py" id="geometor.model.delete.DeleteMixin">
+        <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">geometor.model.delete.</span></span><span class="sig-name descname"><span class="pre">DeleteMixin</span></span><a class="headerlink" href="#geometor.model.delete.DeleteMixin" title="Link to this definition">¶</a></dt>
+        <dd><p>Mixin for the Model class containing deletion operations.</p>
+        <p>This mixin equips the Model with methods to safely delete elements. It provides functionality to trace the dependency tree and recursively remove an element along with all other elements that depend on it.</p>
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.delete.DeleteMixin.get_dependents">
+        <span class="sig-name descname"><span class="pre">get_dependents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element_or_ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/entities.html#sympy.geometry.entity.GeometryEntity" title="(in SymPy v1.14.0)"><span class="pre">sympy.geometry.entity.GeometryEntity</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#set" title="(in Python v3.13)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/entities.html#sympy.geometry.entity.GeometryEntity" title="(in SymPy v1.14.0)"><span class="pre">sympy.geometry.entity.GeometryEntity</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.delete.DeleteMixin.get_dependents" title="Link to this definition">¶</a></dt>
+        <dd><p>Find and return a set of all elements that depend on the given element.</p>
+        <p>This method serves as a query tool to inspect the impact of potentially deleting an element. It resolves the input to a model element and uses recursive search to gather all downstream dependencies.</p>
+        <dl class="field-list simple">
+        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+        <dd class="field-odd"><p><strong>element_or_ID</strong> – The element object or its ID to check for dependents.</p>
+        </dd>
+        <dt class="field-even">Returns<span class="colon">:</span></dt>
+        <dd class="field-even"><p>A set of dependent elements. Returns an empty set if the element is not found or has no dependents.</p>
+        </dd>
+        </dl>
+        </dd></dl>
 
-          <dl class="py method">
-          <dt class="sig sig-object py" id="geometor.model.delete.DeleteMixin.delete_element">
-          <span class="sig-name descname"><span class="pre">delete_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element_or_ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/entities.html#sympy.geometry.entity.GeometryEntity" title="(in SymPy v1.14.0)"><span class="pre">sympy.geometry.entity.GeometryEntity</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.delete.DeleteMixin.delete_element" title="Link to this definition">¶</a></dt>
-          <dd><p>Delete an element and perform a cascading delete of all its dependents.</p>
-          <p>This is the primary method for removing content from the model. It verifies the existence of the target element, identifies the entire tree of dependent structures, and removes them all to prevent orphaned references in the model.</p>
-          <dl class="field-list simple">
-          <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-          <dd class="field-odd"><p><strong>element_or_ID</strong> – The element object or its ID to be deleted.</p>
-          </dd>
-          </dl>
-          </dd></dl>
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.delete.DeleteMixin.delete_element">
+        <span class="sig-name descname"><span class="pre">delete_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element_or_ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/entities.html#sympy.geometry.entity.GeometryEntity" title="(in SymPy v1.14.0)"><span class="pre">sympy.geometry.entity.GeometryEntity</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.delete.DeleteMixin.delete_element" title="Link to this definition">¶</a></dt>
+        <dd><p>Delete an element and perform a cascading delete of all its dependents.</p>
+        <p>This is the primary method for removing content from the model. It verifies the existence of the target element, identifies the entire tree of dependent structures, and removes them all to prevent orphaned references in the model.</p>
+        <dl class="field-list simple">
+        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+        <dd class="field-odd"><p><strong>element_or_ID</strong> – The element object or its ID to be deleted.</p>
+        </dd>
+        </dl>
+        </dd></dl>
 
-          </dd></dl>
+        </dd></dl>
 
-          </section>
-          </section>
+        </section>
+        </section>
 
       </div>
-      <footer>
-
-        <nav class="context">
-          <div class="prev">
-             <a href="../colors/index.html" title="geometor.model.colors" >Prev</a>
+      <footer class="book-footer">
+        <div class="book-footer-ornament">&#10086;</div>
+        <div class="book-footer-nav">
+          <div class="book-nav-prev">
+            <a class="book-nav-btn" href="../colors/index.html" title="geometor.model.colors">&larr; <span class="nav-label">geometor.model.colors</span></a>
           </div>
-          <div class="next">
-            <a href="../element/index.html" title="geometor.model.element" >Next</a>
+          <div class="book-nav-center">
+            <a class="book-toc-link" href="../../../../../index.html">GEOMETOR • model</a>
           </div>
-        </nav>
+          <div class="book-nav-next">
+            <a class="book-nav-btn" href="../element/index.html" title="geometor.model.element"><span class="nav-label">geometor.model.element</span> &rarr;</a>
+          </div>
+        </div>
       </footer>
     </article>
   </main>
@@ -177,7 +187,7 @@
         </form>
       </div>
     </aside>
-    <aside>
+    <aside class="aside-recent-logs">
       <h3>Recent Logs</h3>
       <ul>
         <li><a href="../../../../../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
@@ -193,28 +203,28 @@
   <footer>
     <div class="footer-nav">
       <ul>
-        <li><a href="../../../../../about.html">about</a></li>
-        <li><a href="../../../../../connect.html">connect</a></li>
-        <li><a href="../../../../../glossary.html">glossary</a></li>
-        <li><a href="../../../../../todos/index.html">todos</a></li>
-        <li><a href="../../../../../changelog.html">changelog</a></li>
+        <li><a href="../../../../../about.html"  >about</a></li>
+        <li><a href="../../../../../connect.html"  >connect</a></li>
+        <li><a href="../../../../../glossary.html"  >glossary</a></li>
+        <li><a href="../../../../../todos/index.html"  >todos</a></li>
+        <li><a href="../../../../../changelog.html"  >changelog</a></li>
       </ul>
     </div>
     <hr />
     <div role="contentinfo">
       <p>
-        &copy; Copyright .
+        &copy; Copyright 2026, GEOMETOR.
       </p>
     </div>
   </footer>
 
   <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
   <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-  <script src="../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+  <script src="../../../../../_static/documentation_options.js?v=722679d6"></script>
   <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
   <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
   <script src="../../../../../_static/js/collection_controls.js?v=b6b5297a"></script>
-  <script src="../../../../../_static/js/geometor_interactive.js?v=421e4467"></script>
+  <script src="../../../../../_static/js/geometor_interactive.js?v=4430a5d4"></script>
   <script src="../../../../../_static/js/search_highlight.js"></script>
 
 </body>

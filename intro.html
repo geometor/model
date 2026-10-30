@@ -6,12 +6,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>&lt;no title&gt; &mdash; Project name not set  documentation</title>
+  <title>Core Principles &mdash; GEOMETOR • model</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Fira+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=ea5fcf70" />
-  <link rel="stylesheet" type="text/css" href="_static/css/styles.css?v=156d9f89" />
+  <link rel="stylesheet" type="text/css" href="_static/css/styles.css?v=3d8cc37d" />
   <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -20,7 +20,7 @@
   <link rel="icon" href="_static/favicon.ico" />
 </head>
 
-<body>
+<body class="book-theme-classical-serif">
   <header>
     <div class="logo">
       <a href="index.html">
@@ -40,10 +40,10 @@
           <a href="mission/index.html"  >mission</a>
         </li>
         <li>
-          <a href="log/index.html"  >log</a>
+          <a href="modules/index.html"  >modules</a>
         </li>
         <li>
-          <a href="modules/index.html"  >modules</a>
+          <a href="log/index.html"  >log</a>
         </li>
         <li>
           <a href="demos/index.html"  >demos</a>
@@ -58,72 +58,55 @@
     </nav>
     <div class="motto"></div>
   </header>
-  <main>
-    <article>
-      <header>
-      <nav class="breadcrumbs">
-        <span><a href="index.html">Home</a></span>
-      </nav>
-        <nav class="context">
-          <div class="prev">
+  <main class="book-main">
+    <article class="book-layout book-reading-pane">
+      <header class="book-header">
+        <div class="book-header-bar">
+          <div class="book-header-identity">
+            <a class="book-portal-link" href="index.html" title="Return to Project Portal">&larr; model</a>
+            <span class="book-header-sep">/</span>
+            <a class="book-title-link" href="index.html">GEOMETOR • model</a>
           </div>
-          <div class="next">
-          </div>
-        </nav>
+        </div>
       </header>
-      <div class="content body" role="main">
-        <p><code class="docutils literal notranslate"><span class="pre">geometor.model</span></code> is the foundational library for the <a class="reference external" href="https://geometor.com">GEOMETOR</a> initiative.</p>
-          <p>At the core of the module is the <code class="docutils literal notranslate"><span class="pre">Model</span></code> class which establishes the field
-          and methods of operation for creating the geometric constructions while maintaining integrity.</p>
-          <p>The <strong>field</strong> might be easy to consider as a Cartesian grid. But in reality, it
-          is an ordered set of information and operations. Points are the information.
-          Lines and circles are the operations.</p>
-          <p>In our system, all geometric elements of the <code class="docutils literal notranslate"><span class="pre">Model</span></code> are defined as <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/index.html">Sympy Geometry</a>
-          objects. This means a <code class="docutils literal notranslate"><span class="pre">Point</span></code> can be defined as a pair of any algebraic
-          <a class="reference external" href="https://docs.sympy.org/latest/tutorials/intro-tutorial/basic_operations.html">Sympy Expressions</a> that can be evaluated into a floating point value.</p>
-          <p><code class="docutils literal notranslate"><span class="pre">Line</span></code> and <code class="docutils literal notranslate"><span class="pre">Circle</span></code> are each defined by two points. So each construction
-          must begin with at least two given points at the start. As lines and circles
-          are added, intersection points are discovered with previous lines and circles
-          and added to the model, so they may be used with new lines and circles.</p>
-          <p>There are three main operations of the <code class="docutils literal notranslate"><span class="pre">Model</span></code>:</p>
-          <ul class="simple">
-          <li><p>set_point</p></li>
-          <li><p>construct_line</p></li>
-          <li><p>construct_circle</p></li>
-          </ul>
-          <p>The major responsibilities of the <code class="docutils literal notranslate"><span class="pre">Model</span></code>:</p>
-          <ul>
-          <li><p><strong>deduplicate</strong></p>
-          <p>when elements are added to the model, we check to see if they already exist. This is particularly important for intersection points that often coincide with exisitng points.</p>
-          </li>
-          <li><p><strong>clean values</strong></p></li>
-          <li><p>discover <strong>intersections</strong></p></li>
-          <li><p><strong>save</strong> to and load from json</p></li>
-          <li><p>maintain a set of <strong>related</strong> info for each element:</p>
-          <ul class="simple">
-          <li><p>ancestral relationships</p></li>
-          <li><p>establish labels for elements</p></li>
-          <li><p>classes for styles</p></li>
-          </ul>
-          </li>
-          </ul>
-          <p>All of the plotting functionality has moved to <strong>GEOMETOR</strong> <a class="reference external" href="https://github.com/geometor/explorer">explorer</a>. However, there are several report functions in this module:</p>
-          <ul class="simple">
-          <li><p>report_summary</p></li>
-          <li><p>report_group_by_type</p></li>
-          <li><p>report_sequence</p></li>
-          </ul>
-          <img alt="_images/screenshot.png" src="_images/screenshot.png" />
+      <div class="content body book-content" role="main">
+        <p><strong>Symbolic compass-and-straightedge construction engine for the GEOMETOR ecosystem.</strong></p>
+        <p><code class="docutils literal notranslate"><span class="pre">geometor.model</span></code> is the foundational library for the <a class="reference external" href="https://geometor.com">GEOMETOR</a> initiative. At the core of the module is the <code class="docutils literal notranslate"><span class="pre">Model</span></code> class, which establishes an exact symbolic field (<a class="reference external" href="https://docs.sympy.org">SymPy</a>) for creating, analyzing, and serializing geometric constructions.</p>
+        <hr class="docutils" />
+        <section class="level-2" id="core-principles">
+        <h2>Core Principles<a class="headerlink" href="#core-principles" title="Link to this heading">¶</a></h2>
+        <ul class="simple">
+        <li><p><strong>Points as Information</strong>: Every <code class="docutils literal notranslate"><span class="pre">Point</span></code> is defined as a pair of exact algebraic SymPy expressions (<cite>x</cite>, <cite>y</cite>) rather than floating-point approximations.</p></li>
+        <li><p><strong>Lines &amp; Circles as Operations</strong>: Each <code class="docutils literal notranslate"><span class="pre">Line</span></code> (<cite>[ A B ]</cite>) and <code class="docutils literal notranslate"><span class="pre">Circle</span></code> (<cite>( A B )</cite>) is constructed from two existing points.</p></li>
+        <li><p><strong>Intersections as Consequences</strong>: Whenever a new line or circle is constructed, <code class="docutils literal notranslate"><span class="pre">Model</span></code> automatically solves for all intersection points with existing primitives, simplifies and deduplicates algebraic coordinates, and records parent ancestry.</p></li>
+        <li><p><strong>Structures &amp; Measurements</strong>: Segments (<cite>/ A B /</cite>), Polygons (<cite>&lt; A B C &gt;</cite>), and Wedges/Angles (<cite>&lt; B A C )</cite>) attach directly to model points.</p></li>
+        </ul>
+        </section>
+        <hr class="docutils" />
+        <section class="level-2" id="ecosystem-integration">
+        <h2>Ecosystem Integration<a class="headerlink" href="#ecosystem-integration" title="Link to this heading">¶</a></h2>
+        <p><code class="docutils literal notranslate"><span class="pre">geometor.model</span></code> powers the symbolic constructions across the entire GEOMETOR platform and coordinates directly with <code class="docutils literal notranslate"><span class="pre">photon-platform/publish</span></code>:</p>
+        <ul class="simple">
+        <li><p><a class="reference external" href="https://geometor.github.io/explorer">GEOMETOR • explorer</a>: Interactive web workbench, animation timeline, and golden-ratio analyzer over serialized <code class="docutils literal notranslate"><span class="pre">geometor.model</span></code> JSON files.</p></li>
+        <li><p><a class="reference external" href="https://geometor.github.io/elements">GEOMETOR • elements</a>: Executable <cite>g1.py</cite> construction scripts and interactive step-by-step SVG diagrams across the 525-node G-Index.</p></li>
+        <li><p><a class="reference external" href="https://geometor.github.io/etc">GEOMETOR • etc</a>: Composable triangle-center constructions (<cite>model.py</cite> and <cite>x-NNNNN.json</cite>) across four reference triangles in the <em>Encyclopedia of Triangle Centers</em>.</p></li>
+        <li><p><a class="reference external" href="https://photon-platform.github.io/publish">PHOTON • publish</a>: Renders <code class="docutils literal notranslate"><span class="pre">geometor.model</span></code> symbolic indications via <cite>:g:</cite> and <cite>:eq:</cite> roles with bidirectional SVG highlighting in the Book Codex theme.</p></li>
+        </ul>
+        <img alt="_images/screenshot.png" src="_images/screenshot.png" />
+        </section>
 
       </div>
-      <footer>
-
-        <nav class="context">
-          <div class="prev">
+      <footer class="book-footer">
+        <div class="book-footer-ornament">&#10086;</div>
+        <div class="book-footer-nav">
+          <div class="book-nav-prev">
           </div>
-          <div class="next">
+          <div class="book-nav-center">
+            <a class="book-toc-link" href="index.html">GEOMETOR • model</a>
           </div>
-        </nav>
+          <div class="book-nav-next">
+          </div>
+        </div>
       </footer>
     </article>
   </main>
@@ -146,7 +129,7 @@
         </form>
       </div>
     </aside>
-    <aside>
+    <aside class="aside-recent-logs">
       <h3>Recent Logs</h3>
       <ul>
         <li><a href="log/23.324-124954/index.html">First Log - Lots of changes</a></li>
@@ -162,28 +145,28 @@
   <footer>
     <div class="footer-nav">
       <ul>
-        <li><a href="about.html">about</a></li>
-        <li><a href="connect.html">connect</a></li>
-        <li><a href="glossary.html">glossary</a></li>
-        <li><a href="todos/index.html">todos</a></li>
-        <li><a href="changelog.html">changelog</a></li>
+        <li><a href="about.html"  >about</a></li>
+        <li><a href="connect.html"  >connect</a></li>
+        <li><a href="glossary.html"  >glossary</a></li>
+        <li><a href="todos/index.html"  >todos</a></li>
+        <li><a href="changelog.html"  >changelog</a></li>
       </ul>
     </div>
     <hr />
     <div role="contentinfo">
       <p>
-        &copy; Copyright .
+        &copy; Copyright 2026, GEOMETOR.
       </p>
     </div>
   </footer>
 
   <script src="_static/jquery.js?v=5d32c60e"></script>
   <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-  <script src="_static/documentation_options.js?v=5929fcd5"></script>
+  <script src="_static/documentation_options.js?v=722679d6"></script>
   <script src="_static/doctools.js?v=fd6eb6e6"></script>
   <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
   <script src="_static/js/collection_controls.js?v=b6b5297a"></script>
-  <script src="_static/js/geometor_interactive.js?v=421e4467"></script>
+  <script src="_static/js/geometor_interactive.js?v=4430a5d4"></script>
   <script src="_static/js/search_highlight.js"></script>
 
 </body>

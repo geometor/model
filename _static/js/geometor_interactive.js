@@ -1129,6 +1129,45 @@
 
       if (stepNodes.length < 2) return;
 
+      // Wrap step sequence in a bounded scrollable viewport (.geom-steps-viewport)
+      // directly below the graphic so the graphic and active step stay visible together.
+      let viewport = stepNodes[0].closest('.geom-steps-viewport');
+      if (!viewport) {
+        const firstEl = stepNodes[0];
+        const lastEl = stepNodes[stepNodes.length - 1];
+        if (firstEl.parentNode && firstEl.parentNode === lastEl.parentNode) {
+          const parent = firstEl.parentNode;
+          const rangeEls = [];
+          let cur = firstEl;
+          let canWrapRange = true;
+          while (cur) {
+            if (
+              cur.matches?.('figure, section, .graphviz') ||
+              cur.querySelector?.('svg.euclid-graphic, figure.photon-svg')
+            ) {
+              canWrapRange = false;
+              break;
+            }
+            rangeEls.push(cur);
+            if (cur === lastEl) break;
+            cur = cur.nextElementSibling;
+          }
+          if (canWrapRange && rangeEls.length > 0) {
+            const nextAfterLast = lastEl.nextElementSibling;
+            if (nextAfterLast && nextAfterLast.classList.contains('qed')) {
+              rangeEls.push(nextAfterLast);
+            }
+            viewport = document.createElement('div');
+            viewport.className = 'geom-steps-viewport';
+            viewport.setAttribute('tabindex', '0');
+            viewport.setAttribute('role', 'region');
+            viewport.setAttribute('aria-label', 'Construction and proof steps');
+            parent.insertBefore(viewport, firstEl);
+            rangeEls.forEach((el) => viewport.appendChild(el));
+          }
+        }
+      }
+
       const steps = stepNodes.map((stepEl, idx) => {
         const defaultGid =
           stepEl.closest('[data-graphic]')?.getAttribute('data-graphic') || `${folioId}.g1`;
@@ -1243,9 +1282,9 @@
         bar.innerHTML = `
           <div class="geom-step-controls">
             <button type="button" class="geom-step-btn" data-action="first" title="First step (Given)">|&lt;</button>
-            <button type="button" class="geom-step-btn" data-action="prev" title="Previous step">&lt;</button>
+            <button type="button" class="geom-step-btn" data-action="prev" title="Previous step (\u2190)">&lt;</button>
             <button type="button" class="geom-step-btn geom-step-play" data-action="play" title="Play / Pause step sequence">&#9654;</button>
-            <button type="button" class="geom-step-btn" data-action="next" title="Next step">&gt;</button>
+            <button type="button" class="geom-step-btn" data-action="next" title="Next step (\u2192)">&gt;</button>
           </div>
           <span class="geom-step-status">All (${steps.length})</span>
           <button type="button" class="geom-step-btn geom-step-all" data-action="all" title="Show complete diagram">All</button>
@@ -1294,19 +1333,73 @@
         timer: null,
         controllableMap,
         toolbars,
+        viewport,
         isPseudocodeTrack,
       };
+
+      if (!this._stepKeyHandlerBound) {
+        this._stepKeyHandlerBound = true;
+        document.addEventListener('keydown', (e) => {
+          if (!this.stepState) return;
+          if (e.metaKey || e.ctrlKey || e.altKey) return;
+          const tag = (e.target?.tagName || '').toLowerCase();
+          if (['input', 'textarea', 'select'].includes(tag) || e.target?.isContentEditable) {
+            return;
+          }
+          const { steps: stList, currentStep: cur, viewport: vp } = this.stepState;
+          const inPlayerOrVp =
+            (vp && vp.contains(e.target)) || Boolean(e.target?.closest?.('.geom-step-player'));
+          if (e.key === 'ArrowLeft' || (inPlayerOrVp && e.key === 'ArrowUp')) {
+            e.preventDefault();
+            this.stopStepPlayback();
+            this.setStep(cur > 0 ? cur - 1 : 0);
+          } else if (e.key === 'ArrowRight' || (inPlayerOrVp && e.key === 'ArrowDown')) {
+            e.preventDefault();
+            this.stopStepPlayback();
+            this.setStep(cur < stList.length ? cur + 1 : stList.length);
+          } else if (inPlayerOrVp && e.key === 'Home') {
+            e.preventDefault();
+            this.stopStepPlayback();
+            this.setStep(0);
+          } else if (inPlayerOrVp && e.key === 'End') {
+            e.preventDefault();
+            this.stopStepPlayback();
+            this.setStep(stList.length);
+          } else if (inPlayerOrVp && e.key === ' ') {
+            e.preventDefault();
+            this.toggleStepPlayback();
+          }
+        });
+      }
 
       // On the Pseudocode track, start at Step 0 (Given) so the construction unfolds step-by-step;
       // on Heath, start at All so the classical finished diagram is shown initially.
       if (isPseudocodeTrack) {
-        this.setStep(0);
+        this.setStep(0, { smooth: false });
       } else {
-        this.setStep(steps.length);
+        this.setStep(steps.length, { smooth: false });
       }
     },
 
-    setStep(stepIndex) {
+    // Smoothly center a step element inside .geom-steps-viewport without scrolling the page window
+    scrollStepIntoViewport(stepEl, smooth = true) {
+      if (!stepEl || !this.stepState || !this.stepState.viewport) return;
+      const vp = this.stepState.viewport;
+      if (!vp.contains(stepEl)) return;
+      const vpRect = vp.getBoundingClientRect();
+      const elRect = stepEl.getBoundingClientRect();
+      const offsetInsideVp = elRect.top - vpRect.top + vp.scrollTop;
+      const targetScroll = Math.max(
+        0,
+        offsetInsideVp - vp.clientHeight / 2 + elRect.height / 2
+      );
+      vp.scrollTo({
+        top: targetScroll,
+        behavior: smooth ? 'smooth' : 'auto',
+      });
+    },
+
+    setStep(stepIndex, options = {}) {
       if (!this.stepState) return;
       const { steps, controllableMap, toolbars } = this.stepState;
       const clamped = Math.max(0, Math.min(steps.length, stepIndex));
@@ -1325,6 +1418,7 @@
 
       if (clamped < steps.length) {
         this.applyStepHighlight(steps[clamped]);
+        this.scrollStepIntoViewport(steps[clamped].el, options.smooth !== false);
       } else {
         this.clearHighlights();
       }
