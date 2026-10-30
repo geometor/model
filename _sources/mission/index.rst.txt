@@ -1,5 +1,5 @@
 :navigation: header
-:order: 1
+:order: 10
 
 mission
 =======
@@ -11,5 +11,3 @@ goals
 
 .. collection::
    :sort: order
-
-

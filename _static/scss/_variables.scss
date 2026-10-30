@@ -10,6 +10,7 @@
 
   --book-text: #d6cfc5;
   --book-text-muted: #9c958a;
+  --book-muted: var(--book-text-muted);
   --book-text-dim: #787268;
 
   --book-border: #3d3934;
@@ -17,6 +18,7 @@
   --book-border-light: #2c2b2e;
 
   --book-link: #de836e;
+  --book-accent: var(--book-link);
   --book-link-hover: #f5a492;
   --book-link-visited: #c97864;
 

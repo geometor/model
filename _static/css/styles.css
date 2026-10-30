@@ -9,11 +9,13 @@
   --sidebar-bg: #18181a;
   --book-text: #d6cfc5;
   --book-text-muted: #9c958a;
+  --book-muted: var(--book-text-muted);
   --book-text-dim: #787268;
   --book-border: #3d3934;
   --book-border-dark: #544f47;
   --book-border-light: #2c2b2e;
   --book-link: #de836e;
+  --book-accent: var(--book-link);
   --book-link-hover: #f5a492;
   --book-link-visited: #c97864;
   --book-quote-bg: rgba(255, 255, 255, 0.04);
@@ -704,21 +706,12 @@ dl.py dd {
   margin-left: 0;
 }
 
-article {
-  container-type: inline-size;
-  container-name: article;
-  padding: var(--fitz-2);
-  margin: var(--fitz);
+article:not(.excerpt) {
   display: flex;
   flex-flow: column nowrap;
 }
 
-article > * {
-  padding: var(--fitz-2);
-  margin: 0;
-}
-
-article nav.context {
+article:not(.excerpt) nav.context {
   grid-area: context;
   width: 100%;
   display: flex;
@@ -727,26 +720,26 @@ article nav.context {
   align-items: flex-start;
 }
 
-article nav.context div {
+article:not(.excerpt) nav.context div {
   min-width: 4em;
 }
 
-article nav.context a {
+article:not(.excerpt) nav.context a {
   --offset: 1.2em;
 }
 
-article nav.context a.prev {
+article:not(.excerpt) nav.context a.prev {
   justify-content: flex-start;
 }
 
-article nav.context a.prev::before {
+article:not(.excerpt) nav.context a.prev::before {
   padding-top: .1em;
   font-family: var(--font-icon);
   content: "<";
   text-align: left;
 }
 
-article nav.context a.next {
+article:not(.excerpt) nav.context a.next {
   justify-content: flex-end;
   padding-left: var(--fitz);
   padding-right: var(--offset);
@@ -754,7 +747,7 @@ article nav.context a.next {
   border-right: 1px solid var(--border-color);
 }
 
-article nav.context a.next:hover {
+article:not(.excerpt) nav.context a.next:hover {
   font-weight: bold;
   width: var(--offset);
   margin-right: calc(var(--offset) * -1);
@@ -762,7 +755,7 @@ article nav.context a.next:hover {
   text-align: right;
 }
 
-article nav.breadcrumbs {
+article:not(.excerpt) nav.breadcrumbs {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -770,31 +763,31 @@ article nav.breadcrumbs {
   text-align: center;
 }
 
-article nav.breadcrumbs a {
+article:not(.excerpt) nav.breadcrumbs a {
   display: block;
 }
 
-article nav.breadcrumbs a::before {
+article:not(.excerpt) nav.breadcrumbs a::before {
   font-family: var(--font-icon);
   content: "^";
   padding: 0 .25em;
 }
 
-article > figure {
+article:not(.excerpt) > figure {
   overflow: hidden;
   display: flex;
   flex-flow: column nowrap;
   cursor: pointer;
 }
 
-article > figure > img {
+article:not(.excerpt) > figure > img {
   max-width: 100%;
   height: 100%;
   margin: 0 auto;
   object-position: center;
 }
 
-article > figure.modal {
+article:not(.excerpt) > figure.modal {
   position: fixed;
   z-index: 10;
   top: 0;
@@ -804,22 +797,22 @@ article > figure.modal {
   background: black;
 }
 
-article > figure.modal > img {
+article:not(.excerpt) > figure.modal > img {
   max-height: none;
 }
 
-article > header {
+article:not(.excerpt) > header {
   grid-area: article-header;
   display: flex;
   flex-flow: column;
 }
 
-article > header > h1 {
+article:not(.excerpt) > header > h1 {
   font-size: 1.4em;
   line-height: 1;
 }
 
-article > header > h2 {
+article:not(.excerpt) > header > h2 {
   font-variant: normal;
   text-transform: uppercase;
   font-weight: 700;
@@ -828,37 +821,37 @@ article > header > h2 {
   margin-top: var(--fitz-half);
 }
 
-article > header > h2 ~ h2 {
+article:not(.excerpt) > header > h2 ~ h2 {
   margin-top: var(--fitz);
 }
 
-article > .content {
+article:not(.excerpt) > .content {
   grid-area: content;
 }
 
-article > .content > * + * {
+article:not(.excerpt) > .content > * + * {
   margin-top: var(--fitz);
 }
 
-article > .content p {
+article:not(.excerpt) > .content p {
   margin-bottom: var(--fitz);
 }
 
-article > .content h1,
-article > .content > h2,
-article > .content > h3,
-article > .content > h4,
-article > .content > h5,
-article > .content > h6 {
+article:not(.excerpt) > .content h1,
+article:not(.excerpt) > .content > h2,
+article:not(.excerpt) > .content > h3,
+article:not(.excerpt) > .content > h4,
+article:not(.excerpt) > .content > h5,
+article:not(.excerpt) > .content > h6 {
   margin-top: var(--fitz-2);
 }
 
-article > .content h1 {
+article:not(.excerpt) > .content h1 {
   border-bottom: 1px solid var(--link-color);
   margin-bottom: var(--fitz-2);
 }
 
-article > .content > .summary {
+article:not(.excerpt) > .content > .summary {
   border-top: 1px solid var(--link-color);
   padding-top: var(--fitz-2);
   border-bottom: 1px solid var(--link-color);
@@ -867,78 +860,82 @@ article > .content > .summary {
   font-size: 1.1em;
 }
 
-article > .content > .summary ul,
-article > .content > .summary li {
+article:not(.excerpt) > .content > .summary ul,
+article:not(.excerpt) > .content > .summary li {
   margin: var(--fitz);
 }
 
-article > .content a {
+article:not(.excerpt) > .content a {
   display: inline;
 }
 
-article > .content blockquote {
-  padding: var(--fitz-2);
-  margin-bottom: var(--fitz);
-  background: #000;
-  border: none;
-  font-size: 1.2em;
+article:not(.excerpt) > .content blockquote {
+  padding: 0.75rem 1.25rem;
+  margin: 0.75rem 0 var(--fitz) 0;
+  background: var(--book-surface-alt);
+  border-left: 3px solid var(--book-accent);
+  border-radius: 0 6px 6px 0;
+  color: var(--book-text);
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: 1.12em;
+  line-height: 1.55;
 }
 
-article > .content blockquote > *:last-child {
+article:not(.excerpt) > .content blockquote > *:last-child {
   margin-bottom: 0;
 }
 
-article > .content blockquote > *:last-child > *:last-child {
+article:not(.excerpt) > .content blockquote > *:last-child > *:last-child {
   margin-bottom: 0;
 }
 
-article > .content blockquote > blockquote {
+article:not(.excerpt) > .content blockquote > blockquote {
   font-style: italic;
   list-style-type: '~';
   padding-top: .5em;
   font-size: 1em;
 }
 
-article > .content blockquote > ul {
+article:not(.excerpt) > .content blockquote > ul {
   font-style: italic;
   list-style-type: square;
   padding-top: .5em;
 }
 
-article > .content img {
+article:not(.excerpt) > .content img {
   max-width: 100%;
 }
 
-article > footer {
+article:not(.excerpt) > footer {
   grid-area: article-footer;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
 }
 
-article > footer > aside ul, article > footer > aside li,
-article > footer > nav ul,
-article > footer > nav li {
+article:not(.excerpt) > footer > aside ul, article:not(.excerpt) > footer > aside li,
+article:not(.excerpt) > footer > nav ul,
+article:not(.excerpt) > footer > nav li {
   display: flex;
   flex-wrap: wrap;
 }
 
-article > footer > aside.article-categories a,
-article > footer > nav.article-categories a {
+article:not(.excerpt) > footer > aside.article-categories a,
+article:not(.excerpt) > footer > nav.article-categories a {
   text-transform: uppercase;
 }
 
-article > footer > aside.article-tags a,
-article > footer > nav.article-tags a {
+article:not(.excerpt) > footer > aside.article-tags a,
+article:not(.excerpt) > footer > nav.article-tags a {
   font-style: italic;
 }
 
-article > .gallery {
+article:not(.excerpt) > .gallery {
   grid-area: gallery;
   padding: var(--fitz);
 }
 
-article > .gallery > .panel {
+article:not(.excerpt) > .gallery > .panel {
   grid-area: panel;
   display: none;
   background-position: center;
@@ -947,13 +944,13 @@ article > .gallery > .panel {
   height: 100%;
 }
 
-article > .gallery > .list {
+article:not(.excerpt) > .gallery > .list {
   grid-area: list;
   display: flex;
   flex-flow: row wrap;
 }
 
-article > .gallery > .list > figure {
+article:not(.excerpt) > .gallery > .list > figure {
   flex-basis: 5em;
   padding: var(--fitz);
   overflow: hidden;
@@ -961,18 +958,18 @@ article > .gallery > .list > figure {
   min-height: 5em;
 }
 
-article > .gallery > .list > figure > img {
+article:not(.excerpt) > .gallery > .list > figure > img {
   height: 100%;
   min-height: 5em;
   object-fit: cover;
   object-position: center;
 }
 
-article > .gallery > .list > figure > figcaption {
+article:not(.excerpt) > .gallery > .list > figure > figcaption {
   text-align: center;
 }
 
-article > .gallery.modal {
+article:not(.excerpt) > .gallery.modal {
   position: fixed;
   z-index: 10;
   background: black;
@@ -986,192 +983,133 @@ article > .gallery.modal {
   grid-template-rows: 1fr 10em;
 }
 
-article > .gallery.modal > .panel {
+article:not(.excerpt) > .gallery.modal > .panel {
   display: block;
 }
 
-article > .gallery.modal > .list {
+article:not(.excerpt) > .gallery.modal > .list {
   flex-wrap: nowrap;
 }
 
-article > .gallery.modal > .list > figure {
+article:not(.excerpt) > .gallery.modal > .list > figure {
   flex-basis: auto;
 }
 
-article > .gallery.modal > .list > figure > img {
+article:not(.excerpt) > .gallery.modal > .list > figure > img {
   width: 100%;
   object-fit: contain;
 }
 
-@container article (min-width: 60em) {
-  article {
-    flex-flow: row wrap;
-  }
-  article > .content {
-    flex: 1 1 calc(100% - var(--col));
-    order: 1;
-  }
-  article > figure {
-    flex: 1 1 var(--col);
-    order: 2;
-  }
-  article > .gallery {
-    flex: 1 1 var(--col);
-    order: 4;
-  }
-  article > footer {
-    order: 5;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-  }
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.25;
+  color: var(--book-muted);
 }
 
-@container article (min-width: 80em) {
-  article > .content {
-    flex: 1 1 calc(100% - var(--col-2));
-  }
+.meta .date {
+  display: inline-block;
+  padding: 0.1rem 0.45rem;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--book-accent) 12%, var(--book-surface));
+  border: 1px solid color-mix(in srgb, var(--book-accent) 30%, var(--book-border));
+  color: var(--book-accent);
+  font-weight: 600;
+  letter-spacing: 0.03em;
 }
 
-/* article {
-
-  @media (min-width: 96em) {
-    flex-flow: row wrap;
-
-    > .content {
-      flex: 1 1 calc(100% - var(--col));
-      order: 1;
-    }
-
-    > figure {
-      flex: 1 1 var(--col);
-      order: 2;
-    }
-
-    > .gallery {
-      flex: 1 1 var(--col);
-      order: 4;
-    }
-
-    > footer {
-      flex: 1 1 var(--col);
-      order: 5;
-      flex-flow: column nowrap;
-      justify-content: flex-start;
-    }
-  }
-
-  @media (min-width: 108em) {
-    > .content {
-      flex: 1 1 calc(100% - var(--col-2));
-    }
-
-    > figure, > .gallery, > footer {
-      flex: 0 0 var(--col-2);
-    }
-  }
+.meta .author {
+  display: inline-block;
+  padding: 0.1rem 0.45rem;
+  border-radius: 3px;
+  background: var(--book-surface);
+  border: 1px solid var(--book-border);
+  color: var(--book-muted);
+  font-weight: 500;
 }
-*/
+
+.meta .category,
+.meta .tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.meta .category a,
+.meta .tags a {
+  display: inline-block;
+  padding: 0.08rem 0.42rem;
+  border-radius: 3px;
+  background: var(--book-surface);
+  border: 1px solid var(--book-border);
+  color: var(--book-muted);
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.meta .category a:hover,
+.meta .tags a:hover {
+  color: var(--book-accent);
+  border-color: var(--book-accent);
+}
+
+.meta .category a {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  font-size: 0.72rem;
+}
+
+.meta .tags a::before {
+  content: "#";
+  opacity: 0.65;
+  margin-right: 0.08em;
+}
+
 article.excerpt {
-  padding: var(--fitz);
-  margin: var(--fitz-half) 0;
-  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 1.15rem;
+  margin: 0;
+  background: var(--book-surface-alt);
+  border: 1px solid var(--book-border);
+  border-radius: 6px;
   display: flex;
   flex-flow: column nowrap;
+  gap: 0.65rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+article.excerpt:hover {
+  border-color: color-mix(in srgb, var(--book-accent) 45%, var(--book-border));
 }
 
 article.excerpt > .content {
   display: flex;
-  flex-flow: row-reverse nowrap;
-  align-items: flex-start;
-  gap: var(--fitz);
-  margin-bottom: var(--fitz-half);
+  flex-flow: column nowrap;
+  align-items: stretch;
+  gap: 0.65rem;
 }
 
 article.excerpt > .content > figure {
-  flex: 0 0 8em;
-  max-width: 8em;
-  height: 6em;
+  flex: 0 0 auto;
+  width: 100%;
+  height: 11rem;
   overflow: hidden;
   margin: 0;
+  padding: 0.5rem;
+  background: var(--book-surface);
+  border: 1px solid color-mix(in srgb, var(--book-border) 65%, transparent);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 article.excerpt > .content > figure a {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-article.excerpt > .content > figure img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-article.excerpt > .content > section {
-  flex: 1;
-}
-
-article.excerpt > .content > section h2 {
-  font-size: 1.1em;
-  line-height: 1.2;
-  margin: 0;
-}
-
-article.excerpt > .content > section blockquote {
-  margin: 0;
-  font-size: 1.1em;
-  line-height: 1.4;
-  font-weight: normal;
-  border: none;
-}
-
-article.excerpt > footer {
-  display: flex;
-  justify-content: flex-end;
-}
-
-article.excerpt > footer .meta {
-  font-size: 0.7em;
-  gap: 0.5em;
-}
-
-article.excerpt .article-share {
-  display: none;
-}
-
-article.excerpt .more {
-  align-self: flex-end;
-}
-
-.collection {
-  font-size: .9em;
-  display: grid;
-  gap: var(--fitz);
-  grid-template-columns: repeat(auto-fit, minmax(24em, 1fr));
-}
-
-.collection.layout-cards {
-  grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
-}
-
-.collection.layout-cards > article.excerpt .content {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.collection.layout-cards > article.excerpt .content figure {
-  margin: 0 auto;
-  width: 14em;
-  height: 14em;
-  max-width: none;
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.collection.layout-cards > article.excerpt .content figure a {
   display: flex;
   width: 100%;
   height: 100%;
@@ -1179,7 +1117,8 @@ article.excerpt .more {
   justify-content: center;
 }
 
-.collection.layout-cards > article.excerpt .content figure img {
+article.excerpt > .content > figure img,
+article.excerpt > .content > figure svg {
   max-width: 100%;
   max-height: 100%;
   width: auto;
@@ -1187,27 +1126,58 @@ article.excerpt .more {
   object-fit: contain;
 }
 
-.collection.layout-cards > article.excerpt .content section {
-  width: 100%;
-  text-align: center;
+article.excerpt > .content > section {
+  flex: 1;
+  min-width: 0;
 }
 
-.collection.layout-cards > article.excerpt footer {
-  text-align: center;
+article.excerpt > .content > section h2 {
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.28;
+  margin: 0 0 0.35rem 0;
 }
 
-.collection.layout-banners {
-  grid-template-columns: 1fr;
+article.excerpt > .content > section h2 a {
+  color: var(--book-text);
+  text-decoration: none;
 }
 
-.collection.layout-list {
-  grid-template-columns: 1fr;
-  gap: 0;
+article.excerpt > .content > section h2 a:hover {
+  color: var(--book-accent);
 }
 
-.collection > * {
-  background: var(--bg);
-  padding: var(--fitz);
+article.excerpt > .content > section p,
+article.excerpt > .content > section blockquote,
+article.excerpt > .content > section .enunciation {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: 1.02rem;
+  line-height: 1.5;
+  color: var(--book-muted);
+}
+
+article.excerpt > footer {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: auto;
+  padding-top: 0.55rem;
+  border-top: 1px solid color-mix(in srgb, var(--book-border) 65%, transparent);
+}
+
+article.excerpt .article-share {
+  display: none;
+}
+
+.collection {
+  display: grid;
+  gap: 0.9rem;
+  margin: 1rem 0 1.5rem 0;
+  grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
 }
 
 .collection > header {
@@ -1215,32 +1185,43 @@ article.excerpt .more {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 0 0.35rem 0;
+  border-bottom: 1px solid var(--book-border);
+}
+
+.collection > header h1 {
+  margin: 0;
+  border: none;
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: 1.45rem;
+  color: var(--book-text);
 }
 
 .collection .collection-controls {
   grid-column: 1 / -1;
   display: flex;
   justify-content: flex-end;
-  gap: 0.5rem;
-  margin-bottom: var(--fitz);
+  gap: 0.35rem;
+  margin-bottom: 0.15rem;
 }
 
 .collection .collection-controls button {
-  background: none;
-  border: 1px solid var(--text-muted);
-  color: var(--text-muted);
-  padding: 0.25rem;
+  background: var(--book-surface-alt);
+  border: 1px solid var(--book-border);
+  color: var(--book-muted);
+  padding: 0.28rem 0.42rem;
   cursor: pointer;
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
 .collection .collection-controls button:hover, .collection .collection-controls button.active {
-  background: var(--text-muted);
-  color: var(--bg);
+  background: color-mix(in srgb, var(--book-accent) 14%, var(--book-surface-alt));
+  border-color: var(--book-accent);
+  color: var(--book-accent);
 }
 
 .collection .collection-controls button svg {
@@ -1250,135 +1231,116 @@ article.excerpt .more {
 .collection > article.excerpt {
   container-type: inline-size;
   container-name: excerpt;
-  display: flex;
-  flex-direction: column;
-  gap: var(--fitz);
   min-width: 0;
 }
 
-.collection > article.excerpt .content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--fitz);
+.collection.layout-cards {
+  grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
 }
 
-.collection > article.excerpt .content figure {
+.collection.layout-cards > article.excerpt .content {
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+}
+
+.collection.layout-cards > article.excerpt .content figure {
   width: 100%;
+  height: 11rem;
   max-width: none;
-  flex: 0 0 auto;
+}
+
+.collection.layout-banners {
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.collection.layout-banners > article.excerpt .content {
+  flex-direction: row;
+  align-items: flex-start;
+  text-align: left;
+  gap: 1.1rem;
+}
+
+.collection.layout-banners > article.excerpt .content figure {
+  width: 8.5rem;
+  height: 8.5rem;
+  flex: 0 0 8.5rem;
+  max-width: none;
   margin: 0;
 }
 
-.collection > article.excerpt .content figure img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
+.collection.layout-list {
+  grid-template-columns: 1fr;
+  gap: 0;
+  border: 1px solid var(--book-border);
+  border-radius: 6px;
+  overflow: hidden;
 }
 
-.collection > article.excerpt .content section h2 {
-  margin-top: 0;
-  font-size: 1.2em;
-}
-
-@container excerpt (min-width: 35em) {
-  .collection > article.excerpt .content {
-    flex-direction: row;
-    align-items: flex-start;
-    text-align: left;
-  }
-  .collection > article.excerpt .content figure {
-    width: 10em;
-    height: 10em;
-    max-width: none;
-    margin-right: var(--fitz);
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .collection > article.excerpt .content figure a {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-  }
-  .collection > article.excerpt .content figure img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-  }
-}
-
-.collection > article.excerpt footer {
-  margin-top: auto;
-  border-top: 1px solid var(--text-muted-alpha);
-  padding-top: var(--fitz-2);
+.collection.layout-list > .collection-controls {
+  padding: 0.45rem 0.75rem;
+  margin: 0;
+  background: var(--book-surface-alt);
+  border-bottom: 1px solid var(--book-border);
 }
 
 .collection.layout-list > article.excerpt {
   flex-direction: row;
   align-items: center;
-  padding: var(--fitz-2);
-  border-bottom: 1px solid var(--text-muted-alpha);
-  gap: var(--fitz);
+  justify-content: space-between;
+  padding: 0.55rem 0.9rem;
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid var(--book-border);
+  border-radius: 0;
+  background: var(--book-surface);
+  gap: 0.85rem;
+}
+
+.collection.layout-list > article.excerpt:last-child {
+  border-bottom: none;
+}
+
+.collection.layout-list > article.excerpt:hover {
+  background: var(--book-surface-alt);
 }
 
 .collection.layout-list > article.excerpt .content {
+  flex: 1;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  min-width: 0;
   text-align: left;
 }
 
 .collection.layout-list > article.excerpt .content figure {
-  width: 5em;
-  height: 5em;
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 3rem;
   max-width: none;
   margin: 0;
-  margin-right: var(--fitz);
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.collection.layout-list > article.excerpt .content figure a {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-.collection.layout-list > article.excerpt .content figure img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 4px;
+  padding: 0.2rem;
 }
 
 .collection.layout-list > article.excerpt .content section {
   flex: 1;
-  display: flex;
-  align-items: center;
+  min-width: 0;
 }
 
 .collection.layout-list > article.excerpt .content section h2 {
-  font-size: 1em;
+  font-size: 1.05rem;
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.collection.layout-list > article.excerpt .content section blockquote {
+.collection.layout-list > article.excerpt .content section p,
+.collection.layout-list > article.excerpt .content section blockquote,
+.collection.layout-list > article.excerpt .content section .enunciation {
   display: none;
 }
 
@@ -1386,9 +1348,7 @@ article.excerpt .more {
   margin: 0;
   padding: 0;
   border: none;
-  margin-left: var(--fitz);
-  font-size: 0.8em;
-  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* layout *****************************/

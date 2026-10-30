@@ -1,8 +1,11 @@
 :navigation: header
-:order: 3
+:order: 30
 
+===
 log
 ===
+
+Chronological development and modeling log for ``geometor.model``.
 
 .. collection::
    :type: log
