@@ -20,7 +20,8 @@ from geometor.model.utils import clean_expr
 if TYPE_CHECKING:
     from sympy.printing.printer import Printer
 
-    from geometor.model import Model
+    from geometor.model.model import Model
+
 
 phi = sp.Rational(1, 2) + (sp.sqrt(5) / 2)
 
@@ -55,22 +56,15 @@ class SectionsMixin:
         return self.set_section(points, classes, ID)
 
     def set_section(
-        self, points: list[spg.Point], classes: list[str] | None = None, ID: str = ""
+        self,
+        points: list[spg.Point],
+        classes: list[str] | None = None,
+        ID: str = "",
+        *,
+        guide: bool = False,
+        by: str = "",
     ) -> Section:
-        """Set section (list of 3 points on a line).
-        
-        This method constructs a `Section` from a list of three collinear points and adds it to the model. It automatically calculates the section's ratio, generates an ID if needed, and logs the section's details including segment lengths.
-
-        Args:
-            points: A list of 3 collinear points.
-            classes: A list of class labels.
-            ID: A string ID for the section. If empty, one is generated.
-
-        Returns:
-            The constructed :class:`Section`.
-
-        """
-        # TODO: check points and minimum count of 3
+        """Set section (list of 3 points on a line)."""
         section = Section(points)
 
         if not ID:
@@ -78,19 +72,24 @@ class SectionsMixin:
             points_IDs = " ".join(points_IDs)
             ID = f"/ {points_IDs} /"
 
-        details = Element(section, parents=points, classes=classes, ID=ID)
+        details = Element(section, parents=points, classes=classes, ID=ID, guide=guide)
 
         self[section] = details
+        if hasattr(self, "_register_in_scope"):
+            self._register_in_scope(section)
+        if hasattr(self, "_record_step"):
+            self._record_step(kind="construct", action="section", elements=[details.ID], by=by)
 
-        classes_str = " : " + " ".join(classes) if classes else ""
-        self.log(
-            f"[{COLORS['section']} bold]{details.ID}[/{COLORS['section']} bold]{classes_str}"
-        )
-        table = Table(show_header=False, box=None, padding=(0, 4))
-        for i, length in enumerate(section.lengths):
-            table.add_row(f"    len {i + 1}:", f"[cyan]{sp.pretty(length)}[/cyan]")
-        table.add_row("    ratio:", f"[cyan]{sp.pretty(section.ratio)}[/cyan]")
-        self.log(table)
+        if self.is_logging_enabled:
+            classes_str = " : " + " ".join(classes) if classes else ""
+            self.log(
+                f"[{COLORS['section']} bold]{details.ID}[/{COLORS['section']} bold]{classes_str}"
+            )
+            table = Table(show_header=False, box=None, padding=(0, 4))
+            for i, length in enumerate(section.lengths):
+                table.add_row(f"    len {i + 1}:", f"[cyan]{sp.pretty(length)}[/cyan]")
+            table.add_row("    ratio:", f"[cyan]{sp.pretty(section.ratio)}[/cyan]")
+            self.log(table)
 
         return section
 
@@ -138,7 +137,7 @@ class Section:
         points_repr = [printer.doprint(p) for p in self.points]
         return f"Section([{', '.join(points_repr)}])"
 
-    def get_IDs(self, model: geometor.model.Model) -> list[str]:
+    def get_IDs(self, model: Model) -> list[str]:
         """Return a list of IDs.
         
         This method retrieves the unique identifiers for each of the three points that define the section, referencing the provided model.

@@ -1,6 +1,6 @@
 """Provides ancestor retrieval functions for the :class:`geometor.model.Model` class.
 
-We follow the chain of parents for the element. 
+We follow the causal chain of parents for the element.
 """
 
 from __future__ import annotations
@@ -27,28 +27,24 @@ class AncestorsMixin:
 
         Returns:
             dict: A nested dictionary representing the IDs of the ancestors.
-
-        **example**
-
-        If element A has parents B and C, and B has parent D, the method returns:
-
-            {'A': {'B': {'D': {}}, 'C': {}}}
-
         """
-        visited = set()
+        from geometor.model.invariants import Angle
+        from geometor.model.sections import Section
+        from geometor.model.wedges import Wedge
+
+        visited: set[str] = set()
 
         def _recursive_get(el: GeometryEntity) -> dict[str, dict]:
-            from geometor.model.sections import Section
-
+            if el not in self:
+                return {}
             element_id = self[el].ID
             if element_id in visited:
-                return {}  # Cycle detected
+                return {}  # Cycle guard
 
             visited.add(element_id)
+            ancestors: dict[str, dict] = {element_id: {}}
 
-            ancestors = {element_id: {}}
-
-            if isinstance(el, Section):
+            if isinstance(el, (Section, Angle, Wedge)):
                 for pt in el.points:
                     ancestors[element_id].update(_recursive_get(pt))
                 return ancestors
@@ -61,12 +57,7 @@ class AncestorsMixin:
             if "given" in self[el].classes:
                 return ancestors
 
-            # Check if the element has parents
-            parents = []
-            if self[el].parents:
-                # Consider only the first two parents
-                parents = list(self[el].parents.keys())[:2]
-
+            parents = list(self[el].parents.keys())[:2] if self[el].parents else []
             for parent in parents:
                 ancestors[element_id].update(_recursive_get(parent))
 
@@ -75,37 +66,22 @@ class AncestorsMixin:
         return _recursive_get(element)
 
     def get_ancestors(self, element: GeometryEntity) -> dict[GeometryEntity, dict]:
-        """Retrieve the ancestors for the given element.
+        """Retrieve the causal ancestors for the given element as a nested dictionary."""
+        visited: set[GeometryEntity] = set()
 
-        The method recursively traverses the parent elements of the given element
-        and constructs a nested dictionary representing the ancestor tree.
+        def _recursive_el(el: GeometryEntity) -> dict[GeometryEntity, dict]:
+            if el not in self or el in visited:
+                return {}
+            visited.add(el)
+            ancestors: dict[GeometryEntity, dict] = {el: {}}
 
-        Args:
-            element : sympy.geometry object
-                The element for which the ancestors are to be retrieved.
+            if "given" in self[el].classes:
+                return ancestors
 
-        Returns:
-            dict : A nested dictionary representing the ancestors.
+            parents = list(self[el].parents.keys())[:2] if self[el].parents else []
+            for parent in parents:
+                ancestors[el].update(_recursive_el(parent))
 
-        **example**
-
-        If element A has parents B and C, and B has parent D, the method returns:
-
-            {A: {B: {D: {}}, C: {}}}
-
-        """
-        ancestors = {element: {}}
-
-        if "given" in self[element].classes:
             return ancestors
 
-        # Check if the element has parents
-        parents = []
-        if self[element].parents:
-            # Consider only the first two parents
-            parents = list(self[element].parents.keys())[:2]
-
-        for parent in parents:
-            ancestors[element].update(self.get_ancestors(parent))
-
-        return ancestors
+        return _recursive_el(element)

@@ -1,51 +1,54 @@
 """Provides line construction and manipulation for the Model class.
 
-This module encapsulates the logic for creating symbolic lines from points, managing their inclusion in the model, and determining their intersections with other geometric elements.
+This module encapsulates the logic for creating symbolic lines from points,
+managing their inclusion in the model, and determining their intersections.
 """
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from collections.abc import Sequence
 
 import sympy as sp
 import sympy.geometry as spg
 from rich.table import Table
 
 from geometor.model.colors import get_color
-from geometor.model.element import Element, check_existence, find_all_intersections
-
-if TYPE_CHECKING:
-    pass
+from geometor.model.element import (
+    Element,
+    Struct,
+    check_existence,
+    find_all_intersections,
+)
 
 __all__ = ["LinesMixin"]
 
 
 class LinesMixin:
-    """Mixin for the Model class containing line construction operations.
-    
-    This mixin provides methods to construct lines using pairs of points, identified either by their element IDs or directly by their SymPy Point objects. It handles the registration of lines in the model and the detection of intersections.
-    """
+    """Mixin for the Model class containing line construction operations."""
 
     def construct_line_by_IDs(
-        self, pt_1_ID: str, pt_2_ID: str, classes: list[str] | None = None, ID: str = ""
+        self,
+        pt_1_ID: str,
+        pt_2_ID: str,
+        classes: list[str] | None = None,
+        ID: str = "",
+        *,
+        guide: bool = False,
+        intersect: bool | Sequence[Struct] | None = None,
+        by: str = "",
     ) -> spg.Line:
-        """Find points by ID and use them with :meth:`Model.construct_line`.
-        
-        This convenience method allows for the creation of lines using the unique string identifiers of the start and end points, retrieving the corresponding point objects from the model before proceeding with construction.
-
-        Args:
-            pt_1_ID: The ID of the first point.
-            pt_2_ID: The ID of the second point.
-            classes: A list of class labels.
-            ID: A string ID for the line.
-
-        Returns:
-            The constructed :class:`sympy.geometry.line.Line`.
-
-        """
+        """Find points by ID and construct a line via :meth:`Model.construct_line`."""
         pt_1 = self.get_element_by_ID(pt_1_ID)
         pt_2 = self.get_element_by_ID(pt_2_ID)
-        return self.construct_line(pt_1, pt_2, classes, ID)
+        return self.construct_line(
+            pt_1,
+            pt_2,
+            classes=classes,
+            ID=ID,
+            guide=guide,
+            intersect=intersect,
+            by=by,
+        )
 
     def construct_line(
         self,
@@ -54,24 +57,27 @@ class LinesMixin:
         classes: list[str] | None = None,
         ID: str = "",
         guide: bool = False,
+        *,
+        intersect: bool | Sequence[Struct] | None = None,
+        by: str = "",
     ) -> spg.Line:
-        """Construct a :class:`Line <sympy.geometry.line.Line>` from two points and add it to the :class:`Model <geometor.model.model.Model>`.
-        
-        This method creates a line connecting two given points. It checks if an equivalent line already exists in the model to prevent duplicates, merging attributes if necessary. If it's a new line, it calculates intersections with existing structures.
+        """Construct a :class:`sympy.geometry.Line` from two points and add it to the model.
 
         Args:
             pt_1: The first point of the line.
             pt_2: The second point of the line.
             classes: A list of class labels.
-            ID: A string ID for the line. If empty, one is generated.
-            guide: If True, the line is a guide.
+            ID: A string ID for the line. If empty, ``[ A B ]`` is generated.
+            guide: If True, the line is excluded from automatic intersections.
+            intersect: Override automatic intersection behavior:
+                - ``None`` (default): uses ``self.auto_intersect``.
+                - ``False``: skip automatic intersections for this line.
+                - ``True``: intersect with all eligible non-guide structures.
+                - ``Sequence[Struct]``: intersect strictly against the given structures.
+            by: Optional Euclidean citation (e.g., ``"Post.1"``).
 
         Returns:
-            The constructed or retrieved :class:`sympy.geometry.line.Line`.
-
-        Raises:
-            TypeError: If ``pt_1`` or ``pt_2`` are not instances of ``sympy.geometry.point.Point``.
-
+            The constructed or existing :class:`sympy.geometry.Line`.
         """
         self.clear_new_points()
 
@@ -95,26 +101,38 @@ class LinesMixin:
         )
 
         exists, existing_line = check_existence(self, struct, self.lines)
-
-        if exists:
-            # handle the logic for an existing circle
-            for parent in struct.points:
-                self[existing_line].parents[parent] = ""
+        if exists and existing_line is not None:
+            for incident_pt in struct.points:
+                self[existing_line].pts[incident_pt] = ""
             self[existing_line].classes.update(details.classes)
-        else:
-            # add struct
-            self[struct] = details
+            if not details.guide and self[existing_line].guide and "guide" not in classes:
+                self[existing_line].guide = False
+            return existing_line
 
-            if self._logger and self._logger.isEnabledFor(20):
-                classes_str = " : " + " ".join(classes) if classes else ""
-                color = get_color(struct, classes)
-                self.log(f"[{color} bold]{details.ID}[/{color} bold]{classes_str}")
-                table = Table(show_header=False, box=None, padding=(0, 4))
-                table.add_row("    eq:", f"[cyan]{sp.pretty(struct.equation())}[/cyan]")
-                table.add_row("    coef:", f"[cyan]{struct.coefficients}[/cyan]")
-                table.add_row("    pts:", f"[cyan]{self[pt_1].ID}, {self[pt_2].ID}[/cyan]")
-                self.log(table)
+        self[struct] = details
+        if hasattr(self, "_register_in_scope"):
+            self._register_in_scope(struct)
+        if hasattr(self, "_record_step"):
+            self._record_step(kind="construct", action="line", elements=[details.ID], by=by)
 
-            find_all_intersections(self, struct)
+        if self.is_logging_enabled:
+            classes_str = " : " + " ".join(classes) if classes else ""
+            color = get_color(struct, classes)
+            self.log(f"[{color} bold]{details.ID}[/{color} bold]{classes_str}")
+            table = Table(show_header=False, box=None, padding=(0, 4))
+            table.add_row("    eq:", f"[cyan]{sp.pretty(struct.equation())}[/cyan]")
+            table.add_row("    coef:", f"[cyan]{struct.coefficients}[/cyan]")
+            table.add_row("    pts:", f"[cyan]{self[pt_1].ID}, {self[pt_2].ID}[/cyan]")
+            self.log(table)
 
+        if intersect is False:
             return struct
+        if isinstance(intersect, Sequence):
+            find_all_intersections(self, struct, candidates=intersect, by=by)
+        elif intersect is True:
+            if not details.guide:
+                find_all_intersections(self, struct, candidates=self.structs, by=by)
+        else:
+            find_all_intersections(self, struct, by=by)
+
+        return struct

@@ -32,5 +32,5 @@ def run() -> None:
         except (KeyboardInterrupt, EOFError):
             console.print("\n[yellow]Exiting...[/yellow]")
             break
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             console.print(f"[red]Error:[/red] {e}")

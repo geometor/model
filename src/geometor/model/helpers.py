@@ -10,14 +10,14 @@ from geometor.model.element import exact_intersect
 from geometor.model.model import Model
 
 __all__ = [
-    "line_get_y",
-    "set_given_start_points",
-    "set_given_start_points_zero",
-    "set_equilateral_poles",
     "construct_perpendicular_bisector",
-    "set_midpoint",
+    "line_get_y",
+    "set_equilateral_poles",
     "set_given_rect_points",
     "set_given_square_points",
+    "set_given_start_points",
+    "set_given_start_points_zero",
+    "set_midpoint",
 ]
 
 

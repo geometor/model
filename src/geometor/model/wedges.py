@@ -135,16 +135,21 @@ class WedgesMixin:
         )
 
         self[struct] = details
+        if hasattr(self, "_register_in_scope"):
+            self._register_in_scope(struct)
+        if hasattr(self, "_record_step"):
+            self._record_step(kind="construct", action="wedge", elements=[details.ID])
 
-        classes_str = " : " + " ".join(classes) if classes else ""
-        self.log(
-            f"[{COLORS['polygon']} bold]{details.ID}[/{COLORS['polygon']} bold]{classes_str}"
-        )
-        table = Table(show_header=False, box=None, padding=(0, 4))
-        table.add_row("    r:", f"[cyan]{sp.pretty(struct.circle.radius)}[/cyan]")
-        table.add_row("    rad:", f"[cyan]{sp.pretty(struct.radians)}[/cyan]")
-        table.add_row("    deg:", f"[cyan]{sp.pretty(struct.degrees)}[/cyan]")
-        self.log(table)
+        if self.is_logging_enabled:
+            classes_str = " : " + " ".join(classes) if classes else ""
+            self.log(
+                f"[{COLORS['polygon']} bold]{details.ID}[/{COLORS['polygon']} bold]{classes_str}"
+            )
+            table = Table(show_header=False, box=None, padding=(0, 4))
+            table.add_row("    r:", f"[cyan]{sp.pretty(struct.circle.radius)}[/cyan]")
+            table.add_row("    rad:", f"[cyan]{sp.pretty(struct.radians)}[/cyan]")
+            table.add_row("    deg:", f"[cyan]{sp.pretty(struct.degrees)}[/cyan]")
+            self.log(table)
 
         return struct
 

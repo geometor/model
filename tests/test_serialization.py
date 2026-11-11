@@ -19,7 +19,7 @@ def compare_models(m1, m2):
 
     # 3. Compare the set of IDs
     if map1.keys() != map2.keys():
-        print(f"❌ Models have different element IDs.")
+        print("❌ Models have different element IDs.")
         print(f"--- Model 1 IDs: {sorted(map1.keys())}")
         print(f"--- Model 2 IDs: {sorted(map2.keys())}")
         return False
@@ -32,8 +32,8 @@ def compare_models(m1, m2):
         # Compare string representation of the sympy object
         if str(key1) != str(key2):
             print(f"❌ Mismatch in sympy object for element {ID}:")
-            print(f"  M1: {str(key1)}")
-            print(f"  M2: {str(key2)}")
+            print(f"  M1: {key1!s}")
+            print(f"  M2: {key2!s}")
             return False
 
         # Compare classes
@@ -44,8 +44,8 @@ def compare_models(m1, m2):
             return False
 
         # Compare parents by their IDs
-        parents1_ids = sorted([m1[p].ID for p in el1.parents.keys()])
-        parents2_ids = sorted([m2[p].ID for p in el2.parents.keys()])
+        parents1_ids = sorted([m1[p].ID for p in el1.parents])
+        parents2_ids = sorted([m2[p].ID for p in el2.parents])
         if parents1_ids != parents2_ids:
             print(
                 f"❌ Mismatch in parents for element {ID}: {parents1_ids} vs {parents2_ids}"

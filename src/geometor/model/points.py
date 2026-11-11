@@ -1,32 +1,27 @@
 """Provides point construction and manipulation for the Model class.
 
-This module handles the creation, deduplication, and management of symbolic points within the geometric model. It ensures that points are unique, properly linked to their parents, and assigned identifiers for reference.
+This module handles the creation, deduplication, and management of symbolic points
+within the geometric model. It ensures that points are unique, properly linked to
+their causal parents, and assigned identifiers for reference.
 """
 
 from __future__ import annotations
 
 from collections.abc import Iterator
-from typing import TYPE_CHECKING
 
 import sympy as sp
 import sympy.geometry as spg
 from rich.table import Table
 
+from geometor.model.algebra import clean_expr, zero_test
 from geometor.model.colors import get_color
 from geometor.model.element import Element
-from geometor.model.utils import clean_expr
-
-if TYPE_CHECKING:
-    pass
 
 __all__ = ["PointsMixin"]
 
 
 class PointsMixin:
-    """Mixin for the Model class containing point construction operations.
-    
-    This mixin augments the Model class with methods specific to point handling, particularly the `set_point` method which is the primary entry point for adding points to the model. It also manages point ID generation.
-    """
+    """Mixin for the Model class containing point construction operations."""
 
     def point_ID_generator(self) -> Iterator[str]:
         """Generate a sequence of point IDs (A, B, C, ... AA, AB, ...)."""
@@ -38,41 +33,57 @@ class PointsMixin:
                 yield str(letter) * repeat
             repeat += 1
 
+    def given_point(
+        self,
+        x_val: sp.Expr | float,
+        y_val: sp.Expr | float,
+        ID: str = "",
+        *,
+        label: str = "",
+        classes: list[str] | None = None,
+        by: str = "given",
+    ) -> spg.Point:
+        """Register an initial given point in the model with ``"given"`` classification."""
+        cls = list(classes) if classes else []
+        if "given" not in cls:
+            cls.insert(0, "given")
+        return self.set_point(
+            x_val,
+            y_val,
+            classes=cls,
+            ID=ID,
+            label=label,
+            by=by,
+        )
+
     def set_point(
         self,
-        x_val: sp.Expr,
-        y_val: sp.Expr,
+        x_val: sp.Expr | float,
+        y_val: sp.Expr | float,
         parents: list | None = None,
         classes: list[str] | None = None,
         ID: str = "",
         guide: bool = False,
         label: str = "",
+        *,
+        by: str = "",
+        record_step: bool = True,
     ) -> spg.Point:
         """Add a point to the model, find duplicates, clean values, and set parents and classes.
-        
-        This method is the core mechanism for introducing points into the model. It simplifies the coordinates, checks for existing points to avoid duplicates, attempts to merge attributes if a duplicate is found, and triggers analysis hooks for the new point.
 
         Args:
             x_val: The x-value of the point.
             y_val: The y-value of the point.
-            parents: A list of parent elements or references.
+            parents: A list of causal parent elements.
             classes: A list of string names for classes defining a set of styles.
             ID: A text ID for use in plotting and reporting.
             guide: If True, the point is a guide.
-            label: Optional alias for ID.
+            label: Optional alias for ``ID``.
+            by: Optional Euclidean justification citation.
+            record_step: Whether to append a ``Step`` entry when a new point is added.
 
         Returns:
-            The set point.
-
-        **example**
-
-        .. code-block:: python
-
-            from geometor.model import *
-            model = Model("demo")
-            model.set_point(0, 0, classes=["given"])
-            # <spg.Point object ...>
-
+            The exact :class:`sympy.geometry.Point` registered in the model.
         """
         if label and not ID:
             ID = label
@@ -81,13 +92,11 @@ class PointsMixin:
         if parents is None:
             parents = []
 
-        # simplify values before adding
         simplifier = getattr(self, "_simplifier", None) or clean_expr
-        x_val = simplifier(x_val)
-        y_val = simplifier(y_val)
+        x_clean = simplifier(x_val)
+        y_clean = simplifier(y_val)
 
-        pt = spg.Point(x_val, y_val)
-
+        pt = spg.Point(x_clean, y_clean)
         details = Element(pt, parents, classes, ID, guide)
 
         def _next_available_id(exclude: set[str] | None = None) -> str:
@@ -112,8 +121,8 @@ class PointsMixin:
                     self[other_pt].ID = _next_available_id({new_id})
             self[target_pt].ID = new_id
 
-        if pt in self.points:
-            # add attributes
+        # Fast structural lookup in dict first (O(1) hash check)
+        if pt in self and isinstance(pt, spg.Point):
             for parent in details.parents:
                 self[pt].parents[parent] = ""
             self[pt].classes.update(details.classes)
@@ -121,21 +130,25 @@ class PointsMixin:
                 _claim_explicit_id(pt, ID)
             return pt
 
-        else:
-            pt_fx = float(pt.x.evalf())
-            pt_fy = float(pt.y.evalf())
-            for prev_pt in self.points:
-                if (
-                    abs(pt_fx - float(prev_pt.x.evalf())) < 1e-9
-                    and abs(pt_fy - float(prev_pt.y.evalf())) < 1e-9
-                    and pt.equals(prev_pt)
-                ):
-                    for parent in details.parents:
-                        self[prev_pt].parents[parent] = ""
-                    self[prev_pt].classes.update(details.classes)
-                    if ID:
-                        _claim_explicit_id(prev_pt, ID)
-                    return prev_pt
+        # Numeric cached bounding-box pre-filter followed by exact algebraic zero_test
+        pt_approx = details.approx_coords
+        assert pt_approx is not None
+        pt_fx, pt_fy = pt_approx
+        for prev_pt in self.points:
+            prev_approx = self[prev_pt].approx_coords
+            if (
+                prev_approx is not None
+                and abs(pt_fx - prev_approx[0]) < 1e-9
+                and abs(pt_fy - prev_approx[1]) < 1e-9
+                and zero_test(pt.x - prev_pt.x)
+                and zero_test(pt.y - prev_pt.y)
+            ):
+                for parent in details.parents:
+                    self[prev_pt].parents[parent] = ""
+                self[prev_pt].classes.update(details.classes)
+                if ID:
+                    _claim_explicit_id(prev_pt, ID)
+                return prev_pt
 
         if not ID:
             ID = _next_available_id()
@@ -144,11 +157,16 @@ class PointsMixin:
                 if self[other_pt].ID == ID:
                     self[other_pt].ID = _next_available_id({ID})
 
-        details = Element(pt, parents, classes, ID, guide)
+        details.ID = ID
         self[pt] = details
         self._new_points.append(pt)
+        if hasattr(self, "_register_in_scope"):
+            self._register_in_scope(pt)
+        if record_step and hasattr(self, "_record_step"):
+            step_kind = "given" if "given" in details.classes else "construct"
+            self._record_step(kind=step_kind, action="point", elements=[ID], by=by)
 
-        if self._logger and self._logger.isEnabledFor(20):
+        if self.is_logging_enabled:
             color = get_color(pt, classes)
             classes_str = " : " + " ".join(classes) if classes else ""
             self.log(f"    [{color} bold]{ID}[/{color} bold]{classes_str}")
@@ -161,6 +179,4 @@ class PointsMixin:
         if self._analysis_hook:
             self._analysis_hook(self, pt)
 
-        #  console.print(f"[gold3]{text_ID}[/gold3] = {{ {sp.pretty(pt.x)}, {sp.pretty(pt.y)} }}")
-        #  print(f"{text_ID} = {{ {sp.pprint(pt.x)}, {str(pt.y)} }}")
         return pt

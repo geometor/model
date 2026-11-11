@@ -1,5 +1,4 @@
 import pytest
-from sympy import Symbol
 
 from geometor.model import Model
 from geometor.model.polynomials import Polynomial

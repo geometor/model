@@ -6,13 +6,12 @@ This module offers tools for visualizing and summarizing the state of the geomet
 
 import sympy as sp
 import sympy.geometry as spg
-from sympy.geometry.entity import GeometryEntity
 from rich.console import Console
 from rich.table import Table
 from rich.text import Text
+from sympy.geometry.entity import GeometryEntity
 
 # from .utils import *
-
 from .colors import get_color
 
 
@@ -59,7 +58,7 @@ def generate_dot(
         # Recurse for children if present
         if isinstance(children, dict) and children:
             # Add the edge to each child and recurse
-            for child in children.keys():
+            for child in children:
                 dot_string += f'    "{node}" -> "{child}";\n'  # Define the edge here
                 dot_string = generate_dot(children, child, dot_string, defined_nodes)
 
@@ -117,7 +116,7 @@ class ReportMixin:
             el_classes = list(self[el].classes.keys())
             el_ID = get_colored_ID(el, self[el].ID, el_classes)
             el_parents_text = Text()  # Initialize an empty Text object for parents
-            for parent in details.parents.keys():
+            for parent in details.parents:
                 parent_classes = list(self[parent].classes.keys())
                 el_parents_text.append(
                     get_colored_ID(parent, self[parent].ID, parent_classes)
@@ -149,7 +148,7 @@ class ReportMixin:
             el_classes = list(self[el].classes.keys())
             el_ID = get_colored_ID(el, self[el].ID, el_classes)
             el_parents_text = Text()  # Initialize an empty Text object for parents
-            for parent in details.parents.keys():
+            for parent in details.parents:
                 parent_classes = list(self[parent].classes.keys())
                 el_parents_text.append(
                     get_colored_ID(parent, self[parent].ID, parent_classes)
@@ -184,7 +183,7 @@ class ReportMixin:
             el_classes = list(self[el].classes.keys())
             el_ID = get_colored_ID(el, self[el].ID, el_classes)
             el_parents_text = Text()  # Initialize an empty Text object for parents
-            for parent in details.parents.keys():
+            for parent in details.parents:
                 parent_classes = list(self[parent].classes.keys())
                 el_parents_text.append(
                     get_colored_ID(parent, self[parent].ID, parent_classes)
@@ -224,7 +223,7 @@ class ReportMixin:
             el_classes = list(details.classes.keys())
             el_parents_text = Text()  # Initialize an empty Text object for parents
             #  breakpoint()
-            for parent in details.parents.keys():
+            for parent in details.parents:
                 parent_classes = list(self[parent].classes.keys())
                 el_parents_text.append(
                     get_colored_ID(parent, self[parent].ID, parent_classes)

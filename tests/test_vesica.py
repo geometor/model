@@ -9,8 +9,8 @@ def test_vesica_construction():
     B = model.set_point(1, 0, classes=["start"])
 
     # Construct circles
-    c1 = model.construct_circle(A, B)
-    c2 = model.construct_circle(B, A)
+    model.construct_circle(A, B)
+    model.construct_circle(B, A)
 
     # Find intersections
     # Intersections are automatically found and added to the model during construction

@@ -5,8 +5,6 @@ This module introduces polynomial elements into the geometric model, allowing fo
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import sympy as sp
 import sympy.geometry as spg
 from sympy.geometry import Circle, Line, Point
@@ -14,10 +12,7 @@ from sympy.geometry.entity import GeometryEntity
 
 from .element import Element
 
-if TYPE_CHECKING:
-    pass
-
-__all__ = ["PolynomialsMixin", "Polynomial"]
+__all__ = ["Polynomial", "PolynomialsMixin"]
 
 
 class PolynomialsMixin:
@@ -75,7 +70,8 @@ class PolynomialsMixin:
             name = f"Poly{self._poly_count}"
         poly_el = self.poly(coeffs, name=name, classes=classes, group=group)
         self[poly_el.poly.as_expr()] = poly_el
-        self.log(f"* add_element: {poly_el}")
+        if self.is_logging_enabled:
+            self.log(f"* add_element: {poly_el}")
         return poly_el
 
 

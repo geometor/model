@@ -4,50 +4,30 @@ This module collects general-purpose utility functions used throughout the packa
 """
 
 # time *********************
-import contextlib
 import datetime
 import logging
-import os as os
+import os
 from timeit import default_timer as timer
 
 import sympy as sp
 import sympy.geometry as spg
 from rich import print
 
+from geometor.model.algebra import clean_expr
+from geometor.model.invariants import line_spread
+
+_logger = logging.getLogger(__name__)
+
 __all__ = [
     "clean_expr",
-    "spread",
     "compare_points",
-    "point_value",
-    "sort_points",
-    "log_init",
-    "print_log",
     "elapsed",
+    "log_init",
+    "point_value",
+    "print_log",
+    "sort_points",
+    "spread",
 ]
-
-#  from geometor.model import *
-
-
-def clean_expr(expr: sp.Expr) -> sp.Expr:
-    """Simplify and denest SymPy expressions.
-    
-    This function applies a standard set of simplification routines to symbolic expressions, specifically targeting the simplification of square roots and nested radicals which are common in constructive geometry.
-
-    Args:
-        expr: The SymPy expression to clean.
-
-    Returns:
-        The simplified expression.
-
-    """
-    expr = sp.sympify(expr)
-    if expr.is_Rational:
-        return expr
-    expr = sp.simplify(expr)
-    expr = sp.sqrtdenest(expr)
-    with contextlib.suppress(ArithmeticError, ValueError):
-        expr = sp.radsimp(expr, symbolic=False)
-    return expr
 
 
 def spread(l1: spg.Line, l2: spg.Line) -> sp.Expr:
@@ -63,11 +43,7 @@ def spread(l1: spg.Line, l2: spg.Line) -> sp.Expr:
         The spread as a symbolic expression.
 
     """
-    a1, a2, a3 = l1.coefficients
-    b1, b2, b3 = l2.coefficients
-    # only the first two coefficients are used
-    spread = ((a1 * b2 - a2 * b1) ** 2) / ((a1**2 + b1**2) * (a2**2 + b2**2))
-    return spread
+    return line_spread(l1, l2)
 
 
 def compare_points(pt1: spg.Point, pt2: spg.Point) -> int:
@@ -149,7 +125,7 @@ def log_init(name: str) -> None:
     logging.basicConfig(
         filename=filename, filemode="w", encoding="utf-8", level=logging.INFO
     )
-    logging.info(f"Init {name}")
+    _logger.info(f"Init {name}")
 
 
 def print_log(txt: str = "") -> None:
@@ -160,7 +136,7 @@ def print_log(txt: str = "") -> None:
 
     """
     print(txt)
-    logging.info(txt)
+    _logger.info(txt)
 
 
 def elapsed(start_time: float) -> str:

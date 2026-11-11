@@ -1,10 +1,12 @@
 """Provides circle construction and manipulation for the Model class.
 
-This module manages the creation of symbolic circles defined by a center point and a radius point. It handles the integration of these circles into the model, ensuring uniqueness and calculating intersections.
+This module manages the creation of symbolic circles defined by a center point and
+a radius point, handling deduplication and exact symbolic intersections.
 """
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 
 import sympy as sp
 import sympy.geometry as spg
@@ -13,6 +15,7 @@ from rich.table import Table
 from geometor.model.colors import get_color
 from geometor.model.element import (
     CircleElement,
+    Struct,
     check_existence,
     find_all_intersections,
 )
@@ -21,31 +24,31 @@ __all__ = ["CirclesMixin"]
 
 
 class CirclesMixin:
-    """Mixin for the Model class containing circle construction operations.
-    
-    This mixin extends the Model with capabilities to construct circles. It supports creating circles from point objects or their IDs and ensures they are correctly registered and intersected with other elements in the model.
-    """
+    """Mixin for the Model class containing circle construction operations."""
 
     def construct_circle_by_IDs(
-        self, pt_1_ID: str, pt_2_ID: str, classes: list[str] | None = None, ID: str = ""
+        self,
+        pt_1_ID: str,
+        pt_2_ID: str,
+        classes: list[str] | None = None,
+        ID: str = "",
+        *,
+        guide: bool = False,
+        intersect: bool | Sequence[Struct] | None = None,
+        by: str = "",
     ) -> spg.Circle:
-        """Find points by ID and use them with :meth:`Model.construct_circle`.
-        
-        This convenience wrapper enables circle construction using string identifiers for the center and radius points, simplifying the API when working with named elements.
-
-        Args:
-             pt_1_ID: The ID of the center point.
-             pt_2_ID: The ID of the radius point.
-             classes: A list of class labels.
-             ID: A string ID for the circle.
-
-        Returns:
-            The constructed :class:`sympy.geometry.ellipse.Circle`.
-
-        """
+        """Find points by ID and construct a circle via :meth:`Model.construct_circle`."""
         pt_1 = self.get_element_by_ID(pt_1_ID)
         pt_2 = self.get_element_by_ID(pt_2_ID)
-        return self.construct_circle(pt_1, pt_2, classes, ID)
+        return self.construct_circle(
+            pt_1,
+            pt_2,
+            classes=classes,
+            ID=ID,
+            guide=guide,
+            intersect=intersect,
+            by=by,
+        )
 
     def construct_circle(
         self,
@@ -54,36 +57,36 @@ class CirclesMixin:
         classes: list[str] | None = None,
         ID: str = "",
         guide: bool = False,
+        *,
+        intersect: bool | Sequence[Struct] | None = None,
+        by: str = "",
     ) -> spg.Circle:
-        """Construct a Circle from two points and add it to the model.
-        
-        This method creates a circle defined by a center point and a point on the circumference (establishing the radius). It checks for duplicates within the model, merging attributes if an equivalent circle exists, or computing intersections if it is new.
+        """Construct a :class:`sympy.geometry.Circle` from center and radius points.
 
         Args:
             pt_center: The center point of the circle.
             pt_radius: A point on the circumference of the circle.
             classes: A list of class labels.
-            ID: A string ID for the circle. If empty, one is generated.
-            guide: If True, the circle is a guide.
+            ID: A string ID for the circle. If empty, ``( A B )`` is generated.
+            guide: If True, the circle is excluded from automatic intersections.
+            intersect: Override automatic intersection behavior (``None``, ``False``,
+                ``True``, or a ``Sequence[Struct]``).
+            by: Optional Euclidean citation (e.g., ``"Post.3"``).
 
         Returns:
-            The constructed or retrieved :class:`sympy.geometry.ellipse.Circle`.
-
-        Raises:
-            TypeError: If ``pt_center`` or ``pt_radius`` are not instances of ``sympy.geometry.point.Point``.
-
+            The constructed or existing :class:`sympy.geometry.Circle`.
         """
         self.clear_new_points()
 
         if classes is None:
             classes = []
-        # find radius length for sympy.Circle
-        radius_len = pt_center.distance(pt_radius)
 
         if not isinstance(pt_center, spg.Point) or not isinstance(pt_radius, spg.Point):
             raise TypeError(
                 "Both pt_center and pt_radius must be instances of sympy.geometry.point.Point"
             )
+
+        radius_len = pt_center.distance(pt_radius)
 
         struct = spg.Circle(pt_center, radius_len)
 
@@ -100,29 +103,39 @@ class CirclesMixin:
             pt_radius=pt_radius,
             guide=guide,
         )
-        #  details.pt_radius = pt_radius
 
         exists, existing_circle = check_existence(self, struct, self.circles)
-        if exists:
-            # handle the logic for an existing circle
-            self[existing_circle].parents[details.pt_radius] = ""
+        if exists and existing_circle is not None:
+            self[existing_circle].pts[details.pt_radius] = ""
             self[existing_circle].classes.update(details.classes)
+            if not details.guide and self[existing_circle].guide and "guide" not in classes:
+                self[existing_circle].guide = False
             return existing_circle
-        else:
-            # add the new circle to the model
 
-            self[struct] = details
+        self[struct] = details
+        if hasattr(self, "_register_in_scope"):
+            self._register_in_scope(struct)
+        if hasattr(self, "_record_step"):
+            self._record_step(kind="construct", action="circle", elements=[details.ID], by=by)
 
-            if self._logger and self._logger.isEnabledFor(20):
-                classes_str = " : " + " ".join(classes) if classes else ""
-                color = get_color(struct, classes)
-                self.log(f"[{color} bold]{details.ID}[/{color} bold]{classes_str}")
-                table = Table(show_header=False, box=None, padding=(0, 4))
-                table.add_row("    ctr:", f"[cyan]{self[pt_center].ID}[/cyan]")
-                table.add_row("    r:", f"[cyan]{sp.pretty(struct.radius)}[/cyan]")
-                table.add_row("    eq:", f"[cyan]{sp.pretty(struct.equation())}[/cyan]")
-                self.log(table)
+        if self.is_logging_enabled:
+            classes_str = " : " + " ".join(classes) if classes else ""
+            color = get_color(struct, classes)
+            self.log(f"[{color} bold]{details.ID}[/{color} bold]{classes_str}")
+            table = Table(show_header=False, box=None, padding=(0, 4))
+            table.add_row("    ctr:", f"[cyan]{self[pt_center].ID}[/cyan]")
+            table.add_row("    r:", f"[cyan]{sp.pretty(struct.radius)}[/cyan]")
+            table.add_row("    eq:", f"[cyan]{sp.pretty(struct.equation())}[/cyan]")
+            self.log(table)
 
-            find_all_intersections(self, struct)
-
+        if intersect is False:
             return struct
+        if isinstance(intersect, Sequence):
+            find_all_intersections(self, struct, candidates=intersect, by=by)
+        elif intersect is True:
+            if not details.guide:
+                find_all_intersections(self, struct, candidates=self.structs, by=by)
+        else:
+            find_all_intersections(self, struct, by=by)
+
+        return struct

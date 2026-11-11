@@ -5,16 +5,12 @@ This module handles the removal of elements from the model. It includes logic to
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
-from sympy.geometry.entity import GeometryEntity
 from rich.console import Console
+from sympy.geometry.entity import GeometryEntity
 
 console = Console()
 
 
-if TYPE_CHECKING:
-    pass
 
 
 class DeleteMixin:
@@ -36,11 +32,10 @@ class DeleteMixin:
 
         """
         for element, details in self.items():
-            if parent_element in details.parents:
-                if element not in dependents_set:
-                    dependents_set.add(element)
-                    # Recurse to find the children of this newly found dependent
-                    self._get_dependents_recursive(element, dependents_set)
+            if parent_element in details.parents and element not in dependents_set:
+                dependents_set.add(element)
+                # Recurse to find the children of this newly found dependent
+                self._get_dependents_recursive(element, dependents_set)
 
     def get_dependents(self, element_or_ID: GeometryEntity | str) -> set[GeometryEntity]:
         """Find and return a set of all elements that depend on the given element.
