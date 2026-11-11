@@ -82,8 +82,9 @@ class PointsMixin:
             parents = []
 
         # simplify values before adding
-        x_val = clean_expr(x_val)
-        y_val = clean_expr(y_val)
+        simplifier = getattr(self, "_simplifier", None) or clean_expr
+        x_val = simplifier(x_val)
+        y_val = simplifier(y_val)
 
         pt = spg.Point(x_val, y_val)
 
@@ -121,8 +122,14 @@ class PointsMixin:
             return pt
 
         else:
+            pt_fx = float(pt.x.evalf())
+            pt_fy = float(pt.y.evalf())
             for prev_pt in self.points:
-                if pt.equals(prev_pt):
+                if (
+                    abs(pt_fx - float(prev_pt.x.evalf())) < 1e-9
+                    and abs(pt_fy - float(prev_pt.y.evalf())) < 1e-9
+                    and pt.equals(prev_pt)
+                ):
                     for parent in details.parents:
                         self[prev_pt].parents[parent] = ""
                     self[prev_pt].classes.update(details.classes)
@@ -141,14 +148,15 @@ class PointsMixin:
         self[pt] = details
         self._new_points.append(pt)
 
-        color = get_color(pt, classes)
-        classes_str = " : " + " ".join(classes) if classes else ""
-        self.log(f"    [{color} bold]{ID}[/{color} bold]{classes_str}")
+        if self._logger and self._logger.isEnabledFor(20):
+            color = get_color(pt, classes)
+            classes_str = " : " + " ".join(classes) if classes else ""
+            self.log(f"    [{color} bold]{ID}[/{color} bold]{classes_str}")
 
-        table = Table(show_header=False, box=None, padding=(0, 4))
-        table.add_row("    x:", f"[cyan]{sp.pretty(pt.x)}[/cyan]")
-        table.add_row("    y:", f"[cyan]{sp.pretty(pt.y)}[/cyan]")
-        self.log(table)
+            table = Table(show_header=False, box=None, padding=(0, 4))
+            table.add_row("    x:", f"[cyan]{sp.pretty(pt.x)}[/cyan]")
+            table.add_row("    y:", f"[cyan]{sp.pretty(pt.y)}[/cyan]")
+            self.log(table)
 
         if self._analysis_hook:
             self._analysis_hook(self, pt)

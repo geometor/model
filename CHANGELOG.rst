@@ -1,6 +1,16 @@
 changelog
 =========
 
+0.5.7
+-----
+*2026-11-11*
+
+**added**
+
+-   **Intersections:** Added closed-form symbolic ``exact_intersect`` for line-line, line-circle, and circle-circle intersections (avoiding slow quartic Gröbner solves on nested radicals), plus numeric pre-filtering in ``check_existence`` and point deduplication.
+-   **Model:** Added ``Model.set_simplifier`` hook for custom coordinate expression simplification.
+-   **Demos & Tests:** Added three exact symbolic regular heptadecagon (17-gon) constructions in ``demos/heptadecagon/`` (Richmond, DeTemple Carlyle circles, and Mohr–Mascheroni pure compass) with verification suite ``tests/test_heptadecagon.py``.
+
 0.5.4
 -----
 *2026-01-04*

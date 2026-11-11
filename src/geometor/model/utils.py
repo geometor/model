@@ -4,6 +4,7 @@ This module collects general-purpose utility functions used throughout the packa
 """
 
 # time *********************
+import contextlib
 import datetime
 import logging
 import os as os
@@ -39,8 +40,13 @@ def clean_expr(expr: sp.Expr) -> sp.Expr:
         The simplified expression.
 
     """
+    expr = sp.sympify(expr)
+    if expr.is_Rational:
+        return expr
     expr = sp.simplify(expr)
     expr = sp.sqrtdenest(expr)
+    with contextlib.suppress(ArithmeticError, ValueError):
+        expr = sp.radsimp(expr, symbolic=False)
     return expr
 
 

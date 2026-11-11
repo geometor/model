@@ -113,7 +113,11 @@ def load_model(file_path: str, logger: logging.Logger | None = None) -> Model:
     local_dict = {"Section": Section, "Wedge": Wedge, "Polynomial": Polynomial}
 
     # First pass: create all sympy objects and map them by ID
-    for element_id, element_data in serializable_model["elements"].items():
+    raw_elements = serializable_model["elements"]
+    elements_iter = (
+        raw_elements.values() if isinstance(raw_elements, dict) else raw_elements
+    )
+    for element_data in elements_iter:
         sympy_obj = parse_expr(element_data["sympy_obj"], local_dict=local_dict)
         id_to_sympy[element_data["ID"]] = sympy_obj
         id_to_element_data[element_data["ID"]] = element_data

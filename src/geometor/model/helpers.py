@@ -6,6 +6,7 @@ This module contains various utility functions that streamline common geometric 
 import sympy as sp
 import sympy.geometry as spg
 
+from geometor.model.element import exact_intersect
 from geometor.model.model import Model
 
 __all__ = [
@@ -58,24 +59,22 @@ def set_equilateral_poles(
 ) -> list[spg.Point]:
     """Find the two intersection points (poles) of circles entered at pt_1 and pt_2."""
     if add_circles:
-        c1 = model.construct_circle(pt_1, pt_2, classes=["guide"])
-        c2 = model.construct_circle(pt_2, pt_1, classes=["guide"])
-        pts = c1.intersection(c2)
+        c1 = model.construct_circle(pt_1, pt_2, classes=["guide"], guide=True)
+        c2 = model.construct_circle(pt_2, pt_1, classes=["guide"], guide=True)
+        pts = exact_intersect(c1, c2)
         set_points = []
         for pt in pts:
-            pt = model.set_point(pt.x, pt.y)
+            pt = model.set_point(pt.x, pt.y, parents=[c1, c2], guide=True)
             set_points.append(pt)
-            #  model[pt].parents[c1] = ""
-            #  model[pt].parents[c2] = ""
 
         return set_points
     else:
         c1 = spg.Circle(pt_1, pt_1.distance(pt_2))
         c2 = spg.Circle(pt_2, pt_2.distance(pt_1))
-        pts = c1.intersection(c2)
+        pts = exact_intersect(c1, c2)
         set_points = []
         for pt in pts:
-            pt = model.set_point(pt.x, pt.y)
+            pt = model.set_point(pt.x, pt.y, guide=True)
             set_points.append(pt)
             model[pt].parents[c1] = ""
             model[pt].parents[c2] = ""

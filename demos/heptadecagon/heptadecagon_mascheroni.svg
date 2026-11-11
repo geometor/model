@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+<rect width="100%" height="100%" fill="#0e1015"/>
+<defs>
+  <clipPath id="clip-macro"><rect x="36" y="88" width="928" height="352" rx="8"/></clipPath>
+  <clipPath id="clip-micro"><rect x="36" y="468" width="928" height="496" rx="8"/></clipPath>
+</defs>
+<style>
+  .panel-bg { fill: #121620; stroke: #334155; stroke-width: 1.2; }
+  .panel-hdr { fill: #cbd5e1; font-family: monospace; font-size: 12px; font-weight: bold; }
+  .c-guide { stroke: #334155; stroke-width: 0.75; fill: none; opacity: 0.42; }
+  .c-pair { stroke: #38bdf8; stroke-width: 1.25; stroke-dasharray: 5 3; fill: none; opacity: 0.78; }
+  .c-inv { stroke: #34d399; stroke-width: 1.6; stroke-dasharray: 6 3; fill: none; opacity: 0.92; }
+  .c-nap { stroke: #c084fc; stroke-width: 1.2; stroke-dasharray: 4 3; fill: none; opacity: 0.8; }
+  .c-step { stroke: #f59e0b; stroke-width: 0.9; stroke-dasharray: 3 3; fill: none; opacity: 0.45; }
+  .c-main { stroke: #f8fafc; stroke-width: 1.9; fill: none; }
+  .pt-vertex { fill: #fbbf24; stroke: #0e1015; stroke-width: 1.4; }
+  .pt-mile { fill: #38bdf8; stroke: #0e1015; stroke-width: 1.3; }
+  .pt-given { fill: #f8fafc; stroke: #f59e0b; stroke-width: 2.0; }
+  .lbl-v { fill: #fde68a; font-family: monospace; font-size: 12px; font-weight: bold; }
+  .lbl-m { fill: #7dd3fc; font-family: monospace; font-size: 11px; font-weight: bold; }
+  .title { fill: #f8fafc; font-family: monospace; font-size: 18px; font-weight: bold; letter-spacing: 3px; }
+  .subtitle { fill: #94a3b8; font-family: monospace; font-size: 12px; }
+</style>
+<text x="36" y="44" class="title">GEOMETOR • REGULAR HEPTADECAGON (17-GON)</text>
+<text x="36" y="66" class="subtitle">Method 3: Mohr–Mascheroni Pure-Compass Construction • 83 Circles, Strictly 0 Straightedge Lines</text>
+<rect x="36" y="88" width="928" height="352" rx="8" class="panel-bg"/>
+<text x="52" y="110" class="panel-hdr">A. MACRO FIELD — SYMMETRIC CARLYLE CIRCLE PAIRS (k = 3) &amp; INVERSION IN C_root3 (R = √3)</text>
+<g clip-path="url(#clip-macro)">
+<circle cx="545.00" cy="272.00" r="52.00" class="c-main"/>
+<circle cx="597.00" cy="272.00" r="52.00" class="c-guide"/>
+<circle cx="571.00" cy="226.97" r="52.00" class="c-guide"/>
+<circle cx="519.00" cy="226.97" r="52.00" class="c-guide"/>
+<circle cx="545.00" cy="272.00" r="90.07" class="c-inv"/>
+<circle cx="597.00" cy="272.00" r="90.07" class="c-guide"/>
+<circle cx="493.00" cy="272.00" r="90.07" class="c-guide"/>
+<circle cx="545.00" cy="272.00" r="73.54" class="c-guide"/>
+<circle cx="597.00" cy="220.00" r="52.00" class="c-guide"/>
+<circle cx="597.00" cy="324.00" r="52.00" class="c-guide"/>
+<circle cx="545.00" cy="220.00" r="52.00" class="c-guide"/>
+<circle cx="597.00" cy="220.00" r="73.54" class="c-guide"/>
+<circle cx="545.00" cy="324.00" r="52.00" class="c-guide"/>
+<circle cx="597.00" cy="324.00" r="73.54" class="c-guide"/>
+<circle cx="545.00" cy="168.00" r="52.00" class="c-guide"/>
+<circle cx="545.00" cy="376.00" r="52.00" class="c-guide"/>
+<circle cx="597.00" cy="168.00" r="73.54" class="c-guide"/>
+<circle cx="597.00" cy="376.00" r="73.54" class="c-guide"/>
+<circle cx="493.00" cy="272.00" r="52.00" class="c-guide"/>
+<circle cx="493.00" cy="220.00" r="73.54" class="c-guide"/>
+<circle cx="441.00" cy="272.00" r="52.00" class="c-guide"/>
+<circle cx="493.00" cy="220.00" r="52.00" class="c-guide"/>
+<circle cx="441.00" cy="272.00" r="104.00" class="c-guide"/>
+<circle cx="441.00" cy="220.00" r="116.28" class="c-guide"/>
+<circle cx="337.00" cy="272.00" r="208.00" class="c-inv"/>
+<circle cx="525.50" cy="359.93" r="90.07" class="c-guide"/>
+<circle cx="525.50" cy="184.07" r="90.07" class="c-guide"/>
+<circle cx="545.00" cy="168.00" r="111.07" class="c-guide"/>
+<circle cx="597.00" cy="168.00" r="138.19" class="c-guide"/>
+<circle cx="545.00" cy="376.00" r="111.07" class="c-guide"/>
+<circle cx="597.00" cy="376.00" r="138.19" class="c-guide"/>
+<circle cx="506.00" cy="64.00" r="262.91" class="c-pair"/>
+<circle cx="506.00" cy="480.00" r="262.91" class="c-pair"/>
+<circle cx="545.00" cy="168.00" r="160.16" class="c-guide"/>
+<circle cx="597.00" cy="168.00" r="125.25" class="c-guide"/>
+<circle cx="545.00" cy="376.00" r="160.16" class="c-guide"/>
+<circle cx="597.00" cy="376.00" r="125.25" class="c-guide"/>
+<circle cx="666.80" cy="64.00" r="287.12" class="c-pair"/>
+<circle cx="666.80" cy="480.00" r="287.12" class="c-pair"/>
+<circle cx="545.00" cy="168.00" r="225.25" class="c-guide"/>
+<circle cx="597.00" cy="168.00" r="272.43" class="c-guide"/>
+<circle cx="545.00" cy="376.00" r="225.25" class="c-guide"/>
+<circle cx="597.00" cy="376.00" r="272.43" class="c-guide"/>
+<circle cx="345.20" cy="64.00" r="327.90" class="c-pair"/>
+<circle cx="345.20" cy="480.00" r="327.90" class="c-pair"/>
+<circle cx="545.00" cy="168.00" r="104.00" class="c-inv"/>
+<circle cx="463.82" cy="233.00" r="90.07" class="c-guide"/>
+<circle cx="626.18" cy="233.00" r="90.07" class="c-guide"/>
+<circle cx="597.00" cy="272.00" r="93.74" class="c-guide"/>
+<circle cx="597.00" cy="220.00" r="58.14" class="c-guide"/>
+<circle cx="545.00" cy="272.00" r="53.69" class="c-guide"/>
+<circle cx="597.00" cy="324.00" r="52.03" class="c-guide"/>
+<circle cx="545.00" cy="194.00" r="131.69" class="c-guide"/>
+<circle cx="649.00" cy="194.00" r="167.80" class="c-guide"/>
+<circle cx="545.00" cy="62.31" r="382.35" class="c-guide"/>
+<circle cx="864.72" cy="272.00" r="382.35" class="c-guide"/>
+<circle cx="523.26" cy="444.04" r="382.35" class="c-guide"/>
+<circle cx="203.55" cy="234.35" r="382.35" class="c-guide"/>
+<circle cx="225.28" cy="-147.38" r="764.69" class="c-inv"/>
+<circle cx="581.76" cy="529.14" r="382.35" class="c-guide"/>
+<circle cx="987.82" cy="-89.99" r="382.35" class="c-guide"/>
+<circle cx="545.00" cy="272.00" r="191.17" class="c-guide"/>
+<circle cx="597.00" cy="272.00" r="150.42" class="c-guide"/>
+<circle cx="704.86" cy="167.16" r="167.85" class="c-pair"/>
+<circle cx="704.86" cy="376.84" r="167.85" class="c-pair"/>
+<circle cx="835.93" cy="272.00" r="290.93" class="c-inv"/>
+<circle cx="558.94" cy="360.98" r="90.07" class="c-guide"/>
+<circle cx="558.94" cy="183.02" r="90.07" class="c-guide"/>
+<circle cx="572.88" cy="272.00" r="27.88" class="c-pair"/>
+<circle cx="91.71" cy="272.00" r="3.4" class="pt-mile"/>
+<text x="73.71" y="287.00" class="lbl-m">W4_hat</text>
+<circle cx="345.20" cy="272.00" r="3.4" class="pt-mile"/>
+<text x="327.20" y="264.00" class="lbl-m">H2_hat</text>
+<circle cx="468.88" cy="272.00" r="3.4" class="pt-mile"/>
+<text x="450.88" y="287.00" class="lbl-m">W2_hat</text>
+<circle cx="506.00" cy="272.00" r="3.4" class="pt-mile"/>
+<text x="496.00" y="263.00" class="lbl-m">H0</text>
+<circle cx="545.00" cy="272.00" r="3.4" class="pt-given"/>
+<text x="549.00" y="286.00" class="lbl-m">O</text>
+<circle cx="598.69" cy="272.00" r="3.4" class="pt-mile"/>
+<text x="603.69" y="262.00" class="lbl-m">W3_hat</text>
+<circle cx="666.80" cy="272.00" r="3.4" class="pt-mile"/>
+<text x="658.80" y="287.00" class="lbl-m">H1_hat</text>
+<circle cx="573.79" cy="272.00" r="3.4" class="pt-mile"/>
+<text x="555.79" y="288.00" class="lbl-m">Z4_hat</text>
+<circle cx="835.93" cy="272.00" r="3.4" class="pt-mile"/>
+<text x="839.93" y="287.00" class="lbl-m">Z1_hat</text>
+<circle cx="864.72" cy="272.00" r="3.4" class="pt-mile"/>
+<text x="869.72" y="264.00" class="lbl-m">W1_hat</text>
+<circle cx="704.86" cy="167.16" r="3.4" class="pt-mile"/>
+<text x="710.86" y="161.16" class="lbl-m">M4_up</text>
+</g>
+<rect x="36" y="468" width="928" height="496" rx="8" class="panel-bg"/>
+<text x="52" y="492" class="panel-hdr">B. UNIT-CIRCLE DETAIL — NAPOLEON √2 SEED, C_root3, (P1, O) PROJECTION → V1, V16 &amp; 14 COMPASS STEPS</text>
+<g clip-path="url(#clip-micro)">
+<circle cx="622.00" cy="726.00" r="122.00" class="c-nap"/>
+<circle cx="561.00" cy="620.34" r="122.00" class="c-nap"/>
+<circle cx="439.00" cy="620.34" r="122.00" class="c-nap"/>
+<circle cx="500.00" cy="726.00" r="211.31" class="c-inv"/>
+<circle cx="622.00" cy="726.00" r="211.31" class="c-nap"/>
+<circle cx="378.00" cy="726.00" r="211.31" class="c-nap"/>
+<circle cx="500.00" cy="726.00" r="172.53" class="c-nap"/>
+<circle cx="622.00" cy="604.00" r="122.00" class="c-guide"/>
+<circle cx="622.00" cy="848.00" r="122.00" class="c-guide"/>
+<circle cx="500.00" cy="604.00" r="122.00" class="c-guide"/>
+<circle cx="622.00" cy="604.00" r="172.53" class="c-guide"/>
+<circle cx="500.00" cy="848.00" r="122.00" class="c-guide"/>
+<circle cx="622.00" cy="848.00" r="172.53" class="c-guide"/>
+<circle cx="378.00" cy="726.00" r="122.00" class="c-guide"/>
+<circle cx="378.00" cy="604.00" r="172.53" class="c-guide"/>
+<circle cx="378.00" cy="604.00" r="122.00" class="c-guide"/>
+<circle cx="622.00" cy="726.00" r="219.94" class="c-guide"/>
+<circle cx="622.00" cy="604.00" r="136.40" class="c-guide"/>
+<circle cx="500.00" cy="726.00" r="125.96" class="c-guide"/>
+<circle cx="622.00" cy="848.00" r="122.06" class="c-guide"/>
+<circle cx="565.42" cy="726.00" r="65.42" class="c-pair"/>
+<circle cx="613.76" cy="681.93" r="44.83" class="c-step"/>
+<circle cx="590.16" cy="643.81" r="44.83" class="c-step"/>
+<circle cx="554.38" cy="616.79" r="44.83" class="c-step"/>
+<circle cx="511.26" cy="604.52" r="44.83" class="c-step"/>
+<circle cx="466.61" cy="608.66" r="44.83" class="c-step"/>
+<circle cx="426.48" cy="628.64" r="44.83" class="c-step"/>
+<circle cx="396.27" cy="661.78" r="44.83" class="c-step"/>
+<circle cx="380.08" cy="703.58" r="44.83" class="c-step"/>
+<circle cx="380.08" cy="748.42" r="44.83" class="c-step"/>
+<circle cx="396.27" cy="790.22" r="44.83" class="c-step"/>
+<circle cx="426.48" cy="823.36" r="44.83" class="c-step"/>
+<circle cx="466.61" cy="843.34" r="44.83" class="c-step"/>
+<circle cx="511.26" cy="847.48" r="44.83" class="c-step"/>
+<circle cx="554.38" cy="835.21" r="44.83" class="c-step"/>
+<circle cx="500.00" cy="726.00" r="122.00" class="c-main"/>
+<circle cx="500.00" cy="726.00" r="3.8" class="pt-given"/>
+<text x="485.00" y="740.00" class="lbl-m">O</text>
+<circle cx="500.00" cy="604.00" r="3.8" class="pt-mile"/>
+<text x="484.00" y="596.00" class="lbl-m">A</text>
+<circle cx="500.00" cy="553.47" r="3.8" class="pt-mile"/>
+<text x="507.00" y="549.47" class="lbl-m">N_up</text>
+<circle cx="500.00" cy="514.69" r="3.8" class="pt-mile"/>
+<text x="507.00" y="510.69" class="lbl-m">R_up</text>
+<circle cx="565.42" cy="726.00" r="3.8" class="pt-mile"/>
+<text x="569.42" y="741.00" class="lbl-m">P1</text>
+<circle cx="408.50" cy="726.00" r="3.8" class="pt-mile"/>
+<text x="390.50" y="741.00" class="lbl-m">H0</text>
+<circle cx="622.00" cy="726.00" r="5.0" class="pt-given"/>
+<text x="631.30" y="730.00" class="lbl-v">V0</text>
+<circle cx="613.76" cy="681.93" r="5.0" class="pt-vertex"/>
+<text x="621.83" y="679.32" class="lbl-v">V1</text>
+<circle cx="590.16" cy="643.81" r="3.9" class="pt-vertex"/>
+<text x="594.68" y="635.48" class="lbl-v">V2</text>
+<circle cx="554.38" cy="616.79" r="3.9" class="pt-vertex"/>
+<text x="553.54" y="604.41" class="lbl-v">V3</text>
+<circle cx="511.26" cy="604.52" r="3.9" class="pt-vertex"/>
+<text x="503.95" y="590.30" class="lbl-v">V4</text>
+<circle cx="466.61" cy="608.66" r="3.9" class="pt-vertex"/>
+<text x="452.61" y="595.06" class="lbl-v">V5</text>
+<circle cx="426.48" cy="628.64" r="3.9" class="pt-vertex"/>
+<text x="406.45" y="618.04" class="lbl-v">V6</text>
+<circle cx="396.27" cy="661.78" r="3.9" class="pt-vertex"/>
+<text x="371.71" y="656.14" class="lbl-v">V7</text>
+<circle cx="380.08" cy="703.58" r="3.9" class="pt-vertex"/>
+<text x="353.09" y="704.22" class="lbl-v">V8</text>
+<circle cx="380.08" cy="748.42" r="3.9" class="pt-vertex"/>
+<text x="353.09" y="755.78" class="lbl-v">V9</text>
+<circle cx="396.27" cy="790.22" r="3.9" class="pt-vertex"/>
+<text x="371.71" y="803.86" class="lbl-v">V10</text>
+<circle cx="426.48" cy="823.36" r="3.9" class="pt-vertex"/>
+<text x="406.45" y="841.96" class="lbl-v">V11</text>
+<circle cx="466.61" cy="843.34" r="3.9" class="pt-vertex"/>
+<text x="452.61" y="864.94" class="lbl-v">V12</text>
+<circle cx="511.26" cy="847.48" r="3.9" class="pt-vertex"/>
+<text x="503.95" y="869.70" class="lbl-v">V13</text>
+<circle cx="554.38" cy="835.21" r="3.9" class="pt-vertex"/>
+<text x="553.54" y="855.59" class="lbl-v">V14</text>
+<circle cx="590.16" cy="808.19" r="3.9" class="pt-vertex"/>
+<text x="594.68" y="824.52" class="lbl-v">V15</text>
+<circle cx="613.76" cy="770.07" r="5.0" class="pt-vertex"/>
+<text x="621.83" y="780.68" class="lbl-v">V16</text>
+</g>
+</svg>

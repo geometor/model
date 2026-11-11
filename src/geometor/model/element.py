@@ -26,6 +26,7 @@ __all__ = [
     "CircleElement",
     "Struct",
     "check_existence",
+    "exact_intersect",
     "find_all_intersections",
 ]
 
@@ -117,6 +118,29 @@ class CircleElement(Element):
         #: The point defining the radius.
 
 
+def _structs_numerically_close(s1: Struct, s2: Struct, tol: float = 1e-9) -> bool:
+    """Fast numerical pre-filter before expensive symbolic equivalence checks."""
+    if type(s1) is not type(s2):
+        return False
+    if isinstance(s1, spg.Circle) and isinstance(s2, spg.Circle):
+        return (
+            abs(float(s1.center.x.evalf()) - float(s2.center.x.evalf())) < tol
+            and abs(float(s1.center.y.evalf()) - float(s2.center.y.evalf())) < tol
+            and abs(float(s1.radius.evalf()) - float(s2.radius.evalf())) < tol
+        )
+    if isinstance(s1, spg.Line) and isinstance(s2, spg.Line):
+        a, b, c = [float(v.evalf()) for v in s1.coefficients]
+        norm = (a * a + b * b) ** 0.5
+        if norm == 0:
+            return True
+        for pt in (s2.p1, s2.p2):
+            px, py = float(pt.x.evalf()), float(pt.y.evalf())
+            if abs(a * px + b * py + c) / norm >= tol:
+                return False
+        return True
+    return True
+
+
 def check_existence(
     self: Model, struct: Struct, existing_structs: list[Struct]
 ) -> tuple[bool, Struct | None]:
@@ -137,13 +161,107 @@ def check_existence(
     if struct in existing_structs:
         return True, struct
 
-    # Check by value
+    # Check by value (numeric pre-filter before symbolic simplification)
     for prev in existing_structs:
-        diff = (prev.equation().simplify() - struct.equation().simplify()).simplify()
-        if not diff:
-            return True, prev
+        if not _structs_numerically_close(prev, struct):
+            continue
+        if isinstance(prev, spg.Line) and isinstance(struct, spg.Line):
+            if prev.equals(struct):
+                return True, prev
+        else:
+            diff = (prev.equation().simplify() - struct.equation().simplify()).simplify()
+            if not diff:
+                return True, prev
 
     return False, None
+
+
+def exact_intersect(s1: Struct, s2: Struct) -> list[spg.Point]:
+    """Compute exact symbolic intersections of Euclidean lines and circles.
+
+    Uses closed-form Cramer's rule, orthogonal line-circle projection, and
+    circle-circle radical axis formulas to avoid SymPy's quartic ``Ellipse``
+    Gröbner-basis solver on nested radicals.
+    """
+    def _sort_pts(pts: list[spg.Point]) -> list[spg.Point]:
+        return sorted(pts, key=lambda p: (float(p.x.evalf()), float(p.y.evalf())))
+
+    if isinstance(s1, spg.Line) and isinstance(s2, spg.Line):
+        a1, b1, c1 = s1.coefficients
+        a2, b2, c2 = s2.coefficients
+        det = a1 * b2 - a2 * b1
+        if abs(complex(det.evalf(30))) < 1e-20 and sp.simplify(det) == 0:
+            return []
+        x = (b1 * c2 - b2 * c1) / det
+        y = (c1 * a2 - c2 * a1) / det
+        return [spg.Point(x, y)]
+
+    if isinstance(s1, spg.Circle) and isinstance(s2, spg.Line):
+        s1, s2 = s2, s1
+
+    if isinstance(s1, spg.Line) and isinstance(s2, spg.Circle):
+        a, b, c = s1.coefficients
+        h, k = s2.center.x, s2.center.y
+        r = s2.radius
+        n2 = a**2 + b**2
+        s = a * h + b * k + c
+        disc = r**2 * n2 - s**2
+        disc_num = complex(disc.evalf(40)).real
+        if abs(disc_num) < 1e-25 and sp.simplify(disc) == 0:
+            return [spg.Point(h - a * s / n2, k - b * s / n2)]
+        if disc_num < 0:
+            return []
+        rt = sp.sqrt(disc)
+        return _sort_pts(
+            [
+                spg.Point(h - (a * s - b * rt) / n2, k - (b * s + a * rt) / n2),
+                spg.Point(h - (a * s + b * rt) / n2, k - (b * s - a * rt) / n2),
+            ]
+        )
+
+    if isinstance(s1, spg.Circle) and isinstance(s2, spg.Circle):
+        h1, k1, r1 = s1.center.x, s1.center.y, s1.radius
+        h2, k2, r2 = s2.center.x, s2.center.y, s2.radius
+        dx, dy = h2 - h1, k2 - k1
+        d2 = dx**2 + dy**2
+        d2_num = complex(d2.evalf(30)).real
+        if abs(d2_num) < 1e-20 and sp.simplify(d2) == 0:
+            return []
+
+        # Exact fast-path for equal-radius equilateral poles (P, Q) ∩ (Q, P): r1^2 == r2^2 == d^2
+        r1_sq, r2_sq = r1**2, r2**2
+        if (
+            abs(complex((r1_sq - d2).evalf(30)).real) < 1e-20
+            and abs(complex((r2_sq - d2).evalf(30)).real) < 1e-20
+            and (sp.expand(r1_sq - d2) == 0 or sp.simplify(r1_sq - d2) == 0)
+            and (sp.expand(r2_sq - d2) == 0 or sp.simplify(r2_sq - d2) == 0)
+        ):
+            s3_half = sp.sqrt(3) / 2
+            return _sort_pts(
+                [
+                    spg.Point(h1 + dx / 2 - s3_half * dy, k1 + dy / 2 + s3_half * dx),
+                    spg.Point(h1 + dx / 2 + s3_half * dy, k1 + dy / 2 - s3_half * dx),
+                ]
+            )
+
+        num_u = r1_sq - r2_sq + d2
+        disc = 4 * d2 * r1_sq - num_u**2
+        disc_num = complex(disc.evalf(40)).real
+        if abs(disc_num) < 1e-25 and sp.simplify(disc) == 0:
+            u = num_u / (2 * d2)
+            return [spg.Point(h1 + u * dx, k1 + u * dy)]
+        if disc_num < 0:
+            return []
+        u = num_u / (2 * d2)
+        v = sp.sqrt(disc) / (2 * d2)
+        return _sort_pts(
+            [
+                spg.Point(h1 + u * dx - v * dy, k1 + u * dy + v * dx),
+                spg.Point(h1 + u * dx + v * dy, k1 + u * dy - v * dx),
+            ]
+        )
+
+    return s1.intersection(s2)
 
 
 def find_all_intersections(self: Model, struct: Struct) -> None:
@@ -161,12 +279,20 @@ def find_all_intersections(self: Model, struct: Struct) -> None:
     test_structs = [
         (el, struct)
         for el in self.structs
-        if not el.equals(struct) and not self[el].guide
+        if el is not struct
+        and not self[el].guide
+        and not (_structs_numerically_close(el, struct) and el.equals(struct))
     ]
 
+    if not test_structs:
+        return
+
     # check intersections
-    with Pool(cpu_count()) as pool:
-        results = pool.map(find_intersection, test_structs)
+    if len(test_structs) <= 4:
+        results = [find_intersection(t) for t in test_structs]
+    else:
+        with Pool(cpu_count()) as pool:
+            results = pool.map(find_intersection, test_structs)
 
     for prev, struct, result in results:
         for pt in result:
@@ -178,7 +304,7 @@ def find_all_intersections(self: Model, struct: Struct) -> None:
 def find_intersection(test_tuple: tuple[Struct, Struct]) -> tuple[Struct, Struct, list[spg.Point]]:
     """Find intersection for two structs."""
     prev, struct = test_tuple
-    result = struct.intersection(prev)
+    result = exact_intersect(prev, struct)
 
     return prev, struct, result
 

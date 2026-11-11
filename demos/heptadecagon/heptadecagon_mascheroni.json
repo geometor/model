@@ -1,0 +1,2169 @@
+{
+    "name": "heptadecagon_mascheroni",
+    "use_point_subscript": false,
+    "last_point_id": "UUU",
+    "elements": {
+        "O": {
+            "sympy_obj": "Point2D(Integer(0), Integer(0))",
+            "ID": "O",
+            "classes": [
+                "given"
+            ],
+            "parents": [
+                "( T1 O )",
+                "( T2 O )",
+                "( A O )",
+                "( B_11 O )",
+                "( A_s O )",
+                "( B_1m O )",
+                "( W O )",
+                "( g18 O )",
+                "( g19 O )",
+                "( g20 O )",
+                "( g22 O )",
+                "( g23 O )",
+                "( g37 O )",
+                "( g38 O )",
+                "( g53 O )",
+                "( g54 O )"
+            ],
+            "guide": false
+        },
+        "V0": {
+            "sympy_obj": "Point2D(Integer(1), Integer(0))",
+            "ID": "V0",
+            "classes": [
+                "given",
+                "vertex"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( T1 O )",
+                "( B_11 V0 )",
+                "( B_1m V0 )",
+                "( V1 V0 )"
+            ],
+            "guide": false
+        },
+        "( O V0 )": {
+            "sympy_obj": "Circle(Point2D(Integer(0), Integer(0)), Integer(1))",
+            "ID": "( O V0 )",
+            "classes": [],
+            "parents": [
+                "O",
+                "V0",
+                "T6",
+                "T1",
+                "T2",
+                "W",
+                "A",
+                "A_s",
+                "V16",
+                "V1",
+                "V2",
+                "V3",
+                "V4",
+                "V5",
+                "V6",
+                "V7",
+                "V8",
+                "V9",
+                "V10",
+                "V11",
+                "V12",
+                "V13",
+                "V14",
+                "V15"
+            ],
+            "guide": false,
+            "pt_radius": "V0"
+        },
+        "( V0 O )": {
+            "sympy_obj": "Circle(Point2D(Integer(1), Integer(0)), Integer(1))",
+            "ID": "( V0 O )",
+            "classes": [
+                "mascheroni_seed"
+            ],
+            "parents": [
+                "V0",
+                "O",
+                "T6",
+                "T1",
+                "B_1m",
+                "B_11"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "T6": {
+            "sympy_obj": "Point2D(Rational(1, 2), Mul(Integer(-1), Rational(1, 2), Pow(Integer(3), Rational(1, 2))))",
+            "ID": "T6",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( V0 O )"
+            ],
+            "guide": true
+        },
+        "T1": {
+            "sympy_obj": "Point2D(Rational(1, 2), Mul(Rational(1, 2), Pow(Integer(3), Rational(1, 2))))",
+            "ID": "T1",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( V0 O )",
+                "( T2 O )"
+            ],
+            "guide": true
+        },
+        "( T1 O )": {
+            "sympy_obj": "Circle(Point2D(Rational(1, 2), Mul(Rational(1, 2), Pow(Integer(3), Rational(1, 2)))), Integer(1))",
+            "ID": "( T1 O )",
+            "classes": [
+                "mascheroni_seed"
+            ],
+            "parents": [
+                "T1",
+                "O",
+                "T2",
+                "V0",
+                "R_up"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "T2": {
+            "sympy_obj": "Point2D(Rational(-1, 2), Mul(Rational(1, 2), Pow(Integer(3), Rational(1, 2))))",
+            "ID": "T2",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( T1 O )"
+            ],
+            "guide": true
+        },
+        "( T2 O )": {
+            "sympy_obj": "Circle(Point2D(Rational(-1, 2), Mul(Rational(1, 2), Pow(Integer(3), Rational(1, 2)))), Integer(1))",
+            "ID": "( T2 O )",
+            "classes": [
+                "mascheroni_seed"
+            ],
+            "parents": [
+                "T2",
+                "O",
+                "W",
+                "T1",
+                "R_up"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "W": {
+            "sympy_obj": "Point2D(Integer(-1), Integer(0))",
+            "ID": "W",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( T2 O )",
+                "( g19 W )",
+                "( g18 W )"
+            ],
+            "guide": true
+        },
+        "R_up": {
+            "sympy_obj": "Point2D(Integer(0), Pow(Integer(3), Rational(1, 2)))",
+            "ID": "R_up",
+            "classes": [
+                "milestone"
+            ],
+            "parents": [
+                "( T1 O )",
+                "( T2 O )"
+            ],
+            "guide": false
+        },
+        "( O R_up )": {
+            "sympy_obj": "Circle(Point2D(Integer(0), Integer(0)), Pow(Integer(3), Rational(1, 2)))",
+            "ID": "( O R_up )",
+            "classes": [
+                "inversion_circle"
+            ],
+            "parents": [
+                "O",
+                "R_up",
+                "g22",
+                "g23",
+                "g37",
+                "g38",
+                "g53",
+                "g54"
+            ],
+            "guide": true,
+            "pt_radius": "R_up"
+        },
+        "( V0 T2 )": {
+            "sympy_obj": "Circle(Point2D(Integer(1), Integer(0)), Pow(Integer(3), Rational(1, 2)))",
+            "ID": "( V0 T2 )",
+            "classes": [
+                "napoleon"
+            ],
+            "parents": [
+                "V0",
+                "T2",
+                "g6",
+                "N_up"
+            ],
+            "guide": true,
+            "pt_radius": "T2"
+        },
+        "( W T1 )": {
+            "sympy_obj": "Circle(Point2D(Integer(-1), Integer(0)), Pow(Integer(3), Rational(1, 2)))",
+            "ID": "( W T1 )",
+            "classes": [
+                "napoleon"
+            ],
+            "parents": [
+                "W",
+                "T1",
+                "g6",
+                "N_up"
+            ],
+            "guide": true,
+            "pt_radius": "T1"
+        },
+        "g6": {
+            "sympy_obj": "Point2D(Integer(0), Mul(Integer(-1), Pow(Integer(2), Rational(1, 2))))",
+            "ID": "g6",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( V0 T2 )",
+                "( W T1 )"
+            ],
+            "guide": true
+        },
+        "N_up": {
+            "sympy_obj": "Point2D(Integer(0), Pow(Integer(2), Rational(1, 2)))",
+            "ID": "N_up",
+            "classes": [
+                "milestone"
+            ],
+            "parents": [
+                "( V0 T2 )",
+                "( W T1 )"
+            ],
+            "guide": false
+        },
+        "( O N_up )": {
+            "sympy_obj": "Circle(Point2D(Integer(0), Integer(0)), Pow(Integer(2), Rational(1, 2)))",
+            "ID": "( O N_up )",
+            "classes": [
+                "napoleon"
+            ],
+            "parents": [
+                "O",
+                "N_up",
+                "B_1m",
+                "B_11"
+            ],
+            "guide": true,
+            "pt_radius": "N_up"
+        },
+        "B_1m": {
+            "sympy_obj": "Point2D(Integer(1), Integer(-1))",
+            "ID": "B_1m",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( O N_up )",
+                "( V0 O )"
+            ],
+            "guide": true
+        },
+        "B_11": {
+            "sympy_obj": "Point2D(Integer(1), Integer(1))",
+            "ID": "B_11",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( O N_up )",
+                "( V0 O )"
+            ],
+            "guide": true
+        },
+        "( B_11 V0 )": {
+            "sympy_obj": "Circle(Point2D(Integer(1), Integer(1)), Integer(1))",
+            "ID": "( B_11 V0 )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "B_11",
+                "V0",
+                "A",
+                "B_12"
+            ],
+            "guide": true,
+            "pt_radius": "V0"
+        },
+        "A": {
+            "sympy_obj": "Point2D(Integer(0), Integer(1))",
+            "ID": "A",
+            "classes": [
+                "milestone"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( B_11 V0 )",
+                "( A_2 A )",
+                "( B_12 A )"
+            ],
+            "guide": false
+        },
+        "( B_1m V0 )": {
+            "sympy_obj": "Circle(Point2D(Integer(1), Integer(-1)), Integer(1))",
+            "ID": "( B_1m V0 )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "B_1m",
+                "V0",
+                "A_s",
+                "B_12s"
+            ],
+            "guide": true,
+            "pt_radius": "V0"
+        },
+        "A_s": {
+            "sympy_obj": "Point2D(Integer(0), Integer(-1))",
+            "ID": "A_s",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( B_1m V0 )",
+                "( A_2s A_s )",
+                "( B_12s A_s )"
+            ],
+            "guide": true
+        },
+        "( A O )": {
+            "sympy_obj": "Circle(Point2D(Integer(0), Integer(1)), Integer(1))",
+            "ID": "( A O )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "A",
+                "O",
+                "A_2",
+                "g18"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "( B_11 O )": {
+            "sympy_obj": "Circle(Point2D(Integer(1), Integer(1)), Pow(Integer(2), Rational(1, 2)))",
+            "ID": "( B_11 O )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "B_11",
+                "O",
+                "A_2"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "A_2": {
+            "sympy_obj": "Point2D(Integer(0), Integer(2))",
+            "ID": "A_2",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( A O )",
+                "( B_11 O )"
+            ],
+            "guide": true
+        },
+        "( A_s O )": {
+            "sympy_obj": "Circle(Point2D(Integer(0), Integer(-1)), Integer(1))",
+            "ID": "( A_s O )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "A_s",
+                "O",
+                "A_2s"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "( B_1m O )": {
+            "sympy_obj": "Circle(Point2D(Integer(1), Integer(-1)), Pow(Integer(2), Rational(1, 2)))",
+            "ID": "( B_1m O )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "B_1m",
+                "O",
+                "A_2s"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "A_2s": {
+            "sympy_obj": "Point2D(Integer(0), Integer(-2))",
+            "ID": "A_2s",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( A_s O )",
+                "( B_1m O )"
+            ],
+            "guide": true
+        },
+        "( A_2 A )": {
+            "sympy_obj": "Circle(Point2D(Integer(0), Integer(2)), Integer(1))",
+            "ID": "( A_2 A )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "A_2",
+                "A",
+                "B_12",
+                "A_3"
+            ],
+            "guide": true,
+            "pt_radius": "A"
+        },
+        "B_12": {
+            "sympy_obj": "Point2D(Integer(1), Integer(2))",
+            "ID": "B_12",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( A_2 A )",
+                "( B_11 V0 )"
+            ],
+            "guide": true
+        },
+        "( A_2s A_s )": {
+            "sympy_obj": "Circle(Point2D(Integer(0), Integer(-2)), Integer(1))",
+            "ID": "( A_2s A_s )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "A_2s",
+                "A_s",
+                "B_12s",
+                "A_3s"
+            ],
+            "guide": true,
+            "pt_radius": "A_s"
+        },
+        "B_12s": {
+            "sympy_obj": "Point2D(Integer(1), Integer(-2))",
+            "ID": "B_12s",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( A_2s A_s )",
+                "( B_1m V0 )"
+            ],
+            "guide": true
+        },
+        "( B_12 A )": {
+            "sympy_obj": "Circle(Point2D(Integer(1), Integer(2)), Pow(Integer(2), Rational(1, 2)))",
+            "ID": "( B_12 A )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "B_12",
+                "A",
+                "A_3"
+            ],
+            "guide": true,
+            "pt_radius": "A"
+        },
+        "A_3": {
+            "sympy_obj": "Point2D(Integer(0), Integer(3))",
+            "ID": "A_3",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( A_2 A )",
+                "( B_12 A )"
+            ],
+            "guide": true
+        },
+        "( B_12s A_s )": {
+            "sympy_obj": "Circle(Point2D(Integer(1), Integer(-2)), Pow(Integer(2), Rational(1, 2)))",
+            "ID": "( B_12s A_s )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "B_12s",
+                "A_s",
+                "A_3s"
+            ],
+            "guide": true,
+            "pt_radius": "A_s"
+        },
+        "A_3s": {
+            "sympy_obj": "Point2D(Integer(0), Integer(-3))",
+            "ID": "A_3s",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( A_2s A_s )",
+                "( B_12s A_s )"
+            ],
+            "guide": true
+        },
+        "( W O )": {
+            "sympy_obj": "Circle(Point2D(Integer(-1), Integer(0)), Integer(1))",
+            "ID": "( W O )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "W",
+                "O",
+                "g18",
+                "g19"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "g18": {
+            "sympy_obj": "Point2D(Integer(-1), Integer(1))",
+            "ID": "g18",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( W O )",
+                "( A O )"
+            ],
+            "guide": true
+        },
+        "( g18 O )": {
+            "sympy_obj": "Circle(Point2D(Integer(-1), Integer(1)), Pow(Integer(2), Rational(1, 2)))",
+            "ID": "( g18 O )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "g18",
+                "O",
+                "g19"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "g19": {
+            "sympy_obj": "Point2D(Integer(-2), Integer(0))",
+            "ID": "g19",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( W O )",
+                "( g18 O )"
+            ],
+            "guide": true
+        },
+        "( g19 W )": {
+            "sympy_obj": "Circle(Point2D(Integer(-2), Integer(0)), Integer(1))",
+            "ID": "( g19 W )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "g19",
+                "W",
+                "g20"
+            ],
+            "guide": true,
+            "pt_radius": "W"
+        },
+        "( g18 W )": {
+            "sympy_obj": "Circle(Point2D(Integer(-1), Integer(1)), Integer(1))",
+            "ID": "( g18 W )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "g18",
+                "W",
+                "g20"
+            ],
+            "guide": true,
+            "pt_radius": "W"
+        },
+        "g20": {
+            "sympy_obj": "Point2D(Integer(-2), Integer(1))",
+            "ID": "g20",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( g19 W )",
+                "( g18 W )"
+            ],
+            "guide": true
+        },
+        "( g19 O )": {
+            "sympy_obj": "Circle(Point2D(Integer(-2), Integer(0)), Integer(2))",
+            "ID": "( g19 O )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "g19",
+                "O",
+                "X_m4"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "( g20 O )": {
+            "sympy_obj": "Circle(Point2D(Integer(-2), Integer(1)), Pow(Integer(5), Rational(1, 2)))",
+            "ID": "( g20 O )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "g20",
+                "O",
+                "X_m4"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "X_m4": {
+            "sympy_obj": "Point2D(Integer(-4), Integer(0))",
+            "ID": "X_m4",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( g19 O )",
+                "( g20 O )"
+            ],
+            "guide": true
+        },
+        "( X_m4 O )": {
+            "sympy_obj": "Circle(Point2D(Integer(-4), Integer(0)), Integer(4))",
+            "ID": "( X_m4 O )",
+            "classes": [
+                "inversion"
+            ],
+            "parents": [
+                "X_m4",
+                "O",
+                "g22",
+                "g23"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "g22": {
+            "sympy_obj": "Point2D(Rational(-3, 8), Mul(Integer(-1), Rational(1, 8), Pow(Integer(183), Rational(1, 2))))",
+            "ID": "g22",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( X_m4 O )",
+                "( O R_up )"
+            ],
+            "guide": true
+        },
+        "g23": {
+            "sympy_obj": "Point2D(Rational(-3, 8), Mul(Rational(1, 8), Pow(Integer(183), Rational(1, 2))))",
+            "ID": "g23",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( X_m4 O )",
+                "( O R_up )"
+            ],
+            "guide": true
+        },
+        "( g22 O )": {
+            "sympy_obj": "Circle(Point2D(Rational(-3, 8), Mul(Integer(-1), Rational(1, 8), Pow(Integer(183), Rational(1, 2)))), Pow(Integer(3), Rational(1, 2)))",
+            "ID": "( g22 O )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "g22",
+                "O",
+                "H0"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "( g23 O )": {
+            "sympy_obj": "Circle(Point2D(Rational(-3, 8), Mul(Rational(1, 8), Pow(Integer(183), Rational(1, 2)))), Pow(Integer(3), Rational(1, 2)))",
+            "ID": "( g23 O )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "g23",
+                "O",
+                "H0"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "H0": {
+            "sympy_obj": "Point2D(Rational(-3, 4), Integer(0))",
+            "ID": "H0",
+            "classes": [
+                "milestone"
+            ],
+            "parents": [
+                "( g22 O )",
+                "( g23 O )",
+                "( A_2 H0 )",
+                "( B_12 H0 )",
+                "( A_2s H0 )",
+                "( B_12s H0 )"
+            ],
+            "guide": false
+        },
+        "( A_2 H0 )": {
+            "sympy_obj": "Circle(Point2D(Integer(0), Integer(2)), Mul(Rational(1, 4), Pow(Integer(73), Rational(1, 2))))",
+            "ID": "( A_2 H0 )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "A_2",
+                "H0",
+                "g25"
+            ],
+            "guide": true,
+            "pt_radius": "H0"
+        },
+        "( B_12 H0 )": {
+            "sympy_obj": "Circle(Point2D(Integer(1), Integer(2)), Mul(Rational(1, 4), Pow(Integer(113), Rational(1, 2))))",
+            "ID": "( B_12 H0 )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "B_12",
+                "H0",
+                "g25"
+            ],
+            "guide": true,
+            "pt_radius": "H0"
+        },
+        "g25": {
+            "sympy_obj": "Point2D(Rational(-3, 4), Integer(4))",
+            "ID": "g25",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( A_2 H0 )",
+                "( B_12 H0 )"
+            ],
+            "guide": true
+        },
+        "( A_2s H0 )": {
+            "sympy_obj": "Circle(Point2D(Integer(0), Integer(-2)), Mul(Rational(1, 4), Pow(Integer(73), Rational(1, 2))))",
+            "ID": "( A_2s H0 )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "A_2s",
+                "H0",
+                "g26"
+            ],
+            "guide": true,
+            "pt_radius": "H0"
+        },
+        "( B_12s H0 )": {
+            "sympy_obj": "Circle(Point2D(Integer(1), Integer(-2)), Mul(Rational(1, 4), Pow(Integer(113), Rational(1, 2))))",
+            "ID": "( B_12s H0 )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "B_12s",
+                "H0",
+                "g26"
+            ],
+            "guide": true,
+            "pt_radius": "H0"
+        },
+        "g26": {
+            "sympy_obj": "Point2D(Rational(-3, 4), Integer(-4))",
+            "ID": "g26",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( A_2s H0 )",
+                "( B_12s H0 )"
+            ],
+            "guide": true
+        },
+        "( g25 A_s )": {
+            "sympy_obj": "Circle(Point2D(Rational(-3, 4), Integer(4)), Mul(Rational(1, 4), Pow(Integer(409), Rational(1, 2))))",
+            "ID": "( g25 A_s )",
+            "classes": [
+                "carlyle_pair"
+            ],
+            "parents": [
+                "g25",
+                "A_s",
+                "H2_hat",
+                "H1_hat"
+            ],
+            "guide": true,
+            "pt_radius": "A_s"
+        },
+        "( g26 A )": {
+            "sympy_obj": "Circle(Point2D(Rational(-3, 4), Integer(-4)), Mul(Rational(1, 4), Pow(Integer(409), Rational(1, 2))))",
+            "ID": "( g26 A )",
+            "classes": [
+                "carlyle_pair"
+            ],
+            "parents": [
+                "g26",
+                "A",
+                "H2_hat",
+                "H1_hat"
+            ],
+            "guide": true,
+            "pt_radius": "A"
+        },
+        "H2_hat": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Rational(-3, 4)), Integer(0))",
+            "ID": "H2_hat",
+            "classes": [
+                "milestone"
+            ],
+            "parents": [
+                "( g25 A_s )",
+                "( g26 A )",
+                "( A_2 H2_hat )",
+                "( B_12 H2_hat )",
+                "( A_2s H2_hat )",
+                "( B_12s H2_hat )"
+            ],
+            "guide": false
+        },
+        "H1_hat": {
+            "sympy_obj": "Point2D(Add(Rational(-3, 4), Mul(Rational(3, 4), Pow(Integer(17), Rational(1, 2)))), Integer(0))",
+            "ID": "H1_hat",
+            "classes": [
+                "milestone"
+            ],
+            "parents": [
+                "( g25 A_s )",
+                "( g26 A )",
+                "( A_2 H1_hat )",
+                "( B_12 H1_hat )",
+                "( A_2s H1_hat )",
+                "( B_12s H1_hat )"
+            ],
+            "guide": false
+        },
+        "( A_2 H1_hat )": {
+            "sympy_obj": "Circle(Point2D(Integer(0), Integer(2)), Pow(Add(Integer(4), Pow(Add(Rational(3, 4), Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( A_2 H1_hat )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "A_2",
+                "H1_hat",
+                "g29"
+            ],
+            "guide": true,
+            "pt_radius": "H1_hat"
+        },
+        "( B_12 H1_hat )": {
+            "sympy_obj": "Circle(Point2D(Integer(1), Integer(2)), Pow(Add(Pow(Add(Rational(7, 4), Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2)))), Integer(2)), Integer(4)), Rational(1, 2)))",
+            "ID": "( B_12 H1_hat )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "B_12",
+                "H1_hat",
+                "g29"
+            ],
+            "guide": true,
+            "pt_radius": "H1_hat"
+        },
+        "g29": {
+            "sympy_obj": "Point2D(Add(Rational(-3, 4), Mul(Rational(3, 4), Pow(Integer(17), Rational(1, 2)))), Integer(4))",
+            "ID": "g29",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( A_2 H1_hat )",
+                "( B_12 H1_hat )"
+            ],
+            "guide": true
+        },
+        "( A_2s H1_hat )": {
+            "sympy_obj": "Circle(Point2D(Integer(0), Integer(-2)), Pow(Add(Integer(4), Pow(Add(Rational(3, 4), Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( A_2s H1_hat )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "A_2s",
+                "H1_hat",
+                "g30"
+            ],
+            "guide": true,
+            "pt_radius": "H1_hat"
+        },
+        "( B_12s H1_hat )": {
+            "sympy_obj": "Circle(Point2D(Integer(1), Integer(-2)), Pow(Add(Pow(Add(Rational(7, 4), Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2)))), Integer(2)), Integer(4)), Rational(1, 2)))",
+            "ID": "( B_12s H1_hat )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "B_12s",
+                "H1_hat",
+                "g30"
+            ],
+            "guide": true,
+            "pt_radius": "H1_hat"
+        },
+        "g30": {
+            "sympy_obj": "Point2D(Add(Rational(-3, 4), Mul(Rational(3, 4), Pow(Integer(17), Rational(1, 2)))), Integer(-4))",
+            "ID": "g30",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( A_2s H1_hat )",
+                "( B_12s H1_hat )"
+            ],
+            "guide": true
+        },
+        "( g29 A_s )": {
+            "sympy_obj": "Circle(Point2D(Add(Rational(-3, 4), Mul(Rational(3, 4), Pow(Integer(17), Rational(1, 2)))), Integer(4)), Pow(Add(Pow(Add(Rational(-3, 4), Mul(Rational(3, 4), Pow(Integer(17), Rational(1, 2)))), Integer(2)), Integer(25)), Rational(1, 2)))",
+            "ID": "( g29 A_s )",
+            "classes": [
+                "carlyle_pair"
+            ],
+            "parents": [
+                "g29",
+                "A_s",
+                "W2_hat",
+                "W1_hat"
+            ],
+            "guide": true,
+            "pt_radius": "A_s"
+        },
+        "( g30 A )": {
+            "sympy_obj": "Circle(Point2D(Add(Rational(-3, 4), Mul(Rational(3, 4), Pow(Integer(17), Rational(1, 2)))), Integer(-4)), Pow(Add(Pow(Add(Rational(-3, 4), Mul(Rational(3, 4), Pow(Integer(17), Rational(1, 2)))), Integer(2)), Integer(25)), Rational(1, 2)))",
+            "ID": "( g30 A )",
+            "classes": [
+                "carlyle_pair"
+            ],
+            "parents": [
+                "g30",
+                "A",
+                "W2_hat",
+                "W1_hat"
+            ],
+            "guide": true,
+            "pt_radius": "A"
+        },
+        "W2_hat": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(3, 4), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Rational(-3, 4), Mul(Rational(3, 4), Pow(Integer(17), Rational(1, 2)))), Integer(0))",
+            "ID": "W2_hat",
+            "classes": [
+                "milestone"
+            ],
+            "parents": [
+                "( g29 A_s )",
+                "( g30 A )"
+            ],
+            "guide": false
+        },
+        "W1_hat": {
+            "sympy_obj": "Point2D(Add(Rational(-3, 4), Mul(Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 4), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Integer(0))",
+            "ID": "W1_hat",
+            "classes": [
+                "milestone"
+            ],
+            "parents": [
+                "( g29 A_s )",
+                "( g30 A )",
+                "( Q_y W1_hat )",
+                "( g43 Q_y )",
+                "( g47 W1_hat )",
+                "( g48 W1_hat )"
+            ],
+            "guide": false
+        },
+        "( A_2 H2_hat )": {
+            "sympy_obj": "Circle(Point2D(Integer(0), Integer(2)), Pow(Add(Integer(4), Pow(Add(Rational(3, 4), Mul(Rational(3, 4), Pow(Integer(17), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( A_2 H2_hat )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "A_2",
+                "H2_hat",
+                "g33"
+            ],
+            "guide": true,
+            "pt_radius": "H2_hat"
+        },
+        "( B_12 H2_hat )": {
+            "sympy_obj": "Circle(Point2D(Integer(1), Integer(2)), Pow(Add(Integer(4), Pow(Add(Rational(7, 4), Mul(Rational(3, 4), Pow(Integer(17), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( B_12 H2_hat )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "B_12",
+                "H2_hat",
+                "g33"
+            ],
+            "guide": true,
+            "pt_radius": "H2_hat"
+        },
+        "g33": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Rational(-3, 4)), Integer(4))",
+            "ID": "g33",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( A_2 H2_hat )",
+                "( B_12 H2_hat )"
+            ],
+            "guide": true
+        },
+        "( A_2s H2_hat )": {
+            "sympy_obj": "Circle(Point2D(Integer(0), Integer(-2)), Pow(Add(Integer(4), Pow(Add(Rational(3, 4), Mul(Rational(3, 4), Pow(Integer(17), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( A_2s H2_hat )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "A_2s",
+                "H2_hat",
+                "g34"
+            ],
+            "guide": true,
+            "pt_radius": "H2_hat"
+        },
+        "( B_12s H2_hat )": {
+            "sympy_obj": "Circle(Point2D(Integer(1), Integer(-2)), Pow(Add(Integer(4), Pow(Add(Rational(7, 4), Mul(Rational(3, 4), Pow(Integer(17), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( B_12s H2_hat )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "B_12s",
+                "H2_hat",
+                "g34"
+            ],
+            "guide": true,
+            "pt_radius": "H2_hat"
+        },
+        "g34": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Rational(-3, 4)), Integer(-4))",
+            "ID": "g34",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( A_2s H2_hat )",
+                "( B_12s H2_hat )"
+            ],
+            "guide": true
+        },
+        "( g33 A_s )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Rational(-3, 4)), Integer(4)), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Rational(-3, 4)), Integer(2)), Integer(25)), Rational(1, 2)))",
+            "ID": "( g33 A_s )",
+            "classes": [
+                "carlyle_pair"
+            ],
+            "parents": [
+                "g33",
+                "A_s",
+                "W4_hat",
+                "W3_hat"
+            ],
+            "guide": true,
+            "pt_radius": "A_s"
+        },
+        "( g34 A )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Rational(-3, 4)), Integer(-4)), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Rational(-3, 4)), Integer(2)), Integer(25)), Rational(1, 2)))",
+            "ID": "( g34 A )",
+            "classes": [
+                "carlyle_pair"
+            ],
+            "parents": [
+                "g34",
+                "A",
+                "W4_hat",
+                "W3_hat"
+            ],
+            "guide": true,
+            "pt_radius": "A"
+        },
+        "W4_hat": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(3, 4), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Rational(-3, 4)), Integer(0))",
+            "ID": "W4_hat",
+            "classes": [
+                "milestone"
+            ],
+            "parents": [
+                "( g33 A_s )",
+                "( g34 A )"
+            ],
+            "guide": false
+        },
+        "W3_hat": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Rational(-3, 4), Mul(Rational(3, 4), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(0))",
+            "ID": "W3_hat",
+            "classes": [
+                "milestone"
+            ],
+            "parents": [
+                "( g33 A_s )",
+                "( g34 A )",
+                "( O W3_hat )",
+                "( B_1m W3_hat )"
+            ],
+            "guide": false
+        },
+        "( A_2 O )": {
+            "sympy_obj": "Circle(Point2D(Integer(0), Integer(2)), Integer(2))",
+            "ID": "( A_2 O )",
+            "classes": [
+                "inversion"
+            ],
+            "parents": [
+                "A_2",
+                "O",
+                "g37",
+                "g38"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "g37": {
+            "sympy_obj": "Point2D(Mul(Integer(-1), Rational(1, 4), Pow(Integer(39), Rational(1, 2))), Rational(3, 4))",
+            "ID": "g37",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( A_2 O )",
+                "( O R_up )"
+            ],
+            "guide": true
+        },
+        "g38": {
+            "sympy_obj": "Point2D(Mul(Rational(1, 4), Pow(Integer(39), Rational(1, 2))), Rational(3, 4))",
+            "ID": "g38",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( A_2 O )",
+                "( O R_up )"
+            ],
+            "guide": true
+        },
+        "( g37 O )": {
+            "sympy_obj": "Circle(Point2D(Mul(Integer(-1), Rational(1, 4), Pow(Integer(39), Rational(1, 2))), Rational(3, 4)), Pow(Integer(3), Rational(1, 2)))",
+            "ID": "( g37 O )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "g37",
+                "O",
+                "M_3_2"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "( g38 O )": {
+            "sympy_obj": "Circle(Point2D(Mul(Rational(1, 4), Pow(Integer(39), Rational(1, 2))), Rational(3, 4)), Pow(Integer(3), Rational(1, 2)))",
+            "ID": "( g38 O )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "g38",
+                "O",
+                "M_3_2"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "M_3_2": {
+            "sympy_obj": "Point2D(Integer(0), Rational(3, 2))",
+            "ID": "M_3_2",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( g37 O )",
+                "( g38 O )",
+                "( V0 M_3_2 )",
+                "( B_11 M_3_2 )"
+            ],
+            "guide": true
+        },
+        "( V0 M_3_2 )": {
+            "sympy_obj": "Circle(Point2D(Integer(1), Integer(0)), Mul(Rational(1, 2), Pow(Integer(13), Rational(1, 2))))",
+            "ID": "( V0 M_3_2 )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "V0",
+                "M_3_2",
+                "g40"
+            ],
+            "guide": true,
+            "pt_radius": "M_3_2"
+        },
+        "( B_11 M_3_2 )": {
+            "sympy_obj": "Circle(Point2D(Integer(1), Integer(1)), Mul(Rational(1, 2), Pow(Integer(5), Rational(1, 2))))",
+            "ID": "( B_11 M_3_2 )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "B_11",
+                "M_3_2",
+                "g40"
+            ],
+            "guide": true,
+            "pt_radius": "M_3_2"
+        },
+        "g40": {
+            "sympy_obj": "Point2D(Integer(2), Rational(3, 2))",
+            "ID": "g40",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( V0 M_3_2 )",
+                "( B_11 M_3_2 )"
+            ],
+            "guide": true
+        },
+        "( O W3_hat )": {
+            "sympy_obj": "Circle(Point2D(Integer(0), Integer(0)), Add(Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Rational(-3, 4), Mul(Rational(3, 4), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))))",
+            "ID": "( O W3_hat )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "O",
+                "W3_hat",
+                "g41"
+            ],
+            "guide": true,
+            "pt_radius": "W3_hat"
+        },
+        "( B_1m W3_hat )": {
+            "sympy_obj": "Circle(Point2D(Integer(1), Integer(-1)), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(3, 4), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Rational(7, 4), Mul(Rational(3, 4), Pow(Integer(17), Rational(1, 2)))), Integer(2)), Integer(1)), Rational(1, 2)))",
+            "ID": "( B_1m W3_hat )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "B_1m",
+                "W3_hat",
+                "g41"
+            ],
+            "guide": true,
+            "pt_radius": "W3_hat"
+        },
+        "g41": {
+            "sympy_obj": "Point2D(Integer(0), Add(Mul(Integer(-1), Rational(3, 4), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Rational(3, 4), Mul(Rational(3, 4), Pow(Integer(17), Rational(1, 2)))))",
+            "ID": "g41",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( O W3_hat )",
+                "( B_1m W3_hat )",
+                "( M_3_2 g41 )",
+                "( g40 g41 )"
+            ],
+            "guide": true
+        },
+        "( M_3_2 g41 )": {
+            "sympy_obj": "Circle(Point2D(Integer(0), Rational(3, 2)), Add(Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Rational(3, 4), Mul(Rational(3, 4), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))))",
+            "ID": "( M_3_2 g41 )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "M_3_2",
+                "g41",
+                "Q_y"
+            ],
+            "guide": true,
+            "pt_radius": "g41"
+        },
+        "( g40 g41 )": {
+            "sympy_obj": "Circle(Point2D(Integer(2), Rational(3, 2)), Pow(Add(Integer(4), Pow(Add(Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Rational(3, 4), Mul(Rational(3, 4), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( g40 g41 )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "g40",
+                "g41",
+                "Q_y"
+            ],
+            "guide": true,
+            "pt_radius": "g41"
+        },
+        "Q_y": {
+            "sympy_obj": "Point2D(Integer(0), Add(Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Rational(9, 4), Mul(Rational(3, 4), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))))",
+            "ID": "Q_y",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( M_3_2 g41 )",
+                "( g40 g41 )"
+            ],
+            "guide": true
+        },
+        "( Q_y W1_hat )": {
+            "sympy_obj": "Circle(Point2D(Integer(0), Add(Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Rational(9, 4), Mul(Rational(3, 4), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))))), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Rational(9, 4), Mul(Rational(3, 4), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2)), Pow(Add(Mul(Integer(-1), Rational(3, 4), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Rational(3, 4)), Integer(2))), Rational(1, 2)))",
+            "ID": "( Q_y W1_hat )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "Q_y",
+                "W1_hat",
+                "g43",
+                "g44",
+                "g45",
+                "g46"
+            ],
+            "guide": true,
+            "pt_radius": "W1_hat"
+        },
+        "( W1_hat Q_y )": {
+            "sympy_obj": "Circle(Point2D(Add(Rational(-3, 4), Mul(Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 4), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Integer(0)), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(3, 4), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Rational(-9, 4), Mul(Rational(3, 4), Pow(Integer(17), Rational(1, 2)))), Integer(2)), Pow(Add(Rational(-3, 4), Mul(Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 4), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( W1_hat Q_y )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "W1_hat",
+                "Q_y",
+                "g43",
+                "g44",
+                "g47",
+                "g48"
+            ],
+            "guide": true,
+            "pt_radius": "Q_y"
+        },
+        "g43": {
+            "sympy_obj": "Point2D(Add(Mul(Pow(Integer(3), Rational(1, 2)), Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Rational(-9, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))))), Rational(-3, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Add(Mul(Pow(Integer(3), Rational(1, 2)), Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(3, 8))), Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(9, 8), Mul(Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))))",
+            "ID": "g43",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( Q_y W1_hat )",
+                "( W1_hat Q_y )",
+                "( g45 Q_y )"
+            ],
+            "guide": true
+        },
+        "g44": {
+            "sympy_obj": "Point2D(Add(Rational(-3, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Pow(Integer(3), Rational(1, 2)), Add(Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(9, 8), Mul(Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))))), Add(Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(9, 8), Mul(Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Pow(Integer(3), Rational(1, 2)), Add(Rational(-3, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))))))",
+            "ID": "g44",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( Q_y W1_hat )",
+                "( W1_hat Q_y )"
+            ],
+            "guide": true
+        },
+        "( g43 Q_y )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Pow(Integer(3), Rational(1, 2)), Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Rational(-9, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))))), Rational(-3, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Add(Mul(Pow(Integer(3), Rational(1, 2)), Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(3, 8))), Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(9, 8), Mul(Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))))), Pow(Add(Pow(Add(Mul(Pow(Integer(3), Rational(1, 2)), Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Rational(-9, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))))), Rational(-3, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Integer(2)), Pow(Add(Mul(Pow(Integer(3), Rational(1, 2)), Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(3, 8))), Mul(Integer(-1), Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Rational(-9, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( g43 Q_y )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "g43",
+                "Q_y",
+                "g45",
+                "W1_hat"
+            ],
+            "guide": true,
+            "pt_radius": "Q_y"
+        },
+        "g45": {
+            "sympy_obj": "Point2D(Add(Mul(Pow(Integer(3), Rational(1, 2)), Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Rational(-9, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))))), Mul(Integer(-1), Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(3, 8)), Add(Mul(Pow(Integer(3), Rational(1, 2)), Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(3, 8))), Mul(Integer(-1), Rational(9, 8), Pow(Integer(17), Rational(1, 2))), Rational(27, 8), Mul(Rational(9, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))))",
+            "ID": "g45",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( Q_y W1_hat )",
+                "( g43 Q_y )"
+            ],
+            "guide": true
+        },
+        "( g45 Q_y )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Pow(Integer(3), Rational(1, 2)), Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Rational(-9, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))))), Mul(Integer(-1), Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(3, 8)), Add(Mul(Pow(Integer(3), Rational(1, 2)), Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(3, 8))), Mul(Integer(-1), Rational(9, 8), Pow(Integer(17), Rational(1, 2))), Rational(27, 8), Mul(Rational(9, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))))), Pow(Add(Pow(Add(Mul(Pow(Integer(3), Rational(1, 2)), Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(3, 8))), Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(9, 8), Mul(Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2)), Pow(Add(Mul(Pow(Integer(3), Rational(1, 2)), Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Rational(-9, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))))), Mul(Integer(-1), Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(3, 8)), Integer(2))), Rational(1, 2)))",
+            "ID": "( g45 Q_y )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "g45",
+                "Q_y",
+                "g46",
+                "g43"
+            ],
+            "guide": true,
+            "pt_radius": "Q_y"
+        },
+        "g46": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(3, 4), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Rational(3, 4)), Add(Mul(Integer(-1), Rational(3, 2), Pow(Integer(17), Rational(1, 2))), Rational(9, 2), Mul(Rational(3, 2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))))",
+            "ID": "g46",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( Q_y W1_hat )",
+                "( g45 Q_y )"
+            ],
+            "guide": true
+        },
+        "( g46 W1_hat )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(3, 4), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 4), Pow(Integer(17), Rational(1, 2))), Rational(3, 4)), Add(Mul(Integer(-1), Rational(3, 2), Pow(Integer(17), Rational(1, 2))), Rational(9, 2), Mul(Rational(3, 2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))))), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(3, 2), Pow(Integer(17), Rational(1, 2))), Rational(9, 2), Mul(Rational(3, 2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2)), Pow(Add(Mul(Integer(-1), Rational(3, 2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 2), Pow(Integer(17), Rational(1, 2))), Rational(3, 2)), Integer(2))), Rational(1, 2)))",
+            "ID": "( g46 W1_hat )",
+            "classes": [
+                "inversion"
+            ],
+            "parents": [
+                "g46",
+                "W1_hat",
+                "g47",
+                "g48"
+            ],
+            "guide": true,
+            "pt_radius": "W1_hat"
+        },
+        "g47": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Mul(Integer(-1), Integer(30), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(15), Pow(Integer(17), Rational(1, 2))), Mul(Integer(15), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(225)), Rational(1, 2))), Rational(-9, 16), Mul(Rational(9, 16), Pow(Integer(17), Rational(1, 2))), Mul(Rational(9, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Mul(Integer(-1), Integer(15), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(15), Pow(Integer(17), Rational(1, 2))), Mul(Integer(30), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(195)), Rational(1, 2))), Mul(Integer(-1), Rational(3, 16), Pow(Integer(17), Rational(1, 2))), Rational(9, 16), Mul(Rational(3, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))))",
+            "ID": "g47",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( g46 W1_hat )",
+                "( W1_hat Q_y )"
+            ],
+            "guide": true
+        },
+        "g48": {
+            "sympy_obj": "Point2D(Add(Rational(-9, 16), Mul(Rational(9, 16), Pow(Integer(17), Rational(1, 2))), Mul(Rational(9, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Mul(Integer(-1), Integer(30), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(15), Pow(Integer(17), Rational(1, 2))), Mul(Integer(15), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(225)), Rational(1, 2)))), Add(Mul(Integer(-1), Rational(3, 16), Pow(Integer(17), Rational(1, 2))), Rational(9, 16), Mul(Rational(3, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Mul(Integer(-1), Integer(15), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(15), Pow(Integer(17), Rational(1, 2))), Mul(Integer(30), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(195)), Rational(1, 2)))))",
+            "ID": "g48",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( g46 W1_hat )",
+                "( W1_hat Q_y )"
+            ],
+            "guide": true
+        },
+        "( g47 W1_hat )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Mul(Integer(-1), Integer(30), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(15), Pow(Integer(17), Rational(1, 2))), Mul(Integer(15), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(225)), Rational(1, 2))), Rational(-9, 16), Mul(Rational(9, 16), Pow(Integer(17), Rational(1, 2))), Mul(Rational(9, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Mul(Integer(-1), Integer(15), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(15), Pow(Integer(17), Rational(1, 2))), Mul(Integer(30), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(195)), Rational(1, 2))), Mul(Integer(-1), Rational(3, 16), Pow(Integer(17), Rational(1, 2))), Rational(9, 16), Mul(Rational(3, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))))), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Mul(Integer(-1), Integer(15), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(15), Pow(Integer(17), Rational(1, 2))), Mul(Integer(30), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(195)), Rational(1, 2))), Mul(Integer(-1), Rational(3, 16), Pow(Integer(17), Rational(1, 2))), Rational(9, 16), Mul(Rational(3, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2)), Pow(Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Mul(Integer(-1), Integer(30), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(15), Pow(Integer(17), Rational(1, 2))), Mul(Integer(15), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(225)), Rational(1, 2))), Mul(Integer(-1), Rational(3, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 16), Pow(Integer(17), Rational(1, 2))), Rational(3, 16)), Integer(2))), Rational(1, 2)))",
+            "ID": "( g47 W1_hat )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "g47",
+                "W1_hat",
+                "M4_up"
+            ],
+            "guide": true,
+            "pt_radius": "W1_hat"
+        },
+        "( g48 W1_hat )": {
+            "sympy_obj": "Circle(Point2D(Add(Rational(-9, 16), Mul(Rational(9, 16), Pow(Integer(17), Rational(1, 2))), Mul(Rational(9, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Mul(Integer(-1), Integer(30), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(15), Pow(Integer(17), Rational(1, 2))), Mul(Integer(15), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(225)), Rational(1, 2)))), Add(Mul(Integer(-1), Rational(3, 16), Pow(Integer(17), Rational(1, 2))), Rational(9, 16), Mul(Rational(3, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Mul(Integer(-1), Integer(15), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(15), Pow(Integer(17), Rational(1, 2))), Mul(Integer(30), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(195)), Rational(1, 2))))), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(3, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 16), Pow(Integer(17), Rational(1, 2))), Rational(3, 16), Mul(Rational(3, 8), Pow(Add(Mul(Integer(-1), Integer(30), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(15), Pow(Integer(17), Rational(1, 2))), Mul(Integer(15), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(225)), Rational(1, 2)))), Integer(2)), Pow(Add(Mul(Integer(-1), Rational(3, 16), Pow(Integer(17), Rational(1, 2))), Rational(9, 16), Mul(Rational(3, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Mul(Integer(-1), Integer(15), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(15), Pow(Integer(17), Rational(1, 2))), Mul(Integer(30), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(195)), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( g48 W1_hat )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "g48",
+                "W1_hat",
+                "M4_up"
+            ],
+            "guide": true,
+            "pt_radius": "W1_hat"
+        },
+        "M4_up": {
+            "sympy_obj": "Point2D(Add(Rational(-3, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Add(Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(9, 8), Mul(Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))))",
+            "ID": "M4_up",
+            "classes": [
+                "milestone"
+            ],
+            "parents": [
+                "( g47 W1_hat )",
+                "( g48 W1_hat )",
+                "( O M4_up )",
+                "( V0 M4_up )"
+            ],
+            "guide": false
+        },
+        "( O M4_up )": {
+            "sympy_obj": "Circle(Point2D(Integer(0), Integer(0)), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Rational(-9, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2)))), Integer(2)), Pow(Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(3, 8)), Integer(2))), Rational(1, 2)))",
+            "ID": "( O M4_up )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "O",
+                "M4_up",
+                "M4_dn"
+            ],
+            "guide": true,
+            "pt_radius": "M4_up"
+        },
+        "( V0 M4_up )": {
+            "sympy_obj": "Circle(Point2D(Integer(1), Integer(0)), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Rational(-9, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2)))), Integer(2)), Pow(Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(11, 8)), Integer(2))), Rational(1, 2)))",
+            "ID": "( V0 M4_up )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "V0",
+                "M4_up",
+                "M4_dn"
+            ],
+            "guide": true,
+            "pt_radius": "M4_up"
+        },
+        "M4_dn": {
+            "sympy_obj": "Point2D(Add(Rational(-3, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Rational(-9, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2)))))",
+            "ID": "M4_dn",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( O M4_up )",
+                "( V0 M4_up )"
+            ],
+            "guide": true
+        },
+        "( M4_up A_3 )": {
+            "sympy_obj": "Circle(Point2D(Add(Rational(-3, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Add(Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(9, 8), Mul(Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))))), Pow(Add(Pow(Add(Rational(-15, 8), Mul(Integer(-1), Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2)), Pow(Add(Rational(-3, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( M4_up A_3 )",
+            "classes": [
+                "carlyle_pair"
+            ],
+            "parents": [
+                "M4_up",
+                "A_3",
+                "Z4_hat",
+                "Z1_hat"
+            ],
+            "guide": true,
+            "pt_radius": "A_3"
+        },
+        "( M4_dn A_3s )": {
+            "sympy_obj": "Circle(Point2D(Add(Rational(-3, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Rational(-9, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))))), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(3, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Rational(15, 8)), Integer(2)), Pow(Add(Rational(-3, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( M4_dn A_3s )",
+            "classes": [
+                "carlyle_pair"
+            ],
+            "parents": [
+                "M4_dn",
+                "A_3s",
+                "Z4_hat",
+                "Z1_hat"
+            ],
+            "guide": true,
+            "pt_radius": "A_3s"
+        },
+        "Z4_hat": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(3, 4), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Rational(-3, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Integer(0))",
+            "ID": "Z4_hat",
+            "classes": [
+                "milestone"
+            ],
+            "parents": [
+                "( M4_up A_3 )",
+                "( M4_dn A_3s )"
+            ],
+            "guide": false
+        },
+        "Z1_hat": {
+            "sympy_obj": "Point2D(Add(Rational(-3, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(3, 4), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Integer(0))",
+            "ID": "Z1_hat",
+            "classes": [
+                "milestone"
+            ],
+            "parents": [
+                "( M4_up A_3 )",
+                "( M4_dn A_3s )"
+            ],
+            "guide": false
+        },
+        "( Z1_hat O )": {
+            "sympy_obj": "Circle(Point2D(Add(Rational(-3, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(3, 4), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Integer(0)), Add(Rational(-3, 8), Mul(Rational(3, 8), Pow(Integer(17), Rational(1, 2))), Mul(Rational(3, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(3, 4), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2)))))",
+            "ID": "( Z1_hat O )",
+            "classes": [
+                "inversion"
+            ],
+            "parents": [
+                "Z1_hat",
+                "O",
+                "g53",
+                "g54"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "g53": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Rational(1, 4), Mul(Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Integer(17), Rational(1, 2)))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(10), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Integer(10), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(12), Pow(Integer(17), Rational(1, 2))), Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(12), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(120), Mul(Integer(24), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Rational(1, 2))))",
+            "ID": "g53",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( Z1_hat O )",
+                "( O R_up )"
+            ],
+            "guide": true
+        },
+        "g54": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Rational(1, 4), Mul(Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Integer(17), Rational(1, 2)))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(10), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Integer(10), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(12), Pow(Integer(17), Rational(1, 2))), Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(12), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(120), Mul(Integer(24), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Rational(1, 2))))",
+            "ID": "g54",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "( Z1_hat O )",
+                "( O R_up )"
+            ],
+            "guide": true
+        },
+        "( g53 O )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Rational(1, 4), Mul(Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Integer(17), Rational(1, 2)))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(10), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Integer(10), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(12), Pow(Integer(17), Rational(1, 2))), Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(12), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(120), Mul(Integer(24), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Rational(1, 2)))), Pow(Add(Mul(Integer(-1), Rational(5, 32), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Rational(5, 32), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 16), Pow(Integer(17), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Rational(1, 4), Mul(Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Integer(17), Rational(1, 2)))), Integer(2)), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Rational(3, 16), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Rational(15, 8), Mul(Rational(3, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Rational(1, 2)))",
+            "ID": "( g53 O )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "g53",
+                "O",
+                "P1"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "( g54 O )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Rational(1, 4), Mul(Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Integer(17), Rational(1, 2)))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(10), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Integer(10), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(12), Pow(Integer(17), Rational(1, 2))), Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(12), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(120), Mul(Integer(24), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Rational(1, 2)))), Pow(Add(Mul(Integer(-1), Rational(5, 32), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Rational(5, 32), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(3, 16), Pow(Integer(17), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Rational(1, 4), Mul(Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Integer(17), Rational(1, 2)))), Integer(2)), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Rational(3, 16), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Rational(15, 8), Mul(Rational(3, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Rational(1, 2)))",
+            "ID": "( g54 O )",
+            "classes": [
+                "guide"
+            ],
+            "parents": [
+                "g54",
+                "O",
+                "P1"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "P1": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(1, 4), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Rational(1, 2), Mul(Rational(1, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 4), Pow(Integer(17), Rational(1, 2)))), Integer(0))",
+            "ID": "P1",
+            "classes": [
+                "milestone"
+            ],
+            "parents": [
+                "( g53 O )",
+                "( g54 O )"
+            ],
+            "guide": false
+        },
+        "( P1 O )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(1, 4), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Rational(1, 2), Mul(Rational(1, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 4), Pow(Integer(17), Rational(1, 2)))), Integer(0)), Add(Mul(Integer(-1), Rational(1, 4), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Rational(1, 2), Mul(Rational(1, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 4), Pow(Integer(17), Rational(1, 2)))))",
+            "ID": "( P1 O )",
+            "classes": [
+                "carlyle_pair"
+            ],
+            "parents": [
+                "P1",
+                "O",
+                "V16",
+                "V1"
+            ],
+            "guide": true,
+            "pt_radius": "O"
+        },
+        "V16": {
+            "sympy_obj": "Point2D(Add(Rational(-1, 16), Mul(Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(4), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(34)), Rational(1, 2))))",
+            "ID": "V16",
+            "classes": [
+                "vertex"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( P1 O )"
+            ],
+            "guide": false
+        },
+        "V1": {
+            "sympy_obj": "Point2D(Add(Rational(-1, 16), Mul(Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(4), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(34)), Rational(1, 2))))",
+            "ID": "V1",
+            "classes": [
+                "vertex"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( P1 O )",
+                "( V2 V1 )"
+            ],
+            "guide": false
+        },
+        "( V1 V0 )": {
+            "sympy_obj": "Circle(Point2D(Add(Rational(-1, 16), Mul(Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(4), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Pow(Add(Mul(Integer(-1), Rational(1, 16), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 32), Pow(Integer(17), Rational(1, 2))), Pow(Add(Rational(-17, 16), Mul(Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Integer(2)), Mul(Rational(1, 32), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Rational(17, 32)), Rational(1, 2)))",
+            "ID": "( V1 V0 )",
+            "classes": [
+                "compass_step"
+            ],
+            "parents": [
+                "V1",
+                "V0",
+                "V2"
+            ],
+            "guide": true,
+            "pt_radius": "V0"
+        },
+        "V2": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2))))",
+            "ID": "V2",
+            "classes": [
+                "vertex"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( V1 V0 )",
+                "( V3 V2 )"
+            ],
+            "guide": false
+        },
+        "( V2 V1 )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Integer(2)), Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(4), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( V2 V1 )",
+            "classes": [
+                "compass_step"
+            ],
+            "parents": [
+                "V2",
+                "V1",
+                "V3"
+            ],
+            "guide": true,
+            "pt_radius": "V1"
+        },
+        "V3": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(34)), Rational(1, 2))))",
+            "ID": "V3",
+            "classes": [
+                "vertex"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( V2 V1 )",
+                "( V4 V3 )"
+            ],
+            "guide": false
+        },
+        "( V3 V2 )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2)), Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Integer(17), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( V3 V2 )",
+            "classes": [
+                "compass_step"
+            ],
+            "parents": [
+                "V3",
+                "V2",
+                "V4"
+            ],
+            "guide": true,
+            "pt_radius": "V2"
+        },
+        "V4": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(4), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2))))",
+            "ID": "V4",
+            "classes": [
+                "vertex"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( V3 V2 )",
+                "( V5 V4 )"
+            ],
+            "guide": false
+        },
+        "( V4 V3 )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(4), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(4), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2)), Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 8), Pow(Integer(17), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( V4 V3 )",
+            "classes": [
+                "compass_step"
+            ],
+            "parents": [
+                "V4",
+                "V3",
+                "V5"
+            ],
+            "guide": true,
+            "pt_radius": "V3"
+        },
+        "V5": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(34)), Rational(1, 2))))",
+            "ID": "V5",
+            "classes": [
+                "vertex"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( V4 V3 )",
+                "( V6 V5 )"
+            ],
+            "guide": false
+        },
+        "( V5 V4 )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(4), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2)), Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( V5 V4 )",
+            "classes": [
+                "compass_step"
+            ],
+            "parents": [
+                "V5",
+                "V4",
+                "V6"
+            ],
+            "guide": true,
+            "pt_radius": "V4"
+        },
+        "V6": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2)))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2))))",
+            "ID": "V6",
+            "classes": [
+                "vertex"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( V5 V4 )",
+                "( V7 V6 )"
+            ],
+            "guide": false
+        },
+        "( V6 V5 )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2)))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2)), Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( V6 V5 )",
+            "classes": [
+                "compass_step"
+            ],
+            "parents": [
+                "V6",
+                "V5",
+                "V7"
+            ],
+            "guide": true,
+            "pt_radius": "V5"
+        },
+        "V7": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Rational(-1, 16)), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))))",
+            "ID": "V7",
+            "classes": [
+                "vertex"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( V6 V5 )",
+                "( V8 V7 )"
+            ],
+            "guide": false
+        },
+        "( V7 V6 )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Rational(-1, 16)), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Pow(Add(Mul(Integer(-1), Rational(3, 16), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2)), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Rational(17, 16)), Rational(1, 2)))",
+            "ID": "( V7 V6 )",
+            "classes": [
+                "compass_step"
+            ],
+            "parents": [
+                "V7",
+                "V6",
+                "V8"
+            ],
+            "guide": true,
+            "pt_radius": "V6"
+        },
+        "V8": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 16), Pow(Integer(17), Rational(1, 2)))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))))",
+            "ID": "V8",
+            "classes": [
+                "vertex"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( V7 V6 )",
+                "( V9 V8 )"
+            ],
+            "guide": false
+        },
+        "( V8 V7 )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 16), Pow(Integer(17), Rational(1, 2)))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Integer(17), Rational(1, 2)))), Integer(2)), Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( V8 V7 )",
+            "classes": [
+                "compass_step"
+            ],
+            "parents": [
+                "V8",
+                "V7",
+                "V9"
+            ],
+            "guide": true,
+            "pt_radius": "V7"
+        },
+        "V9": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 16), Pow(Integer(17), Rational(1, 2)))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))))",
+            "ID": "V9",
+            "classes": [
+                "vertex"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( V8 V7 )",
+                "( V10 V9 )"
+            ],
+            "guide": false
+        },
+        "( V9 V8 )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 16), Pow(Integer(17), Rational(1, 2)))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Pow(Add(Mul(Integer(-1), Rational(1, 4), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Integer(17), Rational(1, 2))), Rational(17, 8)), Rational(1, 2)))",
+            "ID": "( V9 V8 )",
+            "classes": [
+                "compass_step"
+            ],
+            "parents": [
+                "V9",
+                "V8",
+                "V10"
+            ],
+            "guide": true,
+            "pt_radius": "V8"
+        },
+        "V10": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Rational(-1, 16)), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))))",
+            "ID": "V10",
+            "classes": [
+                "vertex"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( V9 V8 )",
+                "( V11 V10 )"
+            ],
+            "guide": false
+        },
+        "( V10 V9 )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Rational(-1, 16)), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Integer(2)), Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( V10 V9 )",
+            "classes": [
+                "compass_step"
+            ],
+            "parents": [
+                "V10",
+                "V9",
+                "V11"
+            ],
+            "guide": true,
+            "pt_radius": "V9"
+        },
+        "V11": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2)))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2))))",
+            "ID": "V11",
+            "classes": [
+                "vertex"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( V10 V9 )",
+                "( V12 V11 )"
+            ],
+            "guide": false
+        },
+        "( V11 V10 )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2)))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Pow(Add(Mul(Integer(-1), Rational(3, 16), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2)), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Rational(17, 16)), Rational(1, 2)))",
+            "ID": "( V11 V10 )",
+            "classes": [
+                "compass_step"
+            ],
+            "parents": [
+                "V11",
+                "V10",
+                "V12"
+            ],
+            "guide": true,
+            "pt_radius": "V10"
+        },
+        "V12": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(34)), Rational(1, 2))))",
+            "ID": "V12",
+            "classes": [
+                "vertex"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( V11 V10 )",
+                "( V13 V12 )"
+            ],
+            "guide": false
+        },
+        "( V12 V11 )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2)), Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( V12 V11 )",
+            "classes": [
+                "compass_step"
+            ],
+            "parents": [
+                "V12",
+                "V11",
+                "V13"
+            ],
+            "guide": true,
+            "pt_radius": "V11"
+        },
+        "V13": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(4), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2))))",
+            "ID": "V13",
+            "classes": [
+                "vertex"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( V12 V11 )",
+                "( V14 V13 )"
+            ],
+            "guide": false
+        },
+        "( V13 V12 )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(4), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(4), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2)), Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Integer(17), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( V13 V12 )",
+            "classes": [
+                "compass_step"
+            ],
+            "parents": [
+                "V13",
+                "V12",
+                "V14"
+            ],
+            "guide": true,
+            "pt_radius": "V12"
+        },
+        "V14": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(34)), Rational(1, 2))))",
+            "ID": "V14",
+            "classes": [
+                "vertex"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( V13 V12 )"
+            ],
+            "guide": false
+        },
+        "( V14 V13 )": {
+            "sympy_obj": "Circle(Point2D(Add(Mul(Integer(-1), Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Pow(Add(Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(4), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2)), Integer(17)), Rational(1, 2))), Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(4), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2)))), Integer(2)), Pow(Add(Mul(Integer(-1), Rational(1, 8), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Integer(17)), Rational(1, 2))), Mul(Rational(1, 16), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Integer(2))), Rational(1, 2)))",
+            "ID": "( V14 V13 )",
+            "classes": [
+                "compass_step"
+            ],
+            "parents": [
+                "V14",
+                "V13",
+                "V15"
+            ],
+            "guide": true,
+            "pt_radius": "V13"
+        },
+        "V15": {
+            "sympy_obj": "Point2D(Add(Mul(Integer(-1), Rational(1, 16), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Rational(-1, 16), Mul(Rational(1, 16), Pow(Integer(17), Rational(1, 2))), Mul(Rational(1, 8), Pow(Add(Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2)), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Mul(Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Integer(17)), Rational(1, 2)))), Mul(Integer(-1), Rational(1, 8), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2))), Mul(Integer(4), Pow(Add(Mul(Integer(-1), Integer(2), Pow(Add(Mul(Integer(2), Pow(Integer(17), Rational(1, 2))), Integer(34)), Rational(1, 2))), Mul(Integer(-1), Pow(Add(Integer(34), Mul(Integer(-1), Integer(2), Pow(Integer(17), Rational(1, 2)))), Rational(1, 2))), Mul(Integer(3), Pow(Integer(17), Rational(1, 2))), Integer(17)), Rational(1, 2))), Integer(34)), Rational(1, 2))))",
+            "ID": "V15",
+            "classes": [
+                "vertex"
+            ],
+            "parents": [
+                "( O V0 )",
+                "( V14 V13 )"
+            ],
+            "guide": false
+        }
+    }
+}

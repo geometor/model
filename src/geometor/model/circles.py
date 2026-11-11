@@ -113,14 +113,15 @@ class CirclesMixin:
 
             self[struct] = details
 
-            classes_str = " : " + " ".join(classes) if classes else ""
-            color = get_color(struct, classes)
-            self.log(f"[{color} bold]{details.ID}[/{color} bold]{classes_str}")
-            table = Table(show_header=False, box=None, padding=(0, 4))
-            table.add_row("    ctr:", f"[cyan]{self[pt_center].ID}[/cyan]")
-            table.add_row("    r:", f"[cyan]{sp.pretty(struct.radius)}[/cyan]")
-            table.add_row("    eq:", f"[cyan]{sp.pretty(struct.equation())}[/cyan]")
-            self.log(table)
+            if self._logger and self._logger.isEnabledFor(20):
+                classes_str = " : " + " ".join(classes) if classes else ""
+                color = get_color(struct, classes)
+                self.log(f"[{color} bold]{details.ID}[/{color} bold]{classes_str}")
+                table = Table(show_header=False, box=None, padding=(0, 4))
+                table.add_row("    ctr:", f"[cyan]{self[pt_center].ID}[/cyan]")
+                table.add_row("    r:", f"[cyan]{sp.pretty(struct.radius)}[/cyan]")
+                table.add_row("    eq:", f"[cyan]{sp.pretty(struct.equation())}[/cyan]")
+                self.log(table)
 
             find_all_intersections(self, struct)
 

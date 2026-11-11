@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+<rect width="100%" height="100%" fill="#0e1015"/>
+<style>
+  .guide-circle { stroke: #334155; stroke-width: 0.9; stroke-dasharray: 4 4; fill: none; opacity: 0.55; }
+  .richmond-circle { stroke: #38bdf8; stroke-width: 1.4; stroke-dasharray: 6 3; fill: none; opacity: 0.85; }
+  .richmond-line { stroke: #38bdf8; stroke-width: 1.2; stroke-dasharray: 4 3; opacity: 0.8; }
+  .axis { stroke: #64748b; stroke-width: 1.3; }
+  .main-circle { stroke: #94a3b8; stroke-width: 1.8; fill: none; }
+  .poly-fill { fill: #f59e0b; fill-opacity: 0.07; stroke: #f59e0b; stroke-width: 2.4; stroke-linejoin: round; }
+  .chord-star { stroke: #f59e0b; stroke-width: 0.6; opacity: 0.22; }
+  .pt-vertex { fill: #fbbf24; stroke: #0e1015; stroke-width: 1.5; }
+  .pt-milestone { fill: #38bdf8; stroke: #0e1015; stroke-width: 1.4; }
+  .pt-given { fill: #f8fafc; stroke: #f59e0b; stroke-width: 2.0; }
+  .lbl-v { fill: #fde68a; font-family: monospace; font-size: 13px; font-weight: bold; }
+  .lbl-m { fill: #7dd3fc; font-family: monospace; font-size: 12px; font-weight: bold; }
+  .title { fill: #f8fafc; font-family: monospace; font-size: 18px; font-weight: bold; letter-spacing: 3px; }
+  .subtitle { fill: #94a3b8; font-family: monospace; font-size: 12px; }
+</style>
+<text x="36" y="44" class="title">GEOMETOR • REGULAR HEPTADECAGON (17-GON)</text>
+<text x="36" y="66" class="subtitle">Method 1: H. W. Richmond (1893) Angle-Quartering • Lands on Non-Residues V3 &amp; V5</text>
+<circle cx="500.00" cy="140.00" r="360.00" class="guide-circle"/>
+<circle cx="500.00" cy="500.00" r="180.00" class="guide-circle"/>
+<circle cx="500.00" cy="320.00" r="180.00" class="guide-circle"/>
+<line x1="96.80" y1="309.20" x2="903.20" y2="510.80" class="richmond-line"/>
+<circle cx="500.00" cy="410.00" r="90.00" class="guide-circle"/>
+<circle cx="500.00" cy="500.00" r="110.77" class="guide-circle"/>
+<circle cx="587.31" cy="431.83" r="110.77" class="guide-circle"/>
+<circle cx="500.00" cy="500.00" r="58.58" class="guide-circle"/>
+<circle cx="555.39" cy="480.94" r="58.58" class="guide-circle"/>
+<line x1="669.74" y1="903.20" x2="392.21" y2="96.80" class="richmond-line"/>
+<circle cx="529.29" cy="495.10" r="180.00" class="guide-circle"/>
+<circle cx="470.71" cy="324.90" r="180.00" class="guide-circle"/>
+<circle cx="414.90" cy="439.29" r="127.28" class="guide-circle"/>
+<circle cx="529.29" cy="495.10" r="127.28" class="guide-circle"/>
+<line x1="259.35" y1="903.20" x2="652.82" y2="96.80" class="richmond-line"/>
+<circle cx="456.09" cy="500.00" r="403.91" class="guide-circle"/>
+<circle cx="860.00" cy="500.00" r="403.91" class="guide-circle"/>
+<circle cx="658.04" cy="500.00" r="201.96" class="richmond-circle"/>
+<circle cx="530.97" cy="500.00" r="129.49" class="richmond-circle"/>
+<circle cx="660.47" cy="500.00" r="160.47" class="guide-circle"/>
+<circle cx="500.00" cy="500.00" r="320.93" class="guide-circle"/>
+<circle cx="820.93" cy="500.00" r="320.93" class="guide-circle"/>
+<line x1="660.47" y1="903.20" x2="660.47" y2="96.80" class="richmond-line"/>
+<circle cx="401.48" cy="500.00" r="98.52" class="guide-circle"/>
+<circle cx="302.96" cy="500.00" r="197.04" class="guide-circle"/>
+<circle cx="500.00" cy="500.00" r="197.04" class="guide-circle"/>
+<line x1="401.48" y1="903.20" x2="401.48" y2="96.80" class="richmond-line"/>
+<line x1="68.00" y1="500.00" x2="932.00" y2="500.00" class="axis"/>
+<line x1="500.00" y1="932.00" x2="500.00" y2="68.00" class="axis"/>
+<circle cx="500.00" cy="500.00" r="360.00" class="main-circle"/>
+<line x1="860.00" y1="500.00" x2="660.47" y2="177.74" class="chord-star"/>
+<line x1="835.69" y1="369.95" x2="533.22" y2="141.54" class="chord-star"/>
+<line x1="766.04" y1="257.47" x2="401.48" y2="153.74" class="chord-star"/>
+<line x1="660.47" y1="177.74" x2="283.05" y2="212.71" class="chord-star"/>
+<line x1="533.22" y1="141.54" x2="193.92" y2="310.48" class="chord-star"/>
+<line x1="401.48" y1="153.74" x2="146.13" y2="433.85" class="chord-star"/>
+<line x1="283.05" y1="212.71" x2="146.13" y2="566.15" class="chord-star"/>
+<line x1="193.92" y1="310.48" x2="193.92" y2="689.52" class="chord-star"/>
+<line x1="146.13" y1="433.85" x2="283.05" y2="787.29" class="chord-star"/>
+<line x1="146.13" y1="566.15" x2="401.48" y2="846.26" class="chord-star"/>
+<line x1="193.92" y1="689.52" x2="533.22" y2="858.46" class="chord-star"/>
+<line x1="283.05" y1="787.29" x2="660.47" y2="822.26" class="chord-star"/>
+<line x1="401.48" y1="846.26" x2="766.04" y2="742.53" class="chord-star"/>
+<line x1="533.22" y1="858.46" x2="835.69" y2="630.05" class="chord-star"/>
+<line x1="660.47" y1="822.26" x2="860.00" y2="500.00" class="chord-star"/>
+<line x1="766.04" y1="742.53" x2="835.69" y2="369.95" class="chord-star"/>
+<line x1="835.69" y1="630.05" x2="766.04" y2="257.47" class="chord-star"/>
+<polygon points="860.00,500.00 835.69,369.95 766.04,257.47 660.47,177.74 533.22,141.54 401.48,153.74 283.05,212.71 193.92,310.48 146.13,433.85 146.13,566.15 193.92,689.52 283.05,787.29 401.48,846.26 533.22,858.46 660.47,822.26 766.04,742.53 835.69,630.05" class="poly-fill"/>
+<circle cx="500.00" cy="500.00" r="4.2" class="pt-given"/>
+<text x="484.00" y="516.00" class="lbl-m">O</text>
+<circle cx="500.00" cy="140.00" r="4.2" class="pt-milestone"/>
+<text x="508.00" y="130.00" class="lbl-m">A</text>
+<circle cx="500.00" cy="410.00" r="4.2" class="pt-milestone"/>
+<text x="478.00" y="414.00" class="lbl-m">B</text>
+<circle cx="570.27" cy="500.00" r="4.2" class="pt-milestone"/>
+<text x="572.27" y="518.00" class="lbl-m">S</text>
+<circle cx="530.97" cy="500.00" r="4.2" class="pt-milestone"/>
+<text x="524.97" y="490.00" class="lbl-m">C</text>
+<circle cx="456.09" cy="500.00" r="4.2" class="pt-milestone"/>
+<text x="442.09" y="518.00" class="lbl-m">D</text>
+<circle cx="500.00" cy="374.27" r="4.2" class="pt-milestone"/>
+<text x="480.00" y="370.27" class="lbl-m">E</text>
+<circle cx="660.47" cy="500.00" r="4.2" class="pt-milestone"/>
+<text x="664.47" y="518.00" class="lbl-m">F</text>
+<circle cx="401.48" cy="500.00" r="4.2" class="pt-milestone"/>
+<text x="387.48" y="518.00" class="lbl-m">G</text>
+<circle cx="860.00" cy="500.00" r="5.2" class="pt-given"/>
+<text x="880.60" y="504.00" class="lbl-v">V0</text>
+<circle cx="835.69" cy="369.95" r="4.2" class="pt-vertex"/>
+<text x="854.22" y="362.90" class="lbl-v">V1</text>
+<circle cx="766.04" cy="257.47" r="4.2" class="pt-vertex"/>
+<text x="778.66" y="240.85" class="lbl-v">V2</text>
+<circle cx="660.47" cy="177.74" r="5.2" class="pt-vertex"/>
+<text x="664.11" y="154.35" class="lbl-v">V3</text>
+<circle cx="533.22" cy="141.54" r="4.2" class="pt-vertex"/>
+<text x="526.04" y="115.07" class="lbl-v">V4</text>
+<circle cx="401.48" cy="153.74" r="5.2" class="pt-vertex"/>
+<text x="383.11" y="128.31" class="lbl-v">V5</text>
+<circle cx="283.05" cy="212.71" r="4.2" class="pt-vertex"/>
+<text x="254.61" y="192.29" class="lbl-v">V6</text>
+<circle cx="193.92" cy="310.48" r="4.2" class="pt-vertex"/>
+<text x="157.91" y="298.38" class="lbl-v">V7</text>
+<circle cx="146.13" cy="433.85" r="4.2" class="pt-vertex"/>
+<text x="106.05" y="432.23" class="lbl-v">V8</text>
+<circle cx="146.13" cy="566.15" r="4.2" class="pt-vertex"/>
+<text x="106.05" y="575.77" class="lbl-v">V9</text>
+<circle cx="193.92" cy="689.52" r="4.2" class="pt-vertex"/>
+<text x="157.91" y="709.62" class="lbl-v">V10</text>
+<circle cx="283.05" cy="787.29" r="4.2" class="pt-vertex"/>
+<text x="254.61" y="815.71" class="lbl-v">V11</text>
+<circle cx="401.48" cy="846.26" r="4.2" class="pt-vertex"/>
+<text x="383.11" y="879.69" class="lbl-v">V12</text>
+<circle cx="533.22" cy="858.46" r="4.2" class="pt-vertex"/>
+<text x="526.04" y="892.93" class="lbl-v">V13</text>
+<circle cx="660.47" cy="822.26" r="4.2" class="pt-vertex"/>
+<text x="664.11" y="853.65" class="lbl-v">V14</text>
+<circle cx="766.04" cy="742.53" r="4.2" class="pt-vertex"/>
+<text x="778.66" y="767.15" class="lbl-v">V15</text>
+<circle cx="835.69" cy="630.05" r="4.2" class="pt-vertex"/>
+<text x="854.22" y="645.10" class="lbl-v">V16</text>
+</svg>

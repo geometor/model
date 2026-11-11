@@ -98,12 +98,13 @@ class Model(
         self.ID_gen = self.point_ID_generator()
         self.last_point_id = ""
         self._analysis_hook = None
+        self._simplifier = None
         self._new_points = []
         self._poly_count = 0
 
     def log(self, message: object) -> None:
         """Log a message to the model's logger or print if it's a rich object."""
-        if self._logger:
+        if self._logger and self._logger.isEnabledFor(logging.INFO):
             if hasattr(message, "__rich_console__"):
                 rich.print(message)
             else:
@@ -112,6 +113,10 @@ class Model(
     def set_analysis_hook(self, hook_function: Callable) -> None:
         """Set a hook function to be called during analysis/point addition."""
         self._analysis_hook = hook_function
+
+    def set_simplifier(self, simplifier_function: Callable[[sp.Expr], sp.Expr] | None) -> None:
+        """Set an optional custom symbolic simplifier for point coordinates."""
+        self._simplifier = simplifier_function
 
     @property
     def new_points(self) -> list[spg.Point]:
