@@ -733,7 +733,7 @@
       return parsed.type;
     },
 
-    // Parse explicit equality groups from data-assert-equal="ref1 = ref2; ref3 = ref4"
+    // Parse explicit equality/coincidence groups from data-assert-equal="ref1 = ref2; ref3 ≡ ref4"
     parseEqualitySpec(specStr) {
       const explicitAttr = (specStr || '').trim();
       if (!explicitAttr || explicitAttr.toLowerCase() === 'none') return [];
@@ -741,21 +741,21 @@
         .split(';')
         .map((grp) =>
           grp
-            .split(/[=,]/)
+            .split(/[=,≡]/)
             .map((s) => s.trim())
             .filter(Boolean)
         )
         .filter((grp) => grp.length >= 2);
     },
 
-    // Bind green assertion equality highlighting on inline :eq: spans (.geom-eq-ref)
+    // Bind green assertion equality highlighting on inline :eq: / :coincide: spans (.geom-eq-ref)
     bindAssertionElements() {
       const container = this.getRootContainer();
       if (!container) return;
 
       const folioId = this.getDefaultFolioId();
 
-      // 1. Bind inline .geom-eq-ref[data-assert-equal] spans wrapping "equal" (or "equilateral", etc.)
+      // 1. Bind inline .geom-eq-ref[data-assert-equal] spans wrapping "equal" or "coincide"
       const eqRefs = container.querySelectorAll('.geom-eq-ref[data-assert-equal]');
       eqRefs.forEach((eqSpan) => {
         const defaultGid =
@@ -781,6 +781,9 @@
         if (host && spec) {
           const existing = (host.getAttribute('data-assert-equal') || '').trim();
           host.setAttribute('data-assert-equal', existing ? `${existing}; ${spec}` : spec);
+          if (marker.hasAttribute('data-assert-coincide')) {
+            host.setAttribute('data-assert-coincide', spec);
+          }
         }
       });
 
@@ -810,18 +813,45 @@
       });
     },
 
-    // Highlight an equality assertion in green with SVG center tick markers (|, ||, |||)
+    // Spawn a clean solid coincidence ring around a point circle element
+    addCoincideRing(ptCircle) {
+      if (!ptCircle || !ptCircle.ownerSVGElement) return;
+      const svg = ptCircle.ownerSVGElement;
+      const cx = ptCircle.getAttribute('cx');
+      const cy = ptCircle.getAttribute('cy');
+      if (cx === null || cy === null) return;
+      const baseR = parseFloat(ptCircle.getAttribute('r') || '3.5');
+      const svgNs = 'http://www.w3.org/2000/svg';
+      const parent = svg.querySelector('#highlights') || svg.querySelector('#graphics') || svg;
+
+      const ring = document.createElementNS(svgNs, 'circle');
+      ring.setAttribute('cx', cx);
+      ring.setAttribute('cy', cy);
+      ring.setAttribute('r', String(baseR + 4.0));
+      ring.setAttribute('class', 'geom-coincide-ring geom-coincide-ring-inner');
+      parent.appendChild(ring);
+    },
+
+    // Highlight an equality or coincidence assertion with SVG center tick markers (|, ||, |||)
     highlightAssertion(groups, triggerEl, defaultGraphicId) {
       this.clearHighlights();
 
+      const isCoincide =
+        triggerEl.classList.contains('geom-coincide-ref') ||
+        triggerEl.hasAttribute('data-assert-coincide') ||
+        Boolean(triggerEl.querySelector?.('.geom-coincide-ref'));
+
       if (triggerEl.classList.contains('geom-eq-ref')) {
         triggerEl.classList.add('geom-assert-text');
+        if (isCoincide) triggerEl.classList.add('geom-coincide-text');
       } else {
         triggerEl.classList.add('geom-assert-block-active');
+        if (isCoincide) triggerEl.classList.add('geom-coincide-block-active');
       }
       this.activeHighlights.add(triggerEl);
 
       const allTargetKeys = new Set();
+      const ringedPoints = new Set();
       let segTickCounter = 0;
       let angTickCounter = 0;
 
@@ -859,7 +889,17 @@
           primary.forEach((svgEl) => {
             if (!svgEl.classList.contains('geom-ang-arc')) {
               svgEl.classList.add('geom-assert-active');
+              if (isCoincide) svgEl.classList.add('geom-coincide-active');
               this.activeHighlights.add(svgEl);
+            }
+            if (
+              isCoincide &&
+              svgEl.tagName.toLowerCase() === 'circle' &&
+              (svgEl.classList.contains('geom-point') || svgEl.classList.contains('point')) &&
+              !ringedPoints.has(svgEl)
+            ) {
+              ringedPoints.add(svgEl);
+              this.addCoincideRing(svgEl);
             }
             if (tickClass) {
               if (groupKind === 'ang' && svgEl.classList.contains('geom-ang-arc')) {
@@ -877,17 +917,29 @@
 
           if (tickTarget && tickClass) {
             tickTarget.classList.add('geom-assert-active', tickClass);
+            if (isCoincide) tickTarget.classList.add('geom-coincide-active');
             this.activeHighlights.add(tickTarget);
           }
 
           secondary.forEach((svgEl) => {
             svgEl.classList.add('geom-assert-secondary');
+            if (isCoincide) {
+              svgEl.classList.add('geom-coincide-secondary');
+              if (
+                svgEl.tagName.toLowerCase() === 'circle' &&
+                (svgEl.classList.contains('geom-point') || svgEl.classList.contains('point')) &&
+                !ringedPoints.has(svgEl)
+              ) {
+                ringedPoints.add(svgEl);
+                this.addCoincideRing(svgEl);
+              }
+            }
             this.activeHighlights.add(svgEl);
           });
         });
       });
 
-      // Highlight matching inline :g: spans within the surrounding clause/paragraph in green
+      // Highlight matching inline :g: spans within the surrounding clause/paragraph in green/cyan
       const contextRoot =
         triggerEl.closest('.sub-clause, .assertion, .geom-step, p, li') ||
         this.getRootContainer() ||
@@ -897,6 +949,7 @@
         const elKeys = (txtEl.getAttribute('data-geom-keys') || '').split('||').filter(Boolean);
         if (elKeys.some((k) => allTargetKeys.has(k))) {
           txtEl.classList.add('geom-assert-text');
+          if (isCoincide) txtEl.classList.add('geom-coincide-text');
           this.activeHighlights.add(txtEl);
         }
       });
@@ -1028,12 +1081,17 @@
           'geom-assert-text',
           'geom-assert-active',
           'geom-assert-secondary',
+          'geom-coincide-block-active',
+          'geom-coincide-text',
+          'geom-coincide-active',
+          'geom-coincide-secondary',
           'geom-tick-1',
           'geom-tick-2',
           'geom-tick-3'
         );
       });
       this.activeHighlights.clear();
+      document.querySelectorAll('svg.euclid-graphic .geom-coincide-ring').forEach((r) => r.remove());
     },
 
     // Restore highlight for the currently active step (if in step-by-step mode)
@@ -1057,6 +1115,9 @@
         this.highlightAssertion(step.eqGroups, step.el, step.defaultGid);
         step.el.querySelectorAll('.geom-eq-ref').forEach((eqSpan) => {
           eqSpan.classList.add('geom-assert-text');
+          if (eqSpan.classList.contains('geom-coincide-ref')) {
+            eqSpan.classList.add('geom-coincide-text');
+          }
           this.activeHighlights.add(eqSpan);
         });
         if (step.refs && step.refs.length > 0) {
@@ -1372,9 +1433,20 @@
         });
       }
 
-      // On the Pseudocode track, start at Step 0 (Given) so the construction unfolds step-by-step;
-      // on Heath, start at All so the classical finished diagram is shown initially.
-      if (isPseudocodeTrack) {
+      // Support ?step=<1..N|all> query param for deep-linking and 1080p stage captures
+      const params = new URLSearchParams(window.location.search);
+      const stepParam = params.get('step');
+      if (stepParam !== null) {
+        if (stepParam.toLowerCase() === 'all') {
+          this.setStep(steps.length, { smooth: false });
+        } else {
+          const parsed = parseInt(stepParam, 10);
+          if (!Number.isNaN(parsed)) {
+            const idx = Math.max(0, Math.min(steps.length, parsed - 1));
+            this.setStep(idx, { smooth: false });
+          }
+        }
+      } else if (isPseudocodeTrack) {
         this.setStep(0, { smooth: false });
       } else {
         this.setStep(steps.length, { smooth: false });

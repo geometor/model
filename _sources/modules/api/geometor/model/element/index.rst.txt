@@ -34,6 +34,7 @@ Functions
 .. autoapisummary::
 
    geometor.model.element.check_existence
+   geometor.model.element.exact_intersect
    geometor.model.element.find_all_intersections
 
 
@@ -115,6 +116,15 @@ Module Contents
 
    :returns: A tuple containing a boolean indicating existence and the existing structure if found (otherwise None).
    :rtype: tuple[bool, Struct]
+
+
+.. py:function:: exact_intersect(s1: Struct, s2: Struct) -> list[sympy.geometry.Point]
+
+   Compute exact symbolic intersections of Euclidean lines and circles.
+
+   Uses closed-form Cramer's rule, orthogonal line-circle projection, and
+   circle-circle radical axis formulas to avoid SymPy's quartic ``Ellipse``
+   Gröbner-basis solver on nested radicals.
 
 
 .. py:function:: find_all_intersections(self: geometor.model.model.Model, struct: Struct) -> None

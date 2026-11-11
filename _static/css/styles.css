@@ -2047,6 +2047,9 @@ body #search-results .context {
   --geom-assert: #16a34a;
   --geom-assert-bg: rgba(22, 163, 74, 0.10);
   --geom-assert-border: rgba(22, 163, 74, 0.50);
+  --geom-coincide: #0891b2;
+  --geom-coincide-bg: rgba(8, 145, 178, 0.12);
+  --geom-coincide-border: rgba(8, 145, 178, 0.55);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -2061,6 +2064,9 @@ body #search-results .context {
     --geom-assert: #5ec27e;
     --geom-assert-bg: rgba(94, 194, 126, 0.12);
     --geom-assert-border: rgba(94, 194, 126, 0.55);
+    --geom-coincide: #38bdf8;
+    --geom-coincide-bg: rgba(56, 189, 248, 0.14);
+    --geom-coincide-border: rgba(56, 189, 248, 0.60);
   }
 }
 
@@ -2103,6 +2109,9 @@ article.book-reading-pane {
   --geom-assert: #5ec27e;
   --geom-assert-bg: rgba(94, 194, 126, 0.12);
   --geom-assert-border: rgba(94, 194, 126, 0.55);
+  --geom-coincide: #38bdf8;
+  --geom-coincide-bg: rgba(56, 189, 248, 0.14);
+  --geom-coincide-border: rgba(56, 189, 248, 0.60);
 }
 
 body.light-mode,
@@ -2117,6 +2126,9 @@ body.light-mode,
   --geom-assert: #16a34a;
   --geom-assert-bg: rgba(22, 163, 74, 0.10);
   --geom-assert-border: rgba(22, 163, 74, 0.50);
+  --geom-coincide: #0891b2;
+  --geom-coincide-bg: rgba(8, 145, 178, 0.12);
+  --geom-coincide-border: rgba(8, 145, 178, 0.55);
 }
 
 @media print {
@@ -2130,6 +2142,7 @@ article.book-reading-pane,
     --geom-poly-fill: #000000;
     --geom-accent: #b47814;
     --geom-assert: #15803d;
+    --geom-coincide: #0e7490;
   }
 }
 
@@ -4373,7 +4386,7 @@ svg.euclid-graphic[data-graphic-id="0003.g1"] .geom-label {
   transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
 }
 
-/* Interactive Assertion / Equality References (Green) */
+/* Interactive Assertion / Equality References (Green) & Coincidence References (Cyan) */
 .geom-eq-ref {
   cursor: pointer;
   position: relative;
@@ -4387,6 +4400,14 @@ svg.euclid-graphic[data-graphic-id="0003.g1"] .geom-label {
   border-bottom: 1.5px solid var(--geom-assert, #5ec27e) !important;
 }
 
+.geom-coincide-ref {
+  border-bottom: 1.5px dashed var(--geom-coincide-border, rgba(56, 189, 248, 0.6));
+}
+
+.geom-coincide-ref:hover {
+  border-bottom: 1.5px solid var(--geom-coincide, #38bdf8) !important;
+}
+
 .geom-assert-block {
   cursor: pointer;
   border-radius: 4px;
@@ -4398,6 +4419,10 @@ svg.euclid-graphic[data-graphic-id="0003.g1"] .geom-label {
   background-color: var(--geom-assert-bg, rgba(94, 194, 126, 0.12));
 }
 
+.geom-coincide-block-active {
+  background-color: var(--geom-coincide-bg, rgba(56, 189, 248, 0.14)) !important;
+}
+
 .geom-assert-text,
 .geom-assert-text *,
 .katex.geom-assert-text,
@@ -4407,6 +4432,15 @@ svg.euclid-graphic[data-graphic-id="0003.g1"] .geom-label {
   border-bottom-color: var(--geom-assert, #5ec27e) !important;
   border-radius: 3px;
   transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
+}
+
+.geom-coincide-text,
+.geom-coincide-text *,
+.katex.geom-coincide-text,
+.katex.geom-coincide-text * {
+  color: var(--geom-coincide, #38bdf8) !important;
+  background-color: var(--geom-coincide-bg, rgba(56, 189, 248, 0.14)) !important;
+  border-bottom-color: var(--geom-coincide, #38bdf8) !important;
 }
 
 /* Hidden/Toggleable Semantic Overlay Elements in SVG */
@@ -4569,6 +4603,65 @@ svg.euclid-graphic text.geom-assert-secondary tspan {
   stroke: none !important;
   stroke-width: 0 !important;
   filter: none !important;
+}
+
+/* Active Coincidence / Superposition Highlight in SVG: CYAN + Concentric Target Rings */
+svg.euclid-graphic .geom-coincide-active {
+  opacity: 1 !important;
+  stroke: var(--geom-coincide, #38bdf8) !important;
+  stroke-width: 2.4px !important;
+  stroke-opacity: 1 !important;
+}
+
+svg.euclid-graphic polygon.geom-coincide-active,
+svg.euclid-graphic path.polygon.geom-coincide-active,
+svg.euclid-graphic path.geom-polygon.geom-coincide-active,
+svg.euclid-graphic path.wedge.geom-coincide-active,
+svg.euclid-graphic path.angle.geom-coincide-active {
+  opacity: 1 !important;
+  fill: var(--geom-coincide, #38bdf8) !important;
+  fill-opacity: 0.24 !important;
+  stroke: var(--geom-coincide, #38bdf8) !important;
+  stroke-dasharray: 5, 2.5 !important;
+  stroke-width: 1.8px !important;
+}
+
+svg.euclid-graphic circle.geom-point.geom-coincide-active,
+svg.euclid-graphic circle.point.geom-coincide-active,
+svg.euclid-graphic #points circle.geom-coincide-active,
+svg.euclid-graphic circle.geom-point.geom-coincide-secondary,
+svg.euclid-graphic circle.point.geom-coincide-secondary,
+svg.euclid-graphic #points circle.geom-coincide-secondary {
+  opacity: 1 !important;
+  fill: var(--geom-coincide, #38bdf8) !important;
+  fill-opacity: 1 !important;
+}
+
+svg.euclid-graphic text.geom-coincide-active,
+svg.euclid-graphic text.geom-coincide-active *,
+svg.euclid-graphic text.geom-coincide-active tspan,
+svg.euclid-graphic text.geom-coincide-secondary,
+svg.euclid-graphic text.geom-coincide-secondary *,
+svg.euclid-graphic text.geom-coincide-secondary tspan {
+  opacity: 1 !important;
+  fill: var(--geom-coincide, #38bdf8) !important;
+}
+
+svg.euclid-graphic circle.geom-coincide-ring {
+  fill: none !important;
+  stroke: var(--geom-coincide, #38bdf8) !important;
+  pointer-events: none !important;
+  opacity: 0.92 !important;
+}
+
+svg.euclid-graphic circle.geom-coincide-ring-inner {
+  stroke-width: 1.5px !important;
+}
+
+svg.euclid-graphic circle.geom-coincide-ring-outer {
+  stroke-width: 1.1px !important;
+  stroke-dasharray: 2.5, 2.5 !important;
+  opacity: 0.72 !important;
 }
 
 /* Inline Figure Wrapper in Book Page */

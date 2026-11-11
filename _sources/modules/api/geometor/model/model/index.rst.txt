@@ -67,6 +67,12 @@ Module Contents
 
 
 
+   .. py:method:: set_simplifier(simplifier_function: Callable[[sympy.Expr], sympy.Expr] | None) -> None
+
+      Set an optional custom symbolic simplifier for point coordinates.
+
+
+
    .. py:property:: new_points
       :type: list[sympy.geometry.Point]
 

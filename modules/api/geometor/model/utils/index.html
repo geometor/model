@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Fira+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=ea5fcf70" />
-  <link rel="stylesheet" type="text/css" href="../../../../../_static/css/styles.css?v=69acf51f" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/css/styles.css?v=66998e95" />
   <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -91,28 +91,28 @@
         <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
         <table class="autosummary longtable docutils align-default">
         <tbody>
-        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.utils.clean_expr" title="geometor.model.utils.clean_expr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clean_expr</span></code></a>(→ sympy.Expr)</p></td>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.utils.clean_expr" title="geometor.model.utils.clean_expr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clean_expr</span></code></a>(expr) → sympy.Expr</p></td>
         <td><p>Simplify and denest SymPy expressions.</p></td>
         </tr>
-        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.utils.spread" title="geometor.model.utils.spread"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spread</span></code></a>(→ sympy.Expr)</p></td>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.utils.spread" title="geometor.model.utils.spread"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spread</span></code></a>(l1, l2) → sympy.Expr</p></td>
         <td><p>Calculate the spread of two lines.</p></td>
         </tr>
-        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.utils.compare_points" title="geometor.model.utils.compare_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_points</span></code></a>(→ int)</p></td>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.utils.compare_points" title="geometor.model.utils.compare_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_points</span></code></a>(pt1, pt2) → int</p></td>
         <td><p>Compare two points for sorting.</p></td>
         </tr>
-        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.utils.point_value" title="geometor.model.utils.point_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">point_value</span></code></a>(→ tuple[float, float])</p></td>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.utils.point_value" title="geometor.model.utils.point_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">point_value</span></code></a>(pt) → tuple[float, float]</p></td>
         <td><p>Get the numerical coordinates of a point.</p></td>
         </tr>
-        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.utils.sort_points" title="geometor.model.utils.sort_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort_points</span></code></a>(→ list[sympy.geometry.Point])</p></td>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.utils.sort_points" title="geometor.model.utils.sort_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort_points</span></code></a>(pts) → list[sympy.geometry.Point]</p></td>
         <td><p>Sort a list of points.</p></td>
         </tr>
-        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.utils.log_init" title="geometor.model.utils.log_init"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_init</span></code></a>(→ None)</p></td>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.utils.log_init" title="geometor.model.utils.log_init"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_init</span></code></a>(name) → None</p></td>
         <td><p>Initialize logging for a session.</p></td>
         </tr>
-        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.utils.print_log" title="geometor.model.utils.print_log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_log</span></code></a>(→ None)</p></td>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.utils.print_log" title="geometor.model.utils.print_log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_log</span></code></a>([txt]) → None</p></td>
         <td><p>Print text to stdout and log it to the file.</p></td>
         </tr>
-        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.utils.elapsed" title="geometor.model.utils.elapsed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">elapsed</span></code></a>(→ str)</p></td>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.utils.elapsed" title="geometor.model.utils.elapsed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">elapsed</span></code></a>(start_time) → str</p></td>
         <td><p>Calculate and format the elapsed time since start.</p></td>
         </tr>
         </tbody>
@@ -327,11 +327,11 @@
 
   <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
   <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-  <script src="../../../../../_static/documentation_options.js?v=722679d6"></script>
+  <script src="../../../../../_static/documentation_options.js?v=d65efdcf"></script>
   <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
   <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
   <script src="../../../../../_static/js/collection_controls.js?v=b6b5297a"></script>
-  <script src="../../../../../_static/js/geometor_interactive.js?v=4430a5d4"></script>
+  <script src="../../../../../_static/js/geometor_interactive.js?v=b2892320"></script>
   <script src="../../../../../_static/js/search_highlight.js"></script>
 
 </body>

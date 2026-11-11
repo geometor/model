@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Fira+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=ea5fcf70" />
-  <link rel="stylesheet" type="text/css" href="../../../../../_static/css/styles.css?v=69acf51f" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/css/styles.css?v=66998e95" />
   <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -114,10 +114,13 @@
         <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
         <table class="autosummary longtable docutils align-default">
         <tbody>
-        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.element.check_existence" title="geometor.model.element.check_existence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_existence</span></code></a>(→ tuple[bool, Struct | None])</p></td>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.element.check_existence" title="geometor.model.element.check_existence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_existence</span></code></a>(self, struct, existing_structs) → tuple[bool, Struct | None]</p></td>
         <td><p>Check if a geometric structure exists in the model.</p></td>
         </tr>
-        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.element.find_all_intersections" title="geometor.model.element.find_all_intersections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_all_intersections</span></code></a>(→ None)</p></td>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.element.exact_intersect" title="geometor.model.element.exact_intersect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exact_intersect</span></code></a>(s1, s2) → list[sympy.geometry.Point]</p></td>
+        <td><p>Compute exact symbolic intersections of Euclidean lines and circles.</p></td>
+        </tr>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.element.find_all_intersections" title="geometor.model.element.find_all_intersections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_all_intersections</span></code></a>(self, struct) → None</p></td>
         <td><p>Find all intersections in the model for the given struct.</p></td>
         </tr>
         </tbody>
@@ -228,6 +231,15 @@
         </dd></dl>
 
         <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.element.exact_intersect">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.element.</span></span><span class="sig-name descname"><span class="pre">exact_intersect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#geometor.model.element.Struct" title="geometor.model.element.Struct"><span class="pre">Struct</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#geometor.model.element.Struct" title="geometor.model.element.Struct"><span class="pre">Struct</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.element.exact_intersect" title="Link to this definition">¶</a></dt>
+        <dd><p>Compute exact symbolic intersections of Euclidean lines and circles.</p>
+        <p>Uses closed-form Cramer’s rule, orthogonal line-circle projection, and
+        circle-circle radical axis formulas to avoid SymPy’s quartic <code class="docutils literal notranslate"><span class="pre">Ellipse</span></code>
+        Gröbner-basis solver on nested radicals.</p>
+        </dd></dl>
+
+        <dl class="py function">
         <dt class="sig sig-object py" id="geometor.model.element.find_all_intersections">
         <span class="sig-prename descclassname"><span class="pre">geometor.model.element.</span></span><span class="sig-name descname"><span class="pre">find_all_intersections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../model/index.html#geometor.model.model.Model" title="geometor.model.model.Model"><span class="pre">geometor.model.model.Model</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">struct</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#geometor.model.element.Struct" title="geometor.model.element.Struct"><span class="pre">Struct</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.element.find_all_intersections" title="Link to this definition">¶</a></dt>
         <dd><p>Find all intersections in the model for the given struct.</p>
@@ -330,11 +342,11 @@
 
   <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
   <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-  <script src="../../../../../_static/documentation_options.js?v=722679d6"></script>
+  <script src="../../../../../_static/documentation_options.js?v=d65efdcf"></script>
   <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
   <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
   <script src="../../../../../_static/js/collection_controls.js?v=b6b5297a"></script>
-  <script src="../../../../../_static/js/geometor_interactive.js?v=4430a5d4"></script>
+  <script src="../../../../../_static/js/geometor_interactive.js?v=b2892320"></script>
   <script src="../../../../../_static/js/search_highlight.js"></script>
 
 </body>

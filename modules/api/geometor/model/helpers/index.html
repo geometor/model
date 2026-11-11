@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Fira+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=ea5fcf70" />
-  <link rel="stylesheet" type="text/css" href="../../../../../_static/css/styles.css?v=69acf51f" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/css/styles.css?v=66998e95" />
   <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -91,28 +91,28 @@
         <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
         <table class="autosummary longtable docutils align-default">
         <tbody>
-        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.line_get_y" title="geometor.model.helpers.line_get_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">line_get_y</span></code></a>(→ sympy.Expr)</p></td>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.line_get_y" title="geometor.model.helpers.line_get_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">line_get_y</span></code></a>(l1, x) → sympy.Expr</p></td>
         <td><p>Return y value for specific x.</p></td>
         </tr>
-        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_start_points" title="geometor.model.helpers.set_given_start_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_start_points</span></code></a>(→ tuple[sympy.geometry.Point, ...)</p></td>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_start_points" title="geometor.model.helpers.set_given_start_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_start_points</span></code></a>(model) → tuple[sympy.geometry.Point, sympy.geometry.Point]</p></td>
         <td><p>Set the standard starting points at (-1/2, 0) and (1/2, 0).</p></td>
         </tr>
-        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_start_points_zero" title="geometor.model.helpers.set_given_start_points_zero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_start_points_zero</span></code></a>(...)</p></td>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_start_points_zero" title="geometor.model.helpers.set_given_start_points_zero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_start_points_zero</span></code></a>(model) → tuple[sympy.geometry.Point, sympy.geometry.Point]</p></td>
         <td><p>Set the standard starting points at (0, 0) and (1, 0).</p></td>
         </tr>
-        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_equilateral_poles" title="geometor.model.helpers.set_equilateral_poles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_equilateral_poles</span></code></a>(→ list[sympy.geometry.Point])</p></td>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_equilateral_poles" title="geometor.model.helpers.set_equilateral_poles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_equilateral_poles</span></code></a>(model, pt_1, pt_2[, add_circles]) → list[sympy.geometry.Point]</p></td>
         <td><p>Find the two intersection points (poles) of circles entered at pt_1 and pt_2.</p></td>
         </tr>
-        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.construct_perpendicular_bisector" title="geometor.model.helpers.construct_perpendicular_bisector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">construct_perpendicular_bisector</span></code></a>(→ sympy.geometry.Line)</p></td>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.construct_perpendicular_bisector" title="geometor.model.helpers.construct_perpendicular_bisector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">construct_perpendicular_bisector</span></code></a>(model, pt_1, pt_2[, ...]) → sympy.geometry.Line</p></td>
         <td><p>Perform fundamental operations for two points and add perpendicular bisector.</p></td>
         </tr>
-        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_midpoint" title="geometor.model.helpers.set_midpoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_midpoint</span></code></a>(→ sympy.geometry.Line)</p></td>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_midpoint" title="geometor.model.helpers.set_midpoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_midpoint</span></code></a>(model, pt_1, pt_2[, add_circles]) → sympy.geometry.Line</p></td>
         <td><p>Find and set the midpoint between two points.</p></td>
         </tr>
-        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_rect_points" title="geometor.model.helpers.set_given_rect_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_rect_points</span></code></a>(→ list[sympy.geometry.Point])</p></td>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_rect_points" title="geometor.model.helpers.set_given_rect_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_rect_points</span></code></a>(model, pt, x_offset, y_offset) → list[sympy.geometry.Point]</p></td>
         <td><p>Set points forming a rectangle starting from a given point.</p></td>
         </tr>
-        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_square_points" title="geometor.model.helpers.set_given_square_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_square_points</span></code></a>(→ list[sympy.geometry.Point])</p></td>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.helpers.set_given_square_points" title="geometor.model.helpers.set_given_square_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_given_square_points</span></code></a>(model, pt, offset) → list[sympy.geometry.Point]</p></td>
         <td><p>Set points forming a square starting from a given point.</p></td>
         </tr>
         </tbody>
@@ -299,11 +299,11 @@
 
   <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
   <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-  <script src="../../../../../_static/documentation_options.js?v=722679d6"></script>
+  <script src="../../../../../_static/documentation_options.js?v=d65efdcf"></script>
   <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
   <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
   <script src="../../../../../_static/js/collection_controls.js?v=b6b5297a"></script>
-  <script src="../../../../../_static/js/geometor_interactive.js?v=4430a5d4"></script>
+  <script src="../../../../../_static/js/geometor_interactive.js?v=b2892320"></script>
   <script src="../../../../../_static/js/search_highlight.js"></script>
 
 </body>
