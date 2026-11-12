@@ -6,7 +6,7 @@ Everything centers around :class:`Model`.
 
 from __future__ import annotations
 
-__version__ = "0.5.7"
+__version__ = "0.6.0"
 
 from geometor.model.algebra import (
     canonicalize_golden,

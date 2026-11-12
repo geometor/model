@@ -1,6 +1,21 @@
 changelog
 =========
 
+0.6.0
+-----
+*2026-11-12*
+
+**added**
+
+-   **Algebraic Kernel (``algebra.py``):** Added exact algebraic field constructors (``get_algebraic_field``, ``get_golden_field``, ``get_kepler_field``), canonical golden/Kepler reduction (``canonicalize_golden``, ``canonicalize_kepler``, ``reduce_in_field``), ``clean_expr``, ``exact_sign``, and ``zero_test`` while enforcing strict exact coordinate validation in ``Model.__setitem__``.
+-   **Rational Trigonometry Invariants (``invariants.py``):** Added exact symbolic ``quadrance``, ``line_spread``, ``vertex_spread``, ``cross``, ``orientation``, ``cross_ratio``, ``is_harmonic``, and ``Angle`` invariants.
+-   **Targeted Intersections & Subconstructions (``intersections.py``):** Added ``Model(..., auto_intersect=False)``, explicit ``model.intersect(...)`` / ``intersect_2d``, ``SubconstructionScope`` (``model.subconstruction(...)``), ``ConstructionError``, and the ``@proposition`` workflow decorator.
+-   **Constructive Proof Verifier (``proof.py``):** Added ``Given`` / ``Construct`` / ``Demonstrate`` ledger tracking, ``Step``, ``ProofAssertionError``, ``model.assert_*`` geometric assertions, and ``conclude``.
+
+**changed**
+
+-   **Serialization (``serialize.py``):** Upgraded model serialization to schema v2 preserving exact SymPy coordinate expressions, ancestral DAG provenance, construction steps, and backward-compatible ``load_model`` deserialization.
+
 0.5.7
 -----
 *2026-11-11*
