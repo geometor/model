@@ -7,7 +7,9 @@ geometor.model.element
 
    Provides core element classes and intersection logic.
 
-   This module defines the foundational :class:`Element` container which wraps SymPy geometric objects with additional metadata like parents, user-defined classes, and IDs for the geometor system.
+   This module defines the foundational :class:`Element` container which wraps SymPy
+   geometric objects with causal ancestry (``parents``), incident points (``pts``),
+   classifications (``classes``), cached numeric coordinates (``approx_coords``), and IDs.
 
 
 
@@ -17,6 +19,7 @@ Attributes
 .. autoapisummary::
 
    geometor.model.element.Struct
+   geometor.model.element.exact_intersect
 
 
 Classes
@@ -34,7 +37,6 @@ Functions
 .. autoapisummary::
 
    geometor.model.element.check_existence
-   geometor.model.element.exact_intersect
    geometor.model.element.find_all_intersections
 
 
@@ -43,45 +45,67 @@ Module Contents
 
 .. py:data:: Struct
 
+.. py:data:: exact_intersect
+
 .. py:class:: Element(sympy_obj: sympy.geometry.entity.GeometryEntity, parents: list | None = None, classes: list[str] | None = None, ID: str = '', guide: bool = False)
 
-   A container for special attributes of an element of a model.
+   A container for metadata and cached numeric invariants of a model element.
 
-   The Element class extends the functionality of standard SymPy geometry objects by attaching model-specific metadata. It maintains a record of the element's lineage (parents), classification (classes), and identification (ID), which are essential for the constructive geometry framework.
+   Maintains causal lineage in :attr:`parents` (a true directed acyclic graph),
+   incident points on lines/circles in :attr:`pts`, style/semantic tags in
+   :attr:`classes`, proof diagram markers in :attr:`markers`, and lazily cached
+   numeric coordinates in :attr:`approx_coords`.
 
-   :param sympy_obj: The sympy object representing the geometric entity.
-   :param parents: A list of parent elements.
+   :param sympy_obj: The SymPy object representing the geometric entity.
+   :param parents: A list of causal parent elements.
    :param classes: A list of class labels.
    :param ID: A string ID for the element. If empty, an ID is generated.
-   :param guide: If True, the element is a guide and excluded from intersections.
+   :param guide: If True (or if ``"guide"`` is in ``classes``), excluded from auto-intersections.
 
 
    .. py:attribute:: object
 
 
    .. py:attribute:: parents
+      :type:  dict[Any, str]
+
+
+   .. py:attribute:: pts
+      :type:  dict[sympy.geometry.Point, str]
 
 
    .. py:attribute:: classes
+      :type:  dict[str, str]
 
 
    .. py:attribute:: ID
+      :type:  str
       :value: ''
 
 
 
    .. py:attribute:: guide
-      :value: False
+      :type:  bool
 
+
+   .. py:attribute:: markers
+      :type:  list[dict[str, Any]]
+      :value: []
+
+
+
+   .. py:property:: approx_coords
+      :type: tuple[float, ...] | None
+
+
+      Lazily computed floating-point signature for fast spatial pre-filtering.
 
 
    .. py:property:: length
-      :type: sympy.Expr | None
+      :type: sympy.Expr | list[sympy.Expr] | None
 
 
-      Returns the cleaned length of the element.
-
-      This property computes or retrieves the geometric length of the element, applying symbolic cleanup to ensure the expression is simplified. For polygons, it returns a list of side lengths.
+      Return the cleaned symbolic length (or side lengths for polygons).
 
 
 .. py:class:: CircleElement(sympy_obj: sympy.geometry.Circle, pt_radius: sympy.geometry.Point, parents: list | None = None, classes: list[str] | None = None, ID: str = '', guide: bool = False)
@@ -89,16 +113,7 @@ Module Contents
    Bases: :py:obj:`Element`
 
 
-   Same as :class:`Element` but adds a ``pt_radius``.
-
-   This subclass is specifically designed for circle elements where the radius is defined by a specific point on the circumference. It preserves the relationship between the center and the radius point.
-
-   :param sympy_obj: The sympy object representing the geometric entity.
-   :param pt_radius: The point defining the radius.
-   :param parents: A list of parent elements.
-   :param classes: A list of class labels.
-   :param ID: A string ID for the element.
-   :param guide: If True, the element is a guide.
+   Same as :class:`Element` but records ``pt_radius`` on the circumference.
 
 
    .. py:attribute:: pt_radius
@@ -106,34 +121,15 @@ Module Contents
 
 .. py:function:: check_existence(self: geometor.model.model.Model, struct: Struct, existing_structs: list[Struct]) -> tuple[bool, Struct | None]
 
-   Check if a geometric structure exists in the model.
-
-   This function verifies whether a given geometric structure (line or circle) is already present in the model's collection. It indicates existence by checking both object identity and mathematical equivalence of the defining equations.
-
-   :param self: The model instance.
-   :param struct: The structure to check.
-   :param existing_structs: List of existing structures in the model.
-
-   :returns: A tuple containing a boolean indicating existence and the existing structure if found (otherwise None).
-   :rtype: tuple[bool, Struct]
+   Check if an algebraically equivalent ``Line`` or ``Circle`` already exists in ``self``.
 
 
-.. py:function:: exact_intersect(s1: Struct, s2: Struct) -> list[sympy.geometry.Point]
+.. py:function:: find_all_intersections(self: geometor.model.model.Model, struct: Struct, *, candidates: collections.abc.Sequence[Struct] | None = None, by: str = '') -> None
 
-   Compute exact symbolic intersections of Euclidean lines and circles.
+   Compute intersections of ``struct`` with eligible structures and register points.
 
-   Uses closed-form Cramer's rule, orthogonal line-circle projection, and
-   circle-circle radical axis formulas to avoid SymPy's quartic ``Ellipse``
-   Gröbner-basis solver on nested radicals.
-
-
-.. py:function:: find_all_intersections(self: geometor.model.model.Model, struct: Struct) -> None
-
-   Find all intersections in the model for the given struct.
-
-   This function computes the intersection points between the provided structure and all other eligible structures in the model. It uses parallel processing to efficiently handle potential intersections and updates the model with any newly found points.
-
-   :param self: The model instance.
-   :param struct: The structure to find intersections for.
+   Respects ``self.auto_intersect``, ``guide`` flags, and active ``subconstruction``
+   scopes. Executes in-process by default unless ``self.use_multiprocessing`` is
+   enabled and the candidate batch contains at least 64 structures.
 
 

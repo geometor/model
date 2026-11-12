@@ -7,7 +7,7 @@ geometor.model.ancestors
 
    Provides ancestor retrieval functions for the :class:`geometor.model.Model` class.
 
-   We follow the chain of parents for the element.
+   We follow the causal chain of parents for the element.
 
 
 
@@ -42,34 +42,11 @@ Module Contents
       :returns: A nested dictionary representing the IDs of the ancestors.
       :rtype: dict
 
-      **example**
-
-      If element A has parents B and C, and B has parent D, the method returns:
-
-          {'A': {'B': {'D': {}}, 'C': {}}}
-
-
 
 
    .. py:method:: get_ancestors(element: sympy.geometry.entity.GeometryEntity) -> dict[sympy.geometry.entity.GeometryEntity, dict]
 
-      Retrieve the ancestors for the given element.
-
-      The method recursively traverses the parent elements of the given element
-      and constructs a nested dictionary representing the ancestor tree.
-
-      :param element: sympy.geometry object
-                      The element for which the ancestors are to be retrieved.
-
-      :returns: A nested dictionary representing the ancestors.
-      :rtype: dict
-
-      **example**
-
-      If element A has parents B and C, and B has parent D, the method returns:
-
-          {A: {B: {D: {}}, C: {}}}
-
+      Retrieve the causal ancestors for the given element as a nested dictionary.
 
 
 

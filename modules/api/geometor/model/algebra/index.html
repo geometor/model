@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-content_root="../../../../../">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>geometor.model.algebra &mdash; GEOMETOR • model</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Fira+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=ea5fcf70" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/css/styles.css?v=66998e95" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <link rel="stylesheet" href="../../../../../_static/css/print.css" type="text/css" media="print" />
+  <link rel="icon" href="../../../../../_static/favicon.ico" />
+</head>
+
+<body class="book-theme-classical-serif">
+  <header>
+    <div class="logo">
+      <a href="../../../../../index.html">
+        <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+      </a>
+      <div class="org-repo">
+        <span class="org">GEOMETOR</span>
+        •
+        <span class="repo">model</span>
+      </div>
+    </div>
+    <nav aria-label="Header">
+      <input type="checkbox" id="nav-Header-toggle" >
+      <label for="nav-Header-toggle" >Header</label>
+      <ul>
+        <li>
+          <a href="../../../../../demos/index.html"  >demos</a>
+        </li>
+        <li>
+          <a href="../../../../../refs/index.html"  >references</a>
+        </li>
+        <li>
+          <a href="../../../../../mission/index.html"  >mission</a>
+        </li>
+        <li>
+          <a href="../../../../../usage/index.html"  >usage</a>
+        </li>
+        <li>
+          <a href="../../../../../log/index.html"  >log</a>
+        </li>
+        <li>
+          <a href="../../../../index.html" class="is-active" aria-selected="true" >modules</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="motto"></div>
+  </header>
+  <main class="book-main">
+    <article class="book-layout book-reading-pane">
+      <header class="book-header">
+        <div class="book-header-bar">
+          <div class="book-header-identity">
+            <a class="book-portal-link" href="../../../../../index.html" title="Return to Project Portal">&larr; model</a>
+            <span class="book-header-sep">/</span>
+            <a class="book-title-link" href="../../../../../index.html">GEOMETOR • model</a>
+          </div>
+          <div class="book-header-breadcrumbs book-header-badges" role="navigation" aria-label="Breadcrumbs">
+            <a class="book-crumb-link" href="../../../../index.html">modules</a>
+          </div>
+        </div>
+        <div class="book-header-nav">
+          <div class="book-nav-prev">
+            <a class="book-nav-btn" href="../__main__/index.html" title="geometor.model.__main__">&larr; <span class="nav-label">Prev</span></a>
+          </div>
+          <div class="book-nav-center">
+          </div>
+          <div class="book-nav-next">
+            <a class="book-nav-btn" href="../ancestors/index.html" title="geometor.model.ancestors"><span class="nav-label">Next</span> &rarr;</a>
+          </div>
+        </div>
+      </header>
+      <div class="content body book-content" role="main">
+        <section class="level-1" id="module-geometor.model.algebra">
+        <span id="geometor-model-algebra"></span><h1>geometor.model.algebra<a class="headerlink" href="#module-geometor.model.algebra" title="Link to this heading">¶</a></h1>
+        <p>Symbolic canonicalization, exact predicates, and algebraic number field helpers.</p>
+        <p>This module replaces general-purpose <code class="docutils literal notranslate"><span class="pre">sympy.simplify</span></code> calls in the hot loop of
+        <code class="docutils literal notranslate"><span class="pre">geometor.model</span></code> with a tiered algebraic canonicalizer (<a class="reference internal" href="#geometor.model.algebra.clean_expr" title="geometor.model.algebra.clean_expr"><code class="xref py py-func docutils literal notranslate"><span class="pre">clean_expr()</span></code></a>),
+        fast high-precision + exact symbolic zero/sign predicates (<a class="reference internal" href="#geometor.model.algebra.zero_test" title="geometor.model.algebra.zero_test"><code class="xref py py-func docutils literal notranslate"><span class="pre">zero_test()</span></code></a>,
+        <a class="reference internal" href="#geometor.model.algebra.exact_sign" title="geometor.model.algebra.exact_sign"><code class="xref py py-func docutils literal notranslate"><span class="pre">exact_sign()</span></code></a>), and explicit <code class="docutils literal notranslate"><span class="pre">sympy.QQ.algebraic_field</span></code> reducers for
+        quadratic and biquadratic extensions such as <span class="math notranslate nohighlight">\(\mathbb{Q}(\phi)\)</span> and
+        <span class="math notranslate nohighlight">\(\mathbb{Q}(\sqrt{\phi})\)</span>.</p>
+        <section class="level-2" id="functions">
+        <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
+        <table class="autosummary longtable docutils align-default">
+        <tbody>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.algebra.fast_line_coeffs" title="geometor.model.algebra.fast_line_coeffs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fast_line_coeffs</span></code></a>(ln) → tuple[sympy.Expr, sympy.Expr, sympy.Expr]</p></td>
+        <td><p>Extract normalized exact line coefficients <code class="docutils literal notranslate"><span class="pre">(a,</span> <span class="pre">b,</span> <span class="pre">c)</span></code> without <code class="docutils literal notranslate"><span class="pre">sp.simplify</span></code>.</p></td>
+        </tr>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.algebra.clean_expr" title="geometor.model.algebra.clean_expr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clean_expr</span></code></a>(expr) → sympy.Expr</p></td>
+        <td><p>Canonicalize a symbolic geometric coordinate without invoking <code class="docutils literal notranslate"><span class="pre">sp.simplify</span></code>.</p></td>
+        </tr>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.algebra.zero_test" title="geometor.model.algebra.zero_test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zero_test</span></code></a>(expr) → bool</p></td>
+        <td><p>Determine with 100% mathematical exactness whether <code class="docutils literal notranslate"><span class="pre">expr</span> <span class="pre">==</span> <span class="pre">0</span></code>.</p></td>
+        </tr>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.algebra.exact_sign" title="geometor.model.algebra.exact_sign"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exact_sign</span></code></a>(expr) → int</p></td>
+        <td><p>Return the exact mathematical sign (<code class="docutils literal notranslate"><span class="pre">+1</span></code>, <code class="docutils literal notranslate"><span class="pre">-1</span></code>, or <code class="docutils literal notranslate"><span class="pre">0</span></code>) of a real expression.</p></td>
+        </tr>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.algebra.get_algebraic_field" title="geometor.model.algebra.get_algebraic_field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_algebraic_field</span></code></a>(*generators) → sympy.AlgebraicField</p></td>
+        <td><p>Construct and cache an explicit algebraic number field <span class="math notranslate nohighlight">\(\mathbb{Q}(\alpha_1, \dots)\)</span>.</p></td>
+        </tr>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.algebra.get_golden_field" title="geometor.model.algebra.get_golden_field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_golden_field</span></code></a>() → sympy.AlgebraicField</p></td>
+        <td><p>Return the cached quadratic number field <span class="math notranslate nohighlight">\(\mathbb{Q}(\phi) = \mathbb{Q}(\sqrt{5})\)</span>.</p></td>
+        </tr>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.algebra.get_kepler_field" title="geometor.model.algebra.get_kepler_field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_kepler_field</span></code></a>() → sympy.AlgebraicField</p></td>
+        <td><p>Return the cached degree-4 Kepler number field <span class="math notranslate nohighlight">\(\mathbb{Q}(\sqrt{\phi})\)</span>.</p></td>
+        </tr>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.algebra.reduce_in_field" title="geometor.model.algebra.reduce_in_field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reduce_in_field</span></code></a>(expr, field_or_gen) → sympy.Expr</p></td>
+        <td><p>Reduce an algebraic expression inside an explicit number field <span class="math notranslate nohighlight">\(\mathbb{Q}(\alpha)\)</span>.</p></td>
+        </tr>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.algebra.canonicalize_golden" title="geometor.model.algebra.canonicalize_golden"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canonicalize_golden</span></code></a>(expr) → sympy.Expr</p></td>
+        <td><p>Canonicalize an expression in the golden field <span class="math notranslate nohighlight">\(\mathbb{Q}(\phi)\)</span>.</p></td>
+        </tr>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.algebra.canonicalize_kepler" title="geometor.model.algebra.canonicalize_kepler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canonicalize_kepler</span></code></a>(expr) → sympy.Expr</p></td>
+        <td><p>Canonicalize an expression in the degree-4 Kepler field <span class="math notranslate nohighlight">\(\mathbb{Q}(\sqrt{\phi})\)</span>.</p></td>
+        </tr>
+        </tbody>
+        </table>
+        </section>
+        <section class="level-2" id="module-contents">
+        <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.algebra.fast_line_coeffs">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.algebra.</span></span><span class="sig-name descname"><span class="pre">fast_line_coeffs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ln</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../element/index.html#geometor.model.element.Element.object" title="geometor.model.element.Element.object"><span class="pre">object</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.Expr</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.Expr</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.Expr</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.algebra.fast_line_coeffs" title="Link to this definition">¶</a></dt>
+        <dd><p>Extract normalized exact line coefficients <code class="docutils literal notranslate"><span class="pre">(a,</span> <span class="pre">b,</span> <span class="pre">c)</span></code> without <code class="docutils literal notranslate"><span class="pre">sp.simplify</span></code>.</p>
+        <p>Expands midpoint sums <code class="docutils literal notranslate"><span class="pre">mx,</span> <span class="pre">my</span></code> so conjugate radical terms cancel immediately,
+        strips common <code class="docutils literal notranslate"><span class="pre">sqrt(3)</span></code> factors (including merged <code class="docutils literal notranslate"><span class="pre">sqrt(3*k)</span></code> such as <code class="docutils literal notranslate"><span class="pre">sqrt(51)</span></code>)
+        from equilateral-pole bisector lines in microseconds, and caches the tuple on <code class="docutils literal notranslate"><span class="pre">ln</span></code>.</p>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.algebra.clean_expr">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.algebra.</span></span><span class="sig-name descname"><span class="pre">clean_expr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../element/index.html#geometor.model.element.Element.object" title="geometor.model.element.Element.object"><span class="pre">object</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.Expr</span></span></span><a class="headerlink" href="#geometor.model.algebra.clean_expr" title="Link to this definition">¶</a></dt>
+        <dd><p>Canonicalize a symbolic geometric coordinate without invoking <code class="docutils literal notranslate"><span class="pre">sp.simplify</span></code>.</p>
+        <p>Applies a fast tiered pipeline:</p>
+        <ol class="arabic simple">
+        <li><p>Immediate O(1) return for Python <code class="docutils literal notranslate"><span class="pre">int</span></code> and SymPy <code class="docutils literal notranslate"><span class="pre">Rational</span></code> / <code class="docutils literal notranslate"><span class="pre">Integer</span></code>.</p></li>
+        <li><p>Fraction combination (<code class="xref py py-func docutils literal notranslate"><span class="pre">sympy.together()</span></code>), bounded polynomial expansion,
+        and denominator rationalization (<code class="xref py py-func docutils literal notranslate"><span class="pre">sympy.radsimp()</span></code> with <code class="docutils literal notranslate"><span class="pre">symbolic=False</span></code>).</p></li>
+        <li><p>Conditional <code class="xref py py-func docutils literal notranslate"><span class="pre">sympy.sqrtdenest()</span></code> only when nested radicals are actually present.</p></li>
+        </ol>
+        <dl class="field-list simple">
+        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+        <dd class="field-odd"><p><strong>expr</strong> – A numeric value or SymPy expression.</p>
+        </dd>
+        <dt class="field-even">Returns<span class="colon">:</span></dt>
+        <dd class="field-even"><p>A simplified exact <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.Expr</span></code>.</p>
+        </dd>
+        </dl>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.algebra.zero_test">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.algebra.</span></span><span class="sig-name descname"><span class="pre">zero_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../element/index.html#geometor.model.element.Element.object" title="geometor.model.element.Element.object"><span class="pre">object</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#geometor.model.algebra.zero_test" title="Link to this definition">¶</a></dt>
+        <dd><p>Determine with 100% mathematical exactness whether <code class="docutils literal notranslate"><span class="pre">expr</span> <span class="pre">==</span> <span class="pre">0</span></code>.</p>
+        <p>Uses a fast 3-tier decision procedure:</p>
+        <ol class="arabic simple">
+        <li><p>O(1) structural and rational check.</p></li>
+        <li><p>High-precision adaptive <code class="docutils literal notranslate"><span class="pre">evalf(20)</span></code> rejection for non-zero constant expressions
+        (rejects non-zeros in microseconds without symbolic expansion).</p></li>
+        <li><p>Exact algebraic proof of zero via fraction numerator expansion, <a class="reference internal" href="#geometor.model.algebra.clean_expr" title="geometor.model.algebra.clean_expr"><code class="xref py py-func docutils literal notranslate"><span class="pre">clean_expr()</span></code></a>,
+        <code class="docutils literal notranslate"><span class="pre">GoldenRatio</span></code> radical substitution, and fallback <code class="docutils literal notranslate"><span class="pre">simplify</span></code> / <code class="docutils literal notranslate"><span class="pre">minimal_polynomial</span></code>.</p></li>
+        </ol>
+        <dl class="field-list simple">
+        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+        <dd class="field-odd"><p><strong>expr</strong> – A numeric value or SymPy expression.</p>
+        </dd>
+        <dt class="field-even">Returns<span class="colon">:</span></dt>
+        <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if and only if <code class="docutils literal notranslate"><span class="pre">expr</span></code> is identically zero.</p>
+        </dd>
+        </dl>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.algebra.exact_sign">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.algebra.</span></span><span class="sig-name descname"><span class="pre">exact_sign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../element/index.html#geometor.model.element.Element.object" title="geometor.model.element.Element.object"><span class="pre">object</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#geometor.model.algebra.exact_sign" title="Link to this definition">¶</a></dt>
+        <dd><p>Return the exact mathematical sign (<code class="docutils literal notranslate"><span class="pre">+1</span></code>, <code class="docutils literal notranslate"><span class="pre">-1</span></code>, or <code class="docutils literal notranslate"><span class="pre">0</span></code>) of a real expression.</p>
+        <dl class="field-list simple">
+        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+        <dd class="field-odd"><p><strong>expr</strong> – A real numeric value or SymPy expression.</p>
+        </dd>
+        <dt class="field-even">Returns<span class="colon">:</span></dt>
+        <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">1</span></code> if <code class="docutils literal notranslate"><span class="pre">expr</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">-1</span></code> if <code class="docutils literal notranslate"><span class="pre">expr</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>, or <code class="docutils literal notranslate"><span class="pre">0</span></code> if <code class="docutils literal notranslate"><span class="pre">expr</span> <span class="pre">==</span> <span class="pre">0</span></code>.</p>
+        </dd>
+        <dt class="field-odd">Raises<span class="colon">:</span></dt>
+        <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.13/builtins/exceptions.html#ValueError" title="(in Python v3.13)"><strong>ValueError</strong></a> – If <code class="docutils literal notranslate"><span class="pre">expr</span></code> has free symbols whose sign cannot be determined or is non-real.</p>
+        </dd>
+        </dl>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.algebra.get_algebraic_field">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.algebra.</span></span><span class="sig-name descname"><span class="pre">get_algebraic_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">generators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.Expr</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.AlgebraicField</span></span></span><a class="headerlink" href="#geometor.model.algebra.get_algebraic_field" title="Link to this definition">¶</a></dt>
+        <dd><p>Construct and cache an explicit algebraic number field <span class="math notranslate nohighlight">\(\mathbb{Q}(\alpha_1, \dots)\)</span>.</p>
+        <dl class="field-list simple">
+        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+        <dd class="field-odd"><p><strong>*generators</strong> – Algebraic SymPy expressions generating the extension over <code class="docutils literal notranslate"><span class="pre">QQ</span></code>.</p>
+        </dd>
+        <dt class="field-even">Returns<span class="colon">:</span></dt>
+        <dd class="field-even"><p>A cached <a class="reference external" href="https://docs.sympy.org/latest/modules/polys/domainsref.html#sympy.polys.domains.AlgebraicField" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.polys.domains.AlgebraicField</span></code></a>.</p>
+        </dd>
+        </dl>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.algebra.get_golden_field">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.algebra.</span></span><span class="sig-name descname"><span class="pre">get_golden_field</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.AlgebraicField</span></span></span><a class="headerlink" href="#geometor.model.algebra.get_golden_field" title="Link to this definition">¶</a></dt>
+        <dd><p>Return the cached quadratic number field <span class="math notranslate nohighlight">\(\mathbb{Q}(\phi) = \mathbb{Q}(\sqrt{5})\)</span>.</p>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.algebra.get_kepler_field">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.algebra.</span></span><span class="sig-name descname"><span class="pre">get_kepler_field</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.AlgebraicField</span></span></span><a class="headerlink" href="#geometor.model.algebra.get_kepler_field" title="Link to this definition">¶</a></dt>
+        <dd><p>Return the cached degree-4 Kepler number field <span class="math notranslate nohighlight">\(\mathbb{Q}(\sqrt{\phi})\)</span>.</p>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.algebra.reduce_in_field">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.algebra.</span></span><span class="sig-name descname"><span class="pre">reduce_in_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../element/index.html#geometor.model.element.Element.object" title="geometor.model.element.Element.object"><span class="pre">object</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">field_or_gen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.AlgebraicField</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sympy.Expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.Expr</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.Expr</span></span></span><a class="headerlink" href="#geometor.model.algebra.reduce_in_field" title="Link to this definition">¶</a></dt>
+        <dd><p>Reduce an algebraic expression inside an explicit number field <span class="math notranslate nohighlight">\(\mathbb{Q}(\alpha)\)</span>.</p>
+        <p>Handles nested square roots whose radicands simplify to squares inside the target field
+        (such as <span class="math notranslate nohighlight">\(\sqrt{1 + \phi} = \phi\)</span> and <span class="math notranslate nohighlight">\(\sqrt{\phi - 1} = \phi^{-1/2}\)</span> in
+        the Kepler field), and falls back cleanly when outer extensions (e.g. <span class="math notranslate nohighlight">\(\sqrt{3}\)</span>)
+        are present.</p>
+        <dl class="field-list simple">
+        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+        <dd class="field-odd"><ul class="simple">
+        <li><p><strong>expr</strong> – Numeric value or SymPy expression to canonicalize.</p></li>
+        <li><p><strong>field_or_gen</strong> – An <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.AlgebraicField</span></code>, a generator expression, or tuple of generators.</p></li>
+        </ul>
+        </dd>
+        <dt class="field-even">Returns<span class="colon">:</span></dt>
+        <dd class="field-even"><p>Canonicalized <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.Expr</span></code>.</p>
+        </dd>
+        </dl>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.algebra.canonicalize_golden">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.algebra.</span></span><span class="sig-name descname"><span class="pre">canonicalize_golden</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../element/index.html#geometor.model.element.Element.object" title="geometor.model.element.Element.object"><span class="pre">object</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.Expr</span></span></span><a class="headerlink" href="#geometor.model.algebra.canonicalize_golden" title="Link to this definition">¶</a></dt>
+        <dd><p>Canonicalize an expression in the golden field <span class="math notranslate nohighlight">\(\mathbb{Q}(\phi)\)</span>.</p>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.algebra.canonicalize_kepler">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.algebra.</span></span><span class="sig-name descname"><span class="pre">canonicalize_kepler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../element/index.html#geometor.model.element.Element.object" title="geometor.model.element.Element.object"><span class="pre">object</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.Expr</span></span></span><a class="headerlink" href="#geometor.model.algebra.canonicalize_kepler" title="Link to this definition">¶</a></dt>
+        <dd><p>Canonicalize an expression in the degree-4 Kepler field <span class="math notranslate nohighlight">\(\mathbb{Q}(\sqrt{\phi})\)</span>.</p>
+        </dd></dl>
+
+        </section>
+        </section>
+
+      </div>
+      <footer class="book-footer">
+        <div class="book-footer-ornament">&#10086;</div>
+        <div class="book-footer-nav">
+          <div class="book-nav-prev">
+            <a class="book-nav-btn" href="../__main__/index.html" title="geometor.model.__main__">&larr; <span class="nav-label">geometor.model.__main__</span></a>
+          </div>
+          <div class="book-nav-center">
+            <a class="book-toc-link" href="../../../../../index.html">GEOMETOR • model</a>
+          </div>
+          <div class="book-nav-next">
+            <a class="book-nav-btn" href="../ancestors/index.html" title="geometor.model.ancestors"><span class="nav-label">geometor.model.ancestors</span> &rarr;</a>
+          </div>
+        </div>
+      </footer>
+    </article>
+  </main>
+  <div class="asides">
+    <aside class="aside-search">
+      <h3>Search</h3>
+      <div id="searchbox" role="search">
+        <form id="rtd-search-form" class="wy-form search-form" action="../../../../../search.html" method="get">
+          <div class="search-field">
+            <input type="search" name="q" placeholder="Search docs..." aria-label="Search docs" autocomplete="off" />
+            <button type="submit" class="search-submit" aria-label="Search" title="Search">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+          </div>
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+      </div>
+    </aside>
+    <aside class="aside-recent-logs">
+      <h3>Recent Logs</h3>
+      <ul>
+        <li><a href="../../../../../log/26.302-183600/index.html">Unified Classical Scriptorium Documentation & Usage Guides Standardized</a></li>
+        <li><a href="../../../../../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+      </ul>
+    </aside>
+    <aside class="aside-tags">
+      <h3>Tags</h3>
+      <ul>
+        <li><a href="../../../../../tags/constructions.html">constructions</a></li>
+        <li><a href="../../../../../tags/model.html">model</a></li>
+        <li><a href="../../../../../tags/sympy.html">sympy</a></li>
+        <li><a href="../../../../../tags/theme.html">theme</a></li>
+      </ul>
+    </aside>
+    <aside class="aside-categories">
+      <h3>Categories</h3>
+      <ul>
+        <li><a href="../../../../../categories/architecture.html">architecture</a></li>
+        <li><a href="../../../../../categories/documentation.html">documentation</a></li>
+      </ul>
+    </aside>
+    <aside class="aside-types">
+      <h3>Types</h3>
+      <ul>
+        <li><a href="../../../../../types/log.html">log</a></li>
+      </ul>
+    </aside>
+  </div>
+  <footer>
+    <div class="footer-nav">
+      <ul>
+        <li><a href="../../../../../about.html"  >about</a></li>
+        <li><a href="../../../../../connect.html"  >connect</a></li>
+        <li><a href="../../../../../todos/index.html"  >todos</a></li>
+        <li><a href="../../../../../changelog.html"  >changelog</a></li>
+      </ul>
+    </div>
+    <hr />
+    <div role="contentinfo">
+      <p>
+        &copy; Copyright 2026, GEOMETOR.
+      </p>
+    </div>
+  </footer>
+
+  <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+  <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+  <script src="../../../../../_static/documentation_options.js?v=8fa8b3e9"></script>
+  <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
+  <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+  <script src="../../../../../_static/js/collection_controls.js?v=b6b5297a"></script>
+  <script src="../../../../../_static/js/geometor_interactive.js?v=b2892320"></script>
+  <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+  <script src="../../../../../_static/js/search_highlight.js"></script>
+
+</body>
+</html>

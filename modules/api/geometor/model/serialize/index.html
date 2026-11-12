@@ -85,14 +85,22 @@
       <div class="content body book-content" role="main">
         <section class="level-1" id="module-geometor.model.serialize">
         <span id="geometor-model-serialize"></span><h1>geometor.model.serialize<a class="headerlink" href="#module-geometor.model.serialize" title="Link to this heading">¶</a></h1>
-        <p>Provides serialization functions for the Model class.</p>
-        <p>This module is responsible for converting the complex, interconnected structure of the geometric model into a portable JSON format and reconstituting it back into a full object model. It ensures that all element relationships, metadata, and symbolic expressions are preserved during the save/load process.</p>
+        <p>Provides JSON serialization (schema v2) and v1/v2 deserialization for <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code>.</p>
+        <p>Exports models with <code class="docutils literal notranslate"><span class="pre">schema_version:</span> <span class="pre">2</span></code>, preserving 100% of v1 fields while adding:</p>
+        <ul class="simple">
+        <li><p><code class="docutils literal notranslate"><span class="pre">symbolic</span></code> metadata dictionaries (exact LaTeX coordinates/quadrances/spreads and
+        cached floating-point coordinates for instant frontend/SVG rendering),</p></li>
+        <li><p><code class="docutils literal notranslate"><span class="pre">pts</span></code> incident-point lists on lines and circles,</p></li>
+        <li><p><code class="docutils literal notranslate"><span class="pre">markers</span></code> diagrammatic proof annotations (ticks, angle arcs, parallel arrows),</p></li>
+        <li><p><code class="docutils literal notranslate"><span class="pre">steps</span></code> chronological construction and deductive proof ledger,</p></li>
+        <li><p>first-class <a class="reference internal" href="../invariants/index.html#geometor.model.invariants.Angle" title="geometor.model.invariants.Angle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Angle</span></code></a> serialization and restoration.</p></li>
+        </ul>
         <section class="level-2" id="classes">
         <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
         <table class="autosummary longtable docutils align-default">
         <tbody>
         <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.serialize.SerializeMixin" title="geometor.model.serialize.SerializeMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SerializeMixin</span></code></a></p></td>
-        <td><p>Mixin for the Model class containing serialization operations.</p></td>
+        <td><p>Mixin for <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> providing JSON v2 persistence.</p></td>
         </tr>
         </tbody>
         </table>
@@ -102,7 +110,7 @@
         <table class="autosummary longtable docutils align-default">
         <tbody>
         <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.serialize.load_model" title="geometor.model.serialize.load_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_model</span></code></a>(file_path[, logger]) → geometor.model.Model</p></td>
-        <td><p>Load a model from a JSON file and return a new Model instance.</p></td>
+        <td><p>Load a <code class="docutils literal notranslate"><span class="pre">model.json</span></code> file (v1 or v2) and reconstitute a <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a>.</p></td>
         </tr>
         </tbody>
         </table>
@@ -112,38 +120,25 @@
         <dl class="py class">
         <dt class="sig sig-object py" id="geometor.model.serialize.SerializeMixin">
         <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">geometor.model.serialize.</span></span><span class="sig-name descname"><span class="pre">SerializeMixin</span></span><a class="headerlink" href="#geometor.model.serialize.SerializeMixin" title="Link to this definition">¶</a></dt>
-        <dd><p>Mixin for the Model class containing serialization operations.</p>
-        <p>This mixin adds persistence capabilities to the Model class, allowing it to export its state to a file. It uses JSON as the interchange format, serializing SymPy objects into string representations that can be accurately parsed back.</p>
+        <dd><p>Mixin for <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> providing JSON v2 persistence.</p>
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.serialize.SerializeMixin.to_dict">
+        <span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_symbolic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.serialize.SerializeMixin.to_dict" title="Link to this definition">¶</a></dt>
+        <dd><p>Serialize the model into a JSON-compatible dictionary (<code class="docutils literal notranslate"><span class="pre">schema_version:</span> <span class="pre">2</span></code>).</p>
+        </dd></dl>
+
         <dl class="py method">
         <dt class="sig sig-object py" id="geometor.model.serialize.SerializeMixin.save">
-        <span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.serialize.SerializeMixin.save" title="Link to this definition">¶</a></dt>
-        <dd><p>Save a Model object to a JSON file as a list of elements.</p>
-        <p>This method iterates through all elements in the model, serializing their symbolic definitions, parents, and metadata into a dictionary structure. It uses SymPy’s srepr for robust expression serialization and writes the result to the specified file path.</p>
-        <dl class="field-list simple">
-        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-        <dd class="field-odd"><p><strong>file_path</strong> – The path where the JSON file will be saved.</p>
-        </dd>
-        </dl>
+        <span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">pathlib.Path</span></a></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_symbolic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.serialize.SerializeMixin.save" title="Link to this definition">¶</a></dt>
+        <dd><p>Save the <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> to a JSON file.</p>
         </dd></dl>
 
         </dd></dl>
 
         <dl class="py function">
         <dt class="sig sig-object py" id="geometor.model.serialize.load_model">
-        <span class="sig-prename descclassname"><span class="pre">geometor.model.serialize.</span></span><span class="sig-name descname"><span class="pre">load_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/logging.html#logging.Logger" title="(in Python v3.13)"><span class="pre">logging.Logger</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><span class="pre">geometor.model.Model</span></a></span></span><a class="headerlink" href="#geometor.model.serialize.load_model" title="Link to this definition">¶</a></dt>
-        <dd><p>Load a model from a JSON file and return a new Model instance.</p>
-        <p>This function reads a JSON file containing serialized model data and reconstructs a <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">geometor.model.Model</span></code></a> object. It performs a two-pass process: first parsing all symbolic expressions to recreate the geometry objects, and then linking them with their parents and metadata to restore the full dependency graph.</p>
-        <dl class="field-list simple">
-        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-        <dd class="field-odd"><ul class="simple">
-        <li><p><strong>file_path</strong> – The path to the JSON file to load.</p></li>
-        <li><p><strong>logger</strong> – An optional logger instance to attach to the new model.</p></li>
-        </ul>
-        </dd>
-        <dt class="field-even">Returns<span class="colon">:</span></dt>
-        <dd class="field-even"><p>A new <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">geometor.model.Model</span></code></a> instance populated with the loaded data.</p>
-        </dd>
-        </dl>
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.serialize.</span></span><span class="sig-name descname"><span class="pre">load_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">pathlib.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/logging.html#logging.Logger" title="(in Python v3.13)"><span class="pre">logging.Logger</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><span class="pre">geometor.model.Model</span></a></span></span><a class="headerlink" href="#geometor.model.serialize.load_model" title="Link to this definition">¶</a></dt>
+        <dd><p>Load a <code class="docutils literal notranslate"><span class="pre">model.json</span></code> file (v1 or v2) and reconstitute a <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a>.</p>
         </dd></dl>
 
         </section>
@@ -234,7 +229,7 @@
 
   <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
   <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-  <script src="../../../../../_static/documentation_options.js?v=d65efdcf"></script>
+  <script src="../../../../../_static/documentation_options.js?v=8fa8b3e9"></script>
   <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
   <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
   <script src="../../../../../_static/js/collection_controls.js?v=b6b5297a"></script>

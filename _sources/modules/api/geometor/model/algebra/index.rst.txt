@@ -1,0 +1,135 @@
+geometor.model.algebra
+======================
+
+.. py:module:: geometor.model.algebra
+
+.. autoapi-nested-parse::
+
+   Symbolic canonicalization, exact predicates, and algebraic number field helpers.
+
+   This module replaces general-purpose ``sympy.simplify`` calls in the hot loop of
+   ``geometor.model`` with a tiered algebraic canonicalizer (:func:`clean_expr`),
+   fast high-precision + exact symbolic zero/sign predicates (:func:`zero_test`,
+   :func:`exact_sign`), and explicit ``sympy.QQ.algebraic_field`` reducers for
+   quadratic and biquadratic extensions such as :math:`\mathbb{Q}(\phi)` and
+   :math:`\mathbb{Q}(\sqrt{\phi})`.
+
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   geometor.model.algebra.fast_line_coeffs
+   geometor.model.algebra.clean_expr
+   geometor.model.algebra.zero_test
+   geometor.model.algebra.exact_sign
+   geometor.model.algebra.get_algebraic_field
+   geometor.model.algebra.get_golden_field
+   geometor.model.algebra.get_kepler_field
+   geometor.model.algebra.reduce_in_field
+   geometor.model.algebra.canonicalize_golden
+   geometor.model.algebra.canonicalize_kepler
+
+
+Module Contents
+---------------
+
+.. py:function:: fast_line_coeffs(ln: object) -> tuple[sympy.Expr, sympy.Expr, sympy.Expr]
+
+   Extract normalized exact line coefficients ``(a, b, c)`` without ``sp.simplify``.
+
+   Expands midpoint sums ``mx, my`` so conjugate radical terms cancel immediately,
+   strips common ``sqrt(3)`` factors (including merged ``sqrt(3*k)`` such as ``sqrt(51)``)
+   from equilateral-pole bisector lines in microseconds, and caches the tuple on ``ln``.
+
+
+.. py:function:: clean_expr(expr: object) -> sympy.Expr
+
+   Canonicalize a symbolic geometric coordinate without invoking ``sp.simplify``.
+
+   Applies a fast tiered pipeline:
+
+   1. Immediate O(1) return for Python ``int`` and SymPy ``Rational`` / ``Integer``.
+   2. Fraction combination (:func:`sympy.together`), bounded polynomial expansion,
+      and denominator rationalization (:func:`sympy.radsimp` with ``symbolic=False``).
+   3. Conditional :func:`sympy.sqrtdenest` only when nested radicals are actually present.
+
+   :param expr: A numeric value or SymPy expression.
+
+   :returns: A simplified exact :class:`sympy.Expr`.
+
+
+.. py:function:: zero_test(expr: object) -> bool
+
+   Determine with 100% mathematical exactness whether ``expr == 0``.
+
+   Uses a fast 3-tier decision procedure:
+
+   1. O(1) structural and rational check.
+   2. High-precision adaptive ``evalf(20)`` rejection for non-zero constant expressions
+      (rejects non-zeros in microseconds without symbolic expansion).
+   3. Exact algebraic proof of zero via fraction numerator expansion, :func:`clean_expr`,
+      ``GoldenRatio`` radical substitution, and fallback ``simplify`` / ``minimal_polynomial``.
+
+   :param expr: A numeric value or SymPy expression.
+
+   :returns: ``True`` if and only if ``expr`` is identically zero.
+
+
+.. py:function:: exact_sign(expr: object) -> int
+
+   Return the exact mathematical sign (``+1``, ``-1``, or ``0``) of a real expression.
+
+   :param expr: A real numeric value or SymPy expression.
+
+   :returns: ``1`` if ``expr > 0``, ``-1`` if ``expr < 0``, or ``0`` if ``expr == 0``.
+
+   :raises ValueError: If ``expr`` has free symbols whose sign cannot be determined or is non-real.
+
+
+.. py:function:: get_algebraic_field(*generators: sympy.Expr) -> sympy.AlgebraicField
+
+   Construct and cache an explicit algebraic number field :math:`\mathbb{Q}(\alpha_1, \dots)`.
+
+   :param \*generators: Algebraic SymPy expressions generating the extension over ``QQ``.
+
+   :returns: A cached :class:`sympy.polys.domains.AlgebraicField`.
+
+
+.. py:function:: get_golden_field() -> sympy.AlgebraicField
+
+   Return the cached quadratic number field :math:`\mathbb{Q}(\phi) = \mathbb{Q}(\sqrt{5})`.
+
+
+.. py:function:: get_kepler_field() -> sympy.AlgebraicField
+
+   Return the cached degree-4 Kepler number field :math:`\mathbb{Q}(\sqrt{\phi})`.
+
+
+.. py:function:: reduce_in_field(expr: object, field_or_gen: sympy.AlgebraicField | sympy.Expr | tuple[sympy.Expr, ...]) -> sympy.Expr
+
+   Reduce an algebraic expression inside an explicit number field :math:`\mathbb{Q}(\alpha)`.
+
+   Handles nested square roots whose radicands simplify to squares inside the target field
+   (such as :math:`\sqrt{1 + \phi} = \phi` and :math:`\sqrt{\phi - 1} = \phi^{-1/2}` in
+   the Kepler field), and falls back cleanly when outer extensions (e.g. :math:`\sqrt{3}`)
+   are present.
+
+   :param expr: Numeric value or SymPy expression to canonicalize.
+   :param field_or_gen: An :class:`sympy.AlgebraicField`, a generator expression, or tuple of generators.
+
+   :returns: Canonicalized :class:`sympy.Expr`.
+
+
+.. py:function:: canonicalize_golden(expr: object) -> sympy.Expr
+
+   Canonicalize an expression in the golden field :math:`\mathbb{Q}(\phi)`.
+
+
+.. py:function:: canonicalize_kepler(expr: object) -> sympy.Expr
+
+   Canonicalize an expression in the degree-4 Kepler field :math:`\mathbb{Q}(\sqrt{\phi})`.
+
+

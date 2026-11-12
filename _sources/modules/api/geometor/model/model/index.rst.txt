@@ -7,7 +7,9 @@ geometor.model.model
 
    Provides the central :class:`geometor.model.model.Model` class.
 
-   This module defines the core `Model` class, which aggregates all geometric construction, analysis, and management functionalities. It serves as the main entry point for creating and manipulating geometric systems.
+   This module defines the core `Model` class, which aggregates all geometric construction,
+   targeted Euclidean intersection, rational-trigonometry invariant verification, and JSON v2
+   serialization capabilities.
 
 
 
@@ -32,17 +34,25 @@ Module Contents
 
 .. py:data:: GeometryObject
 
-.. py:class:: Model(name: str = '', logger: logging.Logger | None = None, use_point_subscript: bool = False)
+.. py:class:: Model(name: str = '', logger: logging.Logger | bool | None = None, use_point_subscript: bool = False, *, auto_intersect: bool = True, use_multiprocessing: bool = False, enable_logging: bool | None = None)
 
-   Bases: :py:obj:`dict`, :py:obj:`geometor.model.points.PointsMixin`, :py:obj:`geometor.model.lines.LinesMixin`, :py:obj:`geometor.model.circles.CirclesMixin`, :py:obj:`geometor.model.polygons.PolygonsMixin`, :py:obj:`geometor.model.segments.SegmentsMixin`, :py:obj:`geometor.model.polynomials.PolynomialsMixin`, :py:obj:`geometor.model.serialize.SerializeMixin`, :py:obj:`geometor.model.reports.ReportMixin`, :py:obj:`geometor.model.delete.DeleteMixin`, :py:obj:`geometor.model.sections.SectionsMixin`, :py:obj:`geometor.model.wedges.WedgesMixin`, :py:obj:`geometor.model.ancestors.AncestorsMixin`
+   Bases: :py:obj:`dict`, :py:obj:`geometor.model.points.PointsMixin`, :py:obj:`geometor.model.lines.LinesMixin`, :py:obj:`geometor.model.circles.CirclesMixin`, :py:obj:`geometor.model.intersections.IntersectionsMixin`, :py:obj:`geometor.model.polygons.PolygonsMixin`, :py:obj:`geometor.model.segments.SegmentsMixin`, :py:obj:`geometor.model.invariants.AnglesMixin`, :py:obj:`geometor.model.proof.ProofMixin`, :py:obj:`geometor.model.polynomials.PolynomialsMixin`, :py:obj:`geometor.model.serialize.SerializeMixin`, :py:obj:`geometor.model.reports.ReportMixin`, :py:obj:`geometor.model.delete.DeleteMixin`, :py:obj:`geometor.model.sections.SectionsMixin`, :py:obj:`geometor.model.wedges.WedgesMixin`, :py:obj:`geometor.model.ancestors.AncestorsMixin`
 
 
-   The central class representing a collection of geometric elements.
-
-   The Model class is a comprehensive container that inherits from `dict` to store geometric elements mapped to their symbolic representations. It composes multiple mixins to provide a rich feature set, including point plotting, circle/line construction, serialization, reporting, and more.
+   The central class representing an exact symbolic geometric construction and proof.
 
 
    .. py:attribute:: use_point_subscript
+      :value: False
+
+
+
+   .. py:attribute:: auto_intersect
+      :value: True
+
+
+
+   .. py:attribute:: use_multiprocessing
       :value: False
 
 
@@ -55,19 +65,32 @@ Module Contents
 
 
 
+   .. py:attribute:: steps
+      :type:  list[geometor.model.proof.Step]
+      :value: []
+
+
+
+   .. py:property:: is_logging_enabled
+      :type: bool
+
+
+      Return ``True`` only when INFO messages have at least one active non-null handler.
+
+
    .. py:method:: log(message: object) -> None
 
-      Log a message to the model's logger or print if it's a rich object.
+      Log a message to the model's logger or print if it's a Rich renderable.
 
 
 
-   .. py:method:: set_analysis_hook(hook_function: Callable) -> None
+   .. py:method:: set_analysis_hook(hook_function: collections.abc.Callable | None) -> None
 
       Set a hook function to be called during analysis/point addition.
 
 
 
-   .. py:method:: set_simplifier(simplifier_function: Callable[[sympy.Expr], sympy.Expr] | None) -> None
+   .. py:method:: set_simplifier(simplifier_function: collections.abc.Callable[[sympy.Expr], sympy.Expr] | None) -> None
 
       Set an optional custom symbolic simplifier for point coordinates.
 
@@ -77,7 +100,7 @@ Module Contents
       :type: list[sympy.geometry.Point]
 
 
-      The new_points of the model.
+      The points added since the most recent ``clear_new_points()``.
 
 
    .. py:method:: clear_new_points() -> None
@@ -97,13 +120,6 @@ Module Contents
 
       Set an item in the model, enforcing type checks.
 
-      This override of the dictionary setter ensures type safety for the model. It validates that keys are recognized GeometryObjects and values are Element wrappers, maintaining the integrity of the model's storage.
-
-      :param key: The geometric object (GeometryObject).
-      :param value: The element wrapper (Element).
-
-      :raises TypeError: If key or value are not of the expected types.
-
 
 
    .. py:method:: remove_by_ID(ID: str) -> None
@@ -116,40 +132,47 @@ Module Contents
       :type: list[sympy.geometry.Point]
 
 
-      Returns point elements from model as list.
+      Return point elements from the model as a list.
 
 
    .. py:property:: structs
       :type: list[geometor.model.element.Struct]
 
 
-      Returns struct elements (line or circle) from model as list.
+      Return non-guide structural elements (lines or circles) from the model.
 
 
    .. py:property:: lines
       :type: list[sympy.geometry.Line]
 
 
-      Returns line elements from model as list.
+      Return line elements from the model as a list.
 
 
    .. py:property:: circles
       :type: list[sympy.geometry.Circle]
 
 
-      Returns circle elements from model as list.
+      Return circle elements from the model as a list.
 
 
-   .. py:method:: limits() -> tuple[tuple[float, float], tuple[float, float]]
+   .. py:property:: segments
+      :type: list[sympy.geometry.Segment]
 
-      Find x, y limits from points and circles of the model.
 
-      This method calculates the bounding box of all geometric elements currently in the model. It iterates through points and circles (accounting for radii) to determine the minimum and maximum coordinates.
+      Return segment elements from the model as a list.
 
-      :returns: A tuple containing ((min_x, max_x), (min_y, max_y)).
-      :rtype: tuple
 
-      :raises ValueError: If the model contains no geometric elements.
+   .. py:property:: polygons
+      :type: list[sympy.geometry.Polygon]
+
+
+      Return polygon elements from the model as a list.
+
+
+   .. py:method:: limits() -> list[list[float]]
+
+      Find ``[[min_x, max_x], [min_y, max_y]]`` limits from points and circles.
 
 
 

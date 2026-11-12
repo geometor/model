@@ -1,0 +1,480 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-content_root="../../../../../">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>geometor.model.invariants &mdash; GEOMETOR • model</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Fira+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=ea5fcf70" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/css/styles.css?v=66998e95" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <link rel="stylesheet" href="../../../../../_static/css/print.css" type="text/css" media="print" />
+  <link rel="icon" href="../../../../../_static/favicon.ico" />
+</head>
+
+<body class="book-theme-classical-serif">
+  <header>
+    <div class="logo">
+      <a href="../../../../../index.html">
+        <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+      </a>
+      <div class="org-repo">
+        <span class="org">GEOMETOR</span>
+        •
+        <span class="repo">model</span>
+      </div>
+    </div>
+    <nav aria-label="Header">
+      <input type="checkbox" id="nav-Header-toggle" >
+      <label for="nav-Header-toggle" >Header</label>
+      <ul>
+        <li>
+          <a href="../../../../../demos/index.html"  >demos</a>
+        </li>
+        <li>
+          <a href="../../../../../refs/index.html"  >references</a>
+        </li>
+        <li>
+          <a href="../../../../../mission/index.html"  >mission</a>
+        </li>
+        <li>
+          <a href="../../../../../usage/index.html"  >usage</a>
+        </li>
+        <li>
+          <a href="../../../../../log/index.html"  >log</a>
+        </li>
+        <li>
+          <a href="../../../../index.html" class="is-active" aria-selected="true" >modules</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="motto"></div>
+  </header>
+  <main class="book-main">
+    <article class="book-layout book-reading-pane">
+      <header class="book-header">
+        <div class="book-header-bar">
+          <div class="book-header-identity">
+            <a class="book-portal-link" href="../../../../../index.html" title="Return to Project Portal">&larr; model</a>
+            <span class="book-header-sep">/</span>
+            <a class="book-title-link" href="../../../../../index.html">GEOMETOR • model</a>
+          </div>
+          <div class="book-header-breadcrumbs book-header-badges" role="navigation" aria-label="Breadcrumbs">
+            <a class="book-crumb-link" href="../../../../index.html">modules</a>
+          </div>
+        </div>
+        <div class="book-header-nav">
+          <div class="book-nav-prev">
+            <a class="book-nav-btn" href="../intersections/index.html" title="geometor.model.intersections">&larr; <span class="nav-label">Prev</span></a>
+          </div>
+          <div class="book-nav-center">
+          </div>
+          <div class="book-nav-next">
+            <a class="book-nav-btn" href="../lines/index.html" title="geometor.model.lines"><span class="nav-label">Next</span> &rarr;</a>
+          </div>
+        </div>
+      </header>
+      <div class="content body book-content" role="main">
+        <section class="level-1" id="module-geometor.model.invariants">
+        <span id="geometor-model-invariants"></span><h1>geometor.model.invariants<a class="headerlink" href="#module-geometor.model.invariants" title="Link to this heading">¶</a></h1>
+        <p>Rational trigonometry invariants, projective cross-ratios, and first-class Angle elements.</p>
+        <p>Implements N. J. Wildberger’s polynomial/rational invariants (quadrance, spread, cross),
+        exact signed orientation and projective cross-ratio / harmonic range predicates, and the
+        first-class <a class="reference internal" href="#geometor.model.invariants.Angle" title="geometor.model.invariants.Angle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Angle</span></code></a> element (<code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">B</span> <span class="pre">A</span> <span class="pre">C</span> <span class="pre">)</span></code>) for <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a>.</p>
+        <section class="level-2" id="classes">
+        <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+        <table class="autosummary longtable docutils align-default">
+        <tbody>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.invariants.Angle" title="geometor.model.invariants.Angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Angle</span></code></a></p></td>
+        <td><p>First-class rectilinear angle <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">B</span> <span class="pre">A</span> <span class="pre">C</span> <span class="pre">)</span></code> with vertex <code class="docutils literal notranslate"><span class="pre">A</span></code> and rays <code class="docutils literal notranslate"><span class="pre">AB</span></code>, <code class="docutils literal notranslate"><span class="pre">AC</span></code>.</p></td>
+        </tr>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.invariants.AnglesMixin" title="geometor.model.invariants.AnglesMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnglesMixin</span></code></a></p></td>
+        <td><p>Mixin for <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> providing rectilinear angle registration.</p></td>
+        </tr>
+        </tbody>
+        </table>
+        </section>
+        <section class="level-2" id="functions">
+        <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
+        <table class="autosummary longtable docutils align-default">
+        <tbody>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.invariants.quadrance" title="geometor.model.invariants.quadrance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quadrance</span></code></a>(p1_or_seg[, p2]) → sympy.Expr</p></td>
+        <td><p>Compute the exact Euclidean quadrance <span class="math notranslate nohighlight">\(Q = (x_2 - x_1)^2 + (y_2 - y_1)^2\)</span>.</p></td>
+        </tr>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.invariants.line_spread" title="geometor.model.invariants.line_spread"><code class="xref py py-obj docutils literal notranslate"><span class="pre">line_spread</span></code></a>(l1, l2) → sympy.Expr</p></td>
+        <td><p>Compute the exact rational spread <span class="math notranslate nohighlight">\(s(l_1, l_2) = \sin^2\theta\)</span> between two lines.</p></td>
+        </tr>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.invariants.cross" title="geometor.model.invariants.cross"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cross</span></code></a>(l1, l2) → sympy.Expr</p></td>
+        <td><p>Compute the exact rational cross <span class="math notranslate nohighlight">\(c(l_1, l_2) = \cos^2\theta = 1 - s(l_1, l_2)\)</span>.</p></td>
+        </tr>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.invariants.vertex_spread" title="geometor.model.invariants.vertex_spread"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertex_spread</span></code></a>(B, A, C) → sympy.Expr</p></td>
+        <td><p>Compute the exact spread at vertex <code class="docutils literal notranslate"><span class="pre">A</span></code> between rays <code class="docutils literal notranslate"><span class="pre">AB</span></code> and <code class="docutils literal notranslate"><span class="pre">AC</span></code> (<code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">B</span> <span class="pre">A</span> <span class="pre">C</span> <span class="pre">)</span></code>).</p></td>
+        </tr>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.invariants.vertex_dot_sign" title="geometor.model.invariants.vertex_dot_sign"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertex_dot_sign</span></code></a>(B, A, C) → int</p></td>
+        <td><p>Return <code class="docutils literal notranslate"><span class="pre">+1</span></code> if <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">B</span> <span class="pre">A</span> <span class="pre">C</span> <span class="pre">)</span></code> is acute, <code class="docutils literal notranslate"><span class="pre">0</span></code> if right, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> if obtuse.</p></td>
+        </tr>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.invariants.signed_area2" title="geometor.model.invariants.signed_area2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">signed_area2</span></code></a>(A, B, C) → sympy.Expr</p></td>
+        <td><p>Return twice the signed area of triangle <code class="docutils literal notranslate"><span class="pre">ABC</span></code>: <span class="math notranslate nohighlight">\((x_B - x_A)(y_C - y_A) - (y_B - y_A)(x_C - x_A)\)</span>.</p></td>
+        </tr>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.invariants.orientation" title="geometor.model.invariants.orientation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">orientation</span></code></a>(A, B, C) → int</p></td>
+        <td><p>Return <code class="docutils literal notranslate"><span class="pre">+1</span></code> if <code class="docutils literal notranslate"><span class="pre">(A,</span> <span class="pre">B,</span> <span class="pre">C)</span></code> is counter-clockwise, <code class="docutils literal notranslate"><span class="pre">-1</span></code> if clockwise, <code class="docutils literal notranslate"><span class="pre">0</span></code> if collinear.</p></td>
+        </tr>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.invariants.polygon_area2" title="geometor.model.invariants.polygon_area2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polygon_area2</span></code></a>(vertices) → sympy.Expr</p></td>
+        <td><p>Compute exact unsigned twice-area <span class="math notranslate nohighlight">\(|2 \cdot \text{Area}|\)</span> of a simple polygon via shoelace.</p></td>
+        </tr>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.invariants.cross_ratio" title="geometor.model.invariants.cross_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cross_ratio</span></code></a>(A, B, C, D) → sympy.Expr</p></td>
+        <td><p>Compute the exact projective cross-ratio <span class="math notranslate nohighlight">\((A, B; C, D) = \frac{\overline{AC}\cdot\overline{BD}}{\overline{BC}\cdot\overline{AD}}\)</span>.</p></td>
+        </tr>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.invariants.is_harmonic" title="geometor.model.invariants.is_harmonic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_harmonic</span></code></a>(A, B, C, D) → bool</p></td>
+        <td><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> iff <code class="docutils literal notranslate"><span class="pre">(A,</span> <span class="pre">B;</span> <span class="pre">C,</span> <span class="pre">D)</span> <span class="pre">==</span> <span class="pre">-1</span></code> forms an exact harmonic range.</p></td>
+        </tr>
+        </tbody>
+        </table>
+        </section>
+        <section class="level-2" id="module-contents">
+        <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.invariants.quadrance">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.invariants.</span></span><span class="sig-name descname"><span class="pre">quadrance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1_or_seg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sympy.geometry.Segment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.Expr</span></span></span><a class="headerlink" href="#geometor.model.invariants.quadrance" title="Link to this definition">¶</a></dt>
+        <dd><p>Compute the exact Euclidean quadrance <span class="math notranslate nohighlight">\(Q = (x_2 - x_1)^2 + (y_2 - y_1)^2\)</span>.</p>
+        <p>Accepts either two <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.Point</span></code> instances <code class="docutils literal notranslate"><span class="pre">quadrance(P,</span> <span class="pre">Q)</span></code>
+        or a single <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.Segment</span></code> <code class="docutils literal notranslate"><span class="pre">quadrance(seg)</span></code>.</p>
+        <dl class="field-list simple">
+        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+        <dd class="field-odd"><ul class="simple">
+        <li><p><strong>p1_or_seg</strong> – First point <code class="docutils literal notranslate"><span class="pre">P</span></code> or a segment <code class="docutils literal notranslate"><span class="pre">/</span> <span class="pre">P</span> <span class="pre">Q</span> <span class="pre">/</span></code>.</p></li>
+        <li><p><strong>p2</strong> – Second point <code class="docutils literal notranslate"><span class="pre">Q</span></code> when <code class="docutils literal notranslate"><span class="pre">p1_or_seg</span></code> is a point.</p></li>
+        </ul>
+        </dd>
+        <dt class="field-even">Returns<span class="colon">:</span></dt>
+        <dd class="field-even"><p>Exact simplified <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.Expr</span></code> with zero square roots introduced.</p>
+        </dd>
+        </dl>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.invariants.line_spread">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.invariants.</span></span><span class="sig-name descname"><span class="pre">line_spread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Line</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sympy.geometry.Segment</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Line</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sympy.geometry.Segment</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.Expr</span></span></span><a class="headerlink" href="#geometor.model.invariants.line_spread" title="Link to this definition">¶</a></dt>
+        <dd><p>Compute the exact rational spread <span class="math notranslate nohighlight">\(s(l_1, l_2) = \sin^2\theta\)</span> between two lines.</p>
+        <dl class="field-list simple">
+        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+        <dd class="field-odd"><ul class="simple">
+        <li><p><strong>l1</strong> – First line, segment, or <code class="docutils literal notranslate"><span class="pre">(P,</span> <span class="pre">Q)</span></code> point pair.</p></li>
+        <li><p><strong>l2</strong> – Second line, segment, or <code class="docutils literal notranslate"><span class="pre">(P,</span> <span class="pre">Q)</span></code> point pair.</p></li>
+        </ul>
+        </dd>
+        <dt class="field-even">Returns<span class="colon">:</span></dt>
+        <dd class="field-even"><p>Exact simplified spread in <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p>
+        </dd>
+        </dl>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.invariants.cross">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.invariants.</span></span><span class="sig-name descname"><span class="pre">cross</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Line</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sympy.geometry.Segment</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Line</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sympy.geometry.Segment</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.Expr</span></span></span><a class="headerlink" href="#geometor.model.invariants.cross" title="Link to this definition">¶</a></dt>
+        <dd><p>Compute the exact rational cross <span class="math notranslate nohighlight">\(c(l_1, l_2) = \cos^2\theta = 1 - s(l_1, l_2)\)</span>.</p>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.invariants.vertex_spread">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.invariants.</span></span><span class="sig-name descname"><span class="pre">vertex_spread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">B</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.Expr</span></span></span><a class="headerlink" href="#geometor.model.invariants.vertex_spread" title="Link to this definition">¶</a></dt>
+        <dd><p>Compute the exact spread at vertex <code class="docutils literal notranslate"><span class="pre">A</span></code> between rays <code class="docutils literal notranslate"><span class="pre">AB</span></code> and <code class="docutils literal notranslate"><span class="pre">AC</span></code> (<code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">B</span> <span class="pre">A</span> <span class="pre">C</span> <span class="pre">)</span></code>).</p>
+        <dl class="field-list simple">
+        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+        <dd class="field-odd"><ul class="simple">
+        <li><p><strong>B</strong> – Point on the first ray.</p></li>
+        <li><p><strong>A</strong> – The vertex of the angle.</p></li>
+        <li><p><strong>C</strong> – Point on the second ray.</p></li>
+        </ul>
+        </dd>
+        <dt class="field-even">Returns<span class="colon">:</span></dt>
+        <dd class="field-even"><p>Exact simplified spread <span class="math notranslate nohighlight">\(s(\angle BAC)\)</span>.</p>
+        </dd>
+        </dl>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.invariants.vertex_dot_sign">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.invariants.</span></span><span class="sig-name descname"><span class="pre">vertex_dot_sign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">B</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#geometor.model.invariants.vertex_dot_sign" title="Link to this definition">¶</a></dt>
+        <dd><p>Return <code class="docutils literal notranslate"><span class="pre">+1</span></code> if <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">B</span> <span class="pre">A</span> <span class="pre">C</span> <span class="pre">)</span></code> is acute, <code class="docutils literal notranslate"><span class="pre">0</span></code> if right, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> if obtuse.</p>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.invariants.signed_area2">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.invariants.</span></span><span class="sig-name descname"><span class="pre">signed_area2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.Expr</span></span></span><a class="headerlink" href="#geometor.model.invariants.signed_area2" title="Link to this definition">¶</a></dt>
+        <dd><p>Return twice the signed area of triangle <code class="docutils literal notranslate"><span class="pre">ABC</span></code>: <span class="math notranslate nohighlight">\((x_B - x_A)(y_C - y_A) - (y_B - y_A)(x_C - x_A)\)</span>.</p>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.invariants.orientation">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.invariants.</span></span><span class="sig-name descname"><span class="pre">orientation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#geometor.model.invariants.orientation" title="Link to this definition">¶</a></dt>
+        <dd><p>Return <code class="docutils literal notranslate"><span class="pre">+1</span></code> if <code class="docutils literal notranslate"><span class="pre">(A,</span> <span class="pre">B,</span> <span class="pre">C)</span></code> is counter-clockwise, <code class="docutils literal notranslate"><span class="pre">-1</span></code> if clockwise, <code class="docutils literal notranslate"><span class="pre">0</span></code> if collinear.</p>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.invariants.polygon_area2">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.invariants.</span></span><span class="sig-name descname"><span class="pre">polygon_area2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.Expr</span></span></span><a class="headerlink" href="#geometor.model.invariants.polygon_area2" title="Link to this definition">¶</a></dt>
+        <dd><p>Compute exact unsigned twice-area <span class="math notranslate nohighlight">\(|2 \cdot \text{Area}|\)</span> of a simple polygon via shoelace.</p>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.invariants.cross_ratio">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.invariants.</span></span><span class="sig-name descname"><span class="pre">cross_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.Expr</span></span></span><a class="headerlink" href="#geometor.model.invariants.cross_ratio" title="Link to this definition">¶</a></dt>
+        <dd><p>Compute the exact projective cross-ratio <span class="math notranslate nohighlight">\((A, B; C, D) = \frac{\overline{AC}\cdot\overline{BD}}{\overline{BC}\cdot\overline{AD}}\)</span>.</p>
+        <p>Projects collinear displacements onto a shared line direction vector so the cross-ratio
+        is computed purely rationally without introducing square roots.</p>
+        <dl class="field-list simple">
+        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+        <dd class="field-odd"><ul class="simple">
+        <li><p><strong>A</strong> – First base point.</p></li>
+        <li><p><strong>B</strong> – Second base point.</p></li>
+        <li><p><strong>C</strong> – First division point.</p></li>
+        <li><p><strong>D</strong> – Second division point.</p></li>
+        </ul>
+        </dd>
+        <dt class="field-even">Returns<span class="colon">:</span></dt>
+        <dd class="field-even"><p>Exact simplified <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.Expr</span></code>.</p>
+        </dd>
+        <dt class="field-odd">Raises<span class="colon">:</span></dt>
+        <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.13/builtins/exceptions.html#ValueError" title="(in Python v3.13)"><strong>ValueError</strong></a> – If the four points are not collinear or the denominator vanishes.</p>
+        </dd>
+        </dl>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.invariants.is_harmonic">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.invariants.</span></span><span class="sig-name descname"><span class="pre">is_harmonic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#geometor.model.invariants.is_harmonic" title="Link to this definition">¶</a></dt>
+        <dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> iff <code class="docutils literal notranslate"><span class="pre">(A,</span> <span class="pre">B;</span> <span class="pre">C,</span> <span class="pre">D)</span> <span class="pre">==</span> <span class="pre">-1</span></code> forms an exact harmonic range.</p>
+        </dd></dl>
+
+        <dl class="py class">
+        <dt class="sig sig-object py" id="geometor.model.invariants.Angle">
+        <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">geometor.model.invariants.</span></span><span class="sig-name descname"><span class="pre">Angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1_or_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometor.model.invariants.Angle" title="Link to this definition">¶</a></dt>
+        <dd><p>First-class rectilinear angle <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">B</span> <span class="pre">A</span> <span class="pre">C</span> <span class="pre">)</span></code> with vertex <code class="docutils literal notranslate"><span class="pre">A</span></code> and rays <code class="docutils literal notranslate"><span class="pre">AB</span></code>, <code class="docutils literal notranslate"><span class="pre">AC</span></code>.</p>
+        <p>Stores exact algebraic spread, cross, and acute/right/obtuse dot-product sign without
+        requiring transcendental <code class="docutils literal notranslate"><span class="pre">acos</span></code> or <code class="docutils literal notranslate"><span class="pre">atan2</span></code> evaluation during equality proofs.</p>
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.invariants.Angle.p1">
+        <span class="sig-name descname"><span class="pre">p1</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span></span><a class="headerlink" href="#geometor.model.invariants.Angle.p1" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.invariants.Angle.vertex">
+        <span class="sig-name descname"><span class="pre">vertex</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span></span><a class="headerlink" href="#geometor.model.invariants.Angle.vertex" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.invariants.Angle.p2">
+        <span class="sig-name descname"><span class="pre">p2</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span></span><a class="headerlink" href="#geometor.model.invariants.Angle.p2" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.invariants.Angle.points">
+        <span class="sig-name descname"><span class="pre">points</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#geometor.model.invariants.Angle.points" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.invariants.Angle.__eq__">
+        <span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../element/index.html#geometor.model.element.Element.object" title="geometor.model.element.Element.object"><span class="pre">object</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#geometor.model.invariants.Angle.__eq__" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.invariants.Angle.__hash__">
+        <span class="sig-name descname"><span class="pre">__hash__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#geometor.model.invariants.Angle.__hash__" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.invariants.Angle.__repr__">
+        <span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#geometor.model.invariants.Angle.__repr__" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py property">
+        <dt class="sig sig-object py" id="geometor.model.invariants.Angle.ray1">
+        <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ray1</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sympy.geometry.Ray</span></span><a class="headerlink" href="#geometor.model.invariants.Angle.ray1" title="Link to this definition">¶</a></dt>
+        <dd><p>First ray from <code class="docutils literal notranslate"><span class="pre">vertex</span></code> through <code class="docutils literal notranslate"><span class="pre">p1</span></code>.</p>
+        </dd></dl>
+
+        <dl class="py property">
+        <dt class="sig sig-object py" id="geometor.model.invariants.Angle.ray2">
+        <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ray2</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sympy.geometry.Ray</span></span><a class="headerlink" href="#geometor.model.invariants.Angle.ray2" title="Link to this definition">¶</a></dt>
+        <dd><p>Second ray from <code class="docutils literal notranslate"><span class="pre">vertex</span></code> through <code class="docutils literal notranslate"><span class="pre">p2</span></code>.</p>
+        </dd></dl>
+
+        <dl class="py property">
+        <dt class="sig sig-object py" id="geometor.model.invariants.Angle.spread">
+        <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">spread</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sympy.Expr</span></span><a class="headerlink" href="#geometor.model.invariants.Angle.spread" title="Link to this definition">¶</a></dt>
+        <dd><p>Exact rational trigonometry spread <span class="math notranslate nohighlight">\(s(\angle BAC) = \sin^2\theta\)</span>.</p>
+        </dd></dl>
+
+        <dl class="py property">
+        <dt class="sig sig-object py" id="geometor.model.invariants.Angle.cross">
+        <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">cross</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sympy.Expr</span></span><a class="headerlink" href="#geometor.model.invariants.Angle.cross" title="Link to this definition">¶</a></dt>
+        <dd><p>Exact rational trigonometry cross <span class="math notranslate nohighlight">\(c(\angle BAC) = \cos^2\theta\)</span>.</p>
+        </dd></dl>
+
+        <dl class="py property">
+        <dt class="sig sig-object py" id="geometor.model.invariants.Angle.dot_sign">
+        <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">dot_sign</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span><a class="headerlink" href="#geometor.model.invariants.Angle.dot_sign" title="Link to this definition">¶</a></dt>
+        <dd><p><code class="docutils literal notranslate"><span class="pre">+1</span></code> acute, <code class="docutils literal notranslate"><span class="pre">0</span></code> right, <code class="docutils literal notranslate"><span class="pre">-1</span></code> obtuse.</p>
+        <dl class="field-list simple">
+        <dt class="field-odd">Type<span class="colon">:</span></dt>
+        <dd class="field-odd"><p>Exact dot-product sign</p>
+        </dd>
+        </dl>
+        </dd></dl>
+
+        <dl class="py property">
+        <dt class="sig sig-object py" id="geometor.model.invariants.Angle.is_right">
+        <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">is_right</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><a class="headerlink" href="#geometor.model.invariants.Angle.is_right" title="Link to this definition">¶</a></dt>
+        <dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> iff the angle is an exact right angle.</p>
+        </dd></dl>
+
+        <dl class="py property">
+        <dt class="sig sig-object py" id="geometor.model.invariants.Angle.radians">
+        <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">radians</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sympy.Expr</span></span><a class="headerlink" href="#geometor.model.invariants.Angle.radians" title="Link to this definition">¶</a></dt>
+        <dd><p>Interior angle measure in radians in <span class="math notranslate nohighlight">\([0, \pi]\)</span>.</p>
+        </dd></dl>
+
+        <dl class="py property">
+        <dt class="sig sig-object py" id="geometor.model.invariants.Angle.degrees">
+        <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">degrees</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sympy.Expr</span></span><a class="headerlink" href="#geometor.model.invariants.Angle.degrees" title="Link to this definition">¶</a></dt>
+        <dd><p>Interior angle measure in degrees.</p>
+        </dd></dl>
+
+        </dd></dl>
+
+        <dl class="py class">
+        <dt class="sig sig-object py" id="geometor.model.invariants.AnglesMixin">
+        <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">geometor.model.invariants.</span></span><span class="sig-name descname"><span class="pre">AnglesMixin</span></span><a class="headerlink" href="#geometor.model.invariants.AnglesMixin" title="Link to this definition">¶</a></dt>
+        <dd><p>Mixin for <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> providing rectilinear angle registration.</p>
+        <dl class="py property">
+        <dt class="sig sig-object py" id="geometor.model.invariants.AnglesMixin.angles">
+        <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">angles</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#geometor.model.invariants.Angle" title="geometor.model.invariants.Angle"><span class="pre">Angle</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#geometor.model.invariants.AnglesMixin.angles" title="Link to this definition">¶</a></dt>
+        <dd><p>Return all <a class="reference internal" href="#geometor.model.invariants.Angle" title="geometor.model.invariants.Angle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Angle</span></code></a> elements registered in the model.</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.invariants.AnglesMixin.set_angle_by_IDs">
+        <span class="sig-name descname"><span class="pre">set_angle_by_IDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1_ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex_ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2_ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geometor.model.invariants.Angle" title="geometor.model.invariants.Angle"><span class="pre">Angle</span></a></span></span><a class="headerlink" href="#geometor.model.invariants.AnglesMixin.set_angle_by_IDs" title="Link to this definition">¶</a></dt>
+        <dd><p>Construct and register an <a class="reference internal" href="#geometor.model.invariants.Angle" title="geometor.model.invariants.Angle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Angle</span></code></a> <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">B</span> <span class="pre">A</span> <span class="pre">C</span> <span class="pre">)</span></code> from three point IDs.</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.invariants.AnglesMixin.set_angle">
+        <span class="sig-name descname"><span class="pre">set_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">guide</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geometor.model.invariants.Angle" title="geometor.model.invariants.Angle"><span class="pre">Angle</span></a></span></span><a class="headerlink" href="#geometor.model.invariants.AnglesMixin.set_angle" title="Link to this definition">¶</a></dt>
+        <dd><p>Construct and register a rectilinear <a class="reference internal" href="#geometor.model.invariants.Angle" title="geometor.model.invariants.Angle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Angle</span></code></a> <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">p1</span> <span class="pre">vertex</span> <span class="pre">p2</span> <span class="pre">)</span></code>.</p>
+        </dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.invariants.AnglesMixin.construct_angle">
+        <span class="sig-name descname"><span class="pre">construct_angle</span></span><a class="headerlink" href="#geometor.model.invariants.AnglesMixin.construct_angle" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        </dd></dl>
+
+        </section>
+        </section>
+
+      </div>
+      <footer class="book-footer">
+        <div class="book-footer-ornament">&#10086;</div>
+        <div class="book-footer-nav">
+          <div class="book-nav-prev">
+            <a class="book-nav-btn" href="../intersections/index.html" title="geometor.model.intersections">&larr; <span class="nav-label">geometor.model.intersections</span></a>
+          </div>
+          <div class="book-nav-center">
+            <a class="book-toc-link" href="../../../../../index.html">GEOMETOR • model</a>
+          </div>
+          <div class="book-nav-next">
+            <a class="book-nav-btn" href="../lines/index.html" title="geometor.model.lines"><span class="nav-label">geometor.model.lines</span> &rarr;</a>
+          </div>
+        </div>
+      </footer>
+    </article>
+  </main>
+  <div class="asides">
+    <aside class="aside-search">
+      <h3>Search</h3>
+      <div id="searchbox" role="search">
+        <form id="rtd-search-form" class="wy-form search-form" action="../../../../../search.html" method="get">
+          <div class="search-field">
+            <input type="search" name="q" placeholder="Search docs..." aria-label="Search docs" autocomplete="off" />
+            <button type="submit" class="search-submit" aria-label="Search" title="Search">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+          </div>
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+      </div>
+    </aside>
+    <aside class="aside-recent-logs">
+      <h3>Recent Logs</h3>
+      <ul>
+        <li><a href="../../../../../log/26.302-183600/index.html">Unified Classical Scriptorium Documentation & Usage Guides Standardized</a></li>
+        <li><a href="../../../../../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+      </ul>
+    </aside>
+    <aside class="aside-tags">
+      <h3>Tags</h3>
+      <ul>
+        <li><a href="../../../../../tags/constructions.html">constructions</a></li>
+        <li><a href="../../../../../tags/model.html">model</a></li>
+        <li><a href="../../../../../tags/sympy.html">sympy</a></li>
+        <li><a href="../../../../../tags/theme.html">theme</a></li>
+      </ul>
+    </aside>
+    <aside class="aside-categories">
+      <h3>Categories</h3>
+      <ul>
+        <li><a href="../../../../../categories/architecture.html">architecture</a></li>
+        <li><a href="../../../../../categories/documentation.html">documentation</a></li>
+      </ul>
+    </aside>
+    <aside class="aside-types">
+      <h3>Types</h3>
+      <ul>
+        <li><a href="../../../../../types/log.html">log</a></li>
+      </ul>
+    </aside>
+  </div>
+  <footer>
+    <div class="footer-nav">
+      <ul>
+        <li><a href="../../../../../about.html"  >about</a></li>
+        <li><a href="../../../../../connect.html"  >connect</a></li>
+        <li><a href="../../../../../todos/index.html"  >todos</a></li>
+        <li><a href="../../../../../changelog.html"  >changelog</a></li>
+      </ul>
+    </div>
+    <hr />
+    <div role="contentinfo">
+      <p>
+        &copy; Copyright 2026, GEOMETOR.
+      </p>
+    </div>
+  </footer>
+
+  <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+  <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+  <script src="../../../../../_static/documentation_options.js?v=8fa8b3e9"></script>
+  <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
+  <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+  <script src="../../../../../_static/js/collection_controls.js?v=b6b5297a"></script>
+  <script src="../../../../../_static/js/geometor_interactive.js?v=b2892320"></script>
+  <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+  <script src="../../../../../_static/js/search_highlight.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,393 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-content_root="../../../../../">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>geometor.model.proof &mdash; GEOMETOR • model</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Fira+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=ea5fcf70" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/css/styles.css?v=66998e95" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <link rel="stylesheet" href="../../../../../_static/css/print.css" type="text/css" media="print" />
+  <link rel="icon" href="../../../../../_static/favicon.ico" />
+</head>
+
+<body class="book-theme-classical-serif">
+  <header>
+    <div class="logo">
+      <a href="../../../../../index.html">
+        <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+      </a>
+      <div class="org-repo">
+        <span class="org">GEOMETOR</span>
+        •
+        <span class="repo">model</span>
+      </div>
+    </div>
+    <nav aria-label="Header">
+      <input type="checkbox" id="nav-Header-toggle" >
+      <label for="nav-Header-toggle" >Header</label>
+      <ul>
+        <li>
+          <a href="../../../../../demos/index.html"  >demos</a>
+        </li>
+        <li>
+          <a href="../../../../../refs/index.html"  >references</a>
+        </li>
+        <li>
+          <a href="../../../../../mission/index.html"  >mission</a>
+        </li>
+        <li>
+          <a href="../../../../../usage/index.html"  >usage</a>
+        </li>
+        <li>
+          <a href="../../../../../log/index.html"  >log</a>
+        </li>
+        <li>
+          <a href="../../../../index.html" class="is-active" aria-selected="true" >modules</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="motto"></div>
+  </header>
+  <main class="book-main">
+    <article class="book-layout book-reading-pane">
+      <header class="book-header">
+        <div class="book-header-bar">
+          <div class="book-header-identity">
+            <a class="book-portal-link" href="../../../../../index.html" title="Return to Project Portal">&larr; model</a>
+            <span class="book-header-sep">/</span>
+            <a class="book-title-link" href="../../../../../index.html">GEOMETOR • model</a>
+          </div>
+          <div class="book-header-breadcrumbs book-header-badges" role="navigation" aria-label="Breadcrumbs">
+            <a class="book-crumb-link" href="../../../../index.html">modules</a>
+          </div>
+        </div>
+        <div class="book-header-nav">
+          <div class="book-nav-prev">
+            <a class="book-nav-btn" href="../polynomials/index.html" title="geometor.model.polynomials">&larr; <span class="nav-label">Prev</span></a>
+          </div>
+          <div class="book-nav-center">
+          </div>
+          <div class="book-nav-next">
+            <a class="book-nav-btn" href="../reports/index.html" title="geometor.model.reports"><span class="nav-label">Next</span> &rarr;</a>
+          </div>
+        </div>
+      </header>
+      <div class="content body book-content" role="main">
+        <section class="level-1" id="module-geometor.model.proof">
+        <span id="geometor-model-proof"></span><h1>geometor.model.proof<a class="headerlink" href="#module-geometor.model.proof" title="Link to this heading">¶</a></h1>
+        <p>Deductive proof ledger, exact algebraic assertion verifier, and construction timeline.</p>
+        <p>Provides:</p>
+        <ul class="simple">
+        <li><p><a class="reference internal" href="#geometor.model.proof.Step" title="geometor.model.proof.Step"><code class="xref py py-class docutils literal notranslate"><span class="pre">Step</span></code></a>: Structured chronological step record for <code class="docutils literal notranslate"><span class="pre">given</span></code>, <code class="docutils literal notranslate"><span class="pre">construct</span></code>,
+        <code class="docutils literal notranslate"><span class="pre">intersect</span></code>, <code class="docutils literal notranslate"><span class="pre">assert</span></code>, and <code class="docutils literal notranslate"><span class="pre">conclude</span></code> phases.</p></li>
+        <li><p><a class="reference internal" href="#geometor.model.proof.ProofAssertionError" title="geometor.model.proof.ProofAssertionError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ProofAssertionError</span></code></a>: Raised when an exact algebraic invariant check fails in SymPy.</p></li>
+        <li><p><a class="reference internal" href="#geometor.model.proof.ProofMixin" title="geometor.model.proof.ProofMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProofMixin</span></code></a>: Equips <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> with SymPy-verified Euclidean
+        demonstration assertions (<a class="reference internal" href="#geometor.model.proof.ProofMixin.assert_equal" title="geometor.model.proof.ProofMixin.assert_equal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">assert_equal()</span></code></a>,
+        <a class="reference internal" href="#geometor.model.proof.ProofMixin.assert_spread_equal" title="geometor.model.proof.ProofMixin.assert_spread_equal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">assert_spread_equal()</span></code></a>, <a class="reference internal" href="#geometor.model.proof.ProofMixin.assert_perpendicular" title="geometor.model.proof.ProofMixin.assert_perpendicular"><code class="xref py py-meth docutils literal notranslate"><span class="pre">assert_perpendicular()</span></code></a>,
+        <a class="reference internal" href="#geometor.model.proof.ProofMixin.assert_parallel" title="geometor.model.proof.ProofMixin.assert_parallel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">assert_parallel()</span></code></a>, <a class="reference internal" href="#geometor.model.proof.ProofMixin.assert_congruent" title="geometor.model.proof.ProofMixin.assert_congruent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">assert_congruent()</span></code></a>,
+        <a class="reference internal" href="#geometor.model.proof.ProofMixin.assert_area_equal" title="geometor.model.proof.ProofMixin.assert_area_equal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">assert_area_equal()</span></code></a>, <a class="reference internal" href="#geometor.model.proof.ProofMixin.assert_collinear" title="geometor.model.proof.ProofMixin.assert_collinear"><code class="xref py py-meth docutils literal notranslate"><span class="pre">assert_collinear()</span></code></a>,
+        <a class="reference internal" href="#geometor.model.proof.ProofMixin.assert_concyclic" title="geometor.model.proof.ProofMixin.assert_concyclic"><code class="xref py py-meth docutils literal notranslate"><span class="pre">assert_concyclic()</span></code></a>, <a class="reference internal" href="#geometor.model.proof.ProofMixin.assert_incident" title="geometor.model.proof.ProofMixin.assert_incident"><code class="xref py py-meth docutils literal notranslate"><span class="pre">assert_incident()</span></code></a>, and
+        <a class="reference internal" href="#geometor.model.proof.ProofMixin.conclude" title="geometor.model.proof.ProofMixin.conclude"><code class="xref py py-meth docutils literal notranslate"><span class="pre">conclude()</span></code></a>).</p></li>
+        </ul>
+        <section class="level-2" id="exceptions">
+        <h2>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading">¶</a></h2>
+        <table class="autosummary longtable docutils align-default">
+        <tbody>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.proof.ProofAssertionError" title="geometor.model.proof.ProofAssertionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProofAssertionError</span></code></a></p></td>
+        <td><p>Raised when a deductive geometric assertion fails exact symbolic verification.</p></td>
+        </tr>
+        </tbody>
+        </table>
+        </section>
+        <section class="level-2" id="classes">
+        <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+        <table class="autosummary longtable docutils align-default">
+        <tbody>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.proof.Step" title="geometor.model.proof.Step"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Step</span></code></a></p></td>
+        <td><p>Chronological construction or demonstration step recorded by <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a>.</p></td>
+        </tr>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.proof.ProofMixin" title="geometor.model.proof.ProofMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProofMixin</span></code></a></p></td>
+        <td><p>Mixin for <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> providing exact symbolic proof verification.</p></td>
+        </tr>
+        </tbody>
+        </table>
+        </section>
+        <section class="level-2" id="module-contents">
+        <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+        <dl class="py exception">
+        <dt class="sig sig-object py" id="geometor.model.proof.ProofAssertionError">
+        <span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">geometor.model.proof.</span></span><span class="sig-name descname"><span class="pre">ProofAssertionError</span></span><a class="headerlink" href="#geometor.model.proof.ProofAssertionError" title="Link to this definition">¶</a></dt>
+        <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.13/builtins/exceptions.html#AssertionError" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AssertionError</span></code></a></p>
+        <p>Raised when a deductive geometric assertion fails exact symbolic verification.</p>
+        </dd></dl>
+
+        <dl class="py class">
+        <dt class="sig sig-object py" id="geometor.model.proof.Step">
+        <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">geometor.model.proof.</span></span><span class="sig-name descname"><span class="pre">Step</span></span><a class="headerlink" href="#geometor.model.proof.Step" title="Link to this definition">¶</a></dt>
+        <dd><p>Chronological construction or demonstration step recorded by <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a>.</p>
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.proof.Step.index">
+        <span class="sig-name descname"><span class="pre">index</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span><a class="headerlink" href="#geometor.model.proof.Step.index" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.proof.Step.kind">
+        <span class="sig-name descname"><span class="pre">kind</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><a class="headerlink" href="#geometor.model.proof.Step.kind" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.proof.Step.action">
+        <span class="sig-name descname"><span class="pre">action</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><a class="headerlink" href="#geometor.model.proof.Step.action" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.proof.Step.elements">
+        <span class="sig-name descname"><span class="pre">elements</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#geometor.model.proof.Step.elements" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.proof.Step.by">
+        <span class="sig-name descname"><span class="pre">by</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#geometor.model.proof.Step.by" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.proof.Step.label">
+        <span class="sig-name descname"><span class="pre">label</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#geometor.model.proof.Step.label" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.proof.Step.focus">
+        <span class="sig-name descname"><span class="pre">focus</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#geometor.model.proof.Step.focus" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.proof.Step.parent_scope">
+        <span class="sig-name descname"><span class="pre">parent_scope</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#geometor.model.proof.Step.parent_scope" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.proof.Step.primitive">
+        <span class="sig-name descname"><span class="pre">primitive</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#geometor.model.proof.Step.primitive" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.proof.Step.to_dict">
+        <span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.proof.Step.to_dict" title="Link to this definition">¶</a></dt>
+        <dd><p>Serialize this <a class="reference internal" href="#geometor.model.proof.Step" title="geometor.model.proof.Step"><code class="xref py py-class docutils literal notranslate"><span class="pre">Step</span></code></a> to a JSON-compatible dictionary.</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.proof.Step.from_dict">
+        <span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geometor.model.proof.Step" title="geometor.model.proof.Step"><span class="pre">Step</span></a></span></span><a class="headerlink" href="#geometor.model.proof.Step.from_dict" title="Link to this definition">¶</a></dt>
+        <dd><p>Reconstruct a <a class="reference internal" href="#geometor.model.proof.Step" title="geometor.model.proof.Step"><code class="xref py py-class docutils literal notranslate"><span class="pre">Step</span></code></a> from its dictionary representation.</p>
+        </dd></dl>
+
+        </dd></dl>
+
+        <dl class="py class">
+        <dt class="sig sig-object py" id="geometor.model.proof.ProofMixin">
+        <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">geometor.model.proof.</span></span><span class="sig-name descname"><span class="pre">ProofMixin</span></span><a class="headerlink" href="#geometor.model.proof.ProofMixin" title="Link to this definition">¶</a></dt>
+        <dd><p>Mixin for <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> providing exact symbolic proof verification.</p>
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.proof.ProofMixin.assert_equal">
+        <span class="sig-name descname"><span class="pre">assert_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Segment</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)"><span class="pre">collections.abc.Sequence</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geometor.model.proof.Step" title="geometor.model.proof.Step"><span class="pre">Step</span></a></span></span><a class="headerlink" href="#geometor.model.proof.ProofMixin.assert_equal" title="Link to this definition">¶</a></dt>
+        <dd><p>Verify exact equality of segment quadrances <span class="math notranslate nohighlight">\(Q(s_0) = Q(s_1) = \dots\)</span>.</p>
+        <dl class="field-list simple">
+        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+        <dd class="field-odd"><ul class="simple">
+        <li><p><strong>*items</strong> – Two or more <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.Segment</span></code> objects or <code class="docutils literal notranslate"><span class="pre">(P,</span> <span class="pre">Q)</span></code> point pairs.</p></li>
+        <li><p><strong>by</strong> – Optional Euclidean citation (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;Def.15&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;C.N.1&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;I.4&quot;</span></code>).</p></li>
+        <li><p><strong>label</strong> – Optional step caption.</p></li>
+        <li><p><strong>focus</strong> – Optional sequence of elements to highlight during this step.</p></li>
+        </ul>
+        </dd>
+        <dt class="field-even">Returns<span class="colon">:</span></dt>
+        <dd class="field-even"><p>The recorded <a class="reference internal" href="#geometor.model.proof.Step" title="geometor.model.proof.Step"><code class="xref py py-class docutils literal notranslate"><span class="pre">Step</span></code></a>.</p>
+        </dd>
+        <dt class="field-odd">Raises<span class="colon">:</span></dt>
+        <dd class="field-odd"><p><a class="reference internal" href="#geometor.model.proof.ProofAssertionError" title="geometor.model.proof.ProofAssertionError"><strong>ProofAssertionError</strong></a> – If any pair of quadrances differs symbolically.</p>
+        </dd>
+        </dl>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.proof.ProofMixin.assert_spread_equal">
+        <span class="sig-name descname"><span class="pre">assert_spread_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">angles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../invariants/index.html#geometor.model.invariants.Angle" title="geometor.model.invariants.Angle"><span class="pre">geometor.model.invariants.Angle</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)"><span class="pre">collections.abc.Sequence</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geometor.model.proof.Step" title="geometor.model.proof.Step"><span class="pre">Step</span></a></span></span><a class="headerlink" href="#geometor.model.proof.ProofMixin.assert_spread_equal" title="Link to this definition">¶</a></dt>
+        <dd><p>Verify exact equality of angle spreads (and acute/obtuse sign when <code class="docutils literal notranslate"><span class="pre">signed=True</span></code>).</p>
+        <dl class="field-list simple">
+        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+        <dd class="field-odd"><ul class="simple">
+        <li><p><strong>*angles</strong> – Two or more <code class="xref py py-class docutils literal notranslate"><span class="pre">Angle</span></code> objects, <code class="docutils literal notranslate"><span class="pre">(B,</span> <span class="pre">A,</span> <span class="pre">C)</span></code> point triples (vertex <code class="docutils literal notranslate"><span class="pre">A</span></code>),
+        or <code class="docutils literal notranslate"><span class="pre">(line1,</span> <span class="pre">line2)</span></code> pairs.</p></li>
+        <li><p><strong>signed</strong> – When <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), distinguishes supplementary acute vs obtuse vertex angles.</p></li>
+        <li><p><strong>by</strong> – Optional Euclidean citation (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;I.5&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;I.8&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;I.29&quot;</span></code>).</p></li>
+        <li><p><strong>label</strong> – Optional step caption.</p></li>
+        <li><p><strong>focus</strong> – Optional sequence of elements to highlight.</p></li>
+        </ul>
+        </dd>
+        </dl>
+        </dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.proof.ProofMixin.assert_angle_equal">
+        <span class="sig-name descname"><span class="pre">assert_angle_equal</span></span><a class="headerlink" href="#geometor.model.proof.ProofMixin.assert_angle_equal" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.proof.ProofMixin.assert_perpendicular">
+        <span class="sig-name descname"><span class="pre">assert_perpendicular</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Line</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sympy.geometry.Segment</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Line</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sympy.geometry.Segment</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">at</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)"><span class="pre">collections.abc.Sequence</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geometor.model.proof.Step" title="geometor.model.proof.Step"><span class="pre">Step</span></a></span></span><a class="headerlink" href="#geometor.model.proof.ProofMixin.assert_perpendicular" title="Link to this definition">¶</a></dt>
+        <dd><p>Verify exact orthogonality (<span class="math notranslate nohighlight">\(s(l_1, l_2) = 1\)</span>, <span class="math notranslate nohighlight">\(a_1 a_2 + b_1 b_2 = 0\)</span>).</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.proof.ProofMixin.assert_parallel">
+        <span class="sig-name descname"><span class="pre">assert_parallel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Line</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sympy.geometry.Segment</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Line</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sympy.geometry.Segment</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)"><span class="pre">collections.abc.Sequence</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geometor.model.proof.Step" title="geometor.model.proof.Step"><span class="pre">Step</span></a></span></span><a class="headerlink" href="#geometor.model.proof.ProofMixin.assert_parallel" title="Link to this definition">¶</a></dt>
+        <dd><p>Verify exact parallelism (<span class="math notranslate nohighlight">\(s(l_1, l_2) = 0\)</span>, <span class="math notranslate nohighlight">\(a_1 b_2 - a_2 b_1 = 0\)</span>).</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.proof.ProofMixin.assert_congruent">
+        <span class="sig-name descname"><span class="pre">assert_congruent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">poly1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Polygon</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)"><span class="pre">collections.abc.Sequence</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Polygon</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)"><span class="pre">collections.abc.Sequence</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)"><span class="pre">collections.abc.Sequence</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geometor.model.proof.Step" title="geometor.model.proof.Step"><span class="pre">Step</span></a></span></span><a class="headerlink" href="#geometor.model.proof.ProofMixin.assert_congruent" title="Link to this definition">¶</a></dt>
+        <dd><p>Verify exact vertex-for-vertex Euclidean congruence (all side quadrances &amp; signed angles).</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.proof.ProofMixin.assert_area_equal">
+        <span class="sig-name descname"><span class="pre">assert_area_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">poly1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Polygon</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)"><span class="pre">collections.abc.Sequence</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Polygon</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)"><span class="pre">collections.abc.Sequence</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)"><span class="pre">collections.abc.Sequence</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geometor.model.proof.Step" title="geometor.model.proof.Step"><span class="pre">Step</span></a></span></span><a class="headerlink" href="#geometor.model.proof.ProofMixin.assert_area_equal" title="Link to this definition">¶</a></dt>
+        <dd><p>Verify exact equality of polygon areas (for cut-and-paste / Pythagorean proofs).</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.proof.ProofMixin.assert_collinear">
+        <span class="sig-name descname"><span class="pre">assert_collinear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)"><span class="pre">collections.abc.Sequence</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geometor.model.proof.Step" title="geometor.model.proof.Step"><span class="pre">Step</span></a></span></span><a class="headerlink" href="#geometor.model.proof.ProofMixin.assert_collinear" title="Link to this definition">¶</a></dt>
+        <dd><p>Verify exact collinearity of 3 or more points via signed-area determinants.</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.proof.ProofMixin.assert_concyclic">
+        <span class="sig-name descname"><span class="pre">assert_concyclic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)"><span class="pre">collections.abc.Sequence</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geometor.model.proof.Step" title="geometor.model.proof.Step"><span class="pre">Step</span></a></span></span><a class="headerlink" href="#geometor.model.proof.ProofMixin.assert_concyclic" title="Link to this definition">¶</a></dt>
+        <dd><p>Verify that 4 or more points lie on a single finite Euclidean circle.</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.proof.ProofMixin.assert_incident">
+        <span class="sig-name descname"><span class="pre">assert_incident</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">struct</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Line</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sympy.geometry.Circle</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sympy.geometry.Segment</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)"><span class="pre">collections.abc.Sequence</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geometor.model.proof.Step" title="geometor.model.proof.Step"><span class="pre">Step</span></a></span></span><a class="headerlink" href="#geometor.model.proof.ProofMixin.assert_incident" title="Link to this definition">¶</a></dt>
+        <dd><p>Verify exact incidence of <code class="docutils literal notranslate"><span class="pre">pt</span></code> on a <code class="docutils literal notranslate"><span class="pre">Line</span></code>, <code class="docutils literal notranslate"><span class="pre">Circle</span></code>, or <code class="docutils literal notranslate"><span class="pre">Segment</span></code>.</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.proof.ProofMixin.conclude">
+        <span class="sig-name descname"><span class="pre">conclude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">elements</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'qed'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)"><span class="pre">collections.abc.Sequence</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geometor.model.proof.Step" title="geometor.model.proof.Step"><span class="pre">Step</span></a></span></span><a class="headerlink" href="#geometor.model.proof.ProofMixin.conclude" title="Link to this definition">¶</a></dt>
+        <dd><p>Mark target constructed/demonstrated elements as <code class="docutils literal notranslate"><span class="pre">result</span></code> and record Q.E.D. / Q.E.F.</p>
+        </dd></dl>
+
+        </dd></dl>
+
+        </section>
+        </section>
+
+      </div>
+      <footer class="book-footer">
+        <div class="book-footer-ornament">&#10086;</div>
+        <div class="book-footer-nav">
+          <div class="book-nav-prev">
+            <a class="book-nav-btn" href="../polynomials/index.html" title="geometor.model.polynomials">&larr; <span class="nav-label">geometor.model.polynomials</span></a>
+          </div>
+          <div class="book-nav-center">
+            <a class="book-toc-link" href="../../../../../index.html">GEOMETOR • model</a>
+          </div>
+          <div class="book-nav-next">
+            <a class="book-nav-btn" href="../reports/index.html" title="geometor.model.reports"><span class="nav-label">geometor.model.reports</span> &rarr;</a>
+          </div>
+        </div>
+      </footer>
+    </article>
+  </main>
+  <div class="asides">
+    <aside class="aside-search">
+      <h3>Search</h3>
+      <div id="searchbox" role="search">
+        <form id="rtd-search-form" class="wy-form search-form" action="../../../../../search.html" method="get">
+          <div class="search-field">
+            <input type="search" name="q" placeholder="Search docs..." aria-label="Search docs" autocomplete="off" />
+            <button type="submit" class="search-submit" aria-label="Search" title="Search">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+          </div>
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+      </div>
+    </aside>
+    <aside class="aside-recent-logs">
+      <h3>Recent Logs</h3>
+      <ul>
+        <li><a href="../../../../../log/26.302-183600/index.html">Unified Classical Scriptorium Documentation & Usage Guides Standardized</a></li>
+        <li><a href="../../../../../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+      </ul>
+    </aside>
+    <aside class="aside-tags">
+      <h3>Tags</h3>
+      <ul>
+        <li><a href="../../../../../tags/constructions.html">constructions</a></li>
+        <li><a href="../../../../../tags/model.html">model</a></li>
+        <li><a href="../../../../../tags/sympy.html">sympy</a></li>
+        <li><a href="../../../../../tags/theme.html">theme</a></li>
+      </ul>
+    </aside>
+    <aside class="aside-categories">
+      <h3>Categories</h3>
+      <ul>
+        <li><a href="../../../../../categories/architecture.html">architecture</a></li>
+        <li><a href="../../../../../categories/documentation.html">documentation</a></li>
+      </ul>
+    </aside>
+    <aside class="aside-types">
+      <h3>Types</h3>
+      <ul>
+        <li><a href="../../../../../types/log.html">log</a></li>
+      </ul>
+    </aside>
+  </div>
+  <footer>
+    <div class="footer-nav">
+      <ul>
+        <li><a href="../../../../../about.html"  >about</a></li>
+        <li><a href="../../../../../connect.html"  >connect</a></li>
+        <li><a href="../../../../../todos/index.html"  >todos</a></li>
+        <li><a href="../../../../../changelog.html"  >changelog</a></li>
+      </ul>
+    </div>
+    <hr />
+    <div role="contentinfo">
+      <p>
+        &copy; Copyright 2026, GEOMETOR.
+      </p>
+    </div>
+  </footer>
+
+  <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+  <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+  <script src="../../../../../_static/documentation_options.js?v=8fa8b3e9"></script>
+  <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
+  <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+  <script src="../../../../../_static/js/collection_controls.js?v=b6b5297a"></script>
+  <script src="../../../../../_static/js/geometor_interactive.js?v=b2892320"></script>
+  <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+  <script src="../../../../../_static/js/search_highlight.js"></script>
+
+</body>
+</html>

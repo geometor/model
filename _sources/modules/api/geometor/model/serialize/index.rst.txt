@@ -5,9 +5,16 @@ geometor.model.serialize
 
 .. autoapi-nested-parse::
 
-   Provides serialization functions for the Model class.
+   Provides JSON serialization (schema v2) and v1/v2 deserialization for :class:`Model`.
 
-   This module is responsible for converting the complex, interconnected structure of the geometric model into a portable JSON format and reconstituting it back into a full object model. It ensures that all element relationships, metadata, and symbolic expressions are preserved during the save/load process.
+   Exports models with ``schema_version: 2``, preserving 100% of v1 fields while adding:
+
+   - ``symbolic`` metadata dictionaries (exact LaTeX coordinates/quadrances/spreads and
+     cached floating-point coordinates for instant frontend/SVG rendering),
+   - ``pts`` incident-point lists on lines and circles,
+   - ``markers`` diagrammatic proof annotations (ticks, angle arcs, parallel arrows),
+   - ``steps`` chronological construction and deductive proof ledger,
+   - first-class :class:`~geometor.model.invariants.Angle` serialization and restoration.
 
 
 
@@ -32,30 +39,23 @@ Module Contents
 
 .. py:class:: SerializeMixin
 
-   Mixin for the Model class containing serialization operations.
-
-   This mixin adds persistence capabilities to the Model class, allowing it to export its state to a file. It uses JSON as the interchange format, serializing SymPy objects into string representations that can be accurately parsed back.
+   Mixin for :class:`~geometor.model.Model` providing JSON v2 persistence.
 
 
-   .. py:method:: save(file_path: str) -> None
+   .. py:method:: to_dict(*, include_symbolic: bool = True) -> dict[str, Any]
 
-      Save a Model object to a JSON file as a list of elements.
-
-      This method iterates through all elements in the model, serializing their symbolic definitions, parents, and metadata into a dictionary structure. It uses SymPy's srepr for robust expression serialization and writes the result to the specified file path.
-
-      :param file_path: The path where the JSON file will be saved.
+      Serialize the model into a JSON-compatible dictionary (``schema_version: 2``).
 
 
 
-.. py:function:: load_model(file_path: str, logger: logging.Logger | None = None) -> geometor.model.Model
+   .. py:method:: save(file_path: str | pathlib.Path, *, include_symbolic: bool = True) -> None
 
-   Load a model from a JSON file and return a new Model instance.
+      Save the :class:`~geometor.model.Model` to a JSON file.
 
-   This function reads a JSON file containing serialized model data and reconstructs a :class:`geometor.model.Model` object. It performs a two-pass process: first parsing all symbolic expressions to recreate the geometry objects, and then linking them with their parents and metadata to restore the full dependency graph.
 
-   :param file_path: The path to the JSON file to load.
-   :param logger: An optional logger instance to attach to the new model.
 
-   :returns: A new :class:`geometor.model.Model` instance populated with the loaded data.
+.. py:function:: load_model(file_path: str | pathlib.Path, logger: logging.Logger | bool | None = None) -> geometor.model.Model
+
+   Load a ``model.json`` file (v1 or v2) and reconstitute a :class:`~geometor.model.Model`.
 
 

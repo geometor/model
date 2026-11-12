@@ -92,7 +92,7 @@
         <table class="autosummary longtable docutils align-default">
         <tbody>
         <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.utils.clean_expr" title="geometor.model.utils.clean_expr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clean_expr</span></code></a>(expr) → sympy.Expr</p></td>
-        <td><p>Simplify and denest SymPy expressions.</p></td>
+        <td><p>Canonicalize a symbolic geometric coordinate without invoking <code class="docutils literal notranslate"><span class="pre">sp.simplify</span></code>.</p></td>
         </tr>
         <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.utils.spread" title="geometor.model.utils.spread"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spread</span></code></a>(l1, l2) → sympy.Expr</p></td>
         <td><p>Calculate the spread of two lines.</p></td>
@@ -122,15 +122,21 @@
         <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
         <dl class="py function">
         <dt class="sig sig-object py" id="geometor.model.utils.clean_expr">
-        <span class="sig-prename descclassname"><span class="pre">geometor.model.utils.</span></span><span class="sig-name descname"><span class="pre">clean_expr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.Expr</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.Expr</span></span></span><a class="headerlink" href="#geometor.model.utils.clean_expr" title="Link to this definition">¶</a></dt>
-        <dd><p>Simplify and denest SymPy expressions.</p>
-        <p>This function applies a standard set of simplification routines to symbolic expressions, specifically targeting the simplification of square roots and nested radicals which are common in constructive geometry.</p>
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.utils.</span></span><span class="sig-name descname"><span class="pre">clean_expr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../element/index.html#geometor.model.element.Element.object" title="geometor.model.element.Element.object"><span class="pre">object</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.Expr</span></span></span><a class="headerlink" href="#geometor.model.utils.clean_expr" title="Link to this definition">¶</a></dt>
+        <dd><p>Canonicalize a symbolic geometric coordinate without invoking <code class="docutils literal notranslate"><span class="pre">sp.simplify</span></code>.</p>
+        <p>Applies a fast tiered pipeline:</p>
+        <ol class="arabic simple">
+        <li><p>Immediate O(1) return for Python <code class="docutils literal notranslate"><span class="pre">int</span></code> and SymPy <code class="docutils literal notranslate"><span class="pre">Rational</span></code> / <code class="docutils literal notranslate"><span class="pre">Integer</span></code>.</p></li>
+        <li><p>Fraction combination (<code class="xref py py-func docutils literal notranslate"><span class="pre">sympy.together()</span></code>), bounded polynomial expansion,
+        and denominator rationalization (<code class="xref py py-func docutils literal notranslate"><span class="pre">sympy.radsimp()</span></code> with <code class="docutils literal notranslate"><span class="pre">symbolic=False</span></code>).</p></li>
+        <li><p>Conditional <code class="xref py py-func docutils literal notranslate"><span class="pre">sympy.sqrtdenest()</span></code> only when nested radicals are actually present.</p></li>
+        </ol>
         <dl class="field-list simple">
         <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-        <dd class="field-odd"><p><strong>expr</strong> – The SymPy expression to clean.</p>
+        <dd class="field-odd"><p><strong>expr</strong> – A numeric value or SymPy expression.</p>
         </dd>
         <dt class="field-even">Returns<span class="colon">:</span></dt>
-        <dd class="field-even"><p>The simplified expression.</p>
+        <dd class="field-even"><p>A simplified exact <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.Expr</span></code>.</p>
         </dd>
         </dl>
         </dd></dl>
@@ -327,7 +333,7 @@
 
   <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
   <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-  <script src="../../../../../_static/documentation_options.js?v=d65efdcf"></script>
+  <script src="../../../../../_static/documentation_options.js?v=8fa8b3e9"></script>
   <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
   <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
   <script src="../../../../../_static/js/collection_controls.js?v=b6b5297a"></script>

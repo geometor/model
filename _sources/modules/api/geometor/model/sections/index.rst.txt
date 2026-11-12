@@ -54,17 +54,9 @@ Module Contents
 
 
 
-   .. py:method:: set_section(points: list[sympy.geometry.Point], classes: list[str] | None = None, ID: str = '') -> Section
+   .. py:method:: set_section(points: list[sympy.geometry.Point], classes: list[str] | None = None, ID: str = '', *, guide: bool = False, by: str = '') -> Section
 
       Set section (list of 3 points on a line).
-
-      This method constructs a `Section` from a list of three collinear points and adds it to the model. It automatically calculates the section's ratio, generates an ID if needed, and logs the section's details including segment lengths.
-
-      :param points: A list of 3 collinear points.
-      :param classes: A list of class labels.
-      :param ID: A string ID for the section. If empty, one is generated.
-
-      :returns: The constructed :class:`Section`.
 
 
 
@@ -103,7 +95,7 @@ Module Contents
 
 
 
-   .. py:method:: get_IDs(model: geometor.model.Model) -> list[str]
+   .. py:method:: get_IDs(model: geometor.model.model.Model) -> list[str]
 
       Return a list of IDs.
 

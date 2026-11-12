@@ -1,0 +1,201 @@
+geometor.model.proof
+====================
+
+.. py:module:: geometor.model.proof
+
+.. autoapi-nested-parse::
+
+   Deductive proof ledger, exact algebraic assertion verifier, and construction timeline.
+
+   Provides:
+
+   - :class:`Step`: Structured chronological step record for ``given``, ``construct``,
+     ``intersect``, ``assert``, and ``conclude`` phases.
+   - :exc:`ProofAssertionError`: Raised when an exact algebraic invariant check fails in SymPy.
+   - :class:`ProofMixin`: Equips :class:`~geometor.model.Model` with SymPy-verified Euclidean
+     demonstration assertions (:meth:`~ProofMixin.assert_equal`,
+     :meth:`~ProofMixin.assert_spread_equal`, :meth:`~ProofMixin.assert_perpendicular`,
+     :meth:`~ProofMixin.assert_parallel`, :meth:`~ProofMixin.assert_congruent`,
+     :meth:`~ProofMixin.assert_area_equal`, :meth:`~ProofMixin.assert_collinear`,
+     :meth:`~ProofMixin.assert_concyclic`, :meth:`~ProofMixin.assert_incident`, and
+     :meth:`~ProofMixin.conclude`).
+
+
+
+Exceptions
+----------
+
+.. autoapisummary::
+
+   geometor.model.proof.ProofAssertionError
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   geometor.model.proof.Step
+   geometor.model.proof.ProofMixin
+
+
+Module Contents
+---------------
+
+.. py:exception:: ProofAssertionError
+
+   Bases: :py:obj:`AssertionError`
+
+
+   Raised when a deductive geometric assertion fails exact symbolic verification.
+
+
+.. py:class:: Step
+
+   Chronological construction or demonstration step recorded by :class:`~geometor.model.Model`.
+
+
+   .. py:attribute:: index
+      :type:  int
+
+
+   .. py:attribute:: kind
+      :type:  str
+
+
+   .. py:attribute:: action
+      :type:  str
+
+
+   .. py:attribute:: elements
+      :type:  list[str]
+      :value: []
+
+
+
+   .. py:attribute:: by
+      :type:  str
+      :value: ''
+
+
+
+   .. py:attribute:: label
+      :type:  str
+      :value: ''
+
+
+
+   .. py:attribute:: focus
+      :type:  list[str]
+      :value: []
+
+
+
+   .. py:attribute:: parent_scope
+      :type:  str
+      :value: ''
+
+
+
+   .. py:attribute:: primitive
+      :type:  dict[str, Any]
+
+
+   .. py:method:: to_dict() -> dict[str, Any]
+
+      Serialize this :class:`Step` to a JSON-compatible dictionary.
+
+
+
+   .. py:method:: from_dict(data: dict[str, Any]) -> Step
+      :classmethod:
+
+
+      Reconstruct a :class:`Step` from its dictionary representation.
+
+
+
+.. py:class:: ProofMixin
+
+   Mixin for :class:`~geometor.model.Model` providing exact symbolic proof verification.
+
+
+   .. py:method:: assert_equal(*items: sympy.geometry.Segment | tuple[sympy.geometry.Point, sympy.geometry.Point], by: str = '', label: str = '', focus: collections.abc.Sequence[Any] | None = None) -> Step
+
+      Verify exact equality of segment quadrances :math:`Q(s_0) = Q(s_1) = \dots`.
+
+      :param \*items: Two or more :class:`sympy.geometry.Segment` objects or ``(P, Q)`` point pairs.
+      :param by: Optional Euclidean citation (e.g., ``"Def.15"``, ``"C.N.1"``, ``"I.4"``).
+      :param label: Optional step caption.
+      :param focus: Optional sequence of elements to highlight during this step.
+
+      :returns: The recorded :class:`Step`.
+
+      :raises ProofAssertionError: If any pair of quadrances differs symbolically.
+
+
+
+   .. py:method:: assert_spread_equal(*angles: geometor.model.invariants.Angle | tuple[sympy.geometry.Point, sympy.geometry.Point, sympy.geometry.Point] | tuple[Any, Any], signed: bool = True, by: str = '', label: str = '', focus: collections.abc.Sequence[Any] | None = None) -> Step
+
+      Verify exact equality of angle spreads (and acute/obtuse sign when ``signed=True``).
+
+      :param \*angles: Two or more :class:`Angle` objects, ``(B, A, C)`` point triples (vertex ``A``),
+                       or ``(line1, line2)`` pairs.
+      :param signed: When ``True`` (default), distinguishes supplementary acute vs obtuse vertex angles.
+      :param by: Optional Euclidean citation (e.g., ``"I.5"``, ``"I.8"``, ``"I.29"``).
+      :param label: Optional step caption.
+      :param focus: Optional sequence of elements to highlight.
+
+
+
+   .. py:attribute:: assert_angle_equal
+
+
+   .. py:method:: assert_perpendicular(l1: sympy.geometry.Line | sympy.geometry.Segment | tuple[sympy.geometry.Point, sympy.geometry.Point], l2: sympy.geometry.Line | sympy.geometry.Segment | tuple[sympy.geometry.Point, sympy.geometry.Point], *, at: sympy.geometry.Point | None = None, by: str = '', label: str = '', focus: collections.abc.Sequence[Any] | None = None) -> Step
+
+      Verify exact orthogonality (:math:`s(l_1, l_2) = 1`, :math:`a_1 a_2 + b_1 b_2 = 0`).
+
+
+
+   .. py:method:: assert_parallel(l1: sympy.geometry.Line | sympy.geometry.Segment | tuple[sympy.geometry.Point, sympy.geometry.Point], l2: sympy.geometry.Line | sympy.geometry.Segment | tuple[sympy.geometry.Point, sympy.geometry.Point], *, by: str = '', label: str = '', focus: collections.abc.Sequence[Any] | None = None) -> Step
+
+      Verify exact parallelism (:math:`s(l_1, l_2) = 0`, :math:`a_1 b_2 - a_2 b_1 = 0`).
+
+
+
+   .. py:method:: assert_congruent(poly1: sympy.geometry.Polygon | collections.abc.Sequence[sympy.geometry.Point], poly2: sympy.geometry.Polygon | collections.abc.Sequence[sympy.geometry.Point], *, by: str = '', label: str = '', focus: collections.abc.Sequence[Any] | None = None) -> Step
+
+      Verify exact vertex-for-vertex Euclidean congruence (all side quadrances & signed angles).
+
+
+
+   .. py:method:: assert_area_equal(poly1: sympy.geometry.Polygon | collections.abc.Sequence[sympy.geometry.Point], poly2: sympy.geometry.Polygon | collections.abc.Sequence[sympy.geometry.Point], *, by: str = '', label: str = '', focus: collections.abc.Sequence[Any] | None = None) -> Step
+
+      Verify exact equality of polygon areas (for cut-and-paste / Pythagorean proofs).
+
+
+
+   .. py:method:: assert_collinear(*points: sympy.geometry.Point, by: str = '', label: str = '', focus: collections.abc.Sequence[Any] | None = None) -> Step
+
+      Verify exact collinearity of 3 or more points via signed-area determinants.
+
+
+
+   .. py:method:: assert_concyclic(*points: sympy.geometry.Point, by: str = '', label: str = '', focus: collections.abc.Sequence[Any] | None = None) -> Step
+
+      Verify that 4 or more points lie on a single finite Euclidean circle.
+
+
+
+   .. py:method:: assert_incident(pt: sympy.geometry.Point, struct: sympy.geometry.Line | sympy.geometry.Circle | sympy.geometry.Segment, *, by: str = '', label: str = '', focus: collections.abc.Sequence[Any] | None = None) -> Step
+
+      Verify exact incidence of ``pt`` on a ``Line``, ``Circle``, or ``Segment``.
+
+
+
+   .. py:method:: conclude(*elements: Any, kind: str = 'qed', by: str = '', label: str = '', focus: collections.abc.Sequence[Any] | None = None) -> Step
+
+      Mark target constructed/demonstrated elements as ``result`` and record Q.E.D. / Q.E.F.
+
+
+

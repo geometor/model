@@ -1,0 +1,408 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-content_root="../../../../../">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>geometor.model.intersections &mdash; GEOMETOR • model</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Fira+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=ea5fcf70" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/css/styles.css?v=66998e95" />
+  <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <link rel="stylesheet" href="../../../../../_static/css/print.css" type="text/css" media="print" />
+  <link rel="icon" href="../../../../../_static/favicon.ico" />
+</head>
+
+<body class="book-theme-classical-serif">
+  <header>
+    <div class="logo">
+      <a href="../../../../../index.html">
+        <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+      </a>
+      <div class="org-repo">
+        <span class="org">GEOMETOR</span>
+        •
+        <span class="repo">model</span>
+      </div>
+    </div>
+    <nav aria-label="Header">
+      <input type="checkbox" id="nav-Header-toggle" >
+      <label for="nav-Header-toggle" >Header</label>
+      <ul>
+        <li>
+          <a href="../../../../../demos/index.html"  >demos</a>
+        </li>
+        <li>
+          <a href="../../../../../refs/index.html"  >references</a>
+        </li>
+        <li>
+          <a href="../../../../../mission/index.html"  >mission</a>
+        </li>
+        <li>
+          <a href="../../../../../usage/index.html"  >usage</a>
+        </li>
+        <li>
+          <a href="../../../../../log/index.html"  >log</a>
+        </li>
+        <li>
+          <a href="../../../../index.html" class="is-active" aria-selected="true" >modules</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="motto"></div>
+  </header>
+  <main class="book-main">
+    <article class="book-layout book-reading-pane">
+      <header class="book-header">
+        <div class="book-header-bar">
+          <div class="book-header-identity">
+            <a class="book-portal-link" href="../../../../../index.html" title="Return to Project Portal">&larr; model</a>
+            <span class="book-header-sep">/</span>
+            <a class="book-title-link" href="../../../../../index.html">GEOMETOR • model</a>
+          </div>
+          <div class="book-header-breadcrumbs book-header-badges" role="navigation" aria-label="Breadcrumbs">
+            <a class="book-crumb-link" href="../../../../index.html">modules</a>
+          </div>
+        </div>
+        <div class="book-header-nav">
+          <div class="book-nav-prev">
+            <a class="book-nav-btn" href="../helpers/index.html" title="geometor.model.helpers">&larr; <span class="nav-label">Prev</span></a>
+          </div>
+          <div class="book-nav-center">
+          </div>
+          <div class="book-nav-next">
+            <a class="book-nav-btn" href="../invariants/index.html" title="geometor.model.invariants"><span class="nav-label">Next</span> &rarr;</a>
+          </div>
+        </div>
+      </header>
+      <div class="content body book-content" role="main">
+        <section class="level-1" id="module-geometor.model.intersections">
+        <span id="geometor-model-intersections"></span><h1>geometor.model.intersections<a class="headerlink" href="#module-geometor.model.intersections" title="Link to this heading">¶</a></h1>
+        <p>Closed-form 2D symbolic intersections, Euclidean selectors, and scoped sub-constructions.</p>
+        <p>Provides:</p>
+        <ul class="simple">
+        <li><p><a class="reference internal" href="#geometor.model.intersections.intersect_2d" title="geometor.model.intersections.intersect_2d"><code class="xref py py-func docutils literal notranslate"><span class="pre">intersect_2d()</span></code></a>: Exact closed-form solver for 2D <code class="docutils literal notranslate"><span class="pre">Line</span></code>, <code class="docutils literal notranslate"><span class="pre">Circle</span></code>, and <code class="docutils literal notranslate"><span class="pre">Segment</span></code>
+        pairs (bypassing SymPy’s quartic <code class="docutils literal notranslate"><span class="pre">Ellipse</span></code> Gröbner-basis routines).</p></li>
+        <li><p><a class="reference internal" href="#geometor.model.intersections.ConstructionError" title="geometor.model.intersections.ConstructionError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ConstructionError</span></code></a>: Raised when a geometric <em>diorismos</em> or Euclidean selector fails.</p></li>
+        <li><p><a class="reference internal" href="#geometor.model.intersections.IntersectionsMixin" title="geometor.model.intersections.IntersectionsMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntersectionsMixin</span></code></a>: Adds <code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.intersect()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.intersect_all()</span></code>, and
+        <code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.subconstruction()</span></code> to <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a>.</p></li>
+        <li><p><a class="reference internal" href="#geometor.model.intersections.proposition" title="geometor.model.intersections.proposition"><code class="xref py py-func docutils literal notranslate"><span class="pre">proposition()</span></code></a>: Composable decorator turning any Euclidean construction function into
+        a scoped, reusable lemma/problem across <code class="docutils literal notranslate"><span class="pre">elements</span></code> and <code class="docutils literal notranslate"><span class="pre">etc</span></code>.</p></li>
+        </ul>
+        <section class="level-2" id="exceptions">
+        <h2>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading">¶</a></h2>
+        <table class="autosummary longtable docutils align-default">
+        <tbody>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.intersections.ConstructionError" title="geometor.model.intersections.ConstructionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConstructionError</span></code></a></p></td>
+        <td><p>Raised when a compass-and-straightedge intersection violates its <em>diorismos</em> or selector.</p></td>
+        </tr>
+        </tbody>
+        </table>
+        </section>
+        <section class="level-2" id="classes">
+        <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+        <table class="autosummary longtable docutils align-default">
+        <tbody>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.intersections.SubconstructionScope" title="geometor.model.intersections.SubconstructionScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SubconstructionScope</span></code></a></p></td>
+        <td><p>Active scope state for <code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.subconstruction()</span></code>.</p></td>
+        </tr>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.intersections.IntersectionsMixin" title="geometor.model.intersections.IntersectionsMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntersectionsMixin</span></code></a></p></td>
+        <td><p>Mixin for <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> providing targeted intersections &amp; sub-constructions.</p></td>
+        </tr>
+        </tbody>
+        </table>
+        </section>
+        <section class="level-2" id="functions">
+        <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
+        <table class="autosummary longtable docutils align-default">
+        <tbody>
+        <tr class="row-odd"><td><p><a class="reference internal" href="#geometor.model.intersections.intersect_2d" title="geometor.model.intersections.intersect_2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersect_2d</span></code></a>(s1, s2) → list[sympy.geometry.Point]</p></td>
+        <td><p>Compute exact symbolic intersections of 2D lines, circles, and segments.</p></td>
+        </tr>
+        <tr class="row-even"><td><p><a class="reference internal" href="#geometor.model.intersections.proposition" title="geometor.model.intersections.proposition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proposition</span></code></a>(prop_id, *[, g_id, kind, title, ...]) → collections.abc.Callable[[collections.abc.Callable[..., Any]], collections.abc.Callable[..., Any]]</p></td>
+        <td><p>Decorator marking a Euclidean construction function as a composable proposition.</p></td>
+        </tr>
+        </tbody>
+        </table>
+        </section>
+        <section class="level-2" id="module-contents">
+        <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+        <dl class="py exception">
+        <dt class="sig sig-object py" id="geometor.model.intersections.ConstructionError">
+        <span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">geometor.model.intersections.</span></span><span class="sig-name descname"><span class="pre">ConstructionError</span></span><a class="headerlink" href="#geometor.model.intersections.ConstructionError" title="Link to this definition">¶</a></dt>
+        <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.13/builtins/exceptions.html#ValueError" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueError</span></code></a></p>
+        <p>Raised when a compass-and-straightedge intersection violates its <em>diorismos</em> or selector.</p>
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.intersections.intersect_2d">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.intersections.</span></span><span class="sig-name descname"><span class="pre">intersect_2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/entities.html#sympy.geometry.entity.GeometryEntity" title="(in SymPy v1.14.0)"><span class="pre">sympy.geometry.entity.GeometryEntity</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/entities.html#sympy.geometry.entity.GeometryEntity" title="(in SymPy v1.14.0)"><span class="pre">sympy.geometry.entity.GeometryEntity</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.intersections.intersect_2d" title="Link to this definition">¶</a></dt>
+        <dd><p>Compute exact symbolic intersections of 2D lines, circles, and segments.</p>
+        <p>Uses closed-form homogeneous cross-products (line-line), orthogonal projection
+        discriminants (line-circle), and radical-axis projections (circle-circle) so
+        nested radical expressions never fall into SymPy’s slow <code class="docutils literal notranslate"><span class="pre">Ellipse</span></code> quartic solver.</p>
+        <dl class="field-list simple">
+        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+        <dd class="field-odd"><ul class="simple">
+        <li><p><strong>s1</strong> – First 2D geometric entity (<code class="docutils literal notranslate"><span class="pre">Line</span></code>, <code class="docutils literal notranslate"><span class="pre">Circle</span></code>, or <code class="docutils literal notranslate"><span class="pre">Segment</span></code>).</p></li>
+        <li><p><strong>s2</strong> – Second 2D geometric entity (<code class="docutils literal notranslate"><span class="pre">Line</span></code>, <code class="docutils literal notranslate"><span class="pre">Circle</span></code>, or <code class="docutils literal notranslate"><span class="pre">Segment</span></code>).</p></li>
+        </ul>
+        </dd>
+        <dt class="field-even">Returns<span class="colon">:</span></dt>
+        <dd class="field-even"><p>Deterministically sorted list of exact real <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.Point</span></code> intersections.</p>
+        </dd>
+        </dl>
+        </dd></dl>
+
+        <dl class="py class">
+        <dt class="sig sig-object py" id="geometor.model.intersections.SubconstructionScope">
+        <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">geometor.model.intersections.</span></span><span class="sig-name descname"><span class="pre">SubconstructionScope</span></span><a class="headerlink" href="#geometor.model.intersections.SubconstructionScope" title="Link to this definition">¶</a></dt>
+        <dd><p>Active scope state for <code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.subconstruction()</span></code>.</p>
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.intersections.SubconstructionScope.name">
+        <span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><a class="headerlink" href="#geometor.model.intersections.SubconstructionScope.name" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.intersections.SubconstructionScope.g_id">
+        <span class="sig-name descname"><span class="pre">g_id</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#geometor.model.intersections.SubconstructionScope.g_id" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.intersections.SubconstructionScope.scope_intersections">
+        <span class="sig-name descname"><span class="pre">scope_intersections</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#geometor.model.intersections.SubconstructionScope.scope_intersections" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.intersections.SubconstructionScope.hide_guides">
+        <span class="sig-name descname"><span class="pre">hide_guides</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#geometor.model.intersections.SubconstructionScope.hide_guides" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.intersections.SubconstructionScope.initial_keys">
+        <span class="sig-name descname"><span class="pre">initial_keys</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#set" title="(in Python v3.13)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#geometor.model.intersections.SubconstructionScope.initial_keys" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.intersections.SubconstructionScope.scope_structs">
+        <span class="sig-name descname"><span class="pre">scope_structs</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#geometor.model.intersections.SubconstructionScope.scope_structs" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.intersections.SubconstructionScope.created_elements">
+        <span class="sig-name descname"><span class="pre">created_elements</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#geometor.model.intersections.SubconstructionScope.created_elements" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py attribute">
+        <dt class="sig sig-object py" id="geometor.model.intersections.SubconstructionScope.returned_elements">
+        <span class="sig-name descname"><span class="pre">returned_elements</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#set" title="(in Python v3.13)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#geometor.model.intersections.SubconstructionScope.returned_elements" title="Link to this definition">¶</a></dt>
+        <dd></dd></dl>
+
+        <dl class="py property">
+        <dt class="sig sig-object py" id="geometor.model.intersections.SubconstructionScope.scope_id">
+        <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">scope_id</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><a class="headerlink" href="#geometor.model.intersections.SubconstructionScope.scope_id" title="Link to this definition">¶</a></dt>
+        <dd><p>Canonical identifier recorded on nested steps.</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.intersections.SubconstructionScope.include">
+        <span class="sig-name descname"><span class="pre">include</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">elements</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.intersections.SubconstructionScope.include" title="Link to this definition">¶</a></dt>
+        <dd><p>Include existing outer lines/circles in this scope’s intersection pool.</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.intersections.SubconstructionScope.keep">
+        <span class="sig-name descname"><span class="pre">keep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">elements</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.intersections.SubconstructionScope.keep" title="Link to this definition">¶</a></dt>
+        <dd><p>Preserve specific elements created inside this scope as primary (non-guide) outputs.</p>
+        </dd></dl>
+
+        </dd></dl>
+
+        <dl class="py function">
+        <dt class="sig sig-object py" id="geometor.model.intersections.proposition">
+        <span class="sig-prename descclassname"><span class="pre">geometor.model.intersections.</span></span><span class="sig-name descname"><span class="pre">proposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">g_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'problem'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hide_guides</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope_intersections</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.13)"><span class="pre">collections.abc.Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.13)"><span class="pre">collections.abc.Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.13)"><span class="pre">collections.abc.Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.intersections.proposition" title="Link to this definition">¶</a></dt>
+        <dd><p>Decorator marking a Euclidean construction function as a composable proposition.</p>
+        <p>Executes the wrapped function inside <code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.subconstruction()</span></code>, scoping automatic
+        intersections to the proposition and automatically marking un-returned auxiliary
+        lines, circles, and guide poles with <code class="docutils literal notranslate"><span class="pre">guide=True</span></code>.</p>
+        <dl class="field-list simple">
+        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+        <dd class="field-odd"><ul class="simple">
+        <li><p><strong>prop_id</strong> – Proposition or center identifier (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;I.1&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;X(13)&quot;</span></code>).</p></li>
+        <li><p><strong>g_id</strong> – Optional G-Index node identifier (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;G.17&quot;</span></code>).</p></li>
+        <li><p><strong>kind</strong> – <code class="docutils literal notranslate"><span class="pre">&quot;problem&quot;</span></code> (Q.E.F.) or <code class="docutils literal notranslate"><span class="pre">&quot;theorem&quot;</span></code> (Q.E.D.).</p></li>
+        <li><p><strong>title</strong> – Optional human-readable proposition title.</p></li>
+        <li><p><strong>hide_guides</strong> – Default <code class="docutils literal notranslate"><span class="pre">hide_guides</span></code> setting when invoked.</p></li>
+        <li><p><strong>scope_intersections</strong> – Default <code class="docutils literal notranslate"><span class="pre">scope_intersections</span></code> setting when invoked.</p></li>
+        </ul>
+        </dd>
+        </dl>
+        </dd></dl>
+
+        <dl class="py class">
+        <dt class="sig sig-object py" id="geometor.model.intersections.IntersectionsMixin">
+        <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">geometor.model.intersections.</span></span><span class="sig-name descname"><span class="pre">IntersectionsMixin</span></span><a class="headerlink" href="#geometor.model.intersections.IntersectionsMixin" title="Link to this definition">¶</a></dt>
+        <dd><p>Mixin for <a class="reference internal" href="../../../../index.html#geometor.model.Model" title="geometor.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> providing targeted intersections &amp; sub-constructions.</p>
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.intersections.IntersectionsMixin.subconstruction">
+        <span class="sig-name descname"><span class="pre">subconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">g_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope_intersections</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hide_guides</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Iterator" title="(in Python v3.13)"><span class="pre">collections.abc.Iterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#geometor.model.intersections.SubconstructionScope" title="geometor.model.intersections.SubconstructionScope"><span class="pre">SubconstructionScope</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.intersections.IntersectionsMixin.subconstruction" title="Link to this definition">¶</a></dt>
+        <dd><p>Execute a scoped sub-construction block with automatic guide encapsulation.</p>
+        <dl class="field-list simple">
+        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+        <dd class="field-odd"><ul class="simple">
+        <li><p><strong>name</strong> – Proposition or sub-construction name (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;I.1&quot;</span></code>).</p></li>
+        <li><p><strong>g_id</strong> – Optional G-Index identifier (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;G.17&quot;</span></code>).</p></li>
+        <li><p><strong>scope_intersections</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, automatic intersections inside the block only
+        test lines and circles belonging to this scope.</p></li>
+        <li><p><strong>hide_guides</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, un-kept auxiliary lines, circles, and points created
+        inside the block are marked <code class="docutils literal notranslate"><span class="pre">guide=True</span></code> upon exit.</p></li>
+        </ul>
+        </dd>
+        </dl>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.intersections.IntersectionsMixin.intersect_all">
+        <span class="sig-name descname"><span class="pre">intersect_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../element/index.html#geometor.model.element.Struct" title="geometor.model.element.Struct"><span class="pre">geometor.model.element.Struct</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sympy.geometry.Segment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../element/index.html#geometor.model.element.Struct" title="geometor.model.element.Struct"><span class="pre">geometor.model.element.Struct</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sympy.geometry.Segment</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guide</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geometor.model.intersections.IntersectionsMixin.intersect_all" title="Link to this definition">¶</a></dt>
+        <dd><p>Compute and register all real intersections between <code class="docutils literal notranslate"><span class="pre">s1</span></code> and <code class="docutils literal notranslate"><span class="pre">s2</span></code>.</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.intersections.IntersectionsMixin.intersect">
+        <span class="sig-name descname"><span class="pre">intersect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../element/index.html#geometor.model.element.Struct" title="geometor.model.element.Struct"><span class="pre">geometor.model.element.Struct</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sympy.geometry.Segment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../element/index.html#geometor.model.element.Struct" title="geometor.model.element.Struct"><span class="pre">geometor.model.element.Struct</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sympy.geometry.Segment</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">side_of</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other_than</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)"><span class="pre">collections.abc.Sequence</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_ray</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beyond</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">between</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sympy.geometry.Point</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">near</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sympy.geometry.Point</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guide</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sympy.geometry.Point</span></span></span><a class="headerlink" href="#geometor.model.intersections.IntersectionsMixin.intersect" title="Link to this definition">¶</a></dt>
+        <dd><p>Compute a targeted intersection of <code class="docutils literal notranslate"><span class="pre">s1</span></code> and <code class="docutils literal notranslate"><span class="pre">s2</span></code> selected by Euclidean predicates.</p>
+        <dl class="field-list simple">
+        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+        <dd class="field-odd"><ul class="simple">
+        <li><p><strong>s1</strong> – First <code class="docutils literal notranslate"><span class="pre">Line</span></code>, <code class="docutils literal notranslate"><span class="pre">Circle</span></code>, or <code class="docutils literal notranslate"><span class="pre">Segment</span></code>.</p></li>
+        <li><p><strong>s2</strong> – Second <code class="docutils literal notranslate"><span class="pre">Line</span></code>, <code class="docutils literal notranslate"><span class="pre">Circle</span></code>, or <code class="docutils literal notranslate"><span class="pre">Segment</span></code>.</p></li>
+        <li><p><strong>side_of</strong> – <code class="docutils literal notranslate"><span class="pre">(A,</span> <span class="pre">B,</span> <span class="pre">+1|-1|0)</span></code> selecting the half-plane relative to directed line <code class="docutils literal notranslate"><span class="pre">AB</span></code>.</p></li>
+        <li><p><strong>other_than</strong> – Known <code class="docutils literal notranslate"><span class="pre">Point</span></code> (or sequence of <code class="docutils literal notranslate"><span class="pre">Point</span></code> instances) to exclude.</p></li>
+        <li><p><strong>on_ray</strong> – <code class="docutils literal notranslate"><span class="pre">(A,</span> <span class="pre">B)</span></code> selecting points on ray <code class="docutils literal notranslate"><span class="pre">AB</span></code> (<span class="math notranslate nohighlight">\(t \ge 0\)</span>).</p></li>
+        <li><p><strong>beyond</strong> – <code class="docutils literal notranslate"><span class="pre">(A,</span> <span class="pre">B)</span></code> selecting points on ray <code class="docutils literal notranslate"><span class="pre">AB</span></code> strictly past <code class="docutils literal notranslate"><span class="pre">B</span></code> (<span class="math notranslate nohighlight">\(t &gt; 1\)</span>).</p></li>
+        <li><p><strong>between</strong> – <code class="docutils literal notranslate"><span class="pre">(A,</span> <span class="pre">B)</span></code> selecting points strictly between <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code> (<span class="math notranslate nohighlight">\(0 &lt; t &lt; 1\)</span>).</p></li>
+        <li><p><strong>near</strong> – Reference <code class="docutils literal notranslate"><span class="pre">Point</span></code> selecting the closest candidate.</p></li>
+        <li><p><strong>index</strong> – Explicit index <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code> into deterministically sorted candidates.</p></li>
+        <li><p><strong>ID</strong> – Optional identifier for the constructed point.</p></li>
+        <li><p><strong>label</strong> – Optional alias for <code class="docutils literal notranslate"><span class="pre">ID</span></code>.</p></li>
+        <li><p><strong>classes</strong> – Optional list of CSS/semantic classes.</p></li>
+        <li><p><strong>guide</strong> – Whether to mark the point as a guide.</p></li>
+        <li><p><strong>by</strong> – Optional Euclidean justification citation (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;I.1&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Post.2&quot;</span></code>).</p></li>
+        </ul>
+        </dd>
+        <dt class="field-even">Returns<span class="colon">:</span></dt>
+        <dd class="field-even"><p>The exact <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.geometry.Point</span></code> registered in the model.</p>
+        </dd>
+        <dt class="field-odd">Raises<span class="colon">:</span></dt>
+        <dd class="field-odd"><p><a class="reference internal" href="#geometor.model.intersections.ConstructionError" title="geometor.model.intersections.ConstructionError"><strong>ConstructionError</strong></a> – If <code class="docutils literal notranslate"><span class="pre">s1</span></code> and <code class="docutils literal notranslate"><span class="pre">s2</span></code> do not intersect or no candidate matches the selector.</p>
+        </dd>
+        </dl>
+        </dd></dl>
+
+        </dd></dl>
+
+        </section>
+        </section>
+
+      </div>
+      <footer class="book-footer">
+        <div class="book-footer-ornament">&#10086;</div>
+        <div class="book-footer-nav">
+          <div class="book-nav-prev">
+            <a class="book-nav-btn" href="../helpers/index.html" title="geometor.model.helpers">&larr; <span class="nav-label">geometor.model.helpers</span></a>
+          </div>
+          <div class="book-nav-center">
+            <a class="book-toc-link" href="../../../../../index.html">GEOMETOR • model</a>
+          </div>
+          <div class="book-nav-next">
+            <a class="book-nav-btn" href="../invariants/index.html" title="geometor.model.invariants"><span class="nav-label">geometor.model.invariants</span> &rarr;</a>
+          </div>
+        </div>
+      </footer>
+    </article>
+  </main>
+  <div class="asides">
+    <aside class="aside-search">
+      <h3>Search</h3>
+      <div id="searchbox" role="search">
+        <form id="rtd-search-form" class="wy-form search-form" action="../../../../../search.html" method="get">
+          <div class="search-field">
+            <input type="search" name="q" placeholder="Search docs..." aria-label="Search docs" autocomplete="off" />
+            <button type="submit" class="search-submit" aria-label="Search" title="Search">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+          </div>
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+      </div>
+    </aside>
+    <aside class="aside-recent-logs">
+      <h3>Recent Logs</h3>
+      <ul>
+        <li><a href="../../../../../log/26.302-183600/index.html">Unified Classical Scriptorium Documentation & Usage Guides Standardized</a></li>
+        <li><a href="../../../../../log/23.324-124954/index.html">First Log - Lots of changes</a></li>
+      </ul>
+    </aside>
+    <aside class="aside-tags">
+      <h3>Tags</h3>
+      <ul>
+        <li><a href="../../../../../tags/constructions.html">constructions</a></li>
+        <li><a href="../../../../../tags/model.html">model</a></li>
+        <li><a href="../../../../../tags/sympy.html">sympy</a></li>
+        <li><a href="../../../../../tags/theme.html">theme</a></li>
+      </ul>
+    </aside>
+    <aside class="aside-categories">
+      <h3>Categories</h3>
+      <ul>
+        <li><a href="../../../../../categories/architecture.html">architecture</a></li>
+        <li><a href="../../../../../categories/documentation.html">documentation</a></li>
+      </ul>
+    </aside>
+    <aside class="aside-types">
+      <h3>Types</h3>
+      <ul>
+        <li><a href="../../../../../types/log.html">log</a></li>
+      </ul>
+    </aside>
+  </div>
+  <footer>
+    <div class="footer-nav">
+      <ul>
+        <li><a href="../../../../../about.html"  >about</a></li>
+        <li><a href="../../../../../connect.html"  >connect</a></li>
+        <li><a href="../../../../../todos/index.html"  >todos</a></li>
+        <li><a href="../../../../../changelog.html"  >changelog</a></li>
+      </ul>
+    </div>
+    <hr />
+    <div role="contentinfo">
+      <p>
+        &copy; Copyright 2026, GEOMETOR.
+      </p>
+    </div>
+  </footer>
+
+  <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+  <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+  <script src="../../../../../_static/documentation_options.js?v=8fa8b3e9"></script>
+  <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
+  <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+  <script src="../../../../../_static/js/collection_controls.js?v=b6b5297a"></script>
+  <script src="../../../../../_static/js/geometor_interactive.js?v=b2892320"></script>
+  <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+  <script src="../../../../../_static/js/search_highlight.js"></script>
+
+</body>
+</html>

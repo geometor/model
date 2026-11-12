@@ -1,0 +1,243 @@
+geometor.model.invariants
+=========================
+
+.. py:module:: geometor.model.invariants
+
+.. autoapi-nested-parse::
+
+   Rational trigonometry invariants, projective cross-ratios, and first-class Angle elements.
+
+   Implements N. J. Wildberger's polynomial/rational invariants (quadrance, spread, cross),
+   exact signed orientation and projective cross-ratio / harmonic range predicates, and the
+   first-class :class:`Angle` element (``< B A C )``) for :class:`~geometor.model.Model`.
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   geometor.model.invariants.Angle
+   geometor.model.invariants.AnglesMixin
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   geometor.model.invariants.quadrance
+   geometor.model.invariants.line_spread
+   geometor.model.invariants.cross
+   geometor.model.invariants.vertex_spread
+   geometor.model.invariants.vertex_dot_sign
+   geometor.model.invariants.signed_area2
+   geometor.model.invariants.orientation
+   geometor.model.invariants.polygon_area2
+   geometor.model.invariants.cross_ratio
+   geometor.model.invariants.is_harmonic
+
+
+Module Contents
+---------------
+
+.. py:function:: quadrance(p1_or_seg: sympy.geometry.Point | sympy.geometry.Segment, p2: sympy.geometry.Point | None = None) -> sympy.Expr
+
+   Compute the exact Euclidean quadrance :math:`Q = (x_2 - x_1)^2 + (y_2 - y_1)^2`.
+
+   Accepts either two :class:`sympy.geometry.Point` instances ``quadrance(P, Q)``
+   or a single :class:`sympy.geometry.Segment` ``quadrance(seg)``.
+
+   :param p1_or_seg: First point ``P`` or a segment ``/ P Q /``.
+   :param p2: Second point ``Q`` when ``p1_or_seg`` is a point.
+
+   :returns: Exact simplified :class:`sympy.Expr` with zero square roots introduced.
+
+
+.. py:function:: line_spread(l1: sympy.geometry.Line | sympy.geometry.Segment | tuple[sympy.geometry.Point, sympy.geometry.Point], l2: sympy.geometry.Line | sympy.geometry.Segment | tuple[sympy.geometry.Point, sympy.geometry.Point]) -> sympy.Expr
+
+   Compute the exact rational spread :math:`s(l_1, l_2) = \sin^2\theta` between two lines.
+
+   :param l1: First line, segment, or ``(P, Q)`` point pair.
+   :param l2: Second line, segment, or ``(P, Q)`` point pair.
+
+   :returns: Exact simplified spread in :math:`[0, 1]`.
+
+
+.. py:function:: cross(l1: sympy.geometry.Line | sympy.geometry.Segment | tuple[sympy.geometry.Point, sympy.geometry.Point], l2: sympy.geometry.Line | sympy.geometry.Segment | tuple[sympy.geometry.Point, sympy.geometry.Point]) -> sympy.Expr
+
+   Compute the exact rational cross :math:`c(l_1, l_2) = \cos^2\theta = 1 - s(l_1, l_2)`.
+
+
+.. py:function:: vertex_spread(B: sympy.geometry.Point, A: sympy.geometry.Point, C: sympy.geometry.Point) -> sympy.Expr
+
+   Compute the exact spread at vertex ``A`` between rays ``AB`` and ``AC`` (``< B A C )``).
+
+   :param B: Point on the first ray.
+   :param A: The vertex of the angle.
+   :param C: Point on the second ray.
+
+   :returns: Exact simplified spread :math:`s(\angle BAC)`.
+
+
+.. py:function:: vertex_dot_sign(B: sympy.geometry.Point, A: sympy.geometry.Point, C: sympy.geometry.Point) -> int
+
+   Return ``+1`` if ``< B A C )`` is acute, ``0`` if right, or ``-1`` if obtuse.
+
+
+.. py:function:: signed_area2(A: sympy.geometry.Point, B: sympy.geometry.Point, C: sympy.geometry.Point) -> sympy.Expr
+
+   Return twice the signed area of triangle ``ABC``: :math:`(x_B - x_A)(y_C - y_A) - (y_B - y_A)(x_C - x_A)`.
+
+
+.. py:function:: orientation(A: sympy.geometry.Point, B: sympy.geometry.Point, C: sympy.geometry.Point) -> int
+
+   Return ``+1`` if ``(A, B, C)`` is counter-clockwise, ``-1`` if clockwise, ``0`` if collinear.
+
+
+.. py:function:: polygon_area2(vertices: list[sympy.geometry.Point] | tuple[sympy.geometry.Point, ...]) -> sympy.Expr
+
+   Compute exact unsigned twice-area :math:`|2 \cdot \text{Area}|` of a simple polygon via shoelace.
+
+
+.. py:function:: cross_ratio(A: sympy.geometry.Point, B: sympy.geometry.Point, C: sympy.geometry.Point, D: sympy.geometry.Point) -> sympy.Expr
+
+   Compute the exact projective cross-ratio :math:`(A, B; C, D) = \frac{\overline{AC}\cdot\overline{BD}}{\overline{BC}\cdot\overline{AD}}`.
+
+   Projects collinear displacements onto a shared line direction vector so the cross-ratio
+   is computed purely rationally without introducing square roots.
+
+   :param A: First base point.
+   :param B: Second base point.
+   :param C: First division point.
+   :param D: Second division point.
+
+   :returns: Exact simplified :class:`sympy.Expr`.
+
+   :raises ValueError: If the four points are not collinear or the denominator vanishes.
+
+
+.. py:function:: is_harmonic(A: sympy.geometry.Point, B: sympy.geometry.Point, C: sympy.geometry.Point, D: sympy.geometry.Point) -> bool
+
+   Return ``True`` iff ``(A, B; C, D) == -1`` forms an exact harmonic range.
+
+
+.. py:class:: Angle(p1_or_points: sympy.geometry.Point | list[sympy.geometry.Point] | tuple[sympy.geometry.Point, ...], vertex: sympy.geometry.Point | None = None, p2: sympy.geometry.Point | None = None)
+
+   First-class rectilinear angle ``< B A C )`` with vertex ``A`` and rays ``AB``, ``AC``.
+
+   Stores exact algebraic spread, cross, and acute/right/obtuse dot-product sign without
+   requiring transcendental ``acos`` or ``atan2`` evaluation during equality proofs.
+
+
+   .. py:attribute:: p1
+      :type:  sympy.geometry.Point
+
+
+   .. py:attribute:: vertex
+      :type:  sympy.geometry.Point
+
+
+   .. py:attribute:: p2
+      :type:  sympy.geometry.Point
+
+
+   .. py:attribute:: points
+      :type:  list[sympy.geometry.Point]
+
+
+   .. py:method:: __eq__(other: object) -> bool
+
+
+   .. py:method:: __hash__() -> int
+
+
+   .. py:method:: __repr__() -> str
+
+
+   .. py:property:: ray1
+      :type: sympy.geometry.Ray
+
+
+      First ray from ``vertex`` through ``p1``.
+
+
+   .. py:property:: ray2
+      :type: sympy.geometry.Ray
+
+
+      Second ray from ``vertex`` through ``p2``.
+
+
+   .. py:property:: spread
+      :type: sympy.Expr
+
+
+      Exact rational trigonometry spread :math:`s(\angle BAC) = \sin^2\theta`.
+
+
+   .. py:property:: cross
+      :type: sympy.Expr
+
+
+      Exact rational trigonometry cross :math:`c(\angle BAC) = \cos^2\theta`.
+
+
+   .. py:property:: dot_sign
+      :type: int
+
+
+      ``+1`` acute, ``0`` right, ``-1`` obtuse.
+
+      :type: Exact dot-product sign
+
+
+   .. py:property:: is_right
+      :type: bool
+
+
+      Return ``True`` iff the angle is an exact right angle.
+
+
+   .. py:property:: radians
+      :type: sympy.Expr
+
+
+      Interior angle measure in radians in :math:`[0, \pi]`.
+
+
+   .. py:property:: degrees
+      :type: sympy.Expr
+
+
+      Interior angle measure in degrees.
+
+
+.. py:class:: AnglesMixin
+
+   Mixin for :class:`~geometor.model.Model` providing rectilinear angle registration.
+
+
+   .. py:property:: angles
+      :type: list[Angle]
+
+
+      Return all :class:`Angle` elements registered in the model.
+
+
+   .. py:method:: set_angle_by_IDs(p1_ID: str, vertex_ID: str, p2_ID: str, classes: list[str] | None = None, ID: str = '', *, by: str = '') -> Angle
+
+      Construct and register an :class:`Angle` ``< B A C )`` from three point IDs.
+
+
+
+   .. py:method:: set_angle(p1: sympy.geometry.Point, vertex: sympy.geometry.Point, p2: sympy.geometry.Point, classes: list[str] | None = None, ID: str = '', *, guide: bool = False, by: str = '') -> Angle
+
+      Construct and register a rectilinear :class:`Angle` ``< p1 vertex p2 )``.
+
+
+
+   .. py:attribute:: construct_angle
+
+

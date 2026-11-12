@@ -7,7 +7,9 @@ geometor.model.points
 
    Provides point construction and manipulation for the Model class.
 
-   This module handles the creation, deduplication, and management of symbolic points within the geometric model. It ensures that points are unique, properly linked to their parents, and assigned identifiers for reference.
+   This module handles the creation, deduplication, and management of symbolic points
+   within the geometric model. It ensures that points are unique, properly linked to
+   their causal parents, and assigned identifiers for reference.
 
 
 
@@ -26,8 +28,6 @@ Module Contents
 
    Mixin for the Model class containing point construction operations.
 
-   This mixin augments the Model class with methods specific to point handling, particularly the `set_point` method which is the primary entry point for adding points to the model. It also manages point ID generation.
-
 
    .. py:method:: point_ID_generator() -> collections.abc.Iterator[str]
 
@@ -35,31 +35,27 @@ Module Contents
 
 
 
-   .. py:method:: set_point(x_val: sympy.Expr, y_val: sympy.Expr, parents: list | None = None, classes: list[str] | None = None, ID: str = '', guide: bool = False, label: str = '') -> sympy.geometry.Point
+   .. py:method:: given_point(x_val: sympy.Expr | float, y_val: sympy.Expr | float, ID: str = '', *, label: str = '', classes: list[str] | None = None, by: str = 'given') -> sympy.geometry.Point
+
+      Register an initial given point in the model with ``"given"`` classification.
+
+
+
+   .. py:method:: set_point(x_val: sympy.Expr | float, y_val: sympy.Expr | float, parents: list | None = None, classes: list[str] | None = None, ID: str = '', guide: bool = False, label: str = '', *, by: str = '', record_step: bool = True) -> sympy.geometry.Point
 
       Add a point to the model, find duplicates, clean values, and set parents and classes.
 
-      This method is the core mechanism for introducing points into the model. It simplifies the coordinates, checks for existing points to avoid duplicates, attempts to merge attributes if a duplicate is found, and triggers analysis hooks for the new point.
-
       :param x_val: The x-value of the point.
       :param y_val: The y-value of the point.
-      :param parents: A list of parent elements or references.
+      :param parents: A list of causal parent elements.
       :param classes: A list of string names for classes defining a set of styles.
       :param ID: A text ID for use in plotting and reporting.
       :param guide: If True, the point is a guide.
-      :param label: Optional alias for ID.
+      :param label: Optional alias for ``ID``.
+      :param by: Optional Euclidean justification citation.
+      :param record_step: Whether to append a ``Step`` entry when a new point is added.
 
-      :returns: The set point.
-
-      **example**
-
-      .. code-block:: python
-
-          from geometor.model import *
-          model = Model("demo")
-          model.set_point(0, 0, classes=["given"])
-          # <spg.Point object ...>
-
+      :returns: The exact :class:`sympy.geometry.Point` registered in the model.
 
 
 

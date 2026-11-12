@@ -29,15 +29,20 @@ Functions
 Module Contents
 ---------------
 
-.. py:function:: clean_expr(expr: sympy.Expr) -> sympy.Expr
+.. py:function:: clean_expr(expr: object) -> sympy.Expr
 
-   Simplify and denest SymPy expressions.
+   Canonicalize a symbolic geometric coordinate without invoking ``sp.simplify``.
 
-   This function applies a standard set of simplification routines to symbolic expressions, specifically targeting the simplification of square roots and nested radicals which are common in constructive geometry.
+   Applies a fast tiered pipeline:
 
-   :param expr: The SymPy expression to clean.
+   1. Immediate O(1) return for Python ``int`` and SymPy ``Rational`` / ``Integer``.
+   2. Fraction combination (:func:`sympy.together`), bounded polynomial expansion,
+      and denominator rationalization (:func:`sympy.radsimp` with ``symbolic=False``).
+   3. Conditional :func:`sympy.sqrtdenest` only when nested radicals are actually present.
 
-   :returns: The simplified expression.
+   :param expr: A numeric value or SymPy expression.
+
+   :returns: A simplified exact :class:`sympy.Expr`.
 
 
 .. py:function:: spread(l1: sympy.geometry.Line, l2: sympy.geometry.Line) -> sympy.Expr

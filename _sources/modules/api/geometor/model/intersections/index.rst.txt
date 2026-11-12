@@ -1,0 +1,203 @@
+geometor.model.intersections
+============================
+
+.. py:module:: geometor.model.intersections
+
+.. autoapi-nested-parse::
+
+   Closed-form 2D symbolic intersections, Euclidean selectors, and scoped sub-constructions.
+
+   Provides:
+
+   - :func:`intersect_2d`: Exact closed-form solver for 2D ``Line``, ``Circle``, and ``Segment``
+     pairs (bypassing SymPy's quartic ``Ellipse`` Gröbner-basis routines).
+   - :exc:`ConstructionError`: Raised when a geometric *diorismos* or Euclidean selector fails.
+   - :class:`IntersectionsMixin`: Adds :meth:`Model.intersect`, :meth:`Model.intersect_all`, and
+     :meth:`Model.subconstruction` to :class:`~geometor.model.Model`.
+   - :func:`proposition`: Composable decorator turning any Euclidean construction function into
+     a scoped, reusable lemma/problem across ``elements`` and ``etc``.
+
+
+
+Exceptions
+----------
+
+.. autoapisummary::
+
+   geometor.model.intersections.ConstructionError
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   geometor.model.intersections.SubconstructionScope
+   geometor.model.intersections.IntersectionsMixin
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   geometor.model.intersections.intersect_2d
+   geometor.model.intersections.proposition
+
+
+Module Contents
+---------------
+
+.. py:exception:: ConstructionError
+
+   Bases: :py:obj:`ValueError`
+
+
+   Raised when a compass-and-straightedge intersection violates its *diorismos* or selector.
+
+
+.. py:function:: intersect_2d(s1: sympy.geometry.entity.GeometryEntity, s2: sympy.geometry.entity.GeometryEntity) -> list[sympy.geometry.Point]
+
+   Compute exact symbolic intersections of 2D lines, circles, and segments.
+
+   Uses closed-form homogeneous cross-products (line-line), orthogonal projection
+   discriminants (line-circle), and radical-axis projections (circle-circle) so
+   nested radical expressions never fall into SymPy's slow ``Ellipse`` quartic solver.
+
+   :param s1: First 2D geometric entity (``Line``, ``Circle``, or ``Segment``).
+   :param s2: Second 2D geometric entity (``Line``, ``Circle``, or ``Segment``).
+
+   :returns: Deterministically sorted list of exact real :class:`sympy.geometry.Point` intersections.
+
+
+.. py:class:: SubconstructionScope
+
+   Active scope state for :meth:`Model.subconstruction`.
+
+
+   .. py:attribute:: name
+      :type:  str
+
+
+   .. py:attribute:: g_id
+      :type:  str
+      :value: ''
+
+
+
+   .. py:attribute:: scope_intersections
+      :type:  bool
+      :value: True
+
+
+
+   .. py:attribute:: hide_guides
+      :type:  bool
+      :value: True
+
+
+
+   .. py:attribute:: initial_keys
+      :type:  set[Any]
+
+
+   .. py:attribute:: scope_structs
+      :type:  list[Any]
+      :value: []
+
+
+
+   .. py:attribute:: created_elements
+      :type:  list[Any]
+      :value: []
+
+
+
+   .. py:attribute:: returned_elements
+      :type:  set[Any]
+
+
+   .. py:property:: scope_id
+      :type: str
+
+
+      Canonical identifier recorded on nested steps.
+
+
+   .. py:method:: include(*elements: Any) -> None
+
+      Include existing outer lines/circles in this scope's intersection pool.
+
+
+
+   .. py:method:: keep(*elements: Any) -> None
+
+      Preserve specific elements created inside this scope as primary (non-guide) outputs.
+
+
+
+.. py:function:: proposition(prop_id: str, *, g_id: str = '', kind: str = 'problem', title: str = '', hide_guides: bool = True, scope_intersections: bool = True) -> collections.abc.Callable[[collections.abc.Callable[..., Any]], collections.abc.Callable[..., Any]]
+
+   Decorator marking a Euclidean construction function as a composable proposition.
+
+   Executes the wrapped function inside :meth:`Model.subconstruction`, scoping automatic
+   intersections to the proposition and automatically marking un-returned auxiliary
+   lines, circles, and guide poles with ``guide=True``.
+
+   :param prop_id: Proposition or center identifier (e.g., ``"I.1"``, ``"X(13)"``).
+   :param g_id: Optional G-Index node identifier (e.g., ``"G.17"``).
+   :param kind: ``"problem"`` (Q.E.F.) or ``"theorem"`` (Q.E.D.).
+   :param title: Optional human-readable proposition title.
+   :param hide_guides: Default ``hide_guides`` setting when invoked.
+   :param scope_intersections: Default ``scope_intersections`` setting when invoked.
+
+
+.. py:class:: IntersectionsMixin
+
+   Mixin for :class:`~geometor.model.Model` providing targeted intersections & sub-constructions.
+
+
+   .. py:method:: subconstruction(name: str, *, g_id: str = '', scope_intersections: bool = True, hide_guides: bool = True) -> collections.abc.Iterator[SubconstructionScope]
+
+      Execute a scoped sub-construction block with automatic guide encapsulation.
+
+      :param name: Proposition or sub-construction name (e.g., ``"I.1"``).
+      :param g_id: Optional G-Index identifier (e.g., ``"G.17"``).
+      :param scope_intersections: If ``True``, automatic intersections inside the block only
+                                  test lines and circles belonging to this scope.
+      :param hide_guides: If ``True``, un-kept auxiliary lines, circles, and points created
+                          inside the block are marked ``guide=True`` upon exit.
+
+
+
+   .. py:method:: intersect_all(s1: geometor.model.element.Struct | sympy.geometry.Segment, s2: geometor.model.element.Struct | sympy.geometry.Segment, *, classes: list[str] | None = None, guide: bool = False, by: str = '') -> list[sympy.geometry.Point]
+
+      Compute and register all real intersections between ``s1`` and ``s2``.
+
+
+
+   .. py:method:: intersect(s1: geometor.model.element.Struct | sympy.geometry.Segment, s2: geometor.model.element.Struct | sympy.geometry.Segment, *, side_of: tuple[sympy.geometry.Point, sympy.geometry.Point, int] | None = None, other_than: sympy.geometry.Point | collections.abc.Sequence[sympy.geometry.Point] | None = None, on_ray: tuple[sympy.geometry.Point, sympy.geometry.Point] | None = None, beyond: tuple[sympy.geometry.Point, sympy.geometry.Point] | None = None, between: tuple[sympy.geometry.Point, sympy.geometry.Point] | None = None, near: sympy.geometry.Point | None = None, index: int | None = None, ID: str = '', label: str = '', classes: list[str] | None = None, guide: bool = False, by: str = '') -> sympy.geometry.Point
+
+      Compute a targeted intersection of ``s1`` and ``s2`` selected by Euclidean predicates.
+
+      :param s1: First ``Line``, ``Circle``, or ``Segment``.
+      :param s2: Second ``Line``, ``Circle``, or ``Segment``.
+      :param side_of: ``(A, B, +1|-1|0)`` selecting the half-plane relative to directed line ``AB``.
+      :param other_than: Known ``Point`` (or sequence of ``Point`` instances) to exclude.
+      :param on_ray: ``(A, B)`` selecting points on ray ``AB`` (:math:`t \ge 0`).
+      :param beyond: ``(A, B)`` selecting points on ray ``AB`` strictly past ``B`` (:math:`t > 1`).
+      :param between: ``(A, B)`` selecting points strictly between ``A`` and ``B`` (:math:`0 < t < 1`).
+      :param near: Reference ``Point`` selecting the closest candidate.
+      :param index: Explicit index ``0`` or ``1`` into deterministically sorted candidates.
+      :param ID: Optional identifier for the constructed point.
+      :param label: Optional alias for ``ID``.
+      :param classes: Optional list of CSS/semantic classes.
+      :param guide: Whether to mark the point as a guide.
+      :param by: Optional Euclidean justification citation (e.g., ``"I.1"``, ``"Post.2"``).
+
+      :returns: The exact :class:`sympy.geometry.Point` registered in the model.
+
+      :raises ConstructionError: If ``s1`` and ``s2`` do not intersect or no candidate matches the selector.
+
+
+

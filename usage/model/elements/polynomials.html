@@ -92,6 +92,50 @@
         <p>This module introduces polynomial elements into the geometric model, allowing for the representation and manipulation of algebraic curves defined by coefficients. It supports operations like evaluating the polynomial, finding roots, and calculating intersections with other geometric entities.</p>
         <dl class="py class">
         <dt class="sig sig-object py">
+        <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">geometor.model.polynomials.</span></span><span class="sig-name descname"><span class="pre">Polynomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coeffs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+        <dd><p>Bases: <a class="reference internal" href="../../../modules/api/geometor/model/element/index.html#geometor.model.element.Element" title="geometor.model.element.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
+        <p>A polynomial element defined by its coefficients.</p>
+        <p>This class wraps a SymPy Polynomial object, extending it with the <code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code> interface for Model integration. It provides property accessors and methods for common polynomial operations like evaluation and intersection finding.</p>
+        <dl class="py method">
+        <dt class="sig sig-object py">
+        <span class="sig-name descname"><span class="pre">equation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.14.0)"><span class="pre">Expr</span></a></span></span></dt>
+        <dd><p>Return the SymPy expression of the polynomial.</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py">
+        <span class="sig-name descname"><span class="pre">eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.14.0)"><span class="pre">Expr</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.14.0)"><span class="pre">Expr</span></a></span></span></dt>
+        <dd><p>Evaluate the polynomial at a given value.</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py">
+        <span class="sig-name descname"><span class="pre">degree</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span></dt>
+        <dd><p>Return the degree of the polynomial.</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py">
+        <span class="sig-name descname"><span class="pre">all_coeffs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a></span></span></dt>
+        <dd><p>Return all coefficients of the polynomial.</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py">
+        <span class="sig-name descname"><span class="pre">real_roots</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a></span></span></dt>
+        <dd><p>Return a list of real roots of the polynomial.</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py">
+        <span class="sig-name descname"><span class="pre">intersection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/entities.html#sympy.geometry.entity.GeometryEntity" title="(in SymPy v1.14.0)"><span class="pre">GeometryEntity</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a><span class="p"><span class="pre">]</span></span></span></span></dt>
+        <dd><p>Find intersections with other geometric entities.</p>
+        </dd></dl>
+
+        </dd></dl>
+
+        <dl class="py class">
+        <dt class="sig sig-object py">
         <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">geometor.model.polynomials.</span></span><span class="sig-name descname"><span class="pre">PolynomialsMixin</span></span></dt>
         <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
         <p>Mixin for the Model class containing polynomial construction operations.</p>
@@ -134,50 +178,6 @@
         <dd class="field-even"><p>The added <a class="reference internal" href="../../../modules/api/geometor/model/polynomials/index.html#geometor.model.polynomials.Polynomial" title="geometor.model.polynomials.Polynomial"><code class="xref py py-class docutils literal notranslate"><span class="pre">Polynomial</span></code></a> element.</p>
         </dd>
         </dl>
-        </dd></dl>
-
-        </dd></dl>
-
-        <dl class="py class">
-        <dt class="sig sig-object py">
-        <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">geometor.model.polynomials.</span></span><span class="sig-name descname"><span class="pre">Polynomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coeffs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
-        <dd><p>Bases: <a class="reference internal" href="../../../modules/api/geometor/model/element/index.html#geometor.model.element.Element" title="geometor.model.element.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
-        <p>A polynomial element defined by its coefficients.</p>
-        <p>This class wraps a SymPy Polynomial object, extending it with the <code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code> interface for Model integration. It provides property accessors and methods for common polynomial operations like evaluation and intersection finding.</p>
-        <dl class="py method">
-        <dt class="sig sig-object py">
-        <span class="sig-name descname"><span class="pre">equation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.14.0)"><span class="pre">Expr</span></a></span></span></dt>
-        <dd><p>Return the SymPy expression of the polynomial.</p>
-        </dd></dl>
-
-        <dl class="py method">
-        <dt class="sig sig-object py">
-        <span class="sig-name descname"><span class="pre">eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.14.0)"><span class="pre">Expr</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.14.0)"><span class="pre">Expr</span></a></span></span></dt>
-        <dd><p>Evaluate the polynomial at a given value.</p>
-        </dd></dl>
-
-        <dl class="py method">
-        <dt class="sig sig-object py">
-        <span class="sig-name descname"><span class="pre">degree</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span></dt>
-        <dd><p>Return the degree of the polynomial.</p>
-        </dd></dl>
-
-        <dl class="py method">
-        <dt class="sig sig-object py">
-        <span class="sig-name descname"><span class="pre">all_coeffs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a></span></span></dt>
-        <dd><p>Return all coefficients of the polynomial.</p>
-        </dd></dl>
-
-        <dl class="py method">
-        <dt class="sig sig-object py">
-        <span class="sig-name descname"><span class="pre">real_roots</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a></span></span></dt>
-        <dd><p>Return a list of real roots of the polynomial.</p>
-        </dd></dl>
-
-        <dl class="py method">
-        <dt class="sig sig-object py">
-        <span class="sig-name descname"><span class="pre">intersection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/entities.html#sympy.geometry.entity.GeometryEntity" title="(in SymPy v1.14.0)"><span class="pre">GeometryEntity</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/points.html#sympy.geometry.point.Point" title="(in SymPy v1.14.0)"><span class="pre">Point</span></a><span class="p"><span class="pre">]</span></span></span></span></dt>
-        <dd><p>Find intersections with other geometric entities.</p>
         </dd></dl>
 
         </dd></dl>
@@ -269,7 +269,7 @@
 
   <script src="../../../_static/jquery.js?v=5d32c60e"></script>
   <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-  <script src="../../../_static/documentation_options.js?v=d65efdcf"></script>
+  <script src="../../../_static/documentation_options.js?v=8fa8b3e9"></script>
   <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
   <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
   <script src="../../../_static/js/collection_controls.js?v=b6b5297a"></script>
