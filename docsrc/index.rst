@@ -1,5 +1,9 @@
 :site_title: Symbolic Geometry Model
 
+.. container:: author-overline
+
+   semantic digital archive • symbolic engine
+
 =======================
 Symbolic Geometry Model
 =======================
