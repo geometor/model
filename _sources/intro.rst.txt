@@ -1,6 +1,6 @@
 **Symbolic compass-and-straightedge construction engine for the GEOMETOR ecosystem.**
 
-``geometor.model`` is the foundational library for the `GEOMETOR <https://geometor.com>`_ initiative. At the core of the module is the ``Model`` class, which establishes an exact symbolic field (`SymPy <https://docs.sympy.org>`_) for creating, analyzing, and serializing geometric constructions.
+``geometor.model`` is the foundational symbolic algebra engine of the interconnected `GEOMETOR <https://geometor.com/books/>`_ semantic digital archive. Powered by `SymPy <https://docs.sympy.org>`_, it liberates classical compass-and-straightedge constructions from floating-point approximation into exact algebraic coordinates, automatic intersection discovery, and full ancestral dependency lineages across the corpus.
 
 ----
 
