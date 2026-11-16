@@ -1407,8 +1407,9 @@ body > header > .logo a {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.32rem;
   padding: 0.2rem;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 body > header > .logo a img {
@@ -1423,37 +1424,43 @@ body > header > .logo a:hover img {
   opacity: 0.92;
 }
 
-body > header > .logo a h1 {
-  font-family: var(--book-font-display);
-  font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--book-text);
-  text-align: center;
-  margin: 0;
+body > header > .logo a:hover .org-repo .repo {
+  color: var(--book-link-hover, #f3d478);
 }
 
 body > header > .logo .org-repo {
   font-family: var(--book-font-display);
-  font-size: 0.98rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: var(--book-text);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.35rem;
   justify-content: center;
+  gap: 0.08rem;
+  line-height: 1.08;
+  text-align: center;
 }
 
 body > header > .logo .org-repo .org {
-  color: var(--book-text-muted);
+  font-size: 0.82rem;
   font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--book-text-muted);
+}
+
+body > header > .logo .org-repo .sep {
+  font-size: 0.72rem;
+  line-height: 0.68;
+  color: var(--book-border-dark);
+  user-select: none;
 }
 
 body > header > .logo .org-repo .repo {
-  color: var(--book-text);
+  font-size: 0.98rem;
   font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--book-text);
+  transition: color 0.15s ease;
+  word-break: break-word;
 }
 
 body > header > nav {
@@ -2039,6 +2046,7 @@ body #search-results .context {
   --geom-font-sans: 'Fira Sans Condensed', 'Fira Sans', sans-serif;
   --geom-fg: #18181b;
   --geom-bg: #ffffff;
+  --geom-muted: #71717a;
   --geom-point-stroke: #ffffff;
   --geom-poly-fill: #000000;
   --geom-accent: #c88a1e;
@@ -2047,6 +2055,8 @@ body #search-results .context {
   --geom-assert: #16a34a;
   --geom-assert-bg: rgba(22, 163, 74, 0.10);
   --geom-assert-border: rgba(22, 163, 74, 0.50);
+  --geom-hyper: #2563eb;
+  --geom-rose: #be123c;
   --geom-coincide: #0891b2;
   --geom-coincide-bg: rgba(8, 145, 178, 0.12);
   --geom-coincide-border: rgba(8, 145, 178, 0.55);
@@ -2056,6 +2066,7 @@ body #search-results .context {
   :root {
     --geom-fg: #d6cfc5;
     --geom-bg: transparent;
+    --geom-muted: #a1a1aa;
     --geom-point-stroke: #1e1e20;
     --geom-poly-fill: #d6cfc5;
     --geom-accent: #e8b85a;
@@ -2064,6 +2075,8 @@ body #search-results .context {
     --geom-assert: #5ec27e;
     --geom-assert-bg: rgba(94, 194, 126, 0.12);
     --geom-assert-border: rgba(94, 194, 126, 0.55);
+    --geom-hyper: #60a5fa;
+    --geom-rose: #fb7185;
     --geom-coincide: #38bdf8;
     --geom-coincide-bg: rgba(56, 189, 248, 0.14);
     --geom-coincide-border: rgba(56, 189, 248, 0.60);
@@ -2101,6 +2114,7 @@ article.book-reading-pane {
   /* Geometric SVG Palette (Light lines matching text on dark codex background) */
   --geom-fg: var(--book-text, #d6cfc5);
   --geom-bg: transparent;
+  --geom-muted: #a1a1aa;
   --geom-point-stroke: var(--book-bg, #1e1e20);
   --geom-poly-fill: var(--book-text, #d6cfc5);
   --geom-accent: #e8b85a;
@@ -2109,6 +2123,8 @@ article.book-reading-pane {
   --geom-assert: #5ec27e;
   --geom-assert-bg: rgba(94, 194, 126, 0.12);
   --geom-assert-border: rgba(94, 194, 126, 0.55);
+  --geom-hyper: #60a5fa;
+  --geom-rose: #fb7185;
   --geom-coincide: #38bdf8;
   --geom-coincide-bg: rgba(56, 189, 248, 0.14);
   --geom-coincide-border: rgba(56, 189, 248, 0.60);
@@ -2118,6 +2134,7 @@ body.light-mode,
 [data-theme="light"] {
   --geom-fg: #18181b;
   --geom-bg: #ffffff;
+  --geom-muted: #71717a;
   --geom-point-stroke: #ffffff;
   --geom-poly-fill: #000000;
   --geom-accent: #c88a1e;
@@ -2126,6 +2143,8 @@ body.light-mode,
   --geom-assert: #16a34a;
   --geom-assert-bg: rgba(22, 163, 74, 0.10);
   --geom-assert-border: rgba(22, 163, 74, 0.50);
+  --geom-hyper: #2563eb;
+  --geom-rose: #be123c;
   --geom-coincide: #0891b2;
   --geom-coincide-bg: rgba(8, 145, 178, 0.12);
   --geom-coincide-border: rgba(8, 145, 178, 0.55);
@@ -2138,10 +2157,13 @@ article.book-reading-pane,
 :root {
     --geom-fg: #000000;
     --geom-bg: #ffffff;
+    --geom-muted: #52525b;
     --geom-point-stroke: #ffffff;
     --geom-poly-fill: #000000;
     --geom-accent: #b47814;
     --geom-assert: #15803d;
+    --geom-hyper: #1d4ed8;
+    --geom-rose: #9f1239;
     --geom-coincide: #0e7490;
   }
 }
@@ -2237,79 +2259,40 @@ header.book-header {
 
 .book-header-bar {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
-  line-height: 1.25;
+  gap: 0.35rem 0.7rem;
+  line-height: 1.3;
   text-align: center;
 }
 
-.book-header-identity {
-  display: flex;
+.book-breadcrumbs {
+  display: inline-flex;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: center;
-  gap: 0.45rem;
+  gap: 0.38rem;
 }
 
-.book-portal-link {
-  font-family: var(--book-font-mono);
-  font-size: 0.76rem;
-  color: var(--book-text-muted) !important;
-  text-decoration: none !important;
-  padding: 0.08rem 0.38rem;
-  border-radius: 3px;
-  background-color: var(--book-surface);
-  border: 1px solid var(--book-border);
-  transition: all 0.15s ease;
-}
-
-.book-portal-link:hover {
-  color: var(--book-link-hover) !important;
-  border-color: var(--book-border-dark);
-}
-
-.book-header-sep {
-  color: var(--book-border-dark);
-  font-size: 0.85rem;
-  user-select: none;
-}
-
-.book-title-link {
+.book-section-home-link {
   font-family: var(--book-font-display);
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--book-text) !important;
   text-decoration: none !important;
   transition: color 0.15s ease;
 }
 
-.book-title-link:hover {
+.book-section-home-link:hover {
   color: var(--book-link) !important;
-}
-
-.book-subtitle {
-  font-family: var(--book-font-serif);
-  font-style: italic;
-  font-size: 0.95rem;
-  color: var(--book-text-muted);
-}
-
-.book-header-breadcrumbs,
-.book-header-badges {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
 }
 
 .book-crumb-link {
   font-family: var(--book-font-display);
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -2322,25 +2305,145 @@ header.book-header {
   color: var(--book-link-hover) !important;
 }
 
+.book-crumb-current {
+  font-family: var(--book-font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--book-text);
+}
+
+.book-crumb-current.is-section-root {
+  font-size: 0.92rem;
+  letter-spacing: 0.1em;
+}
+
 .book-crumb-sep {
   color: var(--book-border-dark);
   font-size: 0.78rem;
   user-select: none;
 }
 
+.book-provenance-badges {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
 .book-badge {
   font-family: var(--book-font-mono);
-  font-size: 0.72rem;
-  padding: 0.1rem 0.45rem;
+  font-size: 0.7rem;
+  padding: 0.08rem 0.42rem;
   border-radius: 4px;
   border: 1px solid var(--book-border);
   background: var(--book-surface);
   color: var(--book-text-muted);
+  text-decoration: none !important;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.book-badge:hover {
+  color: var(--book-link-hover) !important;
+  border-color: var(--book-border-dark);
 }
 
 .book-badge.canonical-badge {
   font-weight: 700;
   color: var(--book-text);
+}
+
+/* Home Page Overline ('the works of') & Companion Track Pills on Collection Cards */
+.author-overline {
+  text-align: center !important;
+  margin: 0.85rem auto 0.1rem !important;
+}
+
+.author-overline p {
+  font-family: var(--book-font-serif);
+  font-style: italic;
+  font-size: 1.08rem !important;
+  letter-spacing: 0.04em;
+  color: var(--book-text-muted);
+  text-align: center !important;
+  text-indent: 0 !important;
+  margin: 0 !important;
+}
+
+.is-home-page {
+  padding-top: 0.5rem !important;
+}
+
+.is-home-page .author-overline + section > h1,
+.is-home-page > section > h1:first-child {
+  text-align: center !important;
+  margin-top: 0.15rem !important;
+}
+
+.excerpt-tracks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.32rem;
+  margin-top: 0.45rem;
+  font-family: var(--book-font-display);
+  font-size: 0.76rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.excerpt-tracks .excerpt-track-sep {
+  color: var(--book-border-dark);
+  user-select: none;
+}
+
+.excerpt-tracks .excerpt-track-link {
+  color: var(--book-text-muted) !important;
+  text-decoration: none !important;
+  padding: 0.05rem 0.25rem;
+  border-radius: 3px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.excerpt-tracks .excerpt-track-link:hover {
+  color: var(--book-link-hover) !important;
+  background-color: var(--book-surface-alt);
+}
+
+.collection-outline-list {
+  list-style: none !important;
+  margin: 0.75rem 0 1.5rem !important;
+  padding: 0 !important;
+  border-top: 1px solid var(--book-border-light);
+}
+
+.collection-outline-list .collection-outline-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem 1rem;
+  padding: 0.45rem 0.35rem;
+  margin: 0 !important;
+  border-bottom: 1px solid var(--book-border-light);
+}
+
+.collection-outline-list .collection-outline-item .collection-outline-title {
+  font-family: var(--book-font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--book-text) !important;
+  text-decoration: none !important;
+}
+
+.collection-outline-list .collection-outline-item .collection-outline-title:hover {
+  color: var(--book-link) !important;
+}
+
+.collection-outline-list .collection-outline-item .excerpt-tracks {
+  margin-top: 0;
 }
 
 /* Second Row of Book Header: [← Prev] | Chapter Title + Track Switcher | [Next →] */
@@ -2488,7 +2591,7 @@ article.book-layout nav a::before, article.book-layout nav a::after,
   /* Tables (Translation Notes, Comparative Apparatus, Scan Inventory) */
   /* Chapter Table of Contents (.. contents:: / Conspectus Capitis) */
   /* Front Matter / 1954 Monograph Title Page Reconstruction (.title-page) */
-  /* Conspectus Totius Operis (Book Index Table of Contents) */
+  /* Book Index Table of Contents (English & Latin Hoenen Exemplar) */
   /* Scroll offset for sticky book header and :target highlights */
   /* Semantic Apparatus Links & Spans (:cite:, :term:, :person:) */
   /* Footnotes (Docutils HTML5 aside.footnote & inline a.footnote-reference) */
@@ -3530,50 +3633,141 @@ article.book-layout nav a::before, article.book-layout nav a::after,
   border-bottom-color: var(--book-link-hover);
 }
 
+.book-reading-pane .book-content section#table-of-contents,
+.book-reading-pane .book-content section#contents,
 .book-reading-pane .book-content section#conspectus-totius-operis,
-.folio-book-page section#conspectus-totius-operis {
-  max-width: 42rem;
+.book-reading-pane .book-content section.book-toc,
+.folio-book-page section#table-of-contents,
+.folio-book-page section#contents,
+.folio-book-page section#conspectus-totius-operis,
+.folio-book-page section.book-toc {
   margin: 1.5rem auto 2.5rem !important;
-  text-align: center;
 }
 
-.book-reading-pane .book-content section#conspectus-totius-operis h2,
-.folio-book-page section#conspectus-totius-operis h2 {
-  margin-bottom: 0.2rem !important;
+.book-reading-pane .book-content section#table-of-contents > h2,
+.book-reading-pane .book-content section#contents > h2,
+.book-reading-pane .book-content section#conspectus-totius-operis > h2,
+.book-reading-pane .book-content section.book-toc > h2,
+.folio-book-page section#table-of-contents > h2,
+.folio-book-page section#contents > h2,
+.folio-book-page section#conspectus-totius-operis > h2,
+.folio-book-page section.book-toc > h2 {
+  text-align: center !important;
+  margin-bottom: 0.5rem !important;
 }
 
-.book-reading-pane .book-content section#conspectus-totius-operis h3,
-.folio-book-page section#conspectus-totius-operis h3 {
+.book-reading-pane .book-content section#table-of-contents > h3,
+.book-reading-pane .book-content section#contents > h3,
+.book-reading-pane .book-content section#conspectus-totius-operis > h3,
+.book-reading-pane .book-content section.book-toc > h3,
+.folio-book-page section#table-of-contents > h3,
+.folio-book-page section#contents > h3,
+.folio-book-page section#conspectus-totius-operis > h3,
+.folio-book-page section.book-toc > h3 {
+  max-width: 42rem;
+  margin: 2rem auto 0.2rem !important;
   text-align: center !important;
   font-size: 1.22rem !important;
   letter-spacing: 0.04em;
-  margin-top: 2rem !important;
-  margin-bottom: 0.2rem !important;
 }
 
-.book-reading-pane .book-content section#conspectus-totius-operis p,
-.folio-book-page section#conspectus-totius-operis p {
+.book-reading-pane .book-content section#table-of-contents > p,
+.book-reading-pane .book-content section#contents > p,
+.book-reading-pane .book-content section#conspectus-totius-operis > p,
+.book-reading-pane .book-content section.book-toc > p,
+.folio-book-page section#table-of-contents > p,
+.folio-book-page section#contents > p,
+.folio-book-page section#conspectus-totius-operis > p,
+.folio-book-page section.book-toc > p {
+  max-width: 42rem;
+  margin: 0 auto 0.35rem !important;
   text-align: center !important;
   text-indent: 0 !important;
-  margin-bottom: 0.35rem !important;
 }
 
-.book-reading-pane .book-content section#conspectus-totius-operis p em,
-.folio-book-page section#conspectus-totius-operis p em {
+.book-reading-pane .book-content section#table-of-contents > p em,
+.book-reading-pane .book-content section#contents > p em,
+.book-reading-pane .book-content section#conspectus-totius-operis > p em,
+.book-reading-pane .book-content section.book-toc > p em,
+.folio-book-page section#table-of-contents > p em,
+.folio-book-page section#contents > p em,
+.folio-book-page section#conspectus-totius-operis > p em,
+.folio-book-page section.book-toc > p em {
   color: var(--book-text-muted);
   font-size: 1.02rem;
 }
 
-.book-reading-pane .book-content section#conspectus-totius-operis p a,
-.folio-book-page section#conspectus-totius-operis p a {
+.book-reading-pane .book-content section#table-of-contents > p a,
+.book-reading-pane .book-content section#contents > p a,
+.book-reading-pane .book-content section#conspectus-totius-operis > p a,
+.book-reading-pane .book-content section.book-toc > p a,
+.folio-book-page section#table-of-contents > p a,
+.folio-book-page section#contents > p a,
+.folio-book-page section#conspectus-totius-operis > p a,
+.folio-book-page section.book-toc > p a {
   text-decoration: none !important;
   padding: 0.1rem 0.45rem;
   border-radius: 3px;
 }
 
-.book-reading-pane .book-content section#conspectus-totius-operis p a:hover,
-.folio-book-page section#conspectus-totius-operis p a:hover {
+.book-reading-pane .book-content section#table-of-contents > p a:hover,
+.book-reading-pane .book-content section#contents > p a:hover,
+.book-reading-pane .book-content section#conspectus-totius-operis > p a:hover,
+.book-reading-pane .book-content section.book-toc > p a:hover,
+.folio-book-page section#table-of-contents > p a:hover,
+.folio-book-page section#contents > p a:hover,
+.folio-book-page section#conspectus-totius-operis > p a:hover,
+.folio-book-page section.book-toc > p a:hover {
   background-color: var(--book-surface);
+}
+
+.book-reading-pane .book-content section#table-of-contents > dl,
+.book-reading-pane .book-content section#contents > dl,
+.book-reading-pane .book-content section#conspectus-totius-operis > dl,
+.book-reading-pane .book-content section.book-toc > dl,
+.folio-book-page section#table-of-contents > dl,
+.folio-book-page section#contents > dl,
+.folio-book-page section#conspectus-totius-operis > dl,
+.folio-book-page section.book-toc > dl {
+  max-width: 44rem;
+  margin: 1rem auto 1.5rem !important;
+  text-align: center;
+}
+
+.book-reading-pane .book-content section#table-of-contents > dl > dt,
+.book-reading-pane .book-content section#contents > dl > dt,
+.book-reading-pane .book-content section#conspectus-totius-operis > dl > dt,
+.book-reading-pane .book-content section.book-toc > dl > dt,
+.folio-book-page section#table-of-contents > dl > dt,
+.folio-book-page section#contents > dl > dt,
+.folio-book-page section#conspectus-totius-operis > dl > dt,
+.folio-book-page section.book-toc > dl > dt {
+  font-weight: 600;
+  margin-top: 1.15rem;
+}
+
+.book-reading-pane .book-content section#table-of-contents > dl > dd,
+.book-reading-pane .book-content section#contents > dl > dd,
+.book-reading-pane .book-content section#conspectus-totius-operis > dl > dd,
+.book-reading-pane .book-content section.book-toc > dl > dd,
+.folio-book-page section#table-of-contents > dl > dd,
+.folio-book-page section#contents > dl > dd,
+.folio-book-page section#conspectus-totius-operis > dl > dd,
+.folio-book-page section.book-toc > dl > dd {
+  margin-left: 0 !important;
+  margin-bottom: 0.4rem;
+}
+
+.book-reading-pane .book-content section#table-of-contents > ul,
+.book-reading-pane .book-content section#contents > ul,
+.book-reading-pane .book-content section#conspectus-totius-operis > ul,
+.book-reading-pane .book-content section.book-toc > ul,
+.folio-book-page section#table-of-contents > ul,
+.folio-book-page section#contents > ul,
+.folio-book-page section#conspectus-totius-operis > ul,
+.folio-book-page section.book-toc > ul {
+  max-width: 44rem;
+  margin: 1rem auto 1.5rem !important;
 }
 
 .book-reading-pane .book-content section[id],
@@ -3998,24 +4192,39 @@ a.justification-link:hover {
   margin-bottom: 0.25em;
 }
 
+.folio-anchor {
+  display: inline;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 .folio-milestone {
-  font-size: 0.75em;
-  color: #71717a;
-  text-align: right;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  margin: 0.4em 0;
-  clear: both;
+  float: right;
+  font-size: 0.68rem;
+  line-height: 1.2;
+  color: var(--book-text-muted);
+  opacity: 0.65;
+  font-family: var(--book-font-mono);
+  margin: 0.15rem 0 0.15rem 0.85rem;
+  padding: 0.04rem 0.3rem;
+  border-radius: 3px;
+  user-select: none;
+  transition: opacity 0.15s ease;
+}
+
+.folio-milestone:hover {
+  opacity: 1;
 }
 
 .folio-milestone a.folio-link {
-  color: inherit;
-  text-decoration: none;
+  color: inherit !important;
+  text-decoration: none !important;
   transition: color 0.15s ease;
 }
 
 .folio-milestone a.folio-link:hover {
-  color: var(--book-link, #d4a038);
-  text-decoration: underline;
+  color: var(--book-link, #d4a038) !important;
 }
 
 img.folio-initial-cap {
@@ -4090,6 +4299,10 @@ figure.photon-svg svg {
   margin: 0 auto;
 }
 
+figure.photon-svg svg:not([width]) {
+  width: 42rem;
+}
+
 figure.photon-picture.diagram-right,
 figure.photon-svg.diagram-right {
   float: right;
@@ -4124,7 +4337,8 @@ svg.euclid-graphic.euclid-thumbnail {
 svg.euclid-graphic .geom-line,
 svg.euclid-graphic .line,
 svg.euclid-graphic .element,
-svg.euclid-graphic .graphic-seg {
+svg.euclid-graphic .graphic-seg,
+svg.euclid-graphic :where(.geom-segment, .struct-segment, .Line, .Segment, .construct, .line-primary) {
   stroke: var(--geom-fg, #d6cfc5);
   stroke-width: 1.8;
   stroke-linecap: round;
@@ -4144,7 +4358,8 @@ svg.euclid-graphic .geom-bold {
 
 svg.euclid-graphic .geom-circle,
 svg.euclid-graphic .geom-curve,
-svg.euclid-graphic .geom-ellipse {
+svg.euclid-graphic .geom-ellipse,
+svg.euclid-graphic :where(.Circle, .Curve, .conic-curve, .conic-locus) {
   stroke: var(--geom-fg, #d6cfc5);
   stroke-width: 1.8;
   stroke-linecap: round;
@@ -4166,7 +4381,8 @@ svg.euclid-graphic .geom-line-dashed,
 svg.euclid-graphic .geom-arc-dashed,
 svg.euclid-graphic .geom-aux,
 svg.euclid-graphic .geom-Auxiliary,
-svg.euclid-graphic .geom-construction {
+svg.euclid-graphic .geom-construction,
+svg.euclid-graphic :where(.aux-line, .aux-segment, .aux-circle, .auxiliary, .extension, .guide, .guide-line, .line-guide) {
   stroke: var(--geom-fg, #d6cfc5);
   stroke-width: 1.5;
   stroke-dasharray: 4, 3;
@@ -4174,6 +4390,46 @@ svg.euclid-graphic .geom-construction {
   stroke-linejoin: round;
   fill: none;
   transition: stroke 0.15s ease, stroke-width 0.15s ease;
+}
+
+svg.euclid-graphic :where(.geom-faint, .geom-muted, .geom-grid, .grid-seg) {
+  stroke: var(--geom-fg, #d6cfc5);
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  fill: none;
+  opacity: 0.55;
+}
+
+svg.euclid-graphic :where(.geom-accent-line, .geom-accent, .accent-line, .line-accent, .golden-segment, .golden-seg, .golden-major, .golden-minor, .geom-circle-accent) {
+  stroke: var(--geom-accent, #e8b85a);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+svg.euclid-graphic :where(.geom-assert-line, .geom-assert, .line-result, .geom-circle-assert) {
+  stroke: var(--geom-assert, #5ec27e);
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+svg.euclid-graphic :where(.geom-hyper-line, .geom-hyper, .geom-circle-hyper) {
+  stroke: var(--geom-hyper, #60a5fa);
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+svg.euclid-graphic :where(.geom-rose-line, .geom-rose, .geom-circle-rose) {
+  stroke: var(--geom-rose, #fb7185);
+  stroke-width: 2.0;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
 }
 
 svg.euclid-graphic .geom-arc-dotted {
@@ -4211,11 +4467,44 @@ svg.euclid-graphic .grid-line {
 
 svg.euclid-graphic .geom-polygon,
 svg.euclid-graphic .poly,
-svg.euclid-graphic .graphic-poly {
+svg.euclid-graphic .graphic-poly,
+svg.euclid-graphic :where(.Polygon) {
   fill: var(--geom-poly-fill, #d6cfc5);
   fill-opacity: 0.04;
   stroke: none;
   transition: fill-opacity 0.15s ease, fill 0.15s ease, stroke 0.15s ease;
+}
+
+svg.euclid-graphic :where(.geom-polygon-accent, .golden-poly) {
+  fill: var(--geom-accent, #e8b85a);
+  fill-opacity: 0.12;
+  stroke: var(--geom-accent, #e8b85a);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
+
+svg.euclid-graphic :where(.geom-polygon-assert, .geom-poly-ok) {
+  fill: var(--geom-assert, #5ec27e);
+  fill-opacity: 0.12;
+  stroke: var(--geom-assert, #5ec27e);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
+
+svg.euclid-graphic :where(.geom-polygon-hyper) {
+  fill: var(--geom-hyper, #60a5fa);
+  fill-opacity: 0.12;
+  stroke: var(--geom-hyper, #60a5fa);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+
+svg.euclid-graphic :where(.geom-polygon-rose) {
+  fill: var(--geom-rose, #fb7185);
+  fill-opacity: 0.12;
+  stroke: var(--geom-rose, #fb7185);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
 }
 
 svg.euclid-graphic .geom-polygon-bordered,
@@ -4264,11 +4553,36 @@ svg.euclid-graphic .geom-tick-mark {
 }
 
 svg.euclid-graphic .geom-point,
-svg.euclid-graphic .point {
+svg.euclid-graphic .point,
+svg.euclid-graphic :where(.Point, .pt, .pt-given) {
   fill: var(--geom-fg, #d6cfc5);
   stroke: var(--geom-point-stroke, #1e1e20);
   stroke-width: 1;
   transition: fill 0.15s ease, r 0.15s ease;
+}
+
+svg.euclid-graphic :where(.geom-point-accent, .pt-accent, .golden-point) {
+  fill: var(--geom-accent, #e8b85a);
+  stroke: var(--geom-point-stroke, #1e1e20);
+  stroke-width: 1.2;
+}
+
+svg.euclid-graphic :where(.geom-point-assert, .pt-emerald) {
+  fill: var(--geom-assert, #5ec27e);
+  stroke: var(--geom-point-stroke, #1e1e20);
+  stroke-width: 1.2;
+}
+
+svg.euclid-graphic :where(.geom-point-hyper) {
+  fill: var(--geom-hyper, #60a5fa);
+  stroke: var(--geom-point-stroke, #1e1e20);
+  stroke-width: 1.2;
+}
+
+svg.euclid-graphic :where(.geom-point-rose) {
+  fill: var(--geom-rose, #fb7185);
+  stroke: var(--geom-point-stroke, #1e1e20);
+  stroke-width: 1.2;
 }
 
 svg.euclid-graphic .geom-dot {
@@ -4301,10 +4615,10 @@ svg.euclid-graphic .geom-label-roman {
 
 svg.euclid-graphic .geom-label-sm {
   font-family: var(--geom-font-sans, "Fira Sans Condensed", "Fira Sans", sans-serif);
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
   font-style: normal;
-  fill: var(--geom-fg, #d6cfc5);
+  fill: var(--geom-muted, #a1a1aa);
   stroke: none;
   user-select: none;
 }
@@ -4316,6 +4630,46 @@ svg.euclid-graphic .geom-label-sub {
   font-weight: 700;
   fill: var(--geom-fg, #d6cfc5);
   stroke: none;
+}
+
+svg.euclid-graphic :where(.geom-label-accent) {
+  font-family: var(--geom-font-sans, "Fira Sans Condensed", "Fira Sans", sans-serif);
+  font-size: 12.5px;
+  font-weight: 700;
+  font-style: normal;
+  fill: var(--geom-accent, #e8b85a);
+  stroke: none;
+  user-select: none;
+}
+
+svg.euclid-graphic :where(.geom-label-assert) {
+  font-family: var(--geom-font-sans, "Fira Sans Condensed", "Fira Sans", sans-serif);
+  font-size: 12.5px;
+  font-weight: 700;
+  font-style: normal;
+  fill: var(--geom-assert, #5ec27e);
+  stroke: none;
+  user-select: none;
+}
+
+svg.euclid-graphic :where(.geom-label-hyper) {
+  font-family: var(--geom-font-sans, "Fira Sans Condensed", "Fira Sans", sans-serif);
+  font-size: 12.5px;
+  font-weight: 700;
+  font-style: normal;
+  fill: var(--geom-hyper, #60a5fa);
+  stroke: none;
+  user-select: none;
+}
+
+svg.euclid-graphic :where(.geom-label-rose) {
+  font-family: var(--geom-font-sans, "Fira Sans Condensed", "Fira Sans", sans-serif);
+  font-size: 12.5px;
+  font-weight: 700;
+  font-style: normal;
+  fill: var(--geom-rose, #fb7185);
+  stroke: none;
+  user-select: none;
 }
 
 svg.euclid-graphic[data-graphic-id="0003.g1"] {
