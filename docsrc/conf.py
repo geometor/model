@@ -11,3 +11,6 @@ repo = "model"
 repo_name = "model"
 
 setup_globals(org, org_name, repo, repo_name)
+site_title = "Symbolic Geometry Model"
+project = site_title
+html_title = f"{site_title} • {org_name}"
