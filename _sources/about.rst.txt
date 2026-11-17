@@ -1,5 +1,6 @@
-:navigation: footer
-:order: 10
+:navigation: header
+:order: 20
+:nav_title: About
 
 =====
 about
