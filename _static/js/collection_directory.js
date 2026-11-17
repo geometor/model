@@ -34,8 +34,8 @@
     var sortSel = controls.querySelector(".collection-directory-sort");
     var sortOptions = [];
     if (hasDeath) {
-      sortOptions.push(["death_asc", "Sort: Death Date (Ancient → Modern)"]);
-      sortOptions.push(["death_desc", "Sort: Death Date (Modern → Ancient)"]);
+      sortOptions.push(["death_asc", "Sort: Date (Ancient → Modern)"]);
+      sortOptions.push(["death_desc", "Sort: Date (Modern → Ancient)"]);
     }
     if (hasPub) {
       sortOptions.push(["pub_desc", "Sort: Publish Date (Newest First)"]);
@@ -158,8 +158,8 @@
       btn.addEventListener("click", function () {
         var fk = btn.getAttribute("data-filter");
         var fv = btn.getAttribute("data-val");
-        if (fv && state[fk] === fv) {
-          fv = "";
+        if (fv && fv !== "All" && state[fk] === fv) {
+          fv = "All";
         }
         state[fk] = fv;
         filtersWrap.querySelectorAll('.collection-directory-pill[data-filter="' + fk + '"]').forEach(function (b) {

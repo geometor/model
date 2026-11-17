@@ -3064,3 +3064,204 @@ details.book-collapse {
   }
 }
 
+/* ==========================================================================
+   Directory Directives (people-directory, reference-directory)
+   ========================================================================== */
+.directory-section,
+.collection-directory {
+  display: block;
+}
+.directory-section .collection-directory-controls,
+.collection-directory .collection-directory-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin: 1.1rem 0 0.85rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--book-border, rgba(148, 163, 184, 0.25));
+  border-radius: 8px;
+  background: var(--book-surface, rgba(148, 163, 184, 0.05));
+}
+.directory-section .collection-directory-row,
+.collection-directory .collection-directory-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+.directory-section .collection-directory-search,
+.collection-directory .collection-directory-search {
+  flex: 1 1 200px;
+  width: auto;
+  min-width: 180px;
+  padding: 0.42rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--book-border-dark, rgba(148, 163, 184, 0.35));
+  background: var(--book-bg, #141417);
+  color: var(--book-text, inherit);
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.directory-section .collection-directory-search:focus,
+.collection-directory .collection-directory-search:focus {
+  border-color: var(--book-accent, #e8b85a);
+}
+.directory-section select.collection-directory-sort,
+.collection-directory select.collection-directory-sort {
+  appearance: none;
+  -webkit-appearance: none;
+  color-scheme: dark;
+  padding: 0.42rem 2rem 0.42rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--book-border-dark, rgba(148, 163, 184, 0.35));
+  background-color: var(--book-bg, #141417);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%2394a3b8' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.65rem center;
+  background-size: 0.65rem;
+  color: var(--book-text, inherit);
+  font-family: inherit;
+  font-size: 0.86rem;
+  cursor: pointer;
+}
+.directory-section select.collection-directory-sort option,
+.collection-directory select.collection-directory-sort option {
+  background-color: var(--book-bg, #141417);
+  color: var(--book-text, #e4e4e7);
+}
+body.light-mode .directory-section select.collection-directory-sort,
+body.light-mode .collection-directory select.collection-directory-sort {
+  color-scheme: light;
+}
+.directory-section .collection-directory-count,
+.collection-directory .collection-directory-count {
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--book-border, rgba(148, 163, 184, 0.25));
+  background: var(--book-bg, rgba(148, 163, 184, 0.06));
+  color: var(--book-muted, inherit);
+  margin-left: auto;
+  white-space: nowrap;
+}
+.directory-section .collection-directory-filters,
+.collection-directory .collection-directory-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.directory-section .collection-directory-pills,
+.collection-directory .collection-directory-pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+.directory-section .collection-directory-label,
+.collection-directory .collection-directory-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--book-muted, inherit);
+  margin-right: 0.2rem;
+  min-width: 4.5rem;
+}
+.directory-section button.collection-directory-pill,
+.collection-directory button.collection-directory-pill {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0.16rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--book-border-dark, rgba(148, 163, 184, 0.35));
+  background: var(--book-bg, #141417);
+  color: var(--book-muted, #a1a1aa);
+  font-family: var(--book-font-sans, "Fira Sans Condensed", "Fira Sans", sans-serif);
+  font-size: 0.74rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+.directory-section button.collection-directory-pill:hover,
+.collection-directory button.collection-directory-pill:hover {
+  border-color: var(--book-accent, #e8b85a);
+  color: var(--book-text, #f4f4f5);
+}
+.directory-section button.collection-directory-pill.is-active,
+.collection-directory button.collection-directory-pill.is-active {
+  background: var(--book-accent, #e8b85a);
+  border-color: var(--book-accent, #e8b85a);
+  color: #141417;
+  font-weight: 600;
+}
+.collection-directory-grid {
+  margin-top: 0.5rem;
+}
+.collection-directory-grid > article.excerpt > .content > figure {
+  overflow: hidden;
+}
+.collection-directory-grid > article.excerpt > .content > figure svg {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+.collection-directory-native {
+  font-size: 0.84rem;
+  color: var(--book-text-muted, inherit);
+  margin: 0.15rem 0 0.25rem;
+}
+.collection-directory-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  color: var(--book-text-muted, inherit);
+  margin: 0.25rem 0;
+}
+.collection-directory-grid.layout-banners .collection-directory-meta,
+.collection-directory-grid.layout-list .collection-directory-meta {
+  justify-content: flex-start;
+}
+.collection-directory-excerpt {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  margin: 0.2rem 0 0.35rem;
+}
+.collection-directory-excerpt p {
+  margin: 0;
+}
+.collection-directory-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem;
+  margin: 0.35rem 0 0.25rem;
+}
+.collection-directory-grid.layout-banners .collection-directory-tags,
+.collection-directory-grid.layout-list .collection-directory-tags {
+  justify-content: flex-start;
+}
+.collection-directory-tag {
+  font-size: 0.72rem;
+  padding: 0.12rem 0.45rem;
+  border-radius: 4px;
+  border: 1px solid var(--book-border, rgba(148, 163, 184, 0.28));
+}
+.collection-directory-links {
+  justify-content: center;
+  margin-top: 0.45rem;
+}
+.collection-directory-grid.layout-banners .collection-directory-links,
+.collection-directory-grid.layout-list .collection-directory-links {
+  justify-content: flex-start;
+}
+
+
