@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="euclid-graphic" viewBox="0 0 720 420" role="img" aria-label="Exact symbolic Vesica Piscis and Golden Ratio construction in geometor.model">
+  <title>GEOMETOR Model — Exact Symbolic Vesica to Phi Construction</title>
+  <style>
+    .euclid-graphic {
+      --svg-bg: #fafaf9;
+      --ink: #1c1917;
+      --muted: #64748b;
+      --grid: rgba(100, 116, 139, 0.14);
+      --circle: #0284c7;
+      --line: #475569;
+      --golden: #d97706;
+      --accent: #0d9488;
+      --poly-fill: rgba(2, 132, 199, 0.08);
+      --golden-fill: rgba(217, 119, 6, 0.12);
+      --pt-given: #0f172a;
+      --pt-found: #0284c7;
+      --pt-golden: #d97706;
+      --halo: rgba(250, 250, 249, 0.92);
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      .euclid-graphic {
+        --svg-bg: #141417;
+        --ink: #f4f4f5;
+        --muted: #94a3b8;
+        --grid: rgba(148, 163, 184, 0.12);
+        --circle: #38bdf8;
+        --line: #94a3b8;
+        --golden: #fbbf24;
+        --accent: #2dd4bf;
+        --poly-fill: rgba(56, 189, 248, 0.09);
+        --golden-fill: rgba(251, 191, 36, 0.12);
+        --pt-given: #f8fafc;
+        --pt-found: #38bdf8;
+        --pt-golden: #fbbf24;
+        --halo: rgba(20, 20, 23, 0.92);
+      }
+    }
+    .svg-bg { fill: var(--svg-bg); }
+    .grid-line { stroke: var(--grid); stroke-width: 1; }
+    .geom-line { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-linecap: round; opacity: 0.72; }
+    .geom-circle { fill: none; stroke: var(--circle); stroke-width: 2; opacity: 0.82; }
+    .geom-circle.sub { stroke-width: 1.3; stroke-dasharray: 5 4; opacity: 0.52; }
+    .geom-poly { fill: var(--poly-fill); stroke: var(--circle); stroke-width: 2.2; stroke-linejoin: round; }
+    .geom-golden { fill: none; stroke: var(--golden); stroke-width: 3.4; stroke-linecap: round; }
+    .geom-accent { fill: none; stroke: var(--accent); stroke-width: 2.2; stroke-linecap: round; }
+    .pt-given { fill: var(--pt-given); stroke: var(--svg-bg); stroke-width: 1.5; }
+    .pt-found { fill: var(--pt-found); stroke: var(--svg-bg); stroke-width: 1.4; }
+    .pt-golden { fill: var(--pt-golden); stroke: var(--svg-bg); stroke-width: 1.5; }
+    .lbl {
+      font-size: 13px;
+      font-weight: 600;
+      fill: var(--ink);
+      paint-order: stroke;
+      stroke: var(--halo);
+      stroke-width: 4px;
+      stroke-linejoin: round;
+    }
+    .caption {
+      font-size: 12px;
+      font-weight: 500;
+      fill: var(--muted);
+      letter-spacing: 0.04em;
+    }
+  </style>
+  <rect class="svg-bg" x="0" y="0" width="720" height="420" rx="10" />
+  <line class="geom-line" x1="36" y1="222.00" x2="684" y2="222.00" />
+  <line class="geom-line" x1="360.00" y1="36" x2="360.00" y2="372" />
+  <line class="geom-line" x1="419.00" y1="44" x2="419.00" y2="372" />
+  <line class="geom-accent" x1="360.00" y1="222.00" x2="419.00" y2="104.00" />
+  <circle class="geom-circle" cx="301.00" cy="222.00" r="118.00" />
+  <circle class="geom-circle" cx="419.00" cy="222.00" r="118.00" />
+  <circle class="geom-circle sub" cx="360.00" cy="222.00" r="131.93" />
+  <line class="geom-golden" x1="301.00" y1="222.00" x2="491.93" y2="222.00" />
+  <circle class="pt-given" cx="301.00" cy="222.00" r="4.2" />
+  <text class="lbl" x="287.00" y="212.00">A</text>
+  <circle class="pt-given" cx="419.00" cy="222.00" r="4.2" />
+  <text class="lbl" x="427.00" y="212.00">B</text>
+  <circle class="pt-found" cx="360.00" cy="222.00" r="4.2" />
+  <text class="lbl" x="346.00" y="240.00">M</text>
+  <circle class="pt-found" cx="360.00" cy="324.19" r="4.2" />
+  <text class="lbl" x="368.00" y="340.19">E</text>
+  <circle class="pt-found" cx="360.00" cy="119.81" r="4.2" />
+  <text class="lbl" x="368.00" y="111.81">F</text>
+  <circle class="pt-found" cx="419.00" cy="104.00" r="4.2" />
+  <text class="lbl" x="427.00" y="96.00">K</text>
+  <circle class="pt-golden" cx="491.93" cy="222.00" r="4.2" />
+  <text class="lbl" x="499.93" y="212.00">Φ</text>
+  <circle class="pt-golden" cx="228.07" cy="222.00" r="4.2" />
+  <text class="lbl" x="208.07" y="212.00">Φ'</text>
+  <text class="caption" x="28" y="402">EXACT SYMBOLIC ALGEBRA OVER Q(√3, √5) · |AΦ| = φ = (1 + √5)/2</text>
+</svg>

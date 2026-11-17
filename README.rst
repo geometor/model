@@ -3,6 +3,11 @@ GEOMETOR • model
 
 **Visit the Online Archive:** https://geometor.github.io/model/
 
+.. image:: docsrc/_static/hero.svg
+   :alt: GEOMETOR • model featured geometric construction
+   :target: https://geometor.github.io/model/
+   :align: center
+
 **Symbolic Geometry Model • Exact SymPy compass-and-straightedge construction engine**
 
 Mission
