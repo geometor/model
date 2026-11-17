@@ -18,10 +18,10 @@ Mission
 Capabilities & Interactive Docs
 -------------------------------
 
-- **`Symbolic Geometry Model <https://geometor.github.io/model/>`_** — Comprehensive documentation of the exact SymPy construction engine, algebraic element hierarchies, and interactive CLI.
-- **`Model Usage & Elements <https://geometor.github.io/model/usage/model/>`_** — In-depth guide to points, lines, circles, segments, wedges, polygons, chains, and polynomial roots.
-- **`Construction Demos <https://geometor.github.io/model/demos/>`_** — Executable construction walkthroughs including the Vesica Piscis and regular polygons.
-- **`Python API Reference <https://geometor.github.io/model/modules/>`_** — Complete auto-generated module documentation for ``geometor.model``.
+- `Symbolic Geometry Model <https://geometor.github.io/model/>`_ — Comprehensive documentation of the exact SymPy construction engine, algebraic element hierarchies, and interactive CLI.
+- `Model Usage & Elements <https://geometor.github.io/model/usage/model/>`_ — In-depth guide to points, lines, circles, segments, wedges, polygons, chains, and polynomial roots.
+- `Construction Demos <https://geometor.github.io/model/demos/>`_ — Executable construction walkthroughs including the Vesica Piscis and regular polygons.
+- `Python API Reference <https://geometor.github.io/model/modules/>`_ — Complete auto-generated module documentation for ``geometor.model``.
 
 Quickstart
 ----------
