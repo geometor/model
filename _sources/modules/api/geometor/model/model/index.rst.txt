@@ -118,7 +118,19 @@ Module Contents
 
    .. py:method:: __setitem__(key: GeometryObject, value: geometor.model.element.Element) -> None
 
-      Set an item in the model, enforcing type checks.
+      Set an item in the model, enforcing type checks and updating indices.
+
+
+
+   .. py:method:: __delitem__(key: GeometryObject) -> None
+
+      Delete an item from the model and update point indices.
+
+
+
+   .. py:method:: clear() -> None
+
+      Remove all elements and reset internal point indices.
 
 
 

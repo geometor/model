@@ -212,7 +212,19 @@
         <dl class="py method">
         <dt class="sig sig-object py" id="geometor.model.model.Model.__setitem__">
         <span class="sig-name descname"><span class="pre">__setitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#geometor.model.model.GeometryObject" title="geometor.model.model.GeometryObject"><span class="pre">GeometryObject</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../element/index.html#geometor.model.element.Element" title="geometor.model.element.Element"><span class="pre">geometor.model.element.Element</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.model.Model.__setitem__" title="Link to this definition">¶</a></dt>
-        <dd><p>Set an item in the model, enforcing type checks.</p>
+        <dd><p>Set an item in the model, enforcing type checks and updating indices.</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.model.Model.__delitem__">
+        <span class="sig-name descname"><span class="pre">__delitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#geometor.model.model.GeometryObject" title="geometor.model.model.GeometryObject"><span class="pre">GeometryObject</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.model.Model.__delitem__" title="Link to this definition">¶</a></dt>
+        <dd><p>Delete an item from the model and update point indices.</p>
+        </dd></dl>
+
+        <dl class="py method">
+        <dt class="sig sig-object py" id="geometor.model.model.Model.clear">
+        <span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.13/builtins/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#geometor.model.model.Model.clear" title="Link to this definition">¶</a></dt>
+        <dd><p>Remove all elements and reset internal point indices.</p>
         </dd></dl>
 
         <dl class="py method">
@@ -366,7 +378,7 @@
 
   <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
   <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-  <script src="../../../../../_static/documentation_options.js?v=8fa8b3e9"></script>
+  <script src="../../../../../_static/documentation_options.js?v=2bd037f0"></script>
   <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
   <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
   <script src="../../../../../_static/js/collection_controls.js?v=b6b5297a"></script>
