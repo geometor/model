@@ -8,6 +8,7 @@ serialization capabilities.
 from __future__ import annotations
 
 import logging
+import math
 import re
 from collections.abc import Callable
 
@@ -127,6 +128,9 @@ class Model(
         self._tick_group_counter = 0
         self._angle_group_counter = 0
         self._parallel_group_counter = 0
+        self._point_grid: dict[tuple[int, int], list[spg.Point]] = {}
+        self._used_point_ids: set[str] = set()
+        self._points_cache: list[spg.Point] | None = None
 
     @property
     def is_logging_enabled(self) -> bool:
@@ -182,13 +186,61 @@ class Model(
     def name(self, value: str) -> None:
         self._name = value
 
+    @staticmethod
+    def _point_grid_cell(fx: float, fy: float, h: float = 1e-6) -> tuple[int, int] | None:
+        """Return the 2D spatial hash cell for finite coordinates."""
+        if not (math.isfinite(fx) and math.isfinite(fy)):
+            return None
+        return (math.floor(fx / h), math.floor(fy / h))
+
     def __setitem__(self, key: GeometryObject, value: Element) -> None:
-        """Set an item in the model, enforcing type checks."""
+        """Set an item in the model, enforcing type checks and updating indices."""
         if not isinstance(key, GeometryObject):
             raise TypeError(f"{key=} must be an instance of GeometryObject")
         if not isinstance(value, Element):
             raise TypeError(f"{ value= } must be an instance of Element class")
+        is_point = isinstance(key, spg.Point)
+        already_present = is_point and (key in self)
+        if already_present:
+            old_id = self[key].ID
+            if old_id:
+                self._used_point_ids.discard(old_id)
         super().__setitem__(key, value)
+        if is_point:
+            if value.ID:
+                self._used_point_ids.add(value.ID)
+            if not already_present:
+                approx = value.approx_coords
+                if approx is not None:
+                    cell = self._point_grid_cell(approx[0], approx[1])
+                    if cell is not None:
+                        self._point_grid.setdefault(cell, []).append(key)
+            self._points_cache = None
+
+    def __delitem__(self, key: GeometryObject) -> None:
+        """Delete an item from the model and update point indices."""
+        if isinstance(key, spg.Point) and key in self:
+            details = self[key]
+            if details.ID:
+                self._used_point_ids.discard(details.ID)
+            approx = details.approx_coords
+            if approx is not None:
+                cell = self._point_grid_cell(approx[0], approx[1])
+                if cell is not None and cell in self._point_grid:
+                    bucket = self._point_grid[cell]
+                    if key in bucket:
+                        bucket.remove(key)
+                    if not bucket:
+                        del self._point_grid[cell]
+            self._points_cache = None
+        super().__delitem__(key)
+
+    def clear(self) -> None:
+        """Remove all elements and reset internal point indices."""
+        super().clear()
+        self._point_grid.clear()
+        self._used_point_ids.clear()
+        self._points_cache = None
 
     def remove_by_ID(self, ID: str) -> None:
         """Remove a geometric element from the model by its ID."""
@@ -198,7 +250,9 @@ class Model(
     @property
     def points(self) -> list[spg.Point]:
         """Return point elements from the model as a list."""
-        return [el for el in self if isinstance(el, spg.Point)]
+        if self._points_cache is None:
+            self._points_cache = [el for el in self if isinstance(el, spg.Point)]
+        return list(self._points_cache)
 
     @property
     def structs(self) -> list[Struct]:

@@ -1,6 +1,18 @@
 changelog
 =========
 
+0.6.1
+-----
+*2026-11-18*
+
+**changed**
+
+-   **Point Deduplication (``model.py``, ``points.py``):** Added an $O(1)$ 3x3 spatial grid index (``_point_grid``), incremental ID tracking (``_used_point_ids``), and cached ``Model.points`` so duplicate intersection points are screened with ``zero_test`` before running ``clean_expr``.
+
+**fixed**
+
+-   **Demos (``demos/level-2.py``):** Replaced Python float given coordinates with exact ``sympy.Rational`` values.
+
 0.6.0
 -----
 *2026-11-12*

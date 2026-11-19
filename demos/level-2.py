@@ -3,14 +3,15 @@ constructs level-2 geometry:
 creates a line and two circles for every pair of points
 """
 
-from geometor.model import *
 from itertools import combinations
+import sympy as sp
+from geometor.model import *
 from geometor.divine.golden import find_golden_sections_in_model
 
 def run():
     model = Model("level-2", use_point_subscript=True)
-    pt_A = model.set_point(-1/2, 0, classes=["given"])
-    pt_B = model.set_point(1/2, 0, classes=["given"])
+    pt_A = model.set_point(sp.Rational(-1, 2), 0, classes=["given"])
+    pt_B = model.set_point(sp.Rational(1, 2), 0, classes=["given"])
 
     def fundamental(pt_1: str, pt_2: str):
         model.construct_line(pt_1, pt_2)

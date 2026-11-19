@@ -7,6 +7,7 @@ their causal parents, and assigned identifiers for reference.
 
 from __future__ import annotations
 
+import math
 from collections.abc import Iterator
 
 import sympy as sp
@@ -18,6 +19,19 @@ from geometor.model.colors import get_color
 from geometor.model.element import Element
 
 __all__ = ["PointsMixin"]
+
+_POINT_GRID_H = 1e-6
+_POINT_MATCH_TOL = 1e-9
+
+
+def _approx_xy(x_val: object, y_val: object) -> tuple[float, float]:
+    """Return finite float approximations for ``(x_val, y_val)`` or ``(nan, nan)``."""
+    try:
+        fx = float(x_val) if isinstance(x_val, (int, float)) else float(sp.N(x_val, 20))
+        fy = float(y_val) if isinstance(y_val, (int, float)) else float(sp.N(y_val, 20))
+    except (TypeError, ValueError):
+        return (float("nan"), float("nan"))
+    return (fx, fy)
 
 
 class PointsMixin:
@@ -92,17 +106,14 @@ class PointsMixin:
         if parents is None:
             parents = []
 
-        simplifier = getattr(self, "_simplifier", None) or clean_expr
-        x_clean = simplifier(x_val)
-        y_clean = simplifier(y_val)
-
-        pt = spg.Point(x_clean, y_clean)
-        details = Element(pt, parents, classes, ID, guide)
+        used_ids_set: set[str] | None = getattr(self, "_used_point_ids", None)
 
         def _next_available_id(exclude: set[str] | None = None) -> str:
-            used_ids = {self[p].ID for p in self.points if self[p].ID}
-            if exclude:
-                used_ids.update(exclude)
+            used_ids = (
+                used_ids_set
+                if used_ids_set is not None
+                else {self[p].ID for p in self.points if self[p].ID}
+            )
             while True:
                 raw_ID = next(self.ID_gen)
                 self.last_point_id = raw_ID
@@ -112,50 +123,94 @@ class PointsMixin:
                     cand_ID = f"{char}{count}"
                 else:
                     cand_ID = raw_ID
-                if cand_ID not in used_ids:
+                if cand_ID not in used_ids and (not exclude or cand_ID not in exclude):
                     return cand_ID
 
         def _claim_explicit_id(target_pt: spg.Point, new_id: str) -> None:
-            for other_pt in self.points:
-                if other_pt != target_pt and self[other_pt].ID == new_id:
-                    self[other_pt].ID = _next_available_id({new_id})
+            old_target_id = self[target_pt].ID
+            if old_target_id == new_id:
+                return
+            if used_ids_set is None or new_id in used_ids_set:
+                for other_pt in self.points:
+                    if other_pt != target_pt and self[other_pt].ID == new_id:
+                        reassigned = _next_available_id({new_id})
+                        self[other_pt].ID = reassigned
+                        if used_ids_set is not None:
+                            used_ids_set.add(reassigned)
+                        break
+            if used_ids_set is not None:
+                if old_target_id:
+                    used_ids_set.discard(old_target_id)
+                used_ids_set.add(new_id)
             self[target_pt].ID = new_id
 
-        # Fast structural lookup in dict first (O(1) hash check)
-        if pt in self and isinstance(pt, spg.Point):
-            for parent in details.parents:
-                self[pt].parents[parent] = ""
-            self[pt].classes.update(details.classes)
+        def _merge_existing(existing_pt: spg.Point) -> spg.Point:
+            existing_el = self[existing_pt]
+            for parent in parents:
+                existing_el.parents[parent] = ""
+            for cls in classes:
+                existing_el.classes[cls] = ""
             if ID:
-                _claim_explicit_id(pt, ID)
-            return pt
+                _claim_explicit_id(existing_pt, ID)
+            return existing_pt
 
-        # Numeric cached bounding-box pre-filter followed by exact algebraic zero_test
-        pt_approx = details.approx_coords
-        assert pt_approx is not None
-        pt_fx, pt_fy = pt_approx
-        for prev_pt in self.points:
-            prev_approx = self[prev_pt].approx_coords
-            if (
-                prev_approx is not None
-                and abs(pt_fx - prev_approx[0]) < 1e-9
-                and abs(pt_fy - prev_approx[1]) < 1e-9
-                and zero_test(pt.x - prev_pt.x)
-                and zero_test(pt.y - prev_pt.y)
-            ):
-                for parent in details.parents:
-                    self[prev_pt].parents[parent] = ""
-                self[prev_pt].classes.update(details.classes)
-                if ID:
-                    _claim_explicit_id(prev_pt, ID)
-                return prev_pt
+        # 1. Fast structural lookup before clean_expr (O(1) hash check)
+        if (
+            isinstance(x_val, (int, sp.Basic))
+            and isinstance(y_val, (int, sp.Basic))
+            and not isinstance(x_val, sp.Float)
+            and not isinstance(y_val, sp.Float)
+        ):
+            raw_pt = spg.Point(x_val, y_val)
+            if raw_pt in self:
+                return _merge_existing(raw_pt)
+
+        # 2. Numeric 3x3 spatial grid pre-filter + exact zero_test before clean_expr
+        pt_fx, pt_fy = _approx_xy(x_val, y_val)
+        point_grid = getattr(self, "_point_grid", None)
+        if point_grid is not None and math.isfinite(pt_fx) and math.isfinite(pt_fy):
+            ix = math.floor(pt_fx / _POINT_GRID_H)
+            iy = math.floor(pt_fy / _POINT_GRID_H)
+            for dx in (-1, 0, 1):
+                for dy in (-1, 0, 1):
+                    for prev_pt in point_grid.get((ix + dx, iy + dy), ()):
+                        prev_approx = self[prev_pt].approx_coords
+                        if (
+                            prev_approx is not None
+                            and abs(pt_fx - prev_approx[0]) < _POINT_MATCH_TOL
+                            and abs(pt_fy - prev_approx[1]) < _POINT_MATCH_TOL
+                            and zero_test(x_val - prev_pt.x)
+                            and zero_test(y_val - prev_pt.y)
+                        ):
+                            return _merge_existing(prev_pt)
+        elif not (math.isfinite(pt_fx) and math.isfinite(pt_fy)):
+            for prev_pt in self.points:
+                if zero_test(x_val - prev_pt.x) and zero_test(y_val - prev_pt.y):
+                    return _merge_existing(prev_pt)
+
+        # 3. Genuinely new point: canonicalize coordinates and register
+        simplifier = getattr(self, "_simplifier", None) or clean_expr
+        x_clean = simplifier(x_val)
+        y_clean = simplifier(y_val)
+
+        pt = spg.Point(x_clean, y_clean)
+        if pt in self:
+            return _merge_existing(pt)
+
+        details = Element(pt, parents, classes, ID, guide)
+        if math.isfinite(pt_fx) and math.isfinite(pt_fy):
+            details._approx_coords = (pt_fx, pt_fy)
 
         if not ID:
             ID = _next_available_id()
-        else:
+        elif used_ids_set is None or ID in used_ids_set:
             for other_pt in self.points:
                 if self[other_pt].ID == ID:
-                    self[other_pt].ID = _next_available_id({ID})
+                    reassigned = _next_available_id({ID})
+                    self[other_pt].ID = reassigned
+                    if used_ids_set is not None:
+                        used_ids_set.add(reassigned)
+                    break
 
         details.ID = ID
         self[pt] = details
