@@ -1474,17 +1474,20 @@ a.justification-link {
 }
 
 .folio-milestone {
-  float: right;
-  font-size: 0.68rem;
-  line-height: 1.2;
-  color: var(--book-text-muted);
-  opacity: 0.65;
+  display: block;
+  float: none;
+  clear: both;
+  text-align: right;
+  font-size: 0.66rem;
+  line-height: 1.25;
+  color: var(--book-text-dim, #787268);
+  opacity: 0.55;
   font-family: var(--book-font-mono);
-  margin: 0.15rem 0 0.15rem 0.85rem;
-  padding: 0.04rem 0.3rem;
-  border-radius: 3px;
+  margin: 0.35rem 0 0.1rem;
+  padding: 0;
+  white-space: nowrap;
   user-select: none;
-  transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease, color 0.15s ease;
 
   &:hover {
     opacity: 1;
@@ -1498,6 +1501,20 @@ a.justification-link {
     &:hover {
       color: var(--book-link, #d4a038) !important;
     }
+  }
+}
+
+@media (min-width: 98em) {
+  .book-reading-pane .book-content .folio-milestone {
+    display: inline-block;
+    float: right;
+    clear: right;
+    margin: 0.28rem -8.75rem 0.1rem 0;
+    width: 7.75rem;
+    max-width: 7.75rem;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
