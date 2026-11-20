@@ -8,6 +8,10 @@
 Symbolic Geometry Model
 =======================
 
+.. image:: _static/medallion.svg
+   :alt: Symbolic Geometry Model Medallion
+   :class: repo-medallion-hero
+
 .. image:: _static/splash.png
 
 .. include:: intro.rst
