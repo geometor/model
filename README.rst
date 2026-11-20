@@ -3,6 +3,12 @@ GEOMETOR • model
 
 **Visit the Online Archive:** https://geometor.github.io/model/
 
+.. image:: docsrc/_static/logo.png
+   :alt: GEOMETOR • model Medallion
+   :target: https://geometor.github.io/model/
+   :width: 180px
+   :align: center
+
 .. image:: docsrc/_static/hero.svg
    :alt: GEOMETOR • model featured geometric construction
    :target: https://geometor.github.io/model/
