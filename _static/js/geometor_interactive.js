@@ -33,20 +33,14 @@
     },
 
     renderMath() {
-      const container = this.getRootContainer();
-      if (!container || typeof window.renderMathInElement !== 'function') return;
-      try {
-        window.renderMathInElement(container, {
-          delimiters: [
-            { left: '$$', right: '$$', display: true },
-            { left: '$', right: '$', display: false },
-            { left: '\\(', right: '\\)', display: false },
-            { left: '\\[', right: '\\]', display: true },
-          ],
-          throwOnError: false,
+      // On Sphinx pages, MathJax v4 typesets `.math` automatically via mathjax4_config.
+      // Only trigger explicit MathJax typesetPromise in folio_review's dynamic #mdView-rendered pane.
+      const mdRoot = document.getElementById('mdView-rendered');
+      if (!mdRoot) return;
+      if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+        window.MathJax.typesetPromise([mdRoot]).catch((err) => {
+          console.warn('MathJax typeset error:', err);
         });
-      } catch (err) {
-        console.warn('KaTeX auto-render error:', err);
       }
     },
 
@@ -54,6 +48,10 @@
       this.renderMath();
       this.inlineFiguresInTranscription();
       this.buildSvgIndex();
+      // Skip text/assertion/step bindings on pages with no euclid-graphic SVGs (e.g. ETC .etc-viewer pages)
+      if (!document.querySelector('svg.euclid-graphic')) {
+        return;
+      }
       this.bindTextElements();
       this.bindAssertionElements();
       this.bindSvgElements();
@@ -671,13 +669,15 @@
         });
       });
 
-      // 2. Contextual fallback for untagged KaTeX math elements
-      const katexEls = container.querySelectorAll('.katex');
-      katexEls.forEach((kel) => {
+      // 2. Contextual fallback for untagged MathJax / KaTeX math elements
+      const mathEls = container.querySelectorAll('mjx-container, .katex');
+      mathEls.forEach((kel) => {
         if (kel.closest('[data-ref]') || kel.closest('.euclid-figure-container')) return;
 
         const annot = kel.querySelector('annotation');
-        const rawTex = annot ? annot.textContent.trim() : kel.innerText.trim();
+        const rawTex = annot
+          ? annot.textContent.trim()
+          : (kel.textContent || kel.innerText || '').trim();
         const tokens = rawTex
           .split(/[,;\s]+/)
           .map((t) => t.replace(/[^A-Za-z0-9]/g, ''))

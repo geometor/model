@@ -216,6 +216,21 @@ article.book-reading-pane:has(.collection) {
 
   .book-content {
     .author-overline,
+    > h1,
+    > h2,
+    > h3,
+    > h4,
+    > p,
+    > ul,
+    > ol,
+    > blockquote,
+    > .admonition,
+    > .rubric,
+    > .toctree-wrapper,
+    > hr,
+    > .geom-step,
+    > .geom-steps-viewport,
+    > figure,
     > section > h1,
     > section > h2,
     > section > h3,
@@ -228,13 +243,35 @@ article.book-reading-pane:has(.collection) {
     > section > .rubric,
     > section > .toctree-wrapper,
     > section > hr,
-    > h1,
-    > h2,
-    > p,
-    > ul,
-    > ol,
-    > .admonition,
-    > .rubric {
+    > section > .geom-step,
+    > section > .geom-steps-viewport,
+    > section > figure,
+    > section > section:not(.collection) > h2,
+    > section > section:not(.collection) > h3,
+    > section > section:not(.collection) > h4,
+    > section > section:not(.collection) > p,
+    > section > section:not(.collection) > ul,
+    > section > section:not(.collection) > ol,
+    > section > section:not(.collection) > blockquote,
+    > section > section:not(.collection) > .admonition,
+    > section > section:not(.collection) > .rubric,
+    > section > section:not(.collection) > .toctree-wrapper,
+    > section > section:not(.collection) > hr,
+    > section > section:not(.collection) > .geom-step,
+    > section > section:not(.collection) > .geom-steps-viewport,
+    > section > section:not(.collection) > figure,
+    > section > section:not(.collection) > section:not(.collection) > h3,
+    > section > section:not(.collection) > section:not(.collection) > h4,
+    > section > section:not(.collection) > section:not(.collection) > p,
+    > section > section:not(.collection) > section:not(.collection) > ul,
+    > section > section:not(.collection) > section:not(.collection) > ol,
+    > section > section:not(.collection) > section:not(.collection) > blockquote,
+    > section > section:not(.collection) > section:not(.collection) > .admonition,
+    > section > section:not(.collection) > section:not(.collection) > .rubric,
+    > section > section:not(.collection) > section:not(.collection) > hr,
+    > section > section:not(.collection) > section:not(.collection) > .geom-step,
+    > section > section:not(.collection) > section:not(.collection) > .geom-steps-viewport,
+    > section > section:not(.collection) > section:not(.collection) > figure {
       max-width: var(--book-max-width);
       margin-left: auto;
       margin-right: auto;
@@ -252,9 +289,7 @@ header.book-header {
   display: flex;
   flex-direction: column;
   gap: 0.28rem;
-  background-color: var(--book-bg-alpha);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background-color: var(--book-bg-alpha, rgba(30, 30, 32, 0.97));
   border-bottom: 1px solid var(--book-border);
   padding: 0.45rem 0.65rem 0.4rem !important;
   margin-bottom: 1.5rem !important;
@@ -607,11 +642,18 @@ article.book-layout nav,
     clear: both;
 
     a.headerlink {
+      position: relative;
+      display: inline-block;
+      width: 0;
+      padding: 0;
+      margin: 0;
+      left: 0.4em;
+      overflow: visible;
+      white-space: nowrap;
       font-size: 0.72em;
       color: var(--book-text-dim) !important;
       text-decoration: none !important;
       opacity: 0;
-      padding-left: 0.4em;
       transition: opacity 0.15s ease;
     }
 
@@ -737,7 +779,10 @@ article.book-layout nav,
 
   /* Blockquotes (Smaller-type set-off passages & quotations) */
   blockquote {
-    margin: 1.25em 0 !important;
+    margin-top: 1.25em !important;
+    margin-bottom: 1.25em !important;
+    margin-left: 0;
+    margin-right: 0;
     padding: 0.75em 1.4em !important;
     border: none !important;
     border-left: 3px solid var(--book-quote-border) !important;
@@ -779,12 +824,16 @@ article.book-layout nav,
 
   /* Lists */
   ul, ol {
-    margin: 0.85rem 0 1.15rem !important;
+    margin-top: 0.85rem !important;
+    margin-bottom: 1.15rem !important;
+    margin-left: 0;
+    margin-right: 0;
     padding-left: 1.75rem;
   }
 
   ol.arabic.simple {
-    margin: 0.35rem 0 !important;
+    margin-top: 0.35rem !important;
+    margin-bottom: 0.35rem !important;
   }
 
   li {
@@ -2022,6 +2071,7 @@ svg.euclid-graphic {
 /* Interactive Geometric Text References (Gold) */
 .geom-ref,
 .geom-interactive-ref,
+mjx-container.geom-interactive-ref,
 .katex.geom-interactive-ref {
   font-family: var(--geom-font-sans, 'Fira Sans Condensed', 'Fira Sans', sans-serif);
   font-weight: 700;
@@ -2044,6 +2094,7 @@ svg.euclid-graphic {
 
 .geom-ref:hover,
 .geom-interactive-ref:hover,
+mjx-container.geom-interactive-ref:hover,
 .katex.geom-interactive-ref:hover {
   border-bottom: 1.5px solid var(--geom-accent, #e8b85a) !important;
 }
@@ -2051,6 +2102,8 @@ svg.euclid-graphic {
 /* Active Element Highlight: Turning text GOLD without glow */
 .geom-highlight-text,
 .geom-highlight-text *,
+mjx-container.geom-highlight-text,
+mjx-container.geom-highlight-text *,
 .katex.geom-highlight-text,
 .katex.geom-highlight-text * {
   color: var(--geom-accent, #e8b85a) !important;
@@ -2098,6 +2151,8 @@ svg.euclid-graphic {
 
 .geom-assert-text,
 .geom-assert-text *,
+mjx-container.geom-assert-text,
+mjx-container.geom-assert-text *,
 .katex.geom-assert-text,
 .katex.geom-assert-text * {
   color: var(--geom-assert, #5ec27e) !important;
@@ -2109,6 +2164,8 @@ svg.euclid-graphic {
 
 .geom-coincide-text,
 .geom-coincide-text *,
+mjx-container.geom-coincide-text,
+mjx-container.geom-coincide-text *,
 .katex.geom-coincide-text,
 .katex.geom-coincide-text * {
   color: var(--geom-coincide, #38bdf8) !important;
@@ -2573,7 +2630,7 @@ svg.euclid-graphic circle.geom-coincide-ring-outer {
 
   &.layout-cards {
     grid-template-columns: repeat(auto-fit, minmax(#{"min(100%, 16rem)"}, 21rem));
-  justify-content: center;
+    justify-content: center;
     gap: 1rem;
 
     > article.excerpt > .content {
@@ -3075,6 +3132,8 @@ details.book-collapse {
     padding: 0.75rem 1rem;
     font-size: 0.98rem;
     line-height: 1.6;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 180px;
 
     p {
       text-indent: 0 !important;
@@ -3321,6 +3380,237 @@ body.light-mode .collection-directory select.collection-directory-sort {
 .collection-directory-grid.layout-list .collection-directory-links {
   justify-content: flex-start;
 }
+.collection-directory-grid > article.excerpt > .content > figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.45rem;
+  box-sizing: border-box;
+  display: block;
+}
+.collection-directory-grid > article.excerpt > .content > figure svg.medallion-coin {
+  width: 100%;
+  height: 100%;
+  padding: 0.45rem;
+  box-sizing: border-box;
+  display: block;
+}
+.repo-medallion-hero,
+.book-reading-pane .book-content img.repo-medallion-hero,
+.book-reading-pane .book-content svg.repo-medallion-hero,
+.is-home-page img.repo-medallion-hero,
+.is-home-page svg.repo-medallion-hero {
+  display: block;
+  width: 11rem;
+  height: 11rem;
+  max-width: 11rem;
+  margin: 0.65rem auto 1.35rem;
+  border-radius: 50%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.38));
+}
+a.image-reference:has(> .repo-medallion-hero) {
+  display: block;
+  width: fit-content;
+  margin: 0.65rem auto 1.35rem;
+}
+a.image-reference:has(> .repo-medallion-hero) > .repo-medallion-hero {
+  margin: 0 auto;
+}
+body.light-mode .repo-medallion-hero,
+body.light-mode .book-reading-pane .book-content img.repo-medallion-hero {
+  filter: drop-shadow(0 4px 14px rgba(24, 28, 36, 0.18));
+}
+
+/* ==========================================================================
+   Bespoke Editorial Home Page Showcase (.home-book-hero, .home-feature-grid)
+   ========================================================================== */
+.home-book-hero {
+  display: grid;
+  grid-template-columns: minmax(175px, 235px) minmax(0, 1fr);
+  gap: 1.35rem;
+  align-items: center;
+  margin: 1rem 0 1.35rem 0;
+  padding: 1.15rem 1.35rem;
+  background: var(--book-surface, #272629);
+  border: 1px solid var(--book-border, #3d3934);
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.home-book-hero.no-thumb {
+  grid-template-columns: 1fr;
+}
+
+.home-book-thumb {
+  background: #141416;
+  border: 1px solid rgba(232, 184, 90, 0.28);
+  border-radius: 5px;
+  overflow: hidden;
+  transition: border-color 0.16s ease, transform 0.16s ease;
+}
+
+.home-book-thumb.plate-light {
+  background: #f7f4ee;
+  padding: 0.35rem;
+}
+
+.home-book-thumb:hover {
+  border-color: var(--geom-accent, #e8b85a);
+  transform: translateY(-1px);
+}
+
+.home-book-thumb a {
+  display: block;
+  border-bottom: none !important;
+}
+
+.home-book-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: contain;
+  margin: 0 !important;
+}
+
+.home-book-body p.rubric {
+  text-align: left !important;
+  font-family: var(--geom-font-sans, "Fira Sans Condensed", system-ui, sans-serif);
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--geom-accent, #e8b85a) !important;
+  margin: 0 0 0.35rem 0 !important;
+}
+
+.home-book-body > p {
+  text-indent: 0 !important;
+  text-align: left !important;
+  margin: 0 0 0.75rem 0 !important;
+  line-height: 1.56;
+}
+
+.home-actions ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.6rem;
+  list-style: none !important;
+  margin: 0.25rem 0 0 0 !important;
+  padding: 0 !important;
+}
+
+.home-actions li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.home-actions li::before {
+  display: none !important;
+}
+
+.home-actions a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.32rem 0.76rem;
+  border-radius: 4px;
+  border: 1px solid rgba(232, 184, 90, 0.42);
+  background: rgba(232, 184, 90, 0.1);
+  color: var(--geom-accent, #e8b85a) !important;
+  font-family: var(--geom-font-sans, "Fira Sans Condensed", system-ui, sans-serif);
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: background-color 0.14s ease, border-color 0.14s ease;
+}
+
+.home-actions a:hover {
+  background: rgba(232, 184, 90, 0.22);
+  border-color: var(--geom-accent, #e8b85a);
+}
+
+.home-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 0.95rem;
+  margin: 0.85rem 0 1.5rem 0;
+}
+
+.home-feature-card {
+  padding: 0.95rem 1.05rem;
+  background: var(--book-surface, #272629);
+  border: 1px solid var(--book-border, #3d3934);
+  border-radius: 6px;
+}
+
+.home-feature-card p {
+  text-indent: 0 !important;
+  text-align: left !important;
+  margin: 0 0 0.45rem 0 !important;
+  font-size: 0.96rem;
+  line-height: 1.5;
+}
+
+.home-feature-card p:last-child {
+  margin-bottom: 0 !important;
+  color: var(--book-text-muted, #9c958a);
+  font-size: 0.9rem;
+}
+
+.home-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 2rem;
+  margin-top: 0.65rem;
+}
+
+.home-col p.rubric {
+  text-align: left !important;
+  font-family: var(--geom-font-sans, "Fira Sans Condensed", system-ui, sans-serif);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--geom-accent, #e8b85a) !important;
+  margin: 0 0 0.5rem 0 !important;
+  padding-bottom: 0.28rem !important;
+  border-bottom: 1px solid var(--book-border, #3d3934);
+}
+
+.home-col ul {
+  margin: 0 !important;
+  padding-left: 1.15rem !important;
+}
+
+.home-col li {
+  margin-bottom: 0.45rem !important;
+  line-height: 1.48;
+}
+
+body.light-mode .home-book-hero,
+body.light-mode .home-feature-card {
+  background: var(--book-surface, #f5f2eb);
+  box-shadow: 0 2px 10px rgba(24, 28, 36, 0.06);
+}
+
+body.light-mode .home-actions a {
+  border-color: rgba(160, 100, 24, 0.4);
+  background: rgba(160, 100, 24, 0.08);
+  color: var(--book-link, #9b4832) !important;
+}
+
+body.light-mode .home-actions a:hover {
+  background: rgba(160, 100, 24, 0.16);
+  border-color: var(--book-link, #9b4832);
+}
+
+@media (max-width: 760px) {
+  .home-book-hero,
+  .home-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 
 .collection-directory-grid > article.excerpt > .content > figure img {
   width: 100%;

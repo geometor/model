@@ -8,6 +8,30 @@
     });
   }
 
+  function parseYearValue(raw) {
+    if (raw === null || raw === undefined) return null;
+    var s = String(raw).trim();
+    if (!s) return null;
+    if (/^[+-]?\d+$/.test(s)) return parseInt(s, 10);
+    var primary = s.split("/")[0].trim();
+    var isBce = /\b(?:bce|bc)\b/i.test(primary);
+    var m = primary.match(/[+-]?\d+/);
+    if (!m) return null;
+    var num = parseInt(m[0], 10);
+    if (isNaN(num)) return null;
+    return isBce && num > 0 ? -num : num;
+  }
+
+  function compareYears(rawA, rawB, desc, titleA, titleB) {
+    var ya = parseYearValue(rawA);
+    var yb = parseYearValue(rawB);
+    if (ya === null && yb === null) return compareNatural(titleA, titleB);
+    if (ya === null) return 1;
+    if (yb === null) return -1;
+    var diff = desc ? yb - ya : ya - yb;
+    return diff || compareNatural(titleA, titleB);
+  }
+
   function initCollectionDirectory(section) {
     var controls = section.querySelector(".collection-directory-controls");
     var grid = section.querySelector(".collection-directory-grid");
@@ -16,8 +40,8 @@
     var cards = Array.prototype.slice.call(grid.querySelectorAll(".collection-directory-card"));
     if (!cards.length) return;
 
-    var hasDeath = cards.some(function (c) { return c.getAttribute("data-death-year") !== ""; });
-    var hasYear = cards.some(function (c) { return c.getAttribute("data-year") !== ""; });
+    var hasDeath = cards.some(function (c) { return parseYearValue(c.getAttribute("data-death-year")) !== null; });
+    var hasYear = cards.some(function (c) { return parseYearValue(c.getAttribute("data-year")) !== null; });
     var hasPub = cards.some(function (c) { return c.getAttribute("data-published-at") !== ""; });
 
     var langCounts = {};
@@ -108,16 +132,22 @@
         if (state.sort === "title_asc") return compareNatural(ta, tb);
         if (state.sort === "title_desc") return compareNatural(tb, ta);
         if (state.sort === "death_asc" || state.sort === "death_desc") {
-          var da = parseInt(a.getAttribute("data-death-year") || "99999", 10);
-          var db = parseInt(b.getAttribute("data-death-year") || "99999", 10);
-          var diff = state.sort === "death_asc" ? da - db : db - da;
-          return diff || compareNatural(ta, tb);
+          return compareYears(
+            a.getAttribute("data-death-year"),
+            b.getAttribute("data-death-year"),
+            state.sort === "death_desc",
+            ta,
+            tb
+          );
         }
         if (state.sort === "year_asc" || state.sort === "year_desc") {
-          var ya = parseInt(a.getAttribute("data-year") || "99999", 10);
-          var yb = parseInt(b.getAttribute("data-year") || "99999", 10);
-          var ydiff = state.sort === "year_asc" ? ya - yb : yb - ya;
-          return ydiff || compareNatural(ta, tb);
+          return compareYears(
+            a.getAttribute("data-year"),
+            b.getAttribute("data-year"),
+            state.sort === "year_desc",
+            ta,
+            tb
+          );
         }
         if (state.sort === "pub_desc" || state.sort === "pub_asc") {
           var pa = a.getAttribute("data-published-at") || "";
